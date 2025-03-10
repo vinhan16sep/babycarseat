@@ -1,0 +1,268 @@
+@extends('admin.layouts.app')
+
+@section('content')
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-8 p-r-0 title-margin-right">
+            <div class="page-header">
+                <div class="page-title">
+                    <h1>Danh sách rượu vang</span></h1> <a class="btn btn-success btn-flat" href="{{ route('create-product') }}"><i class="ti-plus"></i> Tạo mới</a>
+                </div>
+            </div>
+        </div>
+        <!-- /# column -->
+    </div>
+    <!-- /# row -->
+    <section id="main-content">
+        <div class="row">
+            <div class="col-lg-12">
+                @include('admin.layouts.flash-message')
+                <div class="card">
+                    <div class="card-title">
+                        Tìm kiếm
+                    </div>
+                    <div class="card-body">
+                        <form action="{{ route('list-product') }}" class="my-search-form">
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="form-group col-md-6">
+                                        <label>Tên sản phẩm</label>
+                                        <input type="text" name="name" value="{{ isset($req['name']) && $req['name'] != '' ? $req['name'] : '' }}" class="form-control input-default">
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label>Tình trạng hàng</label>
+                                        <select class="form-control" name="quantity_status">
+                                            <option value="" {{ isset($req['quantity_status']) && $req['quantity_status'] === '' ? 'selected' : '' }}>Tất cả</option>
+                                            <option value="1" {{ isset($req['quantity_status']) && $req['quantity_status'] === '1' ? 'selected' : '' }}>Còn hàng</option>
+                                            <option value="0" {{ isset($req['quantity_status']) && $req['quantity_status'] === '0' ? 'selected' : '' }}>Hết hàng</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="form-group col-md-3">
+                                        <label>Loại rượu vang</label>
+                                        <select class="form-control" name="type">
+                                            <option value="">Tất cả</option>
+                                            @foreach ($activedTypes as $item)
+                                                <option value="{{$item->id}}" {{ isset($req['type']) && $req['type'] == $item->id ? 'selected' : '' }}>{{$item->name}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label>Quốc gia</label>
+                                        <select class="form-control" name="country" id="selectCountry">
+                                            <option value="">Tất cả</option>
+                                            @foreach ($activedCountries as $item)
+                                                <option value="{{$item->id}}" {{ isset($req['country']) && $req['country'] == $item->id ? 'selected' : '' }}>{{$item->name}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label>Vùng trồng nho</label>
+                                        <select class="form-control" name="region" id="selectRegion">
+                                            
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label>Giống nho</label>
+                                        <select class="form-control" name="grape" id="selectGrape">
+                                            <option value="">Tất cả</option>
+                                            @foreach ($activedGrapes as $item)
+                                                <option value="{{$item->id}}" {{ isset($req['grape']) && $req['grape'] == $item->id ? 'selected' : '' }}>{{$item->name}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="form-group col-md-3">
+                                        <label>Giảm giá?</label>
+                                        <select class="form-control" name="is_discount">
+                                            <option value="" {{ isset($req['is_discount']) && $req['is_discount'] === '' ? 'selected' : '' }}>Tất cả</option>
+                                            <option value="1" {{ isset($req['is_discount']) && $req['is_discount'] === '1' ? 'selected' : '' }}>Có</option>
+                                            <option value="0" {{ isset($req['is_discount']) && $req['is_discount'] === '0' ? 'selected' : '' }}>Không</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label>Sản phẩm mới?</label>
+                                        <select class="form-control" name="is_new">
+                                            <option value="" {{ isset($req['is_new']) && $req['is_new'] === '' ? 'selected' : '' }}>Tất cả</option>
+                                            <option value="1" {{ isset($req['is_new']) && $req['is_new'] === '1' ? 'selected' : '' }}>Có</option>
+                                            <option value="0" {{ isset($req['is_new']) && $req['is_new'] === '0' ? 'selected' : '' }}>Không</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label>Sản phẩm nổi bật?</label>
+                                        <select class="form-control" name="is_highlight">
+                                            <option value="" {{ isset($req['is_highlight']) && $req['is_highlight'] === '' ? 'selected' : '' }}>Tất cả</option>
+                                            <option value="1" {{ isset($req['is_highlight']) && $req['is_highlight'] === '1' ? 'selected' : '' }}>Có</option>
+                                            <option value="0" {{ isset($req['is_highlight']) && $req['is_highlight'] === '0' ? 'selected' : '' }}>Không</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label>Kích hoạt?</label>
+                                        <select class="form-control" name="is_active">
+                                            <option value="" {{ isset($req['is_active']) && $req['is_active'] === '' ? 'selected' : '' }}>Tất cả</option>
+                                            <option value="1" {{ isset($req['is_active']) && $req['is_active'] === '1' ? 'selected' : '' }}>Có</option>
+                                            <option value="0" {{ isset($req['is_active']) && $req['is_active'] === '0' ? 'selected' : '' }}>Không</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="form-group col-md-2">
+                                        <button type="submit" class="btn btn-primary"><i class="ti-search icon-white"></i>&nbsp;&nbsp;OK</button>
+                                        <a type="button" href="{{ route('list-product') }}" class="btn btn-default"></i>&nbsp;&nbsp;RESET</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-title">
+                        
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th class="">STT</th>
+                                        <th class="w-5">Ảnh</th>
+                                        <th class="w-10">Tên</th>
+                                        <th class="w-5">Số lượng</th>
+                                        <th class="w-10">Đơn giá (VNĐ)</th>
+                                        <th class="w-15">Xuất xứ</th>
+                                        <th class="w-10">Loại</th>
+                                        <th class="w-10">Giống nho</th>
+                                        <th class="w-5">Giảm giá?</th>
+                                        <th class="w-5">Mới?</th>
+                                        <th class="w-5">Nổi bật?</th>
+                                        <th class="w-5">Kích hoạt?</th>
+                                        <th class="w-20">Hành động</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($list as $key => $item)
+                                        <tr>
+                                            <td scope="row">{{ $key + 1}}</td>
+                                            <td><img style="max-height: 200px;" src="{{ getImage($item->image) }}" /></td>
+                                            <td >
+                                                <strong>
+                                                    <a href="{{ route('edit-product', ['id' => $item->id]) }}" style="color:#5873fe;">{{ $item->name }}</a>
+                                                </strong>
+                                            </td>
+                                            <td><strong>
+                                                @if ($item->quantity == 0)
+                                                    <span style="color:red;">Hết hàng</span>
+                                                @else
+                                                    {{ $item->quantity }}
+                                                @endif
+                                            </strong></td>
+                                            <td>{{ $item->price != 0 ? number_format($item->price) : 'Liên hệ' }}</td>
+                                            <td>{{ $item->region->name }} - {{ $item->country->name }}</td>
+                                            <td>{{ $item->type->name }}</td>
+                                            <td>{{ $item->grape->name }}</td>
+                                            <td>
+                                                @if ($item->is_discount == 1)
+                                                    <span class="ti-check" style="color:green;font-weight: 900;"></span>
+                                                @else
+                                                    <span class="ti-close" style="color:red;font-weight: 900;"></span>
+                                                @endif
+                                            </td>
+                                            <td>
+                                                @if ($item->is_new == 1)
+                                                    <span class="ti-check" style="color:green;font-weight: 900;"></span>
+                                                @else
+                                                    <span class="ti-close" style="color:red;font-weight: 900;"></span>
+                                                @endif
+                                            </td>
+                                            <td>
+                                                @if ($item->is_highlight == 1)
+                                                    <span class="ti-check" style="color:green;font-weight: 900;"></span>
+                                                @else
+                                                    <span class="ti-close" style="color:red;font-weight: 900;"></span>
+                                                @endif
+                                            </td>
+                                            <td>
+                                                @if ($item->is_active == 1)
+                                                    <span class="ti-check" style="color:green;font-weight: 900;"></span>
+                                                @else
+                                                    <span class="ti-close" style="color:red;font-weight: 900;"></span>
+                                                @endif
+                                            </td>
+                                            <td class="color-primary">
+                                                <a type="button" href="{{ route('edit-product', ['id' => $item->id]) }}" class="btn btn-primary btn-flat my-list-btn"><i class="ti-pencil icon-white"></i></a>
+                                                <button type="button" class="btn btn-danger btn-flat m-l-5 my-list-btn" onclick="deleteRow('{{ $item->id }}', '/product/delete-row')"><i class="ti-trash"></i></button>
+                                                @if ($item->is_active == '1')
+                                                <button type="button" class="btn btn-default btn-flat m-l-5 my-list-btn" onclick="changeStatus('{{ $item->id }}', '0', '/product/change-status')">
+                                                    <i class="ti-control-pause"></i>
+                                                </button>
+                                                @else
+                                                <button type="button" class="btn btn-default btn-flat m-l-5 my-list-btn" onclick="changeStatus('{{ $item->id }}', '1', '/product/change-status')">
+                                                    <i class="ti-control-play"></i>
+                                                </button>
+                                                @endif
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                        {{ $list->links() }}
+            </div>
+        </div>
+        <!-- /# row -->
+    </section>
+</div>
+<script type="text/javascript">
+    
+    let url = window.location.origin;
+
+    // Bind options into Region
+    let initCountryId = $('#selectCountry').val();
+    ajaxGetRegionByCountry(initCountryId);
+
+    $('#selectCountry').change(function (){
+        let countryId = $(this).val();
+        ajaxGetRegionByCountry(countryId);
+    });
+
+    function ajaxGetRegionByCountry(countryId) {
+        
+        let url = window.location.origin;
+        if (countryId != '') {
+            $.ajax({
+                url: url + '/bw-admin/region/get-by-country',
+                method: 'GET',
+                data: {
+                    countryId: countryId
+                },
+                success: function (res) {
+                    let data = res.data;
+                    let old = "{{ isset($req['region']) && $req['region'] ? $req['region'] : '' }}";
+                    console.log(old);
+                    $('#selectRegion').html('<option value="">Tất cả</option>');
+                    $.each(data, function(key, value){
+                        if (old == key) {
+                            $('#selectRegion').append('<option value="' + key + '" selected>' + value + '</option>');
+                        } else {
+                            $('#selectRegion').append('<option value="' + key + '" >' + value + '</option>');
+                        }
+                    });
+                },
+                error: function (error) {}
+            });
+        } else {
+            $('#selectRegion').html('<option value="">Tất cả</option>');
+        }
+    }
+</script>
+@endsection

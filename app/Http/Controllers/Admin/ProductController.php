@@ -1,0 +1,362 @@
+<?php
+
+namespace App\Http\Controllers\Admin;
+
+use App\Models\Product;
+use Exception;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\URL;
+
+class ProductController extends AdminController
+{
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct() {
+        parent::__construct();
+    }
+
+    public function index(Request $request) {
+
+        $req = $request->all();
+
+        $q = Product::with(['country', 'region', 'type', 'grape']);
+
+        // Tên sản phẩm
+        if (isset($req['name']) && $req['name']) {
+            $q->where('name', 'LIKE', '%' . $req['name'] . '%');
+        }
+
+        // Tình trạng hàng
+        if (isset($req['quantity_status']) && $req['quantity_status'] == '1') {
+            $q->where('quantity', '>', 0);
+        } else if (isset($req['quantity_status']) && $req['quantity_status'] == '0') {
+            $q->where('quantity', 0);
+        }
+
+        // Loại rượu vang
+        if (isset($req['type']) && $req['type']) {
+            $q->where('type_id', $req['type']);
+        }
+
+        // Quốc gia
+        if (isset($req['country']) && $req['country']) {
+            $q->where('country_id', $req['country']);
+        }
+
+        // Vùng trồng nho
+        if (isset($req['region']) && $req['region']) {
+            $q->where('region_id', $req['region']);
+        }
+
+        // Giống nho
+        if (isset($req['grape']) && $req['grape']) {
+            $q->where('grape_id', $req['grape']);
+        }
+
+        // Giảm giá
+        if (isset($req['is_discount']) && $req['is_discount'] == '1') {
+            $q->where('is_discount', 1);
+        } else if (isset($req['is_discount']) && $req['is_discount'] == '0') {
+            $q->where('is_discount', 0);
+        }
+
+        // Sản phẩm mới
+        if (isset($req['is_new']) && $req['is_new'] == '1') {
+            $q->where('is_new', 1);
+        } else if (isset($req['is_new']) && $req['is_new'] == '0') {
+            $q->where('is_new', 0);
+        }
+
+        // Sản phẩm nổi bật
+        if (isset($req['is_highlight']) && $req['is_highlight'] == '1') {
+            $q->where('is_highlight', 1);
+        } else if (isset($req['is_highlight']) && $req['is_highlight'] == '0') {
+            $q->where('is_highlight', 0);
+        }
+
+        // Kích hoạt
+        if (isset($req['is_active']) && $req['is_active'] == '1') {
+            $q->where('is_active', 1);
+        } else if (isset($req['is_active']) && $req['is_active'] == '0') {
+            $q->where('is_active', 0);
+        }
+
+        $list = $q->orderBy('id', 'desc')->paginate(10)->withQueryString();
+        return view('admin/product/index', [
+            'list' => $list,
+            'req' => $req,
+            'activedCountries' => $this->activedCountries,
+            'activedRegions' => $this->activedRegions,
+            'activedTypes' => $this->activedTypes,
+            'activedGrapes' => $this->activedGrapes
+        ]);
+    }
+
+    public function create() {
+        return view('admin/product/create', [
+            'activedCountries' => $this->activedCountries,
+            'activedRegions' => $this->activedRegions,
+            'activedTypes' => $this->activedTypes,
+            'activedGrapes' => $this->activedGrapes
+        ]);
+    }
+
+    public function store(Request $request) {
+
+        $this->validateStore($request);
+
+        DB::beginTransaction();
+
+        try {
+            $model = new Product();
+            $model->country_id = $request->input('country_id');
+            $model->region_id = $request->input('region_id');
+            $model->type_id = $request->input('type_id');
+            $model->grape_id = $request->input('grape_id');
+            $model->name = $request->input('name');
+            $model->slug = $request->input('slug');
+            $model->description = $request->input('description');
+            $model->content = $request->input('content');
+            $model->quantity = $request->input('quantity');
+            $model->price = $request->input('price');
+            $model->is_discount = $request->input('is_discount');
+            $model->discount_value = $request->input('discount_value');
+            $model->alcohol = $request->input('alcohol');
+            $model->capacity = $request->input('capacity');
+            $model->is_active = $request->input('is_active');
+            $model->is_new = $request->input('is_new');
+            $model->is_highlight = $request->input('is_highlight');
+            $model->is_hot = $request->input('is_hot');
+            $model->created_by = 1;
+            $model->updated_by = 1;
+            if ($model->save()) {
+                
+                $path = sprintf(Config::get('constants.FILE_STORAGE_PATH.PRODUCT_IMAGE'), $model->id);
+                $upload = $this->uploadImages($path, $request);
+                $model->image = json_encode($upload, JSON_UNESCAPED_SLASHES);
+                $model->save();
+    
+                if ($model->save()) {
+                    DB::commit();
+                    return redirect()->route('list-product')->with('success', Config::get('constants.MESSAGE.CREATE_SUCCEEDED'));
+                }
+            }
+            DB::rollBack();
+            return redirect()->route('create-product')->with('error', Config::get('constants.MESSAGE.SOMETHING_ERROR'));
+
+        } catch (Exception $e) {
+            DB::rollBack();
+            return redirect()->route('create-product')->with('error', $e->getMessage()); 
+        }
+    }
+
+    public function edit($id) {
+        $object = Product::find($id);
+        // If object not found
+        if ($object == null || $object->count() == 0) {
+            return redirect()->route('list-product')->with('error', Config::get('constants.MESSAGE.DATA_NOT_FOUND'));
+        }
+
+        return view('admin/product/edit', [
+            'object' => $object,
+            'activedCountries' => $this->activedCountries,
+            'activedRegions' => $this->activedRegions,
+            'activedTypes' => $this->activedTypes,
+            'activedGrapes' => $this->activedGrapes,
+            'callback' => url(URL::previous())
+        ]);
+    }
+
+    public function update(Request $request, $id) {
+        $object = Product::find($id);
+
+        // If object not found
+        if ($object == null || $object->count() == 0) {
+            return redirect()->route('list-product')->with('error', Config::get('constants.MESSAGE.DATA_NOT_FOUND'));
+        }
+
+        $this->validateUpdate($request, $id);
+
+        DB::beginTransaction();
+
+        try {
+            $object->country_id = $request->input('country_id');
+            $object->region_id = $request->input('region_id');
+            $object->type_id = $request->input('type_id');
+            $object->grape_id = $request->input('grape_id');
+            $object->name = $request->input('name');
+            $object->slug = $request->input('slug');
+            $object->description = $request->input('description');
+            $object->content = $request->input('content');
+            $object->quantity = $request->input('quantity');
+            $object->price = $request->input('price');
+            $object->is_discount = $request->input('is_discount');
+            $object->discount_value = $request->input('discount_value');
+            $object->alcohol = $request->input('alcohol');
+            $object->capacity = $request->input('capacity');
+            $object->is_active = $request->input('is_active');
+            $object->is_new = $request->input('is_new');
+            $object->is_highlight = $request->input('is_highlight');
+            $object->is_hot = $request->input('is_hot');
+            $object->created_by = 1;
+            $object->updated_by = 1;
+                
+            if($request->hasfile('image')) {
+                $path = sprintf(Config::get('constants.FILE_STORAGE_PATH.PRODUCT_IMAGE'), $id);
+                $prevImg = $object->image;
+                $upload = $this->updateImages($path, $request);
+                $object->image = $upload;
+            }
+
+            if ($object->save()) {
+                DB::commit();
+                $parsedUrl = parse_url($request->input('callback'));
+                $params = [];
+                if (isset($parsedUrl['query'])) {
+                    parse_str($parsedUrl['query'], $params);
+                }
+
+                return redirect()->route('list-product', $params)->with('success', Config::get('constants.MESSAGE.UPDATE_SUCCEEDED'));
+            }
+            DB::rollBack();
+            return redirect()->route('edit-product', [
+                'id' => $id, 
+                'callback' => $request->input('callback')
+            ])->with('error', Config::get('constants.MESSAGE.SOMETHING_ERROR'));
+
+        } catch (Exception $e) {
+            DB::rollBack();
+            return redirect()->route('edit-product', [
+                'id' => $id, 
+                'callback' => $request->input('callback')
+            ])->with('error', $e->getMessage()); 
+        }
+    }
+
+    public function delete(Request $request) {
+        $request = $request->all();
+
+        // If got bad parameter(s)
+        if (!isset($request['id']) || empty($request['id'])) {
+            return response()->json(['status' => 'error','msg' => Config::get('constants.MESSAGE.DATA_NOT_FOUND')], 404);
+        }
+
+        $object = Product::find($request['id']);
+
+        // If object not found
+        if ($object == null || $object->count() == 0) {
+            return response()->json(['status' => 'error','msg' => Config::get('constants.MESSAGE.DATA_NOT_FOUND')], 404);
+        }
+
+        // If object is being used elsewhere
+        if ($this->checkInUse($request['id'])) {
+            return response()->json(['status' => 'error','msg' => Config::get('constants.MESSAGE.CANNOT_DELETE_IN_USING')], 404);
+        }
+
+        if ($object->delete()) {
+            return response()->json(['status' => 'success','msg' => Config::get('constants.MESSAGE.DELETE_SUCCEEDED')], 200);
+        }
+        return response()->json(['status' => 'error','msg' => Config::get('constants.MESSAGE.SOMETHING_ERROR')], 403);
+    }
+
+    public function changeStatus(Request $request) {
+        $request = $request->all();
+
+        if (!isset($request['id']) || empty($request['id']) || !isset($request['status']) || ($request['status'] != '0' && $request['status'] != '1')) {
+            return response()->json(['status' => 'error','msg' => Config::get('constants.MESSAGE.DATA_NOT_FOUND')], 404);
+        }
+
+        $object = Product::find($request['id']);
+
+        // If object not found
+        if ($object == null || $object->count() == 0) {
+            return response()->json(['status' => 'error','msg' => Config::get('constants.MESSAGE.DATA_NOT_FOUND')], 404);
+        }
+        
+        // If object is being used elsewhere
+        if ($request['status'] == '0') {
+            if ($this->checkInUse($request['id'])) {
+                return response()->json(['status' => 'error','msg' => Config::get('constants.MESSAGE.CANNOT_DEACTIVE_IN_USING')], 404);
+            }
+        }
+
+        $object->is_active = $request['status'];
+
+        if ($object->save()) {
+            return response()->json(['status' => 'success','msg' => Config::get('constants.MESSAGE.CHANGE_STATUS_SUCCEEDED')], 200);
+        }
+        return response()->json(['status' => 'error','msg' => Config::get('constants.MESSAGE.SOMETHING_ERROR')], 403);
+    }
+    
+    private function validateStore($request) {
+        $this->validate($request, [
+            'country_id' => 'required',
+            'region_id' => 'required',
+            'type_id' => 'required',
+            'grape_id' => 'required',
+            'name' => 'required|max:255',
+            'slug' => 'required|max:255|unique:products',
+            'image.*' => 'required|image|mimes:jpg,jpeg,png|max:2048',
+            'quantity' => 'required|numeric',
+            'price' => 'required|numeric',
+            'discount_value' => 'nullable|numeric',
+        ], [
+            'country_id.required' => 'Chưa chọn quốc gia',
+            'region_id.required' => 'Chưa chọn vùng trồng nho',
+            'type_id.required' => 'Chưa chọn loại rượu vang',
+            'grape_id.required' => 'Chưa chọn giống nho',
+            'name.required' => 'Chưa nhập tên',
+            'slug.required' => 'Chưa có slug',
+            'slug.unique' => 'Slug đã tồn tại',
+            'image.required' => 'Chưa chọn ảnh',
+            'image.image' => 'Chỉ chấp nhận ảnh có định dạng jpg, jpeg, png',
+            'image.mimes' => 'Chỉ chấp nhận ảnh có định dạng jpg, jpeg, png',
+            'image.max' => 'Dung lượng ảnh không được quá 2MB',
+            'quantity.required' => 'Chưa chọn số lượng',
+            'quantity.numeric' => 'Số lượng phải là số',
+            'price.required' => 'Chưa chọn đơn giá',
+            'price.numeric' => 'Đơn giá phải là số',
+            'discount_value.numeric' => 'Giá khuyến mãi phải là số',
+        ]);
+    }
+
+    private function validateUpdate($request, $id) {
+        $this->validate($request, [
+            'country_id' => 'required',
+            'region_id' => 'required',
+            'type_id' => 'required',
+            'grape_id' => 'required',
+            'name' => 'required|max:255',
+            'slug' => 'required|max:255|unique:products,slug,' . $id . ',id',
+            'image.*' => 'image|mimes:jpg,jpeg,png|max:2048',
+            'quantity' => 'required|numeric',
+            'price' => 'required|numeric',
+            'discount_value' => 'nullable|numeric',
+        ], [
+            'country_id.required' => 'Chưa chọn quốc gia',
+            'region_id.required' => 'Chưa chọn vùng trồng nho',
+            'type_id.required' => 'Chưa chọn loại rượu vang',
+            'grape_id.required' => 'Chưa chọn giống nho',
+            'name.required' => 'Chưa nhập tên',
+            'slug.required' => 'Chưa có slug',
+            'slug.unique' => 'Slug đã tồn tại',
+            'image.image' => 'Chỉ chấp nhận ảnh có định dạng jpg, jpeg, png',
+            'image.mimes' => 'Chỉ chấp nhận ảnh có định dạng jpg, jpeg, png',
+            'image.max' => 'Dung lượng ảnh không được quá 2MB',
+            'quantity.required' => 'Chưa chọn số lượng',
+            'quantity.numeric' => 'Số lượng phải là số',
+            'price.required' => 'Chưa chọn đơn giá',
+            'price.numeric' => 'Đơn giá phải là số',
+            'discount_value.numeric' => 'Giá khuyến mãi phải là số',
+        ]);
+    }
+
+    private function checkInUse($id) {
+        return false;
+    }
+}
