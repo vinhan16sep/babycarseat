@@ -58,6 +58,12 @@ class ProductController extends Controller
      */
     public function show($slug)
     {
+        return view('product-show');
+
+
+
+
+
         $product = Product::where(["is_active" => 1, "slug" => $slug])->first();
 
         if (!$product) {
@@ -67,9 +73,9 @@ class ProductController extends Controller
         $products = Product::query()
             ->with(["grape:id,name,slug", "type:id,name,slug", "country:id,name,slug", "region:id,name,slug"])
             ->where([
-                "is_active" => 1, 
-                'grape_id' => $product->grape_id, 
-                'type_id' => $product->type_id, 
+                "is_active" => 1,
+                'grape_id' => $product->grape_id,
+                'type_id' => $product->type_id,
                 'country_id' => $product->country_id
             ])
             ->where("slug", "!=", $slug)->limit(16)->orderByDesc("is_highlight")->get();
@@ -103,6 +109,12 @@ class ProductController extends Controller
     }
 
     public function list(Request $request, $country = null) {
+        return view('product-list');
+
+
+
+
+
         $countries = Country::where("is_active", 1)->get()->keyBy("slug");
 
         if ($country && empty($countries[$country])) {
@@ -147,7 +159,7 @@ class ProductController extends Controller
         if (!empty($filter_grapes)) {
             $query->whereIn('grape_id', $filter_grapes);
         }
-        
+
         //Khoảng giá
         if (is_numeric($filter_min_price) && is_numeric($filter_max_price)) {
             $query->where(function($query) use($filter_min_price, $filter_max_price){

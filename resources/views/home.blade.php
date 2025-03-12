@@ -1,422 +1,1115 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="bz_wins_slider_main_wrapper float_left">
-    <div class="row">
-        <div class="col-lg-12 col-md-12 col-12">
-            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                <ol class="carousel-indicators">
-                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                </ol>
-                <div class="carousel-inner">
-                    @foreach ($banners as $key => $banner)
-                        <div class="carousel-item {{ $key == 0 ? "active" : "" }}">
-                            <img class="img-fluid w-100" src="{{ getImage($banner->image) }}" alt="{{ $banner->title }}">
-                            <div class="carousel-caption container">
-                                <!-- <h5>{{ $banner->title }}</h5>
-                                <p>{{ $banner->description }}</p> -->
-                                <a class="custom_btn" href="{{ $banner->link }}">Xem Ngay</a>
+    <!-- Slider -->
+    <section class="tf-slideshow slider-default slider-effect-fade">
+        <div dir="ltr" class="swiper tf-sw-slideshow" data-effect="fade" data-preview="1" data-tablet="1"
+             data-mobile="1" data-centered="false" data-space="0" data-space-mb="0" data-loop="true"
+             data-auto-play="true">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div class="wrap-slider">
+                        <img src="images/slider/slider-decor1.jpg" alt="fashion-slideshow">
+                        <div class="box-content">
+                            <div class="content-slider">
+                                <div class="box-title-slider">
+                                    <div class="fade-item fade-item-1 heading title-display text-white">Wood and Stone
+                                    </div>
+                                    <p class="fade-item fade-item-2 body-text-1 text-white">Quick! Grab limited-time
+                                        deals before they’re gone.</p>
+                                </div>
+                                <div class="fade-item fade-item-3 box-btn-slider">
+                                    <a href="shop-default-grid.html" class="tf-btn btn-fill btn-white"><span
+                                            class="text">Explore Collection</span><i class="icon icon-arrowUpRight"></i></a>
+                                </div>
                             </div>
                         </div>
-                    @endforeach
-                </div>
-                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-                </a>
-                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-                </a>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="bz_wins_welcome_wrapper float_left">
-    <div class="container custom_container">
-        <div class="row">
-            <div class="col-lg-6 col-md-6 col-12">
-                <div class="wins_welcome_box">
-                    <h5>Chào mừng đến với</h5>
-                    <h2>Babyro ...</h2>
-                    <p>Babyro</p>
-                    <img class="img-fluid" src="images/wins/signature.png" alt="signature">
-                </div>
-            </div>
-            <div class="col-lg-6 col-md-6 col-12">
-                <div class="welocme_img">
-                    <img class="img-fluid" src="images/wins/welcome_img.jpg" alt="img">
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="icon-block-box">
-    <div class="container">
-        <div class="row">
-            <div class="col-6  col-md-3">
-                <div class="icon-box wp-block-media-text alignwide is-stacked-on-mobile icon-block p-3 p-md-4 shadow h-100 rounded" style="grid-template-columns: 20% auto;">
-                    <figure class="wp-block-media-text__media">
-                        <img
-                            width="64"
-                            height="64"
-                            src="{{ getImage("images/shield.png") }}"
-                            alt="Shield"
-                            class="wp-image-454 size-full perfmatters-lazy entered pmloaded"
-                        />
-                    </figure>
-                    <div class="wp-block-media-text__content">
-                        <p class="has-small-font-size">Cam kết nhập khẩu chính hãng</p>
                     </div>
                 </div>
-            </div>
-    
-            <div class="col-6 col-md-3">
-                <div class="icon-box wp-block-media-text alignwide is-stacked-on-mobile icon-block p-3 p-md-4 shadow h-100 rounded" style="grid-template-columns: 20% auto;">
-                    <figure class="wp-block-media-text__media">
-                        <img
-                            width="128"
-                            height="128"
-                            src="{{ getImage("images/delivery-truck-1.png") }}"
-                            alt="Delivery Truck (1)"
-                            class="wp-image-428 size-full perfmatters-lazy entered pmloaded"
-                        />
-                    </figure>
-                    <div class="wp-block-media-text__content">
-                        <p class="has-small-font-size">Miễn phí giao hàng toàn quốc</p>
-                    </div>
-                </div>
-            </div>
-    
-            <div class="col-6 col-md-3">
-                <div class="icon-box wp-block-media-text alignwide is-stacked-on-mobile icon-block p-3 p-md-4 shadow h-100 rounded" style="grid-template-columns: 20% auto;">
-                    <figure class="wp-block-media-text__media">
-                        <img
-                            width="128"
-                            height="128"
-                            src="{{ getImage("images/file-swap.png") }}"
-                            alt="File Swap"
-                            class="wp-image-429 size-full perfmatters-lazy entered pmloaded"
-                        />
-                    </figure>
-                    <div class="wp-block-media-text__content">
-                        <p class="has-small-font-size">Đổi trả trong vòng 30 ngày</p>
-                    </div>
-                </div>
-            </div>
-    
-            <div class="col-6 col-md-3">
-                <div class="icon-box wp-block-media-text alignwide is-stacked-on-mobile icon-block p-3 p-md-4 shadow h-100 rounded" style="grid-template-columns: 20% auto;">
-                    <figure class="wp-block-media-text__media">
-                        <img
-                            width="64"
-                            height="64"
-                            src="{{ getImage("images/certificate.png") }}"
-                            alt="Certificate"
-                            class="wp-image-427 size-full perfmatters-lazy entered pmloaded"
-                        />
-                    </figure>
-                    <div class="wp-block-media-text__content">
-                        <p class="has-small-font-size">4.000 sản phẩm đa dạng</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-<div class="category-block-box">
-    <div class="container">
-        <div class="wp-block-group__inner-container">
-            <div class="product-cat-grid">
-                <div class="row g-3 g-md-4">
-                    @foreach ($homeBlocks as $key => $item)
-                    <div class="col-6 col-md-3 product-cat-grid__col d-flex">
-                        <div class="position-relative rounded shadow overflow-hidden bg-white product-cat-card">
-                            <a class="product-cat-card__overlay-link" href="{{ $item->link }}" title="Hộp quà tết">
-                                <img
-                                    src="{{ getImage($item->image) }}"
-                                    class="image__img"
-                                    alt="{{ $item->name }}"
-                                />
-                                <div class="text-center p-4 bg-white product-cat-card__content">
-                                    <h3 class="h6 m-0 fw-bold text-uppercase product-cat-card__title">{{ $item->name }}</h3>
+                <div class="swiper-slide">
+                    <div class="wrap-slider">
+                        <img src="images/slider/slider-decor2.jpg" alt="fashion-slideshow">
+                        <div class="box-content">
+                            <div class="content-slider">
+                                <div class="box-title-slider">
+                                    <div class="fade-item fade-item-1 heading title-display text-white">Flash Sale
+                                        Madness
+                                    </div>
+                                    <p class="fade-item fade-item-2 body-text-1 text-white">Quick! Grab limited-time
+                                        deals before they’re gone.</p>
                                 </div>
+                                <div class="fade-item fade-item-3 box-btn-slider">
+                                    <a href="shop-default-grid.html" class="tf-btn btn-fill btn-white"><span
+                                            class="text">Explore Collection</span><i class="icon icon-arrowUpRight"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="wrap-slider">
+                        <img src="images/slider/slider-decor3.jpg" alt="fashion-slideshow">
+                        <div class="box-content">
+                            <div class="content-slider">
+                                <div class="box-title-slider">
+                                    <div class="fade-item fade-item-1 heading title-display text-white">Best Furniture
+                                    </div>
+                                    <p class="fade-item fade-item-2 body-text-1 text-white">Quick! Grab limited-time
+                                        deals before they’re gone.</p>
+                                </div>
+                                <div class="fade-item fade-item-3 box-btn-slider">
+                                    <a href="shop-default-grid.html" class="tf-btn btn-fill btn-white"><span
+                                            class="text">Explore Collection</span><i class="icon icon-arrowUpRight"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="wrap-pagination">
+            <div class="container">
+                <div class="sw-dots sw-pagination-slider type-circle white-circle-line justify-content-center"></div>
+            </div>
+        </div>
+    </section>
+    <!-- /Slider -->
+
+    <!-- Collection -->
+    <section class="flat-spacing">
+        <div class="container-full2">
+            <div class="heading-section text-center wow fadeInUp">
+                <h3 class="heading">Shop by Collections</h3>
+                <p class="subheading">Browse our Top Trending: the hottest picks loved by all.</p>
+            </div>
+            <div class="flat-sw-navigation wow fadeInUp" data-wow-delay="0.1s">
+                <div dir="ltr" class="swiper tf-sw-collection" data-preview="4" data-tablet="3" data-mobile-sm="2"
+                     data-mobile="1" data-space-lg="30" data-space-md="15" data-space="15" data-pagination="1"
+                     data-pagination-md="3" data-pagination-lg="4">
+                    <div class="swiper-wrapper">
+                        <!-- item 1 -->
+                        <div class="swiper-slide">
+                            <div class="collection-position-2 style-7 hover-img">
+                                <a href="shop-collection.html" class="img-style">
+                                    <img class="lazyload" data-src="images/collections/cls-decor1.jpg"
+                                         src="images/collections/cls-decor1.jpg" alt="banner-cls">
+                                </a>
+                                <div class="content text-center">
+                                    <h4 class="title"><a href="shop-collection.html" class="link text-white">Shop
+                                            Bathroom</a></h4>
+                                    <span class="text-title text-white">25 products</span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- item 2 -->
+                        <div class="swiper-slide">
+                            <div class="collection-position-2 style-7 hover-img">
+                                <a href="shop-collection.html" class="img-style">
+                                    <img class="lazyload" data-src="images/collections/cls-decor2.jpg"
+                                         src="images/collections/cls-decor2.jpg" alt="banner-cls">
+                                </a>
+                                <div class="content text-center">
+                                    <h4 class="title"><a href="shop-collection.html" class="link text-white">Shop
+                                            Bathroom</a></h4>
+                                    <span class="text-title text-white">25 products</span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- item 3 -->
+                        <div class="swiper-slide">
+                            <div class="collection-position-2 style-7 hover-img">
+                                <a href="shop-collection.html" class="img-style">
+                                    <img class="lazyload" data-src="images/collections/cls-decor3.jpg"
+                                         src="images/collections/cls-decor3.jpg" alt="banner-cls">
+                                </a>
+                                <div class="content text-center">
+                                    <h4 class="title"><a href="shop-collection.html" class="link text-white">Shop
+                                            Bedroom</a></h4>
+                                    <span class="text-title text-white">25 products</span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- item 4 -->
+                        <div class="swiper-slide">
+                            <div class="collection-position-2 style-7 hover-img">
+                                <a href="shop-collection.html" class="img-style">
+                                    <img class="lazyload" data-src="images/collections/cls-decor4.jpg"
+                                         src="images/collections/cls-decor4.jpg" alt="banner-cls">
+                                </a>
+                                <div class="content text-center">
+                                    <h4 class="title"><a href="shop-collection.html" class="link text-white">Shop
+                                            Kitchen Room</a></h4>
+                                    <span class="text-title text-white">25 products</span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- item 5 -->
+                        <div class="swiper-slide">
+                            <div class="collection-position-2 style-7 hover-img">
+                                <a href="shop-collection.html" class="img-style">
+                                    <img class="lazyload" data-src="images/collections/cls-decor1.jpg"
+                                         src="images/collections/cls-decor1.jpg" alt="banner-cls">
+                                </a>
+                                <div class="content text-center">
+                                    <h4 class="title"><a href="shop-collection.html" class="link text-white">Shop Living
+                                            Room</a></h4>
+                                    <span class="text-title text-white">25 products</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                        class="d-flex d-lg-none sw-pagination-collection sw-dots type-circle justify-content-center"></div>
+                </div>
+                <div class="nav-prev-collection d-none d-lg-flex nav-sw style-line nav-sw-left"><i
+                        class="icon icon-arrLeft"></i></div>
+                <div class="nav-next-collection d-none d-lg-flex nav-sw style-line nav-sw-right"><i
+                        class="icon icon-arrRight"></i></div>
+            </div>
+        </div>
+    </section>
+    <!-- /Collection -->
+
+    <!-- List collection -->
+    <section class="flat-spacing pt-0 line-bottom-container">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-12">
+                    <ul class="list-collection style-lg">
+                        <li class="cls-item hover-cursor-img">
+                            <div class="img-cls">
+                                <img src="images/collections/list-cls/cls-item-decor1.jpg" alt="img-cls">
+                            </div>
+                            <a href="#" class="title-cls link">
+                                <h4 class="text title-display">Heritage</h4>
                             </a>
-                        </div>
+                        </li>
+                        <li class="cls-item">
+                            <div class="img-cls">
+                                <img src="images/collections/list-cls/cls-item-decor2.jpg" alt="img-cls">
+                            </div>
+                            <a href="#" class="title-cls link">
+                                <h4 class="text title-display">Creativity</h4>
+                            </a>
+                        </li>
+                        <li class="cls-item">
+                            <div class="img-cls">
+                                <img src="images/collections/list-cls/cls-item-decor3.jpg" alt="img-cls">
+                            </div>
+                            <a href="#" class="title-cls link">
+                                <h4 class="text title-display">and Passion</h4>
+                            </a>
+                        </li>
+                        <li class="cls-item">
+                            <a href="#" class="title-cls link d-none d-sm-block">
+                                <h4 class="text title-display">of Three</h4>
+                            </a>
+                            <div class="img-cls">
+                                <img src="images/collections/list-cls/cls-item-decor4.jpg" alt="img-cls">
+                            </div>
+                            <a href="#" class="title-cls link">
+                                <h4 class="text title-display">Generations</h4>
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="text-center">
+                        <a href="#" class="btn-line text-button">READ MORE ABOUT OUR COMMITMENT</a>
                     </div>
-                    @endforeach
                 </div>
             </div>
-        </div>
-    </div>
-</div>
 
-<div class="bz_wins_new_product_wraaper float_left" style="background: linear-gradient(0deg, rgba(108,10,10,1) 0%, rgba(148,8,34,1) 50%, rgba(112,7,7,1) 100%);">
-    <div class="container custom_container">
-        <div class="wins-heading">
-            <p style="color:#f4f6f9;">Sản phẩm của chúng tôi</p>
-            <h2 style="color:#f4f6f9;">Nổi bật nhất</h2>
         </div>
-        <div class="row">
-            <div class="col-lg-12 col-md-12 col-12">
-                <div class="bz_wins_top_product_wraaper">
-                    <nav>
-                        <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
-                            <a style="color:#f4f6f9;" class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Tất cả</a>
-                            @foreach ($types as $id => $type)
-                                <a style="color:#f4f6f9;" class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#type-{{ $type->id }}" role="tab" aria-controls="nav-profile" aria-selected="false">{{ $type->name }}</a>
-                            @endforeach
-                        </div>
-                        <div class="tab-content py-3 px-3 px-sm-0" id="nav-tabContent">
-                            <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-                                <div class="mobile_product_slider home">
-                                    <div class="bz_product_grid_content_main_wrapper pt-0">
-                                        <div class="bz_grid_menu_main_wrapper mt-0">
-                                            <div class="tab-content">
-                                                <div class="bz_product_view_grip_wrapper mt-0">
-                                                    <div class="owl-carousel owl-theme">
-                                                        @foreach ($groupTypeProduct as $type)
-                                                            @foreach ($type["products"] as $item)
-                                                                <div class="item">
-                                                                    @include('components.item-product', [ "product" => $item ])
-                                                                </div>
-                                                            @endforeach
-                                                        @endforeach
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            @foreach ($types as $type)
-                                <div class="tab-pane fade" id="type-{{ $type->id }}" role="tabpanel" aria-labelledby="nav-profile-tab">
-                                    @if (!empty($groupTypeProduct[$type->id]["products"]))
-                                        <div class="mobile_product_slider home">
-                                            <div class="bz_product_grid_content_main_wrapper pt-0">
-                                                <div class="bz_grid_menu_main_wrapper mt-0">
-                                                    <div class="tab-content">
-                                                        <div class="bz_product_view_grip_wrapper mt-0">
-                                                            <div class="owl-carousel owl-theme">
-                                                                @foreach ($groupTypeProduct[$type->id]["products"] as $item)
-                                                                    <div class="item">
-                                                                        @include('components.item-product', [ "product" => $item ])
-                                                                    </div>
-                                                                @endforeach
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    @endif
-                                </div>
-                            @endforeach
-                            
-                        </div>
-                    </nav>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+    </section>
+    <!-- /List collection -->
 
-@if (isset($is_show))
-    <div class="bz_wins_offer_main_wrapper float_left">
-        <div class="wins-heading">
-            <p>Our Offer</p>
-            <h2>What We Make For You</h2>
-        </div>
-        <div class="wins_offer_box_wrapper">
-            <div class="row">
-                <div class="col-lg-3 col-md-4 col-12">
-                    <div class="offer_img1">
-                        <img class="img-fluid" src="images/wins/offer1.jpg" alt="offer">
-                        <div class="overlay_wines">
-                            <h5>Organic Grapes</h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-9 col-md-8 col-12 no_padd">
-                    <div class="row">
-                        <div class="col-md-4 col-12 no_padd">
-                            <div class="offer_img">
-                                <img class="img-fluid" src="images/wins/offer2.jpg" alt="offer">
-                                <div class="overlay_wines">
-                                    <h5>Organic Grapes</h5>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-12 no_padd">
-                            <div class="offer_img">
-                                <img class="img-fluid" src="images/wins/offer3.jpg" alt="offer">
-                                <div class="overlay_wines">
-                                    <h5>Organic Grapes</h5>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-12 no_padd">
-                            <div class="offer_img">
-                                <img class="img-fluid" src="images/wins/offer4.jpg" alt="offer">
-                                <div class="overlay_wines">
-                                    <h5>Organic Grapes</h5>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-4 col-12 no_padd">
-                            <div class="offer_img">
-                                <img class="img-fluid" src="images/wins/offer5.jpg" alt="offer">
-                                <div class="overlay_wines">
-                                    <h5>Organic Grapes</h5>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-8 col-12 no_padd">
-                            <div class="offer_img">
-                                <img class="img-fluid" src="images/wins/offer6.jpg" alt="offer">
-                                <div class="overlay_wines">
-                                    <h5>Organic Grapes</h5>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+    <!-- Top picks -->
+    <section class="flat-spacing">
+        <div class="container">
+            <div class="heading-section text-center wow fadeInUp">
+                <h3 class="heading">Top Trending</h3>
+                <p class="subheading text-secondary">Browse our Top Trending: the hottest picks loved by all. </p>
             </div>
-        </div>
-    </div>
-@endif
-
-<div class="bz_wins_update_wrapper float_left">
-    <div class="container custom_container">
-        <div class="row">
-            <div class="col-lg-8 col-md-8 col-12">
-                <div class="wins_update_slider">
-                    <div class="owl-carousel owl-theme">
-                        @foreach ($news as $item)
-                            @php
-                                $route = route("detail-new", ["slug" => $item->slug ]);
-                            @endphp
-                            <div class="item">
-                                <div class="blog_box">
-                                    <div class="blog_img">
-                                        <img class="img-fluid" src="{{ getImage($item->image) }}" alt="blog">
-                                        <div class="date">
-                                            <a href="{{ $route }}">{{ $item->created_at->format("d") }} <span class="bold">{{ $item->created_at->format("m") }}</span></a>
-                                        </div>
-                                    </div>
-                                    <div class="blog_content">
-                                        <a href="{{ $route }}" class="tag_blog">
-                                            <h3>{{ $item->title }}</h3>
-                                        </a>
-                                        <p>{{ $item->description }}</p>
-                                        <a href="{{ $route }}">Xem thêm</a>
-                                    </div>
-                                </div>
-                            </div>
-                        @endforeach
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-4 col-12">
-                <div class="wins-heading">
-                    <p>Tin tức</p>
-                </div>
-                <div class="update_text">
-                    <p>It is a long established fact that a reader will be the distracted by the readable content of a page when looking at its layout. </p>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="bz_wins_instragram_main_wrapper float_left">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-lg-6 col-md-6 col-12">
-                <div class="wins-heading">
-                    <p>Kiến thức</p>
-                </div>
-                <div class="update_text">
-                    <p>
-                        Rượu Vang là loại thức uống có cồn truyền thống, được lên men từ nước ép Nho hay một số loại hoa quả có hương vị đặc biệt. Người ta đã sản xuất rượu Vang từ rất nhiều thế kỷ qua và trong nó hàm chứa những giá trị tinh hoa của lịch sử, địa l‎í, văn hóa và lối sống… Không chỉ là đồ uống đẳng cấp, rượu Vang còn mang lại sức khỏe cho con người mà đặc biệt là đối với phái đẹp. Trong một vài năm trở lại đây, tại Việt Nam, rượu Vang đã trở thành thức uống phổ biến, được ưa chuộng và sử dụng trong các cuộc giao lưu, hội họp, liên hoan, đoàn tụ gia đình và được bày bán nhiều nơi, từ cửa hàng, siêu thị cho đến các nhà hàng, khách sạn và cả quán bar. Điều này có nghĩa là rượu Vang ngày càng có một vị trí và vai trò hết sức quan trọng trong đời sống xã hội hiện đại. Tuy nhiên không hẳn ai cũng hiểu biết, lựa chọn và thưởng thức đúng cách bởi sự đa dạng về nguồn gốc và chủng loại của loại đồ uống này.
-                    </p>
-                    <br>
-                </div>
-            </div>
-            <div class="col-md-6 col-12">
-                <div class="instra">
-                    <ul>
-                        @foreach ($knowledges as $key => $item)
-                            @if (($loop->index)%2 == 0 && $loop->index != 0)
-                                    </ul>
-                                </div>
-                                <div class="instra{{ $loop->index == 2 ? "_1" : "" }}">
-                                    <ul>
-                            @endif
-                            <li>
-                                <img class="img-fluid" src="{{ getImage($item->image) }}" alt="">
-                                <div class="overlay_instra">
-                                    <a href="{{ route("detail-knowledge", ["slug" => $item->slug, "category" => $item->category->slug ]) }}">
-                                        <span>{{ $item->title }}</span>
+            <div dir="ltr" class="swiper tf-sw-latest" data-preview="4" data-tablet="3" data-mobile="2"
+                 data-space-lg="30" data-space-md="30" data-space="15" data-pagination="1" data-pagination-md="1"
+                 data-pagination-lg="1">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="card-product wow fadeInUp" data-wow-delay="0s">
+                            <div class="card-product-wrapper">
+                                <a href="product-detail.html" class="product-img">
+                                    <img class="lazyload img-product"
+                                         data-src="images/products/furniture/furniture1.jpg"
+                                         src="images/products/furniture/furniture1.jpg" alt="image-product">
+                                    <img class="lazyload img-hover" data-src="images/products/furniture/furniture3.jpg"
+                                         src="images/products/furniture/furniture3.jpg" alt="image-product">
+                                </a>
+                                <div class="list-product-btn">
+                                    <a href="javascript:void(0);" class="box-icon wishlist btn-icon-action">
+                                        <span class="icon icon-heart"></span>
+                                        <span class="tooltip">Wishlist</span>
+                                    </a>
+                                    <a href="#compare" data-bs-toggle="offcanvas" aria-controls="compare"
+                                       class="box-icon compare btn-icon-action">
+                                        <span class="icon icon-gitDiff"></span>
+                                        <span class="tooltip">Compare</span>
+                                    </a>
+                                    <a href="#quickView" data-bs-toggle="modal"
+                                       class="box-icon quickview tf-btn-loading">
+                                        <span class="icon icon-eye"></span>
+                                        <span class="tooltip">Quick View</span>
                                     </a>
                                 </div>
-                            </li>
-                        @endforeach
-                    </ul>
+                                <div class="list-btn-main">
+                                    <a href="#shoppingCart" data-bs-toggle="modal" class="btn-main-product">Add To
+                                        cart</a>
+                                </div>
+                            </div>
+                            <div class="card-product-info">
+                                <a href="product-detail.html" class="title link">Salamanca dusty rose Leeds fabric</a>
+                                <span class="price"><span class="old-price">$98.00</span> $79.99</span>
+                                <ul class="list-color-product">
+                                    <li class="list-color-item color-swatch active line">
+                                        <span class="swatch-value bg-light-blue"></span>
+                                        <img class="lazyload" data-src="images/products/furniture/furniture1.jpg"
+                                             src="images/products/furniture/furniture1.jpg" alt="image-product">
+                                    </li>
+                                    <li class="list-color-item color-swatch">
+                                        <span class="swatch-value bg-light-blue-2"></span>
+                                        <img class="lazyload" data-src="images/products/furniture/furniture2.jpg"
+                                             src="images/products/furniture/furniture2.jpg" alt="image-product">
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="card-product wow fadeInUp" data-wow-delay="0.1s">
+                            <div class="card-product-wrapper">
+                                <a href="product-detail.html" class="product-img">
+                                    <img class="lazyload img-product"
+                                         data-src="images/products/furniture/furniture6.jpg"
+                                         src="images/products/furniture/furniture6.jpg" alt="image-product">
+                                    <img class="lazyload img-hover" data-src="images/products/furniture/furniture7.jpg"
+                                         src="images/products/furniture/furniture7.jpg" alt="image-product">
+                                </a>
+                                <div class="on-sale-wrap"><span class="on-sale-item">-25%</span></div>
+                                <div class="marquee-product bg-main">
+                                    <div class="marquee-wrapper">
+                                        <div class="initial-child-container">
+                                            <div class="marquee-child-item">
+                                                <p class="font-2 text-btn-uppercase fw-6 text-white">Hot Sale 25%
+                                                    OFF</p>
+                                            </div>
+                                            <div class="marquee-child-item">
+                                                <span class="icon icon-lightning text-critical"></span>
+                                            </div>
+                                            <div class="marquee-child-item">
+                                                <p class="font-2 text-btn-uppercase fw-6 text-white">Hot Sale 25%
+                                                    OFF</p>
+                                            </div>
+                                            <div class="marquee-child-item">
+                                                <span class="icon icon-lightning text-critical"></span>
+                                            </div>
+                                            <div class="marquee-child-item">
+                                                <p class="font-2 text-btn-uppercase fw-6 text-white">Hot Sale 25%
+                                                    OFF</p>
+                                            </div>
+                                            <div class="marquee-child-item">
+                                                <span class="icon icon-lightning text-critical"></span>
+                                            </div>
+                                            <div class="marquee-child-item">
+                                                <p class="font-2 text-btn-uppercase fw-6 text-white">Hot Sale 25%
+                                                    OFF</p>
+                                            </div>
+                                            <div class="marquee-child-item">
+                                                <span class="icon icon-lightning text-critical"></span>
+                                            </div>
+                                            <div class="marquee-child-item">
+                                                <p class="font-2 text-btn-uppercase fw-6 text-white">Hot Sale 25%
+                                                    OFF</p>
+                                            </div>
+                                            <div class="marquee-child-item">
+                                                <span class="icon icon-lightning text-critical"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="marquee-wrapper">
+                                        <div class="initial-child-container">
+                                            <div class="marquee-child-item">
+                                                <p class="font-2 text-btn-uppercase fw-6 text-white">Hot Sale 25%
+                                                    OFF</p>
+                                            </div>
+                                            <div class="marquee-child-item">
+                                                <span class="icon icon-lightning text-critical"></span>
+                                            </div>
+                                            <div class="marquee-child-item">
+                                                <p class="font-2 text-btn-uppercase fw-6 text-white">Hot Sale 25%
+                                                    OFF</p>
+                                            </div>
+                                            <div class="marquee-child-item">
+                                                <span class="icon icon-lightning text-critical"></span>
+                                            </div>
+                                            <div class="marquee-child-item">
+                                                <p class="font-2 text-btn-uppercase fw-6 text-white">Hot Sale 25%
+                                                    OFF</p>
+                                            </div>
+                                            <div class="marquee-child-item">
+                                                <span class="icon icon-lightning text-critical"></span>
+                                            </div>
+                                            <div class="marquee-child-item">
+                                                <p class="font-2 text-btn-uppercase fw-6 text-white">Hot Sale 25%
+                                                    OFF</p>
+                                            </div>
+                                            <div class="marquee-child-item">
+                                                <span class="icon icon-lightning text-critical"></span>
+                                            </div>
+                                            <div class="marquee-child-item">
+                                                <p class="font-2 text-btn-uppercase fw-6 text-white">Hot Sale 25%
+                                                    OFF</p>
+                                            </div>
+                                            <div class="marquee-child-item">
+                                                <span class="icon icon-lightning text-critical"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="list-product-btn">
+                                    <a href="javascript:void(0);" class="box-icon wishlist btn-icon-action">
+                                        <span class="icon icon-heart"></span>
+                                        <span class="tooltip">Wishlist</span>
+                                    </a>
+                                    <a href="#compare" data-bs-toggle="offcanvas" aria-controls="compare"
+                                       class="box-icon compare btn-icon-action">
+                                        <span class="icon icon-gitDiff"></span>
+                                        <span class="tooltip">Compare</span>
+                                    </a>
+                                    <a href="#quickView" data-bs-toggle="modal"
+                                       class="box-icon quickview tf-btn-loading">
+                                        <span class="icon icon-eye"></span>
+                                        <span class="tooltip">Quick View</span>
+                                    </a>
+                                </div>
+                                <div class="list-btn-main">
+                                    <a href="#shoppingCart" data-bs-toggle="modal" class="btn-main-product">Add To
+                                        cart</a>
+                                </div>
+                            </div>
+                            <div class="card-product-info">
+                                <a href="product-detail.html" class="title link">Stockholm Oakwood Fabric Back</a>
+                                <span class="price"><span class="old-price">$98.00</span> $79.99</span>
+                                <ul class="list-color-product">
+                                    <li class="list-color-item color-swatch active line">
+                                        <span class="swatch-value bg-light-blue"></span>
+                                        <img class="lazyload" data-src="images/products/furniture/furniture6.jpg"
+                                             src="images/products/furniture/furniture6.jpg" alt="image-product">
+                                    </li>
+                                    <li class="list-color-item color-swatch">
+                                        <span class="swatch-value bg-light-blue-2"></span>
+                                        <img class="lazyload" data-src="images/products/furniture/furniture8.jpg"
+                                             src="images/products/furniture/furniture8.jpg" alt="image-product">
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="card-product wow fadeInUp" data-wow-delay="0.2s">
+                            <div class="card-product-wrapper">
+                                <a href="product-detail.html" class="product-img">
+                                    <img class="lazyload img-product"
+                                         data-src="images/products/furniture/furniture32.jpg"
+                                         src="images/products/furniture/furniture32.jpg" alt="image-product">
+                                    <img class="lazyload img-hover" data-src="images/products/furniture/furniture33.jpg"
+                                         src="images/products/furniture/furniture33.jpg" alt="image-product">
+                                </a>
+                                <div class="on-sale-wrap"><span class="on-sale-item">-25%</span></div>
+                                <div class="variant-wrap countdown-wrap">
+                                    <div class="variant-box">
+                                        <div class="js-countdown" data-timer="1007500"
+                                             data-labels="D :,H :,M :,S"></div>
+                                    </div>
+                                </div>
+                                <div class="list-product-btn">
+                                    <a href="javascript:void(0);" class="box-icon wishlist btn-icon-action">
+                                        <span class="icon icon-heart"></span>
+                                        <span class="tooltip">Wishlist</span>
+                                    </a>
+                                    <a href="#compare" data-bs-toggle="offcanvas" aria-controls="compare"
+                                       class="box-icon compare btn-icon-action">
+                                        <span class="icon icon-gitDiff"></span>
+                                        <span class="tooltip">Compare</span>
+                                    </a>
+                                    <a href="#quickView" data-bs-toggle="modal"
+                                       class="box-icon quickview tf-btn-loading">
+                                        <span class="icon icon-eye"></span>
+                                        <span class="tooltip">Quick View</span>
+                                    </a>
+                                </div>
+                                <div class="list-btn-main">
+                                    <a href="#shoppingCart" data-bs-toggle="modal" class="btn-main-product">Add To
+                                        cart</a>
+                                </div>
+                            </div>
+                            <div class="card-product-info">
+                                <a href="product-detail.html" class="title link">Enchanted Garden Handcrafted </a>
+                                <span class="price"><span class="old-price">$98.00</span> $89.99</span>
+                                <ul class="list-color-product">
+                                    <li class="list-color-item color-swatch active line">
+                                        <span class="swatch-value bg-beige"></span>
+                                        <img class="lazyload" data-src="images/products/furniture/furniture32.jpg"
+                                             src="images/products/furniture/furniture32.jpg" alt="image-product">
+                                    </li>
+                                    <li class="list-color-item color-swatch">
+                                        <span class="swatch-value bg-light-grey"></span>
+                                        <img class="lazyload" data-src="images/products/furniture/furniture33.jpg"
+                                             src="images/products/furniture/furniture33.jpg" alt="image-product">
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="card-product wow fadeInUp" data-wow-delay="0.3s">
+                            <div class="card-product-wrapper">
+                                <a href="product-detail.html" class="product-img">
+                                    <img class="lazyload img-product"
+                                         data-src="images/products/furniture/furniture17.jpg"
+                                         src="images/products/furniture/furniture17.jpg" alt="image-product">
+                                    <img class="lazyload img-hover" data-src="images/products/furniture/furniture18.jpg"
+                                         src="images/products/furniture/furniture18.jpg" alt="image-product">
+                                </a>
+                                <div class="list-product-btn">
+                                    <a href="javascript:void(0);" class="box-icon wishlist btn-icon-action">
+                                        <span class="icon icon-heart"></span>
+                                        <span class="tooltip">Wishlist</span>
+                                    </a>
+                                    <a href="#compare" data-bs-toggle="offcanvas" aria-controls="compare"
+                                       class="box-icon compare btn-icon-action">
+                                        <span class="icon icon-gitDiff"></span>
+                                        <span class="tooltip">Compare</span>
+                                    </a>
+                                    <a href="#quickView" data-bs-toggle="modal"
+                                       class="box-icon quickview tf-btn-loading">
+                                        <span class="icon icon-eye"></span>
+                                        <span class="tooltip">Quick View</span>
+                                    </a>
+                                </div>
+                                <div class="list-btn-main">
+                                    <a href="#shoppingCart" data-bs-toggle="modal" class="btn-main-product">Add To
+                                        cart</a>
+                                </div>
+                            </div>
+                            <div class="card-product-info">
+                                <a href="product-detail.html" class="title link">Stockholm Mustard Yellow Fabric
+                                    Solo</a>
+                                <span class="price">$69.99</span>
+                                <ul class="list-color-product">
+                                    <li class="list-color-item color-swatch active line">
+                                        <span class="swatch-value bg-dark-grey"></span>
+                                        <img class="lazyload" data-src="images/products/furniture/furniture17.jpg"
+                                             src="images/products/furniture/furniture17.jpg" alt="image-product">
+                                    </li>
+                                    <li class="list-color-item color-swatch">
+                                        <span class="swatch-value bg-light-pink"></span>
+                                        <img class="lazyload" data-src="images/products/furniture/furniture19.jpg"
+                                             src="images/products/furniture/furniture19.jpg" alt="image-product">
+                                    </li>
+                                    <li class="list-color-item color-swatch">
+                                        <span class="swatch-value bg-dark-grey-2"></span>
+                                        <img class="lazyload" data-src="images/products/furniture/furniture20.jpg"
+                                             src="images/products/furniture/furniture20.jpg" alt="image-product">
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+                <div class="sw-pagination-latest sw-dots type-circle justify-content-center"></div>
             </div>
         </div>
-    </div>
-</div>
+    </section>
+    <!-- /Top picks -->
 
-@if (isset($is_show))
-    
-<div class="bz_section_partner_main_wrapper wins_parner_main_wrapper float_left">
-    <div class="container custom_container">
-        <div class="wins-heading">
-            <p>Welcome</p>
-            <h2>Wine & Winery Collections</h2>
-        </div>
-        <div class="row">
-            <div class="col-md-12 col-12">
-                <div class="partner_slider">
-                    <div class="owl-carousel owl-theme">
-                        <div class="item">
-                            <div class="partner_img">
-                                <img src="images/team_1.png" alt="team">
+    <!-- Lookbook -->
+    <section>
+        <div class="flat-sw-pagination swiper tf-sw-lookbook sw-lookbook-wrap" dir="ltr" data-preview="1"
+             data-tablet="1" data-mobile="1" data-space-lg="0" data-space-md="0" data-space="0" data-pagination="1"
+             data-pagination-md="1" data-pagination-lg="1">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div class="banner-lookbook">
+                        <img class="lazyload" data-src="images/banner/banner-lb-furniture1.jpg"
+                             src="images/banner/banner-lb-furniture1.jpg" alt="banner">
+                        <div class="lookbook-item position3">
+                            <div class="dropdown dropup-center dropdown-custom">
+                                <div role="dialog" class="tf-pin-btn" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <span></span>
+                                </div>
+                                <div class="dropdown-menu">
+                                    <div class="loobook-product style-row">
+                                        <div class="img-style">
+                                            <img src="images/gallery/lookbook-sm2.jpg" alt="img">
+                                        </div>
+                                        <div class="content">
+                                            <div class="info">
+                                                <a href="product-detail.html" class="text-title text-line-clamp-1 link">Ribbed
+                                                    cotton-blend top</a>
+                                                <div class="price text-button">$69.99</div>
+                                            </div>
+                                            <a href="#quickView" data-bs-toggle="modal" class="btn-lookbook btn-line">Quick
+                                                View</a>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div class="item">
-                            <div class="partner_img">
-                                <img src="images/team_2.png" alt="team">
+                        <div class="lookbook-item position4">
+                            <div class="dropdown dropup-center dropdown-custom">
+                                <div role="dialog" class="tf-pin-btn" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <span></span>
+                                </div>
+                                <div class="dropdown-menu">
+                                    <div class="loobook-product style-row">
+                                        <div class="img-style">
+                                            <img src="images/gallery/lookbook-sm3.jpg" alt="img">
+                                        </div>
+                                        <div class="content">
+                                            <div class="info">
+                                                <a href="product-detail.html" class="text-title text-line-clamp-1 link">Copenhagen
+                                                    Beechwood Artisan</a>
+                                                <div class="price text-button">$69.99</div>
+                                            </div>
+                                            <a href="#quickView" data-bs-toggle="modal" class="btn-lookbook btn-line">Quick
+                                                View</a>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div class="item">
-                            <div class="partner_img">
-                                <img src="images/team_3.png" alt="team">
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="banner-lookbook">
+                        <img class="lazyload" data-src="images/banner/banner-lb-furniture2.jpg"
+                             src="images/banner/banner-lb-furniture2.jpg" alt="banner">
+                        <div class="lookbook-item position3">
+                            <div class="dropdown dropup-center dropdown-custom">
+                                <div role="dialog" class="tf-pin-btn" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <span></span>
+                                </div>
+                                <div class="dropdown-menu">
+                                    <div class="loobook-product style-row">
+                                        <div class="img-style">
+                                            <img src="images/gallery/lookbook-sm2.jpg" alt="img">
+                                        </div>
+                                        <div class="content">
+                                            <div class="info">
+                                                <a href="product-detail.html" class="text-title text-line-clamp-1 link">Ribbed
+                                                    cotton-blend top</a>
+                                                <div class="price text-button">$69.99</div>
+                                            </div>
+                                            <a href="#quickView" data-bs-toggle="modal" class="btn-lookbook btn-line">Quick
+                                                View</a>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div class="item">
-                            <div class="partner_img">
-                                <img src="images/team_4.png" alt="team">
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="partner_img">
-                                <img src="images/team_5.png" alt="team">
+                        <div class="lookbook-item position4">
+                            <div class="dropdown dropup-center dropdown-custom">
+                                <div role="dialog" class="tf-pin-btn" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <span></span>
+                                </div>
+                                <div class="dropdown-menu">
+                                    <div class="loobook-product style-row">
+                                        <div class="img-style">
+                                            <img src="images/gallery/lookbook-sm3.jpg" alt="img">
+                                        </div>
+                                        <div class="content">
+                                            <div class="info">
+                                                <a href="product-detail.html" class="text-title text-line-clamp-1 link">Copenhagen
+                                                    Beechwood Artisan</a>
+                                                <div class="price text-button">$69.99</div>
+                                            </div>
+                                            <a href="#quickView" data-bs-toggle="modal" class="btn-lookbook btn-line">Quick
+                                                View</a>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            <div class="sw-pagination-lookbook sw-dots type-circle white-circle-line justify-content-center"></div>
         </div>
-    </div>
-</div>
-@endif
+    </section>
+    <!-- /Lookbook -->
+
+    <!-- Seller -->
+    <section class="flat-spacing">
+        <div class="container">
+            <div class="heading-section text-center wow fadeInUp">
+                <h3 class="heading">Top Trending</h3>
+                <p class="subheading text-secondary">Browse our Top Trending: the hottest picks loved by all. </p>
+            </div>
+            <div dir="ltr" class="swiper tf-sw-recent" data-preview="4" data-tablet="3" data-mobile="2"
+                 data-space-lg="30" data-space-md="30" data-space="15" data-pagination="1" data-pagination-md="1"
+                 data-pagination-lg="1">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="card-product wow fadeInUp" data-wow-delay="0s">
+                            <div class="card-product-wrapper">
+                                <a href="product-detail.html" class="product-img">
+                                    <img class="lazyload img-product"
+                                         data-src="images/products/furniture/furniture21.jpg"
+                                         src="images/products/furniture/furniture21.jpg" alt="image-product">
+                                    <img class="lazyload img-hover" data-src="images/products/furniture/furniture23.jpg"
+                                         src="images/products/furniture/furniture23.jpg" alt="image-product">
+                                </a>
+                                <div class="list-product-btn">
+                                    <a href="javascript:void(0);" class="box-icon wishlist btn-icon-action">
+                                        <span class="icon icon-heart"></span>
+                                        <span class="tooltip">Wishlist</span>
+                                    </a>
+                                    <a href="#compare" data-bs-toggle="offcanvas" aria-controls="compare"
+                                       class="box-icon compare btn-icon-action">
+                                        <span class="icon icon-gitDiff"></span>
+                                        <span class="tooltip">Compare</span>
+                                    </a>
+                                    <a href="#quickView" data-bs-toggle="modal"
+                                       class="box-icon quickview tf-btn-loading">
+                                        <span class="icon icon-eye"></span>
+                                        <span class="tooltip">Quick View</span>
+                                    </a>
+                                </div>
+                                <div class="list-btn-main">
+                                    <a href="#shoppingCart" data-bs-toggle="modal" class="btn-main-product">Add To
+                                        cart</a>
+                                </div>
+                            </div>
+                            <div class="card-product-info">
+                                <a href="product-detail.html" class="title link">Oslo Beechwood High Stool</a>
+                                <span class="price">$39.99</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="card-product wow fadeInUp" data-wow-delay="0.1s">
+                            <div class="card-product-wrapper">
+                                <a href="product-detail.html" class="product-img">
+                                    <img class="lazyload img-product"
+                                         data-src="images/products/furniture/furniture13.jpg"
+                                         src="images/products/furniture/furniture13.jpg" alt="image-product">
+                                    <img class="lazyload img-hover" data-src="images/products/furniture/furniture14.jpg"
+                                         src="images/products/furniture/furniture14.jpg" alt="image-product">
+                                </a>
+                                <div class="on-sale-wrap"><span class="on-sale-item">-25%</span></div>
+                                <div class="list-product-btn">
+                                    <a href="javascript:void(0);" class="box-icon wishlist btn-icon-action">
+                                        <span class="icon icon-heart"></span>
+                                        <span class="tooltip">Wishlist</span>
+                                    </a>
+                                    <a href="#compare" data-bs-toggle="offcanvas" aria-controls="compare"
+                                       class="box-icon compare btn-icon-action">
+                                        <span class="icon icon-gitDiff"></span>
+                                        <span class="tooltip">Compare</span>
+                                    </a>
+                                    <a href="#quickView" data-bs-toggle="modal"
+                                       class="box-icon quickview tf-btn-loading">
+                                        <span class="icon icon-eye"></span>
+                                        <span class="tooltip">Quick View</span>
+                                    </a>
+                                </div>
+                                <div class="list-btn-main">
+                                    <a href="#shoppingCart" data-bs-toggle="modal" class="btn-main-product">Add To
+                                        cart</a>
+                                </div>
+                            </div>
+                            <div class="card-product-info">
+                                <a href="product-detail.html" class="title link">Florence Ashwood Strata</a>
+                                <span class="price">$79.99</span>
+                                <ul class="list-color-product">
+                                    <li class="list-color-item color-swatch active line">
+                                        <span class="swatch-value bg-light-pink"></span>
+                                        <img class="lazyload" data-src="images/products/furniture/furniture13.jpg"
+                                             src="images/products/furniture/furniture13.jpg" alt="image-product">
+                                    </li>
+                                    <li class="list-color-item color-swatch">
+                                        <span class="swatch-value bg-dark-grey"></span>
+                                        <img class="lazyload" data-src="images/products/furniture/furniture16.jpg"
+                                             src="images/products/furniture/furniture16.jpg" alt="image-product">
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="card-product wow fadeInUp" data-wow-delay="0.2s">
+                            <div class="card-product-wrapper">
+                                <a href="product-detail.html" class="product-img">
+                                    <img class="lazyload img-product"
+                                         data-src="images/products/furniture/furniture29.jpg"
+                                         src="images/products/furniture/furniture29.jpg" alt="image-product">
+                                    <img class="lazyload img-hover" data-src="images/products/furniture/furniture31.jpg"
+                                         src="images/products/furniture/furniture31.jpg" alt="image-product">
+                                </a>
+                                <div class="list-product-btn">
+                                    <a href="javascript:void(0);" class="box-icon wishlist btn-icon-action">
+                                        <span class="icon icon-heart"></span>
+                                        <span class="tooltip">Wishlist</span>
+                                    </a>
+                                    <a href="#compare" data-bs-toggle="offcanvas" aria-controls="compare"
+                                       class="box-icon compare btn-icon-action">
+                                        <span class="icon icon-gitDiff"></span>
+                                        <span class="tooltip">Compare</span>
+                                    </a>
+                                    <a href="#quickView" data-bs-toggle="modal"
+                                       class="box-icon quickview tf-btn-loading">
+                                        <span class="icon icon-eye"></span>
+                                        <span class="tooltip">Quick View</span>
+                                    </a>
+                                </div>
+                                <div class="list-btn-main">
+                                    <a href="#shoppingCart" data-bs-toggle="modal" class="btn-main-product">Add To
+                                        cart</a>
+                                </div>
+                            </div>
+                            <div class="card-product-info">
+                                <a href="product-detail.html" class="title link">Glistening Wave Glass Pendant</a>
+                                <span class="price"><span class="old-price">$98.00</span> $129.99</span>
+                                <ul class="list-color-product">
+                                    <li class="list-color-item color-swatch active line">
+                                        <span class="swatch-value bg-light-green"></span>
+                                        <img class="lazyload" data-src="images/products/furniture/furniture29.jpg"
+                                             src="images/products/furniture/furniture29.jpg" alt="image-product">
+                                    </li>
+                                    <li class="list-color-item color-swatch">
+                                        <span class="swatch-value bg-light-grey"></span>
+                                        <img class="lazyload" data-src="images/products/furniture/furniture30.jpg"
+                                             src="images/products/furniture/furniture30.jpg" alt="image-product">
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="card-product wow fadeInUp" data-wow-delay="0.3s">
+                            <div class="card-product-wrapper">
+                                <a href="product-detail.html" class="product-img">
+                                    <img class="lazyload img-product"
+                                         data-src="images/products/furniture/furniture40.jpg"
+                                         src="images/products/furniture/furniture40.jpg" alt="image-product">
+                                    <img class="lazyload img-hover" data-src="images/products/furniture/furniture41.jpg"
+                                         src="images/products/furniture/furniture41.jpg" alt="image-product">
+                                </a>
+                                <div class="on-sale-wrap"><span class="on-sale-item">-25%</span></div>
+                                <div class="list-product-btn">
+                                    <a href="javascript:void(0);" class="box-icon wishlist btn-icon-action">
+                                        <span class="icon icon-heart"></span>
+                                        <span class="tooltip">Wishlist</span>
+                                    </a>
+                                    <a href="#compare" data-bs-toggle="offcanvas" aria-controls="compare"
+                                       class="box-icon compare btn-icon-action">
+                                        <span class="icon icon-gitDiff"></span>
+                                        <span class="tooltip">Compare</span>
+                                    </a>
+                                    <a href="#quickView" data-bs-toggle="modal"
+                                       class="box-icon quickview tf-btn-loading">
+                                        <span class="icon icon-eye"></span>
+                                        <span class="tooltip">Quick View</span>
+                                    </a>
+                                </div>
+                                <div class="list-btn-main">
+                                    <a href="#shoppingCart" data-bs-toggle="modal" class="btn-main-product">Add To
+                                        cart</a>
+                                </div>
+                            </div>
+                            <div class="card-product-info">
+                                <a href="product-detail.html" class="title link">Rustic Elegance Vintage Glass
+                                    Flower</a>
+                                <span class="price"><span class="old-price">$98.00</span> $219.99</span>
+                                <ul class="list-color-product">
+                                    <li class="list-color-item color-swatch active line">
+                                        <span class="swatch-value bg-grey"></span>
+                                        <img class="lazyload" data-src="images/products/furniture/furniture40.jpg"
+                                             src="images/products/furniture/furniture40.jpg" alt="image-product">
+                                    </li>
+                                    <li class="list-color-item color-swatch">
+                                        <span class="swatch-value bg-main"></span>
+                                        <img class="lazyload" data-src="images/products/furniture/furniture42.jpg"
+                                             src="images/products/furniture/furniture42.jpg" alt="image-product">
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="sw-pagination-recent sw-dots type-circle justify-content-center"></div>
+            </div>
+        </div>
+    </section>
+    <!-- /Seller -->
+
+    <!-- Testimonial -->
+    <section class="flat-spacing pt-0">
+        <div class="container">
+            <div class="heading-section text-center wow fadeInUp">
+                <h3 class="heading">Customer Say!</h3>
+                <p class="subheading">Our customers adore our products, and we constantly aim to delight them.</p>
+            </div>
+            <div dir="ltr" class="swiper tf-sw-testimonial" data-preview="3" data-tablet="2" data-mobile="1"
+                 data-space-lg="30" data-space-md="30" data-space="15" data-pagination="1" data-pagination-md="1"
+                 data-pagination-lg="1">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="testimonial-item style-row hover-img wow fadeInUp" data-wow-delay="0s">
+                            <div class="img-style">
+                                <img data-src="images/testimonial/tes-7.jpg" src="images/testimonial/tes-7.jpg"
+                                     alt="img-testimonial">
+                                <a href="#quickView" data-bs-toggle="modal" class="box-icon hover-tooltip center">
+                                    <span class="icon icon-eye"></span>
+                                    <span class="tooltip">Quick View</span>
+                                </a>
+                            </div>
+                            <div class="content">
+                                <div class="content-top">
+                                    <div class="list-star-default">
+                                        <i class="icon icon-star"></i>
+                                        <i class="icon icon-star"></i>
+                                        <i class="icon icon-star"></i>
+                                        <i class="icon icon-star"></i>
+                                        <i class="icon icon-star"></i>
+                                    </div>
+                                    <p class="text-secondary">"Stylish and high-quality glass vase. Its elegant design
+                                        and premium finish make it a perfect choice for any flower display. Highly
+                                        recommended!"</p>
+                                    <div class="box-author">
+                                        <div class="text-title author">Sybil Sharp</div>
+                                        <svg class="icon" width="20" height="21" viewBox="0 0 20 21" fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                            <g clip-path="url(#clip0_15758_14563)">
+                                                <path d="M6.875 11.6255L8.75 13.5005L13.125 9.12549" stroke="#3DAB25"
+                                                      stroke-width="1.5" stroke-linecap="round"
+                                                      stroke-linejoin="round"/>
+                                                <path
+                                                    d="M10 18.5005C14.1421 18.5005 17.5 15.1426 17.5 11.0005C17.5 6.85835 14.1421 3.50049 10 3.50049C5.85786 3.50049 2.5 6.85835 2.5 11.0005C2.5 15.1426 5.85786 18.5005 10 18.5005Z"
+                                                    stroke="#3DAB25" stroke-width="1.5" stroke-linecap="round"
+                                                    stroke-linejoin="round"/>
+                                            </g>
+                                            <defs>
+                                                <clipPath id="clip0_15758_14563">
+                                                    <rect width="20" height="20" fill="white"
+                                                          transform="translate(0 0.684082)"/>
+                                                </clipPath>
+                                            </defs>
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div class="box-avt">
+                                    <div class="avatar avt-60 round">
+                                        <img src="images/products/furniture/furniture32.jpg" alt="avt">
+                                    </div>
+                                    <div class="box-price">
+                                        <p class="text-title text-line-clamp-1">Enchanted Garden Handcrafted</p>
+                                        <div class="text-button price">$60.00</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="testimonial-item style-row hover-img wow fadeInUp" data-wow-delay="0.1s">
+                            <div class="img-style">
+                                <img data-src="images/testimonial/tes-8.jpg" src="images/testimonial/tes-8.jpg"
+                                     alt="img-testimonial">
+                                <a href="#quickView" data-bs-toggle="modal" class="box-icon hover-tooltip center">
+                                    <span class="icon icon-eye"></span>
+                                    <span class="tooltip">Quick View</span>
+                                </a>
+                            </div>
+                            <div class="content">
+                                <div class="content-top">
+                                    <div class="list-star-default">
+                                        <i class="icon icon-star"></i>
+                                        <i class="icon icon-star"></i>
+                                        <i class="icon icon-star"></i>
+                                        <i class="icon icon-star"></i>
+                                        <i class="icon icon-star"></i>
+                                    </div>
+                                    <p class="text-secondary">"Stylish and high-quality glass vase. Its elegant design
+                                        and premium finish make it a perfect choice for any flower display. Highly
+                                        recommended!"</p>
+                                    <div class="box-author">
+                                        <div class="text-title author">Mark G.</div>
+                                        <svg class="icon" width="20" height="21" viewBox="0 0 20 21" fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                            <g clip-path="url(#clip0_15758_14563)">
+                                                <path d="M6.875 11.6255L8.75 13.5005L13.125 9.12549" stroke="#3DAB25"
+                                                      stroke-width="1.5" stroke-linecap="round"
+                                                      stroke-linejoin="round"/>
+                                                <path
+                                                    d="M10 18.5005C14.1421 18.5005 17.5 15.1426 17.5 11.0005C17.5 6.85835 14.1421 3.50049 10 3.50049C5.85786 3.50049 2.5 6.85835 2.5 11.0005C2.5 15.1426 5.85786 18.5005 10 18.5005Z"
+                                                    stroke="#3DAB25" stroke-width="1.5" stroke-linecap="round"
+                                                    stroke-linejoin="round"/>
+                                            </g>
+                                            <defs>
+                                                <clipPath id="clip0_15758_14563">
+                                                    <rect width="20" height="20" fill="white"
+                                                          transform="translate(0 0.684082)"/>
+                                                </clipPath>
+                                            </defs>
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div class="box-avt">
+                                    <div class="avatar avt-60 round">
+                                        <img src="images/products/furniture/furniture9.jpg" alt="avt">
+                                    </div>
+                                    <div class="box-price">
+                                        <p class="text-title text-line-clamp-1">Copenhagen Beechwood Artisan</p>
+                                        <div class="text-button price">$60.00</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="testimonial-item style-row hover-img wow fadeInUp" data-wow-delay="0.2s">
+                            <div class="img-style">
+                                <img data-src="images/testimonial/tes-9.jpg" src="images/testimonial/tes-9.jpg"
+                                     alt="img-testimonial">
+                                <a href="#quickView" data-bs-toggle="modal" class="box-icon hover-tooltip center">
+                                    <span class="icon icon-eye"></span>
+                                    <span class="tooltip">Quick View</span>
+                                </a>
+                            </div>
+                            <div class="content">
+                                <div class="content-top">
+                                    <div class="list-star-default">
+                                        <i class="icon icon-star"></i>
+                                        <i class="icon icon-star"></i>
+                                        <i class="icon icon-star"></i>
+                                        <i class="icon icon-star"></i>
+                                        <i class="icon icon-star"></i>
+                                    </div>
+                                    <p class="text-secondary">"Stylish and high-quality glass vase. Its elegant design
+                                        and premium finish make it a perfect choice for any flower display. Highly
+                                        recommended!"</p>
+                                    <div class="box-author">
+                                        <div class="text-title author">Sybil Sharp</div>
+                                        <svg class="icon" width="20" height="21" viewBox="0 0 20 21" fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                            <g clip-path="url(#clip0_15758_14563)">
+                                                <path d="M6.875 11.6255L8.75 13.5005L13.125 9.12549" stroke="#3DAB25"
+                                                      stroke-width="1.5" stroke-linecap="round"
+                                                      stroke-linejoin="round"/>
+                                                <path
+                                                    d="M10 18.5005C14.1421 18.5005 17.5 15.1426 17.5 11.0005C17.5 6.85835 14.1421 3.50049 10 3.50049C5.85786 3.50049 2.5 6.85835 2.5 11.0005C2.5 15.1426 5.85786 18.5005 10 18.5005Z"
+                                                    stroke="#3DAB25" stroke-width="1.5" stroke-linecap="round"
+                                                    stroke-linejoin="round"/>
+                                            </g>
+                                            <defs>
+                                                <clipPath id="clip0_15758_14563">
+                                                    <rect width="20" height="20" fill="white"
+                                                          transform="translate(0 0.684082)"/>
+                                                </clipPath>
+                                            </defs>
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div class="box-avt">
+                                    <div class="avatar avt-60 round">
+                                        <img src="images/products/furniture/furniture1.jpg" alt="avt">
+                                    </div>
+                                    <div class="box-price">
+                                        <p class="text-title text-line-clamp-1">Salamanca dusty rose Leeds</p>
+                                        <div class="text-button price">$60.00</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="sw-pagination-testimonial sw-dots type-circle d-flex justify-content-center"></div>
+            </div>
+        </div>
+    </section>
+    <!-- /Testimonial -->
+
+    <!-- Iconbox -->
+    <section class="flat-spacing line-top-container">
+        <div class="container">
+            <div dir="ltr" class="swiper tf-sw-iconbox" data-preview="4" data-tablet="3" data-mobile-sm="2"
+                 data-mobile="1" data-space-lg="30" data-space-md="30" data-space="15" data-pagination="1"
+                 data-pagination-sm="2" data-pagination-md="3" data-pagination-lg="4">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="tf-icon-box">
+                            <div class="icon-box"><span class="icon icon-return"></span></div>
+                            <div class="content text-center">
+                                <h6>14-Day Returns</h6>
+                                <p class="text-secondary">Risk-free shopping with easy returns.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="tf-icon-box">
+                            <div class="icon-box"><span class="icon icon-shipping"></span></div>
+                            <div class="content text-center">
+                                <h6>Free Shipping</h6>
+                                <p class="text-secondary">No extra costs, just the price you see.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="tf-icon-box">
+                            <div class="icon-box"><span class="icon icon-headset"></span></div>
+                            <div class="content text-center">
+                                <h6>24/7 Support</h6>
+                                <p class="text-secondary">24/7 support, always here just for you</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="tf-icon-box">
+                            <div class="icon-box"><span class="icon icon-sealCheck"></span></div>
+                            <div class="content text-center">
+                                <h6>Member Discounts</h6>
+                                <p class="text-secondary">Special prices for our loyal customers.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="sw-pagination-iconbox sw-dots type-circle justify-content-center"></div>
+            </div>
+        </div>
+    </section>
+    <!-- /Iconbox -->
+
+    <!-- Banner discover -->
+    <section class="flat-spacing pt-0">
+        <div class="container">
+            <div class="banner-cls-discover hover-img">
+                <a href="#" class="img-style">
+                    <img class="lazyload" data-src="images/banner/discover-decor.jpg"
+                         src="images/banner/discover-decor.jpg" alt="cls-tiktok">
+                </a>
+                <div class="cls-content">
+                    <div class="box-title-top">
+                        <p class="subtitle text-btn-uppercase text-white wow fadeInUp">sumMer 2024 collection</p>
+                        <h3 class="title"><a href="#" class="link text-white wow fadeInUp" data-wow-delay="0.1s">Super
+                                Sale Up To %50</a></h3>
+                        <p class="desc text-white wow fadeInUp" data-wow-delay="0.2s">Reserved for special occasions</p>
+                    </div>
+                    <div class="wow fadeInUp" data-wow-delay="0.3s">
+                        <a href="shop-default-grid.html" class="tf-btn btn-md btn-white"><span
+                                class="text">discover Now</span><i class="icon icon-arrowUpRight"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- /Banner discover -->
 @endsection
