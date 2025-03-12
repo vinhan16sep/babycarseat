@@ -37,6 +37,16 @@ Auth::routes();
 
 Route::group(['middleware' => ['site_settings']], function () {
     Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::get('/products', [App\Http\Controllers\ProductController::class, 'list'])->name('product-index');
+    Route::get('/products/{slug}', [App\Http\Controllers\ProductController::class, 'show'])->name('product-index');
+
+
+
+
+
+
+
+
     Route::get('lien-he', [App\Http\Controllers\ContactController::class, 'show'])->name('contact');
     Route::post('lien-he', [App\Http\Controllers\ContactController::class, 'store'])->name('contact.store');
     Route::get('ruou-vang', [App\Http\Controllers\ProductController::class, 'list'])->name('ruou-vang');

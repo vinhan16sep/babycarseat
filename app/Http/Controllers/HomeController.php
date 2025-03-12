@@ -29,6 +29,10 @@ class HomeController extends Controller
      */
     public function index()
     {
+        return view('home');
+
+
+
         $banners = Banner::query()->where(["is_active" => 1])->get();
         $types = Type::where("is_active", 1)->get();
         $products = Product::query()->where(["is_active" => 1, "is_highlight" => 1])->with(["grape:id,name", "type:id,name", "country:id,name", "region:id,name"])->orderByDesc("created_at")->get();
@@ -58,7 +62,7 @@ class HomeController extends Controller
         $filter_keyword = (string)$request->get("keyword");
 
         $query = Product::query()->where("is_active", 1);
-        
+
         if(!empty($filter_keyword)) {
             $query->where("name", "like", "%$filter_keyword%");
         }
