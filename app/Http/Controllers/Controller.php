@@ -31,11 +31,11 @@ class Controller extends BaseController
      * @return void
      */
     public function __construct() {
-        $this->activedCountries = $this->getActivedCountries();
-        $this->activedRegions = $this->getActivedRegions();
-        $this->activedTypes = $this->getActivedTypes();
-        $this->activedGrapes = $this->getActivedGrapes();
-        $this->contactInformations = $this->getContactInformations();
+//        $this->activedCountries = $this->getActivedCountries();
+//        $this->activedRegions = $this->getActivedRegions();
+//        $this->activedTypes = $this->getActivedTypes();
+//        $this->activedGrapes = $this->getActivedGrapes();
+//        $this->contactInformations = $this->getContactInformations();
         $this->ver = Config::get('site_settings.assets_ver');
         View::share('contactInformations', $this->contactInformations);
         View::share('ver', $this->ver);
