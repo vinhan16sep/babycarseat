@@ -20,7 +20,7 @@
                 <div class="card">
                     <div class="card-body offset-1 col-lg-10">
                         <div class="basic-form">
-                            <form role="form" method="POST" action="{{ route('update-color', ['id' => $object->id]) }}">
+                            <form role="form" method="POST" action="{{ route('update-note', ['id' => $object->id]) }}">
                                 @csrf
                                 @method('put')
 
@@ -28,21 +28,21 @@
                                     <label>Tên</label>
                                     <input type="text" name="name" value="{{ old('name', $object->name) }}" class="form-control" id="inputName" maxlength="255">
                                     @if ($errors->has('name'))
-                                        <span style="color:red;">{{ $errors->first('name') }}</span>
+                                        <span style="note:red;">{{ $errors->first('name') }}</span>
                                     </span>
                                     @endif
                                 </div>
 
                                 <div class="form-group">
-                                    <label>Code</label>
-                                    <input type="text" name="code" value="{{ old('code', $object->code) }}" class="form-control">
-                                    @if ($errors->has('code'))
-                                        <span style="color:red;">{{ $errors->first('code') }}</span>
+                                    <label>Icon</label>
+                                    <input type="text" name="icon" value="{{ old('icon', $object->icon) }}" class="form-control">
+                                    @if ($errors->has('icon'))
+                                        <span style="note:red;">{{ $errors->first('icon') }}</span>
                                     </span>
                                     @endif
                                 </div>
 
-                                <a type="button" href="{{ route('list-color') }}" class="btn btn-default btn-outline"><i class="ti-back-left icon-black"></i>&nbsp;&nbsp;Quay lại</a>
+                                <a type="button" href="{{ route('list-note') }}" class="btn btn-default btn-outline"><i class="ti-back-left icon-black"></i>&nbsp;&nbsp;Quay lại</a>
                                 <button type="submit" class="btn btn-primary"><i class="ti-save icon-white"></i>&nbsp;&nbsp;Lưu</button>
                             </form>
                         </div>

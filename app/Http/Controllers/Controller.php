@@ -2,11 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Country;
-use App\Models\Grape;
 use App\Models\Information;
-use App\Models\Region;
-use App\Models\Type;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -18,10 +14,6 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
-    protected $activedCountries = [];
-    protected $activedRegions = [];
-    protected $activedTypes = [];
-    protected $activedGrapes = [];
     protected $contactInformations = [];
     protected $ver = '';
 
@@ -31,30 +23,10 @@ class Controller extends BaseController
      * @return void
      */
     public function __construct() {
-//        $this->activedCountries = $this->getActivedCountries();
-//        $this->activedRegions = $this->getActivedRegions();
-//        $this->activedTypes = $this->getActivedTypes();
-//        $this->activedGrapes = $this->getActivedGrapes();
-//        $this->contactInformations = $this->getContactInformations();
+        $this->contactInformations = $this->getContactInformations();
         $this->ver = Config::get('site_settings.assets_ver');
         View::share('contactInformations', $this->contactInformations);
         View::share('ver', $this->ver);
-    }
-
-    protected function getActivedCountries() {
-        return Country::where(['is_active' => '1'])->get();
-    }
-
-    protected function getActivedRegions() {
-        return Region::where(['is_active' => '1'])->get();
-    }
-
-    protected function getActivedTypes() {
-        return Type::where(['is_active' => '1'])->get();
-    }
-
-    protected function getActivedGrapes() {
-        return Grape::where(['is_active' => '1'])->get();
     }
 
     protected function getContactInformations() {

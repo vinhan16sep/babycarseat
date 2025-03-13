@@ -65,7 +65,7 @@ class ColorController extends AdminController
         $this->validateUpdate($request, $id);
 
         $object->name = $request->input('name');
-        $object->slug = $request->input('slug');
+        $object->slug = $request->input('code');
 
         if ($object->save()) {
             return redirect()->route('edit-color', ['id' => $id])->with('success', Config::get('constants.MESSAGE.UPDATE_SUCCEEDED'));
@@ -119,9 +119,9 @@ class ColorController extends AdminController
     }
 
     private function isUsing($id) {
-        $productCnt = ProductColor::where(['country_id' => $id])->count();
+        $count = ProductColor::where(['color_id' => $id])->count();
 
-        if ($productCnt == 0) {
+        if ($count == 0) {
             return false;
         }
         return true;

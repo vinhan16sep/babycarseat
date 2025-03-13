@@ -35,7 +35,7 @@
 
                                 <div class="form-group">
                                     <label>Code</label>
-                                    <input type="text" name="code" value="{{ old('code') }}" class="form-control" id="inputSlug" readonly>
+                                    <input type="text" name="code" value="{{ old('code') }}" class="form-control">
                                     @if ($errors->has('code'))
                                         <span style="color:red;">{{ $errors->first('code') }}</span>
                                     </span>
@@ -53,14 +53,4 @@
         </div>
     </section>
 </div>
-<script type="text/javascript">
-    $('#inputName').change(function (){
-        let code = to_slug($('#inputName').val());
-        $('#inputSlug').val(code);
-    });
-    $('#inputName').focusout(function (){
-        let code = to_slug($('#inputName').val());
-        $('#inputSlug').val(code);
-    });
-</script>
 @endsection
