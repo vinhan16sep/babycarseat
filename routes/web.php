@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\AccessoryCategoryController;
 use App\Http\Controllers\Admin\AccessoryController;
 use App\Http\Controllers\Admin\BannerController;
 use App\Http\Controllers\Admin\BrandController;
+use App\Http\Controllers\Admin\ColorController;
 use App\Http\Controllers\Admin\ComboController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\CountryController;
@@ -19,7 +20,9 @@ use App\Http\Controllers\Admin\NewsController;
 use App\Http\Controllers\Admin\PostTaskController;
 use App\Http\Controllers\Admin\KnowledgeCategoryController;
 use App\Http\Controllers\Admin\KnowledgeController;
+use App\Http\Controllers\Admin\NoteController;
 use App\Http\Controllers\Admin\OrderController;
+use App\Http\Controllers\Admin\ProductCategoryController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -96,6 +99,16 @@ Route::group(['prefix' => 'bw-admin', 'middleware' => 'auth'], function () {
             Route::get('change-status', [BannerController::class, 'changeStatus'])->name('change-banner-status');
         });
 
+        // Product Category
+        Route::group(['prefix' => 'product-category'], function () {
+            Route::get('/', [ProductCategoryController::class, 'index'])->name('list-product-category');
+            Route::get('create', [ProductCategoryController::class, 'create'])->name('create-product-category');
+            Route::post('store', [ProductCategoryController::class, 'store'])->name('store-product-category');
+            Route::get('edit/{id}', [ProductCategoryController::class, 'edit'])->name('edit-product-category');
+            Route::put('update/{id}', [ProductCategoryController::class, 'update'])->name('update-product-category');
+            Route::get('delete-row', [ProductCategoryController::class, 'delete'])->name('delete-product-category');
+        });
+
         // Brand
         Route::group(['prefix' => 'brand'], function () {
             Route::get('/', [BrandController::class, 'index'])->name('list-brand');
@@ -106,33 +119,25 @@ Route::group(['prefix' => 'bw-admin', 'middleware' => 'auth'], function () {
             Route::get('delete-row', [BrandController::class, 'delete'])->name('delete-brand');
         });
 
-        // Region
-        Route::get('region', [RegionController::class, 'index'])->name('list-region');
-        Route::get('region/create', [RegionController::class, 'create'])->name('create-region');
-        Route::post('region/store', [RegionController::class, 'store'])->name('store-region');
-        Route::get('region/edit/{id}', [RegionController::class, 'edit'])->name('edit-region');
-        Route::put('region/update/{id}', [RegionController::class, 'update'])->name('update-region');
-        Route::get('region/delete-row', [RegionController::class, 'delete'])->name('delete-region');
-        Route::get('region/change-status', [RegionController::class, 'changeStatus'])->name('change-region-status');
-        Route::get('region/get-by-country', [RegionController::class, 'getByCountry'])->name('get-by-country');
+        // Color
+        Route::group(['prefix' => 'color'], function () {
+            Route::get('/', [ColorController::class, 'index'])->name('list-color');
+            Route::get('create', [ColorController::class, 'create'])->name('create-color');
+            Route::post('store', [ColorController::class, 'store'])->name('store-color');
+            Route::get('edit/{id}', [ColorController::class, 'edit'])->name('edit-color');
+            Route::put('update/{id}', [ColorController::class, 'update'])->name('update-color');
+            Route::get('delete-row', [ColorController::class, 'delete'])->name('delete-color');
+        });
 
-        // Type
-        Route::get('type', [TypeController::class, 'index'])->name('list-type');
-        Route::get('type/create', [TypeController::class, 'create'])->name('create-type');
-        Route::post('type/store', [TypeController::class, 'store'])->name('store-type');
-        Route::get('type/edit/{id}', [TypeController::class, 'edit'])->name('edit-type');
-        Route::put('type/update/{id}', [TypeController::class, 'update'])->name('update-type');
-        Route::get('type/delete-row', [TypeController::class, 'delete'])->name('delete-type');
-        Route::get('type/change-status', [TypeController::class, 'changeStatus'])->name('change-type-status');
-
-        // Grape
-        Route::get('grape', [GrapeController::class, 'index'])->name('list-grape');
-        Route::get('grape/create', [GrapeController::class, 'create'])->name('create-grape');
-        Route::post('grape/store', [GrapeController::class, 'store'])->name('store-grape');
-        Route::get('grape/edit/{id}', [GrapeController::class, 'edit'])->name('edit-grape');
-        Route::put('grape/update/{id}', [GrapeController::class, 'update'])->name('update-grape');
-        Route::get('grape/delete-row', [GrapeController::class, 'delete'])->name('delete-grape');
-        Route::get('grape/change-status', [GrapeController::class, 'changeStatus'])->name('change-grape-status');
+        // Note
+        Route::group(['prefix' => 'note'], function () {
+            Route::get('/', [NoteController::class, 'index'])->name('list-note');
+            Route::get('create', [NoteController::class, 'create'])->name('create-note');
+            Route::post('store', [NoteController::class, 'store'])->name('store-note');
+            Route::get('edit/{id}', [NoteController::class, 'edit'])->name('edit-note');
+            Route::put('update/{id}', [NoteController::class, 'update'])->name('update-note');
+            Route::get('delete-row', [NoteController::class, 'delete'])->name('delete-note');
+        });
 
         // Product
         Route::get('product', [ProductController::class, 'index'])->name('list-product');
@@ -175,29 +180,6 @@ Route::group(['prefix' => 'bw-admin', 'middleware' => 'auth'], function () {
             Route::put('update/{id}', [KnowledgeController::class, 'update'])->name('update-knowledge');
             Route::get('delete-row', [KnowledgeController::class, 'delete'])->name('delete-knowledge');
             Route::get('change-status', [KnowledgeController::class, 'changeStatus'])->name('change-knowledge-status');
-        });
-
-        // Promotion
-        Route::group(['prefix' => 'promotion'], function () {
-            Route::get('/', [PromotionController::class, 'index'])->name('list-promotion');
-            Route::get('create', [PromotionController::class, 'create'])->name('create-promotion');
-            Route::post('store', [PromotionController::class, 'store'])->name('store-promotion');
-            Route::get('edit/{id}', [PromotionController::class, 'edit'])->name('edit-promotion');
-            Route::put('update/{id}', [PromotionController::class, 'update'])->name('update-promotion');
-            Route::get('delete-row', [PromotionController::class, 'delete'])->name('delete-promotion');
-            Route::get('change-status', [PromotionController::class, 'changeStatus'])->name('change-promotion-status');
-            Route::get('get-item-by-type', [PromotionController::class, 'getItemByType'])->name('get-item-by-type');
-        });
-
-        // Gift
-        Route::group(['prefix' => 'gift'], function () {
-            Route::get('/', [GiftController::class, 'index'])->name('list-gift');
-            Route::get('create', [GiftController::class, 'create'])->name('create-gift');
-            Route::post('store', [GiftController::class, 'store'])->name('store-gift');
-            Route::get('edit/{id}', [GiftController::class, 'edit'])->name('edit-gift');
-            Route::put('update/{id}', [GiftController::class, 'update'])->name('update-gift');
-            Route::get('delete-row', [GiftController::class, 'delete'])->name('delete-gift');
-            Route::get('change-status', [GiftController::class, 'changeStatus'])->name('change-gift-status');
         });
 
         // Information
