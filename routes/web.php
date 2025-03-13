@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AccessoryCategoryController;
 use App\Http\Controllers\Admin\AccessoryController;
 use App\Http\Controllers\Admin\BannerController;
+use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\ComboController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\CountryController;
@@ -95,14 +96,15 @@ Route::group(['prefix' => 'bw-admin', 'middleware' => 'auth'], function () {
             Route::get('change-status', [BannerController::class, 'changeStatus'])->name('change-banner-status');
         });
 
-        // Country
-        Route::get('country', [CountryController::class, 'index'])->name('list-country');
-        Route::get('country/create', [CountryController::class, 'create'])->name('create-country');
-        Route::post('country/store', [CountryController::class, 'store'])->name('store-country');
-        Route::get('country/edit/{id}', [CountryController::class, 'edit'])->name('edit-country');
-        Route::put('country/update/{id}', [CountryController::class, 'update'])->name('update-country');
-        Route::get('country/delete-row', [CountryController::class, 'delete'])->name('delete-country');
-        Route::get('country/change-status', [CountryController::class, 'changeStatus'])->name('change-country-status');
+        // Brand
+        Route::group(['prefix' => 'brand'], function () {
+            Route::get('/', [BrandController::class, 'index'])->name('list-brand');
+            Route::get('create', [BrandController::class, 'create'])->name('create-brand');
+            Route::post('store', [BrandController::class, 'store'])->name('store-brand');
+            Route::get('edit/{id}', [BrandController::class, 'edit'])->name('edit-brand');
+            Route::put('update/{id}', [BrandController::class, 'update'])->name('update-brand');
+            Route::get('delete-row', [BrandController::class, 'delete'])->name('delete-brand');
+        });
 
         // Region
         Route::get('region', [RegionController::class, 'index'])->name('list-region');
@@ -141,40 +143,6 @@ Route::group(['prefix' => 'bw-admin', 'middleware' => 'auth'], function () {
         Route::get('product/delete-row', [ProductController::class, 'delete'])->name('delete-product');
         Route::get('product/change-status', [ProductController::class, 'changeStatus'])->name('change-product-status');
 
-        // Combo
-        Route::get('combo', [ComboController::class, 'index'])->name('list-combo');
-        Route::get('combo/create', [ComboController::class, 'create'])->name('create-combo');
-        Route::post('combo/store', [ComboController::class, 'store'])->name('store-combo');
-        Route::get('combo/edit/{id}', [ComboController::class, 'edit'])->name('edit-combo');
-        Route::put('combo/update/{id}', [ComboController::class, 'update'])->name('update-combo');
-        Route::get('combo/delete-row', [ComboController::class, 'delete'])->name('delete-combo');
-        Route::get('combo/change-status', [ComboController::class, 'changeStatus'])->name('change-combo-status');
-        Route::get('combo/get-products', [ComboController::class, 'getProducts'])->name('get-products');
-        Route::get('combo/get-unselected-products', [ComboController::class, 'getUnselectedProducts'])->name('get-unselected-products');
-        Route::post('combo/change-products', [ComboController::class, 'changeProducts'])->name('change-products');
-        Route::post('combo/add-product', [ComboController::class, 'addProduct'])->name('add-product');
-
-        // Accessory category
-        Route::group(['prefix' => 'accessory-category'], function () {
-            Route::get('/', [AccessoryCategoryController::class, 'index'])->name('list-accessory-category');
-            Route::get('create', [AccessoryCategoryController::class, 'create'])->name('create-accessory-category');
-            Route::post('store', [AccessoryCategoryController::class, 'store'])->name('store-accessory-category');
-            Route::get('edit/{id}', [AccessoryCategoryController::class, 'edit'])->name('edit-accessory-category');
-            Route::put('update/{id}', [AccessoryCategoryController::class, 'update'])->name('update-accessory-category');
-            Route::get('delete-row', [AccessoryCategoryController::class, 'delete'])->name('delete-accessory-category');
-            Route::get('change-status', [AccessoryCategoryController::class, 'changeStatus'])->name('change-accessory-category-status');
-        });
-
-        // Accessories
-        Route::group(['prefix' => 'accessory'], function () {
-            Route::get('/', [AccessoryController::class, 'index'])->name('list-accessory');
-            Route::get('create', [AccessoryController::class, 'create'])->name('create-accessory');
-            Route::post('store', [AccessoryController::class, 'store'])->name('store-accessory');
-            Route::get('edit/{id}', [AccessoryController::class, 'edit'])->name('edit-accessory');
-            Route::put('update/{id}', [AccessoryController::class, 'update'])->name('update-accessory');
-            Route::get('delete-row', [AccessoryController::class, 'delete'])->name('delete-accessory');
-            Route::get('change-status', [AccessoryController::class, 'changeStatus'])->name('change-accessory-status');
-        });
 
         // News
         Route::group(['prefix' => 'news'], function () {
