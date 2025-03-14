@@ -1,6 +1,32 @@
 @extends('admin.layouts.app')
 
 @section('content')
+<style>
+    .color-item {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        margin-bottom: 10px;
+    }
+
+    .color-preview {
+        width: 24px;
+        /* Chiều rộng */
+        height: 24px;
+        /* Chiều cao */
+        border-radius: 50%;
+        /* Bo tròn thành hình tròn */
+        border: 2px solid #ccc;
+        /* Viền để dễ nhìn */
+        flex-shrink: 0;
+        /* Không cho co lại khi nằm trong flex */
+    }
+
+    .color-select {
+        width: 250px;
+    }
+</style>
+
 <div class="container-fluid">
     <div class="row">
         <div class="col-lg-8 p-r-0 title-margin-right">
@@ -24,29 +50,12 @@
                                 @csrf
                                 @method('post')
 
-                                <!-- Ảnh sản phẩm -->
-                                <div class="row">
-                                    <div class="col-md-8">
-                                        <div class="form-group{{ $errors->has('image') ? ' has-error' : '' }}">
-                                            <label>Ảnh sản phẩm <span class="my-required">*</span></label>
-                                            <input type="file" name="image[]" class="form-control input-default" id="image" multiple>
-                                            @if ($errors->has('image'))
-                                                <span style="color:red;">{{ $errors->first('image') }}</span>
-                                            @endif
-                                        </div>
-                                    </div>
-                                    <!-- <div class="col-md-4 my-preview">
-                                        <img id="preview-image-before-upload" src="{{ asset('images/no-image-available.png') }}"
-                                            alt="preview image" style="max-height: 250px;">
-                                    </div> -->
-                                </div>
-
                                 <!-- Tên sản phẩm -->
                                 <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                                     <label>Tên sản phẩm <span class="my-required">*</span></label>
                                     <input type="text" name="name" value="{{ old('name') }}" class="form-control" id="inputName" maxlength="255">
                                     @if ($errors->has('name'))
-                                        <span style="color:red;">{{ $errors->first('name') }}</span>
+                                    <span style="color:red;">{{ $errors->first('name') }}</span>
                                     @endif
                                 </div>
 
@@ -55,118 +64,99 @@
                                     <label>Slug <span class="my-required">*</span></label>
                                     <input type="text" name="slug" value="{{ old('slug') }}" class="form-control" id="inputSlug" readonly>
                                     @if ($errors->has('slug'))
-                                        <span style="color:red;">{{ $errors->first('slug') }}</span>
-                                    @endif
-                                </div>
-                                
-                                <!-- Loại rượu vang -->
-                                <div class="form-group{{ $errors->has('type_id') ? ' has-error' : '' }}">
-                                    <label>Chọn loại rượu vang <span class="my-required">*</span></label>
-                                    <select class="form-control w-30" name="type_id" value="{{ old('type_id') }}" id="selectType">
-                                        <option></option>
-                                        @foreach ($activedTypes as $item)
-                                            <option value="{{$item->id}}" {{ old('type_id') == $item->id ? 'selected' : '' }}>{{$item->name}}</option>
-                                        @endforeach
-                                    </select>
-                                    @if ($errors->has('type_id'))
-                                        <span style="color:red;">{{ $errors->first('type_id') }}</span>
-                                    @endif
-                                </div>
-                                
-                                <!-- Quốc gia -->
-                                <div class="form-group{{ $errors->has('country_id') ? ' has-error' : '' }}">
-                                    <label>Chọn quốc gia <span class="my-required">*</span></label>
-                                    <select class="form-control w-30" name="country_id" value="{{ old('country_id') }}" id="selectCountry">
-                                        <option></option>
-                                        @foreach ($activedCountries as $item)
-                                            <option value="{{$item->id}}" {{ old('country_id') == $item->id ? 'selected' : '' }}>{{$item->name}}</option>
-                                        @endforeach
-                                    </select>
-                                    @if ($errors->has('country_id'))
-                                        <span style="color:red;">{{ $errors->first('country_id') }}</span>
-                                    @endif
-                                </div>
-                                
-                                <!-- Vùng trồng nho -->
-                                <div class="form-group{{ $errors->has('region_id') ? ' has-error' : '' }}">
-                                    <label>Chọn vùng trồng nho <span class="my-required">*</span></label>
-                                    <select class="form-control w-30" name="region_id" value="{{ old('region_id') }}" id="selectRegion">
-                                        <option></option>
-                                    </select>
-                                    @if ($errors->has('region_id'))
-                                        <span style="color:red;">{{ $errors->first('region_id') }}</span>
-                                    @endif
-                                </div>
-                                
-                                <!-- Giống nho -->
-                                <div class="form-group{{ $errors->has('grape_id') ? ' has-error' : '' }}">
-                                    <label>Chọn giống nho <span class="my-required">*</span></label>
-                                    <select class="form-control w-30" name="grape_id" value="{{ old('grape_id') }}" id="selectGrape">
-                                        <option></option>
-                                        @foreach ($activedGrapes as $item)
-                                            <option value="{{$item->id}}" {{ old('grape_id') == $item->id ? 'selected' : '' }}>{{$item->name}}</option>
-                                        @endforeach
-                                    </select>
-                                    @if ($errors->has('grape_id'))
-                                        <span style="color:red;">{{ $errors->first('grape_id') }}</span>
+                                    <span style="color:red;">{{ $errors->first('slug') }}</span>
                                     @endif
                                 </div>
 
-                                <!-- Số lượng -->
-                                <div class="form-group{{ $errors->has('quantity') ? ' has-error' : '' }}">
-                                    <label>Số lượng <span class="my-required">*</span></label>
-                                    <input type="text" name="quantity" value="{{ old('quantity') }}" class="form-control" maxlength="255">
-                                    @if ($errors->has('quantity'))
-                                        <span style="color:red;">{{ $errors->first('quantity') }}</span>
+                                <div class="form-group{{ $errors->has('colors') ? ' has-error' : '' }}">
+                                    <label>Chọn màu sắc và tải ảnh đại diện <span class="my-required">*</span></label>
+
+                                    <div id="color-container">
+                                        @php
+                                        $oldColors = collect(old('colors', []))->filter();
+                                        $totalColors = max($oldColors->count(), 1);
+                                        @endphp
+
+                                        @foreach ($oldColors as $index => $colorId)
+                                        @php
+                                        $selectedColor = $colors->firstWhere('id', $colorId);
+                                        @endphp
+                                        <div class="color-item">
+                                            <div class="color-preview" id="color-preview-{{ $index }}" style="background-color: {{ $selectedColor->code ?? 'transparent' }};"></div>
+
+                                            <select class="form-control color-select" name="colors[{{ $index }}]" onchange="updateColorPreview(this, {{ $index }})">
+                                                <option value="">Chọn màu</option>
+                                                @foreach ($colors as $color)
+                                                <option value="{{ $color->id }}" data-color="{{ $color->code }}"
+                                                    {{ $color->id == $colorId ? 'selected' : '' }}>
+                                                    {{ $color->name }}
+                                                </option>
+                                                @endforeach
+                                            </select>
+
+                                            <input type="file" class="form-control" name="images[{{ $index }}]" accept="image/*">
+                                            <button type="button" class="btn btn-danger" onclick="removeColor(this)">Xóa</button>
+                                        </div>
+                                        @endforeach
+
+                                        @if ($oldColors->isEmpty())
+                                        <!-- Nếu không có màu cũ, hiển thị 1 dòng trống -->
+                                        <div class="color-item">
+                                            <div class="color-preview" id="color-preview-0"></div>
+
+                                            <select class="form-control color-select" name="colors[0]" onchange="updateColorPreview(this, 0)">
+                                                <option value="">Chọn màu</option>
+                                                @foreach ($colors as $color)
+                                                <option value="{{ $color->id }}" data-color="{{ $color->code }}">
+                                                    {{ $color->name }}
+                                                </option>
+                                                @endforeach
+                                            </select>
+
+                                            <input type="file" class="form-control" name="images[0]" accept="image/*">
+                                            <button type="button" class="btn btn-danger" onclick="removeColor(this)">Xóa</button>
+                                        </div>
+                                        @endif
+                                    </div>
+
+                                    @if ($errors->has('colors'))
+                                    <span style="color:red;">{{ $errors->first('colors') }}</span>
+                                    @endif
+
+                                    <button type="button" class="btn btn-primary mt-2" onclick="addColor()">Thêm màu</button>
+                                </div>
+
+                                <div class="form-group{{ $errors->has('category_id') ? ' has-error' : '' }}">
+                                    <label>Chọn danh mục <span class="my-required">*</span></label>
+                                    <select class="form-control w-30" name="category_id" value="{{ old('category_id') }}" id="selectType">
+                                        <option></option>
+                                        @foreach ($productCategories as $item)
+                                        <option value="{{$item->id}}" {{ old('category_id') == $item->id ? 'selected' : '' }}>{{$item->name}}</option>
+                                        @endforeach
+                                    </select>
+                                    @if ($errors->has('category_id'))
+                                    <span style="color:red;">{{ $errors->first('category_id') }}</span>
                                     @endif
                                 </div>
 
-                                <!-- Đơn giá -->
+                                <div class="form-group{{ $errors->has('brand_id') ? ' has-error' : '' }}">
+                                    <label>Chọn thương hiệu <span class="my-required">*</span></label>
+                                    <select class="form-control w-30" name="brand_id" value="{{ old('brand_id') }}" id="selectCountry">
+                                        <option></option>
+                                        @foreach ($brands as $item)
+                                        <option value="{{$item->id}}" {{ old('brand_id') == $item->id ? 'selected' : '' }}>{{$item->name}}</option>
+                                        @endforeach
+                                    </select>
+                                    @if ($errors->has('brand_id'))
+                                    <span style="color:red;">{{ $errors->first('brand_id') }}</span>
+                                    @endif
+                                </div>
+
                                 <div class="form-group{{ $errors->has('price') ? ' has-error' : '' }}">
                                     <label>Đơn giá <span class="my-required">*</span></label>
                                     <input type="text" name="price" value="{{ old('price') }}" class="form-control" maxlength="255">
                                     @if ($errors->has('price'))
-                                        <span style="color:red;">{{ $errors->first('price') }}</span>
-                                    @endif
-                                </div>
-
-                                <!-- Giảm giá -->
-                                <input type="hidden" name="is_discount" value="0">
-                                <div class="form-group{{ $errors->has('is_discount') ? ' has-error' : '' }}">
-                                    <label class="css-control css-control-primary css-checkbox" for="">
-                                        <input type="checkbox" name="is_discount" class="css-control-input" value="1"
-                                            @if(old('is_discount') == 1)
-                                                checked
-                                            @endif
-                                        >
-                                        <span class="css-control-indicator"></span> Giảm giá?
-                                    </label>
-                                </div>
-
-                                <!-- Giá khuyến mãi -->
-                                <div class="form-group{{ $errors->has('discount_value') ? ' has-error' : '' }}">
-                                    <label>Giá khuyến mãi</label>
-                                    <input type="text" name="discount_value" value="{{ old('discount_value') }}" class="form-control" maxlength="255">
-                                    @if ($errors->has('discount_value'))
-                                        <span style="color:red;">{{ $errors->first('discount_value') }}</span>
-                                    @endif
-                                </div>
-
-                                <!-- Độ cồn -->
-                                <div class="form-group{{ $errors->has('alcohol') ? ' has-error' : '' }}">
-                                    <label>Độ cồn</label>
-                                    <input type="text" name="alcohol" value="{{ old('alcohol') }}" class="form-control" maxlength="255">
-                                    @if ($errors->has('alcohol'))
-                                        <span style="color:red;">{{ $errors->first('alcohol') }}</span>
-                                    @endif
-                                </div>
-
-                                <!-- Dung tích -->
-                                <div class="form-group{{ $errors->has('capacity') ? ' has-error' : '' }}">
-                                    <label>Dung tích</label>
-                                    <input type="text" name="capacity" value="{{ old('capacity') }}" class="form-control" maxlength="255">
-                                    @if ($errors->has('capacity'))
-                                        <span style="color:red;">{{ $errors->first('capacity') }}</span>
+                                    <span style="color:red;">{{ $errors->first('price') }}</span>
                                     @endif
                                 </div>
 
@@ -181,21 +171,8 @@
                                     <label for="content" class="form-label">Nội dung</label>
                                     <textarea name="content" class="form-control" id="txtareaContent">{{ old('content') }}</textarea>
                                     @if ($errors->has('content'))
-                                        <span style="color:red;">{{ $errors->first('content') }}</span>
+                                    <span style="color:red;">{{ $errors->first('content') }}</span>
                                     @endif
-                                </div>
-
-                                <!-- Sản phẩm mới -->
-                                <input type="hidden" name="is_new" value="0">
-                                <div class="form-group{{ $errors->has('is_new') ? ' has-error' : '' }}">
-                                    <label class="css-control css-control-primary css-checkbox" for="">
-                                        <input type="checkbox" name="is_new" class="css-control-input" value="1"
-                                            @if(old('is_new') == 1)
-                                                checked
-                                            @endif
-                                        >
-                                        <span class="css-control-indicator"></span> Sản phẩm mới?
-                                    </label>
                                 </div>
 
                                 <!-- Sản phẩm nổi bật -->
@@ -203,24 +180,10 @@
                                 <div class="form-group{{ $errors->has('is_highlight') ? ' has-error' : '' }}">
                                     <label class="css-control css-control-primary css-checkbox" for="">
                                         <input type="checkbox" name="is_highlight" class="css-control-input" value="1"
-                                            @if(old('is_highlight') == 1)
-                                                checked
-                                            @endif
-                                        >
+                                            @if(old('is_highlight')==1)
+                                            checked
+                                            @endif>
                                         <span class="css-control-indicator"></span> Sản phẩm nổi bật?
-                                    </label>
-                                </div>
-
-                                <!-- Sản phẩm bán chạy -->
-                                <input type="hidden" name="is_hot" value="0">
-                                <div class="form-group{{ $errors->has('is_hot') ? ' has-error' : '' }}">
-                                    <label class="css-control css-control-primary css-checkbox" for="">
-                                        <input type="checkbox" name="is_hot" class="css-control-input" value="1"
-                                            @if(old('is_hot') == 1)
-                                                checked
-                                            @endif
-                                        >
-                                        <span class="css-control-indicator"></span> Sản phẩm bán chạy?
                                     </label>
                                 </div>
 
@@ -229,14 +192,13 @@
                                 <div class="form-group{{ $errors->has('is_active') ? ' has-error' : '' }}">
                                     <label class="css-control css-control-primary css-checkbox" for="">
                                         <input type="checkbox" name="is_active" class="css-control-input" value="1" checked
-                                            @if(old('is_active') == 1)
-                                                checked
-                                            @endif
-                                        >
+                                            @if(old('is_active')==1)
+                                            checked
+                                            @endif>
                                         <span class="css-control-indicator"></span> Kích hoạt?
                                     </label>
                                 </div>
-                                
+
                                 <a type="button" href="{{ route('list-product') }}" class="btn btn-default btn-outline"><i class="ti-back-left icon-black"></i>&nbsp;&nbsp;Quay lại</a>
                                 <button type="submit" class="btn btn-primary"><i class="ti-save icon-white"></i>&nbsp;&nbsp;Lưu</button>
                             </form>
@@ -250,8 +212,76 @@
 </div>
 <script src="{{ asset('admin/tinymce/tinymce.min.js') }}"></script>
 <script type="text/javascript">
-    
     let url = window.location.origin;
+
+    let colorIndex = document.querySelectorAll('.color-item').length;
+
+    // Thêm màu mới
+    function addColor() {
+        const container = document.getElementById('color-container');
+
+        const newColorHtml = `
+        <div class="color-item">
+            <div class="color-preview" id="color-preview-${colorIndex}"></div>
+
+            <select class="form-control color-select" name="colors[${colorIndex}]" onchange="updateColorPreview(this, ${colorIndex})">
+                <option value="">Chọn màu</option>
+                @foreach ($colors as $color)
+                    <option value="{{ $color->id }}" data-color="{{ $color->code }}">
+                        {{ $color->name }}
+                    </option>
+                @endforeach
+            </select>
+
+            <input type="file" class="form-control" name="images[${colorIndex}]" accept="image/*">
+            <button type="button" class="btn btn-danger" onclick="removeColor(this)">Xóa</button>
+        </div>
+    `;
+
+        container.insertAdjacentHTML('beforeend', newColorHtml);
+        colorIndex++;
+        removeSelectedColors();
+    }
+
+    // Cập nhật màu preview
+    function updateColorPreview(select, index) {
+        const selectedOption = select.options[select.selectedIndex];
+        const colorCode = selectedOption.getAttribute('data-color');
+        const preview = document.getElementById(`color-preview-${index}`);
+        preview.style.backgroundColor = colorCode || 'transparent';
+
+        removeSelectedColors();
+    }
+
+    // Xóa dòng màu
+    function removeColor(button) {
+        button.closest('.color-item').remove();
+        removeSelectedColors();
+    }
+
+    // Loại bỏ màu đã chọn khỏi các dropdown khác
+    function removeSelectedColors() {
+        const selectedColors = new Set();
+
+        // Lấy tất cả các màu đã chọn
+        document.querySelectorAll('.color-select').forEach(select => {
+            if (select.value) {
+                selectedColors.add(select.value);
+            }
+        });
+
+        // Ẩn những màu đã chọn trong các dropdown khác
+        document.querySelectorAll('.color-select').forEach(select => {
+            Array.from(select.options).forEach(option => {
+                option.style.display = selectedColors.has(option.value) && option.value !== select.value ? 'none' : '';
+            });
+        });
+    }
+
+    // Chạy ngay khi trang load để loại bỏ màu trùng sau validate lỗi
+    window.onload = () => {
+        removeSelectedColors();
+    };
 
     tinymce.init({
         selector: 'textarea#txtareaContent',
@@ -261,11 +291,11 @@
             'table'
         ],
 
-        image_title : true,
+        image_title: true,
         automatic_uploads: true,
         // images_upload_url : '/bw-admin/upload/post-tinymce-image',
         file_picker_types: 'image',
-        images_upload_handler: function (blobInfo, success, failure) {
+        images_upload_handler: function(blobInfo, success, failure) {
             var xhr, formData;
             xhr = new XMLHttpRequest();
             xhr.withCredentials = false;
@@ -291,69 +321,24 @@
             xhr.send(formData);
         },
         toolbar: 'undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | ' +
-        'bullist numlist outdent indent | link image | print preview media fullpage | ' +
-        'forecolor backcolor emoticons | help | codesample',
+            'bullist numlist outdent indent | link image | print preview media fullpage | ' +
+            'forecolor backcolor emoticons | help | codesample',
         menu: {
-            favs: {title: 'My Favorites', items: 'code visualaid | searchreplace | spellchecker | emoticons'}
+            favs: {
+                title: 'My Favorites',
+                items: 'code visualaid | searchreplace | spellchecker | emoticons'
+            }
         },
         menubar: 'favs file edit view insert format tools table help'
     });
 
-    $('#image').change(function(){
-        let reader = new FileReader();
-        reader.onload = (e) => { 
-            $('#preview-image-before-upload').attr('src', e.target.result); 
-        }
-        reader.readAsDataURL(this.files[0]); 
-    });
-
-    $('#selectRegion').attr('disabled', true);
-
-    $('#inputName').change(function (){
+    $('#inputName').change(function() {
         let slug = to_slug($('#inputName').val());
         $('#inputSlug').val(slug);
     });
-    $('#inputName').focusout(function (){
+    $('#inputName').focusout(function() {
         let slug = to_slug($('#inputName').val());
         $('#inputSlug').val(slug);
     });
-
-    // Bind options into Region
-    let initCountryId = $('#selectCountry').val();
-    ajaxGetRegionByCountry(initCountryId);
-
-    $('#selectCountry').change(function (){
-        let countryId = $(this).val();
-        ajaxGetRegionByCountry(countryId);
-    });
-
-    function ajaxGetRegionByCountry(countryId) {
-        if (countryId != '') {
-            $.ajax({
-                url: url + '/bw-admin/region/get-by-country',
-                method: 'GET',
-                data: {
-                    countryId: countryId
-                },
-                success: function (res) {
-                    let data = res.data;
-                    let old = "{{ old('region_id') }}";
-                    $('#selectRegion').attr('disabled', false);
-                    $('#selectRegion').html('<option></option>');
-                    $.each(data, function(key, value){
-                        if (old == key) {
-                            $('#selectRegion').append('<option value="' + key + '" selected>' + value + '</option>');
-                        } else {
-                            $('#selectRegion').append('<option value="' + key + '" >' + value + '</option>');
-                        }
-                    });
-                },
-                error: function (error) {}
-            });
-        } else {
-            $('#selectRegion').attr('disabled', true);
-            $('#selectRegion').html('<option></option>');
-        }
-    }
 </script>
 @endsection

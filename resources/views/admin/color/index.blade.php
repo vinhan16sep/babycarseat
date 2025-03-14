@@ -28,8 +28,9 @@
                                 <thead>
                                     <tr>
                                         <th class="w-10">STT</th>
-                                        <th class="w-50">Tên</th>
-                                        <th class="w-50">Code</th>
+                                        <th class="w-20">Tên</th>
+                                        <th class="w-20">Code</th>
+                                        <th class="w-20">Màu sắc</th>
                                         <th class="w-20">Hành động</th>
                                     </tr>
                                 </thead>
@@ -39,6 +40,7 @@
                                             <th scope="row">{{ $key + 1}}</th>
                                             <td>{{ $item->name}}</td>
                                             <td>{{ $item->code}}</td>
+                                            <td><div style="background-color: <?php echo $item->code ?>;width: 20px;height: 20px;border-radius: 50%;"></div></td>
                                             <td class="color-primary">
                                                 <a type="button" href="{{ route('edit-color', ['id' => $item->id]) }}" class="btn btn-primary btn-flat my-list-btn"><i class="ti-pencil icon-white"></i></a>
                                                 <button type="button" class="btn btn-danger btn-flat m-l-5 my-list-btn" onclick="deleteRow('{{ $item->id }}', '/color/delete-row')"><i class="ti-trash"></i></button>

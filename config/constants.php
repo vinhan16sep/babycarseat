@@ -23,6 +23,8 @@ return [
         'CANNOT_DELETE_IN_USING' => 'Không thể xóa do đang được sử dụng cho dữ liệu khác!',
         'CANNOT_DEACTIVE_IN_USING' => 'Không thể tắt do đang được sử dụng cho dữ liệu khác!',
         'CHANGE_STATUS_SUCCEEDED' => 'Đổi trạng thái thành công!',
+        'PRODUCT_COLOR_UPLOAD_ERROR' => 'Upload ảnh không thành công!',
+        'PRODUCT_COLOR_SAVE_ERROR' => 'Lưu ảnh sản phẩm vào CSDL không thành công!',
     ]
 
 ];

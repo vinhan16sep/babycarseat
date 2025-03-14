@@ -33,7 +33,7 @@ class NoteController extends AdminController
 
         $model = new Note();
         $model->name = $request->input('name');
-        $model->slug = $request->input('icon');
+        $model->icon = $request->input('icon');
         if ($model->save()) {
             return redirect()->route('list-note')->with('success', Config::get('constants.MESSAGE.CREATE_SUCCEEDED'));
         }
@@ -65,7 +65,7 @@ class NoteController extends AdminController
         $this->validateUpdate($request, $id);
 
         $object->name = $request->input('name');
-        $object->slug = $request->input('icon');
+        $object->icon = $request->input('icon');
 
         if ($object->save()) {
             return redirect()->route('edit-note', ['id' => $id])->with('success', Config::get('constants.MESSAGE.UPDATE_SUCCEEDED'));
