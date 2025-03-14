@@ -33,7 +33,7 @@ class ColorController extends AdminController
 
         $model = new Color();
         $model->name = $request->input('name');
-        $model->slug = $request->input('code');
+        $model->code = $request->input('code');
         if ($model->save()) {
             return redirect()->route('list-color')->with('success', Config::get('constants.MESSAGE.CREATE_SUCCEEDED'));
         }
@@ -65,7 +65,7 @@ class ColorController extends AdminController
         $this->validateUpdate($request, $id);
 
         $object->name = $request->input('name');
-        $object->slug = $request->input('code');
+        $object->code = $request->input('code');
 
         if ($object->save()) {
             return redirect()->route('edit-color', ['id' => $id])->with('success', Config::get('constants.MESSAGE.UPDATE_SUCCEEDED'));
@@ -111,7 +111,7 @@ class ColorController extends AdminController
     private function validateUpdate($request, $id) {
         $this->validate($request, [
             'name' => 'required|max:255',
-            'slug' => 'required|max:255',
+            'code' => 'required|max:255',
         ], [
             'name.required' => 'Chưa nhập tên',
             'code.required' => 'Chưa nhập code',

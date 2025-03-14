@@ -28,8 +28,8 @@
                                 <thead>
                                     <tr>
                                         <th class="w-10">STT</th>
-                                        <th class="w-50">Tên</th>
-                                        <th class="w-50">Icon</th>
+                                        <th class="w-10">Icon</th>
+                                        <th class="w-30">Tên</th>
                                         <th class="w-20">Hành động</th>
                                     </tr>
                                 </thead>
@@ -37,8 +37,8 @@
                                     @foreach ($list as $key => $item)
                                         <tr>
                                             <th scope="row">{{ $key + 1}}</th>
-                                            <td>{{ $item->name}}</td>
                                             <td>{{ $item->icon}}</td>
+                                            <td>{{ $item->name}}</td>
                                             <td class="note-primary">
                                                 <a type="button" href="{{ route('edit-note', ['id' => $item->id]) }}" class="btn btn-primary btn-flat my-list-btn"><i class="ti-pencil icon-white"></i></a>
                                                 <button type="button" class="btn btn-danger btn-flat m-l-5 my-list-btn" onclick="deleteRow('{{ $item->id }}', '/note/delete-row')"><i class="ti-trash"></i></button>

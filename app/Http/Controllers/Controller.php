@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Information;
+use App\Models\ProductCategory;
+use App\Models\Brand;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -23,10 +25,20 @@ class Controller extends BaseController
      * @return void
      */
     public function __construct() {
+        $this->productCategories = $this->getProductCategory();
+        $this->brands = $this->getBrand();
         $this->contactInformations = $this->getContactInformations();
         $this->ver = Config::get('site_settings.assets_ver');
         View::share('contactInformations', $this->contactInformations);
         View::share('ver', $this->ver);
+    }
+
+    protected function getProductCategory() {
+        return ProductCategory::get();
+    }
+
+    protected function getBrand() {
+        return Brand::get();
     }
 
     protected function getContactInformations() {

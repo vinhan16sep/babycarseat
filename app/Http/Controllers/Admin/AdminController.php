@@ -34,6 +34,18 @@ class AdminController extends Controller
         $this->appUrl = $protocol . $server . $port;
     }
 
+    protected function uploadColorImage($path, $img) {
+        if (!Storage::exists($path)) {
+            Storage::makeDirectory($path);
+        }
+        $upload = '';
+        $name = time() . str_pad(rand(1,1000000), 6, '0', STR_PAD_LEFT) . '.' . $img->extension();
+        $img->storeAs($path, $name);
+        // $upload = str_replace('public/', 'storage/', $path) . $name;  
+        $upload = 'storage/' . $path . $name;
+        return $upload;
+    }
+
     protected function uploadImage($path, $request) {
         if (!Storage::exists($path)) {
             Storage::makeDirectory($path);

@@ -4552,3 +4552,7 @@ h6.h1 {
 .my-textarea {
   height: 200px !important;
 }
+
+.table .my-table .center {
+  text-align: center !important;
+}
