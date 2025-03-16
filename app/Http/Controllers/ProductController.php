@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Brand;
+use App\Models\Color;
 use App\Models\Country;
 use App\Models\Grape;
 use App\Models\Product;
+use App\Models\ProductCategory;
+use App\Models\ProductColor;
 use App\Models\Region;
 use App\Models\Type;
 use Illuminate\Http\Request;
@@ -108,8 +112,83 @@ class ProductController extends Controller
         ]);
     }
 
-    public function list(Request $request, $country = null) {
-        return view('product-list');
+    public function list(Request $request, $category_slug = null) {
+
+        $categories = ProductCategory::query()->withCount(['products' => function($query) {
+            $query->where("products.is_active", 1);
+        }])->get();
+
+        $brands = Brand::query()->withCount(['products' => function($query) {
+            $query->where("products.is_active", 1);
+        }])->get();
+
+        $colors = Color::query()->get();
+
+        $productPriceMax = Product::query()->orderBy("price", "desc")->first();
+        $maxPrice = self::DEFAULT_MAX_PRICE;
+        if ($productPriceMax !== null) {
+            if($productPriceMax->price) {
+                $maxPrice = ceil((int)$productPriceMax->price/self::STEP_PRICE) * self::STEP_PRICE;
+            }
+        }
+
+        $filter_category = $request->get("category_id");
+        $filter_brands = array_keys( $request->get("brand_ids", []) );
+        $filter_color = $request->get("color");
+        $filter_min_price = str_replace(",","", $request->get("min_price"));
+        $filter_max_price = str_replace(",","", $request->get("max_price"));
+
+        $query = Product::query()->where("is_active", 1);
+
+        // Category
+        if (!empty($filter_category)) {
+            $query->where('category_id', $filter_category);
+        }
+
+        // Brands
+        if (!empty($filter_brands)) {
+            $query->whereIn('brand_id', $filter_brands);
+        }
+
+        // Color
+        if (!empty($filter_color)) {
+            $query->whereHas('productColors', function($query) use($filter_color) {
+                $query->where('color_id', $filter_color);
+            });
+        }
+
+        //Khoảng giá
+        if (is_numeric($filter_min_price) && is_numeric($filter_max_price)) {
+            $query->where(function($query) use($filter_min_price, $filter_max_price){
+                $query->where(function($query) use($filter_min_price, $filter_max_price){
+                    $query->where("is_discount", 0)->whereBetween("price", [$filter_min_price, $filter_max_price]);
+                });
+                $query->orWhere(function($query) use($filter_min_price, $filter_max_price){
+                    $query->where("is_discount", 1)->whereBetween("discount_value", [$filter_min_price, $filter_max_price]);
+                });
+            });
+        }
+
+        //Sắp xếp
+        $orderBy = $request->orderBy ?? 'date';
+        if (isset(self::SORTS[$orderBy])) {
+            $query->orderBy(self::SORTS[$orderBy]["column"], self::SORTS[$orderBy]["sort"]);
+        }
+
+        $products = $query->with(["productColors"])->paginate(12)->withQueryString();
+        if ($category_slug) {
+            $category = ProductCategory::query()->where('slug', $category_slug)->first();
+        }
+
+        return view('product-list', [
+            "products" => $products,
+            "colors" => $colors,
+            "categories" => $categories,
+            "brands" => $brands,
+            "category" => $category ?? null,
+            "sorts" => self::SORTS,
+            "product_price_max" => $maxPrice ?? self::DEFAULT_MAX_PRICE,
+        ]);
 
 
 
