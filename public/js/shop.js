@@ -2,7 +2,7 @@
 /**
   * Range Two Price
   * Filter Products
-  * Filter Sort 
+  * Filter Sort
   * Switch Layout
   * Handle Sidebar Filter
   * Handle Dropdown Filter
@@ -69,32 +69,39 @@
       filters.minPrice = parseInt(values[0]);
       filters.maxPrice = parseInt(values[1]);
 
-      $("#price-min-value").text(filters.minPrice);
-      $("#price-max-value").text(filters.maxPrice);
+      $("#price-min-value").html(`<input type="hidden" name="min_price" value="${filters.minPrice}" />${filters.minPrice}`);
+      $("#price-max-value").html(`<input type="hidden" name="max_price" value="${filters.maxPrice}" />${filters.maxPrice}`);
 
-      applyFilters();
-      updateMetaFilter();
+      // applyFilters();
+      // updateMetaFilter();
     });
 
     $(".size-check").click(function () {
       filters.size = $(this).hasClass("free-size")
         ? null
         : $(this).text().trim();
-      applyFilters();
-      updateMetaFilter();
+      // applyFilters();
+      // updateMetaFilter();
     });
 
     $(".color-check").click(function () {
       filters.color = $(this).text().trim();
-      applyFilters();
-      updateMetaFilter();
+      // applyFilters();
+      // updateMetaFilter();
+        if ($(this).find('input[type=radio]').prop('checked')) {
+            $(this).find('input[type=radio]').prop('checked', false);
+            $(this).addClass("not-active");
+        } else {
+            $(this).find('input[type=radio]').prop('checked', true);
+            $(this).removeClass("not-active");
+        }
     });
 
     $('input[name="availability"]').change(function () {
       filters.availability =
         $(this).attr("id") === "inStock" ? "In stock" : "Out of stock";
-      applyFilters();
-      updateMetaFilter();
+      // applyFilters();
+      // updateMetaFilter();
     });
 
     $('input[name="brand"]').change(function () {
@@ -107,15 +114,15 @@
       } else {
         filters.brands = filters.brands.filter((brand) => brand.id !== brandId);
       }
-      applyFilters();
-      updateMetaFilter();
+      // applyFilters();
+      // updateMetaFilter();
     });
 
     $(".shop-sale-text").click(function () {
       filters.sale = !filters.sale;
       $(this).toggleClass("active", filters.sale);
-      applyFilters();
-      updateMetaFilter();
+      // applyFilters();
+      // updateMetaFilter();
     });
 
     function updateMetaFilter() {
@@ -208,8 +215,8 @@
         $(".shop-sale-text").removeClass("active");
       }
 
-      applyFilters();
-      updateMetaFilter();
+      // applyFilters();
+      // updateMetaFilter();
     });
 
     $("#remove-all,#reset-filter").click(function () {
@@ -227,8 +234,8 @@
       $(".size-check, .color-check").removeClass("active");
       priceSlider.noUiSlider.set([minPrice, maxPrice]);
 
-      applyFilters();
-      updateMetaFilter();
+      // applyFilters();
+      // updateMetaFilter();
     });
 
     function applyFilters() {
@@ -300,11 +307,11 @@
         `<span class="count">${visibleProductCountList}</span> Products Found`
       );
       updateLastVisibleItem();
-      if (visibleProductCountGrid >= 12 || visibleProductCountList >= 12) {
-        $(".wg-pagination,.tf-loading").show();
-      } else {
-        $(".wg-pagination,.tf-loading").hide();
-      }
+      // if (visibleProductCountGrid >= 12 || visibleProductCountList >= 12) {
+      //   $(".wg-pagination,.tf-loading").show();
+      // } else {
+      //   $(".wg-pagination,.tf-loading").hide();
+      // }
     }
 
     function updateLastVisibleItem() {
@@ -319,7 +326,7 @@
   };
 
   /* Filter Sort
-  -------------------------------------------------------------------------------------*/  
+  -------------------------------------------------------------------------------------*/
   var filterSort = function () {
     let isListActive = $(".sw-layout-list").hasClass("active");
     let originalProductsList = $("#listLayout .card-product").clone();
@@ -332,8 +339,10 @@
       $(".select-item").removeClass("active");
       $(this).addClass("active");
       $(".text-sort-value").text($(this).find(".text-value-item").text());
+      $('input[name=orderBy]').val(sortValue);
+      $('#form-filter').submit();
 
-      applyFilter(sortValue, isListActive);
+      // applyFilter(sortValue, isListActive);
     });
 
     $(".tf-view-layout-switch").on("click", function () {
@@ -366,7 +375,7 @@
           $("#gridLayout").empty().append(originalProductsGrid.clone());
         }
         bindProductEvents();
-        displayPagination(products, isListActive);
+        // displayPagination(products, isListActive);
         return;
       }
 
@@ -398,7 +407,7 @@
         $("#gridLayout").empty().append(products);
       }
       bindProductEvents();
-      displayPagination(products, isListActive);
+      // displayPagination(products, isListActive);
     }
 
     function displayPagination(products, isListActive) {
@@ -444,8 +453,8 @@
     bindProductEvents();
   };
 
-  /* Switch Layout 
-  -------------------------------------------------------------------------------------*/   
+  /* Switch Layout
+  -------------------------------------------------------------------------------------*/
   var swLayoutShop = function () {
     let isListActive = $(".sw-layout-list").hasClass("active");
     let userSelectedLayout = null;
@@ -576,8 +585,8 @@
     });
   };
 
-  /* Handle Sidebar Filter 
-  -------------------------------------------------------------------------------------*/ 
+  /* Handle Sidebar Filter
+  -------------------------------------------------------------------------------------*/
   var handleSidebarFilter = function () {
     $(".filterShop").click(function () {
       if ($(window).width() <= 1200) {
@@ -589,8 +598,8 @@
     });
   };
 
-  /* Handle Dropdown Filter 
-  -------------------------------------------------------------------------------------*/   
+  /* Handle Dropdown Filter
+  -------------------------------------------------------------------------------------*/
   var handleDropdownFilter = function () {
     if (".wrapper-filter-dropdown".length > 0) {
       $(".filterDropdown").click(function (event) {

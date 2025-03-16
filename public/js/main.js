@@ -2,16 +2,16 @@
 
   * Select Image
   * Button Quantity
-  * Delete File  
+  * Delete File
   * Go Top
   * Variant Picker
-  * Color Swatch 
+  * Color Swatch
   * Change Value
   * Range Size
   * Sidebar Mobile
   * Tab
-  * Check Active 
-  * Check Payment Card 
+  * Check Active
+  * Check Payment Card
   * Button Loading
   * Infinite Scroll
   * Stagger Wrap
@@ -92,7 +92,7 @@
         });
     };
 
-    /* Delete File 
+    /* Delete File
   -------------------------------------------------------------------------------------*/
     var deleteFile = function (e) {
         $(".remove").on("click", function (e) {
@@ -157,7 +157,7 @@
         }
     };
 
-    /* Color Swatch 
+    /* Color Swatch
   -------------------------------------------------------------------------*/
     var swatchColor = function () {
         if ($(".card-product").length > 0) {
@@ -260,7 +260,7 @@
         });
     };
 
-    /* Check Active 
+    /* Check Active
   -------------------------------------------------------------------------*/
     var checkClick = function () {
         $(".size-box,.facet-color-box").on(
@@ -276,7 +276,7 @@
         );
     };
 
-    /* Check Payment Card 
+    /* Check Payment Card
   -------------------------------------------------------------------------*/
     var checkPaymentCard = function () {
         $(".payment-box").on(
@@ -1220,7 +1220,7 @@
             });
         },
     };
-    /* parallaxImage 
+    /* parallaxImage
   -------------------------------------------------------------------------------------*/
     var efectparalax = function () {
         if ($(".effect-paralax").length > 0) {

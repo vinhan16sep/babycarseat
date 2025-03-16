@@ -60,4 +60,16 @@ class Product extends Model
             return [];
         }
     }
+
+    public function getImageForListAttribute() {
+        if (!$this->productColors->isEmpty()) {
+            $image = $this->productColors[0]->image;
+            $imageHover = $this->productColors[1]->image ?? $image;
+        }
+
+        return [
+            'image' => $image ?? null,
+            'image_hover' => $imageHover ?? null,
+        ];
+    }
 }
