@@ -617,7 +617,7 @@
                     productItem.find(".price-on-sale").data("base-price")
                 ) ||
                 parseFloat(
-                    productItem.find(".price-on-sale").text().replace("$", "")
+                    productItem.find(".price-on-sale").text().replace(",", "")
                 );
             var quantityInput = productItem.find(".quantity-product");
 
@@ -627,10 +627,9 @@
                 productItem
                     .find(".price-on-sale")
                     .text(
-                        "$" +
                             newPrice
                                 .toFixed(2)
-                                .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+                                .replace(/\B(?=(\d{3})+(?!\d))/g, ",") + '₫'
                     );
                 updateTotalPrice(newPrice, productItem);
             });
@@ -653,17 +652,16 @@
                 var currentPrice =
                     price ||
                     parseFloat(
-                        scope.find(".price-on-sale").text().replace("$", "")
+                        scope.find(".price-on-sale").text().replace(",", "")
                     );
                 var quantity = parseInt(scope.find(".quantity-product").val());
                 var totalPrice = currentPrice * quantity;
                 scope
                     .find(".total-price")
                     .text(
-                        "$" +
                             totalPrice
                                 .toFixed(2)
-                                .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+                                .replace(/\B(?=(\d{3})+(?!\d))/g, ",") + '₫'
                     );
             }
         });

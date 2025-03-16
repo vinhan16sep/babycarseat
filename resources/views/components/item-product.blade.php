@@ -110,8 +110,8 @@
                 <ul class="list-color-product">
                     @foreach($product->productColors as $color)
                         <li class="list-color-item color-swatch {{ $loop->index === 0 ? 'active' : '' }} line">
-                            <span class="d-none text-capitalize color-filter">{{ $color->name }}</span>
-                            <span class="swatch-value bg-light-green"></span>
+                            <span class="d-none text-capitalize color-filter">{{ $color->color->name }}</span>
+                            <span class="swatch-value bg-light-green" style="background-color: {{ $color->color->code }}!important"></span>
                             <img class="lazyload" data-src="{{ getImage($color->image) }}" src="{{ getImage($color->image) }}" alt="{{ $product->name }}">
                         </li>
                     @endforeach
