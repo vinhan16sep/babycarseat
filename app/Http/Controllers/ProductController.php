@@ -62,12 +62,6 @@ class ProductController extends Controller
      */
     public function show($slug)
     {
-        return view('product-show');
-
-
-
-
-
         $product = Product::where(["is_active" => 1, "slug" => $slug])->first();
 
         if (!$product) {
@@ -75,40 +69,16 @@ class ProductController extends Controller
         }
 
         $products = Product::query()
-            ->with(["grape:id,name,slug", "type:id,name,slug", "country:id,name,slug", "region:id,name,slug"])
+            ->with(["productColors", "categoryId", "brand"])
             ->where([
-                "is_active" => 1,
-                'grape_id' => $product->grape_id,
-                'type_id' => $product->type_id,
-                'country_id' => $product->country_id
+                "is_active" => 1
             ])
-            ->where("slug", "!=", $slug)->limit(16)->orderByDesc("is_highlight")->get();
-
-        $bestProducts = Product::query()
-            ->with(["grape:id,name,slug", "type:id,name,slug", "country:id,name,slug", "region:id,name,slug"])
-            ->where(["is_active" => 1, 'is_hot' => 1])
-            ->where("slug", "!=", $slug)->limit(5)->orderByDesc("created_at")->get();
-
-        $countries = Country::query()
-            ->where(["is_active" => 1])
-            ->orderByDesc("created_at")->get();
-
-        $types = Type::query()
-            ->where(["is_active" => 1])
-            ->orderByDesc("created_at")->get();
-
-        $grapes = Grape::query()
-            ->where(["is_active" => 1])
-            ->orderByDesc("created_at")->get();
-
+//            ->where("slug", "!=", $slug)
+            ->limit(16)->orderByDesc("is_highlight")->get();
 
         return view('product-show', [
             "product" => $product,
             "products" => $products,
-            "bestProducts" => $bestProducts,
-            "countries" => $countries,
-            "types" => $types,
-            "grapes" => $grapes,
         ]);
     }
 

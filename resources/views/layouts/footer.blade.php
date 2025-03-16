@@ -2359,7 +2359,7 @@
 </div>
 <!-- /compare -->
 
-<!-- quickAdd -->
+<!-- quickAdd: Viet js bind data to html -->
 <div class="modal fade modal-quick-add" id="quickAdd">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
@@ -2375,11 +2375,11 @@
                         <div class="content">
                             <a href="product-detail.html">Ribbed Tank Top</a>
                             <div class="tf-product-info-price">
-                                <h5 class="price-on-sale font-2">$79.99</h5>
-                                <div class="compare-at-price font-2">$98.99</div>
-                                <div class="badges-on-sale text-btn-uppercase">
-                                    -25%
-                                </div>
+                                <h5 class="price-on-sale font-2">79.99₫</h5>
+{{--                                <div class="compare-at-price font-2">98.99₫</div>--}}
+{{--                                <div class="badges-on-sale text-btn-uppercase">--}}
+{{--                                    -25%--}}
+{{--                                </div>--}}
                             </div>
                         </div>
                     </div>
@@ -2407,29 +2407,31 @@
                                 </label>
                             </div>
                         </div>
-                        <div class="variant-picker-item">
-                            <div class="variant-picker-label">
-                                Size:<span class="text-title variant-picker-label-value">L</span>
-                            </div>
-                            <div class="variant-picker-values gap12">
-                                <input type="radio" name="size3" id="values-s2">
-                                <label class="style-text size-btn" for="values-s2" data-value="S">
-                                    <span class="text-title">S</span>
-                                </label>
-                                <input type="radio" name="size3" id="values-m2">
-                                <label class="style-text size-btn" for="values-m2" data-value="M">
-                                    <span class="text-title">M</span>
-                                </label>
-                                <input type="radio" name="size3" id="values-l2" checked>
-                                <label class="style-text size-btn" for="values-l2" data-value="L">
-                                    <span class="text-title">L</span>
-                                </label>
-                                <input type="radio" name="size3" id="values-xl2">
-                                <label class="style-text size-btn" for="values-xl2" data-value="XL">
-                                    <span class="text-title">XL</span>
-                                </label>
-                            </div>
-                        </div>
+
+{{--                        <div class="variant-picker-item">--}}
+{{--                            <div class="variant-picker-label">--}}
+{{--                                Size:<span class="text-title variant-picker-label-value">L</span>--}}
+{{--                            </div>--}}
+{{--                            <div class="variant-picker-values gap12">--}}
+{{--                                <input type="radio" name="size3" id="values-s2">--}}
+{{--                                <label class="style-text size-btn" for="values-s2" data-value="S">--}}
+{{--                                    <span class="text-title">S</span>--}}
+{{--                                </label>--}}
+{{--                                <input type="radio" name="size3" id="values-m2">--}}
+{{--                                <label class="style-text size-btn" for="values-m2" data-value="M">--}}
+{{--                                    <span class="text-title">M</span>--}}
+{{--                                </label>--}}
+{{--                                <input type="radio" name="size3" id="values-l2" checked>--}}
+{{--                                <label class="style-text size-btn" for="values-l2" data-value="L">--}}
+{{--                                    <span class="text-title">L</span>--}}
+{{--                                </label>--}}
+{{--                                <input type="radio" name="size3" id="values-xl2">--}}
+{{--                                <label class="style-text size-btn" for="values-xl2" data-value="XL">--}}
+{{--                                    <span class="text-title">XL</span>--}}
+{{--                                </label>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+
                         <div class="tf-product-info-quantity">
                             <div class="title mb_12">Quantity:</div>
                             <div class="wg-quantity">
@@ -2441,17 +2443,17 @@
                         <div>
                             <div class="tf-product-info-by-btn mb_10">
                                 <a class="btn-style-2 flex-grow-1 text-btn-uppercase fw-6 show-shopping-cart"><span>Add to cart -&nbsp;</span><span
-                                        class="tf-qty-price total-price">$79.99</span></a>
-                                <a href="#compare" data-bs-toggle="offcanvas" aria-controls="compare"
-                                   class="box-icon hover-tooltip compare btn-icon-action show-compare">
-                                    <span class="icon icon-gitDiff"></span>
-                                    <span class="tooltip text-caption-2">Compare</span>
-                                </a>
-                                <a href="javascript:void(0);"
-                                   class="box-icon hover-tooltip text-caption-2 wishlist btn-icon-action">
-                                    <span class="icon icon-heart"></span>
-                                    <span class="tooltip text-caption-2">Wishlist</span>
-                                </a>
+                                        class="tf-qty-price total-price">79.99₫</span></a>
+{{--                                <a href="#compare" data-bs-toggle="offcanvas" aria-controls="compare"--}}
+{{--                                   class="box-icon hover-tooltip compare btn-icon-action show-compare">--}}
+{{--                                    <span class="icon icon-gitDiff"></span>--}}
+{{--                                    <span class="tooltip text-caption-2">Compare</span>--}}
+{{--                                </a>--}}
+{{--                                <a href="javascript:void(0);"--}}
+{{--                                   class="box-icon hover-tooltip text-caption-2 wishlist btn-icon-action">--}}
+{{--                                    <span class="icon icon-heart"></span>--}}
+{{--                                    <span class="tooltip text-caption-2">Wishlist</span>--}}
+{{--                                </a>--}}
                             </div>
                             <a href="#" class="btn-style-3 text-btn-uppercase">Buy it now</a>
                         </div>

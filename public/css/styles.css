@@ -3,7 +3,7 @@
     * Name: Modave - Multipurpose eCommerce
     * Version: 1.0.2
     * Author: Themesflat
-    * Author URI: http://themesflat.com 
+    * Author URI: http://themesflat.com
 
 	* Abstracts variable
 
@@ -1499,7 +1499,7 @@ a:focus, a:hover {
   background-color: var(--primary);
 }
 
-/* Preload 
+/* Preload
 ------------------------------------------- */
 .preload-wrapper .preload-container {
   display: flex;
@@ -18015,3 +18015,7 @@ ul.list-text.type-number {
 }
 
 /*# sourceMappingURL=styles.css.map */
+
+.variant-picker-item .color-btn.active, .variant-picker-item .color-btn.active .btn-checkbox{
+    border:0px!important;
+}
