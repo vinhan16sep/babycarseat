@@ -111,13 +111,13 @@
 
         image_title : true,
         automatic_uploads: true,
-        // images_upload_url : '/bw-admin/upload/post-tinymce-image',
+        // images_upload_url : '/br-admin/upload/post-tinymce-image',
         file_picker_types: 'image',
         images_upload_handler: function (blobInfo, success, failure) {
             var xhr, formData;
             xhr = new XMLHttpRequest();
             xhr.withCredentials = false;
-            xhr.open('POST', '/bw-admin/upload/post-tinymce-image');
+            xhr.open('POST', '/br-admin/upload/post-tinymce-image');
             var token = '{{ csrf_token() }}';
             xhr.setRequestHeader("X-CSRF-Token", token);
             xhr.onload = function() {

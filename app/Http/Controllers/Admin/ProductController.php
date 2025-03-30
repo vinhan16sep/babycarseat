@@ -18,11 +18,13 @@ class ProductController extends AdminController
      *
      * @return void
      */
-    public function __construct() {
+    public function __construct()
+    {
         parent::__construct();
     }
 
-    public function index(Request $request) {
+    public function index(Request $request)
+    {
 
         $req = $request->all();
 
@@ -71,9 +73,10 @@ class ProductController extends AdminController
         ]);
     }
 
-    public function create() {
+    public function create()
+    {
         $colors = Color::whereNotIn('id', ProductColor::pluck('color_id'))->get();
-        
+
         return view('admin/product/create', [
             'productCategories' => $this->productCategories,
             'brands' => $this->brands,
@@ -81,7 +84,8 @@ class ProductController extends AdminController
         ]);
     }
 
-    public function store(Request $request) {
+    public function store(Request $request)
+    {
         $this->validateStore($request);
 
         DB::beginTransaction();
@@ -106,7 +110,7 @@ class ProductController extends AdminController
                 if ($request->input('colors') && !empty($request->input('colors'))) {
                     $colors = $request->input('colors');
                     foreach ($colors as $key => $color) {
-                        if($request->hasfile('images')) {
+                        if ($request->hasfile('images')) {
                             $images = $request->file('images');
                             if (isset($images[$key]) && !empty($images[$key])) {
                                 $upload = $this->uploadColorImage($path, $images[$key]);
@@ -115,9 +119,8 @@ class ProductController extends AdminController
                                     $pColorModel->product_id = $model->id;
                                     $pColorModel->color_id = $color;
                                     $pColorModel->image = $upload;
-    
-                                    if ($pColorModel->save()) {
 
+                                    if ($pColorModel->save()) {
                                     } else {
                                         DB::rollBack();
                                         return redirect()->route('create-product')->with('error', Config::get('constants.MESSAGE.PRODUCT_COLOR_SAVE_ERROR'));
@@ -135,17 +138,20 @@ class ProductController extends AdminController
             }
             DB::rollBack();
             return redirect()->route('create-product')->with('error', Config::get('constants.MESSAGE.SOMETHING_ERROR'));
-
         } catch (Exception $e) {
             DB::rollBack();
-            return redirect()->route('create-product')->with('error', $e->getMessage()); 
+            return redirect()->route('create-product')->with('error', $e->getMessage());
         }
     }
 
-    public function edit($id) {
-        $object = Product::find($id);
+    public function edit($id)
+    {
+        $object = Product::with('productColors')->findOrFail($id);
         $colors = Color::whereNotIn('id', ProductColor::pluck('color_id'))->get();
-        // If object not found
+
+        $selectedColors = $object->productColors->pluck('color_id')->toArray() ?? [];
+        $colors = Color::whereNotIn('id', ProductColor::whereNotIn('color_id', $selectedColors)->pluck('color_id'))->get();
+
         if ($object == null || $object->count() == 0) {
             return redirect()->route('list-product')->with('error', Config::get('constants.MESSAGE.DATA_NOT_FOUND'));
         }
@@ -155,11 +161,13 @@ class ProductController extends AdminController
             'productCategories' => $this->productCategories,
             'brands' => $this->brands,
             'colors' => $colors,
+            'selectedColors' => $selectedColors,
             'callback' => url(URL::previous())
         ]);
     }
 
-    public function update(Request $request, $id) {
+    public function update(Request $request, $id)
+    {
         $object = Product::find($id);
 
         // If object not found
@@ -172,28 +180,18 @@ class ProductController extends AdminController
         DB::beginTransaction();
 
         try {
-            $object->country_id = $request->input('country_id');
-            $object->region_id = $request->input('region_id');
-            $object->type_id = $request->input('type_id');
-            $object->grape_id = $request->input('grape_id');
+            $object->category_id = $request->input('category_id');
+            $object->brand_id = $request->input('brand_id');
             $object->name = $request->input('name');
             $object->slug = $request->input('slug');
             $object->description = $request->input('description');
             $object->content = $request->input('content');
-            $object->quantity = $request->input('quantity');
             $object->price = $request->input('price');
-            $object->is_discount = $request->input('is_discount');
-            $object->discount_value = $request->input('discount_value');
-            $object->alcohol = $request->input('alcohol');
-            $object->capacity = $request->input('capacity');
             $object->is_active = $request->input('is_active');
-            $object->is_new = $request->input('is_new');
             $object->is_highlight = $request->input('is_highlight');
-            $object->is_hot = $request->input('is_hot');
-            $object->created_by = 1;
             $object->updated_by = 1;
-                
-            if($request->hasfile('image')) {
+
+            if ($request->hasfile('image')) {
                 $path = sprintf(Config::get('constants.FILE_STORAGE_PATH.PRODUCT_IMAGE'), $id);
                 $prevImg = $object->image;
                 $upload = $this->updateImages($path, $request);
@@ -212,75 +210,77 @@ class ProductController extends AdminController
             }
             DB::rollBack();
             return redirect()->route('edit-product', [
-                'id' => $id, 
+                'id' => $id,
                 'callback' => $request->input('callback')
             ])->with('error', Config::get('constants.MESSAGE.SOMETHING_ERROR'));
-
         } catch (Exception $e) {
             DB::rollBack();
             return redirect()->route('edit-product', [
-                'id' => $id, 
+                'id' => $id,
                 'callback' => $request->input('callback')
-            ])->with('error', $e->getMessage()); 
+            ])->with('error', $e->getMessage());
         }
     }
 
-    public function delete(Request $request) {
+    public function delete(Request $request)
+    {
         $request = $request->all();
 
         // If got bad parameter(s)
         if (!isset($request['id']) || empty($request['id'])) {
-            return response()->json(['status' => 'error','msg' => Config::get('constants.MESSAGE.DATA_NOT_FOUND')], 404);
+            return response()->json(['status' => 'error', 'msg' => Config::get('constants.MESSAGE.DATA_NOT_FOUND')], 404);
         }
 
         $object = Product::find($request['id']);
 
         // If object not found
         if ($object == null || $object->count() == 0) {
-            return response()->json(['status' => 'error','msg' => Config::get('constants.MESSAGE.DATA_NOT_FOUND')], 404);
+            return response()->json(['status' => 'error', 'msg' => Config::get('constants.MESSAGE.DATA_NOT_FOUND')], 404);
         }
 
         // If object is being used elsewhere
         if ($this->checkInUse($request['id'])) {
-            return response()->json(['status' => 'error','msg' => Config::get('constants.MESSAGE.CANNOT_DELETE_IN_USING')], 404);
+            return response()->json(['status' => 'error', 'msg' => Config::get('constants.MESSAGE.CANNOT_DELETE_IN_USING')], 404);
         }
 
         if ($object->delete()) {
-            return response()->json(['status' => 'success','msg' => Config::get('constants.MESSAGE.DELETE_SUCCEEDED')], 200);
+            return response()->json(['status' => 'success', 'msg' => Config::get('constants.MESSAGE.DELETE_SUCCEEDED')], 200);
         }
-        return response()->json(['status' => 'error','msg' => Config::get('constants.MESSAGE.SOMETHING_ERROR')], 403);
+        return response()->json(['status' => 'error', 'msg' => Config::get('constants.MESSAGE.SOMETHING_ERROR')], 403);
     }
 
-    public function changeStatus(Request $request) {
+    public function changeStatus(Request $request)
+    {
         $request = $request->all();
 
         if (!isset($request['id']) || empty($request['id']) || !isset($request['status']) || ($request['status'] != '0' && $request['status'] != '1')) {
-            return response()->json(['status' => 'error','msg' => Config::get('constants.MESSAGE.DATA_NOT_FOUND')], 404);
+            return response()->json(['status' => 'error', 'msg' => Config::get('constants.MESSAGE.DATA_NOT_FOUND')], 404);
         }
 
         $object = Product::find($request['id']);
 
         // If object not found
         if ($object == null || $object->count() == 0) {
-            return response()->json(['status' => 'error','msg' => Config::get('constants.MESSAGE.DATA_NOT_FOUND')], 404);
+            return response()->json(['status' => 'error', 'msg' => Config::get('constants.MESSAGE.DATA_NOT_FOUND')], 404);
         }
-        
+
         // If object is being used elsewhere
         if ($request['status'] == '0') {
             if ($this->checkInUse($request['id'])) {
-                return response()->json(['status' => 'error','msg' => Config::get('constants.MESSAGE.CANNOT_DEACTIVE_IN_USING')], 404);
+                return response()->json(['status' => 'error', 'msg' => Config::get('constants.MESSAGE.CANNOT_DEACTIVE_IN_USING')], 404);
             }
         }
 
         $object->is_active = $request['status'];
 
         if ($object->save()) {
-            return response()->json(['status' => 'success','msg' => Config::get('constants.MESSAGE.CHANGE_STATUS_SUCCEEDED')], 200);
+            return response()->json(['status' => 'success', 'msg' => Config::get('constants.MESSAGE.CHANGE_STATUS_SUCCEEDED')], 200);
         }
-        return response()->json(['status' => 'error','msg' => Config::get('constants.MESSAGE.SOMETHING_ERROR')], 403);
+        return response()->json(['status' => 'error', 'msg' => Config::get('constants.MESSAGE.SOMETHING_ERROR')], 403);
     }
-    
-    private function validateStore($request) {
+
+    private function validateStore($request)
+    {
         $this->validate($request, [
             'category_id' => 'required',
             'brand_id' => 'required',
@@ -303,7 +303,8 @@ class ProductController extends AdminController
         ]);
     }
 
-    private function validateUpdate($request, $id) {
+    private function validateUpdate($request, $id)
+    {
         $this->validate($request, [
             'category_id' => 'required',
             'brand_id' => 'required',
@@ -325,7 +326,8 @@ class ProductController extends AdminController
         ]);
     }
 
-    private function checkInUse($id) {
+    private function checkInUse($id)
+    {
         return false;
     }
 }

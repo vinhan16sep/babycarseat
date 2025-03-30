@@ -50,21 +50,13 @@ Route::group(['middleware' => ['site_settings']], function () {
     Route::post('lien-he', [App\Http\Controllers\ContactController::class, 'store'])->name('contact.store');
     Route::get('ruou-vang', [App\Http\Controllers\ProductController::class, 'list'])->name('ruou-vang');
     Route::get('/tim-kiem', [App\Http\Controllers\HomeController::class, 'search'])->name('search');
-    Route::get('/combo', [App\Http\Controllers\ComboController::class, 'list'])->name('combo');
     Route::get('/tin-tuc', [App\Http\Controllers\NewController::class, 'list'])->name('news');
     Route::get('/kien-thuc', [App\Http\Controllers\KnowledgeController::class, 'categories'])->name('category-list-knowledge');
     Route::get('/kien-thuc/{category}', [App\Http\Controllers\KnowledgeController::class, 'list'])->name('category-detail-knowledge');
     Route::get('/kien-thuc/{category}/{slug}', [App\Http\Controllers\KnowledgeController::class, 'show'])->name('detail-knowledge');
-    Route::get('/phu-kien', [App\Http\Controllers\AccessoryController::class, 'categories'])->name('category-list-accessory');
-    Route::get('/phu-kien/{category}', [App\Http\Controllers\AccessoryController::class, 'list'])->name('category-detail-accessory');
-    Route::get('/phu-kien/{category}/{slug}', [App\Http\Controllers\AccessoryController::class, 'show'])->name('detail-accessory');
-    Route::get('/khuyen-mai', [App\Http\Controllers\PromotionController::class, 'list'])->name('promotion-list');
-    Route::get('/qua-tang', [App\Http\Controllers\GiftController::class, 'list'])->name('gift-list');
-    Route::post('/qua-tang', [App\Http\Controllers\GiftController::class, 'store'])->name('gift-store');
     Route::get('/quoc-gia/{country}', [App\Http\Controllers\ProductController::class, 'list'])->name('country');
     Route::get('/san-pham/{slug}', [App\Http\Controllers\ProductController::class, 'show'])->name('san-pham');
     Route::get('/tin-tuc/{slug}', [App\Http\Controllers\NewController::class, 'show'])->name('detail-new');
-    Route::get('/combo/{slug}', [App\Http\Controllers\ComboController::class, 'show'])->name('detail-combo');
     Route::get('/gio-hang', [App\Http\Controllers\OrderController::class, 'cart'])->name('cart');
     Route::get('/thanh-toan', [App\Http\Controllers\OrderController::class, 'orderCreate'])->name('checkout');
     Route::post('/thanh-toan', [App\Http\Controllers\OrderController::class, 'orderStore'])->name('checkout-store');
@@ -74,7 +66,7 @@ Route::group(['middleware' => ['site_settings']], function () {
 Route::post('/add-to-cart', [App\Http\Controllers\CartController::class, 'addToCart']);
 Route::post('/update-to-cart', [App\Http\Controllers\CartController::class, 'updateToCart']);
 
-Route::group(['prefix' => 'bw-admin', 'middleware' => 'auth'], function () {
+Route::group(['prefix' => 'br-admin', 'middleware' => 'auth'], function () {
 
     Route::group(array('namespace' => 'Admin'), function() {
 
