@@ -95,25 +95,20 @@
                                     <tr>
                                         <th class="w-5 center">STT</th>
                                         <th class="w-15 center">Ảnh</th>
-                                        <th class="w-10 center">Tên</th>
+                                        <th class="w-20 center">Tên</th>
                                         <th class="w-10 center">Đơn giá (VNĐ)</th>
                                         <th class="w-10 center">Danh mục</th>
                                         <th class="w-10 center">Thương hiệu</th>
                                         <th class="w-5 center">Nổi bật?</th>
                                         <th class="w-8 center">Kích hoạt?</th>
-                                        <th class="w-10 center">Hành động</th>
+                                        <th class="w-15 center">Hành động</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ($list as $key => $item)
-                                        <?php
-                                            $image = $item->productColors->first()['image'];
-                                            // echo '<pre>';
-                                            // var_dump($image);die;
-                                        ?>
                                         <tr>
                                             <td scope="row">{{ $key + 1}}</td>
-                                            <td><img style="max-height: 200px;" src="{{ asset($image) }}" /></td>
+                                            <td><img style="max-height: 200px;" src="{{ $item->image ? asset($item->image) : asset('images/no-image-available-list.jpg') }}" /></td>
                                             <td >
                                                 <strong>
                                                     <a href="{{ route('edit-product', ['id' => $item->id]) }}" style="color:#5873fe;">{{ $item->name }}</a>
@@ -180,7 +175,7 @@
         let url = window.location.origin;
         if (countryId != '') {
             $.ajax({
-                url: url + '/bw-admin/region/get-by-country',
+                url: url + '/br-admin/region/get-by-country',
                 method: 'GET',
                 data: {
                     countryId: countryId

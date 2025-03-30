@@ -24,7 +24,7 @@ function changeStatus(id, status, endpoint) {
     if (confirm("Bạn chắc chắn muốn đổi trạng thái?")) {
         var url = window.location.origin;
         $.ajax({
-            url: url + '/bw-admin' + endpoint,
+            url: url + '/br-admin' + endpoint,
             method: 'GET',
             data: {
                 id: id,
@@ -46,7 +46,7 @@ function deleteRow(id, endpoint) {
     if (r == true) {
         var url = window.location.origin;
         $.ajax({
-            url: url + '/bw-admin' + endpoint,
+            url: url + '/br-admin' + endpoint,
             method: 'GET',
             data: {
                 id: id
