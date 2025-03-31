@@ -18019,3 +18019,13 @@ ul.list-text.type-number {
 .variant-picker-item .color-btn.active, .variant-picker-item .color-btn.active .btn-checkbox{
     border:0px!important;
 }
+
+.box-message{
+    position: fixed;
+    bottom: 0px;
+    right: 15px;
+    width: calc(100% - 30px);
+    display: inline-block;
+    max-width: 300px;
+    z-index: 9999;
+}

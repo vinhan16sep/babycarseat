@@ -56,6 +56,8 @@
 </head>
 <body>
 
+{{--Show message--}}
+@include("components.message")
 
 <!-- RTL -->
 <a href="javascript:void(0);" id="toggle-rtl" class="btn-style-2 radius-3"><span>RTL</span></a>

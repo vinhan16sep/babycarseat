@@ -1,22 +1,27 @@
-<div class="col-lg-6 col-md-6 col-12">
-   <div class="news_slider_box float_left">
-     <div class="news_slider_box_img">
-       <img class="img-fluid" src="{{ getImage($item->image) }}" alt="{{ $item->title }}">
-     </div>
-     <div class="news_slider_box_details_inner float_left">
-       <h3>
-         <a href="{{ $route }}">{{ $item->title}}</a>
-       </h3>
-       <ul>
-         <li>
-          <a>Tạo bởi Admin</a>
-         </li>
-         <li>
-           <a>{{ $item->updated_at->format("d/m/Y")}}</a>
-         </li>
-       </ul>
-       <p>{{ $item->description}}</p>
-       <a class="read_more" href="{{ $route }}">Xem Thêm</a>
-     </div>
-   </div>
- </div>
+<div class="wg-blog style-1 hover-image">
+    <div class="image">
+        <img class="lazyload" data-src="{{ getImage($item->image) }}" src="{{ getImage($item->image) }}" alt="">
+    </div>
+    <div class="content">
+        <div class="meta">
+            <div class="meta-item gap-8">
+                <div class="icon">
+                    <i class="icon-calendar"></i>
+                </div>
+                <p class="text-caption-1">{{ $item->updated_at->format("d/m/Y")}}</p>
+            </div>
+            <div class="meta-item gap-8">
+                <div class="icon">
+                    <i class="icon-user"></i>
+                </div>
+                <p class="text-caption-1">Tạo bỏi <a class="link">Admin</a></p>
+            </div>
+        </div>
+        <div>
+            <h6 class="title fw-5">
+                <a class="link" href="{{ $route }}">{{ $item->title}}</a>
+            </h6>
+            <div class="body-text">{{ $item->description}}</div>
+        </div>
+    </div>
+</div>

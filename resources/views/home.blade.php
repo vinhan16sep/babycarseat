@@ -260,8 +260,7 @@
                                     </a>
                                 </div>
                                 <div class="list-btn-main">
-                                    <a href="#shoppingCart" data-bs-toggle="modal" class="btn-main-product">Add To
-                                        cart</a>
+                                    <a class="btn-main-product add-to-card" data-id="9" data-product-color-id="2">Add To cart</a>
                                 </div>
                             </div>
                             <div class="card-product-info">
@@ -390,8 +389,7 @@
                                     </a>
                                 </div>
                                 <div class="list-btn-main">
-                                    <a href="#shoppingCart" data-bs-toggle="modal" class="btn-main-product">Add To
-                                        cart</a>
+                                    <a class="btn-main-product add-to-card" data-id="10" data-product-color-id="3">Add To cart</a>
                                 </div>
                             </div>
                             <div class="card-product-info">
