@@ -45,14 +45,13 @@ Route::group(['middleware' => ['site_settings']], function () {
    Route::get('/san-pham/{slug}', [App\Http\Controllers\ProductController::class, 'show'])->name('product-index');
 
 
-
     Route::get('lien-he', [App\Http\Controllers\ContactController::class, 'show'])->name('contact');
     Route::post('lien-he', [App\Http\Controllers\ContactController::class, 'store'])->name('contact.store');
     Route::get('ruou-vang', [App\Http\Controllers\ProductController::class, 'list'])->name('ruou-vang');
     Route::get('/tim-kiem', [App\Http\Controllers\HomeController::class, 'search'])->name('search');
     Route::get('/tin-tuc', [App\Http\Controllers\NewController::class, 'list'])->name('news');
-    Route::get('/kien-thuc', [App\Http\Controllers\KnowledgeController::class, 'categories'])->name('category-list-knowledge');
-    Route::get('/kien-thuc/{category}', [App\Http\Controllers\KnowledgeController::class, 'list'])->name('category-detail-knowledge');
+//    Route::get('/kien-thuc', [App\Http\Controllers\KnowledgeController::class, 'categories'])->name('category-list-knowledge');
+    Route::get('/kien-thuc/{category?}', [App\Http\Controllers\KnowledgeController::class, 'list'])->name('category-detail-knowledge');
     Route::get('/kien-thuc/{category}/{slug}', [App\Http\Controllers\KnowledgeController::class, 'show'])->name('detail-knowledge');
     Route::get('/quoc-gia/{country}', [App\Http\Controllers\ProductController::class, 'list'])->name('country');
     Route::get('/san-pham/{slug}', [App\Http\Controllers\ProductController::class, 'show'])->name('san-pham');
@@ -65,6 +64,7 @@ Route::group(['middleware' => ['site_settings']], function () {
 
 Route::post('/add-to-cart', [App\Http\Controllers\CartController::class, 'addToCart']);
 Route::post('/update-to-cart', [App\Http\Controllers\CartController::class, 'updateToCart']);
+Route::get('/quick-add/{productId}', [App\Http\Controllers\CartController::class, 'getQuickAdd']);
 
 Route::group(['prefix' => 'br-admin', 'middleware' => 'auth'], function () {
 
@@ -199,4 +199,3 @@ Route::group(['prefix' => 'br-admin', 'middleware' => 'auth'], function () {
         });
     });
 });
-

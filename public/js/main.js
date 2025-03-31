@@ -95,11 +95,11 @@
     /* Delete File
   -------------------------------------------------------------------------------------*/
     var deleteFile = function (e) {
-        $(".remove").on("click", function (e) {
-            e.preventDefault();
-            var $this = $(this);
-            $this.closest(".file-delete").remove();
-        });
+        // $(".remove").on("click", function (e) {
+        //     e.preventDefault();
+        //     var $this = $(this);
+        //     $this.closest(".file-delete").remove();
+        // });
         $(".clear-file-delete").on("click", function (e) {
             e.preventDefault();
             $(this).closest(".list-file-delete").find(".file-delete").remove();
@@ -140,11 +140,16 @@
   -------------------------------------------------------------------------*/
     var variantPicker = function () {
         if ($(".variant-picker-item").length) {
-            $(".variant-picker-item label").on("click", function (e) {
+            $(document).on("click", ".variant-picker-item label",function (e) {
+                let id = $('')
                 $(this)
                     .closest(".variant-picker-item")
                     .find(".variant-picker-label-value")
                     .text($(this).data("value"));
+                $(this)
+                    .closest(".variant-picker-item")
+                    .find(".variant-picker-label-value")
+                    .attr('data-id', $(this).data("id"));
             });
         }
         if ($(".variant-picker-item").length) {
@@ -446,12 +451,12 @@
     /* Modal Second
   -------------------------------------------------------------------------*/
     var clickModalSecond = function () {
-        $(".btn-add-to-cart").click(function () {
-            $(".tf-add-cart-success").addClass("active");
-        });
-        $(".tf-add-cart-success .tf-add-cart-close").click(function () {
-            $(".tf-add-cart-success").removeClass("active");
-        });
+        // $(".btn-add-to-cart").click(function () {
+        //     $(".tf-add-cart-success").addClass("active");
+        // });
+        // $(".tf-add-cart-success .tf-add-cart-close").click(function () {
+        //     $(".tf-add-cart-success").removeClass("active");
+        // });
         $(".show-size-guide").click(function () {
             $("#size-guide").modal("show");
         });
@@ -617,7 +622,7 @@
                     productItem.find(".price-on-sale").data("base-price")
                 ) ||
                 parseFloat(
-                    productItem.find(".price-on-sale").text().replace(",", "")
+                    productItem.find(".price-on-sale").text().replaceAll(",", "")
                 );
             var quantityInput = productItem.find(".quantity-product");
 
@@ -628,7 +633,7 @@
                     .find(".price-on-sale")
                     .text(
                             newPrice
-                                .toFixed(2)
+                                .toFixed(0)
                                 .replace(/\B(?=(\d{3})+(?!\d))/g, ",") + '₫'
                     );
                 updateTotalPrice(newPrice, productItem);
@@ -652,7 +657,7 @@
                 var currentPrice =
                     price ||
                     parseFloat(
-                        scope.find(".price-on-sale").text().replace(",", "")
+                        scope.find(".price-on-sale").text().replaceAll(",", "")
                     );
                 var quantity = parseInt(scope.find(".quantity-product").val());
                 var totalPrice = currentPrice * quantity;
@@ -660,7 +665,7 @@
                     .find(".total-price")
                     .text(
                             totalPrice
-                                .toFixed(2)
+                                .toFixed(0)
                                 .replace(/\B(?=(\d{3})+(?!\d))/g, ",") + '₫'
                     );
             }
@@ -1265,6 +1270,163 @@
             }, 100);
         }
     };
+
+
+    $(document).on("click", ".add-to-card", function () {
+        let id = $(this).attr('data-id'), product_color_id = null, qty = 1;
+        console.log($(this).parents('.tf-product-info-list'));
+        if ($(this).parents('.tf-product-info-list').length > 0) {
+            qty = $(this).parents('.tf-product-info-list').find('.quantity-product').val();
+            product_color_id = $(this).parents('.tf-product-info-list').find('.variant-picker-label-value').attr('data-id');
+        }
+        ajax_cart_add(id, qty, product_color_id);
+        $('#quickAdd').modal('hide');
+        $("#shoppingCart").modal("show");
+    });
+
+
+
+    $(document).on("click", "#shoppingCart .tf-btn-remove.remove", function () {
+        let rowid = {};
+        let id = $(this).attr("data-id");
+        rowid[id] = { quantity: 0 };
+        ajax_cart_update({ rowid: rowid });
+    });
+
+    function ajax_cart_add(productId, qty, product_color_id){
+        qty = Number(qty);
+        if (qty > 0) {
+            $.post(BASE_URL + '/add-to-cart', {
+                id: productId,
+                qty: qty,
+                product_color_id: product_color_id,
+                _token: $('[name="csrf-token"]').attr("content")
+            }, function(data){
+                if (data != false) {
+                    $(".tf-mini-cart-items").html(data.cart_header_html);
+                    $("li.nav-cart a span.count-box").html(`${data.count}`);
+                    $('#shoppingCart .tf-mini-cart-sroll').attr('class', 'tf-mini-cart-sroll is_not_show')
+                    showMessage("alert alert-success", "Thêm vào giỏ hàng thành công!");
+                }
+            });
+        }
+    }
+
+    function ajax_cart_update(data, useToken = true, message = "Cập nhật giỏ hàng thành công!"){
+        if (useToken) {
+            data._token = $('[name="csrf-token"]').attr("content");
+        }
+        // if($("#order-cart-left").length > 0 || $("#order-cart-right").length > 0) {
+        //     data.cart_detail = true;
+        // }
+        $.post(BASE_URL + '/update-to-cart', data, function(data){
+            if (data != false) {
+                $(".tf-mini-cart-items").html(data.cart_header_html);
+                $("li.nav-cart a span.count-box").html(`${data.count}`);
+
+                // if ($("#order-cart-left").length > 0 || $("#order-cart-right").length > 0) {
+                //     if ($("#order-cart-left").length > 0) {
+                //         $("#order-cart-left").html(data.order_left_html);
+                //     }
+                //     if ($("#order-cart-right").length > 0) {
+                //         $("#order-cart-right").html(data.order_right_html);
+                //     }
+                //     if($('input[type="number"]').length > 0) {
+                //         $('input[type="number"]').niceNumber();
+                //     }
+                // }
+                // if($("#payment-left").length > 0 && data.count == 0){
+                //     $("#payment-left").html(`
+                //     <p class="zoom-area">Không có sản phẩm nào để thanh toán</p>
+                //     <a class="back-to-home" href="${HOME_URL}">Quay lại trang chủ</a>
+                // `);
+                // }
+                if (data.count == 0) {
+                    $('#shoppingCart .tf-mini-cart-sroll').removeClass('is_not_show')
+                } else {
+                    $('#shoppingCart .tf-mini-cart-sroll').addClass('is_not_show')
+                }
+                if (data.check_discount_code === false) {
+                    showMessage("alert alert-danger", "Mã giảm giá không tồn tại!");
+                } else {
+                    showMessage("alert alert-success", message);
+                }
+            }
+        });
+    }
+
+    function showMessage(className, content, time = 8000){
+        $(".box-message .alert").attr("class", className);
+        $(".box-message .alert").html(`<strong>${content}</strong>`);
+        $(".box-message").show();
+        setTimeout(function(){
+            $(".box-message").hide();
+        }, time);
+    }
+
+    $('.btn-main-product.quick-add').on('click', function() {
+        let productId = $(this).attr('data-id');
+        $.get(BASE_URL + '/quick-add/' + productId, function(data) {
+            $('#quickAdd .tf-product-info-list').html(data.product);
+            updateEventQuickAdd($('#quickAdd .tf-product-info-list'));
+            $('#quickAdd').modal('show');
+        });
+    });
+
+    function updateEventQuickAdd(productItem) {
+        var basePrice =
+            parseFloat(
+                productItem.find(".price-on-sale").data("base-price")
+            ) ||
+            parseFloat(
+                productItem.find(".price-on-sale").text().replaceAll(",", "")
+            );
+        var quantityInput = productItem.find(".quantity-product");
+
+        productItem.find(".color-btn, .size-btn").off('click').on("click", function () {
+            var newPrice = parseFloat($(this).data("price")) || basePrice;
+            quantityInput.val(1);
+            productItem
+                .find(".price-on-sale")
+                .text(
+                    newPrice
+                        .toFixed(0)
+                        .replace(/\B(?=(\d{3})+(?!\d))/g, ",") + '₫'
+                );
+            updateTotalPrice(newPrice, productItem);
+        });
+
+        productItem.find(".btn-increase").off('click').on("click", function () {
+            var currentQuantity = parseInt(quantityInput.val());
+            quantityInput.val(currentQuantity + 1);
+            updateTotalPrice(null, productItem);
+        });
+
+        productItem.find(".btn-decrease").off('click').on("click", function () {
+            var currentQuantity = parseInt(quantityInput.val());
+            if (currentQuantity > 1) {
+                quantityInput.val(currentQuantity - 1);
+                updateTotalPrice(null, productItem);
+            }
+        });
+
+        function updateTotalPrice(price, scope) {
+            var currentPrice =
+                price ||
+                parseFloat(
+                    scope.find(".price-on-sale").text().replaceAll(",", "")
+                );
+            var quantity = parseInt(scope.find(".quantity-product").val());
+            var totalPrice = currentPrice * quantity;
+            scope
+                .find(".total-price")
+                .text(
+                    totalPrice
+                        .toFixed(0)
+                        .replace(/\B(?=(\d{3})+(?!\d))/g, ",") + '₫'
+                );
+        }
+    }
 
     // Dom Ready
     $(function () {
