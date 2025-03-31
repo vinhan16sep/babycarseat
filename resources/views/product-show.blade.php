@@ -8,6 +8,22 @@
 @section('css')
     <link rel="stylesheet" href="{{ asset('css/drift-basic.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/photoswipe.css') }}" />
+    <style>
+        .tf-product-media-thumbs{
+            display: none;
+            width: 0;
+            height: 0;
+        }
+        .tf-product-media-main{
+            width: 100%!important;
+        }
+        @media (min-width: 768px) {
+            .tf-product-info-list {
+                 max-width: 815px;
+                margin-left: auto;
+            }
+        }
+    </style>
 @stop
 
 @section('content')
@@ -73,14 +89,14 @@
             <div class="container">
                 <div class="row">
                     <!-- Product default -->
-                    <div class="col-md-6">
+                    <div class="col-md-5">
                         <div class="tf-product-media-wrap sticky-top">
                             <div class="thumbs-slider">
                                 <div dir="ltr" class="swiper tf-product-media-thumbs other-image-zoom"
                                      data-direction="vertical">
                                     <div class="swiper-wrapper stagger-wrap">
                                         @foreach($product->productColors as $_color)
-                                            <div class="swiper-slide stagger-item" data-color="{{ $_color->color->name }}">
+                                            <div class="-swiperslide stagger-item" data-color="{{ $_color->color->name }}">
                                                 <div class="item">
                                                     <img class="lazyload" data-src="{{ getImage($_color->image) }}"
                                                          src="{{ getImage($_color->image) }}" alt="">
@@ -109,7 +125,7 @@
                     </div>
                     <!-- /Product default -->
                     <!-- tf-product-info-list -->
-                    <div class="col-md-6">
+                    <div class="col-md-7">
                         <div class="tf-product-info-wrap position-relative">
                             <div class="tf-zoom-main"></div>
                             <div class="tf-product-info-list other-image-zoom">
@@ -164,15 +180,14 @@
                                 <div class="tf-product-info-choose-option">
                                     <div class="variant-picker-item">
                                         <div class="variant-picker-label mb_12">
-
-                                            Colors:<span class="text-title variant-picker-label-value value-currentColor">{{ $product->productColors[0] ? $product->productColors[0]->color->name : '' }}
+                                            Colors:<span class="text-title variant-picker-label-value value-currentColor" data-id="{{ $product->productColors[0] ? $product->productColors[0]->color->id : '' }}">{{ $product->productColors[0] ? $product->productColors[0]->color->name : '' }}
                                             </span>
                                         </div>
                                         <div class="variant-picker-values">
                                             @foreach($product->productColors as $_color)
                                                 <input type="radio" name="color" value="{{ $_color->color->id }}">
-                                                <label class="hover-tooltip tooltip-bot radius-60 color-btn {{ $loop->index == 0 ? 'active' : '' }}"
-                                                       for="values-beige" data-value="{{ $_color->color->name }}" data-id="{{ $_color->color->id }}" style="background-color: {{ $_color->color->code }}!important">
+                                                <label class="-swiperslide stagger-item hover-tooltip tooltip-bot radius-60 color-btn {{ $loop->index == 0 ? 'active' : '' }}"
+                                                       for="values-beige" data-color="{{ $_color->color->name }}" data-value="{{ $_color->color->name }}" data-id="{{ $_color->color->id }}" style="background-color: {{ $_color->color->code }}!important">
                                                     <span class="btn-checkbox"></span>
                                                     <span class="tooltip">{{ $_color->color->name }}</span>
                                                 </label>
@@ -224,8 +239,8 @@
                                     </div>
                                     <div>
                                         <div class="tf-product-info-by-btn mb_10">
-                                            <a href="#shoppingCart" data-bs-toggle="modal"
-                                               class="btn-style-2 flex-grow-1 text-btn-uppercase fw-6 btn-add-to-cart"><span>Add to cart -&nbsp;</span><span
+                                            <a data-bs-toggle="modal"
+                                               class="btn-style-2 flex-grow-1 text-btn-uppercase fw-6 btn-add-to-cart add-to-card" data-id="{{ $product->id }}"><span>Add to cart -&nbsp;</span><span
                                                     class="tf-qty-price total-price">
                                                     @if($product->is_discount)
                                                         {{ numberFormat($product->discount_value) }}₫
@@ -270,20 +285,6 @@
                                                     <span class="btn-open-sub"></span>
                                                 </a>
                                                 <div id="accordion-8" class="collapse" data-bs-parent="#accordion-product">
-                                                    <div class="accordion-content tab-description">
-                                                        <p class="text-secondary">
-                                                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li class="accordion-product-item">
-                                                <a href="#accordion-9" class="accordion-title collapsed current" data-bs-toggle="collapse"
-                                                   aria-expanded="true" aria-controls="accordion-1">
-                                                    <h6>How to & support</h6>
-                                                    <span class="btn-open-sub"></span>
-                                                </a>
-                                                <div id="accordion-9" class="collapse" data-bs-parent="#accordion-product">
                                                     <div class="accordion-content tab-description">
                                                         <p class="text-secondary">
                                                             Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book

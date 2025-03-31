@@ -58,31 +58,26 @@ class KnowledgeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function list(Request $request, $category)
+    public function list(Request $request, $category = null)
     {
-        $category = KnowledgeCategory::where(["is_active" => 1, "slug" => $category])->first();
-
-        if (!$category) {
-            return redirect(route("home"));
+        $categories = KnowledgeCategory::query()->where("is_active", 1)->get();
+        if ($category) {
+            $category = KnowledgeCategory::query()->where(["is_active" => 1, 'slug' => $category])->first();
         }
-        
-        $keywork = $request->keyword;
         $knowledges = Knowledge::query()->where("is_active", 1)
-        ->whereHas("category", function($q) use($category){
-            $q->where("knowledge_category.slug", $category->slug);
-        })->when($keywork, function($query) use($keywork){
-            $query->where("title", "like", "%$keywork%");
-        })->with(["category"])->paginate(12)->withQueryString();
+            ->when($category, function($query) use($category){
+                return $query->whereHas("category", function($q) use($category){
+                    $q->where("knowledge_category.slug", $category->slug);
+                });
+            })->with(["category"])->paginate(12)->withQueryString();
 
         $latestKnowledges = Knowledge::query()->where("is_active", 1)->orderByDesc("created_at")->with(["category"])->limit(5)->get();
-        $latestProducts = Product::query()->where("is_active", 1)->orderByDesc("created_at")->limit(5)->get();
 
         return view('knowledge-list', [
             "category" => $category,
-            "keywork" => $keywork,
+            "categories" => $categories,
             "knowledges" => $knowledges,
             "latestKnowledges" => $latestKnowledges,
-            "latestProducts" => $latestProducts,
         ]);
     }
 

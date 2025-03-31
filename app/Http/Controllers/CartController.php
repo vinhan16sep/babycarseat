@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Color;
 use App\Models\Combo;
 use App\Models\Order;
 use App\Models\Product;
+use App\Models\ProductColor;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -21,17 +23,12 @@ class CartController extends Controller
     {
         parent::__construct();
     }
-    
+
     public function addToCart(Request $request)
     {
         try {
-            if($request->type == "combo"){
-                $product = Combo::findOrFail($request->id);
-                $products = $this->getProductInCombo($product->products);
-            } else {
-                $product = Product::findOrFail($request->id);
-            }
-
+            $product = Product::findOrFail($request->id);
+            $color = Color::query()->findOrFail($request->product_color_id);
             $qty = (int)$request->qty;
             $price = ($product->is_discount > 0) ? $product->discount_value : $product->price;
             $dataAddToCart = [
@@ -39,11 +36,12 @@ class CartController extends Controller
                 'name' => $product->name,
                 'qty' => $qty,
                 'price' => $price,
+                'color_id' => $color->id ?? null,
                 'weight' => 1,
                 'options' => [
                     'slug' => $product->slug,
                     'image' => $product->image,
-                    'products' => $products ?? [],
+                    'color' => $color->name ?? null,
                 ]
             ];
             Cart::instance(config('cart.instance'))->add($dataAddToCart);
@@ -78,7 +76,7 @@ class CartController extends Controller
                     Cart::instance(config('cart.instance'))->update($key, ['qty' => (int)$value['quantity']]);
                 }
             }
-            
+
             list($cart, $sub_total, $count, $total, $discount_value) = getDataCart(Order::DISCOUNT_PERCENT, $checkDiscount);
             $return = [
                 'check_discount_code' => $checkDiscount,
@@ -98,7 +96,7 @@ class CartController extends Controller
 
     private function getCartHeaderHtml($cart = [], $sub_total = 0, $count = 0)
     {
-        return view('components.cart-header', compact([
+        return view('components.cart-footer', compact([
             'cart', 'sub_total', 'count'
         ]))->render();
     }
@@ -134,5 +132,15 @@ class CartController extends Controller
             ];
         }
         return $result;
+    }
+
+
+    public function getQuickAdd($productId)
+    {
+        return [
+            'product' => view('components.quick-add', [
+                'product' => Product::query()->find($productId)
+            ])->render()
+        ];
     }
 }
