@@ -96,6 +96,8 @@ class ProductController extends AdminController
             $model->brand_id = $request->input('brand_id');
             $model->name = $request->input('name');
             $model->slug = $request->input('slug');
+            $model->detail = $request->input('detail');
+            $model->specification = $request->input('specification');
             $model->description = $request->input('description');
             $model->content = $request->input('content');
             $model->price = $request->input('price');
@@ -170,6 +172,9 @@ class ProductController extends AdminController
     {
         $object = Product::find($id);
 
+        echo '<pre>';
+        print_r($request->all());die;
+
         // If object not found
         if ($object == null || $object->count() == 0) {
             return redirect()->route('list-product')->with('error', Config::get('constants.MESSAGE.DATA_NOT_FOUND'));
@@ -184,6 +189,8 @@ class ProductController extends AdminController
             $object->brand_id = $request->input('brand_id');
             $object->name = $request->input('name');
             $object->slug = $request->input('slug');
+            $object->detail = $request->input('detail');
+            $object->specification = $request->input('specification');
             $object->description = $request->input('description');
             $object->content = $request->input('content');
             $object->price = $request->input('price');

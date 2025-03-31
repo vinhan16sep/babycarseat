@@ -160,6 +160,15 @@
                                     @endif
                                 </div>
 
+                                <div class="form-group">
+                                    <label for="detail" class="form-label">Thông số</label>
+                                    <textarea name="detail" class="form-control my-textarea" rows="5">{{ old('detail') }}</textarea>
+                                </div>
+                                <div class="form-group">
+                                <label for="specification" class="form-label">Đặc tính</label>
+                                    <textarea name="specification" class="form-control my-textarea" rows="5">{{ old('specification') }}</textarea>
+                                </div>
+
                                 <!-- Mô tả -->
                                 <div class="form-group">
                                     <label>Mô tả</label>
@@ -169,7 +178,7 @@
                                 <!-- Nội dung -->
                                 <div class="form-group">
                                     <label for="content" class="form-label">Nội dung</label>
-                                    <textarea name="content" class="form-control" id="txtareaContent">{{ old('content') }}</textarea>
+                                    <textarea name="content" class="form-control my-textarea" id="txtareaContent">{{ old('content') }}</textarea>
                                     @if ($errors->has('content'))
                                     <span style="color:red;">{{ $errors->first('content') }}</span>
                                     @endif
@@ -284,8 +293,8 @@
     };
 
     tinymce.init({
-        selector: 'textarea#txtareaContent',
-        height: 500,
+        selector: 'textarea.my-textarea',
+        height: 300,
         plugins: [
             'image',
             'table'

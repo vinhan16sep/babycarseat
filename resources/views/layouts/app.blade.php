@@ -55,7 +55,6 @@
     </script>
 </head>
 <body>
-
 {{--Show message--}}
 @include("components.message")
 

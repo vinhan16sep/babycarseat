@@ -36,17 +36,6 @@
                     <i class="icon icon-arrRight"></i>
                     <a href="{{ route('product-list', ['category_slug' => $product->categoryId->slug]) }}" class="text text-caption-1">{{ $product->categoryId->name }}</a>
                 </div>
-{{--                <div class="tf-breadcrumb-prev-next">--}}
-{{--                    <a href="product-bottom-thumbnails.html" class="tf-breadcrumb-prev">--}}
-{{--                        <i class="icon icon-arrLeft"></i>--}}
-{{--                    </a>--}}
-{{--                    <a href="product-bottom-thumbnails.html" class="tf-breadcrumb-back">--}}
-{{--                        <i class="icon icon-squares-four"></i>--}}
-{{--                    </a>--}}
-{{--                    <a href="product-bottom-thumbnails.html" class="tf-breadcrumb-next">--}}
-{{--                        <i class="icon icon-arrRight"></i>--}}
-{{--                    </a>--}}
-{{--                </div>--}}
             </div>
         </div>
     </div>
@@ -168,7 +157,7 @@
 {{--                                            </div>--}}
                                         </div>
                                         <p>
-                                            {{ $product->description }}
+                                            {!! $product->description !!}
                                         </p>
 {{--                                        <div class="tf-product-info-liveview">--}}
 {{--                                            <i class="icon icon-eye"></i>--}}
@@ -267,7 +256,7 @@
                                             <li class="accordion-product-item">
                                                 <a href="#accordion-7" class="accordion-title collapsed current" data-bs-toggle="collapse"
                                                    aria-expanded="true" aria-controls="accordion-1">
-                                                    <h6>Product Detail</h6>
+                                                    <h6>Thông số</h6>
                                                     <span class="btn-open-sub"></span>
                                                 </a>
                                                 <div id="accordion-7" class="collapse" data-bs-parent="#accordion-product">
@@ -281,7 +270,7 @@
                                             <li class="accordion-product-item">
                                                 <a href="#accordion-8" class="accordion-title collapsed current" data-bs-toggle="collapse"
                                                    aria-expanded="true" aria-controls="accordion-1">
-                                                    <h6>Specifications</h6>
+                                                    <h6>Đặc tính</h6>
                                                     <span class="btn-open-sub"></span>
                                                 </a>
                                                 <div id="accordion-8" class="collapse" data-bs-parent="#accordion-product">

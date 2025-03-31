@@ -26,36 +26,22 @@
                 </div>
 
                 <div class="widget-facet facet-price">
-                    <h6 class="facet-title">Price</h6>
+                    <h6 class="facet-title">Giá</h6>
                     <div class="price-val-range" id="price-value-range" data-min="0" data-max="{{ $product_price_max }}"></div>
                     <div class="box-price-product">
                         <div class="box-price-item">
-                            <span class="title-price">Min price</span>
+                            <span class="title-price">Giá thấp nhất</span>
                             <div class="price-val" id="price-min-value" data-currency="$"></div>
                         </div>
                         <div class="box-price-item">
-                            <span class="title-price">Max price</span>
+                            <span class="title-price">Giá cao nhất</span>
                             <div class="price-val" id="price-max-value" data-currency="$"></div>
                         </div>
                     </div>
                 </div>
 
-    {{--            <div class="widget-facet facet-size">--}}
-    {{--                <h6 class="facet-title">Size</h6>--}}
-    {{--                <div class="facet-size-box size-box">--}}
-    {{--                    <span class="size-item size-check">XS</span>--}}
-    {{--                    <span class="size-item size-check">S</span>--}}
-    {{--                    <span class="size-item size-check">M</span>--}}
-    {{--                    <span class="size-item size-check">L</span>--}}
-    {{--                    <span class="size-item size-check">XL</span>--}}
-    {{--                    <span class="size-item size-check">2XL</span>--}}
-    {{--                    <span class="size-item size-check">3XL</span>--}}
-    {{--                    <span class="size-item size-check free-size">Free Size</span>--}}
-    {{--                </div>--}}
-    {{--            </div>--}}
-
                 <div class="widget-facet facet-color">
-                    <h6 class="facet-title">Colors</h6>
+                    <h6 class="facet-title">Màu sắc</h6>
                     <div class="facet-color-box">
                         @foreach($colors as $color)
                             <div class="color-item color-check {{ request('color') === (string)$color->id ? 'active' : '' }}">
@@ -66,22 +52,8 @@
                     </div>
                 </div>
 
-    {{--            <div class="widget-facet facet-fieldset">--}}
-    {{--                <h6 class="facet-title">Availability</h6>--}}
-    {{--                <div class="box-fieldset-item">--}}
-    {{--                    <fieldset class="fieldset-item">--}}
-    {{--                        <input type="radio" name="availability" class="tf-check" id="inStock">--}}
-    {{--                        <label for="inStock">In stock <span class="count-stock">(32)</span></label>--}}
-    {{--                    </fieldset>--}}
-    {{--                    <fieldset class="fieldset-item">--}}
-    {{--                        <input type="radio" name="availability" class="tf-check" id="outStock">--}}
-    {{--                        <label for="outStock">Out of stock <span class="count-stock">(2)</span></label>--}}
-    {{--                    </fieldset>--}}
-    {{--                </div>--}}
-    {{--            </div>--}}
-
                 <div class="widget-facet facet-fieldset">
-                    <h6 class="facet-title">Brands</h6>
+                    <h6 class="facet-title">Thương hiệu</h6>
                     <div class="box-fieldset-item">
                         @foreach($brands as $brand)
                             <fieldset class="fieldset-item">

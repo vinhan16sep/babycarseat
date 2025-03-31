@@ -3,7 +3,7 @@
 @endphp
 
     <!-- Header -->
-<header id="header" class="header-default header-fullwidth">
+<header id="header" class="header-default header-fullwidth" style="box-shadow:0 1px 3px rgba(0, 0, 0, 0.1);">
     <div class="row wrapper-header align-items-center">
         <div class="col-md-4 col-3 d-xl-none">
             <a href="#mobileMenu" class="mobile-menu" data-bs-toggle="offcanvas" aria-controls="mobileMenu">
@@ -18,27 +18,17 @@
         <div class="col-xl-6 d-none d-xl-block">
             <nav class="box-navigation text-center">
                 <ul class="box-nav-ul d-flex align-items-center justify-content-center">
-                    <li class="menu-item active"><a href="#" class="item-link">Home</a></li>
-                    <li class="menu-item"><a href="{{ route('product-list') }}" class="item-link">Products</a></li>
+                    <li class="menu-item active"><a href="#" class="item-link">Trang chủ</a></li>
+                    <li class="menu-item"><a href="{{ route('product-list') }}" class="item-link">Sản phẩm</a></li>
                     <li class="menu-item"><a href="{{ route('news') }}" class="item-link">Blogs</a></li>
-                    <li class="menu-item"><a href="{{ route('category-detail-knowledge') }}" class="item-link">Knowledge</a></li>
-                    <li class="menu-item"><a href="#" class="item-link">About Us</a></li>
-                    <li class="menu-item"><a href="#" class="item-link">Contact Us</a></li>
+                    <li class="menu-item"><a href="{{ route('category-detail-knowledge') }}" class="item-link">Kiến thức</a></li>
+                    <li class="menu-item"><a href="#" class="item-link">Về chúng tôi</a></li>
+                    <li class="menu-item"><a href="#" class="item-link">Liên hệ</a></li>
                 </ul>
             </nav>
         </div>
         <div class="col-xl-3 col-md-4 col-3">
             <ul class="nav-icon d-flex justify-content-end align-items-center">
-                <li class="nav-search"><a href="#search" data-bs-toggle="modal" class="nav-icon-item">
-                        <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                             xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M11 19C15.4183 19 19 15.4183 19 11C19 6.58172 15.4183 3 11 3C6.58172 3 3 6.58172 3 11C3 15.4183 6.58172 19 11 19Z"
-                                stroke="#181818" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M21.35 21.0004L17 16.6504" stroke="#181818" stroke-width="2" stroke-linecap="round"
-                                  stroke-linejoin="round"/>
-                        </svg>
-                    </a></li>
                 <li class="nav-cart"><a href="#shoppingCart" data-bs-toggle="modal" class="nav-icon-item">
                         <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none"
                              xmlns="http://www.w3.org/2000/svg">
