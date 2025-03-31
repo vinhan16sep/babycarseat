@@ -46,12 +46,12 @@
 
                                 <div class="form-group">
                                     <label>Tên sản phẩm <span class="my-required">*</span></label>
-                                    <input type="text" name="name" value="{{ old('name', $object->name) }}" class="form-control" maxlength="255">
+                                    <input type="text" name="name" value="{{ old('name', $object->name) }}" class="form-control" maxlength="255" id="inputName">
                                 </div>
 
                                 <div class="form-group">
                                     <label>Slug <span class="my-required">*</span></label>
-                                    <input type="text" name="slug" value="{{ old('slug', $object->slug) }}" class="form-control" readonly>
+                                    <input type="text" name="slug" value="{{ old('slug', $object->slug) }}" class="form-control" id="inputSlug" readonly>
                                 </div>
 
                                 <div class="form-group">
@@ -99,13 +99,23 @@
                                 </div>
 
                                 <div class="form-group">
+                                    <label for="detail" class="form-label">Thông số</label>
+                                    <textarea name="detail" class="form-control my-textarea" id="txtareaDetail">{{ old('detail', $object->detail) }}</textarea>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="specification" class="form-label">Đặc tính</label>
+                                    <textarea name="specification" class="form-control my-textarea" id="txtareaSpecification">{{ old('specification', $object->specification) }}</textarea>
+                                </div>
+
+                                <div class="form-group">
                                     <label>Mô tả</label>
-                                    <textarea name="description" class="form-control">{{ old('description', $object->description) }}</textarea>
+                                    <textarea name="description" class="form-control my-textarea">{{ old('description', $object->description) }}</textarea>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="content" class="form-label">Nội dung</label>
-                                    <textarea name="content" class="form-control" id="txtareaContent">{{ old('content', $object->content) }}</textarea>
+                                    <textarea name="content" class="form-control my-textarea" id="txtareaContent">{{ old('content', $object->content) }}</textarea>
                                 </div>
 
                                 <input type="hidden" name="is_highlight" value="0">
@@ -140,8 +150,8 @@
     let url = window.location.origin;
 
     tinymce.init({
-        selector: 'textarea#txtareaContent',
-        height: 500,
+        selector: 'textarea.my-textarea',
+        height: 300,
         plugins: [
             'image',
             'table'
@@ -195,6 +205,54 @@
         let slug = to_slug($('#inputName').val());
         $('#inputSlug').val(slug);
     });
+
+    let colorIndex = document.querySelectorAll('.color-item').length;
+
+    // Thêm màu mới
+    function addColor() {
+        const container = document.getElementById('color-container');
+
+        const newColorHtml = `
+        <div class="color-item">
+            <div class="color-preview" id="color-preview-${colorIndex}"></div>
+
+            <select class="form-control color-select" name="colors[${colorIndex}]" onchange="updateColorPreview(this, ${colorIndex})">
+                <option value="">Chọn màu</option>
+                @foreach ($colors as $color)
+                    <option value="{{ $color->id }}" data-color="{{ $color->code }}">
+                        {{ $color->name }}
+                    </option>
+                @endforeach
+            </select>
+
+            <input type="file" class="form-control" name="images[${colorIndex}]" accept="image/*">
+            <button type="button" class="btn btn-danger" onclick="removeColor(this)">Xóa</button>
+        </div>
+    `;
+
+        container.insertAdjacentHTML('beforeend', newColorHtml);
+        colorIndex++;
+        removeSelectedColors();
+    }
+
+    // Loại bỏ màu đã chọn khỏi các dropdown khác
+    function removeSelectedColors() {
+        const selectedColors = new Set();
+
+        // Lấy tất cả các màu đã chọn
+        document.querySelectorAll('.color-select').forEach(select => {
+            if (select.value) {
+                selectedColors.add(select.value);
+            }
+        });
+
+        // Ẩn những màu đã chọn trong các dropdown khác
+        document.querySelectorAll('.color-select').forEach(select => {
+            Array.from(select.options).forEach(option => {
+                option.style.display = selectedColors.has(option.value) && option.value !== select.value ? 'none' : '';
+            });
+        });
+    }
 
     function updateColorPreview(select, index) {
         const colorCode = select.options[select.selectedIndex].getAttribute('data-color');

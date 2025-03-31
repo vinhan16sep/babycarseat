@@ -1444,39 +1444,24 @@
     <div class="mb-canvas-content">
         <div class="mb-body">
             <div class="mb-content-top">
-                <form class="form-search">
-                    <fieldset class="text">
-                        <input type="text" placeholder="What are you looking for?" class="" name="text" tabindex="0"
-                               value="" aria-required="true" required="">
-                    </fieldset>
-                    <button class="" type="submit">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M11 19C15.4183 19 19 15.4183 19 11C19 6.58172 15.4183 3 11 3C6.58172 3 3 6.58172 3 11C3 15.4183 6.58172 19 11 19Z"
-                                stroke="#181818" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M20.9984 20.9999L16.6484 16.6499" stroke="#181818" stroke-linecap="round"
-                                  stroke-linejoin="round"/>
-                        </svg>
-                    </button>
-                </form>
                 <ul class="nav-ul-mb" id="wrapper-menu-navigation">
                     <li class="nav-mb-item">
-                        <a href="#" class="mb-menu-link">Home</a>
+                        <a href="#" class="mb-menu-link">Trang chủ</a>
                     </li>
                     <li class="nav-mb-item">
-                        <a href="#" class="mb-menu-link">Products</a>
+                        <a href="#" class="mb-menu-link">Sản phẩm</a>
                     </li>
                     <li class="nav-mb-item">
                         <a href="#" class="mb-menu-link">Blogs</a>
                     </li>
                     <li class="nav-mb-item">
-                        <a href="#" class="mb-menu-link">News</a>
+                        <a href="#" class="mb-menu-link">Kiến thức</a>
                     </li>
                     <li class="nav-mb-item">
-                        <a href="#" class="mb-menu-link">About Us</a>
+                        <a href="#" class="mb-menu-link">Về chúng tôi</a>
                     </li>
                     <li class="nav-mb-item">
-                        <a href="#" class="mb-menu-link">Contact Us</a>
+                        <a href="#" class="mb-menu-link">Liên hệ</a>
                     </li>
                 </ul>
             </div>
