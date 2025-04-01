@@ -22,9 +22,12 @@
 
       var min = parseInt(skipSlider.getAttribute("data-min"));
       var max = parseInt(skipSlider.getAttribute("data-max"));
+        var price_min = parseInt($("#price-min-value").text());
+        var price_max = parseInt($("#price-max-value").text());
+
 
       noUiSlider.create(skipSlider, {
-        start: [min, max],
+        start: [price_min, price_max],
         connect: true,
         step: 1,
         range: {
@@ -68,7 +71,6 @@
     priceSlider.noUiSlider.on("update", function (values) {
       filters.minPrice = parseInt(values[0]);
       filters.maxPrice = parseInt(values[1]);
-
       $("#price-min-value").html(`<input type="hidden" name="min_price" value="${filters.minPrice}" />${filters.minPrice}`);
       $("#price-max-value").html(`<input type="hidden" name="max_price" value="${filters.maxPrice}" />${filters.maxPrice}`);
 

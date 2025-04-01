@@ -186,7 +186,7 @@ html {
 }
 
 body {
-  font-family: "Kumbh Sans", sans-serif;
+  font-family: "Wix Madefor Text", sans-serif;
   font-size: 16px;
   line-height: 26px;
   font-weight: 400;
@@ -418,7 +418,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Kumbh Sans", sans-serif;
+  font-family: "Wix Madefor Text", sans-serif;
   text-rendering: optimizeLegibility;
   color: var(--main);
   font-weight: 500;
@@ -520,7 +520,7 @@ h6 {
 }
 
 .font-main {
-  font-family: "Kumbh Sans", sans-serif;
+  font-family: "Wix Madefor Text", sans-serif;
 }
 
 .font-2 {
@@ -14394,7 +14394,7 @@ ul.list-text.type-number {
 /* sib-form */
 .sib-form {
   padding: 0;
-  font-family: "Kumbh Sans", sans-serif !important;
+  font-family: "Wix Madefor Text", sans-serif !important;
 }
 
 #sib-container {
@@ -18028,4 +18028,14 @@ ul.list-text.type-number {
     display: inline-block;
     max-width: 300px;
     z-index: 9999;
+}
+
+
+/* an card */
+.nav-cart, .btn-main-product.quick-add, .tf-product-info-quantity{
+    display: none!important;
+}
+/* class css font content */
+.fix-font, .fix-font *{
+    font-family: "Wix Madefor Text", sans-serif!important;
 }

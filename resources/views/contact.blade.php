@@ -94,7 +94,7 @@
                   </div>
             </div>
             <div class="col-md-6">
-                
+
     <div class="bs_map_main_wrapper float_left">
         <iframe src="{{ $contactInformations['google_map_hcm'] }}" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
       </div>
@@ -133,10 +133,40 @@
         </div>
       </div>
     </div>
-    
+
 @endsection
 
 
 @section('script')
     <script src="{{ asset('js/jquery.validate.js') }}"></script>
+    <script>
+        if($("#contact").length > 0){
+            validateContact();
+        }
+        $("#submitFormContact").on("click", function(e){
+            let form = $("#contact");
+            if(form.valid()) {
+                let name = $("#contact [name=name]").val();
+                let email = $("#contact [name=email]").val();
+                let phone = $("#contact [name=phone]").val();
+                let message = $("#contact [name=message]").val();
+                $.post(BASE_URL + '/lien-he', {
+                    name: name,
+                    email: email,
+                    phone: phone,
+                    message: message,
+                    _token: $('[name="csrf-token"]').attr("content")
+                }, function(data){
+                    $("#contact input, #contact textarea").val("");
+                    if (data != false) {
+                        showMessage("alert alert-success", "Thêm liên hệ thành công!");
+                    } else {
+                        showMessage("alert alert-danger", "Lỗi hệ thống, vui lòng liên hệ quản trị viên để được hỗ trợ!");
+                    }
+                });
+            }
+            e.preventDefault();
+
+        });
+    </script>
 @endsection

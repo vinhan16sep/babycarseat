@@ -45,7 +45,7 @@
                 {{--                                                </div>--}}
 
                 <div class="list-product-btn">
-                    <a href="#shoppingCart" data-bs-toggle="modal" class="btn-main-product">Add To cart</a>
+                    <a href="#shoppingCart" data-bs-toggle="modal" class="d-none btn-main-product">Add To cart</a>
 {{--                    <a href="javascript:void(0);" class="box-icon wishlist btn-icon-action">--}}
 {{--                        <span class="icon icon-heart"></span>--}}
 {{--                        <span class="tooltip">Wishlist</span>--}}

@@ -308,7 +308,7 @@
             <div class="toolbar-label">Search</div>
         </a>
     </div>
-    <div class="toolbar-item">
+    <div class="toolbar-item d-none">
         <a href="#shoppingCart" data-bs-toggle="modal">
             <div class="toolbar-icon">
                 <svg class="icon" width="20" height="20" viewBox="0 0 20 20" fill="none"
@@ -1446,7 +1446,7 @@
             <div class="mb-content-top">
                 <ul class="nav-ul-mb" id="wrapper-menu-navigation">
                     <li class="nav-mb-item">
-                        <a href="#" class="mb-menu-link">Trang chủ</a>
+                        <a href="{{ url('/') }}" class="mb-menu-link">Trang chủ</a>
                     </li>
                     <li class="nav-mb-item">
                         <a href="{{ route('product-list') }}" class="mb-menu-link">Sản phẩm</a>
@@ -1455,10 +1455,10 @@
                         <a href="{{ route('news') }}" class="mb-menu-link">Blogs</a>
                     </li>
                     <li class="nav-mb-item">
-                        <a href="{{ route('category-detail-knowledge') }}" class="mb-menu-link">>Kiến thức</a>
+                        <a href="{{ route('category-detail-knowledge') }}" class="mb-menu-link">Kiến thức</a>
                     </li>
                     <li class="nav-mb-item">
-                        <a href="#" class="mb-menu-link">Về chúng tôi</a>
+                        <a href="{{ route('about-show') }}" class="mb-menu-link">Về chúng tôi</a>
                     </li>
                     <li class="nav-mb-item">
                         <a href="#" class="mb-menu-link">Liên hệ</a>

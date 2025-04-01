@@ -43,6 +43,7 @@ Route::group(['middleware' => ['site_settings']], function () {
     Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::get('/san-pham', [App\Http\Controllers\ProductController::class, 'list'])->name('product-list');
    Route::get('/san-pham/{slug}', [App\Http\Controllers\ProductController::class, 'show'])->name('product-index');
+   Route::get('/ve-chung-toi', [App\Http\Controllers\AboutController::class, 'show'])->name('about-show');
 
 
     Route::get('lien-he', [App\Http\Controllers\ContactController::class, 'show'])->name('contact');
