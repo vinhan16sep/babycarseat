@@ -78,7 +78,7 @@
             <div class="container">
                 <div class="row">
                     <!-- Product default -->
-                    <div class="col-md-5">
+                    <div class="col-md-6">
                         <div class="tf-product-media-wrap sticky-top">
                             <div class="thumbs-slider">
                                 <div dir="ltr" class="swiper tf-product-media-thumbs other-image-zoom"
@@ -114,7 +114,7 @@
                     </div>
                     <!-- /Product default -->
                     <!-- tf-product-info-list -->
-                    <div class="col-md-7">
+                    <div class="col-md-6">
                         <div class="tf-product-info-wrap position-relative">
                             <div class="tf-zoom-main"></div>
                             <div class="tf-product-info-list other-image-zoom">
@@ -226,7 +226,7 @@
                                             <span class="btn-quantity btn-increase">+</span>
                                         </div>
                                     </div>
-                                    <div>
+                                    <div class="d-none">
                                         <div class="tf-product-info-by-btn mb_10">
                                             <a data-bs-toggle="modal"
                                                class="btn-style-2 flex-grow-1 text-btn-uppercase fw-6 btn-add-to-cart add-to-card" data-id="{{ $product->id }}"><span>Add to cart -&nbsp;</span><span
@@ -260,7 +260,7 @@
                                                     <span class="btn-open-sub"></span>
                                                 </a>
                                                 <div id="accordion-7" class="collapse" data-bs-parent="#accordion-product">
-                                                    <div class="accordion-content tab-description">
+                                                    <div class="accordion-content tab-description fix-font">
                                                         <p class="text-secondary">
                                                             Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book
                                                         </p>
@@ -274,7 +274,7 @@
                                                     <span class="btn-open-sub"></span>
                                                 </a>
                                                 <div id="accordion-8" class="collapse" data-bs-parent="#accordion-product">
-                                                    <div class="accordion-content tab-description">
+                                                    <div class="accordion-content tab-description fix-font">
                                                         <p class="text-secondary">
                                                             Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book
                                                         </p>
@@ -362,7 +362,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <div class="accordion-content tab-policies">
+                    <div class="accordion-content tab-policies fix-font">
                         {!! $product->content !!}
                     </div>
                 </div>

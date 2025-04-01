@@ -93,7 +93,7 @@
                             <div>
                                 @foreach($latestKnowledges as $item)
                                     @php
-                                        $route = route("detail-new", ["slug" => $item->slug ])
+                                        $route = route("detail-knowledge", ["category" => $item->category->slug, "slug" => $item->slug ])
                                     @endphp
                                     <div class="relatest-post-item {{ $loop->index == 0 ? '' : 'style-row' }} hover-image">
                                         <div class="image">
@@ -115,7 +115,7 @@
                                                 </div>
                                             </div>
                                             <h6 class="title fw-5">
-                                                <a class="link" href="blog-detail.html">The Ultimate Guide: Dressing Stylishly with Minimal Effort</a>
+                                                <a class="link" href="{{ $route }}">{{ $item->title }}</a>
                                             </h6>
                                         </div>
                                     </div>

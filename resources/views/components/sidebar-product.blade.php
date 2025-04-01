@@ -31,11 +31,11 @@
                     <div class="box-price-product">
                         <div class="box-price-item">
                             <span class="title-price">Giá thấp nhất</span>
-                            <div class="price-val" id="price-min-value" data-currency="$"></div>
+                            <div class="price-val" id="price-min-value" data-currency="VNĐ">{{ request('min_price', 0) }}</div>
                         </div>
                         <div class="box-price-item">
                             <span class="title-price">Giá cao nhất</span>
-                            <div class="price-val" id="price-max-value" data-currency="$"></div>
+                            <div class="price-val" id="price-max-value" data-currency="VNĐ">{{ request('max_price', $product_price_max) }}</div>
                         </div>
                     </div>
                 </div>
