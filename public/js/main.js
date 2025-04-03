@@ -1373,6 +1373,70 @@
         });
     });
 
+    $(document).ready(function() {
+        if($("#contactform").length > 0){
+            console.log(123123);
+            let form = $("#contactform");
+            let rules = {
+                name: {
+                    required: true
+                },
+                phone: {
+                    required: true
+                },
+                email: {
+                    required: true,
+                    email: true
+                }
+            };
+            form.validate({
+                ignore: false,
+                rules: rules,
+                messages:{
+                    name: {
+                        required: 'Vui lòng nhập họ và tên',
+                    },
+                    phone: {
+                        required: 'Vui lòng nhập số điện thoại',
+                    },
+                    email: {
+                        required: 'Vui lòng nhập địa chỉ email',
+                        email: 'Vui lòng nhập một địa chỉ email hợp lệ.'
+                    }
+                },
+                showErrors: function(errorMap,errorList) {
+                    this.defaultShowErrors();
+                }
+            });
+        }
+    })
+
+    $("#submitFormContact").on("click", function(e){
+        let form = $("#contactform");
+        if(form.valid()) {
+            let name = $("#contactform [name=name]").val();
+            let email = $("#contactform [name=email]").val();
+            let phone = $("#contactform [name=phone]").val();
+            let message = $("#contactform [name=message]").val();
+            $.post(BASE_URL + '/lien-he', {
+                name: name,
+                email: email,
+                phone: phone,
+                message: message,
+                _token: $('[name="csrf-token"]').attr("content")
+            }, function(data){
+                $("#contactform input, #contactform textarea").val("");
+                if (data != false) {
+                    showMessage("alert alert-success", "Thêm liên hệ thành công!");
+                } else {
+                    showMessage("alert alert-danger", "Lỗi hệ thống, vui lòng liên hệ quản trị viên để được hỗ trợ!");
+                }
+            });
+        }
+        e.preventDefault();
+
+    });
+
     function updateEventQuickAdd(productItem) {
         var basePrice =
             parseFloat(
@@ -1470,7 +1534,7 @@
         ajaxSubscribe.eventLoad();
         efectparalax();
         new WOW().init();
-        RTL();
+        // RTL();
         scrollBottomSticky();
         preloader();
     });

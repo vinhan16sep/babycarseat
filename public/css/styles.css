@@ -18039,3 +18039,6 @@ ul.list-text.type-number {
 .fix-font, .fix-font *{
     font-family: "Wix Madefor Text", sans-serif!important;
 }
+.error{
+    color: red;
+}

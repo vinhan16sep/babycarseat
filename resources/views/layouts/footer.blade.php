@@ -1461,7 +1461,7 @@
                         <a href="{{ route('about-show') }}" class="mb-menu-link">Về chúng tôi</a>
                     </li>
                     <li class="nav-mb-item">
-                        <a href="#" class="mb-menu-link">Liên hệ</a>
+                        <a href="{{ route('lien-he') }}" class="mb-menu-link">Liên hệ</a>
                     </li>
                 </ul>
             </div>

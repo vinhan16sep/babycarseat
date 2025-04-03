@@ -27,10 +27,16 @@ if(!function_exists('getDataCart')){
 }
 
 if(!function_exists('getImage')){
-	function getImage($image){
-		if (empty($image)) {
-			return asset("/images/no-image-available-list.jpg");
-		}
-		return asset($image);
-	}
+    function getImage($image){
+        if (empty($image)) {
+            return asset("/images/no-image-available-list.jpg");
+        }
+        return asset($image);
+    }
+}
+
+if(!function_exists('checkActiveMenu')){
+    function checkActiveMenu($path){
+        return \Request::is("$path/*") || \Request::is("$path") ? 'active' : '';
+    }
 }

@@ -18,12 +18,12 @@
         <div class="col-xl-6 d-none d-xl-block">
             <nav class="box-navigation text-center">
                 <ul class="box-nav-ul d-flex align-items-center justify-content-center">
-                    <li class="menu-item active"><a href="{{ url('/') }}" class="item-link">Trang chủ</a></li>
-                    <li class="menu-item"><a href="{{ route('product-list') }}" class="item-link">Sản phẩm</a></li>
-                    <li class="menu-item"><a href="{{ route('news') }}" class="item-link">Blogs</a></li>
-                    <li class="menu-item"><a href="{{ route('category-detail-knowledge') }}" class="item-link">Kiến thức</a></li>
-                    <li class="menu-item"><a href="{{ route('about-show') }}" class="item-link">Về chúng tôi</a></li>
-                    <li class="menu-item"><a href="#" class="item-link">Liên hệ</a></li>
+                    <li class="menu-item {{ checkActiveMenu("") }}"><a href="{{ url('/') }}" class="item-link">Trang chủ</a></li>
+                    <li class="menu-item {{ checkActiveMenu("san-pham") }}"><a href="{{ route('product-list') }}" class="item-link">Sản phẩm</a></li>
+                    <li class="menu-item {{ checkActiveMenu("tin-tuc") }}"><a href="{{ route('news') }}" class="item-link">Blogs</a></li>
+                    <li class="menu-item {{ checkActiveMenu("kien-thuc") }}"><a href="{{ route('category-detail-knowledge') }}" class="item-link">Kiến thức</a></li>
+                    <li class="menu-item {{ checkActiveMenu("ve-chung-toi") }}"><a href="{{ route('about-show') }}" class="item-link">Về chúng tôi</a></li>
+                    <li class="menu-item {{ checkActiveMenu("lien-he") }}"><a href="{{ route('lien-he') }}" class="item-link">Liên hệ</a></li>
                 </ul>
             </nav>
         </div>
