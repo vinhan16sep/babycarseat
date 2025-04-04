@@ -16,7 +16,7 @@
                         <tbody>
                             <tr>
                             <td align="center" valign="top">
-                                <table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color:#4d0322;color:#fff;border-bottom:0;font-weight:bold;line-height:100%;vertical-align:middle;font-family:&quot;Helvetica Neue&quot;,Helvetica,Roboto,Arial,sans-serif;border-radius:3px 3px 0 0" bgcolor="#4d0322">
+                                <table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color:black;color:#fff;border-bottom:0;font-weight:bold;line-height:100%;vertical-align:middle;font-family:&quot;Helvetica Neue&quot;,Helvetica,Roboto,Arial,sans-serif;border-radius:3px 3px 0 0" bgcolor="#4d0322">
                                 <tbody>
                                     <tr>
                                     <td style="padding:36px 48px;display:block">
@@ -44,13 +44,13 @@
                                                         <tbody>
                                                         <tr>
                                                             <td valign="top" width="50%" style="text-align:left;font-family:'Helvetica Neue',Helvetica,Roboto,Arial,sans-serif;border:0;padding:0" align="left">
-                                                            <address style=""> 
+                                                            <address style="">
                                                                 Họ và tên: {{ $name }} <br><br>
-                                                                Địa chỉ email: 
+                                                                Địa chỉ email:
                                                                 <a href="mailto:{{ $email }}" target="_blank">
                                                                     {{ $email }}
                                                                 </a> <br><br>
-                                                                Số điện thoại: 
+                                                                Số điện thoại:
                                                                 <a href="tel:{{ $phone }}" style="color:#4d0322;font-weight:normal;text-decoration:underline" target="_blank">
                                                                     {{ $phone }}
                                                                 </a> <br><br>
