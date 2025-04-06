@@ -73,8 +73,9 @@
 
                                     <div id="color-container">
                                         @php
-                                        $oldColors = collect(old('colors', []))->filter();
-                                        $totalColors = max($oldColors->count(), 1);
+                                        // Lấy danh sách màu từ `old()` hoặc từ DB nếu không có lỗi validation
+                                        $savedColors = $product->colors->pluck('id')->toArray();
+                                        $oldColors = collect(old('colors', $savedColors))->filter();
                                         @endphp
 
                                         @foreach ($oldColors as $index => $colorId)
@@ -82,7 +83,8 @@
                                         $selectedColor = $colors->firstWhere('id', $colorId);
                                         @endphp
                                         <div class="color-item">
-                                            <div class="color-preview" id="color-preview-{{ $index }}" style="background-color: {{ $selectedColor->code ?? 'transparent' }};"></div>
+                                            <div class="color-preview" id="color-preview-{{ $index }}"
+                                                style="background-color: {{ $selectedColor->code ?? 'transparent' }};"></div>
 
                                             <select class="form-control color-select" name="colors[{{ $index }}]" onchange="updateColorPreview(this, {{ $index }})">
                                                 <option value="">Chọn màu</option>
@@ -98,25 +100,6 @@
                                             <button type="button" class="btn btn-danger" onclick="removeColor(this)">Xóa</button>
                                         </div>
                                         @endforeach
-
-                                        @if ($oldColors->isEmpty())
-                                        <!-- Nếu không có màu cũ, hiển thị 1 dòng trống -->
-                                        <div class="color-item">
-                                            <div class="color-preview" id="color-preview-0"></div>
-
-                                            <select class="form-control color-select" name="colors[0]" onchange="updateColorPreview(this, 0)">
-                                                <option value="">Chọn màu</option>
-                                                @foreach ($colors as $color)
-                                                <option value="{{ $color->id }}" data-color="{{ $color->code }}">
-                                                    {{ $color->name }}
-                                                </option>
-                                                @endforeach
-                                            </select>
-
-                                            <input type="file" class="form-control" name="images[0]" accept="image/*">
-                                            <button type="button" class="btn btn-danger" onclick="removeColor(this)">Xóa</button>
-                                        </div>
-                                        @endif
                                     </div>
 
                                     @if ($errors->has('colors'))
@@ -165,7 +148,7 @@
                                     <textarea name="detail" class="form-control my-textarea" rows="5">{{ old('detail') }}</textarea>
                                 </div>
                                 <div class="form-group">
-                                <label for="specification" class="form-label">Đặc tính</label>
+                                    <label for="specification" class="form-label">Đặc tính</label>
                                     <textarea name="specification" class="form-control my-textarea" rows="5">{{ old('specification') }}</textarea>
                                 </div>
 
@@ -225,26 +208,26 @@
 
     let colorIndex = document.querySelectorAll('.color-item').length;
 
-    // Thêm màu mới
     function addColor() {
         const container = document.getElementById('color-container');
 
         const newColorHtml = `
-        <div class="color-item">
-            <div class="color-preview" id="color-preview-${colorIndex}"></div>
+    <div class="color-item">
+        <div class="color-preview" id="color-preview-${colorIndex}"></div>
 
-            <select class="form-control color-select" name="colors[${colorIndex}]" onchange="updateColorPreview(this, ${colorIndex})">
-                <option value="">Chọn màu</option>
-                @foreach ($colors as $color)
-                    <option value="{{ $color->id }}" data-color="{{ $color->code }}">
-                        {{ $color->name }}
-                    </option>
-                @endforeach
-            </select>
+        <select class="form-control color-select" name="colors[${colorIndex}]" onchange="updateColorPreview(this, ${colorIndex})">
+            <option value="">Chọn màu</option>
+            @foreach ($colors as $color)
+                <option value="{{ $color->id }}" data-color="{{ $color->code }}">
+                    {{ $color->name }}
+                </option>
+            @endforeach
+        </select>
 
-            <input type="file" class="form-control" name="images[${colorIndex}]" accept="image/*">
-            <button type="button" class="btn btn-danger" onclick="removeColor(this)">Xóa</button>
-        </div>
+        <input type="hidden" name="new_colors[]" value="">
+        <input type="file" class="form-control" name="images[${colorIndex}]" accept="image/*">
+        <button type="button" class="btn btn-danger" onclick="removeColor(this)">Xóa</button>
+    </div>
     `;
 
         container.insertAdjacentHTML('beforeend', newColorHtml);
@@ -257,7 +240,14 @@
         const selectedOption = select.options[select.selectedIndex];
         const colorCode = selectedOption.getAttribute('data-color');
         const preview = document.getElementById(`color-preview-${index}`);
+
         preview.style.backgroundColor = colorCode || 'transparent';
+
+        // Cập nhật giá trị vào input hidden
+        const hiddenInput = select.closest('.color-item').querySelector('input[type="hidden"]');
+        if (hiddenInput) {
+            hiddenInput.value = select.value;
+        }
 
         removeSelectedColors();
     }
@@ -287,8 +277,17 @@
         });
     }
 
-    // Chạy ngay khi trang load để loại bỏ màu trùng sau validate lỗi
+    // Chạy ngay khi trang load để cập nhật màu cũ + giữ màu mới
     window.onload = () => {
+        document.querySelectorAll('.color-select').forEach((select, index) => {
+            const selectedOption = select.options[select.selectedIndex];
+            const colorCode = selectedOption.getAttribute('data-color');
+            const preview = document.getElementById(`color-preview-${index}`);
+            if (preview) {
+                preview.style.backgroundColor = colorCode || 'transparent';
+            }
+        });
+
         removeSelectedColors();
     };
 

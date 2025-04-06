@@ -171,9 +171,11 @@ class ProductController extends AdminController
     public function update(Request $request, $id)
     {
         $object = Product::find($id);
+        $productBeforeUpdate = Product::with('productColors')->findOrFail($id);
+        $imageBeforeUpdate = $productBeforeUpdate->productColors->toArray();
 
         echo '<pre>';
-        print_r($request->all());die;
+        print_r($imageBeforeUpdate);die;
 
         // If object not found
         if ($object == null || $object->count() == 0) {
@@ -198,22 +200,20 @@ class ProductController extends AdminController
             $object->is_highlight = $request->input('is_highlight');
             $object->updated_by = 1;
 
-            if ($request->hasfile('image')) {
-                $path = sprintf(Config::get('constants.FILE_STORAGE_PATH.PRODUCT_IMAGE'), $id);
-                $prevImg = $object->image;
-                $upload = $this->updateImages($path, $request);
-                $object->image = $upload;
-            }
+            
 
             if ($object->save()) {
-                DB::commit();
-                $parsedUrl = parse_url($request->input('callback'));
-                $params = [];
-                if (isset($parsedUrl['query'])) {
-                    parse_str($parsedUrl['query'], $params);
+                if ($request->input('colors') && !empty($request->input('colors'))) {
+    
+                } else {
+                    DB::commit();
+                    $parsedUrl = parse_url($request->input('callback'));
+                    $params = [];
+                    if (isset($parsedUrl['query'])) {
+                        parse_str($parsedUrl['query'], $params);
+                    }
+                    return redirect()->route('list-product', $params)->with('success', Config::get('constants.MESSAGE.UPDATE_SUCCEEDED'));
                 }
-
-                return redirect()->route('list-product', $params)->with('success', Config::get('constants.MESSAGE.UPDATE_SUCCEEDED'));
             }
             DB::rollBack();
             return redirect()->route('edit-product', [
