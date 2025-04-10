@@ -23,7 +23,7 @@
                     <li class="menu-item {{ checkActiveMenu("tin-tuc") }}"><a href="{{ route('news') }}" class="item-link">Blogs</a></li>
                     <li class="menu-item {{ checkActiveMenu("kien-thuc") }}"><a href="{{ route('category-detail-knowledge') }}" class="item-link">Kiến thức</a></li>
                     <li class="menu-item {{ checkActiveMenu("ve-chung-toi") }}"><a href="{{ route('about-show') }}" class="item-link">Về chúng tôi</a></li>
-                    <li class="menu-item {{ checkActiveMenu("lien-he") }}"><a href="{{ route('lien-he') }}" class="item-link">Liên hệ</a></li>
+                    <li class="menu-item {{ checkActiveMenu("lien-he") }}"><a href="{{ route('contact') }}" class="item-link">Liên hệ</a></li>
                 </ul>
             </nav>
         </div>
