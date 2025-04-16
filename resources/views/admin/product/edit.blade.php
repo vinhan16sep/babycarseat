@@ -44,6 +44,23 @@
                                 @csrf
                                 @method('PUT')
 
+                                <!-- Ảnh -->
+                                <div class="form-group row">
+                                    <div class="col-md-8">
+                                        <div class="form-group{{ $errors->has('image') ? ' has-error' : '' }}">
+                                            <label>Ảnh <span class="my-required">*</span></label>
+                                            <input type="file" name="image" class="form-control input-default" id="image">
+                                            @if ($errors->has('image'))
+                                            <span style="color:red;">{{ $errors->first('image') }}</span>
+                                            @endif
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 my-preview">
+                                        <img id="preview-image-before-upload" src="{{ asset('images/no-image-available.png') }}"
+                                            alt="preview image" style="max-height: 250px;">
+                                    </div>
+                                </div>
+
                                 <div class="form-group">
                                     <label>Tên sản phẩm <span class="my-required">*</span></label>
                                     <input type="text" name="name" value="{{ old('name', $object->name) }}" class="form-control" maxlength="255" id="inputName">
@@ -52,27 +69,6 @@
                                 <div class="form-group">
                                     <label>Slug <span class="my-required">*</span></label>
                                     <input type="text" name="slug" value="{{ old('slug', $object->slug) }}" class="form-control" id="inputSlug" readonly>
-                                </div>
-
-                                <div class="form-group">
-                                    <label>Chọn màu sắc và tải ảnh đại diện <span class="my-required">*</span></label>
-                                    <div id="color-container">
-                                        @foreach ($object->productColors as $index => $productColor)
-                                        <div class="color-item">
-                                            <div class="color-preview" id="color-preview-{{ $index }}" style="background-color: {{ $productColor->color->code }};"></div>
-                                            <select class="form-control color-select" name="colors[{{ $index }}]" onchange="updateColorPreview(this, {{ $index }})">
-                                                @foreach ($colors as $color)
-                                                <option value="{{ $color->id }}" data-color="{{ $color->code }}" {{ $color->id == $productColor->color_id ? 'selected' : '' }}>
-                                                    {{ $color->name }}
-                                                </option>
-                                                @endforeach
-                                            </select>
-                                            <input type="file" class="form-control" name="images[{{ $index }}]" accept="image/*">
-                                            <button type="button" class="btn btn-danger" onclick="removeColor(this)">Xóa</button>
-                                        </div>
-                                        @endforeach
-                                    </div>
-                                    <button type="button" class="btn btn-primary mt-2" onclick="addColor()">Thêm màu</button>
                                 </div>
 
                                 <div class="form-group">
@@ -196,6 +192,16 @@
         },
         menubar: 'favs file edit view insert format tools table help'
     });
+    
+    $('#preview-image-before-upload').attr('src', "{{ $object->image ? asset($object->image) : asset('images/no-image-available.png') }}"); 
+
+    $('#image').change(function(){
+        let reader = new FileReader();
+        reader.onload = (e) => { 
+            $('#preview-image-before-upload').attr('src', e.target.result); 
+        }
+        reader.readAsDataURL(this.files[0]); 
+    });
 
     $('#inputName').change(function() {
         let slug = to_slug($('#inputName').val());
@@ -205,62 +211,5 @@
         let slug = to_slug($('#inputName').val());
         $('#inputSlug').val(slug);
     });
-
-    let colorIndex = document.querySelectorAll('.color-item').length;
-
-    // Thêm màu mới
-    function addColor() {
-        const container = document.getElementById('color-container');
-
-        const newColorHtml = `
-        <div class="color-item">
-            <div class="color-preview" id="color-preview-${colorIndex}"></div>
-
-            <select class="form-control color-select" name="colors[${colorIndex}]" onchange="updateColorPreview(this, ${colorIndex})">
-                <option value="">Chọn màu</option>
-                @foreach ($colors as $color)
-                    <option value="{{ $color->id }}" data-color="{{ $color->code }}">
-                        {{ $color->name }}
-                    </option>
-                @endforeach
-            </select>
-
-            <input type="file" class="form-control" name="images[${colorIndex}]" accept="image/*">
-            <button type="button" class="btn btn-danger" onclick="removeColor(this)">Xóa</button>
-        </div>
-    `;
-
-        container.insertAdjacentHTML('beforeend', newColorHtml);
-        colorIndex++;
-        removeSelectedColors();
-    }
-
-    // Loại bỏ màu đã chọn khỏi các dropdown khác
-    function removeSelectedColors() {
-        const selectedColors = new Set();
-
-        // Lấy tất cả các màu đã chọn
-        document.querySelectorAll('.color-select').forEach(select => {
-            if (select.value) {
-                selectedColors.add(select.value);
-            }
-        });
-
-        // Ẩn những màu đã chọn trong các dropdown khác
-        document.querySelectorAll('.color-select').forEach(select => {
-            Array.from(select.options).forEach(option => {
-                option.style.display = selectedColors.has(option.value) && option.value !== select.value ? 'none' : '';
-            });
-        });
-    }
-
-    function updateColorPreview(select, index) {
-        const colorCode = select.options[select.selectedIndex].getAttribute('data-color');
-        document.getElementById(`color-preview-${index}`).style.backgroundColor = colorCode;
-    }
-
-    function removeColor(button) {
-        button.closest('.color-item').remove();
-    }
 </script>
 @endsection

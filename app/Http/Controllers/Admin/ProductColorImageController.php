@@ -1,0 +1,138 @@
+<?php
+
+namespace App\Http\Controllers\Admin;
+
+use App\Models\Color;
+use App\Models\Product;
+use App\Models\ProductColor;
+use Exception;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\DB;
+
+class ProductColorImageController extends AdminController
+{
+    public function create(Request $request)
+    {
+        $request = $request->all();
+
+        if (!isset($request['id']) || empty($request['id'])) {
+            return redirect()->route('list-product')->with('error', Config::get('constants.MESSAGE.DATA_NOT_FOUND'));
+        }
+
+        $product = Product::where('id', $request['id'])->first();
+        if ($product == null || empty($product)) {
+            return redirect()->route('list-product')->with('error', Config::get('constants.MESSAGE.DATA_NOT_FOUND'));
+        }
+
+        $colors = Color::all();
+
+        return view(
+            'admin/product-color-images/create',
+            [
+                'product' => $product,
+                'colors' => $colors,
+            ]
+        );
+    }
+
+    public function store(Request $request)
+    {
+        $this->validateStore($request);
+        DB::beginTransaction();
+
+        try {
+
+            $path = sprintf(Config::get('constants.FILE_STORAGE_PATH.PRODUCT_COLOR_IMAGE'), $request->input('product_id'), $request->input('color_id'));
+            $exist = ProductColor::where(['product_id' => $request->input('product_id'), 'color_id' => $request->input('color_id')])->first();
+            if (!empty($exist)) {
+                if ($this->deleteImage($path)) {
+                    if ($request->hasfile('images')) {
+                        
+                        $uploads = $this->uploadImages($path, $request, 'images');
+                        $exist->image = json_encode($uploads, JSON_UNESCAPED_SLASHES);
+            
+                        if ($exist->save()) {
+                            DB::commit();
+                            return redirect()->route('list-product')->with('success', Config::get('constants.MESSAGE.CREATE_SUCCEEDED'));
+                        }
+                        DB::rollBack();
+                        return redirect()->route('create-product')->with('error', Config::get('constants.MESSAGE.SOMETHING_ERROR'));
+                    }
+                }
+            } else {
+                $productColor = new ProductColor();
+                $productColor->product_id = $request->input('product_id');
+                $productColor->color_id = $request->input('color_id');
+                if ($productColor->save()) {
+    
+                    if ($request->hasfile('images')) {
+                        
+                        $uploads = $this->uploadImages($path, $request, 'images');
+                        $productColor->image = json_encode($uploads, JSON_UNESCAPED_SLASHES);
+            
+                        if ($productColor->save()) {
+                            DB::commit();
+                            return redirect()->route('list-product')->with('success', Config::get('constants.MESSAGE.CREATE_SUCCEEDED'));
+                        }
+                        DB::rollBack();
+                        return redirect()->route('create-product')->with('error', Config::get('constants.MESSAGE.SOMETHING_ERROR'));
+                    }
+                }
+                DB::rollBack();
+                return redirect()->route('create-product')->with('error', Config::get('constants.MESSAGE.SOMETHING_ERROR'));
+            }
+            DB::rollBack();
+            return redirect()->route('create-product')->with('error', Config::get('constants.MESSAGE.SOMETHING_ERROR'));
+        } catch (Exception $e) {
+            DB::rollBack();
+            return redirect()->route('create-product')->with('error', $e->getMessage());
+        }
+    }
+
+    public function edit($id)
+    {
+        $productColor = ProductColor::with('product', 'color', 'images')->findOrFail($id);
+        return view('images.edit', compact('productColor'));
+    }
+
+    // public function destroy($id)
+    // {
+    //     $image = ProductColorImage::findOrFail($id);
+    //     \Storage::disk('public')->delete($image->image_path);
+    //     $image->delete();
+
+    //     return back()->with('success', 'Xóa ảnh thành công!');
+    // }
+
+    public function getColorsByProduct(Request $request)
+    {
+        $request = $request->all();
+
+        if (!isset($request['productId']) || empty($request['productId'])) {
+            return response()->json(['status' => 'error', 'msg' => Config::get('constants.MESSAGE.DATA_NOT_FOUND')], 200);
+        }
+
+        $colors = ProductColor::join('colors', 'product_colors.color_id', '=', 'colors.id')
+            ->where('product_colors.product_id', $request['productId'])
+            ->select('colors.id', 'colors.name')
+            ->distinct()
+            ->get();
+
+        return response()->json(['status' => 'success', 'data' => $colors], 200);
+    }
+
+    private function validateStore($request)
+    {
+        $this->validate($request, [
+            'color_id' => 'required',
+            'image.*' => 'required|image|mimes:jpg,jpeg,png|max:2048',
+        ], [
+            'color_id.required' => 'Chưa chọn màu sắc',
+            'image.required' => 'Chưa chọn ảnh',
+            'image.image' => 'Chỉ chấp nhận ảnh có định dạng jpg, jpeg, png',
+            'image.mimes' => 'Chỉ chấp nhận ảnh có định dạng jpg, jpeg, png',
+            'image.max' => 'Dung lượng ảnh không được quá 2MB',
+        ]);
+    }
+}

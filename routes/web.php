@@ -23,6 +23,7 @@ use App\Http\Controllers\Admin\KnowledgeController;
 use App\Http\Controllers\Admin\NoteController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\ProductCategoryController;
+use App\Http\Controllers\Admin\ProductColorImageController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -135,6 +136,17 @@ Route::group(['prefix' => 'br-admin', 'middleware' => 'auth'], function () {
         Route::put('product/update/{id}', [ProductController::class, 'update'])->name('update-product');
         Route::get('product/delete-row', [ProductController::class, 'delete'])->name('delete-product');
         Route::get('product/change-status', [ProductController::class, 'changeStatus'])->name('change-product-status');
+
+
+        // Product color image
+        Route::get('product-color-image', [ProductColorImageController::class, 'index'])->name('list-product-color-image');
+        Route::get('product-color-image/create', [ProductColorImageController::class, 'create'])->name('create-product-color-image');
+        Route::post('product-color-image/store', [ProductColorImageController::class, 'store'])->name('store-product-color-image');
+        Route::get('product-color-image/edit/{id}', [ProductColorImageController::class, 'edit'])->name('edit-product-color-image');
+        Route::put('product-color-image/update/{id}', [ProductColorImageController::class, 'update'])->name('update-product-color-image');
+        Route::get('product-color-image/delete-row', [ProductColorImageController::class, 'delete'])->name('delete-product-color-image');
+        Route::get('product-color-image/change-status', [ProductColorImageController::class, 'changeStatus'])->name('change-product-color-image-status');
+        Route::get('product-color-image/get-colors-by-product', [ProductColorImageController::class, 'getColorsByProduct'])->name('get-colors-by-product');
 
 
         // News
