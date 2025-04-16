@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('css')
+    <link rel="stylesheet" href="{{ asset('css/home.css?v=' . ($ver ?? '')) }}">
+@stop
+
 @section('content')
     <!-- Slider -->
     <section class="tf-slideshow slider-default slider-effect-fade">
@@ -9,57 +13,16 @@
             <div class="swiper-wrapper">
                 <div class="swiper-slide">
                     <div class="wrap-slider">
-                        <img src="images/slider/slider-decor1.jpg" alt="fashion-slideshow">
+                        <img src="images/slider/slider-decor1.png" alt="fashion-slideshow">
                         <div class="box-content">
                             <div class="content-slider">
                                 <div class="box-title-slider">
-                                    <div class="fade-item fade-item-1 heading title-display text-white">Wood and Stone
-                                    </div>
-                                    <p class="fade-item fade-item-2 body-text-1 text-white">Quick! Grab limited-time
-                                        deals before they’re gone.</p>
+                                    <div class="fade-item fade-item-1 heading title-display text-white"><span class="small-text">Thiết kế</span> Đức</div>
+                                    <div class="fade-item fade-item-1 heading title-display text-white"><span class="small-text">Tiêu chuẩn</span> Quốc tế</div>
                                 </div>
                                 <div class="fade-item fade-item-3 box-btn-slider">
                                     <a href="shop-default-grid.html" class="tf-btn btn-fill btn-white"><span
-                                            class="text">Explore Collection</span><i class="icon icon-arrowUpRight"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="wrap-slider">
-                        <img src="images/slider/slider-decor2.jpg" alt="fashion-slideshow">
-                        <div class="box-content">
-                            <div class="content-slider">
-                                <div class="box-title-slider">
-                                    <div class="fade-item fade-item-1 heading title-display text-white">Flash Sale
-                                        Madness
-                                    </div>
-                                    <p class="fade-item fade-item-2 body-text-1 text-white">Quick! Grab limited-time
-                                        deals before they’re gone.</p>
-                                </div>
-                                <div class="fade-item fade-item-3 box-btn-slider">
-                                    <a href="shop-default-grid.html" class="tf-btn btn-fill btn-white"><span
-                                            class="text">Explore Collection</span><i class="icon icon-arrowUpRight"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="wrap-slider">
-                        <img src="images/slider/slider-decor3.jpg" alt="fashion-slideshow">
-                        <div class="box-content">
-                            <div class="content-slider">
-                                <div class="box-title-slider">
-                                    <div class="fade-item fade-item-1 heading title-display text-white">Best Furniture
-                                    </div>
-                                    <p class="fade-item fade-item-2 body-text-1 text-white">Quick! Grab limited-time
-                                        deals before they’re gone.</p>
-                                </div>
-                                <div class="fade-item fade-item-3 box-btn-slider">
-                                    <a href="shop-default-grid.html" class="tf-btn btn-fill btn-white"><span
-                                            class="text">Explore Collection</span><i class="icon icon-arrowUpRight"></i></a>
+                                            class="text">Shop Collection</span></a>
                                 </div>
                             </div>
                         </div>
@@ -76,14 +39,14 @@
     <!-- /Slider -->
 
     <!-- Collection -->
-    <section class="flat-spacing">
-        <div class="container-full2">
+    <section class="flat-spacing bg-css">
+        <div class="container">
             <div class="heading-section text-center wow fadeInUp">
                 <h3 class="heading">Shop by Collections</h3>
                 <p class="subheading">Browse our Top Trending: the hottest picks loved by all.</p>
             </div>
             <div class="flat-sw-navigation wow fadeInUp" data-wow-delay="0.1s">
-                <div dir="ltr" class="swiper tf-sw-collection" data-preview="4" data-tablet="3" data-mobile-sm="2"
+                <div dir="ltr" class="swiper tf-sw-collection" data-preview="3" data-tablet="3" data-mobile-sm="2"
                      data-mobile="1" data-space-lg="30" data-space-md="15" data-space="15" data-pagination="1"
                      data-pagination-md="3" data-pagination-lg="4">
                     <div class="swiper-wrapper">
@@ -91,13 +54,12 @@
                         <div class="swiper-slide">
                             <div class="collection-position-2 style-7 hover-img">
                                 <a href="shop-collection.html" class="img-style">
-                                    <img class="lazyload" data-src="images/collections/cls-decor1.jpg"
-                                         src="images/collections/cls-decor1.jpg" alt="banner-cls">
+                                    <img class="lazyload" data-src="images/collections/Collections3.png"
+                                         src="images/collections/Collections3.png" alt="banner-cls">
                                 </a>
                                 <div class="content text-center">
-                                    <h4 class="title"><a href="shop-collection.html" class="link text-white">Shop
-                                            Bathroom</a></h4>
-                                    <span class="text-title text-white">25 products</span>
+                                    <h4 class="title"><a href="shop-collection.html" class="link text-white">Ghế ngồi ô tô cho bé</a></h4>
+                                    <span class="text-title text-white">Tiêu chuẩn 1</span>
                                 </div>
                             </div>
                         </div>
@@ -105,13 +67,12 @@
                         <div class="swiper-slide">
                             <div class="collection-position-2 style-7 hover-img">
                                 <a href="shop-collection.html" class="img-style">
-                                    <img class="lazyload" data-src="images/collections/cls-decor2.jpg"
-                                         src="images/collections/cls-decor2.jpg" alt="banner-cls">
+                                    <img class="lazyload" data-src="images/collections/Collections2.png"
+                                         src="images/collections/Collections2.png" alt="banner-cls">
                                 </a>
                                 <div class="content text-center">
-                                    <h4 class="title"><a href="shop-collection.html" class="link text-white">Shop
-                                            Bathroom</a></h4>
-                                    <span class="text-title text-white">25 products</span>
+                                    <h4 class="title"><a href="shop-collection.html" class="link text-white">Ghế ngồi ô tô cho bé</a></h4>
+                                    <span class="text-title text-white">Tiêu chuẩn 1</span>
                                 </div>
                             </div>
                         </div>
@@ -119,40 +80,11 @@
                         <div class="swiper-slide">
                             <div class="collection-position-2 style-7 hover-img">
                                 <a href="shop-collection.html" class="img-style">
-                                    <img class="lazyload" data-src="images/collections/cls-decor3.jpg"
-                                         src="images/collections/cls-decor3.jpg" alt="banner-cls">
+                                    <img class="lazyload" data-src="images/collections/Collections1.png"
+                                         src="images/collections/Collections1.png" alt="banner-cls">
                                 </a>
                                 <div class="content text-center">
-                                    <h4 class="title"><a href="shop-collection.html" class="link text-white">Shop
-                                            Bedroom</a></h4>
-                                    <span class="text-title text-white">25 products</span>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- item 4 -->
-                        <div class="swiper-slide">
-                            <div class="collection-position-2 style-7 hover-img">
-                                <a href="shop-collection.html" class="img-style">
-                                    <img class="lazyload" data-src="images/collections/cls-decor4.jpg"
-                                         src="images/collections/cls-decor4.jpg" alt="banner-cls">
-                                </a>
-                                <div class="content text-center">
-                                    <h4 class="title"><a href="shop-collection.html" class="link text-white">Shop
-                                            Kitchen Room</a></h4>
-                                    <span class="text-title text-white">25 products</span>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- item 5 -->
-                        <div class="swiper-slide">
-                            <div class="collection-position-2 style-7 hover-img">
-                                <a href="shop-collection.html" class="img-style">
-                                    <img class="lazyload" data-src="images/collections/cls-decor1.jpg"
-                                         src="images/collections/cls-decor1.jpg" alt="banner-cls">
-                                </a>
-                                <div class="content text-center">
-                                    <h4 class="title"><a href="shop-collection.html" class="link text-white">Shop Living
-                                            Room</a></h4>
+                                    <h4 class="title"><a href="shop-collection.html" class="link text-white">Phụ kiện</a></h4>
                                     <span class="text-title text-white">25 products</span>
                                 </div>
                             </div>
@@ -170,66 +102,14 @@
     </section>
     <!-- /Collection -->
 
-    <!-- List collection -->
-    <section class="flat-spacing pt-0 line-bottom-container">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-12">
-                    <ul class="list-collection style-lg">
-                        <li class="cls-item hover-cursor-img">
-                            <div class="img-cls">
-                                <img src="images/collections/list-cls/cls-item-decor1.jpg" alt="img-cls">
-                            </div>
-                            <a href="#" class="title-cls link">
-                                <h4 class="text title-display">Heritage</h4>
-                            </a>
-                        </li>
-                        <li class="cls-item">
-                            <div class="img-cls">
-                                <img src="images/collections/list-cls/cls-item-decor2.jpg" alt="img-cls">
-                            </div>
-                            <a href="#" class="title-cls link">
-                                <h4 class="text title-display">Creativity</h4>
-                            </a>
-                        </li>
-                        <li class="cls-item">
-                            <div class="img-cls">
-                                <img src="images/collections/list-cls/cls-item-decor3.jpg" alt="img-cls">
-                            </div>
-                            <a href="#" class="title-cls link">
-                                <h4 class="text title-display">and Passion</h4>
-                            </a>
-                        </li>
-                        <li class="cls-item">
-                            <a href="#" class="title-cls link d-none d-sm-block">
-                                <h4 class="text title-display">of Three</h4>
-                            </a>
-                            <div class="img-cls">
-                                <img src="images/collections/list-cls/cls-item-decor4.jpg" alt="img-cls">
-                            </div>
-                            <a href="#" class="title-cls link">
-                                <h4 class="text title-display">Generations</h4>
-                            </a>
-                        </li>
-                    </ul>
-                    <div class="text-center">
-                        <a href="#" class="btn-line text-button">READ MORE ABOUT OUR COMMITMENT</a>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </section>
-    <!-- /List collection -->
-
     <!-- Top picks -->
-    <section class="flat-spacing">
+    <section class="flat-spacing bg-css topick">
         <div class="container">
             <div class="heading-section text-center wow fadeInUp">
-                <h3 class="heading">Top Trending</h3>
+                <h3 class="heading">Hot Selling Babyro</h3>
                 <p class="subheading text-secondary">Browse our Top Trending: the hottest picks loved by all. </p>
             </div>
-            <div dir="ltr" class="swiper tf-sw-latest" data-preview="4" data-tablet="3" data-mobile="2"
+            <div dir="ltr" class="swiper tf-sw-latest" data-preview="4" data-tablet="3" data-mobile="1"
                  data-space-lg="30" data-space-md="30" data-space="15" data-pagination="1" data-pagination-md="1"
                  data-pagination-lg="1">
                 <div class="swiper-wrapper">
@@ -238,286 +118,70 @@
                             <div class="card-product-wrapper">
                                 <a href="product-detail.html" class="product-img">
                                     <img class="lazyload img-product"
-                                         data-src="images/products/furniture/furniture1.jpg"
-                                         src="images/products/furniture/furniture1.jpg" alt="image-product">
-                                    <img class="lazyload img-hover" data-src="images/products/furniture/furniture3.jpg"
-                                         src="images/products/furniture/furniture3.jpg" alt="image-product">
+                                         data-src="images/products/furniture/Hot-Selling1.png"
+                                         src="images/products/furniture/Hot-Selling1.png" alt="image-product">
+                                    <img class="lazyload img-hover" data-src="images/products/furniture/Hot-Selling1.png"
+                                         src="images/products/furniture/Hot-Selling1.png" alt="image-product">
                                 </a>
-                                <div class="list-product-btn">
-                                    <a href="javascript:void(0);" class="box-icon wishlist btn-icon-action">
-                                        <span class="icon icon-heart"></span>
-                                        <span class="tooltip">Wishlist</span>
-                                    </a>
-                                    <a href="#compare" data-bs-toggle="offcanvas" aria-controls="compare"
-                                       class="box-icon compare btn-icon-action">
-                                        <span class="icon icon-gitDiff"></span>
-                                        <span class="tooltip">Compare</span>
-                                    </a>
-                                    <a href="#quickView" data-bs-toggle="modal"
-                                       class="box-icon quickview tf-btn-loading">
-                                        <span class="icon icon-eye"></span>
-                                        <span class="tooltip">Quick View</span>
-                                    </a>
-                                </div>
-                                <div class="list-btn-main">
-                                    <a class="btn-main-product add-to-card" data-id="9" data-product-color-id="2">Add To cart</a>
-                                </div>
                             </div>
                             <div class="card-product-info">
-                                <a href="product-detail.html" class="title link">Salamanca dusty rose Leeds fabric</a>
-                                <span class="price"><span class="old-price">$98.00</span> $79.99</span>
-                                <ul class="list-color-product">
-                                    <li class="list-color-item color-swatch active line">
-                                        <span class="swatch-value bg-light-blue"></span>
-                                        <img class="lazyload" data-src="images/products/furniture/furniture1.jpg"
-                                             src="images/products/furniture/furniture1.jpg" alt="image-product">
-                                    </li>
-                                    <li class="list-color-item color-swatch">
-                                        <span class="swatch-value bg-light-blue-2"></span>
-                                        <img class="lazyload" data-src="images/products/furniture/furniture2.jpg"
-                                             src="images/products/furniture/furniture2.jpg" alt="image-product">
-                                    </li>
-                                </ul>
+                                <p class="product-title">Babyro i-Spin 360</p>
+                                <p class="product-desc">Ghế cho bé từ 0 - 12 tuổi</p>
+                                <a href="product-detail.html" class="title link">View i-Spin 360</a>
                             </div>
                         </div>
                     </div>
                     <div class="swiper-slide">
-                        <div class="card-product wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="card-product wow fadeInUp" data-wow-delay="0s">
                             <div class="card-product-wrapper">
                                 <a href="product-detail.html" class="product-img">
                                     <img class="lazyload img-product"
-                                         data-src="images/products/furniture/furniture6.jpg"
-                                         src="images/products/furniture/furniture6.jpg" alt="image-product">
-                                    <img class="lazyload img-hover" data-src="images/products/furniture/furniture7.jpg"
-                                         src="images/products/furniture/furniture7.jpg" alt="image-product">
+                                         data-src="images/products/furniture/Hot-Selling2.png"
+                                         src="images/products/furniture/Hot-Selling2.png" alt="image-product">
+                                    <img class="lazyload img-hover" data-src="images/products/furniture/Hot-Selling2.png"
+                                         src="images/products/furniture/Hot-Selling2.png" alt="image-product">
                                 </a>
-                                <div class="on-sale-wrap"><span class="on-sale-item">-25%</span></div>
-                                <div class="marquee-product bg-main">
-                                    <div class="marquee-wrapper">
-                                        <div class="initial-child-container">
-                                            <div class="marquee-child-item">
-                                                <p class="font-2 text-btn-uppercase fw-6 text-white">Hot Sale 25%
-                                                    OFF</p>
-                                            </div>
-                                            <div class="marquee-child-item">
-                                                <span class="icon icon-lightning text-critical"></span>
-                                            </div>
-                                            <div class="marquee-child-item">
-                                                <p class="font-2 text-btn-uppercase fw-6 text-white">Hot Sale 25%
-                                                    OFF</p>
-                                            </div>
-                                            <div class="marquee-child-item">
-                                                <span class="icon icon-lightning text-critical"></span>
-                                            </div>
-                                            <div class="marquee-child-item">
-                                                <p class="font-2 text-btn-uppercase fw-6 text-white">Hot Sale 25%
-                                                    OFF</p>
-                                            </div>
-                                            <div class="marquee-child-item">
-                                                <span class="icon icon-lightning text-critical"></span>
-                                            </div>
-                                            <div class="marquee-child-item">
-                                                <p class="font-2 text-btn-uppercase fw-6 text-white">Hot Sale 25%
-                                                    OFF</p>
-                                            </div>
-                                            <div class="marquee-child-item">
-                                                <span class="icon icon-lightning text-critical"></span>
-                                            </div>
-                                            <div class="marquee-child-item">
-                                                <p class="font-2 text-btn-uppercase fw-6 text-white">Hot Sale 25%
-                                                    OFF</p>
-                                            </div>
-                                            <div class="marquee-child-item">
-                                                <span class="icon icon-lightning text-critical"></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="marquee-wrapper">
-                                        <div class="initial-child-container">
-                                            <div class="marquee-child-item">
-                                                <p class="font-2 text-btn-uppercase fw-6 text-white">Hot Sale 25%
-                                                    OFF</p>
-                                            </div>
-                                            <div class="marquee-child-item">
-                                                <span class="icon icon-lightning text-critical"></span>
-                                            </div>
-                                            <div class="marquee-child-item">
-                                                <p class="font-2 text-btn-uppercase fw-6 text-white">Hot Sale 25%
-                                                    OFF</p>
-                                            </div>
-                                            <div class="marquee-child-item">
-                                                <span class="icon icon-lightning text-critical"></span>
-                                            </div>
-                                            <div class="marquee-child-item">
-                                                <p class="font-2 text-btn-uppercase fw-6 text-white">Hot Sale 25%
-                                                    OFF</p>
-                                            </div>
-                                            <div class="marquee-child-item">
-                                                <span class="icon icon-lightning text-critical"></span>
-                                            </div>
-                                            <div class="marquee-child-item">
-                                                <p class="font-2 text-btn-uppercase fw-6 text-white">Hot Sale 25%
-                                                    OFF</p>
-                                            </div>
-                                            <div class="marquee-child-item">
-                                                <span class="icon icon-lightning text-critical"></span>
-                                            </div>
-                                            <div class="marquee-child-item">
-                                                <p class="font-2 text-btn-uppercase fw-6 text-white">Hot Sale 25%
-                                                    OFF</p>
-                                            </div>
-                                            <div class="marquee-child-item">
-                                                <span class="icon icon-lightning text-critical"></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="list-product-btn">
-                                    <a href="javascript:void(0);" class="box-icon wishlist btn-icon-action">
-                                        <span class="icon icon-heart"></span>
-                                        <span class="tooltip">Wishlist</span>
-                                    </a>
-                                    <a href="#compare" data-bs-toggle="offcanvas" aria-controls="compare"
-                                       class="box-icon compare btn-icon-action">
-                                        <span class="icon icon-gitDiff"></span>
-                                        <span class="tooltip">Compare</span>
-                                    </a>
-                                    <a href="#quickView" data-bs-toggle="modal"
-                                       class="box-icon quickview tf-btn-loading">
-                                        <span class="icon icon-eye"></span>
-                                        <span class="tooltip">Quick View</span>
-                                    </a>
-                                </div>
-                                <div class="list-btn-main">
-                                    <a class="btn-main-product add-to-card" data-id="10" data-product-color-id="3">Add To cart</a>
-                                </div>
                             </div>
                             <div class="card-product-info">
-                                <a href="product-detail.html" class="title link">Stockholm Oakwood Fabric Back</a>
-                                <span class="price"><span class="old-price">$98.00</span> $79.99</span>
-                                <ul class="list-color-product">
-                                    <li class="list-color-item color-swatch active line">
-                                        <span class="swatch-value bg-light-blue"></span>
-                                        <img class="lazyload" data-src="images/products/furniture/furniture6.jpg"
-                                             src="images/products/furniture/furniture6.jpg" alt="image-product">
-                                    </li>
-                                    <li class="list-color-item color-swatch">
-                                        <span class="swatch-value bg-light-blue-2"></span>
-                                        <img class="lazyload" data-src="images/products/furniture/furniture8.jpg"
-                                             src="images/products/furniture/furniture8.jpg" alt="image-product">
-                                    </li>
-                                </ul>
+                                <p class="product-title">Babyro i-Spin 360</p>
+                                <p class="product-desc">Ghế cho bé từ 0 - 12 tuổi</p>
+                                <a href="product-detail.html" class="title link">View i-Spin 360</a>
                             </div>
                         </div>
                     </div>
                     <div class="swiper-slide">
-                        <div class="card-product wow fadeInUp" data-wow-delay="0.2s">
+                        <div class="card-product wow fadeInUp" data-wow-delay="0s">
                             <div class="card-product-wrapper">
                                 <a href="product-detail.html" class="product-img">
                                     <img class="lazyload img-product"
-                                         data-src="images/products/furniture/furniture32.jpg"
-                                         src="images/products/furniture/furniture32.jpg" alt="image-product">
-                                    <img class="lazyload img-hover" data-src="images/products/furniture/furniture33.jpg"
-                                         src="images/products/furniture/furniture33.jpg" alt="image-product">
+                                         data-src="images/products/furniture/Hot-Selling3.png"
+                                         src="images/products/furniture/Hot-Selling3.png" alt="image-product">
+                                    <img class="lazyload img-hover" data-src="images/products/furniture/Hot-Selling3.png"
+                                         src="images/products/furniture/Hot-Selling3.png" alt="image-product">
                                 </a>
-                                <div class="on-sale-wrap"><span class="on-sale-item">-25%</span></div>
-                                <div class="variant-wrap countdown-wrap">
-                                    <div class="variant-box">
-                                        <div class="js-countdown" data-timer="1007500"
-                                             data-labels="D :,H :,M :,S"></div>
-                                    </div>
-                                </div>
-                                <div class="list-product-btn">
-                                    <a href="javascript:void(0);" class="box-icon wishlist btn-icon-action">
-                                        <span class="icon icon-heart"></span>
-                                        <span class="tooltip">Wishlist</span>
-                                    </a>
-                                    <a href="#compare" data-bs-toggle="offcanvas" aria-controls="compare"
-                                       class="box-icon compare btn-icon-action">
-                                        <span class="icon icon-gitDiff"></span>
-                                        <span class="tooltip">Compare</span>
-                                    </a>
-                                    <a href="#quickView" data-bs-toggle="modal"
-                                       class="box-icon quickview tf-btn-loading">
-                                        <span class="icon icon-eye"></span>
-                                        <span class="tooltip">Quick View</span>
-                                    </a>
-                                </div>
-                                <div class="list-btn-main">
-                                    <a href="#shoppingCart" data-bs-toggle="modal" class="btn-main-product">Add To
-                                        cart</a>
-                                </div>
                             </div>
                             <div class="card-product-info">
-                                <a href="product-detail.html" class="title link">Enchanted Garden Handcrafted </a>
-                                <span class="price"><span class="old-price">$98.00</span> $89.99</span>
-                                <ul class="list-color-product">
-                                    <li class="list-color-item color-swatch active line">
-                                        <span class="swatch-value bg-beige"></span>
-                                        <img class="lazyload" data-src="images/products/furniture/furniture32.jpg"
-                                             src="images/products/furniture/furniture32.jpg" alt="image-product">
-                                    </li>
-                                    <li class="list-color-item color-swatch">
-                                        <span class="swatch-value bg-light-grey"></span>
-                                        <img class="lazyload" data-src="images/products/furniture/furniture33.jpg"
-                                             src="images/products/furniture/furniture33.jpg" alt="image-product">
-                                    </li>
-                                </ul>
+                                <p class="product-title">Babyro i-Spin 360</p>
+                                <p class="product-desc">Ghế cho bé từ 0 - 12 tuổi</p>
+                                <a href="product-detail.html" class="title link">View i-Spin 360</a>
                             </div>
                         </div>
                     </div>
                     <div class="swiper-slide">
-                        <div class="card-product wow fadeInUp" data-wow-delay="0.3s">
+                        <div class="card-product wow fadeInUp" data-wow-delay="0s">
                             <div class="card-product-wrapper">
                                 <a href="product-detail.html" class="product-img">
                                     <img class="lazyload img-product"
-                                         data-src="images/products/furniture/furniture17.jpg"
-                                         src="images/products/furniture/furniture17.jpg" alt="image-product">
-                                    <img class="lazyload img-hover" data-src="images/products/furniture/furniture18.jpg"
-                                         src="images/products/furniture/furniture18.jpg" alt="image-product">
+                                         data-src="images/products/furniture/Hot-Selling4.png"
+                                         src="images/products/furniture/Hot-Selling4.png" alt="image-product">
+                                    <img class="lazyload img-hover" data-src="images/products/furniture/Hot-Selling4.png"
+                                         src="images/products/furniture/Hot-Selling4.png" alt="image-product">
                                 </a>
-                                <div class="list-product-btn">
-                                    <a href="javascript:void(0);" class="box-icon wishlist btn-icon-action">
-                                        <span class="icon icon-heart"></span>
-                                        <span class="tooltip">Wishlist</span>
-                                    </a>
-                                    <a href="#compare" data-bs-toggle="offcanvas" aria-controls="compare"
-                                       class="box-icon compare btn-icon-action">
-                                        <span class="icon icon-gitDiff"></span>
-                                        <span class="tooltip">Compare</span>
-                                    </a>
-                                    <a href="#quickView" data-bs-toggle="modal"
-                                       class="box-icon quickview tf-btn-loading">
-                                        <span class="icon icon-eye"></span>
-                                        <span class="tooltip">Quick View</span>
-                                    </a>
-                                </div>
-                                <div class="list-btn-main">
-                                    <a href="#shoppingCart" data-bs-toggle="modal" class="btn-main-product">Add To
-                                        cart</a>
-                                </div>
                             </div>
                             <div class="card-product-info">
-                                <a href="product-detail.html" class="title link">Stockholm Mustard Yellow Fabric
-                                    Solo</a>
-                                <span class="price">$69.99</span>
-                                <ul class="list-color-product">
-                                    <li class="list-color-item color-swatch active line">
-                                        <span class="swatch-value bg-dark-grey"></span>
-                                        <img class="lazyload" data-src="images/products/furniture/furniture17.jpg"
-                                             src="images/products/furniture/furniture17.jpg" alt="image-product">
-                                    </li>
-                                    <li class="list-color-item color-swatch">
-                                        <span class="swatch-value bg-light-pink"></span>
-                                        <img class="lazyload" data-src="images/products/furniture/furniture19.jpg"
-                                             src="images/products/furniture/furniture19.jpg" alt="image-product">
-                                    </li>
-                                    <li class="list-color-item color-swatch">
-                                        <span class="swatch-value bg-dark-grey-2"></span>
-                                        <img class="lazyload" data-src="images/products/furniture/furniture20.jpg"
-                                             src="images/products/furniture/furniture20.jpg" alt="image-product">
-                                    </li>
-                                </ul>
+                                <p class="product-title">Babyro i-Spin 360</p>
+                                <p class="product-desc">Ghế cho bé từ 0 - 12 tuổi</p>
+                                <a href="product-detail.html" class="title link">View i-Spin 360</a>
                             </div>
                         </div>
                     </div>
@@ -528,330 +192,47 @@
     </section>
     <!-- /Top picks -->
 
-    <!-- Lookbook -->
-    <section>
-        <div class="flat-sw-pagination swiper tf-sw-lookbook sw-lookbook-wrap" dir="ltr" data-preview="1"
-             data-tablet="1" data-mobile="1" data-space-lg="0" data-space-md="0" data-space="0" data-pagination="1"
-             data-pagination-md="1" data-pagination-lg="1">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                    <div class="banner-lookbook">
-                        <img class="lazyload" data-src="images/banner/banner-lb-furniture1.jpg"
-                             src="images/banner/banner-lb-furniture1.jpg" alt="banner">
-                        <div class="lookbook-item position3">
-                            <div class="dropdown dropup-center dropdown-custom">
-                                <div role="dialog" class="tf-pin-btn" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <span></span>
-                                </div>
-                                <div class="dropdown-menu">
-                                    <div class="loobook-product style-row">
-                                        <div class="img-style">
-                                            <img src="images/gallery/lookbook-sm2.jpg" alt="img">
-                                        </div>
-                                        <div class="content">
-                                            <div class="info">
-                                                <a href="product-detail.html" class="text-title text-line-clamp-1 link">Ribbed
-                                                    cotton-blend top</a>
-                                                <div class="price text-button">$69.99</div>
-                                            </div>
-                                            <a href="#quickView" data-bs-toggle="modal" class="btn-lookbook btn-line">Quick
-                                                View</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="lookbook-item position4">
-                            <div class="dropdown dropup-center dropdown-custom">
-                                <div role="dialog" class="tf-pin-btn" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <span></span>
-                                </div>
-                                <div class="dropdown-menu">
-                                    <div class="loobook-product style-row">
-                                        <div class="img-style">
-                                            <img src="images/gallery/lookbook-sm3.jpg" alt="img">
-                                        </div>
-                                        <div class="content">
-                                            <div class="info">
-                                                <a href="product-detail.html" class="text-title text-line-clamp-1 link">Copenhagen
-                                                    Beechwood Artisan</a>
-                                                <div class="price text-button">$69.99</div>
-                                            </div>
-                                            <a href="#quickView" data-bs-toggle="modal" class="btn-lookbook btn-line">Quick
-                                                View</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="banner-lookbook">
-                        <img class="lazyload" data-src="images/banner/banner-lb-furniture2.jpg"
-                             src="images/banner/banner-lb-furniture2.jpg" alt="banner">
-                        <div class="lookbook-item position3">
-                            <div class="dropdown dropup-center dropdown-custom">
-                                <div role="dialog" class="tf-pin-btn" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <span></span>
-                                </div>
-                                <div class="dropdown-menu">
-                                    <div class="loobook-product style-row">
-                                        <div class="img-style">
-                                            <img src="images/gallery/lookbook-sm2.jpg" alt="img">
-                                        </div>
-                                        <div class="content">
-                                            <div class="info">
-                                                <a href="product-detail.html" class="text-title text-line-clamp-1 link">Ribbed
-                                                    cotton-blend top</a>
-                                                <div class="price text-button">$69.99</div>
-                                            </div>
-                                            <a href="#quickView" data-bs-toggle="modal" class="btn-lookbook btn-line">Quick
-                                                View</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="lookbook-item position4">
-                            <div class="dropdown dropup-center dropdown-custom">
-                                <div role="dialog" class="tf-pin-btn" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <span></span>
-                                </div>
-                                <div class="dropdown-menu">
-                                    <div class="loobook-product style-row">
-                                        <div class="img-style">
-                                            <img src="images/gallery/lookbook-sm3.jpg" alt="img">
-                                        </div>
-                                        <div class="content">
-                                            <div class="info">
-                                                <a href="product-detail.html" class="text-title text-line-clamp-1 link">Copenhagen
-                                                    Beechwood Artisan</a>
-                                                <div class="price text-button">$69.99</div>
-                                            </div>
-                                            <a href="#quickView" data-bs-toggle="modal" class="btn-lookbook btn-line">Quick
-                                                View</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="sw-pagination-lookbook sw-dots type-circle white-circle-line justify-content-center"></div>
-        </div>
-    </section>
-    <!-- /Lookbook -->
-
-    <!-- Seller -->
-    <section class="flat-spacing">
+    <section class="blog">
         <div class="container">
-            <div class="heading-section text-center wow fadeInUp">
-                <h3 class="heading">Top Trending</h3>
-                <p class="subheading text-secondary">Browse our Top Trending: the hottest picks loved by all. </p>
-            </div>
-            <div dir="ltr" class="swiper tf-sw-recent" data-preview="4" data-tablet="3" data-mobile="2"
-                 data-space-lg="30" data-space-md="30" data-space="15" data-pagination="1" data-pagination-md="1"
-                 data-pagination-lg="1">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <div class="card-product wow fadeInUp" data-wow-delay="0s">
-                            <div class="card-product-wrapper">
-                                <a href="product-detail.html" class="product-img">
-                                    <img class="lazyload img-product"
-                                         data-src="images/products/furniture/furniture21.jpg"
-                                         src="images/products/furniture/furniture21.jpg" alt="image-product">
-                                    <img class="lazyload img-hover" data-src="images/products/furniture/furniture23.jpg"
-                                         src="images/products/furniture/furniture23.jpg" alt="image-product">
-                                </a>
-                                <div class="list-product-btn">
-                                    <a href="javascript:void(0);" class="box-icon wishlist btn-icon-action">
-                                        <span class="icon icon-heart"></span>
-                                        <span class="tooltip">Wishlist</span>
-                                    </a>
-                                    <a href="#compare" data-bs-toggle="offcanvas" aria-controls="compare"
-                                       class="box-icon compare btn-icon-action">
-                                        <span class="icon icon-gitDiff"></span>
-                                        <span class="tooltip">Compare</span>
-                                    </a>
-                                    <a href="#quickView" data-bs-toggle="modal"
-                                       class="box-icon quickview tf-btn-loading">
-                                        <span class="icon icon-eye"></span>
-                                        <span class="tooltip">Quick View</span>
-                                    </a>
-                                </div>
-                                <div class="list-btn-main">
-                                    <a href="#shoppingCart" data-bs-toggle="modal" class="btn-main-product">Add To
-                                        cart</a>
-                                </div>
-                            </div>
-                            <div class="card-product-info">
-                                <a href="product-detail.html" class="title link">Oslo Beechwood High Stool</a>
-                                <span class="price">$39.99</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="card-product wow fadeInUp" data-wow-delay="0.1s">
-                            <div class="card-product-wrapper">
-                                <a href="product-detail.html" class="product-img">
-                                    <img class="lazyload img-product"
-                                         data-src="images/products/furniture/furniture13.jpg"
-                                         src="images/products/furniture/furniture13.jpg" alt="image-product">
-                                    <img class="lazyload img-hover" data-src="images/products/furniture/furniture14.jpg"
-                                         src="images/products/furniture/furniture14.jpg" alt="image-product">
-                                </a>
-                                <div class="on-sale-wrap"><span class="on-sale-item">-25%</span></div>
-                                <div class="list-product-btn">
-                                    <a href="javascript:void(0);" class="box-icon wishlist btn-icon-action">
-                                        <span class="icon icon-heart"></span>
-                                        <span class="tooltip">Wishlist</span>
-                                    </a>
-                                    <a href="#compare" data-bs-toggle="offcanvas" aria-controls="compare"
-                                       class="box-icon compare btn-icon-action">
-                                        <span class="icon icon-gitDiff"></span>
-                                        <span class="tooltip">Compare</span>
-                                    </a>
-                                    <a href="#quickView" data-bs-toggle="modal"
-                                       class="box-icon quickview tf-btn-loading">
-                                        <span class="icon icon-eye"></span>
-                                        <span class="tooltip">Quick View</span>
-                                    </a>
-                                </div>
-                                <div class="list-btn-main">
-                                    <a href="#shoppingCart" data-bs-toggle="modal" class="btn-main-product">Add To
-                                        cart</a>
-                                </div>
-                            </div>
-                            <div class="card-product-info">
-                                <a href="product-detail.html" class="title link">Florence Ashwood Strata</a>
-                                <span class="price">$79.99</span>
-                                <ul class="list-color-product">
-                                    <li class="list-color-item color-swatch active line">
-                                        <span class="swatch-value bg-light-pink"></span>
-                                        <img class="lazyload" data-src="images/products/furniture/furniture13.jpg"
-                                             src="images/products/furniture/furniture13.jpg" alt="image-product">
-                                    </li>
-                                    <li class="list-color-item color-swatch">
-                                        <span class="swatch-value bg-dark-grey"></span>
-                                        <img class="lazyload" data-src="images/products/furniture/furniture16.jpg"
-                                             src="images/products/furniture/furniture16.jpg" alt="image-product">
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="card-product wow fadeInUp" data-wow-delay="0.2s">
-                            <div class="card-product-wrapper">
-                                <a href="product-detail.html" class="product-img">
-                                    <img class="lazyload img-product"
-                                         data-src="images/products/furniture/furniture29.jpg"
-                                         src="images/products/furniture/furniture29.jpg" alt="image-product">
-                                    <img class="lazyload img-hover" data-src="images/products/furniture/furniture31.jpg"
-                                         src="images/products/furniture/furniture31.jpg" alt="image-product">
-                                </a>
-                                <div class="list-product-btn">
-                                    <a href="javascript:void(0);" class="box-icon wishlist btn-icon-action">
-                                        <span class="icon icon-heart"></span>
-                                        <span class="tooltip">Wishlist</span>
-                                    </a>
-                                    <a href="#compare" data-bs-toggle="offcanvas" aria-controls="compare"
-                                       class="box-icon compare btn-icon-action">
-                                        <span class="icon icon-gitDiff"></span>
-                                        <span class="tooltip">Compare</span>
-                                    </a>
-                                    <a href="#quickView" data-bs-toggle="modal"
-                                       class="box-icon quickview tf-btn-loading">
-                                        <span class="icon icon-eye"></span>
-                                        <span class="tooltip">Quick View</span>
-                                    </a>
-                                </div>
-                                <div class="list-btn-main">
-                                    <a href="#shoppingCart" data-bs-toggle="modal" class="btn-main-product">Add To
-                                        cart</a>
-                                </div>
-                            </div>
-                            <div class="card-product-info">
-                                <a href="product-detail.html" class="title link">Glistening Wave Glass Pendant</a>
-                                <span class="price"><span class="old-price">$98.00</span> $129.99</span>
-                                <ul class="list-color-product">
-                                    <li class="list-color-item color-swatch active line">
-                                        <span class="swatch-value bg-light-green"></span>
-                                        <img class="lazyload" data-src="images/products/furniture/furniture29.jpg"
-                                             src="images/products/furniture/furniture29.jpg" alt="image-product">
-                                    </li>
-                                    <li class="list-color-item color-swatch">
-                                        <span class="swatch-value bg-light-grey"></span>
-                                        <img class="lazyload" data-src="images/products/furniture/furniture30.jpg"
-                                             src="images/products/furniture/furniture30.jpg" alt="image-product">
-                                    </li>
-
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="card-product wow fadeInUp" data-wow-delay="0.3s">
-                            <div class="card-product-wrapper">
-                                <a href="product-detail.html" class="product-img">
-                                    <img class="lazyload img-product"
-                                         data-src="images/products/furniture/furniture40.jpg"
-                                         src="images/products/furniture/furniture40.jpg" alt="image-product">
-                                    <img class="lazyload img-hover" data-src="images/products/furniture/furniture41.jpg"
-                                         src="images/products/furniture/furniture41.jpg" alt="image-product">
-                                </a>
-                                <div class="on-sale-wrap"><span class="on-sale-item">-25%</span></div>
-                                <div class="list-product-btn">
-                                    <a href="javascript:void(0);" class="box-icon wishlist btn-icon-action">
-                                        <span class="icon icon-heart"></span>
-                                        <span class="tooltip">Wishlist</span>
-                                    </a>
-                                    <a href="#compare" data-bs-toggle="offcanvas" aria-controls="compare"
-                                       class="box-icon compare btn-icon-action">
-                                        <span class="icon icon-gitDiff"></span>
-                                        <span class="tooltip">Compare</span>
-                                    </a>
-                                    <a href="#quickView" data-bs-toggle="modal"
-                                       class="box-icon quickview tf-btn-loading">
-                                        <span class="icon icon-eye"></span>
-                                        <span class="tooltip">Quick View</span>
-                                    </a>
-                                </div>
-                                <div class="list-btn-main">
-                                    <a href="#shoppingCart" data-bs-toggle="modal" class="btn-main-product">Add To
-                                        cart</a>
-                                </div>
-                            </div>
-                            <div class="card-product-info">
-                                <a href="product-detail.html" class="title link">Rustic Elegance Vintage Glass
-                                    Flower</a>
-                                <span class="price"><span class="old-price">$98.00</span> $219.99</span>
-                                <ul class="list-color-product">
-                                    <li class="list-color-item color-swatch active line">
-                                        <span class="swatch-value bg-grey"></span>
-                                        <img class="lazyload" data-src="images/products/furniture/furniture40.jpg"
-                                             src="images/products/furniture/furniture40.jpg" alt="image-product">
-                                    </li>
-                                    <li class="list-color-item color-swatch">
-                                        <span class="swatch-value bg-main"></span>
-                                        <img class="lazyload" data-src="images/products/furniture/furniture42.jpg"
-                                             src="images/products/furniture/furniture42.jpg" alt="image-product">
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="blog-item">
+                        <img src="images/new-image.png" alt="">
+                        <p class="title">Thiết kế Đức</p>
+                        <p class="desc">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been</p>
+                        <a class="link">View All</a>
                     </div>
                 </div>
-                <div class="sw-pagination-recent sw-dots type-circle justify-content-center"></div>
+                <div class="col-md-3">
+                    <div class="blog-item">
+                        <img src="images/new-image1.png" alt="">
+                        <p class="title">Bảo vệ tối đa</p>
+                        <p class="desc">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been</p>
+                        <a class="link">View All</a>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="blog-item">
+                        <img src="images/new-image.png" alt="">
+                        <p class="title">Tiêu chuẩn an toàn Châu Âu</p>
+                        <p class="desc">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been</p>
+                        <a class="link">View All</a>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="blog-item">
+                        <img src="images/new-image.png" alt="">
+                        <p class="title">I Size - R129</p>
+                        <p class="desc">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been</p>
+                        <a class="link">View All</a>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
-    <!-- /Seller -->
 
     <!-- Testimonial -->
-    <section class="flat-spacing pt-0">
+    <section class="flat-spacing pt-0 custom-say">
         <div class="container">
             <div class="heading-section text-center wow fadeInUp">
                 <h3 class="heading">Customer Say!</h3>
@@ -905,15 +286,6 @@
                                         </svg>
                                     </div>
                                 </div>
-                                <div class="box-avt">
-                                    <div class="avatar avt-60 round">
-                                        <img src="images/products/furniture/furniture32.jpg" alt="avt">
-                                    </div>
-                                    <div class="box-price">
-                                        <p class="text-title text-line-clamp-1">Enchanted Garden Handcrafted</p>
-                                        <div class="text-button price">$60.00</div>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -961,15 +333,6 @@
                                         </svg>
                                     </div>
                                 </div>
-                                <div class="box-avt">
-                                    <div class="avatar avt-60 round">
-                                        <img src="images/products/furniture/furniture9.jpg" alt="avt">
-                                    </div>
-                                    <div class="box-price">
-                                        <p class="text-title text-line-clamp-1">Copenhagen Beechwood Artisan</p>
-                                        <div class="text-button price">$60.00</div>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -1015,15 +378,6 @@
                                                 </clipPath>
                                             </defs>
                                         </svg>
-                                    </div>
-                                </div>
-                                <div class="box-avt">
-                                    <div class="avatar avt-60 round">
-                                        <img src="images/products/furniture/furniture1.jpg" alt="avt">
-                                    </div>
-                                    <div class="box-price">
-                                        <p class="text-title text-line-clamp-1">Salamanca dusty rose Leeds</p>
-                                        <div class="text-button price">$60.00</div>
                                     </div>
                                 </div>
                             </div>
@@ -1091,20 +445,20 @@
         <div class="container">
             <div class="banner-cls-discover hover-img">
                 <a href="#" class="img-style">
-                    <img class="lazyload" data-src="images/banner/discover-decor.jpg"
-                         src="images/banner/discover-decor.jpg" alt="cls-tiktok">
+                    <img class="lazyload" data-src="images/banner footer.png"
+                         src="images/banner footer.png" alt="cls-tiktok">
                 </a>
                 <div class="cls-content">
-                    <div class="box-title-top">
-                        <p class="subtitle text-btn-uppercase text-white wow fadeInUp">sumMer 2024 collection</p>
-                        <h3 class="title"><a href="#" class="link text-white wow fadeInUp" data-wow-delay="0.1s">Super
-                                Sale Up To %50</a></h3>
-                        <p class="desc text-white wow fadeInUp" data-wow-delay="0.2s">Reserved for special occasions</p>
-                    </div>
-                    <div class="wow fadeInUp" data-wow-delay="0.3s">
-                        <a href="shop-default-grid.html" class="tf-btn btn-md btn-white"><span
-                                class="text">discover Now</span><i class="icon icon-arrowUpRight"></i></a>
-                    </div>
+{{--                    <div class="box-title-top">--}}
+{{--                        <p class="subtitle text-btn-uppercase text-white wow fadeInUp">sumMer 2024 collection</p>--}}
+{{--                        <h3 class="title"><a href="#" class="link text-white wow fadeInUp" data-wow-delay="0.1s">Super--}}
+{{--                                Sale Up To %50</a></h3>--}}
+{{--                        <p class="desc text-white wow fadeInUp" data-wow-delay="0.2s">Reserved for special occasions</p>--}}
+{{--                    </div>--}}
+{{--                    <div class="wow fadeInUp" data-wow-delay="0.3s">--}}
+{{--                        <a href="shop-default-grid.html" class="tf-btn btn-md btn-white"><span--}}
+{{--                                class="text">discover Now</span><i class="icon icon-arrowUpRight"></i></a>--}}
+{{--                    </div>--}}
                 </div>
             </div>
         </div>

@@ -8,7 +8,7 @@
                         <div class="footer-infor">
                             <div class="footer-logo">
                                 <a href="index.html">
-                                    <img src="{{ asset('images/logo/logo.svg') }}" alt="">
+                                    <img src="{{ asset('images/logo/logo.png') }}" alt="">
                                 </a>
                             </div>
                             <div class="footer-address">
