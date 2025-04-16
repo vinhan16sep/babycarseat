@@ -46,6 +46,13 @@ class Product extends Model
         return $this->hasMany(ProductColor::class);
     }
 
+    public function colors()
+    {
+        return $this->belongsToMany(Color::class, 'product_colors')
+            ->withPivot('id')
+            ->withTimestamps();
+    }
+
     public function getImageAttribute($value)
     {
         $images = json_decode($value, true);
@@ -61,7 +68,8 @@ class Product extends Model
         }
     }
 
-    public function getImageForListAttribute() {
+    public function getImageForListAttribute()
+    {
         if (!$this->productColors->isEmpty()) {
             $image = $this->productColors[0]->image;
             $imageHover = $this->productColors[1]->image ?? $image;

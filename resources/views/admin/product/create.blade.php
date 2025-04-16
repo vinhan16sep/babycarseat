@@ -50,6 +50,19 @@
                                 @csrf
                                 @method('post')
 
+                                <!-- Ảnh sản phẩm -->
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <div class="form-group{{ $errors->has('image') ? ' has-error' : '' }}">
+                                            <label>Ảnh sản phẩm <span class="my-required">*</span></label>
+                                            <input type="file" name="image" class="form-control input-default" id="image">
+                                            @if ($errors->has('image'))
+                                            <span style="color:red;">{{ $errors->first('image') }}</span>
+                                            @endif
+                                        </div>
+                                    </div>
+                                </div>
+
                                 <!-- Tên sản phẩm -->
                                 <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                                     <label>Tên sản phẩm <span class="my-required">*</span></label>
@@ -68,7 +81,7 @@
                                     @endif
                                 </div>
 
-                                <div class="form-group{{ $errors->has('colors') ? ' has-error' : '' }}">
+                                <!-- <div class="form-group{{ $errors->has('colors') ? ' has-error' : '' }}">
                                     <label>Chọn màu sắc và tải ảnh đại diện <span class="my-required">*</span></label>
 
                                     <div id="color-container">
@@ -100,7 +113,6 @@
                                         @endforeach
 
                                         @if ($oldColors->isEmpty())
-                                        <!-- Nếu không có màu cũ, hiển thị 1 dòng trống -->
                                         <div class="color-item">
                                             <div class="color-preview" id="color-preview-0"></div>
 
@@ -124,7 +136,7 @@
                                     @endif
 
                                     <button type="button" class="btn btn-primary mt-2" onclick="addColor()">Thêm màu</button>
-                                </div>
+                                </div> -->
 
                                 <div class="form-group{{ $errors->has('category_id') ? ' has-error' : '' }}">
                                     <label>Chọn danh mục <span class="my-required">*</span></label>
@@ -165,7 +177,7 @@
                                     <textarea name="detail" class="form-control my-textarea" rows="5">{{ old('detail') }}</textarea>
                                 </div>
                                 <div class="form-group">
-                                <label for="specification" class="form-label">Đặc tính</label>
+                                    <label for="specification" class="form-label">Đặc tính</label>
                                     <textarea name="specification" class="form-control my-textarea" rows="5">{{ old('specification') }}</textarea>
                                 </div>
 
@@ -223,74 +235,67 @@
 <script type="text/javascript">
     let url = window.location.origin;
 
-    let colorIndex = document.querySelectorAll('.color-item').length;
+    // let colorIndex = document.querySelectorAll('.color-item').length;
 
-    // Thêm màu mới
-    function addColor() {
-        const container = document.getElementById('color-container');
+    // function addColor() {
+    //     const container = document.getElementById('color-container');
 
-        const newColorHtml = `
-        <div class="color-item">
-            <div class="color-preview" id="color-preview-${colorIndex}"></div>
+    //     const newColorHtml = `
+    //     <div class="color-item">
+    //         <div class="color-preview" id="color-preview-${colorIndex}"></div>
 
-            <select class="form-control color-select" name="colors[${colorIndex}]" onchange="updateColorPreview(this, ${colorIndex})">
-                <option value="">Chọn màu</option>
-                @foreach ($colors as $color)
-                    <option value="{{ $color->id }}" data-color="{{ $color->code }}">
-                        {{ $color->name }}
-                    </option>
-                @endforeach
-            </select>
+    //         <select class="form-control color-select" name="colors[${colorIndex}]" onchange="updateColorPreview(this, ${colorIndex})">
+    //             <option value="">Chọn màu</option>
+    //             @foreach ($colors as $color)
+    //                 <option value="{{ $color->id }}" data-color="{{ $color->code }}">
+    //                     {{ $color->name }}
+    //                 </option>
+    //             @endforeach
+    //         </select>
 
-            <input type="file" class="form-control" name="images[${colorIndex}]" accept="image/*">
-            <button type="button" class="btn btn-danger" onclick="removeColor(this)">Xóa</button>
-        </div>
-    `;
+    //         <input type="file" class="form-control" name="images[${colorIndex}]" accept="image/*">
+    //         <button type="button" class="btn btn-danger" onclick="removeColor(this)">Xóa</button>
+    //     </div>
+    // `;
 
-        container.insertAdjacentHTML('beforeend', newColorHtml);
-        colorIndex++;
-        removeSelectedColors();
-    }
+    //     container.insertAdjacentHTML('beforeend', newColorHtml);
+    //     colorIndex++;
+    //     removeSelectedColors();
+    // }
 
-    // Cập nhật màu preview
-    function updateColorPreview(select, index) {
-        const selectedOption = select.options[select.selectedIndex];
-        const colorCode = selectedOption.getAttribute('data-color');
-        const preview = document.getElementById(`color-preview-${index}`);
-        preview.style.backgroundColor = colorCode || 'transparent';
+    // function updateColorPreview(select, index) {
+    //     const selectedOption = select.options[select.selectedIndex];
+    //     const colorCode = selectedOption.getAttribute('data-color');
+    //     const preview = document.getElementById(`color-preview-${index}`);
+    //     preview.style.backgroundColor = colorCode || 'transparent';
 
-        removeSelectedColors();
-    }
+    //     removeSelectedColors();
+    // }
 
-    // Xóa dòng màu
-    function removeColor(button) {
-        button.closest('.color-item').remove();
-        removeSelectedColors();
-    }
+    // function removeColor(button) {
+    //     button.closest('.color-item').remove();
+    //     removeSelectedColors();
+    // }
 
-    // Loại bỏ màu đã chọn khỏi các dropdown khác
-    function removeSelectedColors() {
-        const selectedColors = new Set();
+    // function removeSelectedColors() {
+    //     const selectedColors = new Set();
 
-        // Lấy tất cả các màu đã chọn
-        document.querySelectorAll('.color-select').forEach(select => {
-            if (select.value) {
-                selectedColors.add(select.value);
-            }
-        });
+    //     document.querySelectorAll('.color-select').forEach(select => {
+    //         if (select.value) {
+    //             selectedColors.add(select.value);
+    //         }
+    //     });
 
-        // Ẩn những màu đã chọn trong các dropdown khác
-        document.querySelectorAll('.color-select').forEach(select => {
-            Array.from(select.options).forEach(option => {
-                option.style.display = selectedColors.has(option.value) && option.value !== select.value ? 'none' : '';
-            });
-        });
-    }
+    //     document.querySelectorAll('.color-select').forEach(select => {
+    //         Array.from(select.options).forEach(option => {
+    //             option.style.display = selectedColors.has(option.value) && option.value !== select.value ? 'none' : '';
+    //         });
+    //     });
+    // }
 
-    // Chạy ngay khi trang load để loại bỏ màu trùng sau validate lỗi
-    window.onload = () => {
-        removeSelectedColors();
-    };
+    // window.onload = () => {
+    //     removeSelectedColors();
+    // };
 
     tinymce.init({
         selector: 'textarea.my-textarea',
@@ -339,6 +344,14 @@
             }
         },
         menubar: 'favs file edit view insert format tools table help'
+    });
+
+    $('#image').change(function() {
+        let reader = new FileReader();
+        reader.onload = (e) => {
+            $('#preview-image-before-upload').attr('src', e.target.result);
+        }
+        reader.readAsDataURL(this.files[0]);
     });
 
     $('#inputName').change(function() {

@@ -63,8 +63,7 @@ class ProductController extends AdminController
         }
 
         $list = $q->orderBy('id', 'desc')->paginate(10)->withQueryString();
-        // echo '<pre>';
-        // print_r($list);die;
+        
         return view('admin/product/index', [
             'list' => $list,
             'req' => $req,
@@ -106,37 +105,46 @@ class ProductController extends AdminController
             $model->created_by = 1;
             $model->updated_by = 1;
             if ($model->save()) {
-
+                
                 $path = sprintf(Config::get('constants.FILE_STORAGE_PATH.PRODUCT_IMAGE'), $model->id);
-
-                if ($request->input('colors') && !empty($request->input('colors'))) {
-                    $colors = $request->input('colors');
-                    foreach ($colors as $key => $color) {
-                        if ($request->hasfile('images')) {
-                            $images = $request->file('images');
-                            if (isset($images[$key]) && !empty($images[$key])) {
-                                $upload = $this->uploadColorImage($path, $images[$key]);
-                                if ($upload) {
-                                    $pColorModel = new ProductColor();
-                                    $pColorModel->product_id = $model->id;
-                                    $pColorModel->color_id = $color;
-                                    $pColorModel->image = $upload;
-
-                                    if ($pColorModel->save()) {
-                                    } else {
-                                        DB::rollBack();
-                                        return redirect()->route('create-product')->with('error', Config::get('constants.MESSAGE.PRODUCT_COLOR_SAVE_ERROR'));
-                                    }
-                                } else {
-                                    DB::rollBack();
-                                    return redirect()->route('create-product')->with('error', Config::get('constants.MESSAGE.PRODUCT_COLOR_UPLOAD_ERROR'));
-                                }
-                            }
-                        }
-                    }
+                $upload = $this->uploadImage($path, $request);
+                $model->image = json_encode($upload, JSON_UNESCAPED_SLASHES);
+                $model->save();
+    
+                if ($model->save()) {
+                    DB::commit();
+                    return redirect()->route('list-product')->with('success', Config::get('constants.MESSAGE.CREATE_SUCCEEDED'));
                 }
-                DB::commit();
-                return redirect()->route('list-product')->with('success', Config::get('constants.MESSAGE.CREATE_SUCCEEDED'));
+                DB::rollBack();
+                return redirect()->route('create-product')->with('error', Config::get('constants.MESSAGE.SOMETHING_ERROR'));
+
+                // $path = sprintf(Config::get('constants.FILE_STORAGE_PATH.PRODUCT_IMAGE'), $model->id);
+                // if ($request->input('colors') && !empty($request->input('colors'))) {
+                //     $colors = $request->input('colors');
+                //     foreach ($colors as $key => $color) {
+                //         if ($request->hasfile('images')) {
+                //             $images = $request->file('images');
+                //             if (isset($images[$key]) && !empty($images[$key])) {
+                //                 $upload = $this->uploadColorImage($path, $images[$key]);
+                //                 if ($upload) {
+                //                     $pColorModel = new ProductColor();
+                //                     $pColorModel->product_id = $model->id;
+                //                     $pColorModel->color_id = $color;
+                //                     $pColorModel->image = $upload;
+
+                //                     if ($pColorModel->save()) {
+                //                     } else {
+                //                         DB::rollBack();
+                //                         return redirect()->route('create-product')->with('error', Config::get('constants.MESSAGE.PRODUCT_COLOR_SAVE_ERROR'));
+                //                     }
+                //                 } else {
+                //                     DB::rollBack();
+                //                     return redirect()->route('create-product')->with('error', Config::get('constants.MESSAGE.PRODUCT_COLOR_UPLOAD_ERROR'));
+                //                 }
+                //             }
+                //         }
+                //     }
+                // }
             }
             DB::rollBack();
             return redirect()->route('create-product')->with('error', Config::get('constants.MESSAGE.SOMETHING_ERROR'));
@@ -171,9 +179,6 @@ class ProductController extends AdminController
     public function update(Request $request, $id)
     {
         $object = Product::find($id);
-
-        echo '<pre>';
-        print_r($request->all());die;
 
         // If object not found
         if ($object == null || $object->count() == 0) {

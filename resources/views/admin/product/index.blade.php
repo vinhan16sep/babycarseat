@@ -143,6 +143,9 @@
                                                     <i class="ti-control-play"></i>
                                                 </button>
                                                 @endif
+                                                <a type="button" class="btn btn-default btn-flat m-l-5 my-list-btn" style="background-color: white;" href="{{ route('create-product-color-image', ['id' => $item->id]) }}">
+                                                    <i class="ti-image"></i>
+                                                </a>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -160,44 +163,6 @@
 <script type="text/javascript">
     
     let url = window.location.origin;
-
-    // Bind options into Region
-    let initCountryId = $('#selectCountry').val();
-    ajaxGetRegionByCountry(initCountryId);
-
-    $('#selectCountry').change(function (){
-        let countryId = $(this).val();
-        ajaxGetRegionByCountry(countryId);
-    });
-
-    function ajaxGetRegionByCountry(countryId) {
-        
-        let url = window.location.origin;
-        if (countryId != '') {
-            $.ajax({
-                url: url + '/br-admin/region/get-by-country',
-                method: 'GET',
-                data: {
-                    countryId: countryId
-                },
-                success: function (res) {
-                    let data = res.data;
-                    let old = "{{ isset($req['region']) && $req['region'] ? $req['region'] : '' }}";
-                    console.log(old);
-                    $('#selectRegion').html('<option value="">Tất cả</option>');
-                    $.each(data, function(key, value){
-                        if (old == key) {
-                            $('#selectRegion').append('<option value="' + key + '" selected>' + value + '</option>');
-                        } else {
-                            $('#selectRegion').append('<option value="' + key + '" >' + value + '</option>');
-                        }
-                    });
-                },
-                error: function (error) {}
-            });
-        } else {
-            $('#selectRegion').html('<option value="">Tất cả</option>');
-        }
-    }
+    
 </script>
 @endsection
