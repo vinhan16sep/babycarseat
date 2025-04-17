@@ -13,22 +13,16 @@
         <div class="container-full">
             <div class="row">
                 <div class="col-12">
-                    <h3 class="heading text-center">Contact Us</h3>
+                    <h3 class="heading text-center">Liên hệ</h3>
                     <ul class="breadcrumbs d-flex align-items-center justify-content-center">
                         <li>
-                            <a class="link" href="index.html">Homepage</a>
+                            <a class="link" href="index.html">Trang chủ</a>
                         </li>
                         <li>
                             <i class="icon-arrRight"></i>
                         </li>
                         <li>
-                            <a class="link" href="#">Pages</a>
-                        </li>
-                        <li>
-                            <i class="icon-arrRight"></i>
-                        </li>
-                        <li>
-                            Contact Us
+                        Liên hệ
                         </li>
                     </ul>
                 </div>
@@ -47,26 +41,26 @@
                             <iframe src="{{ $contactInformations['google_map_hn'] }}" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
                         </div>
                         <div class="right">
-                            <h4>Information</h4>
+                            <h4>Thông tin liên hệ</h4>
                             <div class="mb_20">
-                                <div class="text-title mb_8">Phone:</div>
-                                <p class="text-secondary">+1 666 234 8888</p>
+                                <div class="text-title mb_8">Điện thoại:</div>
+                                <p class="text-secondary">{{ $contactInformations['hotline'] }}</p>
                             </div>
                             <div class="mb_20">
                                 <div class="text-title mb_8">Email:</div>
-                                <p class="text-secondary">themesflat@gmail.com</p>
+                                <p class="text-secondary">{{ $contactInformations['email'] }}</p>
                             </div>
                             <div class="mb_20">
-                                <div class="text-title mb_8">Address:</div>
-                                <p class="text-secondary">2163 Phillips Gap Rd, West Jefferson, North Carolina, United States</p>
+                                <div class="text-title mb_8">Địa chỉ:</div>
+                                <p class="text-secondary">{{ $contactInformations['address_hn'] }}</p>
                             </div>
                             <div>
-                                <div class="text-title mb_8">Open Time:</div>
+                                <div class="text-title mb_8">Giờ làm việc:</div>
                                 <p class="mb_4 open-time">
-                                    <span class="text-secondary">Mon - Sat:</span> 7:30am - 8:00pm PST
+                                    <span class="text-secondary">Thứ 2 - thứ 6:</span> 7:30am - 8:00pm
                                 </p>
                                 <p class="open-time">
-                                    <span class="text-secondary">Sunday:</span> 9:00am - 5:00pm PST
+                                    <span class="text-secondary">Thứ 7 và Chủ Nhật:</span> 9:00am - 5:00pm
                                 </p>
                             </div>
                         </div>
@@ -82,7 +76,7 @@
         <fieldset class="container">
             <div class="heading-section text-center">
                 <h3 class="heading">Liên hệ</h3>
-{{--                <p class="subheading">Use the form below to get in touch with the sales team</p>--}}
+                <!-- <p class="subheading">Use the form below to get in touch with the sales team</p> -->
             </div>
             <form id="contactform" action="https://themesflat.co/html/modave/contact/contact-process.php" method="post" class="form-leave-comment">
                 <div class="wrap">
