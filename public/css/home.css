@@ -73,10 +73,11 @@
     border-bottom: 0;
 }
 .flat-spacing.bg-css{
-    background: rgba(0, 0, 0, 0.8);
+    background: rgba(134, 121, 121, 0.1);
 }
 .flat-spacing.bg-css .heading, .flat-spacing.bg-css .subheading{
-    color: #fff!important;
+    color: black!important;
+    font-weight: bold;
 }
 .collection-position-2.style-7 .content{
     bottom: 28px!important;
@@ -85,18 +86,25 @@
 .collection-position-2.style-7 .content .link{
     font-size: 20px;
 }
-.topick .sw-dots.type-circle .swiper-pagination-bullet.swiper-pagination-bullet-active{
-    border: 1px solid #fff;
-}
-.topick .sw-dots.type-circle .swiper-pagination-bullet.swiper-pagination-bullet-active::after, .topick .sw-dots.type-circle .swiper-pagination-bullet::after{
-    background-color: #fff;
-}
+/*.topick .sw-dots.type-circle .swiper-pagination-bullet.swiper-pagination-bullet-active{*/
+/*    border: 1px solid #fff;*/
+/*}*/
+/*.topick .sw-dots.type-circle .swiper-pagination-bullet.swiper-pagination-bullet-active::after, .topick .sw-dots.type-circle .swiper-pagination-bullet::after{*/
+/*    background-color: #fff;*/
+/*}*/
 .custom-say .heading-section h3, .heading-section .heading, .list-star-default .icon{
     color: #d20046;
+    font-weight: bold;
 }
 .custom-say{
     padding-bottom: 80px!important;
 }
 .custom-say .testimonial-item .content-top {
     padding-bottom: 0;
+}
+.card-product .card-product-wrapper{
+    border-radius: 0px!important;
+}
+.collection-position-2{
+    border-radius: 10px;
 }
