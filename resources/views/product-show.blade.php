@@ -9,21 +9,128 @@
     <link rel="stylesheet" href="{{ asset('css/drift-basic.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/photoswipe.css') }}" />
     <style>
-        .tf-product-media-thumbs{
-            display: none;
-            width: 0;
-            height: 0;
+        .swiper {
+            width: 100%;
+            height: 100%;
         }
-        .tf-product-media-main{
-            width: 100%!important;
+        .swiper-slide {
+            text-align: center;
+            font-size: 18px;
+            background: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
-        @media (min-width: 768px) {
-            .tf-product-info-list {
-                 max-width: 815px;
-                margin-left: auto;
-            }
+
+        .swiper-slide img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .swiper {
+            width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .swiper-slide {
+            background-size: cover;
+            background-position: center;
+        }
+
+        .mySwiper {
+            height: 80%;
+            width: 100%;
+        }
+
+        .swiper-slide img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .tf-product-media-wrap.sticky-top{
+            width: calc(100% - 30px);
+        }
+        .product-ksp {
+            position: relative;
+            margin-top: 40px;
+            padding: 4px 28px;
+            background-color: #fbf9f8;
+        }
+        .product-ksp__box:not(:last-of-type) {
+            border-bottom: 1px solid #c4c5c7;
+        }
+        .product-ksp__img {
+            position: relative;
+            display: inline-block;
+            width: 34px;
+            height: 34px;
+        }
+        .product-ksp__text {
+            position: relative;
+            margin-left: 12px;
+        }
+        .product-ksp__box {
+            box-sizing: border-box;
+            display: flex;
+            padding: 16px 0;
+            align-items: center;
+        }
+        .product-options-bottom {
+            margin-top: 40px;
+        }
+        .fieldset:last-child {
+            border: 0;
+            margin: 0 0 40px;
+            padding: 0;
+            letter-spacing: -.31em;
+            margin-bottom: 20px;
+        }
+        .fieldset>* {
+            letter-spacing: normal;
+        }
+        .joie-button-secondary{
+            font-weight: 400;
+            font-size: 1.8rem;
+            display: inline-block;
+            box-sizing: border-box;
+            line-height: 140%;
+            padding: 12px 30px;
+            border-radius: 4px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all .3s linear;
+            color: #407ec9;
+            background-color: #fff;
+            border: 2px solid #407ec9;
         }
     </style>
+    @foreach($product->productColors as $i => $_color)
+    <style>
+        .mySwiperThumb{{$i}} {
+            height: 20%;
+            box-sizing: border-box;
+            padding: 15px;
+        }
+
+        .mySwiperThumb{{$i}} .swiper-slide {
+            width: 25%;
+            height: 100%;
+            opacity: 0.4;
+        }
+
+        .mySwiperThumb{{$i}} .swiper-slide-thumb-active {
+            opacity: 1;
+        }
+
+        .mySwiper{{$i}} .swiper-slide{
+            margin-right: 0!important;
+        }
+    </style>
+    @endforeach
 @stop
 
 @section('content')
@@ -79,37 +186,40 @@
                 <div class="row">
                     <!-- Product default -->
                     <div class="col-md-6">
-                        <div class="tf-product-media-wrap sticky-top">
-                            <div class="thumbs-slider">
-                                <div dir="ltr" class="swiper tf-product-media-thumbs other-image-zoom"
-                                     data-direction="vertical">
-                                    <div class="swiper-wrapper stagger-wrap">
-                                        @foreach($product->productColors as $_color)
-                                            <div class="-swiperslide stagger-item" data-color="{{ $_color->color->name }}">
-                                                <div class="item">
-                                                    <img class="lazyload" data-src="{{ getImage($_color->image) }}"
-                                                         src="{{ getImage($_color->image) }}" alt="">
+                        <div class="tf-product-media-wrap sticky-top" style="overflow: hidden">
+                            @foreach($product->productColors as $i => $_color)
+                                <section class="slider slider{{$i}}" {!! $i !== 0 ? 'style="display:none"' : ''  !!} data-color="{{ $_color->color->name }}">
+                                    <div style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff" class="swiper mySwiper{{$i}}">
+                                        <div class="swiper-wrapper">
+                                            @foreach($_color->image as $_image)
+                                                <div class="swiper-slide" data-color="{{ $_color->color->name }}">
+                                                    <a href="{{ getImage($_image) }}" target="_blank" class="slider__image"
+                                                       >
+                                                        <img class="tf-image-zoom lazyload"
+                                                             data-zoom="{{ getImage($_image) }}"
+                                                             data-src="{{ getImage($_image) }}"
+                                                             src="{{ getImage($_image) }}" alt="">
+                                                    </a>
                                                 </div>
-                                            </div>
-                                        @endforeach
+                                            @endforeach
+                                        </div>
+                                        <div class="swiper-button-next"></div>
+                                        <div class="swiper-button-prev"></div>
                                     </div>
-                                </div>
-                                <div dir="ltr" class="swiper tf-product-media-main" id="gallery-swiper-started">
-                                    <div class="swiper-wrapper">
-                                        @foreach($product->productColors as $_color)
-                                            <div class="swiper-slide" data-color="{{ $_color->color->name }}">
-                                                <a href="{{ getImage($_color->image) }}" target="_blank" class="item"
-                                                   data-pswp-width="600px" data-pswp-height="800px">
-                                                    <img class="tf-image-zoom lazyload"
-                                                         data-zoom="{{ getImage($_color->image) }}"
-                                                         data-src="{{ getImage($_color->image) }}"
-                                                         src="{{ getImage($_color->image) }}" alt="">
-                                                </a>
-                                            </div>
-                                        @endforeach
+                                    <div thumbsSlider="" class="swiper mySwiperThumb{{$i}}">
+                                        <div class="swiper-wrapper">
+                                            @foreach($_color->image as $_image)
+                                                <div class="swiper-slide" data-color="{{ $_color->color->name }}">
+                                                    <div class="slider__image">
+                                                        <img class="lazyload" data-src="{{ getImage($_image) }}"
+                                                             src="{{ getImage($_image) }}" alt="">
+                                                    </div>
+                                                </div>
+                                            @endforeach
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
+                                </section>
+                            @endforeach
                         </div>
                     </div>
                     <!-- /Product default -->
@@ -169,7 +279,7 @@
                                 <div class="tf-product-info-choose-option">
                                     <div class="variant-picker-item">
                                         <div class="variant-picker-label mb_12">
-                                            Colors:<span class="text-title variant-picker-label-value value-currentColor" data-id="{{ $product->productColors[0] ? $product->productColors[0]->color->id : '' }}">{{ $product->productColors[0] ? $product->productColors[0]->color->name : '' }}
+                                            Colors:<span class="text-title variant-picker-label-value value-currentColor" data-id="{{ $product->productColors && !empty($product->productColors[0]) ? $product->productColors[0]->color->id : '' }}">{{ $product->productColors && !empty($product->productColors[0]) ? $product->productColors[0]->color->name : '' }}
                                             </span>
                                         </div>
                                         <div class="variant-picker-values">
@@ -183,6 +293,30 @@
                                             @endforeach
                                         </div>
                                     </div>
+                                    <div class="product-ksp">
+                                        <div class="product-ksp__box">
+                                            <img class="product-ksp__img" src="https://dd.joiebaby.com/media/catalog/product/1/-/1-i-spin360_spin.png" alt="Two arrows in an oval shape">
+                                            <span class="product-ksp__text joie-regular-text">360º spin  </span>
+                                        </div>
+                                        <div class="product-ksp__box">
+                                            <img class="product-ksp__img" src="https://dd.joiebaby.com/media/catalog/product/2/-/2-i-spin360_i-size.png" alt="i-Size logo">
+                                            <span class="product-ksp__text joie-regular-text">R129 &amp; i-Size certified   </span>
+                                        </div>
+                                        <div class="product-ksp__box">
+                                            <img class="product-ksp__img" src="https://dd.joiebaby.com/media/catalog/product/3/-/3-i-spin360_isofix.png" alt="Padlock icon">
+                                            <span class="product-ksp__text joie-regular-text">Smart Ride™ lock-off</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="product-options-bottom">
+                                        <div class="fieldset">
+                                            <div class="actions">
+                                                <a href="https://joiebaby.com/en/store-locator" title="Find your local shop" class="joie-button-secondary" style="width: 100%; text-align: center;">
+                                                    Find your local shop            </a>
+                                            </div>
+                                        </div>
+                                    </div>
+
 {{--                                    <div class="variant-picker-item">--}}
 {{--                                        <div class="d-flex justify-content-between mb_12">--}}
 {{--                                            <div class="variant-picker-label">--}}
@@ -274,6 +408,20 @@
                                                     <span class="btn-open-sub"></span>
                                                 </a>
                                                 <div id="accordion-8" class="collapse" data-bs-parent="#accordion-product">
+                                                    <div class="accordion-content tab-description fix-font">
+                                                        <p class="text-secondary">
+                                                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="accordion-product-item">
+                                                <a href="#accordion-9" class="accordion-title collapsed current" data-bs-toggle="collapse"
+                                                   aria-expanded="true" aria-controls="accordion-1">
+                                                    <h6>How to & support</h6>
+                                                    <span class="btn-open-sub"></span>
+                                                </a>
+                                                <div id="accordion-9" class="collapse" data-bs-parent="#accordion-product">
                                                     <div class="accordion-content tab-description fix-font">
                                                         <p class="text-secondary">
                                                             Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book
@@ -410,4 +558,39 @@
     <script type="text/javascript" src="{{ asset('js/drift.min.js') }}"></script>
     <script type="module" src="{{ asset('js/model-viewer.min.js') }}"></script>
     <script type="module" src="{{ asset('js/zoom.js') }}"></script>
+    <script>
+        $(document).ready(function() {
+            @foreach($product->productColors as $i => $_color)
+                {
+                    let swiper = new Swiper(".mySwiperThumb{{$i}}", {
+                        // loop: true,
+                        spaceBetween: 15,
+                        slidesPerView: 6,
+                        freeMode: true,
+                        watchSlidesProgress: true,
+                    })
+                    let swiper2 = new Swiper(".mySwiper{{$i}}", {
+                        spaceBetween: 0,
+                        navigation: {
+                            nextEl: ".swiper-button-next",
+                            prevEl: ".swiper-button-prev",
+                        },
+                        thumbs: {
+                            swiper: swiper,
+                        },
+                    });
+                }
+            @endforeach
+
+            $('.-swiperslide.stagger-item.color-btn').click(function() {
+                let _val = $(this).attr('data-value');
+                $('.slider').attr('style', 'display:none;');
+                if ($(`.slider[data-color="${_val}"]`).length > 0) {
+                    $(`.slider[data-color="${_val}"]`).attr('style', 'display:block;');
+                }
+            })
+        });
+
+
+    </script>
 @endsection

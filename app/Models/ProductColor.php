@@ -27,4 +27,10 @@ class ProductColor extends Model
     {
         return $this->belongsTo(Color::class);
     }
+
+    public function getImageAttribute($value)
+    {
+        $images = json_decode($value, true);
+        return $images ?? [];
+    }
 }
