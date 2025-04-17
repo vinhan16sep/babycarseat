@@ -12,18 +12,18 @@
                                 </a>
                             </div>
                             <div class="footer-address">
-                                <p>549 Oak St.Crystal Lake, IL 60014</p>
+                                <p>{{ $contactInformations['address_hn'] }}</p>
                                 <a href="contact.html" class="tf-btn-default fw-6">GET DIRECTION<i
                                         class="icon-arrowUpRight"></i></a>
                             </div>
                             <ul class="footer-info">
                                 <li>
                                     <i class="icon-mail"></i>
-                                    <p>themesflat@gmail.com</p>
+                                    <p>{{ $contactInformations['email'] }}</p>
                                 </li>
                                 <li>
                                     <i class="icon-phone"></i>
-                                    <p>315-666-6688</p>
+                                    <p>{{ $contactInformations['hotline'] }}</p>
                                 </li>
                             </ul>
                             <ul class="tf-social-icon">
@@ -233,9 +233,9 @@
                     <div class="col-12">
                         <div class="footer-bottom-wrap">
                             <div class="left">
-                                <p class="text-caption-1">©2024 Modave. All Rights Reserved.</p>
+                                <p class="text-caption-1">©2025 Babyro. All Rights Reserved.</p>
                             </div>
-                            <div class="tf-payment">
+                            <!-- <div class="tf-payment">
                                 <p class="text-caption-1">Payment:</p>
                                 <ul>
                                     <li>
@@ -257,7 +257,7 @@
                                         <img src="{{ asset('images/payment/img-6.png') }}" alt="">
                                     </li>
                                 </ul>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>
@@ -1467,18 +1467,18 @@
             </div>
             <div class="mb-other-content">
                 <div class="mb-contact">
-                    <p class="text-caption-1">549 Oak St.Crystal Lake, IL 60014</p>
+                    <p class="text-caption-1">{{ $contactInformations['address_hn'] }}</p>
                     <a href="contact.html" class="tf-btn-default text-btn-uppercase">GET DIRECTION<i
                             class="icon-arrowUpRight"></i></a>
                 </div>
                 <ul class="mb-info">
                     <li>
                         <i class="icon icon-mail"></i>
-                        <p>themesflat@gmail.com</p>
+                        <p>{{ $contactInformations['email'] }}</p>
                     </li>
                     <li>
                         <i class="icon icon-phone"></i>
-                        <p>315-666-6688</p>
+                        <p>{{ $contactInformations['hotline'] }}</p>
                     </li>
                 </ul>
             </div>

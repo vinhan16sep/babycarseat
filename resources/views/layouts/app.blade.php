@@ -94,12 +94,11 @@
             <div class="tf-topbar_wrap d-flex align-items-center justify-content-center justify-content-xl-between">
 
                 <ul class="topbar-left">
-                    <li><a class="text-caption-1 text-white text-decoration-underline" href="store-list.html">Our Store</a></li>
                 </ul>
                 <div class="topbar-right d-none d-xl-block">
                     <ul class="topbar-left">
-                        <li><a class="text-caption-1 text-white" href="tel:315-666-6688">315-666-6688</a></li>
-                        <li><a class="text-caption-1 text-white" href="#">themesflat@gmail.com</a></li>
+                        <li><a class="text-caption-1 text-white" href="tel:{{ $contactInformations['hotline'] }}">{{ $contactInformations['hotline'] }}</a></li>
+                        <li><a class="text-caption-1 text-white" href="#">{{ $contactInformations['email'] }}</a></li>
                     </ul>
 
 {{--                    <div class="tf-cur justify-content-end">--}}
