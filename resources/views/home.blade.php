@@ -196,35 +196,43 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-3">
-                    <div class="blog-item">
-                        <img src="images/new-image.png" alt="">
-                        <p class="title">Thiết kế Đức</p>
-                        <p class="desc">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been</p>
-                        <a class="link">View All</a>
+                    <div class="blog-item card h-100 d-flex flex-column">
+                        <div class="card-body d-flex flex-column">
+                            <img src="images/standard1.png" alt="">
+                            <p class="title">Thiết kế Đức</p>
+                            <p class="desc">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been</p>
+                            <a class="link mt-auto">View All</a>
+                        </div>
                     </div>
                 </div>
                 <div class="col-md-3">
-                    <div class="blog-item">
-                        <img src="images/new-image1.png" alt="">
-                        <p class="title">Bảo vệ tối đa</p>
-                        <p class="desc">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been</p>
-                        <a class="link">View All</a>
+                    <div class="blog-item card h-100 d-flex flex-column">
+                        <div class="card-body d-flex flex-column">
+                            <img src="images/standard2.png" alt="">
+                            <p class="title">Bảo vệ tối đa</p>
+                            <p class="desc">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been</p>
+                            <a class="link mt-auto">View All</a>
+                        </div>
                     </div>
                 </div>
                 <div class="col-md-3">
-                    <div class="blog-item">
-                        <img src="images/new-image.png" alt="">
-                        <p class="title">Tiêu chuẩn an toàn Châu Âu</p>
-                        <p class="desc">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been</p>
-                        <a class="link">View All</a>
+                    <div class="blog-item card h-100 d-flex flex-column">
+                        <div class="card-body d-flex flex-column">
+                            <img src="images/standard3.png" alt="">
+                            <p class="title">Tiêu chuẩn an toàn Châu Âu</p>
+                            <p class="desc">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been</p>
+                            <a class="link mt-auto">View All</a>
+                        </div>
                     </div>
                 </div>
                 <div class="col-md-3">
-                    <div class="blog-item">
-                        <img src="images/new-image.png" alt="">
-                        <p class="title">I Size - R129</p>
-                        <p class="desc">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been</p>
-                        <a class="link">View All</a>
+                    <div class="blog-item card h-100 d-flex flex-column">
+                        <div class="card-body d-flex flex-column">
+                            <img src="images/standard4.png" alt="">
+                            <p class="title">I Size - R129</p>
+                            <p class="desc">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been</p>
+                            <a class="link mt-auto">View All</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -245,12 +253,12 @@
                     <div class="swiper-slide">
                         <div class="testimonial-item style-row hover-img wow fadeInUp" data-wow-delay="0s">
                             <div class="img-style">
-                                <img data-src="images/testimonial/tes-7.jpg" src="images/testimonial/tes-7.jpg"
+                                <img data-src="images/CustomerSay1.png" src="images/CustomerSay1.png"
                                      alt="img-testimonial">
-                                <a href="#quickView" data-bs-toggle="modal" class="box-icon hover-tooltip center">
-                                    <span class="icon icon-eye"></span>
-                                    <span class="tooltip">Quick View</span>
-                                </a>
+{{--                                <a href="#quickView" data-bs-toggle="modal" class="box-icon hover-tooltip center">--}}
+{{--                                    <span class="icon icon-eye"></span>--}}
+{{--                                    <span class="tooltip">Quick View</span>--}}
+{{--                                </a>--}}
                             </div>
                             <div class="content">
                                 <div class="content-top">
@@ -266,24 +274,7 @@
                                         recommended!"</p>
                                     <div class="box-author">
                                         <div class="text-title author">Sybil Sharp</div>
-                                        <svg class="icon" width="20" height="21" viewBox="0 0 20 21" fill="none"
-                                             xmlns="http://www.w3.org/2000/svg">
-                                            <g clip-path="url(#clip0_15758_14563)">
-                                                <path d="M6.875 11.6255L8.75 13.5005L13.125 9.12549" stroke="#3DAB25"
-                                                      stroke-width="1.5" stroke-linecap="round"
-                                                      stroke-linejoin="round"/>
-                                                <path
-                                                    d="M10 18.5005C14.1421 18.5005 17.5 15.1426 17.5 11.0005C17.5 6.85835 14.1421 3.50049 10 3.50049C5.85786 3.50049 2.5 6.85835 2.5 11.0005C2.5 15.1426 5.85786 18.5005 10 18.5005Z"
-                                                    stroke="#3DAB25" stroke-width="1.5" stroke-linecap="round"
-                                                    stroke-linejoin="round"/>
-                                            </g>
-                                            <defs>
-                                                <clipPath id="clip0_15758_14563">
-                                                    <rect width="20" height="20" fill="white"
-                                                          transform="translate(0 0.684082)"/>
-                                                </clipPath>
-                                            </defs>
-                                        </svg>
+                                        <img class="customer-tick" src="images/CustomerSay-tick.png" alt="">
                                     </div>
                                 </div>
                             </div>
@@ -292,12 +283,12 @@
                     <div class="swiper-slide">
                         <div class="testimonial-item style-row hover-img wow fadeInUp" data-wow-delay="0.1s">
                             <div class="img-style">
-                                <img data-src="images/testimonial/tes-8.jpg" src="images/testimonial/tes-8.jpg"
+                                <img data-src="images/CustomerSay2.png" src="images/CustomerSay2.png"
                                      alt="img-testimonial">
-                                <a href="#quickView" data-bs-toggle="modal" class="box-icon hover-tooltip center">
-                                    <span class="icon icon-eye"></span>
-                                    <span class="tooltip">Quick View</span>
-                                </a>
+{{--                                <a href="#quickView" data-bs-toggle="modal" class="box-icon hover-tooltip center">--}}
+{{--                                    <span class="icon icon-eye"></span>--}}
+{{--                                    <span class="tooltip">Quick View</span>--}}
+{{--                                </a>--}}
                             </div>
                             <div class="content">
                                 <div class="content-top">
@@ -313,24 +304,7 @@
                                         recommended!"</p>
                                     <div class="box-author">
                                         <div class="text-title author">Mark G.</div>
-                                        <svg class="icon" width="20" height="21" viewBox="0 0 20 21" fill="none"
-                                             xmlns="http://www.w3.org/2000/svg">
-                                            <g clip-path="url(#clip0_15758_14563)">
-                                                <path d="M6.875 11.6255L8.75 13.5005L13.125 9.12549" stroke="#3DAB25"
-                                                      stroke-width="1.5" stroke-linecap="round"
-                                                      stroke-linejoin="round"/>
-                                                <path
-                                                    d="M10 18.5005C14.1421 18.5005 17.5 15.1426 17.5 11.0005C17.5 6.85835 14.1421 3.50049 10 3.50049C5.85786 3.50049 2.5 6.85835 2.5 11.0005C2.5 15.1426 5.85786 18.5005 10 18.5005Z"
-                                                    stroke="#3DAB25" stroke-width="1.5" stroke-linecap="round"
-                                                    stroke-linejoin="round"/>
-                                            </g>
-                                            <defs>
-                                                <clipPath id="clip0_15758_14563">
-                                                    <rect width="20" height="20" fill="white"
-                                                          transform="translate(0 0.684082)"/>
-                                                </clipPath>
-                                            </defs>
-                                        </svg>
+                                        <img class="customer-tick" src="images/CustomerSay-tick.png" alt="">
                                     </div>
                                 </div>
                             </div>
@@ -339,12 +313,12 @@
                     <div class="swiper-slide">
                         <div class="testimonial-item style-row hover-img wow fadeInUp" data-wow-delay="0.2s">
                             <div class="img-style">
-                                <img data-src="images/testimonial/tes-9.jpg" src="images/testimonial/tes-9.jpg"
+                                <img data-src="images/CustomerSay3.png" src="images/CustomerSay3.png"
                                      alt="img-testimonial">
-                                <a href="#quickView" data-bs-toggle="modal" class="box-icon hover-tooltip center">
-                                    <span class="icon icon-eye"></span>
-                                    <span class="tooltip">Quick View</span>
-                                </a>
+{{--                                <a href="#quickView" data-bs-toggle="modal" class="box-icon hover-tooltip center">--}}
+{{--                                    <span class="icon icon-eye"></span>--}}
+{{--                                    <span class="tooltip">Quick View</span>--}}
+{{--                                </a>--}}
                             </div>
                             <div class="content">
                                 <div class="content-top">
@@ -360,24 +334,7 @@
                                         recommended!"</p>
                                     <div class="box-author">
                                         <div class="text-title author">Sybil Sharp</div>
-                                        <svg class="icon" width="20" height="21" viewBox="0 0 20 21" fill="none"
-                                             xmlns="http://www.w3.org/2000/svg">
-                                            <g clip-path="url(#clip0_15758_14563)">
-                                                <path d="M6.875 11.6255L8.75 13.5005L13.125 9.12549" stroke="#3DAB25"
-                                                      stroke-width="1.5" stroke-linecap="round"
-                                                      stroke-linejoin="round"/>
-                                                <path
-                                                    d="M10 18.5005C14.1421 18.5005 17.5 15.1426 17.5 11.0005C17.5 6.85835 14.1421 3.50049 10 3.50049C5.85786 3.50049 2.5 6.85835 2.5 11.0005C2.5 15.1426 5.85786 18.5005 10 18.5005Z"
-                                                    stroke="#3DAB25" stroke-width="1.5" stroke-linecap="round"
-                                                    stroke-linejoin="round"/>
-                                            </g>
-                                            <defs>
-                                                <clipPath id="clip0_15758_14563">
-                                                    <rect width="20" height="20" fill="white"
-                                                          transform="translate(0 0.684082)"/>
-                                                </clipPath>
-                                            </defs>
-                                        </svg>
+                                        <img class="customer-tick" src="images/CustomerSay-tick.png" alt="">
                                     </div>
                                 </div>
                             </div>
