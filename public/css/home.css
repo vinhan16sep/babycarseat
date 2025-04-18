@@ -1,5 +1,5 @@
 .tf-btn.btn-fill.btn-white{
-    background-color: #ec145a;
+    background-color: #d21e50;
     color: #fff;
 }
 .small-text{
@@ -12,12 +12,12 @@
     text-align: center;
 }
 .card-product-info .product-title{
-    color: #548ad2;
+    color: #3c3c8c;
     font-weight: bold;
     margin-bottom: 5px;
 }
 .card-product-info a.title{
-    background-color: #548ad2;
+    background-color: #3c3c8c;
     font-weight: bold;
     color: #fff;
     padding: 7px 15px;
@@ -45,20 +45,25 @@
 }
 .blog .blog-item{
     text-align: center;
-    padding: 30px;
+    border: 0;
+    padding: 30px 10px;
 }
 .blog .blog-item .title{
     font-weight: bold;
     font-size: 18px;
-    margin: 15px 0;
+    margin: 25px 0 10px;
+}
+.blog .blog-item img{
+    width: 80px;
+    margin: 0 auto;
 }
 .blog .blog-item .desc{
     font-size: 14px;
-    margin: 10px 0;
+    margin: 10px 0 20px;
 }
 .blog .blog-item a{
     margin-top: 10px;
-    color: #548ad2;
+    color: #3c3c8c;
     font-weight: bold;
 }
 .blog{
@@ -75,8 +80,8 @@
 .flat-spacing.bg-css{
     background: rgba(134, 121, 121, 0.1);
 }
-.flat-spacing.bg-css .heading, .flat-spacing.bg-css .subheading{
-    color: black!important;
+.flat-spacing.bg-css .heading{
+    color: rgba(0,0,0,0.8)!important;
     font-weight: bold;
 }
 .collection-position-2.style-7 .content{
@@ -107,4 +112,8 @@
 }
 .collection-position-2{
     border-radius: 10px;
+}
+.customer-tick{
+    width: 19px;
+    margin-left: 5px;
 }

@@ -51,12 +51,14 @@
             height: 100%;
             object-fit: cover;
         }
-        .tf-product-media-wrap.sticky-top{
-            width: calc(100% - 30px);
+        @media (min-width: 1300px) {
+            .tf-product-media-wrap.sticky-top{
+                width: calc(100% - 30px);
+            }
         }
         .product-ksp {
             position: relative;
-            margin-top: 40px;
+            margin-top: 10px;
             padding: 4px 28px;
             background-color: #fbf9f8;
         }
