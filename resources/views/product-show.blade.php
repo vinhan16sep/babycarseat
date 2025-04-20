@@ -539,9 +539,9 @@
                              data-space-lg="30" data-space-md="30" data-space="15" data-pagination="1"
                              data-pagination-md="1" data-pagination-lg="1">
                             <div class="swiper-wrapper">
-                                @foreach($products as $product)
+                                @foreach($products as $_product)
                                     <div class="swiper-slide">
-                                        @include('components.item-product', ["product" => $product, 'is_grid' => true])
+                                        @include('components.item-product', ["product" => $_product, 'is_grid' => true])
                                     </div>
                                 @endforeach
                             </div>
