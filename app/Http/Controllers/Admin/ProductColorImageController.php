@@ -57,7 +57,7 @@ class ProductColorImageController extends AdminController
                             return redirect()->route('list-product')->with('success', Config::get('constants.MESSAGE.CREATE_SUCCEEDED'));
                         }
                         DB::rollBack();
-                        return redirect()->route('create-product')->with('error', Config::get('constants.MESSAGE.SOMETHING_ERROR'));
+                        return redirect()->route('create-product')->with('error', Config::get('constants.MESSAGE.SOMETHING_ERROR') . "_1");
                     }
                 }
             } else {
@@ -76,14 +76,14 @@ class ProductColorImageController extends AdminController
                             return redirect()->route('list-product')->with('success', Config::get('constants.MESSAGE.CREATE_SUCCEEDED'));
                         }
                         DB::rollBack();
-                        return redirect()->route('create-product')->with('error', Config::get('constants.MESSAGE.SOMETHING_ERROR'));
+                        return redirect()->route('create-product')->with('error', Config::get('constants.MESSAGE.SOMETHING_ERROR') . "_2");
                     }
                 }
                 DB::rollBack();
-                return redirect()->route('create-product')->with('error', Config::get('constants.MESSAGE.SOMETHING_ERROR'));
+                return redirect()->route('create-product')->with('error', Config::get('constants.MESSAGE.SOMETHING_ERROR') . "_3");
             }
             DB::rollBack();
-            return redirect()->route('create-product')->with('error', Config::get('constants.MESSAGE.SOMETHING_ERROR'));
+            return redirect()->route('create-product')->with('error', Config::get('constants.MESSAGE.SOMETHING_ERROR') . "_4");
         } catch (Exception $e) {
             DB::rollBack();
             return redirect()->route('create-product')->with('error', $e->getMessage());

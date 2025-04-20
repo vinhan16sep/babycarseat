@@ -108,7 +108,7 @@ class ProductController extends AdminController
                 
                 $path = sprintf(Config::get('constants.FILE_STORAGE_PATH.PRODUCT_IMAGE'), $model->id);
                 $upload = $this->uploadImage($path, $request);
-                $model->image = json_encode($upload, JSON_UNESCAPED_SLASHES);
+                $model->image = $upload;
                 $model->save();
     
                 if ($model->save()) {
