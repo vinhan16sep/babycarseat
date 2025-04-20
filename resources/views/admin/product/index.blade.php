@@ -107,8 +107,8 @@
                                 <tbody>
                                     @foreach ($list as $key => $item)
                                         <tr>
-                                            <td scope="row">{{ $key + 1}}</td>
-                                            <td><img style="max-height: 200px;" src="{{ $item->image ? asset($item->image) : asset('images/no-image-available-list.jpg') }}" /></td>
+                                            <td scope="row">{{ $item->image}}</td>
+                                            <td><img style="max-height: 200px;" src="{{ $item->image ? getImage($item->image) : getImage('images/no-image-available-list.jpg') }}" /></td>
                                             <td >
                                                 <strong>
                                                     <a href="{{ route('edit-product', ['id' => $item->id]) }}" style="color:#5873fe;">{{ $item->name }}</a>

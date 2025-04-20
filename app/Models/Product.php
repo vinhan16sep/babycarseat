@@ -53,11 +53,11 @@ class Product extends Model
             ->withTimestamps();
     }
 
-    public function getImageAttribute($value)
-    {
-        $images = json_decode($value, true);
-        return $images[0] ?? "";
-    }
+    // public function getImageAttribute($value)
+    // {
+    //     $images = json_decode($value, true);
+    //     return $images[0] ?? "";
+    // }
 
     public function getImagesAttribute()
     {
