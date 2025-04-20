@@ -29,6 +29,9 @@ if(!function_exists('getDataCart')){
 if(!function_exists('getImage')){
     function getImage($image){
         if (empty($image) || !is_string($image)) {
+            if (isset($image[0]) && is_string($image[0])) {
+                return asset($image[0]);
+            }
             return asset("/images/no-image-available-list.jpg");
         }
         return asset($image);
