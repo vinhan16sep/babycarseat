@@ -41,7 +41,7 @@ if ($(".thumbs-slider").length > 0) {
     // color
     function updateActiveColorButton(activeIndex) {
         $(".color-btn").removeClass("active");
-    
+
         var currentSlide = $(".tf-product-media-main .swiper-slide").eq(activeIndex);
         var currentColor = currentSlide.data("color");
         if (currentColor) {
@@ -67,7 +67,7 @@ if ($(".thumbs-slider").length > 0) {
     }
     $(".color-btn").on("click", function() {
     var color = $(this).data("color");
-    
+
     $(".color-btn").removeClass("active");
     $(this).addClass("active");
 
@@ -78,7 +78,7 @@ if ($(".thumbs-slider").length > 0) {
     // material
     function updateActiveOtherVariantBtn(activeIndex) {
         $(".other-variant-btn").removeClass("active");
-    
+
         var currentSlide = $(".tf-product-media-main .swiper-slide").eq(activeIndex);
         var currentOtherVariant = currentSlide.data("other-variant");
         if (currentOtherVariant) {
@@ -104,7 +104,7 @@ if ($(".thumbs-slider").length > 0) {
     }
     $(".other-variant-btn").on("click", function() {
     var otherVariant = $(this).data("other-variant");
-    
+
     $(".other-variant-btn").removeClass("active");
     $(this).addClass("active");
     scrollToOtherVariant(otherVariant);
@@ -204,7 +204,7 @@ if ($(".thumbs-slider").length > 0) {
         });
 
     }
-    
+
     var lightbox = function () {
 
         const lightbox = new PhotoSwipeLightbox({
@@ -222,7 +222,7 @@ if ($(".thumbs-slider").length > 0) {
     var model_viewer = function () {
 
         if ($(".tf-model-viewer").length) {
-   
+
             $(".tf-model-viewer-ui-button").on("click", function (e) {
                 $(this).closest(".tf-model-viewer").find("model-viewer").removeClass("disabled");
                 $(this).closest(".tf-model-viewer").toggleClass("active");
@@ -237,8 +237,8 @@ if ($(".thumbs-slider").length > 0) {
 
   // Dom Ready
   $(function () {
-    section_zoom();
-    image_zoom();
+    // section_zoom();
+    // image_zoom();
     image_zoom_magnifier();
     image_zoom_inner();
     lightboxswiper();

@@ -109,6 +109,108 @@
             background-color: #fff;
             border: 2px solid #407ec9;
         }
+        .flat-spacing.bg-css{
+            background: rgba(134, 121, 121, 0.1);
+        }
+        .flat-spacing.bg-css .swiper-slide{
+            background: transparent;
+        }
+        .signature-sprint__card-title {
+            color: #434446;
+            line-height: 120%;
+            padding: 0;
+            font-size: 20px;
+            font-style: italic;
+            margin: 20px 0 16px;
+        }
+
+        .flat-spacing.bg-css .collection-position-2{
+            border-radius: 0;
+        }
+        .signature-sprint__card-subtitle {
+            color: #434446;
+            line-height: 150%;
+            margin: 0;
+            padding: 0;
+            font-size: 15px;
+            text-align: center;
+        }
+
+        .box-product-common__row > div:not(:first-child) {
+            margin-top: 80px;
+        }
+        .signature-contentblock{
+            display: flex;
+        }
+        .signature-contentblock--reverse {
+            flex-direction: row-reverse;
+        }
+        .signature-contentblock__image {
+            width: 55%;
+        }
+        .signature-contentblock__html {
+            width: 45%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 50px;
+        }
+        .product-marketing__img {
+            position: relative;
+        }
+        .signature-contentblock__title {
+            color: #434446;
+            line-height: 120%;
+            margin: 0;
+            padding: 0;
+            font-size: 1.8rem;
+            font-weight: 300;
+            margin-bottom: 16px;
+        }
+        .signature-contentblock__subtitle {
+            color: #434446;
+            line-height: 150%;
+            margin: 0;
+            padding: 0;
+            font-size: 1rem;
+        }
+        @media (max-width: 900px) {
+            .signature-contentblock__image {
+                width: 40%;
+            }
+            .signature-contentblock__html {
+                width: 60%;
+                padding: 30px;
+            }
+            .signature-contentblock__title {
+                font-size: 1.2rem;
+            }
+            .signature-contentblock__subtitle {
+                font-size: 0.6rem;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .signature-contentblock__image {
+                width: 100%;
+            }
+            .signature-contentblock__html {
+                width: 100%;
+                padding: 30px;
+            }
+            .signature-contentblock__title {
+                font-size: 20px;
+            }
+            .signature-contentblock__subtitle {
+                font-size: 14px;
+            }
+            .signature-contentblock{
+                display: grid;
+            }
+            .box-product-common__row > div:not(:first-child) {
+                margin-top: 30px;
+            }
+        }
     </style>
     @foreach($product->productColors as $i => $_color)
     <style>
@@ -195,10 +297,9 @@
                                         <div class="swiper-wrapper">
                                             @foreach($_color->image as $_image)
                                                 <div class="swiper-slide" data-color="{{ $_color->color->name }}">
-                                                    <a href="{{ getImage($_image) }}" target="_blank" class="slider__image"
+                                                    <a target="_blank" class="slider__image"
                                                        >
                                                         <img class="tf-image-zoom lazyload"
-                                                             data-zoom="{{ getImage($_image) }}"
                                                              data-src="{{ getImage($_image) }}"
                                                              src="{{ getImage($_image) }}" alt="">
                                                     </a>
@@ -521,38 +622,165 @@
     </section>
     <!-- /Product_Description_Accordion -->
 
-    <!-- Ralated Products -->
-    @if(!empty($products->count()))
-        <section class="flat-spacing">
-            <div class="container flat-animate-tab">
-                <ul class="tab-product justify-content-sm-center wow fadeInUp" data-wow-delay="0s" role="tablist">
-                    <li class="nav-tab-item" role="presentation">
-                        <a href="#ralatedProducts" class="active" data-bs-toggle="tab">Sản phẩm nổi bật</a>
-                    </li>
-    {{--                <li class="nav-tab-item" role="presentation">--}}
-    {{--                    <a href="#recentlyViewed" data-bs-toggle="tab">Recently Viewed</a>--}}
-    {{--                </li>--}}
-                </ul>
-                <div class="tab-content">
-                    <div class="tab-pane active show" id="ralatedProducts" role="tabpanel">
-                        <div dir="ltr" class="swiper tf-sw-latest" data-preview="4" data-tablet="3" data-mobile="2"
-                             data-space-lg="30" data-space-md="30" data-space="15" data-pagination="1"
-                             data-pagination-md="1" data-pagination-lg="1">
-                            <div class="swiper-wrapper">
-                                @foreach($products as $_product)
-                                    <div class="swiper-slide">
-                                        @include('components.item-product', ["product" => $_product, 'is_grid' => true])
-                                    </div>
-                                @endforeach
+
+    <!-- Collection -->
+    <section class="flat-spacing bg-css">
+        <div class="container">
+            <div class="heading-section text-center wow fadeInUp">
+                <h3 class="heading" style="font-weight: 400">i-Harbour's features</h3>
+            </div>
+            <div class="flat-sw-navigation wow fadeInUp" data-wow-delay="0.1s">
+                <div dir="ltr" class="swiper tf-sw-collection" data-preview="3" data-tablet="3" data-mobile-sm="2"
+                     data-mobile="1" data-space-lg="30" data-space-md="15" data-space="15" data-pagination="1"
+                     data-pagination-md="3" data-pagination-lg="4">
+                    <div class="swiper-wrapper">
+                        <!-- item 1 -->
+                        <div class="swiper-slide">
+                            <div class="collection-position-2 style-7 hover-img">
+                                <a href="shop-collection.html" class="img-style">
+                                    <img class="lazyload" data-src="{{ asset('images/new_slide_01.jpg') }}"
+                                         src="{{ asset('images/new_slide_01.jpg') }}" alt="banner-cls">
+                                </a>
+                                <div class="signature-sprint__card-html">
+                                    <div class="signature-sprint__card-title">Recline and relax</div>
+                                    <div class="signature-sprint__card-subtitle">Lounge chair meets ergonomic car seat... i-Harbour is designed for ultimate relaxation with deep recline options to keep your child cozy and supported through every stage.</div>
+                                </div>
                             </div>
-                            <div class="sw-pagination-latest sw-dots type-circle justify-content-center"></div>
+                        </div>
+                        <!-- item 2 -->
+                        <div class="swiper-slide">
+                            <div class="collection-position-2 style-7 hover-img">
+                                <a href="shop-collection.html" class="img-style">
+                                    <img class="lazyload" data-src="{{ asset('images/new_slide_02.jpg') }}"
+                                         src="{{ asset('images/new_slide_02.jpg') }}" alt="banner-cls">
+                                </a>
+                                <div class="signature-sprint__card-html">
+                                    <div class="signature-sprint__card-title">Easily adjust for growth</div>
+                                    <div class="signature-sprint__card-subtitle">Effortlessly adjust the headrest and harness together for a secure fit—perfect for sharing between children or keeping up with sudden growth spurts. No rethreading needed!</div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- item 3 -->
+                        <div class="swiper-slide">
+                            <div class="collection-position-2 style-7 hover-img">
+                                <a href="shop-collection.html" class="img-style">
+                                    <img class="lazyload" data-src="{{ asset('images/new_slide_03.jpg') }}"
+                                         src="{{ asset('images/new_slide_03.jpg') }}" alt="banner-cls">
+                                </a>
+                                <div class="signature-sprint__card-html">
+                                    <div class="signature-sprint__card-title">Triple layers of safety</div>
+                                    <div class="signature-sprint__card-subtitle">Our Tri-Protect™ headrest features 3 layers of force-absorbing cushions with memory foam to protect baby’s fragile head and neck and to offer luxurious cosiness.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                        class="d-flex d-lg-none sw-pagination-collection sw-dots type-circle justify-content-center"></div>
+                </div>
+                <div class="nav-prev-collection d-none d-lg-flex nav-sw style-line nav-sw-left"><i
+                        class="icon icon-arrLeft"></i></div>
+                <div class="nav-next-collection d-none d-lg-flex nav-sw style-line nav-sw-right"><i
+                        class="icon icon-arrRight"></i></div>
+            </div>
+        </div>
+    </section>
+    <!-- /Collection -->
+
+    <section class="flat-spacing bg-css" style="padding-top: 30px">
+        <div class="container">
+            <div class="flat-sw-navigation box-product-common__row wow fadeInUp" data-wow-delay="0.1s">
+                <div class="product-common__row ">
+                    <div class="signature-contentblock ">
+                        <div class="signature-contentblock__image">
+                            <img class="product-marketing__img" src="{{ asset('images/ps1-d-iharboure-evergreen-joie-signature_1_1.jpg') }}" alt="">
+                        </div>
+                        <div class="signature-contentblock__html">
+                            <div class="signature-contentblock__description">
+                                <div class="signature-contentblock__title">Spin into easier days</div>
+                                <div class="signature-contentblock__subtitle">Say goodbye to awkward buckle-ins. With 360° rotation and easy-to-reach one-hand activation, this duo makes getting your littlie in and out of the car a breeze for seamless spinning transitions that save time and simplify your day whether it's school runs, errands, or all day outings.</div>
+                            </div>
                         </div>
                     </div>
                 </div>
 
+                <div class="product-common__row">
+                    <div class="signature-contentblock signature-contentblock--reverse">
+                        <div class="signature-contentblock__image">
+                            <img class="product-marketing__img" src="{{ asset('images/ps2-d-iharboure-evergreen-joie-signature_1_1.jpg') }}" alt="">
+                        </div>
+                        <div class="signature-contentblock__html">
+                            <div class="signature-contentblock__description">
+                                <div class="signature-contentblock__title">Uncompromising safety</div>
+                                <div class="signature-contentblock__subtitle">This powerful protector is engineered with state-of-the art safety features to protect your child from every angle. Combine ECE R129 and i-Size certification with an impressive ADAC score and it's easy to see why parents trust i-Harbour to protect their precious cargo.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-common__row ">
+                    <div class="signature-contentblock ">
+                        <div class="signature-contentblock__image">
+                            <img class="product-marketing__img" src="{{ asset('images/ps1-d-iharboure-evergreen-joie-signature_1_1.jpg') }}" alt="">
+                        </div>
+                        <div class="signature-contentblock__html">
+                            <div class="signature-contentblock__description">
+                                <div class="signature-contentblock__title">Spin into easier days</div>
+                                <div class="signature-contentblock__subtitle">Say goodbye to awkward buckle-ins. With 360° rotation and easy-to-reach one-hand activation, this duo makes getting your littlie in and out of the car a breeze for seamless spinning transitions that save time and simplify your day whether it's school runs, errands, or all day outings.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-common__row mr-top">
+                    <div class="signature-contentblock signature-contentblock--reverse">
+                        <div class="signature-contentblock__image">
+                            <img class="product-marketing__img" src="{{ asset('images/ps2-d-iharboure-evergreen-joie-signature_1_1.jpg') }}" alt="">
+                        </div>
+                        <div class="signature-contentblock__html">
+                            <div class="signature-contentblock__description">
+                                <div class="signature-contentblock__title">Uncompromising safety</div>
+                                <div class="signature-contentblock__subtitle">This powerful protector is engineered with state-of-the art safety features to protect your child from every angle. Combine ECE R129 and i-Size certification with an impressive ADAC score and it's easy to see why parents trust i-Harbour to protect their precious cargo.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </section>
-    @endif
+        </div>
+    </section>
+
+
+    <!-- Ralated Products -->
+{{--    @if(!empty($products->count()))--}}
+{{--        <section class="flat-spacing">--}}
+{{--            <div class="container flat-animate-tab">--}}
+{{--                <ul class="tab-product justify-content-sm-center wow fadeInUp" data-wow-delay="0s" role="tablist">--}}
+{{--                    <li class="nav-tab-item" role="presentation">--}}
+{{--                        <a href="#ralatedProducts" class="active" data-bs-toggle="tab">Sản phẩm nổi bật</a>--}}
+{{--                    </li>--}}
+{{--    --}}{{--                <li class="nav-tab-item" role="presentation">--}}
+{{--    --}}{{--                    <a href="#recentlyViewed" data-bs-toggle="tab">Recently Viewed</a>--}}
+{{--    --}}{{--                </li>--}}
+{{--                </ul>--}}
+{{--                <div class="tab-content">--}}
+{{--                    <div class="tab-pane active show" id="ralatedProducts" role="tabpanel">--}}
+{{--                        <div dir="ltr" class="swiper tf-sw-latest" data-preview="4" data-tablet="3" data-mobile="2"--}}
+{{--                             data-space-lg="30" data-space-md="30" data-space="15" data-pagination="1"--}}
+{{--                             data-pagination-md="1" data-pagination-lg="1">--}}
+{{--                            <div class="swiper-wrapper">--}}
+{{--                                @foreach($products as $_product)--}}
+{{--                                    <div class="swiper-slide">--}}
+{{--                                        @include('components.item-product', ["product" => $_product, 'is_grid' => true])--}}
+{{--                                    </div>--}}
+{{--                                @endforeach--}}
+{{--                            </div>--}}
+{{--                            <div class="sw-pagination-latest sw-dots type-circle justify-content-center"></div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+
+{{--            </div>--}}
+{{--        </section>--}}
+{{--    @endif--}}
     <!-- /Ralated Products -->
 @endsection
 
