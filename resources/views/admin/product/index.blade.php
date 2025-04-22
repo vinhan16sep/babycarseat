@@ -107,7 +107,7 @@
                                 <tbody>
                                     @foreach ($list as $key => $item)
                                         <tr>
-                                            <td scope="row">{{ $item->image}}</td>
+                                            <td scope="row">{{ $key + 1}}</td>
                                             <td><img style="max-height: 200px;" src="{{ $item->image ? getImage($item->image) : getImage('images/no-image-available-list.jpg') }}" /></td>
                                             <td >
                                                 <strong>
@@ -143,7 +143,7 @@
                                                     <i class="ti-control-play"></i>
                                                 </button>
                                                 @endif
-                                                <a type="button" class="btn btn-default btn-flat m-l-5 my-list-btn" style="background-color: white;" href="{{ route('create-product-color-image', ['id' => $item->id]) }}">
+                                                <a type="button" class="btn btn-default btn-flat m-l-5 my-list-btn" href="{{ route('list-product-color-image', ['id' => $item->id]) }}">
                                                     <i class="ti-image"></i>
                                                 </a>
                                             </td>

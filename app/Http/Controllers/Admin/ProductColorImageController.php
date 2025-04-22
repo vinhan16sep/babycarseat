@@ -12,6 +12,12 @@ use Illuminate\Support\Facades\DB;
 
 class ProductColorImageController extends AdminController
 {
+
+    public function index(Request $request) {
+        $list = ProductColor::with(['product', 'color'])->where('product_id', $request['id'])->orderBy('updated_at', 'desc')->get();
+        return view('admin/product-color-images/index', compact('list'));
+    }
+
     public function create(Request $request)
     {
         $request = $request->all();
