@@ -117,3 +117,201 @@
     width: 19px;
     margin-left: 5px;
 }
+section.section-text > div{
+    display: flex;
+    justify-content: center;
+}
+section.section-text > div > div{
+    padding: 10px 15px;
+    color: #d20046;
+    font-weight: bold;
+    display: inline-block;
+    float: left;
+}
+.signature-sprint__card-subtitle {
+    color: #434446;
+    line-height: 150%;
+    margin: 0;
+    padding: 0;
+    font-size: 15px;
+    text-align: center;
+}
+
+.box-product-common__row > div:not(:first-child) {
+    margin-top: 10px;
+}
+.signature-contentblock{
+    display: flex;
+}
+.signature-contentblock--reverse {
+    flex-direction: row-reverse;
+}
+.signature-contentblock__image {
+    width: 48%;
+}
+.signature-contentblock__html {
+    width: 52%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 50px;
+}
+.product-marketing__img {
+    position: relative;
+}
+.signature-contentblock__title {
+    color: #434446;
+    line-height: 120%;
+    margin: 0;
+    padding: 0;
+    font-size: 2rem;
+    font-weight: 300;
+    margin-bottom: 16px;
+    font-weight: bold;
+}
+.signature-contentblock__subtitle {
+    color: #434446;
+    line-height: 150%;
+    margin: 0;
+    padding: 0;
+    font-size: 1rem;
+    text-align: justify;
+}
+.signature-contentblock__subtitle ul{
+    padding-left: 20px;
+}
+.signature-contentblock__subtitle ul li{
+    list-style: disc;
+}
+.box-first-content-flex{
+    display: flex;
+    margin-bottom: 20px;
+}
+.box-first-content-flex img{
+    width: 50px;
+    margin-right: 15px;
+}
+.box-first-content-flex div{
+    font-weight: bold;
+}
+.box-hau-mai{
+    margin-bottom: 40px;
+}
+.box-hau-mai h3{
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 40px;
+}
+.content-hau-mai{
+    padding: 30px;
+    background: #fff;
+}
+.content-hau-mai h4{
+    text-transform: uppercase;
+    color: #3c3c8c;
+    font-weight: bold;
+    line-height: 35px;
+    margin-bottom: 20px;
+    min-height: 70px;
+    align-items: end;
+    display: flex
+}
+.content-hau-mai h4 span{
+    font-size: 60px;
+    display: contents;
+}
+.content-hau-mai a {
+    padding: 15px 30px;
+    background: gray;
+    margin-top: 20px;
+    border-radius: 6px;
+    color: #fff;
+    font-size: 20px;
+    width: 180px;
+    text-align: center;
+}
+@media (max-width: 900px) {
+    .signature-contentblock__image {
+        width: 40%;
+    }
+    .signature-contentblock__html {
+        width: 60%;
+        padding: 30px;
+    }
+    .signature-contentblock__title {
+        font-size: 1.2rem;
+    }
+    .signature-contentblock__subtitle {
+        font-size: 0.6rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .signature-contentblock__image {
+        width: 100%;
+    }
+    .signature-contentblock__html {
+        width: 100%;
+        padding: 15px;
+        background: rgba(134, 121, 121, 0.1);
+    }
+    .signature-contentblock__title {
+        font-size: 20px;
+    }
+    .signature-contentblock__subtitle {
+        font-size: 14px;
+    }
+    .signature-contentblock{
+        display: grid;
+        border: 1px solid rgba(134, 121, 121, 0.1);
+        box-shadow: 0px 0px 10px #cacaca;
+    }
+    .box-product-common__row > div:not(:first-child) {
+        margin-top: 30px;
+    }
+
+    .flat-spacing-8, .flat-spacing, .flat-spacing-10{
+        padding: 20px 0px!important;
+    }
+    .custom-say{
+        padding: 20px 10px!important;
+    }
+    .blog{
+        padding: 20px 0px!important;
+    }
+    .blog .blog-item{
+        padding: 10px;
+    }
+
+    .blog-item.card .card-body{
+        padding: 0 0 0;
+    }
+    .blog .blog-item .desc{
+        margin: 5px 0 5px;
+    }
+    .blog .blog-item .title{
+        margin: 15px 0 5px;
+    }
+    .mt-auto{
+        margin-top: 15px!important;
+    }
+}
+
+@media (max-width: 480px) {
+    .section-text > div{
+        display: inline-block!important;
+    }
+    .section-text > div > div{
+        width: 50%;
+        text-align: center;
+    }
+}
+.swiper {
+    /*overflow: visible;*/
+}
+@media (max-width: 440px) {
+    .section-text > div > div{
+        font-size: 13px;
+        padding: 10px 5px!important;
+    }
+}

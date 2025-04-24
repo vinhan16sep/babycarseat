@@ -38,73 +38,82 @@
     </section>
     <!-- /Slider -->
 
-    <!-- Collection -->
-    <section class="flat-spacing bg-css">
-        <div class="container">
-            <div class="heading-section text-center wow fadeInUp">
-                <h3 class="heading">Shop by Collections</h3>
-                <p class="subheading">Browse our Top Trending: the hottest picks loved by all.</p>
-            </div>
-            <div class="flat-sw-navigation wow fadeInUp" data-wow-delay="0.1s">
-                <div dir="ltr" class="swiper tf-sw-collection" data-preview="3" data-tablet="3" data-mobile-sm="2"
-                     data-mobile="1" data-space-lg="30" data-space-md="15" data-space="15" data-pagination="1"
-                     data-pagination-md="3" data-pagination-lg="4">
-                    <div class="swiper-wrapper">
-                        <!-- item 1 -->
-                        <div class="swiper-slide">
-                            <div class="collection-position-2 style-7 hover-img">
-                                <a href="shop-collection.html" class="img-style">
-                                    <img class="lazyload" data-src="images/collections/Collections3.png"
-                                         src="images/collections/Collections3.png" alt="banner-cls">
-                                </a>
-                                <div class="content text-center">
-                                    <h4 class="title"><a href="shop-collection.html" class="link text-white">Ghế ngồi ô tô cho bé</a></h4>
-                                    <span class="text-title text-white">Tiêu chuẩn 1</span>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- item 2 -->
-                        <div class="swiper-slide">
-                            <div class="collection-position-2 style-7 hover-img">
-                                <a href="shop-collection.html" class="img-style">
-                                    <img class="lazyload" data-src="images/collections/Collections2.png"
-                                         src="images/collections/Collections2.png" alt="banner-cls">
-                                </a>
-                                <div class="content text-center">
-                                    <h4 class="title"><a href="shop-collection.html" class="link text-white">Ghế ngồi ô tô cho bé</a></h4>
-                                    <span class="text-title text-white">Tiêu chuẩn 1</span>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- item 3 -->
-                        <div class="swiper-slide">
-                            <div class="collection-position-2 style-7 hover-img">
-                                <a href="shop-collection.html" class="img-style">
-                                    <img class="lazyload" data-src="images/collections/Collections1.png"
-                                         src="images/collections/Collections1.png" alt="banner-cls">
-                                </a>
-                                <div class="content text-center">
-                                    <h4 class="title"><a href="shop-collection.html" class="link text-white">Phụ kiện</a></h4>
-                                    <span class="text-title text-white">25 products</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div
-                        class="d-flex d-lg-none sw-pagination-collection sw-dots type-circle justify-content-center"></div>
-                </div>
-                <div class="nav-prev-collection d-none d-lg-flex nav-sw style-line nav-sw-left"><i
-                        class="icon icon-arrLeft"></i></div>
-                <div class="nav-next-collection d-none d-lg-flex nav-sw style-line nav-sw-right"><i
-                        class="icon icon-arrRight"></i></div>
-            </div>
+    <section class="section-text">
+        <div>
+            <div>Bảo hành Vàng 10 năm</div>
+            <div>Đổi mới sau tai nạn</div>
+            <div>30 ngày dùng thử</div>
+            <div>Miễn phí Ship</div>
         </div>
     </section>
+
+    <!-- Collection -->
+{{--    <section class="flat-spacing bg-css">--}}
+{{--        <div class="container">--}}
+{{--            <div class="heading-section text-center wow fadeInUp">--}}
+{{--                <h3 class="heading">Shop by Collections</h3>--}}
+{{--                <p class="subheading">Browse our Top Trending: the hottest picks loved by all.</p>--}}
+{{--            </div>--}}
+{{--            <div class="flat-sw-navigation wow fadeInUp" data-wow-delay="0.1s">--}}
+{{--                <div dir="ltr" class="swiper tf-sw-collection" data-preview="3" data-tablet="3" data-mobile-sm="2"--}}
+{{--                     data-mobile="1" data-space-lg="30" data-space-md="15" data-space="15" data-pagination="1"--}}
+{{--                     data-pagination-md="3" data-pagination-lg="4">--}}
+{{--                    <div class="swiper-wrapper">--}}
+{{--                        <!-- item 1 -->--}}
+{{--                        <div class="swiper-slide">--}}
+{{--                            <div class="collection-position-2 style-7 hover-img">--}}
+{{--                                <a href="shop-collection.html" class="img-style">--}}
+{{--                                    <img class="lazyload" data-src="images/collections/Collections3.png"--}}
+{{--                                         src="images/collections/Collections3.png" alt="banner-cls">--}}
+{{--                                </a>--}}
+{{--                                <div class="content text-center">--}}
+{{--                                    <h4 class="title"><a href="shop-collection.html" class="link text-white">Ghế ngồi ô tô cho bé</a></h4>--}}
+{{--                                    <span class="text-title text-white">Tiêu chuẩn 1</span>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                        <!-- item 2 -->--}}
+{{--                        <div class="swiper-slide">--}}
+{{--                            <div class="collection-position-2 style-7 hover-img">--}}
+{{--                                <a href="shop-collection.html" class="img-style">--}}
+{{--                                    <img class="lazyload" data-src="images/collections/Collections2.png"--}}
+{{--                                         src="images/collections/Collections2.png" alt="banner-cls">--}}
+{{--                                </a>--}}
+{{--                                <div class="content text-center">--}}
+{{--                                    <h4 class="title"><a href="shop-collection.html" class="link text-white">Ghế ngồi ô tô cho bé</a></h4>--}}
+{{--                                    <span class="text-title text-white">Tiêu chuẩn 1</span>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                        <!-- item 3 -->--}}
+{{--                        <div class="swiper-slide">--}}
+{{--                            <div class="collection-position-2 style-7 hover-img">--}}
+{{--                                <a href="shop-collection.html" class="img-style">--}}
+{{--                                    <img class="lazyload" data-src="images/collections/Collections1.png"--}}
+{{--                                         src="images/collections/Collections1.png" alt="banner-cls">--}}
+{{--                                </a>--}}
+{{--                                <div class="content text-center">--}}
+{{--                                    <h4 class="title"><a href="shop-collection.html" class="link text-white">Phụ kiện</a></h4>--}}
+{{--                                    <span class="text-title text-white">25 products</span>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                    <div--}}
+{{--                        class="d-flex d-lg-none sw-pagination-collection sw-dots type-circle justify-content-center"></div>--}}
+{{--                </div>--}}
+{{--                <div class="nav-prev-collection d-none d-lg-flex nav-sw style-line nav-sw-left"><i--}}
+{{--                        class="icon icon-arrLeft"></i></div>--}}
+{{--                <div class="nav-next-collection d-none d-lg-flex nav-sw style-line nav-sw-right"><i--}}
+{{--                        class="icon icon-arrRight"></i></div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </section>--}}
     <!-- /Collection -->
 
     <!-- Top picks -->
     <section class="flat-spacing bg-css topick">
-        <div class="container">
+            <div class="container">
             <div class="heading-section text-center wow fadeInUp">
                 <h3 class="heading">Hot Selling Babyro</h3>
                 <p class="subheading text-secondary">Browse our Top Trending: the hottest picks loved by all. </p>
@@ -127,7 +136,7 @@
                             <div class="card-product-info">
                                 <p class="product-title">Babyro i-Spin 360</p>
                                 <p class="product-desc">Ghế cho bé từ 0 - 12 tuổi</p>
-                                <a href="product-detail.html" class="title link">View i-Spin 360</a>
+{{--                                <a href="product-detail.html" class="title link">View i-Spin 360</a>--}}
                             </div>
                         </div>
                     </div>
@@ -145,7 +154,7 @@
                             <div class="card-product-info">
                                 <p class="product-title">Babyro i-Spin 360</p>
                                 <p class="product-desc">Ghế cho bé từ 0 - 12 tuổi</p>
-                                <a href="product-detail.html" class="title link">View i-Spin 360</a>
+{{--                                <a href="product-detail.html" class="title link">View i-Spin 360</a>--}}
                             </div>
                         </div>
                     </div>
@@ -163,7 +172,7 @@
                             <div class="card-product-info">
                                 <p class="product-title">Babyro i-Spin 360</p>
                                 <p class="product-desc">Ghế cho bé từ 0 - 12 tuổi</p>
-                                <a href="product-detail.html" class="title link">View i-Spin 360</a>
+{{--                                <a href="product-detail.html" class="title link">View i-Spin 360</a>--}}
                             </div>
                         </div>
                     </div>
@@ -181,14 +190,68 @@
                             <div class="card-product-info">
                                 <p class="product-title">Babyro i-Spin 360</p>
                                 <p class="product-desc">Ghế cho bé từ 0 - 12 tuổi</p>
-                                <a href="product-detail.html" class="title link">View i-Spin 360</a>
+{{--                                <a href="product-detail.html" class="title link">View i-Spin 360</a>--}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="card-product wow fadeInUp" data-wow-delay="0s">
+                            <div class="card-product-wrapper">
+                                <a href="product-detail.html" class="product-img">
+                                    <img class="lazyload img-product"
+                                         data-src="images/products/furniture/Hot-Selling4.png"
+                                         src="images/products/furniture/Hot-Selling4.png" alt="image-product">
+                                    <img class="lazyload img-hover" data-src="images/products/furniture/Hot-Selling4.png"
+                                         src="images/products/furniture/Hot-Selling4.png" alt="image-product">
+                                </a>
+                            </div>
+                            <div class="card-product-info">
+                                <p class="product-title">Babyro i-Spin 360</p>
+                                <p class="product-desc">Ghế cho bé từ 0 - 12 tuổi</p>
+                                {{--                                <a href="product-detail.html" class="title link">View i-Spin 360</a>--}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="card-product wow fadeInUp" data-wow-delay="0s">
+                            <div class="card-product-wrapper">
+                                <a href="product-detail.html" class="product-img">
+                                    <img class="lazyload img-product"
+                                         data-src="images/products/furniture/Hot-Selling4.png"
+                                         src="images/products/furniture/Hot-Selling4.png" alt="image-product">
+                                    <img class="lazyload img-hover" data-src="images/products/furniture/Hot-Selling4.png"
+                                         src="images/products/furniture/Hot-Selling4.png" alt="image-product">
+                                </a>
+                            </div>
+                            <div class="card-product-info">
+                                <p class="product-title">Babyro i-Spin 360</p>
+                                <p class="product-desc">Ghế cho bé từ 0 - 12 tuổi</p>
+                                {{--                                <a href="product-detail.html" class="title link">View i-Spin 360</a>--}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="card-product wow fadeInUp" data-wow-delay="0s">
+                            <div class="card-product-wrapper">
+                                <a href="product-detail.html" class="product-img">
+                                    <img class="lazyload img-product"
+                                         data-src="images/products/furniture/Hot-Selling4.png"
+                                         src="images/products/furniture/Hot-Selling4.png" alt="image-product">
+                                    <img class="lazyload img-hover" data-src="images/products/furniture/Hot-Selling4.png"
+                                         src="images/products/furniture/Hot-Selling4.png" alt="image-product">
+                                </a>
+                            </div>
+                            <div class="card-product-info">
+                                <p class="product-title">Babyro i-Spin 360</p>
+                                <p class="product-desc">Ghế cho bé từ 0 - 12 tuổi</p>
+                                {{--                                <a href="product-detail.html" class="title link">View i-Spin 360</a>--}}
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="sw-pagination-latest sw-dots type-circle justify-content-center"></div>
             </div>
-        </div>
+    </div>
     </section>
     <!-- /Top picks -->
 
@@ -201,17 +264,6 @@
                             <img src="images/standard1.png" alt="">
                             <p class="title">Thiết kế Đức</p>
                             <p class="desc">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been</p>
-                            <a class="link mt-auto">View All</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="blog-item card h-100 d-flex flex-column">
-                        <div class="card-body d-flex flex-column">
-                            <img src="images/standard2.png" alt="">
-                            <p class="title">Bảo vệ tối đa</p>
-                            <p class="desc">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been</p>
-                            <a class="link mt-auto">View All</a>
                         </div>
                     </div>
                 </div>
@@ -221,7 +273,15 @@
                             <img src="images/standard3.png" alt="">
                             <p class="title">Tiêu chuẩn an toàn Châu Âu</p>
                             <p class="desc">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been</p>
-                            <a class="link mt-auto">View All</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="blog-item card h-100 d-flex flex-column">
+                        <div class="card-body d-flex flex-column">
+                            <img src="images/standard2.png" alt="">
+                            <p class="title">Bảo vệ tối đa</p>
+                            <p class="desc">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been</p>
                         </div>
                     </div>
                 </div>
@@ -229,22 +289,156 @@
                     <div class="blog-item card h-100 d-flex flex-column">
                         <div class="card-body d-flex flex-column">
                             <img src="images/standard4.png" alt="">
-                            <p class="title">I Size - R129</p>
+                            <p class="title">Thân thiện với trẻ em</p>
                             <p class="desc">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been</p>
-                            <a class="link mt-auto">View All</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
+        <section class="flat-spacing" style="padding-top: 30px">
+            <div class="container">
+                <div class="flat-sw-navigation box-product-common__row wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="product-common__row ">
+                        <div class="signature-contentblock ">
+                            <div class="signature-contentblock__image">
+                                <img class="product-marketing__img" src="{{ asset('images/home-babyro1.png') }}" alt="">
+                            </div>
+                            <div class="signature-contentblock__html">
+                                <div class="signature-contentblock__description">
+                                    <div class="box-first-content-flex">
+                                        <img src="images/standard1.png" alt="">
+                                        <div>
+                                            ENGINEERED<br>
+                                            IN GERMANY
+                                        </div>
+                                    </div>
+                                    <div class="signature-contentblock__title">Công nghệ Đức</div>
+                                    <div class="signature-contentblock__subtitle">
+                                        Ghế ô tô Babyro được thiết kế và sản xuất theo công nghệ Đức. Điều này đồng nghĩa với việc các sản phẩm của Babyro được chú trọng đến từng chi tiết, đảm bảo độ bền cao và sự chắc chắn, giúp mang đến cho bé một chiếc ghế ô tô an toàn, thoải mái trong mỗi chuyến đi.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-common__row">
+                        <div class="signature-contentblock signature-contentblock--reverse">
+                            <div class="signature-contentblock__image">
+                                <img class="product-marketing__img" src="{{ asset('images/home-babyro2.png') }}" alt="">
+                            </div>
+                            <div class="signature-contentblock__html">
+                                <div class="signature-contentblock__description">
+                                    <div class="box-first-content-flex">
+                                        <img src="images/standard3.png" alt="">
+                                        <div>
+                                            CÔNG NGHỆ<br>
+                                            NÂNG ĐỠ TOÀN DIỆN
+                                        </div>
+                                    </div>
+                                    <div class="signature-contentblock__title">Tiêu chuẩn An toàn Châu Âu</div>
+                                    <div class="signature-contentblock__subtitle">
+                                        Ghế ô tô trẻ em Babyro đáp ứng các tiêu chuẩn an toàn của châu Âu, bao gồm ECE R44 và ECE R129 (i-Size). Tiêu chuẩn ECE R44 quy định các yêu cầu cơ bản về an toàn, trong khi ECE R129 (i-Size) là tiêu chuẩn mới nhất, tập trung vào việc bảo vệ trẻ tốt hơn trong các va chạm bên hông và yêu cầu sử dụng hệ thống lắp đặt ISOFIX. Với chứng nhận an toàn châu Âu, bạn hoàn toàn có thể yên tâm về sự bảo vệ toàn diện mà ghế ô tô Babyro mang lại cho bé.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-common__row ">
+                        <div class="signature-contentblock ">
+                            <div class="signature-contentblock__image">
+                                <img class="product-marketing__img" src="{{ asset('images/home-babyro3.png') }}" alt="">
+                            </div>
+                            <div class="signature-contentblock__html">
+                                <div class="signature-contentblock__description">
+                                    <div class="box-first-content-flex">
+                                        <img src="images/standard2.png" alt="">
+                                        <div>
+                                            KIỂM ĐỊNH<br>
+                                            KHẮT KHE
+                                        </div>
+                                    </div>
+                                    <div class="signature-contentblock__title">Bảo vệ tối đa</div>
+                                    <div class="signature-contentblock__subtitle">
+                                        Tất cả sản phẩm đều được kiểm tra kỹ lưỡng, thử nghiệm kỹ thuật chuyên sâu và đánh giá va chạm khắt khe trước khi xuất xưởng. Kết quả đạt chuẩn toàn diện 5 yếu tố: an toàn tuyệt đối tiện nghi vượt trội dễ sử dụng vệ sinh đơn giản và cam kết không chất độc hại.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-common__row mr-top">
+                        <div class="signature-contentblock signature-contentblock--reverse">
+                            <div class="signature-contentblock__image">
+                                <img class="product-marketing__img" src="{{ asset('images/home-babyro4.png') }}" alt="">
+                            </div>
+                            <div class="signature-contentblock__html">
+                                <div class="signature-contentblock__description">
+                                    <div class="box-first-content-flex">
+                                        <img src="images/standard4.png" alt="">
+                                        <div>
+                                            THIẾT KẾ<br>
+                                            ĐẠT CHUẨN Y KHOA
+                                        </div>
+                                    </div>
+                                    <div class="signature-contentblock__title">Thân thiện với trẻ em</div>
+                                    <div class="signature-contentblock__subtitle">
+                                        <ul>
+                                            <li>
+                                                Hỗ trợ cột sống: Cấu trúc ergonomic ôm trọn đường cong sinh lý tự nhiên
+                                            </li>
+                                            <li>
+                                                Bảo vệ xương cùng: Đệm nâng đỡ phân bổ áp lực thông minh
+                                            </li>
+                                            <li>
+                                                An toàn da liễu: Vải kháng khuẩn đạt chứng nhận Oeko-Tex® Class 1
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
     </section>
+
 
     <!-- Testimonial -->
     <section class="flat-spacing pt-0 custom-say">
+        <div class="container box-hau-mai">
+            <h3>Chính sách hậu mãi</h3>
+            <div class="row">
+                <div class="col-lg-6" style="margin-bottom: 20px;">
+                    <div class="card  h-100 content-hau-mai d-flex flex-column">
+                        <div class="card-body d-flex flex-column">
+                            <h4>Chương trình <br>ghế an toàn babyro care</h4>
+                            <p>Tại BABYRO, chúng tôi hiểu rằng an toàn của những hành khách nhỏ là ưu tiên hàng đầu. Vì vậy, khi mua sản phẩm của chúng tôi, bạn có thể tham gia Chương Trình Ghế An Toàn BABYRO và được thay thế miễn phí ghế ô tô đã gặp tai nạn bằng một ghế mới.</p>
+                            <br>
+                            <a class="mt-auto" href="">Xem thêm</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6" style="margin-bottom: 20px;">
+                    <div class="card  h-100 content-hau-mai d-flex flex-column">
+                        <div class="card-body d-flex flex-column">
+                        <h4>BẢO HÀNH <span>10</span> NĂM</h4>
+                        <p>Bảo hành 10 năm để đáp ứng nhu cầu và mong đợi của khách hàng, chúng tôi cung cấp tùy chọn bảo hành mở rộng, kéo dài 10 năm và cho phép bạn sửa chữa hoặc thay thế miễn phí bộ phận bị hỏng của ghế ô tô.</p>
+                        <br>
+                            <a class="mt-auto" href="">Xem thêm</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="container">
             <div class="heading-section text-center wow fadeInUp">
-                <h3 class="heading">Customer Say!</h3>
-                <p class="subheading">Our customers adore our products, and we constantly aim to delight them.</p>
+                <h3 class="heading">Công nghệ trọn vẹn yêu thương!</h3>
+{{--                <p class="subheading">Our customers adore our products, and we constantly aim to delight them.</p>--}}
             </div>
             <div dir="ltr" class="swiper tf-sw-testimonial" data-preview="3" data-tablet="2" data-mobile="1"
                  data-space-lg="30" data-space-md="30" data-space="15" data-pagination="1" data-pagination-md="1"
