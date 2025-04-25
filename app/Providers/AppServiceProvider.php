@@ -2,8 +2,10 @@
 
 namespace App\Providers;
 
+use App\Models\Information;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Facades\View;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -25,5 +27,12 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Paginator::useBootstrap();
+
+        $objects = Information::where(['type' => 'CONTACT'])->get()->toArray();
+        $contactInformations = [];
+        foreach ($objects as $item) {
+            $contactInformations[$item['label']] = $item['value'];
+        }
+        View::share('contactInformations', $contactInformations);
     }
 }

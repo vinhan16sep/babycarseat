@@ -3286,7 +3286,7 @@ footer.has-pb {
 }
 
 .tab-description {
-  display: flex;
+  /* display: flex; */
   gap: 32px;
 }
 .tab-description .right,

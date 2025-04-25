@@ -55,7 +55,7 @@
                                     <label>Tên sản phẩm: <span class="my-required">{{ $product->name }}</span></label>
                                     <input type="hidden" name="product_id" value="{{ $product->id }}">
                                 </div>
-
+                                @if ($isCreate == 1)
                                 <div class="form-group{{ $errors->has('color_id') ? ' has-error' : '' }}">
                                     <label>Chọn màu <span class="my-required">*</span></label>
                                     <select class="form-control w-30" name="color_id" value="{{ old('color_id') }}" id="selectColor">
@@ -68,6 +68,10 @@
                                     <span style="color:red;">{{ $errors->first('color_id') }}</span>
                                     @endif
                                 </div>
+                                @else
+                                <label>Màu sắc: {{ $colorName }}</label>
+                                <input type="hidden" name="color_id" value="{{ $colorId }}">
+                                @endif
                                 
                                 <div class="row">
                                     <div class="col-md-8">

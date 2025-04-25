@@ -19,7 +19,7 @@
         <div class="col-lg-8 p-r-0 title-margin-right">
             <div class="page-header">
                 <div class="page-title">
-                    <h1>Danh sách</span></h1> <a class="btn btn-success btn-flat" href="{{ route('create-product') }}"><i class="ti-plus"></i> Tạo mới</a>
+                    <h1>Danh sách</span></h1> <a class="btn btn-success btn-flat" href="{{ route('create-product-color-image', ['id' => $productId]) }}"><i class="ti-plus"></i> Tạo mới</a>
                 </div>
             </div>
         </div>
@@ -54,7 +54,7 @@
                                             <div class="circle-icon" style="background-color: {{ $item->color->code }};"></div>
                                         </td>
                                         <td class="color-primary">
-                                            <a type="button" class="btn btn-default btn-flat m-l-5 my-list-btn" href="{{ route('create-product-color-image', ['id' => $item->product->id]) }}">
+                                            <a type="button" class="btn btn-default btn-flat m-l-5 my-list-btn" href="{{ route('create-product-color-image', ['id' => $item->product->id, 'color' => $item->color->id]) }}">
                                                 <i class="ti-pencil"></i>
                                             </a>
                                         </td>

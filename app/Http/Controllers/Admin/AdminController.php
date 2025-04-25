@@ -77,10 +77,10 @@ class AdminController extends Controller
         return $uploads;
     }
 
-    protected function updateImage($path, $request, $prevImg) {
+    protected function updateImage($path, $request) {
         $upload = '';
         if($request->hasfile('image')) {
-            Storage::delete(str_replace('storage', 'public', $prevImg));
+            Storage::deleteDirectory($path);
             $upload = $this->uploadImage($path, $request);
         }
         return $upload;

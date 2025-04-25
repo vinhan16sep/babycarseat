@@ -15,7 +15,13 @@ class ProductColorImageController extends AdminController
 
     public function index(Request $request) {
         $list = ProductColor::with(['product', 'color'])->where('product_id', $request['id'])->orderBy('updated_at', 'desc')->get();
-        return view('admin/product-color-images/index', compact('list'));
+        return view(
+            'admin/product-color-images/index', 
+            [
+                'list' => $list,
+                'productId' => $request['id']
+            ]
+        );
     }
 
     public function create(Request $request)
@@ -25,21 +31,41 @@ class ProductColorImageController extends AdminController
         if (!isset($request['id']) || empty($request['id'])) {
             return redirect()->route('list-product')->with('error', Config::get('constants.MESSAGE.DATA_NOT_FOUND'));
         }
-
-        $product = Product::where('id', $request['id'])->first();
-        if ($product == null || empty($product)) {
-            return redirect()->route('list-product')->with('error', Config::get('constants.MESSAGE.DATA_NOT_FOUND'));
+        
+        
+        if (!isset($request['color']) || empty($request['color'])) {
+            $product = Product::where('id', $request['id'])->first();
+            if ($product == null || empty($product)) {
+                return redirect()->route('list-product')->with('error', Config::get('constants.MESSAGE.DATA_NOT_FOUND'));
+            }
+    
+            $colors = Color::all();
+    
+            return view(
+                'admin/product-color-images/create',
+                [
+                    'isCreate' => 1,
+                    'product' => $product,
+                    'colors' => $colors,
+                ]
+            );
+        } else {
+            $product = Product::where('id', $request['id'])->first();
+            if ($product == null || empty($product)) {
+                return redirect()->route('list-product')->with('error', Config::get('constants.MESSAGE.DATA_NOT_FOUND'));
+            }
+            
+            $color = Color::where(['id' => $request['color']])->first();
+            return view(
+                'admin/product-color-images/create',
+                [
+                    'isCreate' => 0,
+                    'product' => $product,
+                    'colorName' => $color->name,
+                    'colorId' => $request['color'],
+                ]
+            );
         }
-
-        $colors = Color::all();
-
-        return view(
-            'admin/product-color-images/create',
-            [
-                'product' => $product,
-                'colors' => $colors,
-            ]
-        );
     }
 
     public function store(Request $request)
@@ -60,10 +86,10 @@ class ProductColorImageController extends AdminController
             
                         if ($exist->save()) {
                             DB::commit();
-                            return redirect()->route('list-product')->with('success', Config::get('constants.MESSAGE.CREATE_SUCCEEDED'));
+                            return redirect()->route('list-product-color-image', ['id' => $request->input('product_id')])->with('success', Config::get('constants.MESSAGE.CREATE_SUCCEEDED'));
                         }
                         DB::rollBack();
-                        return redirect()->route('create-product')->with('error', Config::get('constants.MESSAGE.SOMETHING_ERROR') . "_1");
+                        return redirect()->route('list-product-color-image', ['id' => $request->input('product_id')])->with('error', Config::get('constants.MESSAGE.SOMETHING_ERROR' . "_1"));
                     }
                 }
             } else {
@@ -79,20 +105,21 @@ class ProductColorImageController extends AdminController
             
                         if ($productColor->save()) {
                             DB::commit();
-                            return redirect()->route('list-product')->with('success', Config::get('constants.MESSAGE.CREATE_SUCCEEDED'));
+                            return redirect()->route('list-product-color-image', ['id' => $request->input('product_id')])->with('success', Config::get('constants.MESSAGE.CREATE_SUCCEEDED'));
                         }
                         DB::rollBack();
-                        return redirect()->route('create-product')->with('error', Config::get('constants.MESSAGE.SOMETHING_ERROR') . "_2");
+                        return redirect()->route('list-product-color-image', ['id' => $request->input('product_id')])->with('error', Config::get('constants.MESSAGE.SOMETHING_ERROR' . "_2"));
                     }
+
                 }
                 DB::rollBack();
-                return redirect()->route('create-product')->with('error', Config::get('constants.MESSAGE.SOMETHING_ERROR') . "_3");
+                return redirect()->route('list-product-color-image', ['id' => $request->input('product_id')])->with('error', Config::get('constants.MESSAGE.SOMETHING_ERROR' . "_3"));
             }
             DB::rollBack();
-            return redirect()->route('create-product')->with('error', Config::get('constants.MESSAGE.SOMETHING_ERROR') . "_4");
+            return redirect()->route('list-product-color-image', ['id' => $request->input('product_id')])->with('error', Config::get('constants.MESSAGE.SOMETHING_ERROR' . "_4"));
         } catch (Exception $e) {
             DB::rollBack();
-            return redirect()->route('create-product')->with('error', $e->getMessage());
+            return redirect()->route('list-product-color-image', ['id' => $request->input('product_id')])->with('error', $e->getMessage());
         }
     }
 
@@ -132,13 +159,13 @@ class ProductColorImageController extends AdminController
     {
         $this->validate($request, [
             'color_id' => 'required',
-            'image.*' => 'required|image|mimes:jpg,jpeg,png|max:2048',
+            'images.*' => 'required|image|mimes:jpg,jpeg,png|max:2048',
         ], [
             'color_id.required' => 'Chưa chọn màu sắc',
-            'image.required' => 'Chưa chọn ảnh',
-            'image.image' => 'Chỉ chấp nhận ảnh có định dạng jpg, jpeg, png',
-            'image.mimes' => 'Chỉ chấp nhận ảnh có định dạng jpg, jpeg, png',
-            'image.max' => 'Dung lượng ảnh không được quá 2MB',
+            'images.required' => 'Chưa chọn ảnh',
+            'images.image' => 'Chỉ chấp nhận ảnh có định dạng jpg, jpeg, png',
+            'images.mimes' => 'Chỉ chấp nhận ảnh có định dạng jpg, jpeg, png',
+            'images.max' => 'Dung lượng ảnh không được quá 2MB',
         ]);
     }
 }
