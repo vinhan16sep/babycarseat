@@ -160,7 +160,7 @@
             var xhr, formData;
             xhr = new XMLHttpRequest();
             xhr.withCredentials = false;
-            xhr.open('POST', '/bw-admin/upload/post-tinymce-image');
+            xhr.open('POST', '/br-admin/upload/post-tinymce-image');
             var token = '{{ csrf_token() }}';
             xhr.setRequestHeader("X-CSRF-Token", token);
             xhr.onload = function() {

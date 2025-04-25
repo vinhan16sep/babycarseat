@@ -411,14 +411,14 @@
                                         </div>
                                     </div>
 
-                                    <div class="product-options-bottom">
+                                    <!-- <div class="product-options-bottom">
                                         <div class="fieldset">
                                             <div class="actions">
                                                 <a href="https://joiebaby.com/en/store-locator" title="Find your local shop" class="joie-button-secondary" style="width: 100%; text-align: center;">
                                                     Find your local shop            </a>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> -->
 
 {{--                                    <div class="variant-picker-item">--}}
 {{--                                        <div class="d-flex justify-content-between mb_12">--}}
@@ -499,7 +499,7 @@
                                                 <div id="accordion-7" class="collapse" data-bs-parent="#accordion-product">
                                                     <div class="accordion-content tab-description fix-font">
                                                         <p class="text-secondary">
-                                                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book
+                                                            {!! $product->detail !!}
                                                         </p>
                                                     </div>
                                                 </div>
@@ -513,12 +513,12 @@
                                                 <div id="accordion-8" class="collapse" data-bs-parent="#accordion-product">
                                                     <div class="accordion-content tab-description fix-font">
                                                         <p class="text-secondary">
-                                                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book
+                                                            {!! $product->specification !!}
                                                         </p>
                                                     </div>
                                                 </div>
                                             </li>
-                                            <li class="accordion-product-item">
+                                            <!-- <li class="accordion-product-item">
                                                 <a href="#accordion-9" class="accordion-title collapsed current" data-bs-toggle="collapse"
                                                    aria-expanded="true" aria-controls="accordion-1">
                                                     <h6>How to & support</h6>
@@ -531,7 +531,7 @@
                                                         </p>
                                                     </div>
                                                 </div>
-                                            </li>
+                                            </li> -->
                                         </ul>
                                     </div>
                                 </div>
