@@ -37,16 +37,23 @@ class HomeBlockController extends AdminController
         try {
 
             $model = new HomeBlock();
+            $model->type = $request->input('type');
             $model->name = $request->input('name');
             $model->link = $request->input('link');
+            $model->short_description = $request->input('short_description');
+            $model->description = $request->input('description');
             $model->is_active = $request->input('is_active');
             $model->created_by = 1;
             $model->updated_by = 1;
             if ($model->save()) {
 
                 $path = sprintf(Config::get('constants.FILE_STORAGE_PATH.HOME_BLOCK_IMAGE'), $model->id);
-                $upload = $this->uploadImage($path, $request);
+                $upload = $this->uploadImage($path, $request, 'image');
                 $model->image = $upload;
+
+                $iconPath = sprintf(Config::get('constants.FILE_STORAGE_PATH.HOME_BLOCK_ICON_IMAGE'), $model->id);
+                $iconUpload = $this->uploadImage($iconPath, $request, 'icon');
+                $model->icon = $iconUpload;
             
                 if ($model->save()) {
                     DB::commit();
@@ -91,16 +98,24 @@ class HomeBlockController extends AdminController
 
         try {
 
+            $object->type = $request->input('type');
             $object->name = $request->input('name');
             $object->link = $request->input('link');
+            $object->short_description = $request->input('short_description');
+            $object->description = $request->input('description');
             $object->is_active = $request->input('is_active');
             $object->updated_by = 1;
                     
             if($request->hasfile('image')) {
                 $path = sprintf(Config::get('constants.FILE_STORAGE_PATH.HOME_BLOCK_IMAGE'), $id);
-                $prevImg = $object->image;
-                $upload = $this->updateImage($path, $request, $prevImg);
+                $upload = $this->updateImage($path, $request, 'image');
                 $object->image = $upload;
+            }
+                    
+            if($request->hasfile('icon')) {
+                $iconPath = sprintf(Config::get('constants.FILE_STORAGE_PATH.HOME_BLOCK_ICON_IMAGE'), $id);
+                $iconUpload = $this->updateImage($iconPath, $request, 'icon');
+                $object->icon = $iconUpload;
             }
 
             if ($object->save()) {

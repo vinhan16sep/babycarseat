@@ -14,6 +14,7 @@ return [
         'PROMOTION_IMAGE' => 'images/promotion/%s/',
         'GIFT_IMAGE' => 'images/gift/%s/',
         'HOME_BLOCK_IMAGE' => 'images/home-block/%s/',
+        'HOME_BLOCK_ICON_IMAGE' => 'images/home-block/%s/icon/',
         'PRODUCT_FEATURE' => 'images/product/%s/feature/%s/',
     ],
     'MESSAGE' => [
