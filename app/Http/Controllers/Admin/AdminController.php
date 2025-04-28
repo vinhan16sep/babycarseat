@@ -46,13 +46,13 @@ class AdminController extends Controller
         return $upload;
     }
 
-    protected function uploadImage($path, $request) {
+    protected function uploadImage($path, $request, $input = 'image') {
         if (!Storage::exists($path)) {
             Storage::makeDirectory($path);
         }
         $upload = '';
-        if($request->hasfile('image')) {
-            $img = $request->file('image');
+        if($request->hasfile($input)) {
+            $img = $request->file($input);
             $name = time() . str_pad(rand(1,1000000), 6, '0', STR_PAD_LEFT) . '.' . $img->extension();
             $img->storeAs($path, $name);
             // $upload = str_replace('public/', 'storage/', $path) . $name;  
@@ -77,11 +77,11 @@ class AdminController extends Controller
         return $uploads;
     }
 
-    protected function updateImage($path, $request) {
+    protected function updateImage($path, $request, $input = 'image') {
         $upload = '';
-        if($request->hasfile('image')) {
+        if($request->hasfile($input)) {
             Storage::deleteDirectory($path);
-            $upload = $this->uploadImage($path, $request);
+            $upload = $this->uploadImage($path, $request, $input);
         }
         return $upload;
     }

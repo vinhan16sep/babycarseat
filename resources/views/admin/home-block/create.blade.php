@@ -39,9 +39,34 @@
                                             alt="preview image" style="max-height: 250px;">
                                     </div>
                                 </div>
+                                
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <div class="form-group{{ $errors->has('icon') ? ' has-error' : '' }}">
+                                            <label>Icon</label>
+                                            <input type="file" name="icon" class="form-control input-default" id="icon">
+                                            @if ($errors->has('icon'))
+                                                <span style="color:red;">{{ $errors->first('icon') }}</span>
+                                            @endif
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 my-preview">
+                                        <img id="preview-icon-before-upload" src="{{ asset('images/no-image-available.png') }}"
+                                            alt="preview image" style="max-height: 250px;">
+                                    </div>
+                                </div>
+
+                                <div class="form-group{{ $errors->has('type') ? ' has-error' : '' }}">
+                                    <label>Phân loại</label>
+                                    <input type="text" name="type" value="{{ old('type') }}" class="form-control" id="inputType" maxlength="255">
+                                    @if ($errors->has('type'))
+                                        <span style="color:red;">{{ $errors->first('type') }}</span>
+                                    </span>
+                                    @endif
+                                </div>
 
                                 <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                                    <label>Tên</label>
+                                    <label>Tiêu đề</label>
                                     <input type="text" name="name" value="{{ old('name') }}" class="form-control" id="inputName" maxlength="255">
                                     @if ($errors->has('name'))
                                         <span style="color:red;">{{ $errors->first('name') }}</span>
@@ -56,6 +81,16 @@
                                         <span style="color:red;">{{ $errors->first('link') }}</span>
                                     </span>
                                     @endif
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Mô tả ngắn</label>
+                                    <textarea name="short_description" class="form-control my-textarea" rows="5">{{ old('short_description') }}</textarea>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Mô tả</label>
+                                    <textarea name="description" class="form-control my-textarea" rows="5">{{ old('description') }}</textarea>
                                 </div>
 
                                 <input type="hidden" name="is_active" value="0">
@@ -87,6 +122,14 @@
         let reader = new FileReader();
         reader.onload = (e) => { 
             $('#preview-image-before-upload').attr('src', e.target.result); 
+        }
+        reader.readAsDataURL(this.files[0]); 
+    });
+
+    $('#icon').change(function(){
+        let reader = new FileReader();
+        reader.onload = (e) => { 
+            $('#preview-icon-before-upload').attr('src', e.target.result); 
         }
         reader.readAsDataURL(this.files[0]); 
     });
