@@ -268,9 +268,11 @@ if ($(".tf-sw-latest").length > 0) {
   var perGroup = $(".tf-sw-latest").data("pagination");
   var perGroupMd = $(".tf-sw-latest").data("pagination-md");
   var perGroupLg = $(".tf-sw-latest").data("pagination-lg");
+  var centeredSlides = $(".tf-sw-latest").data("center") == "0" ? false : true;
+  var loop = centeredSlides;
   var swiper = new Swiper(".tf-sw-latest", {
-    centeredSlides: true,
-    loop: true,
+    centeredSlides: centeredSlides,
+    loop: loop,
       grabCursor: true,
     slidesPerView: 2,
     spaceBetween: spacing,

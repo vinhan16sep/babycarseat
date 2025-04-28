@@ -174,6 +174,71 @@
             padding: 0;
             font-size: 1rem;
         }
+        .box-hau-mai{
+            margin-bottom: 40px;
+        }
+        .box-hau-mai h3{
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .content-hau-mai{
+            padding: 30px;
+            background: #fff;
+        }
+        .content-hau-mai h4{
+            text-transform: uppercase;
+            color: #3c3c8c;
+            font-weight: bold;
+            line-height: 35px;
+            margin-bottom: 20px;
+            min-height: 70px;
+            align-items: end;
+            display: flex
+        }
+        .content-hau-mai h4 span{
+            font-size: 60px;
+            display: contents;
+        }
+        .content-hau-mai a {
+            padding: 15px 30px;
+            background: gray;
+            margin-top: 20px;
+            border-radius: 6px;
+            color: #fff;
+            font-size: 20px;
+            width: 180px;
+            text-align: center;
+        }
+        .heading{
+            color: #d20046;
+            font-weight: bold;
+        }
+        .customer-tick {
+            width: 19px!important;
+            height: auto!important;
+            margin-left: 5px;
+        }
+        .text-secondary{
+            text-align: left!important;
+        }
+        .custom-say .heading-section h3, .heading-section .heading, .list-star-default .icon {
+            color: #d20046;
+            font-weight: bold;
+        }
+        .testimonial-item .content-top{
+            padding: 0;
+            margin: 0;
+            border: none;
+        }
+
+        .card-product-info{
+            text-align: center;
+        }
+        .card-product-info .product-title{
+            font-weight: bold;
+            text-transform: uppercase;
+        }
         @media (max-width: 900px) {
             .signature-contentblock__image {
                 width: 40%;
@@ -748,38 +813,129 @@
         </div>
     </section>
 
+    <br>
+    <br>
+    @include('components.last-page')
 
     <!-- Ralated Products -->
 {{--    @if(!empty($products->count()))--}}
-{{--        <section class="flat-spacing">--}}
-{{--            <div class="container flat-animate-tab">--}}
-{{--                <ul class="tab-product justify-content-sm-center wow fadeInUp" data-wow-delay="0s" role="tablist">--}}
-{{--                    <li class="nav-tab-item" role="presentation">--}}
-{{--                        <a href="#ralatedProducts" class="active" data-bs-toggle="tab">Sản phẩm nổi bật</a>--}}
-{{--                    </li>--}}
-{{--    --}}{{--                <li class="nav-tab-item" role="presentation">--}}
-{{--    --}}{{--                    <a href="#recentlyViewed" data-bs-toggle="tab">Recently Viewed</a>--}}
-{{--    --}}{{--                </li>--}}
-{{--                </ul>--}}
-{{--                <div class="tab-content">--}}
-{{--                    <div class="tab-pane active show" id="ralatedProducts" role="tabpanel">--}}
-{{--                        <div dir="ltr" class="swiper tf-sw-latest" data-preview="4" data-tablet="3" data-mobile="2"--}}
-{{--                             data-space-lg="30" data-space-md="30" data-space="15" data-pagination="1"--}}
-{{--                             data-pagination-md="1" data-pagination-lg="1">--}}
-{{--                            <div class="swiper-wrapper">--}}
-{{--                                @foreach($products as $_product)--}}
-{{--                                    <div class="swiper-slide">--}}
-{{--                                        @include('components.item-product', ["product" => $_product, 'is_grid' => true])--}}
-{{--                                    </div>--}}
-{{--                                @endforeach--}}
-{{--                            </div>--}}
-{{--                            <div class="sw-pagination-latest sw-dots type-circle justify-content-center"></div>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
+        <section class="flat-spacing bg-css topick" style="padding-top: 40px">
+            <div class="container">
+                <div class="heading-section text-center wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">
+                    <h3 class="heading" style="color:black;">Hot Selling Babyro</h3>
+                </div>
+                <div dir="ltr" class="swiper tf-sw-latest" data-preview="6" data-tablet="3" data-mobile="1"
+                     data-space-lg="30" data-space-md="30" data-space="15" data-pagination="1" data-center="0" data-pagination-md="1"
+                     data-pagination-lg="1">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <div class="card-product wow fadeInUp" data-wow-delay="0s">
+                                <div class="card-product-wrapper">
+                                    <a href="product-detail.html" class="product-img">
+                                        <img class="lazyload img-product"
+                                             data-src="{{ asset('images/products/furniture/Hot-Selling1.png') }}"
+                                             src="{{ asset('images/products/furniture/Hot-Selling1.png') }}" alt="image-product">
+                                        <img class="lazyload img-hover" data-src="{{ asset('images/products/furniture/Hot-Selling1.png') }}"
+                                             src="{{ asset('images/products/furniture/Hot-Selling1.png') }}" alt="image-product">
+                                    </a>
+                                </div>
+                                <div class="card-product-info">
+                                    <p class="product-title">Babyro i-Spin 360</p>
+                                    <p class="product-desc">Ghế cho bé từ 0 - 12 tuổi</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="card-product wow fadeInUp" data-wow-delay="0s">
+                                <div class="card-product-wrapper">
+                                    <a href="product-detail.html" class="product-img">
+                                        <img class="lazyload img-product"
+                                             data-src="{{ asset('images/products/furniture/Hot-Selling3.png') }}"
+                                             src="{{ asset('images/products/furniture/Hot-Selling3.png') }}" alt="image-product">
+                                        <img class="lazyload img-hover" data-src="{{ asset('images/products/furniture/Hot-Selling3.png') }}"
+                                             src="{{ asset('images/products/furniture/Hot-Selling3.png') }}" alt="image-product">
+                                    </a>
+                                </div>
+                                <div class="card-product-info">
+                                    <p class="product-title">Babyro i-Spin 360</p>
+                                    <p class="product-desc">Ghế cho bé từ 0 - 12 tuổi</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="card-product wow fadeInUp" data-wow-delay="0s">
+                                <div class="card-product-wrapper">
+                                    <a href="product-detail.html" class="product-img">
+                                        <img class="lazyload img-product"
+                                             data-src="{{ asset('images/products/furniture/Hot-Selling4.png') }}"
+                                             src="{{ asset('images/products/furniture/Hot-Selling4.png') }}" alt="image-product">
+                                        <img class="lazyload img-hover" data-src="{{ asset('images/products/furniture/Hot-Selling4.png') }}"
+                                             src="{{ asset('images/products/furniture/Hot-Selling4.png') }}" alt="image-product">
+                                    </a>
+                                </div>
+                                <div class="card-product-info">
+                                    <p class="product-title">Babyro i-Spin 360</p>
+                                    <p class="product-desc">Ghế cho bé từ 0 - 12 tuổi</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="card-product wow fadeInUp" data-wow-delay="0s">
+                                <div class="card-product-wrapper">
+                                    <a href="product-detail.html" class="product-img">
+                                        <img class="lazyload img-product"
+                                             data-src="{{ asset('images/products/furniture/Hot-Selling4.png') }}"
+                                             src="{{ asset('images/products/furniture/Hot-Selling4.png') }}" alt="image-product">
+                                        <img class="lazyload img-hover" data-src="{{ asset('images/products/furniture/Hot-Selling4.png') }}"
+                                             src="{{ asset('images/products/furniture/Hot-Selling4.png') }}" alt="image-product">
+                                    </a>
+                                </div>
+                                <div class="card-product-info">
+                                    <p class="product-title">Babyro i-Spin 360</p>
+                                    <p class="product-desc">Ghế cho bé từ 0 - 12 tuổi</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="card-product wow fadeInUp" data-wow-delay="0s">
+                                <div class="card-product-wrapper">
+                                    <a href="product-detail.html" class="product-img">
+                                        <img class="lazyload img-product"
+                                             data-src="{{ asset('images/products/furniture/Hot-Selling4.png') }}"
+                                             src="{{ asset('images/products/furniture/Hot-Selling4.png') }}" alt="image-product">
+                                        <img class="lazyload img-hover" data-src="{{ asset('images/products/furniture/Hot-Selling4.png') }}"
+                                             src="{{ asset('images/products/furniture/Hot-Selling4.png') }}" alt="image-product">
+                                    </a>
+                                </div>
+                                <div class="card-product-info">
+                                    <p class="product-title">Babyro i-Spin 360</p>
+                                    <p class="product-desc">Ghế cho bé từ 0 - 12 tuổi</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="card-product wow fadeInUp" data-wow-delay="0s">
+                                <div class="card-product-wrapper">
+                                    <a href="product-detail.html" class="product-img">
+                                        <img class="lazyload img-product"
+                                             data-src="{{ asset('images/products/furniture/Hot-Selling4.png') }}"
+                                             src="{{ asset('images/products/furniture/Hot-Selling4.png') }}" alt="image-product">
+                                        <img class="lazyload img-hover" data-src="{{ asset('images/products/furniture/Hot-Selling4.png') }}"
+                                             src="{{ asset('images/products/furniture/Hot-Selling4.png') }}" alt="image-product">
+                                    </a>
+                                </div>
+                                <div class="card-product-info">
+                                    <p class="product-title">Babyro i-Spin 360</p>
+                                    <p class="product-desc">Ghế cho bé từ 0 - 12 tuổi</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sw-pagination-latest sw-dots type-circle justify-content-center"></div>
+                </div>
+            </div>
+        </section>
 
-{{--            </div>--}}
-{{--        </section>--}}
 {{--    @endif--}}
     <!-- /Ralated Products -->
 @endsection
