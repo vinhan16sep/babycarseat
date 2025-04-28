@@ -24,6 +24,8 @@ use App\Http\Controllers\Admin\NoteController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\ProductCategoryController;
 use App\Http\Controllers\Admin\ProductColorImageController;
+use App\Http\Controllers\Admin\FeatureController;
+use App\Http\Controllers\Admin\ProductFeatureController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -148,6 +150,16 @@ Route::group(['prefix' => 'br-admin', 'middleware' => 'auth'], function () {
         Route::get('product-color-image/change-status', [ProductColorImageController::class, 'changeStatus'])->name('change-product-color-image-status');
         Route::get('product-color-image/get-colors-by-product', [ProductColorImageController::class, 'getColorsByProduct'])->name('get-colors-by-product');
 
+        // Product feature
+        Route::get('product-feature', [ProductFeatureController::class, 'index'])->name('list-product-feature');
+        Route::get('product-feature/create', [ProductFeatureController::class, 'create'])->name('create-product-feature');
+        Route::post('product-feature/store', [ProductFeatureController::class, 'store'])->name('store-product-feature');
+        Route::get('product-feature/edit/{id}', [ProductFeatureController::class, 'edit'])->name('edit-product-feature');
+        Route::put('product-feature/update/{id}', [ProductFeatureController::class, 'update'])->name('update-product-feature');
+        Route::get('product-feature/delete-row', [ProductFeatureController::class, 'delete'])->name('delete-product-feature');
+        Route::get('product-feature/change-status', [ProductFeatureController::class, 'changeStatus'])->name('change-product-feature-status');
+        Route::get('product-feature/get-feature-by-product', [ProductFeatureController::class, 'getFeatureByProduct'])->name('get-feature-by-product');
+
 
         // News
         Route::group(['prefix' => 'news'], function () {
@@ -158,6 +170,17 @@ Route::group(['prefix' => 'br-admin', 'middleware' => 'auth'], function () {
             Route::put('update/{id}', [NewsController::class, 'update'])->name('update-news');
             Route::get('delete-row', [NewsController::class, 'delete'])->name('delete-news');
             Route::get('change-status', [NewsController::class, 'changeStatus'])->name('change-news-status');
+        });
+
+        // News
+        Route::group(['prefix' => 'feature'], function () {
+            Route::get('/', [FeatureController::class, 'index'])->name('list-feature');
+            Route::get('create', [FeatureController::class, 'create'])->name('create-feature');
+            Route::post('store', [FeatureController::class, 'store'])->name('store-feature');
+            Route::get('edit/{id}', [FeatureController::class, 'edit'])->name('edit-feature');
+            Route::put('update/{id}', [FeatureController::class, 'update'])->name('update-feature');
+            Route::get('delete-row', [FeatureController::class, 'delete'])->name('delete-feature');
+            Route::get('change-status', [FeatureController::class, 'changeStatus'])->name('change-feature-status');
         });
 
         // Knowledge category

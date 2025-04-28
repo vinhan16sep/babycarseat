@@ -14,6 +14,7 @@ return [
         'PROMOTION_IMAGE' => 'images/promotion/%s/',
         'GIFT_IMAGE' => 'images/gift/%s/',
         'HOME_BLOCK_IMAGE' => 'images/home-block/%s/',
+        'PRODUCT_FEATURE' => 'images/product/%s/feature/%s/',
     ],
     'MESSAGE' => [
         'CREATE_SUCCEEDED' => 'Tạo dữ liệu thành công!',
