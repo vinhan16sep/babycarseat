@@ -14,6 +14,6 @@ class Note extends Model
 
     protected $fillable = [
         'name',
-        'icon'
+        'image'
     ];
 }

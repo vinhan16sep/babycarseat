@@ -46,7 +46,7 @@
                 <div class="card">
                     <div class="card-body offset-1 col-lg-10">
                         <div class="basic-form">
-                            <form role="form" method="POST" action="{{ route('store-product-feature') }}" enctype="multipart/form-data">
+                            <form role="form" method="POST" action="{{ route('store-product-note') }}" enctype="multipart/form-data">
                                 @csrf
                                 @method('post')
 
@@ -56,21 +56,21 @@
                                     <input type="hidden" name="product_id" value="{{ $product->id }}">
                                 </div>
                                 @if ($isCreate == 1)
-                                <div class="form-group{{ $errors->has('feature_id') ? ' has-error' : '' }}">
+                                <div class="form-group{{ $errors->has('note_id') ? ' has-error' : '' }}">
                                     <label>Chọn tính năng <span class="my-required">*</span></label>
-                                    <select class="form-control w-30" name="feature_id" value="{{ old('feature_id') }}" id="selectFeature">
+                                    <select class="form-control w-30" name="note_id" value="{{ old('note_id') }}" id="selectnote">
                                         <option></option>
-                                        @foreach ($feature as $item)
-                                        <option value="{{$item->id}}" {{ old('feature_id') == $item->id ? 'selected' : '' }}>{{$item->title}}</option>
+                                        @foreach ($note as $item)
+                                        <option value="{{$item->id}}" {{ old('note_id') == $item->id ? 'selected' : '' }}>{{$item->name}}</option>
                                         @endforeach
                                     </select>
-                                    @if ($errors->has('feature_id'))
-                                    <span style="color:red;">{{ $errors->first('feature_id') }}</span>
+                                    @if ($errors->has('note_id'))
+                                    <span style="color:red;">{{ $errors->first('note_id') }}</span>
                                     @endif
                                 </div>
                                 @else
-                                <label>Tính năng: {{ $featureTitle }}</label>
-                                <input type="hidden" name="feature_id" value="{{ $featureId }}">
+                                <label>Note: {{ $noteName }}</label>
+                                <input type="hidden" name="note_id" value="{{ $noteId }}">
                                 @endif
                                 
                                 <div class="row">

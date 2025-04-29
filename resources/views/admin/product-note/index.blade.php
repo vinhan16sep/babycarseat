@@ -19,7 +19,7 @@
         <div class="col-lg-8 p-r-0 title-margin-right">
             <div class="page-header">
                 <div class="page-title">
-                    <h1>Danh sách</span></h1> <a class="btn btn-success btn-flat" href="{{ route('create-product-feature', ['id' => $productId]) }}"><i class="ti-plus"></i> Tạo mới</a>
+                    <h1>Danh sách</span></h1> <a class="btn btn-success btn-flat" href="{{ route('create-product-note', ['id' => $productId]) }}"><i class="ti-plus"></i> Tạo mới</a>
                 </div>
             </div>
         </div>
@@ -50,9 +50,9 @@
                                     <tr>
                                         <td scope="row">{{ $key + 1}}</td>
                                         <td>{{ $item->product->name }}</td>
-                                        <td>{{ $item->feature->title }}</td>
+                                        <td>{{ $item->note->name }}</td>
                                         <td class="color-primary">
-                                            <button type="button" class="btn btn-danger btn-flat m-l-5 my-list-btn" onclick="deleteRow('{{ $item->id }}', '/product-feature/delete-row')"><i class="ti-trash"></i></button>
+                                            <button type="button" class="btn btn-danger btn-flat m-l-5 my-list-btn" onclick="deleteRow('{{ $item->id }}', '/product-note/delete-row')"><i class="ti-trash"></i></button>
                                         </td>
                                     </tr>
                                     @endforeach

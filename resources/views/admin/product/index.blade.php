@@ -149,6 +149,9 @@
                                                 <a type="button" class="btn btn-default btn-flat m-l-5 my-list-btn" href="{{ route('list-product-feature', ['id' => $item->id]) }}">
                                                     <i class="ti-check-box"></i>
                                                 </a>
+                                                <a type="button" class="btn btn-default btn-flat m-l-5 my-list-btn" href="{{ route('list-product-note', ['id' => $item->id]) }}">
+                                                    <i class="ti-notepad"></i>
+                                                </a>
                                             </td>
                                         </tr>
                                     @endforeach

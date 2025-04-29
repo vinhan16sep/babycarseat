@@ -7,6 +7,7 @@ use App\Models\ProductNote;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\DB;
 
 class NoteController extends AdminController
 {
@@ -31,11 +32,23 @@ class NoteController extends AdminController
     public function store(Request $request) {
         $this->validateStore($request);
 
+        DB::beginTransaction();
+
         $model = new Note();
         $model->name = $request->input('name');
-        $model->icon = $request->input('icon');
+
         if ($model->save()) {
-            return redirect()->route('list-note')->with('success', Config::get('constants.MESSAGE.CREATE_SUCCEEDED'));
+            $path = sprintf(Config::get('constants.FILE_STORAGE_PATH.NOTE_IMAGE'), $model->id);
+            $upload = $this->uploadImage($path, $request);
+            $model->image = $upload;
+    
+            if ($model->save()) {
+                DB::commit();
+                return redirect()->route('list-note')->with('success', Config::get('constants.MESSAGE.CREATE_SUCCEEDED'));
+            }
+            DB::rollBack();
+            return redirect()->route('create-note')->with('error', Config::get('constants.MESSAGE.SOMETHING_ERROR'));
+            
         }
         return redirect()->route('create-note')->with('error', Config::get('constants.MESSAGE.SOMETHING_ERROR'));
     }
@@ -64,13 +77,41 @@ class NoteController extends AdminController
 
         $this->validateUpdate($request, $id);
 
-        $object->name = $request->input('name');
-        $object->icon = $request->input('icon');
+        DB::beginTransaction();
 
-        if ($object->save()) {
-            return redirect()->route('edit-note', ['id' => $id])->with('success', Config::get('constants.MESSAGE.UPDATE_SUCCEEDED'));
+        try {
+
+            $object->name = $request->input('name');
+                    
+            if($request->hasfile('image')) {
+                $path = sprintf(Config::get('constants.FILE_STORAGE_PATH.NOTE_IMAGE'), $id);
+                $upload = $this->updateImage($path, $request);
+                $object->image = $upload;
+            }
+
+            if ($object->save()) {
+                DB::commit();
+                $parsedUrl = parse_url($request->input('callback'));
+                $params = [];
+                if (isset($parsedUrl['query'])) {
+                    parse_str($parsedUrl['query'], $params);
+                }
+
+                return redirect()->route('list-note', $params)->with('success', Config::get('constants.MESSAGE.UPDATE_SUCCEEDED'));
+            }
+            DB::rollBack();
+            return redirect()->route('edit-note', [
+                'id' => $id, 
+                'callback' => $request->input('callback')
+            ])->with('error', Config::get('constants.MESSAGE.SOMETHING_ERROR'));
+
+        } catch (Exception $e) {
+            DB::rollBack();
+            return redirect()->route('edit-note', [
+                'id' => $id, 
+                'callback' => $request->input('callback')
+            ])->with('error', $e->getMessage()); 
         }
-        return redirect()->route('edit-note', ['id' => $id])->with('error', Config::get('constants.MESSAGE.SOMETHING_ERROR'));
     }
 
     public function delete(Request $request) {

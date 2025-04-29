@@ -16,4 +16,14 @@ class ProductNote extends Model
         'product_id',
         'note_id',
     ];
+
+    public function product()
+    {
+        return $this->belongsTo(Product::class);
+    }
+
+    public function note()
+    {
+        return $this->belongsTo(Note::class);
+    }
 }
