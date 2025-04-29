@@ -100,6 +100,7 @@ class ProductController extends AdminController
             $model->description = $request->input('description');
             $model->content = $request->input('content');
             $model->price = $request->input('price');
+            $model->discount_value = $request->input('discount_value');
             $model->is_active = $request->input('is_active');
             $model->is_highlight = $request->input('is_highlight');
             $model->created_by = 1;
@@ -199,6 +200,7 @@ class ProductController extends AdminController
             $object->description = $request->input('description');
             $object->content = $request->input('content');
             $object->price = $request->input('price');
+            $object->discount_value = $request->input('discount_value');
             $object->is_active = $request->input('is_active');
             $object->is_highlight = $request->input('is_highlight');
             $object->updated_by = 1;

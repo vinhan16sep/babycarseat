@@ -7,6 +7,7 @@ return [
         'PRODUCT_COLOR_IMAGE' => 'images/product/%s/colors/%s/',
         'COMBO_IMAGE' => 'images/combo/%s/',
         'NEWS_IMAGE' => 'images/news/%s/',
+        'NOTE_IMAGE' => 'images/notes/%s/',
         'KNOWLEDGE_CATEGORY_IMAGE' => 'images/knowledge-category/%s/',
         'KNOWLEDGE_IMAGE' => 'images/knowledge/%s/',
         'ACCESSORY_CATEGORY_IMAGE' => 'images/accessory-category/%s/',

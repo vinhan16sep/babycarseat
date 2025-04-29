@@ -20,8 +20,8 @@
                         <li><a href="{{ route('list-brand') }}">Thương hiệu</a></li>
                         <li><a href="{{ route('list-color') }}">Màu sắc</a></li>
                         <li><a href="{{ route('list-note') }}">Notes</a></li>
-                        <li><a href="{{ route('list-product') }}">Sản phẩm</a></li>
                         <li><a href="{{ route('list-feature') }}">Tính Năng</a></li>
+                        <li><a href="{{ route('list-product') }}">Sản phẩm</a></li>
                     </ul>
                 </li>
                 <li><a href="{{ route('list-order') }}"><i class="ti-shopping-cart"></i> Đơn hàng </a></li>

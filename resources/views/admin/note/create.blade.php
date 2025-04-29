@@ -20,24 +20,31 @@
                 <div class="card">
                     <div class="card-body offset-1 col-lg-10">
                         <div class="basic-form">
-                            <form role="form" method="POST" action="{{ route('store-note') }}">
+                            <form role="form" method="POST" action="{{ route('store-note') }}" enctype="multipart/form-data">
                                 @csrf
                                 @method('post')
+                                
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <div class="form-group{{ $errors->has('image') ? ' has-error' : '' }}">
+                                            <label>Ảnh</label>
+                                            <input type="file" name="image" class="form-control input-default" id="image">
+                                            @if ($errors->has('image'))
+                                                <span style="color:red;">{{ $errors->first('image') }}</span>
+                                            @endif
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 my-preview">
+                                        <img id="preview-image-before-upload" src="{{ asset('images/no-image-available.png') }}"
+                                            alt="preview image" style="max-height: 250px;">
+                                    </div>
+                                </div>
 
                                 <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                                     <label>Tên</label>
                                     <input type="text" name="name" value="{{ old('name') }}" class="form-control" id="inputName" maxlength="255">
                                     @if ($errors->has('name'))
                                         <span style="note:red;">{{ $errors->first('name') }}</span>
-                                    </span>
-                                    @endif
-                                </div>
-
-                                <div class="form-group">
-                                    <label>Icon</label>
-                                    <input type="text" name="icon" value="{{ old('icon') }}" class="form-control" id="inputSlug">
-                                    @if ($errors->has('icon'))
-                                        <span style="note:red;">{{ $errors->first('icon') }}</span>
                                     </span>
                                     @endif
                                 </div>
@@ -53,4 +60,15 @@
         </div>
     </section>
 </div>
+
+<script type="text/javascript">
+
+    $('#image').change(function(){
+        let reader = new FileReader();
+        reader.onload = (e) => { 
+            $('#preview-image-before-upload').attr('src', e.target.result); 
+        }
+        reader.readAsDataURL(this.files[0]); 
+    });
+</script>
 @endsection
