@@ -53,6 +53,20 @@ class Product extends Model
             ->withTimestamps();
     }
 
+    public function notes()
+    {
+        return $this->belongsToMany(Note::class, 'product_notes')
+            ->withPivot('id')
+            ->withTimestamps();
+    }
+
+    public function features()
+    {
+        return $this->belongsToMany(Feature::class, 'product_feature')
+            ->withPivot('id')
+            ->withTimestamps();
+    }
+
     // public function getImageAttribute($value)
     // {
     //     $images = json_decode($value, true);
@@ -79,5 +93,9 @@ class Product extends Model
             'image' => $image ?? null,
             'image_hover' => $imageHover ?? null,
         ];
+    }
+
+    public static function getHotProducts() {
+        return Product::query()->with(['categoryId'])->where('is_active', 1)->where('is_highlight', 1)->get();
     }
 }

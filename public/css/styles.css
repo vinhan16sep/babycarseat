@@ -18046,3 +18046,9 @@ ul.list-text.type-number {
 .tf-topbar{
     background: #d21e50 !important;
 }
+.footer .footer-heading{
+    font-weight: 800;
+}
+.tf-toolbar-bottom{
+    display: none;
+}

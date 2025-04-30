@@ -1,5 +1,5 @@
 <!-- Testimonial -->
-<section class="flat-spacing pt-0 custom-say">
+<section class="flat-spacing pt-0 custom-say" style="{{ !empty($is_border) ? 'border-top: 1px solid #e9e9e9;' : '' }}">
     <div class="container box-hau-mai">
         <h3>Chính sách hậu mãi</h3>
         <div class="row">
@@ -25,108 +25,111 @@
             </div>
         </div>
     </div>
-    <div class="container">
-        <div class="heading-section text-center wow fadeInUp">
-            <h3 class="heading">Công nghệ trọn vẹn yêu thương!</h3>
-            {{--                <p class="subheading">Our customers adore our products, and we constantly aim to delight them.</p>--}}
-        </div>
-        <div dir="ltr" class="swiper tf-sw-testimonial" data-preview="3" data-tablet="2" data-mobile="1"
-             data-space-lg="30" data-space-md="30" data-space="15" data-pagination="1" data-pagination-md="1"
-             data-pagination-lg="1">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                    <div class="testimonial-item style-row hover-img wow fadeInUp" data-wow-delay="0s">
-                        <div class="img-style">
-                            <img data-src="images/CustomerSay1.png" src="{{ asset('images/CustomerSay1.png') }}"
-                                 alt="img-testimonial">
-                            {{--                                <a href="#quickView" data-bs-toggle="modal" class="box-icon hover-tooltip center">--}}
-                            {{--                                    <span class="icon icon-eye"></span>--}}
-                            {{--                                    <span class="tooltip">Quick View</span>--}}
-                            {{--                                </a>--}}
-                        </div>
-                        <div class="content">
-                            <div class="content-top">
-                                <div class="list-star-default">
-                                    <i class="icon icon-star"></i>
-                                    <i class="icon icon-star"></i>
-                                    <i class="icon icon-star"></i>
-                                    <i class="icon icon-star"></i>
-                                    <i class="icon icon-star"></i>
-                                </div>
-                                <p class="text-secondary">"Stylish and high-quality glass vase. Its elegant design
-                                    and premium finish make it a perfect choice for any flower display. Highly
-                                    recommended!"</p>
-                                <div class="box-author">
-                                    <div class="text-title author">Sybil Sharp</div>
-                                    <img class="customer-tick" src="{{ asset('images/CustomerSay-tick.png') }}" alt="">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="testimonial-item style-row hover-img wow fadeInUp" data-wow-delay="0.1s">
-                        <div class="img-style">
-                            <img data-src="images/CustomerSay2.png" src="{{ asset('images/CustomerSay2.png') }}"
-                                 alt="img-testimonial">
-                            {{--                                <a href="#quickView" data-bs-toggle="modal" class="box-icon hover-tooltip center">--}}
-                            {{--                                    <span class="icon icon-eye"></span>--}}
-                            {{--                                    <span class="tooltip">Quick View</span>--}}
-                            {{--                                </a>--}}
-                        </div>
-                        <div class="content">
-                            <div class="content-top">
-                                <div class="list-star-default">
-                                    <i class="icon icon-star"></i>
-                                    <i class="icon icon-star"></i>
-                                    <i class="icon icon-star"></i>
-                                    <i class="icon icon-star"></i>
-                                    <i class="icon icon-star"></i>
-                                </div>
-                                <p class="text-secondary">"Stylish and high-quality glass vase. Its elegant design
-                                    and premium finish make it a perfect choice for any flower display. Highly
-                                    recommended!"</p>
-                                <div class="box-author">
-                                    <div class="text-title author">Mark G.</div>
-                                    <img class="customer-tick" src="{{ asset('images/CustomerSay-tick.png') }}" alt="">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="testimonial-item style-row hover-img wow fadeInUp" data-wow-delay="0.2s">
-                        <div class="img-style">
-                            <img data-src="images/CustomerSay3.png" src="{{ asset('images/CustomerSay3.png') }}"
-                                 alt="img-testimonial">
-                            {{--                                <a href="#quickView" data-bs-toggle="modal" class="box-icon hover-tooltip center">--}}
-                            {{--                                    <span class="icon icon-eye"></span>--}}
-                            {{--                                    <span class="tooltip">Quick View</span>--}}
-                            {{--                                </a>--}}
-                        </div>
-                        <div class="content">
-                            <div class="content-top">
-                                <div class="list-star-default">
-                                    <i class="icon icon-star"></i>
-                                    <i class="icon icon-star"></i>
-                                    <i class="icon icon-star"></i>
-                                    <i class="icon icon-star"></i>
-                                    <i class="icon icon-star"></i>
-                                </div>
-                                <p class="text-secondary">"Stylish and high-quality glass vase. Its elegant design
-                                    and premium finish make it a perfect choice for any flower display. Highly
-                                    recommended!"</p>
-                                <div class="box-author">
-                                    <div class="text-title author">Sybil Sharp</div>
-                                    <img class="customer-tick" src="{{ asset('images/CustomerSay-tick.png') }}" alt="">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
+    @if(empty($is_not_show))
+        <div class="container">
+            <div class="heading-section text-center wow fadeInUp">
+                <h3 class="heading">Công nghệ trọn vẹn yêu thương!</h3>
+                {{--                <p class="subheading">Our customers adore our products, and we constantly aim to delight them.</p>--}}
             </div>
-            <div class="sw-pagination-testimonial sw-dots type-circle d-flex justify-content-center"></div>
+            <div dir="ltr" class="swiper tf-sw-testimonial" data-preview="3" data-tablet="2" data-mobile="1"
+                 data-space-lg="30" data-space-md="30" data-space="15" data-pagination="1" data-pagination-md="1"
+                 data-pagination-lg="1">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="testimonial-item style-row hover-img wow fadeInUp" data-wow-delay="0s">
+                            <div class="img-style">
+                                <img data-src="images/CustomerSay1.png" src="{{ asset('images/CustomerSay1.png') }}"
+                                     alt="img-testimonial">
+                                {{--                                <a href="#quickView" data-bs-toggle="modal" class="box-icon hover-tooltip center">--}}
+                                {{--                                    <span class="icon icon-eye"></span>--}}
+                                {{--                                    <span class="tooltip">Quick View</span>--}}
+                                {{--                                </a>--}}
+                            </div>
+                            <div class="content">
+                                <div class="content-top">
+                                    <div class="list-star-default">
+                                        <i class="icon icon-star"></i>
+                                        <i class="icon icon-star"></i>
+                                        <i class="icon icon-star"></i>
+                                        <i class="icon icon-star"></i>
+                                        <i class="icon icon-star"></i>
+                                    </div>
+                                    <p class="text-secondary">"Stylish and high-quality glass vase. Its elegant design
+                                        and premium finish make it a perfect choice for any flower display. Highly
+                                        recommended!"</p>
+                                    <div class="box-author">
+                                        <div class="text-title author">Sybil Sharp</div>
+                                        <img class="customer-tick" src="{{ asset('images/CustomerSay-tick.png') }}" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="testimonial-item style-row hover-img wow fadeInUp" data-wow-delay="0.1s">
+                            <div class="img-style">
+                                <img data-src="images/CustomerSay2.png" src="{{ asset('images/CustomerSay2.png') }}"
+                                     alt="img-testimonial">
+                                {{--                                <a href="#quickView" data-bs-toggle="modal" class="box-icon hover-tooltip center">--}}
+                                {{--                                    <span class="icon icon-eye"></span>--}}
+                                {{--                                    <span class="tooltip">Quick View</span>--}}
+                                {{--                                </a>--}}
+                            </div>
+                            <div class="content">
+                                <div class="content-top">
+                                    <div class="list-star-default">
+                                        <i class="icon icon-star"></i>
+                                        <i class="icon icon-star"></i>
+                                        <i class="icon icon-star"></i>
+                                        <i class="icon icon-star"></i>
+                                        <i class="icon icon-star"></i>
+                                    </div>
+                                    <p class="text-secondary">"Stylish and high-quality glass vase. Its elegant design
+                                        and premium finish make it a perfect choice for any flower display. Highly
+                                        recommended!"</p>
+                                    <div class="box-author">
+                                        <div class="text-title author">Mark G.</div>
+                                        <img class="customer-tick" src="{{ asset('images/CustomerSay-tick.png') }}" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="testimonial-item style-row hover-img wow fadeInUp" data-wow-delay="0.2s">
+                            <div class="img-style">
+                                <img data-src="images/CustomerSay3.png" src="{{ asset('images/CustomerSay3.png') }}"
+                                     alt="img-testimonial">
+                                {{--                                <a href="#quickView" data-bs-toggle="modal" class="box-icon hover-tooltip center">--}}
+                                {{--                                    <span class="icon icon-eye"></span>--}}
+                                {{--                                    <span class="tooltip">Quick View</span>--}}
+                                {{--                                </a>--}}
+                            </div>
+                            <div class="content">
+                                <div class="content-top">
+                                    <div class="list-star-default">
+                                        <i class="icon icon-star"></i>
+                                        <i class="icon icon-star"></i>
+                                        <i class="icon icon-star"></i>
+                                        <i class="icon icon-star"></i>
+                                        <i class="icon icon-star"></i>
+                                    </div>
+                                    <p class="text-secondary">"Stylish and high-quality glass vase. Its elegant design
+                                        and premium finish make it a perfect choice for any flower display. Highly
+                                        recommended!"</p>
+                                    <div class="box-author">
+                                        <div class="text-title author">Sybil Sharp</div>
+                                        <img class="customer-tick" src="{{ asset('images/CustomerSay-tick.png') }}" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="sw-pagination-testimonial sw-dots type-circle d-flex justify-content-center"></div>
+            </div>
         </div>
-    </div>
+    @endif
 </section>
 <!-- /Testimonial -->

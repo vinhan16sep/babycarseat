@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Models\Information;
+use App\Models\ProductCategory;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\View;
@@ -34,5 +35,8 @@ class AppServiceProvider extends ServiceProvider
             $contactInformations[$item['label']] = $item['value'];
         }
         View::share('contactInformations', $contactInformations);
+
+        $categories = ProductCategory::query()->get()->toArray();
+        View::share('categoriesMenu', $categories);
     }
 }

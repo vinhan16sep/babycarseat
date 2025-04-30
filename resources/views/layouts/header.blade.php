@@ -19,7 +19,18 @@
             <nav class="box-navigation text-center">
                 <ul class="box-nav-ul d-flex align-items-center justify-content-center">
                     <li class="menu-item {{ checkActiveMenu("") }}"><a href="{{ url('/') }}" class="item-link">Trang chủ</a></li>
-                    <li class="menu-item {{ checkActiveMenu("san-pham") }}"><a href="{{ route('product-list') }}" class="item-link">Sản phẩm</a></li>
+                    <li class="menu-item position-relative {{ checkActiveMenu("san-pham") }}">
+                        <a href="{{ route('product-list') }}" class="item-link">Sản phẩm {!! !empty($categoriesMenu) ? '<i class="icon icon-arrow-down"></i>' : '' !!}</a>
+                        @if(!empty($categoriesMenu))
+                            <div class="sub-menu submenu-default">
+                                <ul class="menu-list">
+                                    @foreach($categoriesMenu as $_item)
+                                        <li><a href="{{ route("product-list", ['category_slug' => $_item['slug']]) }}" class="menu-link-text">{{ $_item['name'] }}</a></li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+                    </li>
                     <li class="menu-item {{ checkActiveMenu("tin-tuc") }}"><a href="{{ route('news') }}" class="item-link">Blogs</a></li>
                     <li class="menu-item {{ checkActiveMenu("kien-thuc") }}"><a href="{{ route('category-detail-knowledge') }}" class="item-link">Kiến thức</a></li>
                     <li class="menu-item {{ checkActiveMenu("ve-chung-toi") }}"><a href="{{ route('about-show') }}" class="item-link">Về chúng tôi</a></li>
