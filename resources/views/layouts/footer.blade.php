@@ -7,10 +7,11 @@
                     <div class="col-lg-4">
                         <div class="footer-infor">
                             <div class="footer-logo">
-                                <a href="index.html">
+                                <a href="{{ url("/") }}">
                                     <img src="{{ asset('images/logo/logo.png') }}" alt="">
                                 </a>
                             </div>
+                            <p><b style="font-weight: 800;color:black;">Engineered with love</b></p>
                             <div class="footer-address">
                                 <p>{{ $contactInformations['address_hn'] }}</p>
                                 <a href="contact.html" class="tf-btn-default fw-6">GET DIRECTION<i
@@ -31,7 +32,7 @@
                     <div class="col-lg-8">
                         <div class="row">
                             <div class="col-lg-4">
-                                <div class="footer-menu">
+                                <div class="footer-menu" style="margin-bottom: 0">
                                     <div class="footer-col-block">
                                         <div class="footer-heading text-button footer-heading-mobile">
                                             Out products
@@ -39,22 +40,16 @@
                                         <div class="tf-collapse-content">
                                             <ul class="footer-menu-list">
                                                 <li class="text-caption-1">
-                                                    <a href="#" class="footer-menu_item">Shipping</a>
+                                                    <a href="#" class="footer-menu_item">Bảo hành vàng 10 năm</a>
                                                 </li>
                                                 <li class="text-caption-1">
-                                                    <a href="#" class="footer-menu_item">Return & Refund</a>
+                                                    <a href="#" class="footer-menu_item">Chương trình đổi ghế sau tai nạn</a>
                                                 </li>
                                                 <li class="text-caption-1">
-                                                    <a href="#" class="footer-menu_item">Privacy Policy</a>
+                                                    <a href="#" class="footer-menu_item">Tiêu chuẩn Châu Âu ECE R129</a>
                                                 </li>
                                                 <li class="text-caption-1">
-                                                    <a href="term-of-use.html" class="footer-menu_item">Terms & Conditions</a>
-                                                </li>
-                                                <li class="text-caption-1">
-                                                    <a href="FAQs.html" class="footer-menu_item">Orders FAQs</a>
-                                                </li>
-                                                <li class="text-caption-1">
-                                                    <a href="wish-list.html" class="footer-menu_item">My Wishlist</a>
+                                                    <a href="term-of-use.html" class="footer-menu_item">Thiết kế chuẩn Đức</a>
                                                 </li>
                                             </ul>
                                         </div>
@@ -69,22 +64,16 @@
                                     <div class="tf-collapse-content">
                                         <ul class="footer-menu-list">
                                             <li class="text-caption-1">
-                                                <a href="#" class="footer-menu_item">Shipping</a>
+                                                <a href="#" class="footer-menu_item">Câu chuyện Babyro</a>
                                             </li>
                                             <li class="text-caption-1">
-                                                <a href="#" class="footer-menu_item">Return & Refund</a>
+                                                <a href="#" class="footer-menu_item">Góc chuyên gia</a>
                                             </li>
                                             <li class="text-caption-1">
-                                                <a href="#" class="footer-menu_item">Privacy Policy</a>
+                                                <a href="#" class="footer-menu_item">Bí kíp mẹ thông thái</a>
                                             </li>
                                             <li class="text-caption-1">
-                                                <a href="term-of-use.html" class="footer-menu_item">Terms & Conditions</a>
-                                            </li>
-                                            <li class="text-caption-1">
-                                                <a href="FAQs.html" class="footer-menu_item">Orders FAQs</a>
-                                            </li>
-                                            <li class="text-caption-1">
-                                                <a href="wish-list.html" class="footer-menu_item">My Wishlist</a>
+                                                <a href="term-of-use.html" class="footer-menu_item">Babyro trên truyền thông</a>
                                             </li>
                                         </ul>
                                     </div>
@@ -98,22 +87,16 @@
                                     <div class="tf-collapse-content">
                                         <ul class="footer-menu-list">
                                             <li class="text-caption-1">
-                                                <a href="#" class="footer-menu_item">Shipping</a>
+                                                <a href="#" class="footer-menu_item">Hướng dẫn sử dụng an toàn</a>
                                             </li>
                                             <li class="text-caption-1">
-                                                <a href="#" class="footer-menu_item">Return & Refund</a>
+                                                <a href="#" class="footer-menu_item">Đại lý chính sách hãng gaần bạn</a>
                                             </li>
                                             <li class="text-caption-1">
-                                                <a href="#" class="footer-menu_item">Privacy Policy</a>
+                                                <a href="#" class="footer-menu_item">Kết nối 24/7</a>
                                             </li>
                                             <li class="text-caption-1">
-                                                <a href="term-of-use.html" class="footer-menu_item">Terms & Conditions</a>
-                                            </li>
-                                            <li class="text-caption-1">
-                                                <a href="FAQs.html" class="footer-menu_item">Orders FAQs</a>
-                                            </li>
-                                            <li class="text-caption-1">
-                                                <a href="wish-list.html" class="footer-menu_item">My Wishlist</a>
+                                                <a href="term-of-use.html" class="footer-menu_item">FAQs</a>
                                             </li>
                                         </ul>
                                     </div>
@@ -1358,7 +1341,22 @@
                         <a href="{{ url('/') }}" class="mb-menu-link">Trang chủ</a>
                     </li>
                     <li class="nav-mb-item">
-                        <a href="{{ route('product-list') }}" class="mb-menu-link">Sản phẩm</a>
+                        @if(!empty($categoriesMenu))
+                            <div href="#dropdown-menu-one" class="mb-menu-link sub-nav-link collapsed"
+                                 data-bs-toggle="collapse" aria-expanded="true"
+                                 aria-controls="dropdown-menu-one">
+                                <a href="{{ route('product-list') }}">Sản phẩm</a><span class="btn-open-sub"></span>
+                            </div>
+                            <div id="dropdown-menu-one" class="collapse">
+                                <ul class="sub-nav-menu">
+                                    @foreach($categoriesMenu as $_item)
+                                        <li><a class="mb-menu-link sub-nav-link" href="{{ route("product-list", ['category_slug' => $_item['slug']]) }}">{{ $_item['name'] }}</a></li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @else
+                            <a href="{{ route('product-list') }}" class="mb-menu-link">Sản phẩm</a>
+                        @endif
                     </li>
                     <li class="nav-mb-item">
                         <a href="{{ route('news') }}" class="mb-menu-link">Blogs</a>

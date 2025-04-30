@@ -12,6 +12,8 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
+    const TYPE_UPPER = "UPPER";
+    const TYPE_LOWER = "LOWER";
     /**
      * Create a new controller instance.
      *
@@ -29,7 +31,15 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $banners = Banner::query()->where('is_active', 1)->get();
+        $upper = HomeBlock::getDataByType(self::TYPE_UPPER);
+        $lower = HomeBlock::getDataByType(self::TYPE_LOWER);
+        return view('home', [
+            'upper' => $upper,
+            'lower' => $lower,
+            'banners' => $banners,
+            'hotProducts' => Product::getHotProducts()
+        ]);
 
 
 

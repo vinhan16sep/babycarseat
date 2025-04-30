@@ -24,4 +24,8 @@ class HomeBlock extends Model
         'created_by',
         'updated_by'
     ];
+
+    public static function getDataByType($type) {
+        return HomeBlock::query()->where("type", $type)->where("is_active", 1)->get();
+    }
 }

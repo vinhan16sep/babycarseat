@@ -60,6 +60,9 @@
             margin-top: 20px;
             margin-bottom: 20px;
         }
+        .product .desc *{
+            background: transparent!important;
+        }
         .product .desc ul{
             padding-left: 20px;
             margin-top: 20px;
@@ -83,6 +86,115 @@
         }
         .flat-spacing.products .product:nth-child(even){
             background: #fff;
+        }
+        .signature-contentblock__subtitle {
+            color: #434446;
+            line-height: 150%;
+            margin: 0;
+            padding: 0;
+            font-size: 1rem;
+        }
+        .box-hau-mai{
+            margin-bottom: 40px;
+            padding-top: 40px!important;
+        }
+        .box-hau-mai h3{
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .content-hau-mai{
+            padding: 30px;
+            background: #fff;
+        }
+        .content-hau-mai h4{
+            text-transform: uppercase;
+            color: #3c3c8c;
+            font-weight: bold;
+            line-height: 35px;
+            margin-bottom: 20px;
+            min-height: 70px;
+            align-items: end;
+            display: flex
+        }
+        .content-hau-mai h4 span{
+            font-size: 60px;
+            display: contents;
+        }
+        .content-hau-mai a {
+            padding: 15px 30px;
+            background: gray;
+            margin-top: 20px;
+            border-radius: 6px;
+            color: #fff;
+            font-size: 20px;
+            width: 180px;
+            text-align: center;
+        }
+        .heading{
+            color: #d20046;
+            font-weight: bold;
+        }
+        .customer-tick {
+            width: 19px!important;
+            height: auto!important;
+            margin-left: 5px;
+        }
+        .text-secondary{
+            text-align: left!important;
+        }
+        .custom-say .heading-section h3, .heading-section .heading, .list-star-default .icon {
+            color: #d20046;
+            font-weight: bold;
+        }
+        .testimonial-item .content-top{
+            padding: 0;
+            margin: 0;
+            border: none;
+        }
+        .card-product-info{
+            text-align: center;
+        }
+        .card-product-info .product-title{
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        @media (max-width: 900px) {
+            .signature-contentblock__image {
+                width: 40%;
+            }
+            .signature-contentblock__html {
+                width: 60%;
+                padding: 30px;
+            }
+            .signature-contentblock__title {
+                font-size: 1.2rem;
+            }
+            .signature-contentblock__subtitle {
+                font-size: 0.6rem;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .signature-contentblock__image {
+                width: 100%;
+            }
+            .signature-contentblock__html {
+                width: 100%;
+                padding: 30px;
+            }
+            .signature-contentblock__title {
+                font-size: 20px;
+            }
+            .signature-contentblock__subtitle {
+                font-size: 14px;
+            }
+            .signature-contentblock{
+                display: grid;
+            }
+            .box-product-common__row > div:not(:first-child) {
+                margin-top: 30px;
+            }
         }
         @media (max-width: 768px) {
             .product .row{
@@ -154,108 +266,25 @@
                  data-space-lg="30" data-space-md="30" data-space="15" data-pagination="1" data-center="0" data-pagination-md="1"
                  data-pagination-lg="1">
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <div class="card-product wow fadeInUp" data-wow-delay="0s">
-                            <div class="card-product-wrapper">
-                                <a href="product-detail.html" class="product-img">
-                                    <img class="lazyload img-product"
-                                         data-src="images/products/furniture/Hot-Selling1.png"
-                                         src="images/products/furniture/Hot-Selling1.png" alt="image-product">
-                                    <img class="lazyload img-hover" data-src="images/products/furniture/Hot-Selling1.png"
-                                         src="images/products/furniture/Hot-Selling1.png" alt="image-product">
-                                </a>
-                            </div>
-                            <div class="card-product-info">
-                                <p class="product-title">Babyro i-Spin 360</p>
-                                <p class="product-desc">Ghế cho bé từ 0 - 12 tuổi</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="card-product wow fadeInUp" data-wow-delay="0s">
-                            <div class="card-product-wrapper">
-                                <a href="product-detail.html" class="product-img">
-                                    <img class="lazyload img-product"
-                                         data-src="images/products/furniture/Hot-Selling3.png"
-                                         src="images/products/furniture/Hot-Selling3.png" alt="image-product">
-                                    <img class="lazyload img-hover" data-src="images/products/furniture/Hot-Selling3.png"
-                                         src="images/products/furniture/Hot-Selling3.png" alt="image-product">
-                                </a>
-                            </div>
-                            <div class="card-product-info">
-                                <p class="product-title">Babyro i-Spin 360</p>
-                                <p class="product-desc">Ghế cho bé từ 0 - 12 tuổi</p>
+                    @foreach($products as $_product)
+                        <div class="swiper-slide">
+                            <div class="card-product wow fadeInUp" data-wow-delay="0s">
+                                <div class="card-product-wrapper">
+                                    <a href="{{ route('san-pham', ['category_slug' => $_product->categoryId->slug, 'slug' => $_product->slug]) }}" class="product-img">
+                                        <img class="lazyload img-product"
+                                             data-src="{{ getImage($_product->image) }}"
+                                             src="{{ getImage($_product->image) }}" alt="image-product">
+                                        <img class="lazyload img-hover" data-src="{{ getImage($_product->image) }}"
+                                             src="{{ getImage($_product->image) }}" alt="image-product">
+                                    </a>
+                                </div>
+                                <div class="card-product-info">
+                                    <p class="product-title">{{ $_product->name }}</p>
+                                    <p class="product-desc">{{ $_product->categoryId->name }}</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="card-product wow fadeInUp" data-wow-delay="0s">
-                            <div class="card-product-wrapper">
-                                <a href="product-detail.html" class="product-img">
-                                    <img class="lazyload img-product"
-                                         data-src="images/products/furniture/Hot-Selling4.png"
-                                         src="images/products/furniture/Hot-Selling4.png" alt="image-product">
-                                    <img class="lazyload img-hover" data-src="images/products/furniture/Hot-Selling4.png"
-                                         src="images/products/furniture/Hot-Selling4.png" alt="image-product">
-                                </a>
-                            </div>
-                            <div class="card-product-info">
-                                <p class="product-title">Babyro i-Spin 360</p>
-                                <p class="product-desc">Ghế cho bé từ 0 - 12 tuổi</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="card-product wow fadeInUp" data-wow-delay="0s">
-                            <div class="card-product-wrapper">
-                                <a href="product-detail.html" class="product-img">
-                                    <img class="lazyload img-product"
-                                         data-src="images/products/furniture/Hot-Selling4.png"
-                                         src="images/products/furniture/Hot-Selling4.png" alt="image-product">
-                                    <img class="lazyload img-hover" data-src="images/products/furniture/Hot-Selling4.png"
-                                         src="images/products/furniture/Hot-Selling4.png" alt="image-product">
-                                </a>
-                            </div>
-                            <div class="card-product-info">
-                                <p class="product-title">Babyro i-Spin 360</p>
-                                <p class="product-desc">Ghế cho bé từ 0 - 12 tuổi</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="card-product wow fadeInUp" data-wow-delay="0s">
-                            <div class="card-product-wrapper">
-                                <a href="product-detail.html" class="product-img">
-                                    <img class="lazyload img-product"
-                                         data-src="images/products/furniture/Hot-Selling4.png"
-                                         src="images/products/furniture/Hot-Selling4.png" alt="image-product">
-                                    <img class="lazyload img-hover" data-src="images/products/furniture/Hot-Selling4.png"
-                                         src="images/products/furniture/Hot-Selling4.png" alt="image-product">
-                                </a>
-                            </div>
-                            <div class="card-product-info">
-                                <p class="product-title">Babyro i-Spin 360</p>
-                                <p class="product-desc">Ghế cho bé từ 0 - 12 tuổi</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="card-product wow fadeInUp" data-wow-delay="0s">
-                            <div class="card-product-wrapper">
-                                <a href="product-detail.html" class="product-img">
-                                    <img class="lazyload img-product"
-                                         data-src="images/products/furniture/Hot-Selling4.png"
-                                         src="images/products/furniture/Hot-Selling4.png" alt="image-product">
-                                    <img class="lazyload img-hover" data-src="images/products/furniture/Hot-Selling4.png"
-                                         src="images/products/furniture/Hot-Selling4.png" alt="image-product">
-                                </a>
-                            </div>
-                            <div class="card-product-info">
-                                <p class="product-title">Babyro i-Spin 360</p>
-                                <p class="product-desc">Ghế cho bé từ 0 - 12 tuổi</p>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
                 <div class="sw-pagination-latest sw-dots type-circle justify-content-center"></div>
             </div>
@@ -263,175 +292,41 @@
     </section>
 
     <section class="flat-spacing bg-css products">
-        <div class="product">
+        @foreach($products as $_product)
+            <div class="product">
             <div class="container">
                 <div class="row">
                     <div class="col-md-7 content">
                         <div>
-                            <h4>BABYRO GUARDIAN I-SPIN 360</h4>
-                            <sub>0-15 tháng | 40 - 150 cm | 0-40 kg | ECE-R129 (i-Size) | ADAC</sub>
-                            <div class="desc">
-                                Đột phá an toàn cho bé yêu: Babyro i-Spin xoay đa chiều 360°,
-                                tương thích ISOFIX 3 điểm VÀNG kèm chân đỡ chống lật, đồng
-                                hành cùng con từ 0-12 tuổi - MUA 1 LẦN DÙNG TRỌN ĐỜI!
-                                <ul>
-                                    <li>Xoay 360 độ linh hoạt</li>
-                                    <li>Thiết kế đa năng linh hoạt từ 0 - 12 tuổi</li>
-                                    <li>Bảo vệ kép: ISOFIX - chân chống chịu lực</li>
-                                </ul>
-                            </div>
-                            <div class="price">
-                                Giá gốc <span>4.000.000</span> VNĐ | 3.500.000 VNĐ
-                            </div>
+                            <a href="{{ route("san-pham", ['category_slug' => $_product->categoryId->slug, 'slug' => $_product->slug]) }}">
+                                <h4>{{ $_product->name }}</h4>
+                                <div class="desc">
+                                    {!! $_product->description !!}
+                                </div>
+                                <div class="price">
+                                    @if(!empty($_product->discount_value))
+                                        Giá gốc <span>{{ numberFormat($_product->price) }}</span> VNĐ | {{ numberFormat($_product->discount_value) }} VNĐ
+                                    @else
+                                        Giá {{ numberFormat($_product->price) }} VNĐ
+                                    @endif
+                                </div>
+                            </a>
                         </div>
                     </div>
                     <div class="col-md-5 img">
-                        <img src="{{ asset("images/products/furniture/Hot-Selling1.png") }}" alt="">
+                        <a href="{{ route("san-pham", ['category_slug' => $_product->categoryId->slug, 'slug' => $_product->slug]) }}">
+                            <img src="{{ asset("images/products/furniture/Hot-Selling1.png") }}" alt="">
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="product">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-7 content">
-                        <div>
-                            <h4>BABYRO GUARDIAN I-SPIN 360</h4>
-                            <sub>0-15 tháng | 40 - 150 cm | 0-40 kg | ECE-R129 (i-Size) | ADAC</sub>
-                            <div class="desc">
-                                Đột phá an toàn cho bé yêu: Babyro i-Spin xoay đa chiều 360°,
-                                tương thích ISOFIX 3 điểm VÀNG kèm chân đỡ chống lật, đồng
-                                hành cùng con từ 0-12 tuổi - MUA 1 LẦN DÙNG TRỌN ĐỜI!
-                                <ul>
-                                    <li>Xoay 360 độ linh hoạt</li>
-                                    <li>Thiết kế đa năng linh hoạt từ 0 - 12 tuổi</li>
-                                    <li>Bảo vệ kép: ISOFIX - chân chống chịu lực</li>
-                                </ul>
-                            </div>
-                            <div class="price">
-                                Giá gốc <span>4.000.000</span> VNĐ | 3.500.000 VNĐ
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-5 img">
-                        <img src="{{ asset("images/products/furniture/Hot-Selling1.png") }}" alt="">
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="product">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-7 content">
-                        <div>
-                            <h4>BABYRO GUARDIAN I-SPIN 360</h4>
-                            <sub>0-15 tháng | 40 - 150 cm | 0-40 kg | ECE-R129 (i-Size) | ADAC</sub>
-                            <div class="desc">
-                                Đột phá an toàn cho bé yêu: Babyro i-Spin xoay đa chiều 360°,
-                                tương thích ISOFIX 3 điểm VÀNG kèm chân đỡ chống lật, đồng
-                                hành cùng con từ 0-12 tuổi - MUA 1 LẦN DÙNG TRỌN ĐỜI!
-                                <ul>
-                                    <li>Xoay 360 độ linh hoạt</li>
-                                    <li>Thiết kế đa năng linh hoạt từ 0 - 12 tuổi</li>
-                                    <li>Bảo vệ kép: ISOFIX - chân chống chịu lực</li>
-                                </ul>
-                            </div>
-                            <div class="price">
-                                Giá gốc <span>4.000.000</span> VNĐ | 3.500.000 VNĐ
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-5 img">
-                        <img src="{{ asset("images/products/furniture/Hot-Selling1.png") }}" alt="">
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="product">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-7 content">
-                        <div>
-                            <h4>BABYRO GUARDIAN I-SPIN 360</h4>
-                            <sub>0-15 tháng | 40 - 150 cm | 0-40 kg | ECE-R129 (i-Size) | ADAC</sub>
-                            <div class="desc">
-                                Đột phá an toàn cho bé yêu: Babyro i-Spin xoay đa chiều 360°,
-                                tương thích ISOFIX 3 điểm VÀNG kèm chân đỡ chống lật, đồng
-                                hành cùng con từ 0-12 tuổi - MUA 1 LẦN DÙNG TRỌN ĐỜI!
-                                <ul>
-                                    <li>Xoay 360 độ linh hoạt</li>
-                                    <li>Thiết kế đa năng linh hoạt từ 0 - 12 tuổi</li>
-                                    <li>Bảo vệ kép: ISOFIX - chân chống chịu lực</li>
-                                </ul>
-                            </div>
-                            <div class="price">
-                                Giá gốc <span>4.000.000</span> VNĐ | 3.500.000 VNĐ
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-5 img">
-                        <img src="{{ asset("images/products/furniture/Hot-Selling1.png") }}" alt="">
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="product">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-7 content">
-                        <div>
-                            <h4>BABYRO GUARDIAN I-SPIN 360</h4>
-                            <sub>0-15 tháng | 40 - 150 cm | 0-40 kg | ECE-R129 (i-Size) | ADAC</sub>
-                            <div class="desc">
-                                Đột phá an toàn cho bé yêu: Babyro i-Spin xoay đa chiều 360°,
-                                tương thích ISOFIX 3 điểm VÀNG kèm chân đỡ chống lật, đồng
-                                hành cùng con từ 0-12 tuổi - MUA 1 LẦN DÙNG TRỌN ĐỜI!
-                                <ul>
-                                    <li>Xoay 360 độ linh hoạt</li>
-                                    <li>Thiết kế đa năng linh hoạt từ 0 - 12 tuổi</li>
-                                    <li>Bảo vệ kép: ISOFIX - chân chống chịu lực</li>
-                                </ul>
-                            </div>
-                            <div class="price">
-                                Giá gốc <span>4.000.000</span> VNĐ | 3.500.000 VNĐ
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-5 img">
-                        <img src="{{ asset("images/products/furniture/Hot-Selling1.png") }}" alt="">
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="product">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-7 content">
-                        <div>
-                            <h4>BABYRO GUARDIAN I-SPIN 360</h4>
-                            <sub>0-15 tháng | 40 - 150 cm | 0-40 kg | ECE-R129 (i-Size) | ADAC</sub>
-                            <div class="desc">
-                                Đột phá an toàn cho bé yêu: Babyro i-Spin xoay đa chiều 360°,
-                                tương thích ISOFIX 3 điểm VÀNG kèm chân đỡ chống lật, đồng
-                                hành cùng con từ 0-12 tuổi - MUA 1 LẦN DÙNG TRỌN ĐỜI!
-                                <ul>
-                                    <li>Xoay 360 độ linh hoạt</li>
-                                    <li>Thiết kế đa năng linh hoạt từ 0 - 12 tuổi</li>
-                                    <li>Bảo vệ kép: ISOFIX - chân chống chịu lực</li>
-                                </ul>
-                            </div>
-                            <div class="price">
-                                Giá gốc <span>4.000.000</span> VNĐ | 3.500.000 VNĐ
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-5 img">
-                        <img src="{{ asset("images/products/furniture/Hot-Selling1.png") }}" alt="">
-                    </div>
-                </div>
-            </div>
-        </div>
+        @endforeach
     </section>
+    @include('components.last-page', ['is_not_show' => true, 'is_border' => true])
+
+    @include('components.product-hot')
+
     <div class="overlay-filter" id="overlay-filter"></div>
 @endsection
 

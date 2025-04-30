@@ -129,9 +129,11 @@ if ($(".tf-sw-collection").length > 0) {
   var perGroup = tfSwCls.data("pagination") || 1;
   var perGroupMd = tfSwCls.data("pagination-md") || 1;
   var perGroupLg = tfSwCls.data("pagination-lg") || 1;
+    var loop = tfSwCls.data("loop") == "1" ? true : false;
   var swiper = new Swiper(".tf-sw-collection", {
     slidesPerView: mobile,
     spaceBetween: spacing,
+      loop: loop,
     speed: 1000,
     pagination: {
       el: ".sw-pagination-collection",
@@ -269,7 +271,8 @@ if ($(".tf-sw-latest").length > 0) {
   var perGroupMd = $(".tf-sw-latest").data("pagination-md");
   var perGroupLg = $(".tf-sw-latest").data("pagination-lg");
   var centeredSlides = $(".tf-sw-latest").data("center") == "0" ? false : true;
-  var loop = centeredSlides;
+  var centeredSlides = $(".tf-sw-latest").data("center") == "0" ? false : true;
+  var loop = $(".tf-sw-latest").data("loop") == "1" ? true : centeredSlides;
   var swiper = new Swiper(".tf-sw-latest", {
     centeredSlides: centeredSlides,
     loop: loop,
