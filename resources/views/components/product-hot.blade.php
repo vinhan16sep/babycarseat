@@ -6,13 +6,9 @@
         <div class="heading-section text-center wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">
             <h3 class="heading" style="color:black;">Hot Selling Babyro</h3>
         </div>
-        <div dir="ltr" class="swiper tf-sw-latest" data-preview="6" data-tablet="3" data-mobile="1"
-             data-space-lg="30" data-space-md="30" data-space="15" data-pagination="1" data-center="0" data-pagination-md="1"
-             data-pagination-lg="1">
-            <div class="swiper-wrapper">
-                @if(!empty($hotProducts))
+        @if(!empty($hotProducts))
                     <div dir="ltr" class="swiper tf-sw-latest" data-preview="4" data-tablet="3" data-mobile="1"
-                         data-space-lg="30" data-space-md="30" data-space="15" data-pagination="1" data-pagination-md="1"
+                         data-space-lg="30" data-space-md="30"  data-space="15" data-pagination="1" data-pagination-md="1"
                          data-pagination-lg="1">
                         <div class="swiper-wrapper">
                             @foreach($hotProducts as $_item)
@@ -39,8 +35,5 @@
                         <div class="sw-pagination-latest sw-dots type-circle justify-content-center"></div>
                     </div>
                 @endif
-            </div>
-            <div class="sw-pagination-latest sw-dots type-circle justify-content-center"></div>
-        </div>
     </div>
 </section>
