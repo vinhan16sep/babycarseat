@@ -95,14 +95,20 @@ class ProductController extends Controller
             $query->orderBy(self::SORTS[$orderBy]["column"], self::SORTS[$orderBy]["sort"]);
         }
 
-        $products = $query->with(["productColors", "categoryId"])->get();
+        $category = null;
+        if ($category_slug) {
+            $category = ProductCategory::query()->where('slug', $category_slug)->first();
+        }
+        $products = $query->with(["productColors", "categoryId"])->when($category, function($q) use($category){
+            $q->where('category_id', $category->id);
+        })->get();
         if ($category_slug) {
             $category = ProductCategory::query()->where('slug', $category_slug)->first();
         }
 
         return view('product-list', [
             "products" => $products,
-            "category" => $category ?? null,
+            "category" => $category,
             "sorts" => self::SORTS,
         ]);
     }
