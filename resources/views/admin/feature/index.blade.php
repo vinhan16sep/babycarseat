@@ -29,8 +29,8 @@
                                     <tr>
                                         <th class="w-10">STT</th>
                                         <th class="w-5">Ảnh</th>
-                                        <th class="w-50">Nhãn</th>
-                                        <th class="w-50">Tiêu đề</th>
+                                        <th class="w-10">Nhãn</th>
+                                        <th class="w-30">Tiêu đề</th>
                                         <!-- <th class="w-20">Trạng thái</th> -->
                                         <th class="w-20">Hành động</th>
                                     </tr>
