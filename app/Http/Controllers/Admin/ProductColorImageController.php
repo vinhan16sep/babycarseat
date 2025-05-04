@@ -40,13 +40,13 @@ class ProductColorImageController extends AdminController
             }
     
             $colors = Color::all();
-    
             return view(
                 'admin/product-color-images/create',
                 [
                     'isCreate' => 1,
                     'product' => $product,
                     'colors' => $colors,
+                    'colorImage' => []
                 ]
             );
         } else {
@@ -56,6 +56,11 @@ class ProductColorImageController extends AdminController
             }
             
             $color = Color::where(['id' => $request['color']])->first();
+            $colorImage = ProductColor::with(['product', 'color'])
+                                        ->where('product_id', $request['id'])
+                                        ->where('color_id', $request['color'])
+                                        ->orderBy('updated_at', 'desc')->get();
+
             return view(
                 'admin/product-color-images/create',
                 [
@@ -63,6 +68,7 @@ class ProductColorImageController extends AdminController
                     'product' => $product,
                     'colorName' => $color->name,
                     'colorId' => $request['color'],
+                    'colorImage' => $colorImage
                 ]
             );
         }
@@ -97,12 +103,11 @@ class ProductColorImageController extends AdminController
                 $productColor->product_id = $request->input('product_id');
                 $productColor->color_id = $request->input('color_id');
                 if ($productColor->save()) {
-    
                     if ($request->hasfile('images')) {
                         
                         $uploads = $this->uploadImages($path, $request, 'images');
                         $productColor->image = json_encode($uploads, JSON_UNESCAPED_SLASHES);
-            
+                        
                         if ($productColor->save()) {
                             DB::commit();
                             return redirect()->route('list-product-color-image', ['id' => $request->input('product_id')])->with('success', Config::get('constants.MESSAGE.CREATE_SUCCEEDED'));
@@ -129,14 +134,44 @@ class ProductColorImageController extends AdminController
         return view('images.edit', compact('productColor'));
     }
 
-    // public function destroy($id)
-    // {
-    //     $image = ProductColorImage::findOrFail($id);
-    //     \Storage::disk('public')->delete($image->image_path);
-    //     $image->delete();
+    public function delete(Request $request) {
+        $request = $request->all();
 
-    //     return back()->with('success', 'Xóa ảnh thành công!');
-    // }
+        try {
+
+            // If got bad parameter(s)
+            if (!isset($request['id']) || empty($request['id'])) {
+                return response()->json(['status' => 'error','msg' => Config::get('constants.MESSAGE.DATA_NOT_FOUND')], 404);
+            }
+    
+            $object = ProductColor::find($request['id']);
+            // If object not found
+            if ($object == null || $object->count() == 0) {
+                return response()->json(['status' => 'error','msg' => Config::get('constants.MESSAGE.DATA_NOT_FOUND')], 404);
+            }
+    
+            DB::beginTransaction();
+            
+            if ($object->delete()) {
+                
+                $path = sprintf(Config::get('constants.FILE_STORAGE_PATH.PRODUCT_COLOR_IMAGE'), $object->product_id, $object->color_id);
+                $delImageStt = $this->deleteImage($path);
+                if ($delImageStt) {
+                    DB::commit();
+                    return response()->json(['status' => 'success','msg' => Config::get('constants.MESSAGE.DELETE_SUCCEEDED')], 200);
+                } else {
+                    DB::rollBack();
+                    return response()->json(['status' => 'error','msg' => Config::get('constants.MESSAGE.SOMETHING_ERROR')], 403);
+                }
+            }
+            DB::rollBack();
+            return response()->json(['status' => 'error','msg' => Config::get('constants.MESSAGE.SOMETHING_ERROR')], 403);
+
+        } catch (Exception $e) {
+            DB::rollBack();
+            return redirect()->route('list-product-color-image')->with('error', $e->getMessage()); 
+        }
+    }
 
     public function getColorsByProduct(Request $request)
     {
