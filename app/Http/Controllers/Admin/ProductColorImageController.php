@@ -168,7 +168,6 @@ class ProductColorImageController extends AdminController
             return response()->json(['status' => 'error','msg' => Config::get('constants.MESSAGE.SOMETHING_ERROR')], 403);
 
         } catch (Exception $e) {
-            dd($e);
             DB::rollBack();
             return redirect()->route('list-product-color-image')->with('error', $e->getMessage()); 
         }
