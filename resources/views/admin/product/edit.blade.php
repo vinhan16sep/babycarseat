@@ -64,6 +64,9 @@
                                 <div class="form-group">
                                     <label>Tên sản phẩm <span class="my-required">*</span></label>
                                     <input type="text" name="name" value="{{ old('name', $object->name) }}" class="form-control" maxlength="255" id="inputName">
+                                    @if ($errors->has('name'))
+                                        <span style="color:red;">{{ $errors->first('name') }}</span>
+                                    @endif
                                 </div>
 
                                 <div class="form-group">
@@ -78,6 +81,9 @@
                                         <option value="{{$item->id}}" {{ $object->category_id == $item->id ? 'selected' : '' }}>{{$item->name}}</option>
                                         @endforeach
                                     </select>
+                                    @if ($errors->has('category_id'))
+                                        <span style="color:red;">{{ $errors->first('category_id') }}</span>
+                                    @endif
                                 </div>
 
                                 <div class="form-group">
@@ -87,11 +93,25 @@
                                         <option value="{{$item->id}}" {{ $object->brand_id == $item->id ? 'selected' : '' }}>{{$item->name}}</option>
                                         @endforeach
                                     </select>
+                                    @if ($errors->has('brand_id'))
+                                        <span style="color:red;">{{ $errors->first('brand_id') }}</span>
+                                    @endif
                                 </div>
 
                                 <div class="form-group">
                                     <label>Đơn giá <span class="my-required">*</span></label>
                                     <input type="text" name="price" value="{{ old('price', $object->price) }}" class="form-control">
+                                    @if ($errors->has('price'))
+                                        <span style="color:red;">{{ $errors->first('price') }}</span>
+                                    @endif
+                                </div>
+
+                                <div class="form-group{{ $errors->has('discount_value') ? ' has-error' : '' }}">
+                                    <label>Giá khuyến mãi</label>
+                                    <input type="text" name="discount_value" value="{{ old('discount_value', $object->discount_value) }}" class="form-control" maxlength="255">
+                                    @if ($errors->has('discount_value'))
+                                        <span style="color:red;">{{ $errors->first('discount_value') }}</span>
+                                    @endif
                                 </div>
 
                                 <div class="form-group">

@@ -171,6 +171,14 @@
                                     <span style="color:red;">{{ $errors->first('price') }}</span>
                                     @endif
                                 </div>
+                                
+                                <div class="form-group{{ $errors->has('discount_value') ? ' has-error' : '' }}">
+                                    <label>Giá khuyến mãi</label>
+                                    <input type="text" name="discount_value" value="{{ old('discount_value') }}" class="form-control" maxlength="255">
+                                    @if ($errors->has('discount_value'))
+                                        <span style="color:red;">{{ $errors->first('discount_value') }}</span>
+                                    @endif
+                                </div>
 
                                 <div class="form-group">
                                     <label for="detail" class="form-label">Thông số</label>

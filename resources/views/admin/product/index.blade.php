@@ -6,7 +6,7 @@
         <div class="col-lg-8 p-r-0 title-margin-right">
             <div class="page-header">
                 <div class="page-title">
-                    <h1>Danh sách</span></h1> <a class="btn btn-success btn-flat" href="{{ route('create-product') }}"><i class="ti-plus"></i> Tạo mới</a>
+                    <h1>Danh sách sản phẩm</span></h1> <a class="btn btn-success btn-flat" href="{{ route('create-product') }}"><i class="ti-plus"></i> Tạo mới</a>
                 </div>
             </div>
         </div>
@@ -148,6 +148,9 @@
                                                 </a>
                                                 <a type="button" class="btn btn-default btn-flat m-l-5 my-list-btn" href="{{ route('list-product-feature', ['id' => $item->id]) }}">
                                                     <i class="ti-check-box"></i>
+                                                </a>
+                                                <a type="button" class="btn btn-default btn-flat m-l-5 my-list-btn" href="{{ route('list-product-note', ['id' => $item->id]) }}">
+                                                    <i class="ti-notepad"></i>
                                                 </a>
                                             </td>
                                         </tr>

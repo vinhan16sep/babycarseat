@@ -16,8 +16,16 @@ class HomeBlock extends Model
         'name',
         'link',
         'image',
+        'icon',
+        'type',
+        'short_description',
+        'description',
         'is_active',
         'created_by',
         'updated_by'
     ];
+
+    public static function getDataByType($type) {
+        return HomeBlock::query()->where("type", $type)->where("is_active", 1)->get();
+    }
 }

@@ -26,6 +26,7 @@ use App\Http\Controllers\Admin\ProductCategoryController;
 use App\Http\Controllers\Admin\ProductColorImageController;
 use App\Http\Controllers\Admin\FeatureController;
 use App\Http\Controllers\Admin\ProductFeatureController;
+use App\Http\Controllers\Admin\ProductNoteController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -44,8 +45,8 @@ Auth::routes();
 
 Route::group(['middleware' => ['site_settings']], function () {
     Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-    Route::get('/san-pham', [App\Http\Controllers\ProductController::class, 'list'])->name('product-list');
-   Route::get('/san-pham/{slug}', [App\Http\Controllers\ProductController::class, 'show'])->name('product-index');
+    Route::get('/san-pham/{category_slug?}', [App\Http\Controllers\ProductController::class, 'list'])->name('product-list');
+   Route::get('/san-pham/{category_slug}/{slug}', [App\Http\Controllers\ProductController::class, 'show'])->name('product-index');
    Route::get('/ve-chung-toi', [App\Http\Controllers\AboutController::class, 'show'])->name('about-show');
 
 
@@ -58,7 +59,7 @@ Route::group(['middleware' => ['site_settings']], function () {
     Route::get('/kien-thuc/{category?}', [App\Http\Controllers\KnowledgeController::class, 'list'])->name('category-detail-knowledge');
     Route::get('/kien-thuc/{category}/{slug}', [App\Http\Controllers\KnowledgeController::class, 'show'])->name('detail-knowledge');
     Route::get('/quoc-gia/{country}', [App\Http\Controllers\ProductController::class, 'list'])->name('country');
-    Route::get('/san-pham/{slug}', [App\Http\Controllers\ProductController::class, 'show'])->name('san-pham');
+    Route::get('/san-pham/{category_slug}/{slug}', [App\Http\Controllers\ProductController::class, 'show'])->name('san-pham');
     Route::get('/tin-tuc/{slug}', [App\Http\Controllers\NewController::class, 'show'])->name('detail-new');
     Route::get('/gio-hang', [App\Http\Controllers\OrderController::class, 'cart'])->name('cart');
     Route::get('/thanh-toan', [App\Http\Controllers\OrderController::class, 'orderCreate'])->name('checkout');
@@ -160,6 +161,16 @@ Route::group(['prefix' => 'br-admin', 'middleware' => 'auth'], function () {
         Route::get('product-feature/change-status', [ProductFeatureController::class, 'changeStatus'])->name('change-product-feature-status');
         Route::get('product-feature/get-feature-by-product', [ProductFeatureController::class, 'getFeatureByProduct'])->name('get-feature-by-product');
 
+        // Product note
+        Route::get('product-note', [ProductNoteController::class, 'index'])->name('list-product-note');
+        Route::get('product-note/create', [ProductNoteController::class, 'create'])->name('create-product-note');
+        Route::post('product-note/store', [ProductNoteController::class, 'store'])->name('store-product-note');
+        Route::get('product-note/edit/{id}', [ProductNoteController::class, 'edit'])->name('edit-product-note');
+        Route::put('product-note/update/{id}', [ProductNoteController::class, 'update'])->name('update-product-note');
+        Route::get('product-note/delete-row', [ProductNoteController::class, 'delete'])->name('delete-product-note');
+        Route::get('product-note/change-status', [ProductNoteController::class, 'changeStatus'])->name('change-product-note-status');
+        Route::get('product-note/get-note-by-product', [ProductNoteController::class, 'getNoteByProduct'])->name('get-note-by-product');
+
 
         // News
         Route::group(['prefix' => 'news'], function () {
@@ -172,7 +183,7 @@ Route::group(['prefix' => 'br-admin', 'middleware' => 'auth'], function () {
             Route::get('change-status', [NewsController::class, 'changeStatus'])->name('change-news-status');
         });
 
-        // News
+        // Feature
         Route::group(['prefix' => 'feature'], function () {
             Route::get('/', [FeatureController::class, 'index'])->name('list-feature');
             Route::get('create', [FeatureController::class, 'create'])->name('create-feature');

@@ -128,18 +128,14 @@ class ProductCategoryController extends AdminController
                 return response()->json(['status' => 'error','msg' => Config::get('constants.MESSAGE.CANNOT_DELETE_IN_USING')], 404);
             }
         
-            DB::beginTransaction();
-
             if ($object->delete()) {
-                DB::commit();
                 return response()->json(['status' => 'success','msg' => Config::get('constants.MESSAGE.DELETE_SUCCEEDED')], 200);
             }
-            DB::rollBack();
             return response()->json(['status' => 'error','msg' => Config::get('constants.MESSAGE.SOMETHING_ERROR')], 403);
+            die;
 
         } catch (Exception $e) {
-            DB::rollBack();
-            return redirect()->route('create-news')->with('error', $e->getMessage()); 
+            return response()->json(['status' => 'error','msg' => $e->getMessage()], 403);
         }
     }
 
@@ -166,7 +162,7 @@ class ProductCategoryController extends AdminController
     }
 
     private function isUsing($id) {
-        $count = Product::where(['knowledge_category_id' => $id])->count();
+        $count = Product::where(['category_id' => $id])->count();
 
         if ($count == 0) {
             return false;

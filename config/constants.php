@@ -7,6 +7,7 @@ return [
         'PRODUCT_COLOR_IMAGE' => 'images/product/%s/colors/%s/',
         'COMBO_IMAGE' => 'images/combo/%s/',
         'NEWS_IMAGE' => 'images/news/%s/',
+        'NOTE_IMAGE' => 'images/notes/%s/',
         'KNOWLEDGE_CATEGORY_IMAGE' => 'images/knowledge-category/%s/',
         'KNOWLEDGE_IMAGE' => 'images/knowledge/%s/',
         'ACCESSORY_CATEGORY_IMAGE' => 'images/accessory-category/%s/',
@@ -14,6 +15,7 @@ return [
         'PROMOTION_IMAGE' => 'images/promotion/%s/',
         'GIFT_IMAGE' => 'images/gift/%s/',
         'HOME_BLOCK_IMAGE' => 'images/home-block/%s/',
+        'HOME_BLOCK_ICON_IMAGE' => 'images/home-block/%s/icon/',
         'PRODUCT_FEATURE' => 'images/product/%s/feature/%s/',
     ],
     'MESSAGE' => [

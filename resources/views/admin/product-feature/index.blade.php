@@ -19,7 +19,7 @@
         <div class="col-lg-8 p-r-0 title-margin-right">
             <div class="page-header">
                 <div class="page-title">
-                    <h1>Danh sách</span></h1> <a class="btn btn-success btn-flat" href="{{ route('create-product-feature', ['id' => $productId]) }}"><i class="ti-plus"></i> Tạo mới</a>
+                    <h1>Tính năng sản phẩm</span></h1> <a class="btn btn-success btn-flat" href="{{ route('create-product-feature', ['id' => $productId]) }}"><i class="ti-plus"></i> Tạo mới</a>
                 </div>
             </div>
         </div>
@@ -52,9 +52,6 @@
                                         <td>{{ $item->product->name }}</td>
                                         <td>{{ $item->feature->title }}</td>
                                         <td class="color-primary">
-                                            <a type="button" class="btn btn-default btn-flat m-l-5 my-list-btn" href="{{ route('create-product-feature', ['id' => $item->product->id, 'feature' => $item->feature->id]) }}">
-                                                <i class="ti-pencil"></i>
-                                            </a>
                                             <button type="button" class="btn btn-danger btn-flat m-l-5 my-list-btn" onclick="deleteRow('{{ $item->id }}', '/product-feature/delete-row')"><i class="ti-trash"></i></button>
                                         </td>
                                     </tr>

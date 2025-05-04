@@ -9,6 +9,10 @@
     <link rel="stylesheet" href="{{ asset('css/drift-basic.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/photoswipe.css') }}" />
     <style>
+        .flat-spacing{
+            padding-top: 40px;
+            padding-bottom: 40px;
+        }
         .swiper {
             width: 100%;
             height: 100%;
@@ -68,12 +72,14 @@
         .product-ksp__img {
             position: relative;
             display: inline-block;
-            width: 34px;
-            height: 34px;
+            width: 45px;
+            height: 45px;
         }
         .product-ksp__text {
             position: relative;
             margin-left: 12px;
+            font-size: 20px !important;
+            color: #2b2a86 !important;
         }
         .product-ksp__box {
             box-sizing: border-box;
@@ -239,6 +245,12 @@
             font-weight: bold;
             text-transform: uppercase;
         }
+        .flat-spacing.custom-say{
+            padding-bottom: 0;
+        }
+        .box-description{
+            background: transparent!important
+        }
         @media (max-width: 900px) {
             .signature-contentblock__image {
                 width: 40%;
@@ -330,15 +342,15 @@
             </div>
             <div class="content">
                 <div class="text-title">
-                    <a class="link" href="{{ route('san-pham', ['slug' => $product->slug]) }}">{{ $product->name }}</a>
+                    <a class="link" href="{{ route('san-pham', ['category_slug' => $product->categoryId->slug, 'slug' => $product->slug]) }}">{{ $product->name }}</a>
                 </div>
                 <div class="text-caption-1 text-secondary-2">Green</div> <!--color-->
                 <div class="text-title">
-                    @if($product->is_discount)
-                        {{ numberFormat($product->discount_value) }}₫
-                        <span> <del>{{ numberFormat($product->price) }}₫</del> </span>
+                    @if(!empty($product->discount_value))
+                        {{ numberFormat($product->discount_value) }} VNĐ
+                        <span> <del>{{ numberFormat($product->price) }} VNĐ</del> </span>
                     @else
-                        {{ numberFormat($product->price) }}₫
+                        {{ numberFormat($product->price) }} VNĐ
                     @endif
                 </div>
             </div>
@@ -422,11 +434,11 @@
                                     <div class="tf-product-info-desc">
                                         <div class="tf-product-info-price">
                                             <h5 class="price-on-sale font-2">
-                                                @if($product->is_discount)
-                                                    {{ numberFormat($product->discount_value) }}₫
-                                                    <span> <del>{{ numberFormat($product->price) }}₫</del> </span>
+                                                @if(!empty($product->discount_value))
+                                                    {{ numberFormat($product->discount_value) }} VNĐ
+                                                    <span> <del>{{ numberFormat($product->price) }} VNĐ</del> </span>
                                                 @else
-                                                    {{ numberFormat($product->price) }}₫
+                                                    {{ numberFormat($product->price) }} VNĐ
                                                 @endif
                                             </h5>
 {{--                                            <div class="compare-at-price font-2">$98.99</div>--}}
@@ -434,9 +446,9 @@
 {{--                                                -25%--}}
 {{--                                            </div>--}}
                                         </div>
-                                        <p>
+                                        <div class="box-description">
                                             {!! $product->description !!}
-                                        </p>
+                                        </div>
 {{--                                        <div class="tf-product-info-liveview">--}}
 {{--                                            <i class="icon icon-eye"></i>--}}
 {{--                                            <p class="text-caption-1"><span class="liveview-count">28</span> people are--}}
@@ -461,20 +473,16 @@
                                             @endforeach
                                         </div>
                                     </div>
-                                    <div class="product-ksp">
-                                        <div class="product-ksp__box">
-                                            <img class="product-ksp__img" src="https://dd.joiebaby.com/media/catalog/product/1/-/1-i-spin360_spin.png" alt="Two arrows in an oval shape">
-                                            <span class="product-ksp__text joie-regular-text">360º spin  </span>
+                                    @if($product->notes->count() > 0)
+                                        <div class="product-ksp">
+                                            @foreach($product->notes as $_note)
+                                                <div class="product-ksp__box">
+                                                    <img class="product-ksp__img" src="{{ !empty($_note->image) ? getImage($_note->image) : asset('images/note-default.png') }}" alt="i-Size logo">
+                                                    <span class="product-ksp__text joie-regular-text">{{ $_note->name }}</span>
+                                                </div>
+                                            @endforeach
                                         </div>
-                                        <div class="product-ksp__box">
-                                            <img class="product-ksp__img" src="https://dd.joiebaby.com/media/catalog/product/2/-/2-i-spin360_i-size.png" alt="i-Size logo">
-                                            <span class="product-ksp__text joie-regular-text">R129 &amp; i-Size certified   </span>
-                                        </div>
-                                        <div class="product-ksp__box">
-                                            <img class="product-ksp__img" src="https://dd.joiebaby.com/media/catalog/product/3/-/3-i-spin360_isofix.png" alt="Padlock icon">
-                                            <span class="product-ksp__text joie-regular-text">Smart Ride™ lock-off</span>
-                                        </div>
-                                    </div>
+                                    @endif
 
                                     <!-- <div class="product-options-bottom">
                                         <div class="fieldset">
@@ -533,11 +541,11 @@
                                             <a data-bs-toggle="modal"
                                                class="btn-style-2 flex-grow-1 text-btn-uppercase fw-6 btn-add-to-cart add-to-card" data-id="{{ $product->id }}"><span>Add to cart -&nbsp;</span><span
                                                     class="tf-qty-price total-price">
-                                                    @if($product->is_discount)
-                                                        {{ numberFormat($product->discount_value) }}₫
-                                                        <span> <del>{{ numberFormat($product->price) }}₫</del> </span>
+                                                    @if(!empty($product->discount_value))
+                                                        {{ numberFormat($product->discount_value) }} VNĐ
+                                                        <span> <del>{{ numberFormat($product->price) }} VNĐ</del> </span>
                                                     @else
-                                                        {{ numberFormat($product->price) }}₫
+                                                        {{ numberFormat($product->price) }} VNĐ
                                                     @endif
                                                 </span></a>
 {{--                                            <a href="#compare" data-bs-toggle="offcanvas" aria-controls="compare"--}}
@@ -695,57 +703,35 @@
                 <h3 class="heading" style="font-weight: 400">i-Harbour's features</h3>
             </div>
             <div class="flat-sw-navigation wow fadeInUp" data-wow-delay="0.1s">
-                <div dir="ltr" class="swiper tf-sw-collection" data-preview="3" data-tablet="3" data-mobile-sm="2"
-                     data-mobile="1" data-space-lg="30" data-space-md="15" data-space="15" data-pagination="1"
-                     data-pagination-md="3" data-pagination-lg="4">
-                    <div class="swiper-wrapper">
-                        <!-- item 1 -->
-                        <div class="swiper-slide">
-                            <div class="collection-position-2 style-7 hover-img">
-                                <a href="shop-collection.html" class="img-style">
-                                    <img class="lazyload" data-src="{{ asset('images/new_slide_01.jpg') }}"
-                                         src="{{ asset('images/new_slide_01.jpg') }}" alt="banner-cls">
-                                </a>
-                                <div class="signature-sprint__card-html">
-                                    <div class="signature-sprint__card-title">Recline and relax</div>
-                                    <div class="signature-sprint__card-subtitle">Lounge chair meets ergonomic car seat... i-Harbour is designed for ultimate relaxation with deep recline options to keep your child cozy and supported through every stage.</div>
+                @if(!empty($attributes[\App\Http\Controllers\ProductController::TYPE_UPPER]))
+                    <div dir="ltr" class="swiper tf-sw-collection" data-preview="3" data-tablet="3" data-mobile-sm="2"
+                         data-mobile="1" data-space-lg="30" data-loop="{{ $attributes[\App\Http\Controllers\ProductController::TYPE_UPPER]->count() < 3 ? 1 : 0 }}" data-space-md="15" data-space="15" data-pagination="1"
+                         data-pagination-md="3" data-pagination-lg="4">
+                        <div class="swiper-wrapper">
+                            <!-- item 1 -->
+                            @foreach($attributes[\App\Http\Controllers\ProductController::TYPE_UPPER] as $_item)
+                                <div class="swiper-slide">
+                                    <div class="collection-position-2 style-7 hover-img">
+                                        <a href="shop-collection.html" class="img-style">
+                                            <img class="lazyload" data-src="{{ getImage($_item->image) }}"
+                                                 src="{{ getImage($_item->image) }}" alt="banner-cls">
+                                        </a>
+                                        <div class="signature-sprint__card-html">
+                                            <div class="signature-sprint__card-title">{{ $_item->title }}</div>
+                                            <div class="signature-sprint__card-subtitle">{!! $_item->sort_content !!}</div>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
+                            @endforeach
                         </div>
-                        <!-- item 2 -->
-                        <div class="swiper-slide">
-                            <div class="collection-position-2 style-7 hover-img">
-                                <a href="shop-collection.html" class="img-style">
-                                    <img class="lazyload" data-src="{{ asset('images/new_slide_02.jpg') }}"
-                                         src="{{ asset('images/new_slide_02.jpg') }}" alt="banner-cls">
-                                </a>
-                                <div class="signature-sprint__card-html">
-                                    <div class="signature-sprint__card-title">Easily adjust for growth</div>
-                                    <div class="signature-sprint__card-subtitle">Effortlessly adjust the headrest and harness together for a secure fit—perfect for sharing between children or keeping up with sudden growth spurts. No rethreading needed!</div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- item 3 -->
-                        <div class="swiper-slide">
-                            <div class="collection-position-2 style-7 hover-img">
-                                <a href="shop-collection.html" class="img-style">
-                                    <img class="lazyload" data-src="{{ asset('images/new_slide_03.jpg') }}"
-                                         src="{{ asset('images/new_slide_03.jpg') }}" alt="banner-cls">
-                                </a>
-                                <div class="signature-sprint__card-html">
-                                    <div class="signature-sprint__card-title">Triple layers of safety</div>
-                                    <div class="signature-sprint__card-subtitle">Our Tri-Protect™ headrest features 3 layers of force-absorbing cushions with memory foam to protect baby’s fragile head and neck and to offer luxurious cosiness.</div>
-                                </div>
-                            </div>
-                        </div>
+                        <div
+                            class="d-flex d-lg-none sw-pagination-collection sw-dots type-circle justify-content-center"></div>
                     </div>
-                    <div
-                        class="d-flex d-lg-none sw-pagination-collection sw-dots type-circle justify-content-center"></div>
-                </div>
-                <div class="nav-prev-collection d-none d-lg-flex nav-sw style-line nav-sw-left"><i
-                        class="icon icon-arrLeft"></i></div>
-                <div class="nav-next-collection d-none d-lg-flex nav-sw style-line nav-sw-right"><i
-                        class="icon icon-arrRight"></i></div>
+                    <div class="nav-prev-collection d-none d-lg-flex nav-sw style-line nav-sw-left"><i
+                            class="icon icon-arrLeft"></i></div>
+                    <div class="nav-next-collection d-none d-lg-flex nav-sw style-line nav-sw-right"><i
+                            class="icon icon-arrRight"></i></div>
+                @endif
             </div>
         </div>
     </section>
@@ -754,190 +740,33 @@
     <section class="flat-spacing bg-css" style="padding-top: 30px">
         <div class="container">
             <div class="flat-sw-navigation box-product-common__row wow fadeInUp" data-wow-delay="0.1s">
-                <div class="product-common__row ">
-                    <div class="signature-contentblock ">
-                        <div class="signature-contentblock__image">
-                            <img class="product-marketing__img" src="{{ asset('images/ps1-d-iharboure-evergreen-joie-signature_1_1.jpg') }}" alt="">
-                        </div>
-                        <div class="signature-contentblock__html">
-                            <div class="signature-contentblock__description">
-                                <div class="signature-contentblock__title">Spin into easier days</div>
-                                <div class="signature-contentblock__subtitle">Say goodbye to awkward buckle-ins. With 360° rotation and easy-to-reach one-hand activation, this duo makes getting your littlie in and out of the car a breeze for seamless spinning transitions that save time and simplify your day whether it's school runs, errands, or all day outings.</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
-                <div class="product-common__row">
-                    <div class="signature-contentblock signature-contentblock--reverse">
-                        <div class="signature-contentblock__image">
-                            <img class="product-marketing__img" src="{{ asset('images/ps2-d-iharboure-evergreen-joie-signature_1_1.jpg') }}" alt="">
-                        </div>
-                        <div class="signature-contentblock__html">
-                            <div class="signature-contentblock__description">
-                                <div class="signature-contentblock__title">Uncompromising safety</div>
-                                <div class="signature-contentblock__subtitle">This powerful protector is engineered with state-of-the art safety features to protect your child from every angle. Combine ECE R129 and i-Size certification with an impressive ADAC score and it's easy to see why parents trust i-Harbour to protect their precious cargo.</div>
+                @if(!empty($attributes[\App\Http\Controllers\ProductController::TYPE_LOWER]))
+                    @foreach($attributes[\App\Http\Controllers\ProductController::TYPE_LOWER] as $_item)
+                        <div class="product-common__row ">
+                            <div class="signature-contentblock {{ $loop->index%2 == 0 ? '' : 'signature-contentblock--reverse' }}">
+                                <div class="signature-contentblock__image">
+                                    <img class="product-marketing__img" src="{{ getImage($_item->image) }}" alt="">
+                                </div>
+                                <div class="signature-contentblock__html">
+                                    <div class="signature-contentblock__description">
+                                        <div class="signature-contentblock__title">{{ $_item->title }}</div>
+                                        <div class="signature-contentblock__subtitle">{!! $_item->sort_content !!}</div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-
-                <div class="product-common__row ">
-                    <div class="signature-contentblock ">
-                        <div class="signature-contentblock__image">
-                            <img class="product-marketing__img" src="{{ asset('images/ps1-d-iharboure-evergreen-joie-signature_1_1.jpg') }}" alt="">
-                        </div>
-                        <div class="signature-contentblock__html">
-                            <div class="signature-contentblock__description">
-                                <div class="signature-contentblock__title">Spin into easier days</div>
-                                <div class="signature-contentblock__subtitle">Say goodbye to awkward buckle-ins. With 360° rotation and easy-to-reach one-hand activation, this duo makes getting your littlie in and out of the car a breeze for seamless spinning transitions that save time and simplify your day whether it's school runs, errands, or all day outings.</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="product-common__row mr-top">
-                    <div class="signature-contentblock signature-contentblock--reverse">
-                        <div class="signature-contentblock__image">
-                            <img class="product-marketing__img" src="{{ asset('images/ps2-d-iharboure-evergreen-joie-signature_1_1.jpg') }}" alt="">
-                        </div>
-                        <div class="signature-contentblock__html">
-                            <div class="signature-contentblock__description">
-                                <div class="signature-contentblock__title">Uncompromising safety</div>
-                                <div class="signature-contentblock__subtitle">This powerful protector is engineered with state-of-the art safety features to protect your child from every angle. Combine ECE R129 and i-Size certification with an impressive ADAC score and it's easy to see why parents trust i-Harbour to protect their precious cargo.</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                    @endforeach
+                @endif
             </div>
         </div>
     </section>
 
     <br>
     <br>
-    @include('components.last-page')
+    @include('components.last-page', ['is_not_show' => true])
 
-    <!-- Ralated Products -->
-{{--    @if(!empty($products->count()))--}}
-        <section class="flat-spacing bg-css topick" style="padding-top: 40px">
-            <div class="container">
-                <div class="heading-section text-center wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">
-                    <h3 class="heading" style="color:black;">Hot Selling Babyro</h3>
-                </div>
-                <div dir="ltr" class="swiper tf-sw-latest" data-preview="6" data-tablet="3" data-mobile="1"
-                     data-space-lg="30" data-space-md="30" data-space="15" data-pagination="1" data-center="0" data-pagination-md="1"
-                     data-pagination-lg="1">
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide">
-                            <div class="card-product wow fadeInUp" data-wow-delay="0s">
-                                <div class="card-product-wrapper">
-                                    <a href="product-detail.html" class="product-img">
-                                        <img class="lazyload img-product"
-                                             data-src="{{ asset('images/products/furniture/Hot-Selling1.png') }}"
-                                             src="{{ asset('images/products/furniture/Hot-Selling1.png') }}" alt="image-product">
-                                        <img class="lazyload img-hover" data-src="{{ asset('images/products/furniture/Hot-Selling1.png') }}"
-                                             src="{{ asset('images/products/furniture/Hot-Selling1.png') }}" alt="image-product">
-                                    </a>
-                                </div>
-                                <div class="card-product-info">
-                                    <p class="product-title">Babyro i-Spin 360</p>
-                                    <p class="product-desc">Ghế cho bé từ 0 - 12 tuổi</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="card-product wow fadeInUp" data-wow-delay="0s">
-                                <div class="card-product-wrapper">
-                                    <a href="product-detail.html" class="product-img">
-                                        <img class="lazyload img-product"
-                                             data-src="{{ asset('images/products/furniture/Hot-Selling3.png') }}"
-                                             src="{{ asset('images/products/furniture/Hot-Selling3.png') }}" alt="image-product">
-                                        <img class="lazyload img-hover" data-src="{{ asset('images/products/furniture/Hot-Selling3.png') }}"
-                                             src="{{ asset('images/products/furniture/Hot-Selling3.png') }}" alt="image-product">
-                                    </a>
-                                </div>
-                                <div class="card-product-info">
-                                    <p class="product-title">Babyro i-Spin 360</p>
-                                    <p class="product-desc">Ghế cho bé từ 0 - 12 tuổi</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="card-product wow fadeInUp" data-wow-delay="0s">
-                                <div class="card-product-wrapper">
-                                    <a href="product-detail.html" class="product-img">
-                                        <img class="lazyload img-product"
-                                             data-src="{{ asset('images/products/furniture/Hot-Selling4.png') }}"
-                                             src="{{ asset('images/products/furniture/Hot-Selling4.png') }}" alt="image-product">
-                                        <img class="lazyload img-hover" data-src="{{ asset('images/products/furniture/Hot-Selling4.png') }}"
-                                             src="{{ asset('images/products/furniture/Hot-Selling4.png') }}" alt="image-product">
-                                    </a>
-                                </div>
-                                <div class="card-product-info">
-                                    <p class="product-title">Babyro i-Spin 360</p>
-                                    <p class="product-desc">Ghế cho bé từ 0 - 12 tuổi</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="card-product wow fadeInUp" data-wow-delay="0s">
-                                <div class="card-product-wrapper">
-                                    <a href="product-detail.html" class="product-img">
-                                        <img class="lazyload img-product"
-                                             data-src="{{ asset('images/products/furniture/Hot-Selling4.png') }}"
-                                             src="{{ asset('images/products/furniture/Hot-Selling4.png') }}" alt="image-product">
-                                        <img class="lazyload img-hover" data-src="{{ asset('images/products/furniture/Hot-Selling4.png') }}"
-                                             src="{{ asset('images/products/furniture/Hot-Selling4.png') }}" alt="image-product">
-                                    </a>
-                                </div>
-                                <div class="card-product-info">
-                                    <p class="product-title">Babyro i-Spin 360</p>
-                                    <p class="product-desc">Ghế cho bé từ 0 - 12 tuổi</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="card-product wow fadeInUp" data-wow-delay="0s">
-                                <div class="card-product-wrapper">
-                                    <a href="product-detail.html" class="product-img">
-                                        <img class="lazyload img-product"
-                                             data-src="{{ asset('images/products/furniture/Hot-Selling4.png') }}"
-                                             src="{{ asset('images/products/furniture/Hot-Selling4.png') }}" alt="image-product">
-                                        <img class="lazyload img-hover" data-src="{{ asset('images/products/furniture/Hot-Selling4.png') }}"
-                                             src="{{ asset('images/products/furniture/Hot-Selling4.png') }}" alt="image-product">
-                                    </a>
-                                </div>
-                                <div class="card-product-info">
-                                    <p class="product-title">Babyro i-Spin 360</p>
-                                    <p class="product-desc">Ghế cho bé từ 0 - 12 tuổi</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="card-product wow fadeInUp" data-wow-delay="0s">
-                                <div class="card-product-wrapper">
-                                    <a href="product-detail.html" class="product-img">
-                                        <img class="lazyload img-product"
-                                             data-src="{{ asset('images/products/furniture/Hot-Selling4.png') }}"
-                                             src="{{ asset('images/products/furniture/Hot-Selling4.png') }}" alt="image-product">
-                                        <img class="lazyload img-hover" data-src="{{ asset('images/products/furniture/Hot-Selling4.png') }}"
-                                             src="{{ asset('images/products/furniture/Hot-Selling4.png') }}" alt="image-product">
-                                    </a>
-                                </div>
-                                <div class="card-product-info">
-                                    <p class="product-title">Babyro i-Spin 360</p>
-                                    <p class="product-desc">Ghế cho bé từ 0 - 12 tuổi</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="sw-pagination-latest sw-dots type-circle justify-content-center"></div>
-                </div>
-            </div>
-        </section>
-
-{{--    @endif--}}
-    <!-- /Ralated Products -->
+    @include('components.product-hot', ['is_not_show' => true])
 @endsection
 
 @section('script')

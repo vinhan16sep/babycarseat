@@ -2,21 +2,21 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Feature;
+use App\Models\Note;
 use App\Models\Product;
-use App\Models\ProductFeature;
+use App\Models\ProductNote;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
 
-class ProductFeatureController extends AdminController
+class ProductNoteController extends AdminController
 {
 
     public function index(Request $request) {
-        $list = ProductFeature::with(['product', 'feature'])->where('product_id', $request['id'])->orderBy('updated_at', 'desc')->get();
+        $list = ProductNote::with(['product', 'note'])->where('product_id', $request['id'])->orderBy('updated_at', 'desc')->get();
         return view(
-            'admin/product-feature/index', 
+            'admin/product-note/index', 
             [
                 'list' => $list,
                 'productId' => $request['id']
@@ -33,20 +33,20 @@ class ProductFeatureController extends AdminController
         }
         
         
-        if (!isset($request['feature']) || empty($request['feature'])) {
+        if (!isset($request['note']) || empty($request['note'])) {
             $product = Product::where('id', $request['id'])->first();
             if ($product == null || empty($product)) {
                 return redirect()->route('list-product')->with('error', Config::get('constants.MESSAGE.DATA_NOT_FOUND'));
             }
     
-            $feature = Feature::all();
+            $note = Note::all();
     
             return view(
-                'admin/product-feature/create',
+                'admin/product-note/create',
                 [
                     'isCreate' => 1,
                     'product' => $product,
-                    'feature' => $feature,
+                    'note' => $note,
                 ]
             );
         } else {
@@ -55,14 +55,14 @@ class ProductFeatureController extends AdminController
                 return redirect()->route('list-product')->with('error', Config::get('constants.MESSAGE.DATA_NOT_FOUND'));
             }
             
-            $feature = Feature::where(['id' => $request['feature']])->first();
+            $note = Note::where(['id' => $request['note']])->first();
             return view(
-                'admin/product-feature/create',
+                'admin/product-note/create',
                 [
                     'isCreate' => 0,
                     'product' => $product,
-                    'featureTitle' => $feature->title,
-                    'featureId' => $request['feature'],
+                    'noteName' => $note->name,
+                    'noteId' => $request['note'],
                 ]
             );
         }
@@ -75,34 +75,34 @@ class ProductFeatureController extends AdminController
 
         try {
 
-            $exist = ProductFeature::where(['product_id' => $request->input('product_id'), 'feature_id' => $request->input('feature_id')])->first();
+            $exist = ProductNote::where(['product_id' => $request->input('product_id'), 'note_id' => $request->input('note_id')])->first();
             if (empty($exist)) {
-                $productFeature = new ProductFeature();
-                $productFeature->product_id = $request->input('product_id');
-                $productFeature->feature_id = $request->input('feature_id');
-                if ($productFeature->save()) {
-                    if ($productFeature->save()) {
+                $ProductNote = new ProductNote();
+                $ProductNote->product_id = $request->input('product_id');
+                $ProductNote->note_id = $request->input('note_id');
+                if ($ProductNote->save()) {
+                    if ($ProductNote->save()) {
                         DB::commit();
-                        return redirect()->route('list-product-feature', ['id' => $request->input('product_id')])->with('success', Config::get('constants.MESSAGE.CREATE_SUCCEEDED'));
+                        return redirect()->route('list-product-note', ['id' => $request->input('product_id')])->with('success', Config::get('constants.MESSAGE.CREATE_SUCCEEDED'));
                     }
                     DB::rollBack();
-                    return redirect()->route('list-product-feature', ['id' => $request->input('product_id')])->with('error', Config::get('constants.MESSAGE.SOMETHING_ERROR' . "_2"));
+                    return redirect()->route('list-product-note', ['id' => $request->input('product_id')])->with('error', Config::get('constants.MESSAGE.SOMETHING_ERROR' . "_2"));
                 }
                 DB::rollBack();
-                return redirect()->route('list-product-feature', ['id' => $request->input('product_id')])->with('error', Config::get('constants.MESSAGE.SOMETHING_ERROR' . "_3"));
+                return redirect()->route('list-product-note', ['id' => $request->input('product_id')])->with('error', Config::get('constants.MESSAGE.SOMETHING_ERROR' . "_3"));
             }
             DB::rollBack();
-            return redirect()->route('list-product-feature', ['id' => $request->input('product_id')])->with('error', Config::get('constants.MESSAGE.SOMETHING_ERROR' . "_4"));
+            return redirect()->route('list-product-note', ['id' => $request->input('product_id')])->with('error', Config::get('constants.MESSAGE.SOMETHING_ERROR' . "_4"));
         } catch (Exception $e) {
             DB::rollBack();
-            return redirect()->route('list-product-feature', ['id' => $request->input('product_id')])->with('error', $e->getMessage());
+            return redirect()->route('list-product-note', ['id' => $request->input('product_id')])->with('error', $e->getMessage());
         }
     }
 
     public function edit($id)
     {
-        $productFeature = ProductFeature::with('product', 'feature')->findOrFail($id);
-        return view('images.edit', compact('productFeature'));
+        $productNote = ProductNote::with('product', 'note')->findOrFail($id);
+        return view('images.edit', compact('productNote'));
     }
 
     // public function destroy($id)
@@ -123,7 +123,7 @@ class ProductFeatureController extends AdminController
             return response()->json(['status' => 'error', 'msg' => Config::get('constants.MESSAGE.DATA_NOT_FOUND')], 404);
         }
 
-        $object = ProductFeature::find($request['id']);
+        $object = ProductNote::find($request['id']);
 
         // If object not found
         if ($object == null || $object->count() == 0) {
@@ -136,7 +136,7 @@ class ProductFeatureController extends AdminController
         return response()->json(['status' => 'error', 'msg' => Config::get('constants.MESSAGE.SOMETHING_ERROR')], 403);
     }
 
-    public function getFeatureByProduct(Request $request)
+    public function getNoteByProduct(Request $request)
     {
         $request = $request->all();
 
@@ -144,21 +144,21 @@ class ProductFeatureController extends AdminController
             return response()->json(['status' => 'error', 'msg' => Config::get('constants.MESSAGE.DATA_NOT_FOUND')], 200);
         }
 
-        $feature = ProductFeature::join('feature', 'product_feature.feature_id', '=', 'feature.id')
-            ->where('product_feature.product_id', $request['productId'])
-            ->select('feature.id', 'feature.name')
+        $note = ProductNote::join('note', 'product_note.note_id', '=', 'note.id')
+            ->where('product_note.product_id', $request['productId'])
+            ->select('note.id', 'note.name')
             ->distinct()
             ->get();
 
-        return response()->json(['status' => 'success', 'data' => $feature], 200);
+        return response()->json(['status' => 'success', 'data' => $note], 200);
     }
 
     private function validateStore($request)
     {
         $this->validate($request, [
-            'feature_id' => 'required'
+            'note_id' => 'required'
         ], [
-            'feature_id.required' => 'Chưa chọn tính năng'
+            'note_id.required' => 'Chưa chọn tính năng'
         ]);
     }
 }
