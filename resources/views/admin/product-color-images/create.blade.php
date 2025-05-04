@@ -77,6 +77,19 @@
                                     <div class="col-md-8">
                                         <div class="form-group{{ $errors->has('images') ? ' has-error' : '' }}">
                                             <label>Ảnh sản phẩm <span class="my-required">*</span></label>
+                                            <div>
+                                            @if ($colorImage)
+                                                @foreach ($colorImage as $key => $item)
+                                                    @if ($item->image && is_array($item->image))
+                                                        @foreach ($item->image as $img)
+                                                            <img style="max-height: 50px;" src="{{ asset($img) }}" />
+                                                        @endforeach
+                                                    @else
+                                                        <img style="max-height: 50px;" src="{{ asset('images/no-image-available-list.jpg') }}" />
+                                                    @endif
+                                                @endforeach
+                                            @endif
+                                            </div>
                                             <input type="file" name="images[]" class="form-control input-default" id="images" multiple>
                                             @if ($errors->has('images'))
                                                 <span style="color:red;">{{ $errors->first('images') }}</span>

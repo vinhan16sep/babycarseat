@@ -42,6 +42,7 @@
                                         <th class="w-5 center">STT</th>
                                         <th class="w-15 center">Tên sản phẩm</th>
                                         <th class="w-20 center">Màu sắc</th>
+                                        <th class="w-20 center">Ảnh</th>
                                         <th class="w-15 center">Hành động</th>
                                     </tr>
                                 </thead>
@@ -53,10 +54,20 @@
                                         <td>
                                             <div class="circle-icon" style="background-color: {{ $item->color->code }};"></div>
                                         </td>
+                                        <td>
+                                            @if ($item->image && is_array($item->image))
+                                                @foreach ($item->image as $img)
+                                                    <img style="max-height: 50px;" src="{{ asset($img) }}" />
+                                                @endforeach
+                                            @else
+                                                <img style="max-height: 50px;" src="{{ asset('images/no-image-available-list.jpg') }}" />
+                                            @endif
+                                        </td>
                                         <td class="color-primary">
                                             <a type="button" class="btn btn-default btn-flat m-l-5 my-list-btn" href="{{ route('create-product-color-image', ['id' => $item->product->id, 'color' => $item->color->id]) }}">
                                                 <i class="ti-pencil"></i>
                                             </a>
+                                            <button type="button" class="btn btn-danger btn-flat m-l-5 my-list-btn" onclick="deleteRow('{{ $item->id }}', '/product-color-image/delete-row')"><i class="ti-trash"></i></button>
                                         </td>
                                     </tr>
                                     @endforeach
