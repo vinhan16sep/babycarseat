@@ -51,9 +51,16 @@
                                 @method('post')
 
 
-                                <div class="form-group">
-                                    <label>Tên sản phẩm: <span class="my-required">{{ $product->name }}</span></label>
-                                    <input type="hidden" name="product_id" value="{{ $product->id }}">
+                                
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <div class="form-group">
+                                            <div class="form-group">
+                                                <label>Tên sản phẩm: <span class="my-required">{{ $product->name }}</span></label>
+                                                <input type="hidden" name="product_id" value="{{ $product->id }}">
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                                 @if ($isCreate == 1)
                                 <div class="form-group{{ $errors->has('color_id') ? ' has-error' : '' }}">
@@ -69,27 +76,41 @@
                                     @endif
                                 </div>
                                 @else
-                                <label>Màu sắc: {{ $colorName }}</label>
-                                <input type="hidden" name="color_id" value="{{ $colorId }}">
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <div class="form-group">
+                                            <label>Màu sắc: {{ $colorName }}</label>
+                                            <input type="hidden" name="color_id" value="{{ $colorId }}">
+                                        </div>
+                                    </div>
+                                </div>
                                 @endif
                                 
                                 <div class="row">
                                     <div class="col-md-8">
                                         <div class="form-group{{ $errors->has('images') ? ' has-error' : '' }}">
-                                            <label>Ảnh sản phẩm <span class="my-required">*</span></label>
+                                            <label>Ảnh hiện tại:</label>
                                             <div>
                                             @if ($colorImage)
                                                 @foreach ($colorImage as $key => $item)
                                                     @if ($item->image && is_array($item->image))
                                                         @foreach ($item->image as $img)
-                                                            <img style="max-height: 50px;" src="{{ asset($img) }}" />
+                                                            <img style="max-height: 80px;" src="{{ asset($img) }}" />
                                                         @endforeach
                                                     @else
-                                                        <img style="max-height: 50px;" src="{{ asset('images/no-image-available-list.jpg') }}" />
+                                                        <img style="max-height: 80px;" src="{{ asset('images/no-image-available-list.jpg') }}" />
                                                     @endif
                                                 @endforeach
                                             @endif
                                             </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <div class="form-group{{ $errors->has('images') ? ' has-error' : '' }}">
+                                            <label>Chọn ảnh mới: <span class="my-required">*</span></label>
                                             <input type="file" name="images[]" class="form-control input-default" id="images" multiple>
                                             @if ($errors->has('images'))
                                                 <span style="color:red;">{{ $errors->first('images') }}</span>
@@ -98,7 +119,7 @@
                                     </div>
                                 </div>
 
-                                <a type="button" href="{{ route('list-product') }}" class="btn btn-default btn-outline"><i class="ti-back-left icon-black"></i>&nbsp;&nbsp;Quay lại</a>
+                                <a type="button" href="{{ route('list-product-color-image', ['id' => $product->id]) }}" class="btn btn-default btn-outline"><i class="ti-back-left icon-black"></i>&nbsp;&nbsp;Quay lại</a>
                                 <button type="submit" class="btn btn-primary"><i class="ti-save icon-white"></i>&nbsp;&nbsp;Lưu</button>
                             </form>
                         </div>

@@ -85,7 +85,7 @@
                                     </div> -->
                                 </div>
 
-                                <a type="button" href="{{ route('list-product') }}" class="btn btn-default btn-outline"><i class="ti-back-left icon-black"></i>&nbsp;&nbsp;Quay lại</a>
+                                <a type="button" href="{{ route('list-product-note', ['id' => $product->id]) }}" class="btn btn-default btn-outline"><i class="ti-back-left icon-black"></i>&nbsp;&nbsp;Quay lại</a>
                                 <button type="submit" class="btn btn-primary"><i class="ti-save icon-white"></i>&nbsp;&nbsp;Lưu</button>
                             </form>
                         </div>
