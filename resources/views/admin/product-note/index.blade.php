@@ -19,7 +19,7 @@
         <div class="col-lg-8 p-r-0 title-margin-right">
             <div class="page-header">
                 <div class="page-title">
-                    <h1>Danh sách</span></h1> <a class="btn btn-success btn-flat" href="{{ route('create-product-note', ['id' => $productId]) }}"><i class="ti-plus"></i> Tạo mới</a>
+                    <h1>Nhãn sản phẩm</span></h1> <a class="btn btn-success btn-flat" href="{{ route('create-product-note', ['id' => $productId]) }}"><i class="ti-plus"></i> Tạo mới</a>
                 </div>
             </div>
         </div>
