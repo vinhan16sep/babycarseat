@@ -72,12 +72,14 @@
         .product-ksp__img {
             position: relative;
             display: inline-block;
-            width: 34px;
-            height: 34px;
+            width: 45px;
+            height: 45px;
         }
         .product-ksp__text {
             position: relative;
             margin-left: 12px;
+            font-size: 20px !important;
+            color: #2b2a86 !important;
         }
         .product-ksp__box {
             box-sizing: border-box;
