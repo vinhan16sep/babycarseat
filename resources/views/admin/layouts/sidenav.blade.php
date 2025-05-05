@@ -34,6 +34,7 @@
                         <li><a href="{{ route('list-knowledge') }}">Kiến thức</a></li>
                     </ul>
                 </li>
+                <li><a href="{{ route('list-post') }}"><i class="ti-layout-list-post"></i>Bài viết lẻ</a></li>
             </ul>
         </div>
     </div>
