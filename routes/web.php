@@ -25,6 +25,7 @@ use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\ProductCategoryController;
 use App\Http\Controllers\Admin\ProductColorImageController;
 use App\Http\Controllers\Admin\FeatureController;
+use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\ProductFeatureController;
 use App\Http\Controllers\Admin\ProductNoteController;
 use Illuminate\Support\Facades\Auth;
@@ -181,6 +182,17 @@ Route::group(['prefix' => 'br-admin', 'middleware' => 'auth'], function () {
             Route::put('update/{id}', [NewsController::class, 'update'])->name('update-news');
             Route::get('delete-row', [NewsController::class, 'delete'])->name('delete-news');
             Route::get('change-status', [NewsController::class, 'changeStatus'])->name('change-news-status');
+        });
+
+        // Post
+        Route::group(['prefix' => 'post'], function () {
+            Route::get('/', [PostController::class, 'index'])->name('list-post');
+            Route::get('create', [PostController::class, 'create'])->name('create-post');
+            Route::post('store', [PostController::class, 'store'])->name('store-post');
+            Route::get('edit/{id}', [PostController::class, 'edit'])->name('edit-post');
+            Route::put('update/{id}', [PostController::class, 'update'])->name('update-post');
+            Route::get('delete-row', [PostController::class, 'delete'])->name('delete-post');
+            Route::get('change-status', [PostController::class, 'changeStatus'])->name('change-post-status');
         });
 
         // Feature

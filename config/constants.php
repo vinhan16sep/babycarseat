@@ -29,6 +29,11 @@ return [
         'CHANGE_STATUS_SUCCEEDED' => 'Đổi trạng thái thành công!',
         'PRODUCT_COLOR_UPLOAD_ERROR' => 'Upload ảnh không thành công!',
         'PRODUCT_COLOR_SAVE_ERROR' => 'Lưu ảnh sản phẩm vào CSDL không thành công!',
+    ],
+    'POST_POSITION' => [
+        'FOOTER_1' => 1,
+        'FOOTER_2' => 2,
+        'FOOTER_3' => 3,
     ]
 
 ];
