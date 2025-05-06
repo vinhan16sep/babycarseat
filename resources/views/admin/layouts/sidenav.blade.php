@@ -19,8 +19,8 @@
                         <li><a href="{{ route('list-product-category') }}">Danh mục</a></li>
                         <li><a href="{{ route('list-brand') }}">Thương hiệu</a></li>
                         <li><a href="{{ route('list-color') }}">Màu sắc</a></li>
-                        <li><a href="{{ route('list-note') }}">Notes</a></li>
-                        <li><a href="{{ route('list-feature') }}">Tính Năng</a></li>
+                        <li><a href="{{ route('list-note') }}">Nhãn</a></li>
+                        <li><a href="{{ route('list-feature') }}">Tính năng</a></li>
                         <li><a href="{{ route('list-product') }}">Sản phẩm</a></li>
                     </ul>
                 </li>
@@ -34,6 +34,7 @@
                         <li><a href="{{ route('list-knowledge') }}">Kiến thức</a></li>
                     </ul>
                 </li>
+                <li><a href="{{ route('list-post') }}"><i class="ti-layout-list-post"></i>Bài viết lẻ</a></li>
             </ul>
         </div>
     </div>

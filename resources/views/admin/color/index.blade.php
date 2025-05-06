@@ -6,7 +6,7 @@
         <div class="col-lg-8 p-r-0 title-margin-right">
             <div class="page-header">
                 <div class="page-title">
-                    <h1>Danh sách</span></h1>
+                    <h1>Danh sách màu sắc</span></h1>
                     <a class="btn btn-success btn-flat" href="{{ route('create-color') }}"><i class="ti-plus"></i> Tạo mới</a>
                 </div>
             </div>

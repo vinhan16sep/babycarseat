@@ -27,7 +27,7 @@
                                     </div>
                                     <div class="fade-item fade-item-3 box-btn-slider">
                                         <a href="{{ $_item->link }}" class="tf-btn btn-fill btn-white"><span
-                                                class="text">Shop Collection</span></a>
+                                                class="text">Chi tiết</span></a>
                                     </div>
                                 </div>
                             </div>

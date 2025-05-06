@@ -6,8 +6,8 @@
         <div class="col-lg-8 p-r-0 title-margin-right">
             <div class="page-header">
                 <div class="page-title">
-                    <h1>Danh sách tính năng</span></h1>
-                    <a class="btn btn-success btn-flat" href="{{ route('create-feature') }}"><i class="ti-plus"></i> Tạo mới</a>
+                    <h1>Danh sách tin tức</span></h1>
+                    <a class="btn btn-success btn-flat" href="{{ route('create-post') }}"><i class="ti-plus"></i> Tạo mới</a>
                 </div>
             </div>
         </div>
@@ -28,10 +28,8 @@
                                 <thead>
                                     <tr>
                                         <th class="w-10">STT</th>
-                                        <th class="w-5">Ảnh</th>
-                                        <th class="w-10">Nhãn</th>
-                                        <th class="w-30">Tiêu đề</th>
-                                        <!-- <th class="w-20">Trạng thái</th> -->
+                                        <th class="w-50">Tiêu đề</th>
+                                        <th class="w-20">Trạng thái</th>
                                         <th class="w-20">Hành động</th>
                                     </tr>
                                 </thead>
@@ -39,26 +37,24 @@
                                     @foreach ($list as $key => $item)
                                         <tr>
                                             <th scope="row">{{ $key + 1}}</th>
-                                            <td><img style="max-height: 200px;" src="{{ $item->image ? asset($item->image) : asset('images/no-image-available-list.jpg') }}" /></td>
-                                            <td>{{ $item->label}}</td>
                                             <td>{{ $item->title}}</td>
-                                            <!-- <td>
+                                            <td>
                                                 <span class="badge {{ $item->is_active == '1' ? 'badge-success' : 'badge-danger'}} unset-text-transform">
                                                     {{ $item->is_active == '1' ? 'Đang sử dụng' : 'Đã tắt'}}
                                                 </span>
-                                            </td> -->
+                                            </td>
                                             <td class="color-primary">
-                                                <a type="button" href="{{ route('edit-feature', ['id' => $item->id]) }}" class="btn btn-primary btn-flat my-list-btn"><i class="ti-pencil icon-white"></i></a>
-                                                <button type="button" class="btn btn-danger btn-flat m-l-5 my-list-btn" onclick="deleteRow('{{ $item->id }}', '/feature/delete-row')"><i class="ti-trash"></i></button>
-                                                <!-- @if ($item->is_active == '1')
-                                                <button type="button" class="btn btn-default btn-flat m-l-5 my-list-btn" onclick="changeStatus('{{ $item->id }}', '0', '/feature/change-status')">
+                                                <a type="button" href="{{ route('edit-post', ['id' => $item->id]) }}" class="btn btn-primary btn-flat my-list-btn"><i class="ti-pencil icon-white"></i></a>
+                                                <button type="button" class="btn btn-danger btn-flat m-l-5 my-list-btn" onclick="deleteRow('{{ $item->id }}', '/post/delete-row')"><i class="ti-trash"></i></button>
+                                                @if ($item->is_active == '1')
+                                                <button type="button" class="btn btn-default btn-flat m-l-5 my-list-btn" onclick="changeStatus('{{ $item->id }}', '0', '/post/change-status')">
                                                     <i class="ti-control-pause"></i>
                                                 </button>
                                                 @else
-                                                <button type="button" class="btn btn-default btn-flat m-l-5 my-list-btn" onclick="changeStatus('{{ $item->id }}', '1', '/feature/change-status')">
+                                                <button type="button" class="btn btn-default btn-flat m-l-5 my-list-btn" onclick="changeStatus('{{ $item->id }}', '1', '/post/change-status')">
                                                     <i class="ti-control-play"></i>
                                                 </button>
-                                                @endif -->
+                                                @endif
                                             </td>
                                         </tr>
                                     @endforeach
