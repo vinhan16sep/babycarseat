@@ -13,7 +13,6 @@ class Product extends Model
     public $timestamps = true;
 
     protected $fillable = array(
-        'category_id',
         'brand_id',
         'name',
         'slug',
@@ -67,11 +66,10 @@ class Product extends Model
             ->withTimestamps();
     }
 
-    // public function getImageAttribute($value)
-    // {
-    //     $images = json_decode($value, true);
-    //     return $images[0] ?? "";
-    // }
+    public function categories()
+    {
+        return $this->belongsToMany(ProductCategory::class, 'product_categories_mapping', 'product_id', 'category_id');
+    }
 
     public function getImagesAttribute()
     {

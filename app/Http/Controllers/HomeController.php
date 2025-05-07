@@ -6,6 +6,7 @@ use App\Models\Banner;
 use App\Models\HomeBlock;
 use App\Models\Knowledge;
 use App\Models\News;
+use App\Models\Feedback;
 use App\Models\Product;
 use App\Models\Type;
 use Illuminate\Http\Request;
@@ -31,6 +32,7 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $feedback = Feedback::query()->where(["is_active" => 1])->orderByDesc("created_at")->limit(3)->get();
         $banners = Banner::query()->where('is_active', 1)->get();
         $upper = HomeBlock::getDataByType(self::TYPE_UPPER);
         $lower = HomeBlock::getDataByType(self::TYPE_LOWER);
@@ -38,7 +40,8 @@ class HomeController extends Controller
             'upper' => $upper,
             'lower' => $lower,
             'banners' => $banners,
-            'hotProducts' => Product::getHotProducts()
+            'hotProducts' => Product::getHotProducts(),
+            'feedback' => $feedback
         ]);
 
 
@@ -65,6 +68,7 @@ class HomeController extends Controller
             "types" => $types,
             "groupTypeProduct" => $groupTypeProduct,
             "homeBlocks" => $homeBlocks,
+            'feedback' => $feedback
         ]);
     }
 

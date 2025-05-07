@@ -35,6 +35,7 @@
                     </ul>
                 </li>
                 <li><a href="{{ route('list-post') }}"><i class="ti-layout-list-post"></i>Bài viết lẻ</a></li>
+                <li><a href="{{ route('list-feedback') }}"><i class="ti-comment-alt"></i>Đánh giá khách hàng</a></li>
             </ul>
         </div>
     </div>

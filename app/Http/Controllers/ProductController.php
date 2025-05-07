@@ -72,11 +72,10 @@ class ProductController extends Controller
         }
 
         $products = Product::query()
-            ->with(["productColors", "categoryId"])
+            ->with(["productColors", "categories"])
             ->where([
                 "is_active" => 1
             ])
-//            ->where("slug", "!=", $slug)
             ->orderByDesc("is_highlight")->get();
 
         return view('product-show', [
@@ -95,10 +94,17 @@ class ProductController extends Controller
             $query->orderBy(self::SORTS[$orderBy]["column"], self::SORTS[$orderBy]["sort"]);
         }
 
-        $products = $query->with(["productColors", "categoryId"])->get();
         if ($category_slug) {
             $category = ProductCategory::query()->where('slug', $category_slug)->first();
+
+            if ($category) {
+                $query->whereHas('categories', function ($q) use ($category) {
+                    $q->where('product_categories.id', $category->id);
+                });
+            }
         }
+
+        $products = $query->with(["productColors", "categories"])->get();
 
         return view('product-list', [
             "products" => $products,

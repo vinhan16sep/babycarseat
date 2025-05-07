@@ -25,10 +25,9 @@ class ProductController extends AdminController
 
     public function index(Request $request)
     {
-
         $req = $request->all();
 
-        $q = Product::with(['categoryId', 'brand', 'productColors.color']);
+        $q = Product::with(['categories', 'brand', 'productColors.color']);
 
         if (isset($req['name']) && $req['name']) {
             $q->where('name', 'LIKE', '%' . $req['name'] . '%');
@@ -41,7 +40,9 @@ class ProductController extends AdminController
         }
 
         if (isset($req['category']) && $req['category']) {
-            $q->where('category_id', $req['category']);
+            $q->whereHas('categories', function ($query) use ($req) {
+                $query->where('product_categories.id', $req['category']); 
+            });
         }
 
         if (isset($req['brand']) && $req['brand']) {
@@ -63,7 +64,6 @@ class ProductController extends AdminController
         }
 
         $list = $q->orderBy('id', 'desc')->paginate(10)->withQueryString();
-        
         return view('admin/product/index', [
             'list' => $list,
             'req' => $req,
@@ -91,7 +91,6 @@ class ProductController extends AdminController
 
         try {
             $model = new Product();
-            $model->category_id = $request->input('category_id');
             $model->brand_id = $request->input('brand_id');
             $model->name = $request->input('name');
             $model->slug = $request->input('slug');
@@ -106,11 +105,14 @@ class ProductController extends AdminController
             $model->created_by = 1;
             $model->updated_by = 1;
             if ($model->save()) {
-                
+                $categories = $request->input('category_id');
+                $model->categories()->sync($categories);
+
                 $path = sprintf(Config::get('constants.FILE_STORAGE_PATH.PRODUCT_IMAGE'), $model->id);
                 $upload = $this->uploadImage($path, $request);
                 $model->image = $upload;
                 $model->save();
+                
     
                 if ($model->save()) {
                     DB::commit();
@@ -191,7 +193,6 @@ class ProductController extends AdminController
         DB::beginTransaction();
 
         try {
-            $object->category_id = $request->input('category_id');
             $object->brand_id = $request->input('brand_id');
             $object->name = $request->input('name');
             $object->slug = $request->input('slug');
@@ -213,6 +214,10 @@ class ProductController extends AdminController
             }
 
             if ($object->save()) {
+                // Đồng bộ danh mục vào bảng trung gian
+                $categories = $request->input('category_id');
+                $object->categories()->sync($categories);
+
                 DB::commit();
                 $parsedUrl = parse_url($request->input('callback'));
                 $params = [];
@@ -257,10 +262,21 @@ class ProductController extends AdminController
             return response()->json(['status' => 'error', 'msg' => Config::get('constants.MESSAGE.CANNOT_DELETE_IN_USING')], 404);
         }
 
-        if ($object->delete()) {
-            return response()->json(['status' => 'success', 'msg' => Config::get('constants.MESSAGE.DELETE_SUCCEEDED')], 200);
+        DB::beginTransaction();
+
+        try {
+            // Xóa sản phẩm và các bản ghi liên quan trong bảng trung gian
+            $object->categories()->detach(); // Xóa các liên kết trong bảng trung gian
+            if ($object->delete()) {
+                DB::commit();
+                return response()->json(['status' => 'success', 'msg' => Config::get('constants.MESSAGE.DELETE_SUCCEEDED')], 200);
+            }
+            DB::rollBack();
+            return response()->json(['status' => 'error', 'msg' => Config::get('constants.MESSAGE.SOMETHING_ERROR')], 403);
+        } catch (Exception $e) {
+            DB::rollBack();
+            return response()->json(['status' => 'error', 'msg' => $e->getMessage()], 500);
         }
-        return response()->json(['status' => 'error', 'msg' => Config::get('constants.MESSAGE.SOMETHING_ERROR')], 403);
     }
 
     public function changeStatus(Request $request)
@@ -296,22 +312,20 @@ class ProductController extends AdminController
     private function validateStore($request)
     {
         $this->validate($request, [
-            'category_id' => 'required',
+            'category_id' => 'required|array',
+            'category_id.*' => 'exists:product_categories,id', // Sửa lại tên bảng
             'brand_id' => 'required',
             'name' => 'required|max:255',
             'slug' => 'required|max:255|unique:products',
-            'image.*' => 'required|image|mimes:jpg,jpeg,png|max:2048',
             'price' => 'required|numeric',
         ], [
             'category_id.required' => 'Chưa chọn danh mục',
+            'category_id.array' => 'Danh mục không hợp lệ',
+            'category_id.*.exists' => 'Danh mục không tồn tại',
             'brand_id.required' => 'Chưa chọn thương hiệu',
             'name.required' => 'Chưa nhập tên',
             'slug.required' => 'Chưa có slug',
             'slug.unique' => 'Slug đã tồn tại',
-            'image.required' => 'Chưa chọn ảnh',
-            'image.image' => 'Chỉ chấp nhận ảnh có định dạng jpg, jpeg, png',
-            'image.mimes' => 'Chỉ chấp nhận ảnh có định dạng jpg, jpeg, png',
-            'image.max' => 'Dung lượng ảnh không được quá 2MB',
             'price.required' => 'Chưa chọn đơn giá',
             'price.numeric' => 'Đơn giá phải là số',
         ]);
@@ -320,7 +334,8 @@ class ProductController extends AdminController
     private function validateUpdate($request, $id)
     {
         $this->validate($request, [
-            'category_id' => 'required',
+            'category_id' => 'required|array',
+            'category_id.*' => 'exists:product_categories,id',
             'brand_id' => 'required',
             'name' => 'required|max:255',
             'slug' => 'required|max:255|unique:products,slug,' . $id . ',id',
@@ -328,6 +343,7 @@ class ProductController extends AdminController
             'price' => 'required|numeric',
         ], [
             'category_id.required' => 'Chưa chọn danh mục',
+            'category_id.array' => 'Danh mục không hợp lệ',
             'brand_id.required' => 'Chưa chọn thương hiệu',
             'name.required' => 'Chưa nhập tên',
             'slug.required' => 'Chưa có slug',

@@ -73,13 +73,18 @@
                                     <label>Slug <span class="my-required">*</span></label>
                                     <input type="text" name="slug" value="{{ old('slug', $object->slug) }}" class="form-control" id="inputSlug" readonly>
                                 </div>
-
                                 <div class="form-group">
                                     <label>Chọn danh mục <span class="my-required">*</span></label>
-                                    <select class="form-control" name="category_id">
-                                        @foreach ($productCategories as $item)
-                                        <option value="{{$item->id}}" {{ $object->category_id == $item->id ? 'selected' : '' }}>{{$item->name}}</option>
-                                        @endforeach
+                                    <select class="form-control select2" name="category_id[]" multiple>
+                                        @if ($productCategories->isEmpty())
+                                            <option value="" disabled>Không có danh mục nào</option>
+                                        @else
+                                            @foreach ($productCategories as $item)
+                                            <option value="{{ $item->id }}" {{ $object->categories->contains('id', $item->id) ? 'selected' : '' }}>
+                                                {{ $item->name }}
+                                            </option>
+                                            @endforeach
+                                        @endif
                                     </select>
                                     @if ($errors->has('category_id'))
                                         <span style="color:red;">{{ $errors->first('category_id') }}</span>
@@ -230,6 +235,13 @@
     $('#inputName').focusout(function() {
         let slug = to_slug($('#inputName').val());
         $('#inputSlug').val(slug);
+    });
+    
+    $(document).ready(function() {
+        $('.select2').select2({
+            placeholder: 'Chọn danh mục',
+            allowClear: true
+        });
     });
 </script>
 @endsection

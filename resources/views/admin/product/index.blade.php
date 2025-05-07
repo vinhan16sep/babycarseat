@@ -115,7 +115,15 @@
                                                 </strong>
                                             </td>
                                             <td>{{ $item->price != 0 ? number_format($item->price) : 'Liên hệ' }}</td>
-                                            <td>{{ $item->categoryId->name }}</td>
+                                            <td>
+                                                @if ($item->categories->isNotEmpty())
+                                                    @foreach ($item->categories as $category)
+                                                        <span class="badge badge-primary">{{ $category->name }}</span>
+                                                    @endforeach
+                                                @else
+                                                    N/A
+                                                @endif
+                                            </td>
                                             <td>{{ $item->brand->name }}</td>
                                             <td>
                                                 @if ($item->is_highlight == 1)
