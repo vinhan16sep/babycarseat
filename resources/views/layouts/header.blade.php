@@ -46,7 +46,7 @@
         </div>
         <div class="col-xl-9 d-none d-xl-block">
             <nav class="box-navigation text-center">
-                <ul class="box-nav-ul d-flex align-items-center justify-content-center">
+                <ul class="box-nav-ul d-flex align-items-center">
                     <li class="menu-item {{ checkActiveMenu("") }}"><a href="{{ url('/') }}" class="item-link">Trang chủ</a></li>
                     <li class="menu-item {{ checkActiveMenu("san-pham") }}">
                         <a href="{{ route('product-list') }}" class="item-link">Baby Car Seat {!! !empty($categoriesMenu) ? '<i class="icon icon-arrow-down"></i>' : '' !!}</a>
