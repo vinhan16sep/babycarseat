@@ -1355,12 +1355,12 @@
                                 <ul class="sub-nav-menu">
                                     @foreach($categoriesMenu as $_item)
                                         <li>
-                                            <div href="#dropdown-menu-one-1" class="mb-menu-link sub-nav-link collapsed"
+                                            <div href="#dropdown-menu-one-1-{{$_item['id']}}" class="mb-menu-link sub-nav-link collapsed"
                                                  data-bs-toggle="collapse" aria-expanded="true"
-                                                 aria-controls="dropdown-menu-one-1">
+                                                 aria-controls="dropdown-menu-one-1-{{$_item['id']}}">
                                                 <a class="mb-menu-link sub-nav-link" href="{{ route("product-list", ['category_slug' => $_item['slug']]) }}">{{ $_item['name'] }}</a><span class="btn-open-sub"></span>
                                             </div>
-                                            <div id="dropdown-menu-one-1" class="collapse">
+                                            <div id="dropdown-menu-one-1-{{$_item['id']}}" class="collapse">
                                                 <ul class="sub-nav-menu">
                                                     @foreach($_item['products'] as $_i)
                                                         <li><a class="mb-menu-link sub-nav-link" href="{{ route('san-pham', ['category_slug' => $_item['slug'], 'slug' => $_i['slug']]) }}">{{ $_i['name'] }}</a></li>
