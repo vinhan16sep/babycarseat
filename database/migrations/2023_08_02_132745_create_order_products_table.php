@@ -13,6 +13,9 @@ class CreateOrderProductsTable extends Migration
      */
     public function up()
     {
+        if (Schema::hasTable('order_items')) {
+            return;
+        }
         Schema::create('order_items', function (Blueprint $table) {
 			$table->increments('id');
 			$table->integer('order_id')->unsigned();

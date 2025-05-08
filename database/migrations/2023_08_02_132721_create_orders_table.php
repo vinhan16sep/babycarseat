@@ -13,6 +13,9 @@ class CreateOrdersTable extends Migration
      */
     public function up()
     {
+        if (Schema::hasTable('orders')) {
+            return;
+        }
         Schema::create('orders', function (Blueprint $table) {
 			$table->increments('id');
 			$table->bigInteger('total_price')->default('0');

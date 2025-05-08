@@ -13,6 +13,9 @@ class CreateColorsTable extends Migration
      */
     public function up()
     {
+        if (Schema::hasTable('colors')) {
+            return;
+        }
         Schema::create('colors', function (Blueprint $table) {
             $table->id();
             $table->string('name');

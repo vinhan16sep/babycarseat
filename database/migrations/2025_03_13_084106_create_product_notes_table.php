@@ -13,6 +13,9 @@ class CreateProductNotesTable extends Migration
      */
     public function up()
     {
+        if (Schema::hasTable('product_notes')) {
+            return;
+        }
         Schema::create('product_notes', function (Blueprint $table) {
             $table->id();
 			$table->integer('product_id')->unsigned();

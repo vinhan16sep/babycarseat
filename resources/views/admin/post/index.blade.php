@@ -27,20 +27,28 @@
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th class="w-10">STT</th>
-                                        <th class="w-50">Tiêu đề</th>
-                                        <th class="w-20">Trạng thái</th>
-                                        <th class="w-20">Hành động</th>
+                                        <th class="w-5">STT</th>
+                                        <th class="w-25">Danh mục</th>
+                                        <th class="w-40">Tiêu đề</th>
+                                        <th class="w-5">Trạng thái</th>
+                                        <th class="w-10">Hiển thị trên menu</th>
+                                        <th class="w-15">Hành động</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ($list as $key => $item)
                                         <tr>
                                             <th scope="row">{{ $key + 1}}</th>
+                                            <td>{{ $item->category->display_name}}</td>
                                             <td>{{ $item->title}}</td>
                                             <td>
                                                 <span class="badge {{ $item->is_active == '1' ? 'badge-success' : 'badge-danger'}} unset-text-transform">
                                                     {{ $item->is_active == '1' ? 'Đang sử dụng' : 'Đã tắt'}}
+                                                </span>
+                                            </td>
+                                            <td>
+                                                <span class="badge {{ $item->menu_active == '1' ? 'badge-success' : 'badge-danger'}} unset-text-transform">
+                                                    {{ $item->menu_active == '1' ? 'CÓ' : 'KHÔNG'}}
                                                 </span>
                                             </td>
                                             <td class="color-primary">

@@ -6,30 +6,28 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateProductCategoriesMappingTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
-    public function up()
+    public function up(): void
     {
-        Schema::create('product_categories_mapping', function (Blueprint $table) {
-            $table->id();
-			$table->integer('product_id');
-			$table->integer('category_id');
-            $table->timestamps();
+        if (!Schema::hasTable('product_categories_mapping')) {
+            Schema::create('product_categories_mapping', function (Blueprint $table) {
+                $table->id();
+                $table->unsignedBigInteger('product_id'); // Đảm bảo kiểu dữ liệu khớp
+                $table->unsignedBigInteger('category_id');
+                $table->timestamps();
 
-            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
-            $table->foreign('category_id')->references('id')->on('product_categories')->onDelete('cascade');
-        });
+                // Thêm khóa ngoại
+                $table->foreign('product_id')
+                    ->references('id')->on('products')
+                    ->onDelete('cascade');
+
+                $table->foreign('category_id')
+                    ->references('id')->on('categories')
+                    ->onDelete('cascade');
+            });
+        }
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('product_categories_mapping');
     }

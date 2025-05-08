@@ -13,8 +13,12 @@ class CreatePostsTable extends Migration
      */
     public function up()
     {
+        if (Schema::hasTable('posts')) {
+            return;
+        }
         Schema::create('posts', function (Blueprint $table) {
 			$table->increments('id');
+            $table->unsignedBigInteger('category_id')->nullable();
             $table->string('title', 255);
             $table->text('slug');
             $table->tinyInteger('position');
@@ -23,6 +27,7 @@ class CreatePostsTable extends Migration
             $table->text('description')->nullable();
             $table->text('content')->nullable();
             $table->tinyInteger('is_active');
+            $table->tinyInteger('menu_active');
             $table->string('created_by', 100);
             $table->string('updated_by', 100);
             $table->timestamps();

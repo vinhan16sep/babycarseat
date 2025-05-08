@@ -29,6 +29,7 @@ use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\ProductFeatureController;
 use App\Http\Controllers\Admin\ProductNoteController;
 use App\Http\Controllers\Admin\FeedbackController;
+use App\Http\Controllers\Admin\PostCategoryController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -194,6 +195,16 @@ Route::group(['prefix' => 'br-admin', 'middleware' => 'auth'], function () {
             Route::put('update/{id}', [PostController::class, 'update'])->name('update-post');
             Route::get('delete-row', [PostController::class, 'delete'])->name('delete-post');
             Route::get('change-status', [PostController::class, 'changeStatus'])->name('change-post-status');
+        });
+
+        // Post Category
+        Route::group(['prefix' => 'post-category'], function () {
+            Route::get('/', [PostCategoryController::class, 'index'])->name('list-post-category');
+            Route::get('create', [PostCategoryController::class, 'create'])->name('create-post-category');
+            Route::post('store', [PostCategoryController::class, 'store'])->name('store-post-category');
+            Route::get('edit/{id}', [PostCategoryController::class, 'edit'])->name('edit-post-category');
+            Route::put('update/{id}', [PostCategoryController::class, 'update'])->name('update-post-category');
+            Route::get('delete-row', [PostCategoryController::class, 'delete'])->name('delete-post-category');
         });
 
         // Feature

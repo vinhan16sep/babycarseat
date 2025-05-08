@@ -13,6 +13,9 @@ class CreateFeedBackTable extends Migration
      */
     public function up()
     {
+        if (Schema::hasTable('feedback')) {
+            return;
+        }
         Schema::create('feedback', function (Blueprint $table) {
 			$table->increments('id');
             $table->text('image')->nullable();
