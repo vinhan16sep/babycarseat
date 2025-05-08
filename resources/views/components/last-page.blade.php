@@ -1,3 +1,52 @@
+<style>
+    .content-hau-mai a{
+        padding: 0;
+        width: auto;
+        padding-bottom: 10px;
+        background: transparent;
+    }
+    .content-hau-mai div.mt-auto:hover a{
+        color:#d21e50;
+    }
+    .content-hau-mai div.mt-auto{
+        padding: 15px 30px;
+        padding-bottom: 5px;
+        background: gray;
+        border: 1px solid gray;
+        margin-top: 20px;
+        border-radius: 6px;
+        color: #fff;
+        font-size: 20px;
+        width: 180px;
+        text-align: center;
+        color:#d21e50;
+    }
+    .content-hau-mai div.mt-auto:hover{
+        background: transparent;
+    }
+    .content-hau-mai a, .card-body.d-flex.flex-column a:hover{
+        position: relative;
+    }
+    .card-body.d-flex.flex-column div.mt-auto:hover a::before{
+        width: 100%;
+        left: 0;
+        right: auto;
+    }
+    .card-body.d-flex.flex-column a::before{
+        content: "";
+        width: 0;
+        height: 1px;
+        top: 80%;
+        position: absolute;
+        left: auto;
+        right: 0;
+        z-index: 1;
+        -webkit-transition: width 0.4s cubic-bezier(0.25, 0.8, 0.25, 1) 0s;
+        -o-transition: width 0.4s cubic-bezier(0.25, 0.8, 0.25, 1) 0s;
+        transition: width 0.4s cubic-bezier(0.25, 0.8, 0.25, 1) 0s;
+        background: #d21e50;
+    }
+</style>
 <!-- Testimonial -->
 <section class="flat-spacing pt-0 custom-say" style="{{ !empty($is_border) ? 'border-top: 1px solid #e9e9e9;' : '' }}">
     <div class="container box-hau-mai">
@@ -9,7 +58,9 @@
                         <h4>Chương trình <br>ghế an toàn babyro care</h4>
                         <p>Tại BABYRO, chúng tôi hiểu rằng an toàn của những hành khách nhỏ là ưu tiên hàng đầu. Vì vậy, khi mua sản phẩm của chúng tôi, bạn có thể tham gia Chương Trình Ghế An Toàn BABYRO và được thay thế miễn phí ghế ô tô đã gặp tai nạn bằng một ghế mới.</p>
                         <br>
-                        <a class="mt-auto" href="">Xem thêm</a>
+                        <div class="mt-auto">
+                            <a class="mt-auto" href="">Xem thêm</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -19,7 +70,9 @@
                         <h4>BẢO HÀNH <span>10</span> NĂM</h4>
                         <p>Bảo hành 10 năm để đáp ứng nhu cầu và mong đợi của khách hàng, chúng tôi cung cấp tùy chọn bảo hành mở rộng, kéo dài 10 năm và cho phép bạn sửa chữa hoặc thay thế miễn phí bộ phận bị hỏng của ghế ô tô.</p>
                         <br>
-                        <a class="mt-auto" href="">Xem thêm</a>
+                        <div class="mt-auto">
+                            <a class="mt-auto" href="">Xem thêm</a>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -2123,13 +2123,14 @@ a:focus, a:hover {
   margin-bottom: 15px;
 }
 .box-nav-ul .mega-menu {
-  padding-top: 32px;
-  padding-bottom: 36px;
+  padding-top: 35px;
+  padding-bottom: 30px;
   border: none;
   max-height: calc(100vh - 74px);
   overflow: auto;
   left: 0;
   right: 0;
+    background: rgb(255,255,255,0.8);
 }
 .box-nav-ul .mega-menu .card-product .card-product-wrapper {
   max-height: 290px;
@@ -8978,6 +8979,7 @@ input.style-line-bottom::placeholder {
 }
 .tf-product-info-list .tf-product-info-name .name {
   margin-bottom: 12px;
+    font-weight: bold;
 }
 .tf-product-info-list .tf-product-info-name > .sub {
   display: flex;

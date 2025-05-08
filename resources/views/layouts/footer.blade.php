@@ -35,7 +35,7 @@
                                 <div class="footer-menu" style="margin-bottom: 0">
                                     <div class="footer-col-block">
                                         <div class="footer-heading text-button footer-heading-mobile">
-                                            Out products
+                                            Sản phẩm Babyro
                                         </div>
                                         <div class="tf-collapse-content">
                                             <ul class="footer-menu-list">
@@ -57,6 +57,7 @@
                                 </div>
                             </div>
                             <div class="col-lg-4">
+                                <div class="footer-menu" style="margin-bottom: 0">
                                 <div class="footer-col-block">
                                     <div class="footer-heading text-button footer-heading-mobile">
                                         Babyro Hub
@@ -78,8 +79,10 @@
                                         </ul>
                                     </div>
                                 </div>
+                                </div>
                             </div>
                             <div class="col-lg-4">
+                                <div class="footer-menu" style="margin-bottom: 0">
                                 <div class="footer-col-block">
                                     <div class="footer-heading text-button footer-heading-mobile">
                                         Hỗ trợ
@@ -101,11 +104,12 @@
                                         </ul>
                                     </div>
                                 </div>
+                                </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-lg-12" style="display: flex;justify-content: right;">
-                                <ul class="tf-social-icon">
+                                <ul class="tf-social-icon" style="margin-top: 15px">
                                     <li><a href="#" class="social-facebook"><i class="icon icon-fb"></i></a></li>
                                     <li><a href="#" class="social-twiter"><i class="icon icon-x"></i></a></li>
                                     <li><a href="#" class="social-instagram"><i class="icon icon-instagram"></i></a></li>
@@ -1345,7 +1349,7 @@
                             <div href="#dropdown-menu-one" class="mb-menu-link sub-nav-link collapsed"
                                  data-bs-toggle="collapse" aria-expanded="true"
                                  aria-controls="dropdown-menu-one">
-                                <a href="{{ route('product-list') }}">Sản phẩm</a><span class="btn-open-sub"></span>
+                                <a href="{{ route('product-list') }}">Baby Car Seat</a><span class="btn-open-sub"></span>
                             </div>
                             <div id="dropdown-menu-one" class="collapse">
                                 <ul class="sub-nav-menu">
@@ -1355,7 +1359,7 @@
                                 </ul>
                             </div>
                         @else
-                            <a href="{{ route('product-list') }}" class="mb-menu-link">Sản phẩm</a>
+                            <a href="{{ route('product-list') }}" class="mb-menu-link">Baby Car Seat</a>
                         @endif
                     </li>
                     <li class="nav-mb-item">

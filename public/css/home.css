@@ -298,14 +298,17 @@ section.section-text > div > div{
     .mb-p-0{
         padding: 0;
     }
+    .section-text > div{
+        display: flex!important;
+    }
 }
 
 @media (max-width: 480px) {
     .section-text > div{
-        display: inline-block!important;
+        /*display: inline-block!important;*/
     }
     .section-text > div > div{
-        width: 50%;
+        /*width: 50%;*/
         text-align: center;
     }
 }

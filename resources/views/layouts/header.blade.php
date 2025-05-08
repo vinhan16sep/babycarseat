@@ -1,7 +1,35 @@
 @php
     list(,,$count) = getDataCart(0);
 @endphp
-
+<style>
+    .design .content img{
+        height: 200px;
+        object-fit: cover;
+        width: 100%;
+    }
+    .design .content h5{
+        font-size: 16px;
+        margin-top: 10px;
+        margin-bottom: 20px;
+    }
+    .desc h4{
+        font-weight: normal;
+    }
+    .desc h4:hover{
+        font-weight: bold;
+    }
+    .box-design{
+        position: relative;
+    }
+    .box-design .design{
+        position: relative;
+        top: 0;
+        display: none;
+    }
+    .box-design .design.active{
+        display: inline-block;
+    }
+</style>
     <!-- Header -->
 <header id="header" class="header-default header-fullwidth" style="box-shadow:0 1px 3px rgba(0, 0, 0, 0.1);">
     <div class="row wrapper-header align-items-center">
@@ -19,15 +47,42 @@
             <nav class="box-navigation text-center">
                 <ul class="box-nav-ul d-flex align-items-center justify-content-center">
                     <li class="menu-item {{ checkActiveMenu("") }}"><a href="{{ url('/') }}" class="item-link">Trang chủ</a></li>
-                    <li class="menu-item position-relative {{ checkActiveMenu("san-pham") }}">
-                        <a href="{{ route('product-list') }}" class="item-link">Sản phẩm {!! !empty($categoriesMenu) ? '<i class="icon icon-arrow-down"></i>' : '' !!}</a>
+                    <li class="menu-item {{ checkActiveMenu("san-pham") }}">
+                        <a href="{{ route('product-list') }}" class="item-link">Baby Car Seat {!! !empty($categoriesMenu) ? '<i class="icon icon-arrow-down"></i>' : '' !!}</a>
                         @if(!empty($categoriesMenu))
-                            <div class="sub-menu submenu-default">
-                                <ul class="menu-list">
-                                    @foreach($categoriesMenu as $_item)
-                                        <li><a href="{{ route("product-list", ['category_slug' => $_item['slug']]) }}" class="menu-link-text">{{ $_item['name'] }}</a></li>
-                                    @endforeach
-                                </ul>
+                            <div class="sub-menu mega-menu" style="border-radius: 0;">
+                                <div class="container">
+                                    <div class="wrapper-control-shop">
+                                        <div class="row">
+                                            <div class="col-xl-3">
+                                                <div class="desc">
+                                                    @foreach($categoriesMenu as $_item)
+                                                        <h4 style="font-size: 20px;" data-category="{{ $_item["id"] }}">
+                                                            <a href="{{ route("product-list", ['category_slug' => $_item['slug']]) }}">{{ $_item['name'] }}</a>
+                                                        </h4>
+                                                    @endforeach
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-9 box-design">
+                                                @foreach($categoriesMenu as $_item)
+                                                    <div class="design {{ $loop->index !== 0 ? '' : 'active' }} design-{{$_item['id']}}">
+                                                        <h4 style="font-size: 20px;">{{ $_item['name'] }}</h4>
+                                                        <div class="content">
+                                                            <div class="row">
+                                                                @foreach($_item['products'] as $_i)
+                                                                    <div class="col-md-3 col-sm-6">
+                                                                        <img src="{{ asset($_i['image']) }}" alt="">
+                                                                        <h5>{{ $_i['name'] }}</h5>
+                                                                    </div>
+                                                                @endforeach
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                @endforeach
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         @endif
                     </li>

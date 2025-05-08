@@ -143,7 +143,7 @@
         }
 
         .box-product-common__row > div:not(:first-child) {
-            margin-top: 80px;
+            /*margin-top: 80px;*/
         }
         .signature-contentblock{
             display: flex;
@@ -152,7 +152,7 @@
             flex-direction: row-reverse;
         }
         .signature-contentblock__image {
-            width: 55%;
+            width: 50%;
         }
         .signature-contentblock__html {
             width: 45%;
@@ -179,6 +179,9 @@
             margin: 0;
             padding: 0;
             font-size: 1rem;
+        }
+        .signature-contentblock__subtitle p {
+            text-align: justify;
         }
         .box-hau-mai{
             margin-bottom: 40px;
