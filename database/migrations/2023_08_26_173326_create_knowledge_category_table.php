@@ -13,6 +13,9 @@ class CreateKnowledgeCategoryTable extends Migration
      */
     public function up()
     {
+        if (Schema::hasTable('knowledge_category')) {
+            return;
+        }
         Schema::create('knowledge_category', function (Blueprint $table) {
             $table->id();
             $table->string('name', 255);

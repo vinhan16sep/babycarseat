@@ -4,6 +4,8 @@ namespace App\Providers;
 
 use App\Models\Information;
 use App\Models\ProductCategory;
+use App\Models\PostCategory;
+use App\Models\Post;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\View;
@@ -36,7 +38,61 @@ class AppServiceProvider extends ServiceProvider
         }
         View::share('contactInformations', $contactInformations);
 
-        $categories = ProductCategory::query()->get()->toArray();
+        $categories = ProductCategory::query()->with([
+            "products" => function($query) {
+                $query->latest()->take(4);
+            }
+        ])->get()->toArray();
         View::share('categoriesMenu', $categories);
+
+        // 1. Lấy toàn bộ danh mục (có cấp 1, 2, 3)
+        $categories = PostCategory::where('is_active', 1)
+            ->where('menu_active', 1)
+            ->get();
+
+        $allPosts = Post::where('menu_active', 1)
+            ->where('menu_active', 1)
+            ->get();
+
+        $menu = [];
+
+        $categoriesByParent = $categories->groupBy('parent_id');
+
+        foreach ($categoriesByParent[null] ?? [] as $lv1) {
+            $menu[$lv1->slug] = [
+                'id' => "post-" . $lv1->id,
+                'name' => $lv1->name,
+                'children' => [],
+            ];
+
+            foreach ($categoriesByParent[$lv1->id] ?? [] as $lv2) {
+                $posts = $allPosts->where('category_id', $lv2->id)
+                    ->map(function ($post) {
+                        return $post;
+                    })->values()->toArray();
+
+                $menu[$lv1->slug]['children'][$lv2->slug] = [
+                    'id' => "post-" . $lv2->id,
+                    'name' => $lv2->name,
+                    'posts' => $posts,
+                ];
+
+//                foreach ($categoriesByParent[$lv2->id] ?? [] as $lv3) {
+//                    $posts = $allPosts->where('category_id', $lv3->id)
+//                        ->map(function ($post) {
+//                            return $post;
+//                        })->values()->toArray();
+//
+//                    $menu[$lv1->slug]['children'][$lv2->slug]['children'][$lv3->slug] = [
+//                        'name' => $lv3->name,
+//                        'posts' => $posts,
+//                    ];
+//                }
+            }
+        }
+
+        View::share('mainMenu', $menu);
+
+
     }
 }

@@ -2130,7 +2130,7 @@ a:focus, a:hover {
   overflow: auto;
   left: 0;
   right: 0;
-    background: rgb(255,255,255,0.8);
+    background: rgb(240,240,240);
 }
 .box-nav-ul .mega-menu .card-product .card-product-wrapper {
   max-height: 290px;

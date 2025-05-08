@@ -140,16 +140,20 @@
 
                                 <div class="form-group{{ $errors->has('category_id') ? ' has-error' : '' }}">
                                     <label>Chọn danh mục <span class="my-required">*</span></label>
-                                    <select class="form-control w-30" name="category_id" value="{{ old('category_id') }}" id="selectType">
-                                        <option></option>
+                                    <select class="form-control select2" name="category_id[]" multiple>
                                         @foreach ($productCategories as $item)
-                                        <option value="{{$item->id}}" {{ old('category_id') == $item->id ? 'selected' : '' }}>{{$item->name}}</option>
+                                            <option value="{{ $item->id }}"
+                                                {{ collect(old('category_id'))->contains($item->id) ? 'selected' : '' }}>
+                                                {{ $item->name }}
+                                            </option>
                                         @endforeach
                                     </select>
                                     @if ($errors->has('category_id'))
-                                    <span style="color:red;">{{ $errors->first('category_id') }}</span>
+                                        <span style="color:red;">{{ $errors->first('category_id') }}</span>
                                     @endif
                                 </div>
+
+
 
                                 <div class="form-group{{ $errors->has('brand_id') ? ' has-error' : '' }}">
                                     <label>Chọn thương hiệu <span class="my-required">*</span></label>
@@ -369,6 +373,13 @@
     $('#inputName').focusout(function() {
         let slug = to_slug($('#inputName').val());
         $('#inputSlug').val(slug);
+    });
+
+    $(document).ready(function() {
+        $('.select2').select2({
+            placeholder: 'Chọn danh mục',
+            allowClear: true
+        });
     });
 </script>
 @endsection

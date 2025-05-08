@@ -13,6 +13,9 @@ class CreateBannersTable extends Migration
      */
     public function up()
     {
+        if (Schema::hasTable('banners')) {
+            return;
+        }
         Schema::create('banners', function (Blueprint $table) {
             $table->id();
             $table->string('title', 255);

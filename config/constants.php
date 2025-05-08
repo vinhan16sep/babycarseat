@@ -17,6 +17,7 @@ return [
         'HOME_BLOCK_IMAGE' => 'images/home-block/%s/',
         'HOME_BLOCK_ICON_IMAGE' => 'images/home-block/%s/icon/',
         'PRODUCT_FEATURE' => 'images/product/%s/feature/%s/',
+        'FEEDBACK_IMAGE' => 'images/feedback/%s/',
     ],
     'MESSAGE' => [
         'CREATE_SUCCEEDED' => 'Tạo dữ liệu thành công!',

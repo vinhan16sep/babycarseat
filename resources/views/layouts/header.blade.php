@@ -25,6 +25,7 @@
         position: relative;
         top: 0;
         display: none;
+        width: 100%;
     }
     .box-design .design.active{
         display: inline-block;
@@ -72,7 +73,7 @@
                                                                 @foreach($_item['products'] as $_i)
                                                                     <div class="col-md-3 col-sm-6">
                                                                         <img src="{{ asset($_i['image']) }}" alt="">
-                                                                        <h5>{{ $_i['name'] }}</h5>
+                                                                        <h5><a href="{{ route('san-pham', ['category_slug' => $_item['slug'], 'slug' => $_i['slug']]) }}">{{ $_i['name'] }}</a></h5>
                                                                     </div>
                                                                 @endforeach
                                                             </div>
@@ -86,8 +87,49 @@
                             </div>
                         @endif
                     </li>
-                    <li class="menu-item {{ checkActiveMenu("tin-tuc") }}"><a href="{{ route('news') }}" class="item-link">Blogs</a></li>
-                    <li class="menu-item {{ checkActiveMenu("kien-thuc") }}"><a href="{{ route('category-detail-knowledge') }}" class="item-link">Kiến thức</a></li>
+                    @foreach($mainMenu as $_name => $_menus)
+                        <li class="menu-item {{ checkActiveMenu(\Illuminate\Support\Str::Slug($_name)) }}">
+                            <a href="#" class="item-link">{{ $_name }} <i class="icon icon-arrow-down"></i></a>
+                            @if(!empty($_menus))
+                                <div class="sub-menu mega-menu" style="border-radius: 0;">
+                                    <div class="container">
+                                        <div class="wrapper-control-shop">
+                                            <div class="row">
+                                                <div class="col-xl-3">
+                                                    <div class="desc">
+                                                        @foreach($_menus['children'] as $_item)
+                                                            <h4 style="font-size: 20px;" data-category="{{ $_item["id"] }}">
+                                                                <a href="#">{{ $_item['name'] }}</a>
+                                                            </h4>
+                                                        @endforeach
+                                                    </div>
+                                                </div>
+                                                <div class="col-xl-9 box-design">
+                                                    @foreach($_menus['children'] as $_item)
+                                                        <div class="design {{ $loop->index !== 0 ? '' : 'active' }} design-{{$_item['id']}}">
+                                                            <h4 style="font-size: 20px;">{{ $_item['name'] }}</h4>
+                                                            <div class="content">
+                                                                <div class="row">
+                                                                    @foreach($_item['posts'] as $_i)
+                                                                        <div class="col-md-3 col-sm-6">
+                                                                            <img src="{{ asset($_i['image'] ?? 'images/CustomerSay1.png') }}" alt="">
+                                                                            <h5><a href="">{{ $_i['title'] }}</a></h5>
+                                                                        </div>
+                                                                    @endforeach
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    @endforeach
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endif
+                        </li>
+                    @endforeach
+{{--                    <li class="menu-item {{ checkActiveMenu("tin-tuc") }}"><a href="{{ route('news') }}" class="item-link">Blogs</a></li>--}}
+{{--                    <li class="menu-item {{ checkActiveMenu("kien-thuc") }}"><a href="{{ route('category-detail-knowledge') }}" class="item-link">Kiến thức</a></li>--}}
                     <li class="menu-item {{ checkActiveMenu("ve-chung-toi") }}"><a href="{{ route('about-show') }}" class="item-link">Về chúng tôi</a></li>
                     <li class="menu-item {{ checkActiveMenu("lien-he") }}"><a href="{{ route('contact') }}" class="item-link">Liên hệ</a></li>
                 </ul>

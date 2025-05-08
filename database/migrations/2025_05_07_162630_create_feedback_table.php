@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePostsTable extends Migration
+class CreateFeedBackTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,21 +13,16 @@ class CreatePostsTable extends Migration
      */
     public function up()
     {
-        if (Schema::hasTable('posts')) {
+        if (Schema::hasTable('feedback')) {
             return;
         }
-        Schema::create('posts', function (Blueprint $table) {
+        Schema::create('feedback', function (Blueprint $table) {
 			$table->increments('id');
-            $table->unsignedBigInteger('category_id')->nullable();
-            $table->string('title', 255);
-            $table->text('slug');
-            $table->tinyInteger('position');
-            $table->integer('sort')->default('0');
             $table->text('image')->nullable();
             $table->text('description')->nullable();
-            $table->text('content')->nullable();
+            $table->smallInteger('rate')->default(5);
+            $table->text('rate_by')->nullable();
             $table->tinyInteger('is_active');
-            $table->tinyInteger('menu_active');
             $table->string('created_by', 100);
             $table->string('updated_by', 100);
             $table->timestamps();
@@ -41,6 +36,6 @@ class CreatePostsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('posts');
+        Schema::dropIfExists('feedback');
     }
 }

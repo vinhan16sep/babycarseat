@@ -13,6 +13,9 @@ class CreateInformationsTable extends Migration
      */
     public function up()
     {
+        if (Schema::hasTable('informations')) {
+            return;
+        }
         Schema::create('informations', function (Blueprint $table) {
             $table->id();
             $table->string('type', 255);

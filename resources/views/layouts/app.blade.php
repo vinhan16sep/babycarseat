@@ -188,17 +188,15 @@
         $('input[data-type="number"]').trigger("blur");
     }
     $(document).ready(function () {
-        $('.mega-menu .desc h4').on('mouseenter', function () {
+        $('.menu-item > .mega-menu .desc h4').on('mouseenter', function () {
             const categoryId = $(this).data('category');
             $('.box-design .design').removeClass('active');
             $('.box-design .design.design-' + categoryId).addClass('active');
         });
 
         $('.menu-item .item-link').on('mouseenter', function () {
-            $('.mega-menu .desc h4:first').trigger('mouseenter');
+            $(this).parents(".menu-item").find('.mega-menu .desc h4:first').trigger('mouseenter');
         });
-
-        $('.mega-menu .desc h4:first').trigger('mouseenter');
     });
 </script>
 </body>

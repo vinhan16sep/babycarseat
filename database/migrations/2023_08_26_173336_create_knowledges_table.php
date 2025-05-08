@@ -13,6 +13,9 @@ class CreateKnowledgesTable extends Migration
      */
     public function up()
     {
+        if (Schema::hasTable('knowledges')) {
+            return;
+        }
         Schema::create('knowledges', function (Blueprint $table) {
 			$table->increments('id');
 			$table->integer('knowledge_category_id')->unsigned();

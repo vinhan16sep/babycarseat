@@ -28,6 +28,8 @@ use App\Http\Controllers\Admin\FeatureController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\ProductFeatureController;
 use App\Http\Controllers\Admin\ProductNoteController;
+use App\Http\Controllers\Admin\FeedbackController;
+use App\Http\Controllers\Admin\PostCategoryController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -195,6 +197,16 @@ Route::group(['prefix' => 'br-admin', 'middleware' => 'auth'], function () {
             Route::get('change-status', [PostController::class, 'changeStatus'])->name('change-post-status');
         });
 
+        // Post Category
+        Route::group(['prefix' => 'post-category'], function () {
+            Route::get('/', [PostCategoryController::class, 'index'])->name('list-post-category');
+            Route::get('create', [PostCategoryController::class, 'create'])->name('create-post-category');
+            Route::post('store', [PostCategoryController::class, 'store'])->name('store-post-category');
+            Route::get('edit/{id}', [PostCategoryController::class, 'edit'])->name('edit-post-category');
+            Route::put('update/{id}', [PostCategoryController::class, 'update'])->name('update-post-category');
+            Route::get('delete-row', [PostCategoryController::class, 'delete'])->name('delete-post-category');
+        });
+
         // Feature
         Route::group(['prefix' => 'feature'], function () {
             Route::get('/', [FeatureController::class, 'index'])->name('list-feature');
@@ -255,6 +267,17 @@ Route::group(['prefix' => 'br-admin', 'middleware' => 'auth'], function () {
             Route::put('update/{id}', [HomeBlockController::class, 'update'])->name('update-home-block');
             Route::get('delete-row', [HomeBlockController::class, 'delete'])->name('delete-home-block');
             Route::get('change-status', [HomeBlockController::class, 'changeStatus'])->name('change-home-block-status');
+        });
+
+        // feedback
+        Route::group(['prefix' => 'feedback'], function () {
+            Route::get('/', [FeedbackController::class, 'index'])->name('list-feedback');
+            Route::get('create', [FeedbackController::class, 'create'])->name('create-feedback');
+            Route::post('store', [FeedbackController::class, 'store'])->name('store-feedback');
+            Route::get('edit/{id}', [FeedbackController::class, 'edit'])->name('edit-feedback');
+            Route::put('update/{id}', [FeedbackController::class, 'update'])->name('update-feedback');
+            Route::get('delete-row', [FeedbackController::class, 'delete'])->name('delete-feedback');
+            Route::get('change-status', [FeedbackController::class, 'changeStatus'])->name('change-feedback-status');
         });
     });
 });

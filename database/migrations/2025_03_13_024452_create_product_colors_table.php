@@ -13,6 +13,9 @@ class CreateProductColorsTable extends Migration
      */
     public function up()
     {
+        if (Schema::hasTable('product_colors')) {
+            return;
+        }
         Schema::create('product_colors', function (Blueprint $table) {
             $table->id();
 			$table->integer('product_id')->unsigned();

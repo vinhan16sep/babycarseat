@@ -13,6 +13,9 @@ class AddTypeColumnIntoHomeBlocksTable extends Migration
      */
     public function up()
     {
+        if (Schema::hasColumn('home_blocks', 'short_description')) {
+            return;
+        }
         Schema::table('home_blocks', function (Blueprint $table) {
 			$table->text('short_description')->nullable(true);
 			$table->text('description')->nullable(true);

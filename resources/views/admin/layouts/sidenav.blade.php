@@ -3,7 +3,7 @@
     <div class="nano">
         <div class="nano-content">
             <ul>
-                <div class="logo"><a href="index.html">
+                <div class="logo"><a href="/">
                         <!-- <img src="images/logo.png" alt="" /> --><span>babycarseat</span></a></div>
                 <li class="label">Main</li>
                 <li><a class="sidebar-sub-toggle"><i class="ti-dashboard"></i> Dashboard </a></li>
@@ -34,7 +34,15 @@
                         <li><a href="{{ route('list-knowledge') }}">Kiến thức</a></li>
                     </ul>
                 </li>
-                <li><a href="{{ route('list-post') }}"><i class="ti-layout-list-post"></i>Bài viết lẻ</a></li>
+                <li><a class="sidebar-sub-toggle"><i class="ti-layout-list-post"></i> Bài viết <span
+                            class="sidebar-collapse-icon ti-angle-down"></span></a>
+                    <ul>
+                        <li><a href="{{ route('list-post-category') }}">Danh mục</a></li>
+                        <li><a href="{{ route('list-post') }}">Bài viết</a></li>
+                    </ul>
+                </li>
+                
+                <li><a href="{{ route('list-feedback') }}"><i class="ti-comment-alt"></i>Đánh giá khách hàng</a></li>
             </ul>
         </div>
     </div>

@@ -42,6 +42,9 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script> -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
+    
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
 </head>
 
 <body>
@@ -65,6 +68,9 @@
     <script src="{{ asset('admin/js/scripts.js') }}"></script>
     <!-- bootstrap -->
 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    
     <script src="{{ asset('admin/js/lib/calendar-2/moment.latest.min.js') }}"></script>
     <script src="{{ asset('admin/js/lib/calendar-2/pignose.calendar.min.js') }}"></script>
     <script src="{{ asset('admin/js/lib/calendar-2/pignose.init.js') }}"></script>

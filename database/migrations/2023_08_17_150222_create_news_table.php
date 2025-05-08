@@ -13,6 +13,9 @@ class CreateNewsTable extends Migration
      */
     public function up()
     {
+        if (Schema::hasTable('news')) {
+            return;
+        }
         Schema::create('news', function (Blueprint $table) {
 			$table->increments('id');
             $table->string('title', 255);
