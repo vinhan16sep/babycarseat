@@ -22,6 +22,8 @@ class CreatePostsCategoryTable extends Migration
             $table->string('slug', 191)->unique(); // Giảm độ dài của cột slug
             $table->unsignedBigInteger('parent_id')->nullable();
             $table->tinyInteger('level')->default(1);
+            $table->tinyInteger('menu_active')->default(1);
+            $table->tinyInteger('is_active')->default(1);
             $table->timestamps();
         });
     }

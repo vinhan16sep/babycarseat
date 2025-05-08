@@ -29,6 +29,7 @@ class PostController extends AdminController
     public function create() {
         $categories = PostCategory::with('children')
         ->orderBy('name')
+        ->where(["is_active" => 1])
         ->get();
         return view('admin/post/create', compact('categories'));
     }
@@ -69,6 +70,7 @@ class PostController extends AdminController
         }
 
         $categories = PostCategory::with('children')
+        ->where(["is_active" => 1])
         ->orderBy('name')
         ->get();
 

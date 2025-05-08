@@ -58,6 +58,20 @@
                                     @endif
                                 </div>
                                 
+                                <div class="form-group d-flex align-items-center">
+                                    <label style="margin-right: 10px;" class="css-control css-control-primary css-checkbox me-4 mb-0">
+                                        <input type="hidden" name="is_active" value="0">
+                                        <input type="checkbox" name="is_active" class="css-control-input" value="1" {{ old('is_active', 1) ? 'checked' : '' }}>
+                                        <span class="css-control-indicator"></span> Kích hoạt?
+                                    </label>
+
+                                    <label class="css-control css-control-primary css-checkbox mb-0">
+                                        <input type="hidden" name="menu_active" value="0">
+                                        <input type="checkbox" name="menu_active" class="css-control-input" value="1" {{ old('menu_active', 1) ? 'checked' : '' }}>
+                                        <span class="css-control-indicator"></span> Bài viết hiển thị trên menu?
+                                    </label>
+                                </div>
+
                                 <a type="button" href="{{ route('list-post-category') }}" class="btn btn-default btn-outline"><i class="ti-back-left icon-black"></i>&nbsp;&nbsp;Quay lại</a>
                                 <button type="submit" class="btn btn-primary"><i class="ti-save icon-white"></i>&nbsp;&nbsp;Lưu</button>
                             </form>
