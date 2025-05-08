@@ -14,6 +14,9 @@ class CreateProductsTable extends Migration
      */
 	public function up()
 	{
+		if (Schema::hasTable('products')) {
+			return;
+		}
 		Schema::create('products', function(Blueprint $table) {
 			$table->increments('id');
 			$table->integer('category_id')->unsigned();

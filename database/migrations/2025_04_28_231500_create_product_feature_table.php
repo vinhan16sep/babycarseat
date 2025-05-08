@@ -13,6 +13,9 @@ class CreateProductFeatureTable extends Migration
      */
     public function up()
     {
+        if (Schema::hasTable('product_feature')) {
+            return;
+        }
         Schema::create('product_feature', function (Blueprint $table) {
             $table->id();
 			$table->integer('product_id')->unsigned();

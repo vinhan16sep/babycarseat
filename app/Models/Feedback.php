@@ -5,30 +5,20 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Post extends Model
+class Feedback extends Model
 {
     use HasFactory;
 
-    protected $table = 'posts';
+    protected $table = 'feedback';
     public $timestamps = true;
 
     protected $fillable = [
-        'title',
-        'slug',
-        'category_id',
         'image',
-        'position',
-        'sort',
         'description',
-        'content',
+        'rate',
+        'rate_by',
         'is_active',
-        'menu_active',
         'created_by',
         'updated_by'
     ];
-
-    public function category()
-    {
-        return $this->belongsTo(PostCategory::class, 'category_id');
-    }
 }

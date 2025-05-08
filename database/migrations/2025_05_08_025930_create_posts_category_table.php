@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateNotesTable extends Migration
+class CreatePostsCategoryTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,15 @@ class CreateNotesTable extends Migration
      */
     public function up()
     {
-        if (Schema::hasTable('notes')) {
+        if (Schema::hasTable('post_category')) {
             return;
         }
-        Schema::create('notes', function (Blueprint $table) {
+        Schema::create('post_category', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('icon')->nullable();
+            $table->string('slug', 191)->unique(); // Giảm độ dài của cột slug
+            $table->unsignedBigInteger('parent_id')->nullable();
+            $table->tinyInteger('level')->default(1);
             $table->timestamps();
         });
     }
@@ -31,6 +33,6 @@ class CreateNotesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('notes');
+        Schema::dropIfExists('post_category');
     }
 }

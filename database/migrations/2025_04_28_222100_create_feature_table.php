@@ -13,6 +13,9 @@ class CreateFeatureTable extends Migration
      */
     public function up()
     {
+        if (Schema::hasTable('feature')) {
+            return;
+        }
         Schema::create('feature', function (Blueprint $table) {
 			$table->increments('id');
             $table->string('label', 255);

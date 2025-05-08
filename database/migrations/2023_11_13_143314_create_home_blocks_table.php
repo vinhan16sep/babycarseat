@@ -13,6 +13,9 @@ class CreateHomeBlocksTable extends Migration
      */
     public function up()
     {
+        if (Schema::hasTable('home_blocks')) {
+            return;
+        }
         Schema::create('home_blocks', function (Blueprint $table) {
             $table->id();
             $table->string('name', 255);

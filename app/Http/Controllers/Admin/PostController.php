@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Post;
+use App\Models\PostCategory;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
@@ -26,7 +27,10 @@ class PostController extends AdminController
     }
 
     public function create() {
-        return view('admin/post/create');
+        $categories = PostCategory::with('children')
+        ->orderBy('name')
+        ->get();
+        return view('admin/post/create', compact('categories'));
     }
 
     public function store(Request $request) {
@@ -35,13 +39,15 @@ class PostController extends AdminController
 
         try {
             $model = new Post();
+            $model->category_id = $request->input('category_id') ?? NULL;
             $model->title = $request->input('title');
             $model->slug = $request->input('slug');
             $model->position = $request->input('position');
-            $model->sort = $request->input('sort');
+            $model->sort = $request->input('sort') ?? 0;
             $model->description = $request->input('description');
             $model->content = $request->input('content');
             $model->is_active = $request->input('is_active');
+            $model->menu_active = $request->input('menu_active') ?? 0;
             $model->created_by = 1;
             $model->updated_by = 1;
             if ($model->save()) {
@@ -62,8 +68,13 @@ class PostController extends AdminController
             return redirect()->route('list-post')->with('error', Config::get('constants.MESSAGE.DATA_NOT_FOUND'));
         }
 
+        $categories = PostCategory::with('children')
+        ->orderBy('name')
+        ->get();
+
         return view('admin/post/edit', [
             'object' => $object,
+            'categories' => $categories,
             'callback' => url(URL::previous())
         ]);
     }
@@ -80,12 +91,14 @@ class PostController extends AdminController
 
         try {
             $object->title = $request->input('title');
+            $object->category_id = $request->input('category_id') ?? NULL;
             $object->slug = $request->input('slug');
             $object->position = $request->input('position');
-            $object->sort = $request->input('sort');
+            $object->sort = $request->input('sort') ?? 0;
             $object->description = $request->input('description');
             $object->content = $request->input('content');
             $object->is_active = $request->input('is_active');
+            $object->menu_active = $request->input('menu_active') ?? 0;
             $object->updated_by = 1;
 
             if ($object->save()) {
@@ -174,7 +187,7 @@ class PostController extends AdminController
     private function validateStore($request) {
         $this->validate($request, [
             'title' => 'required|max:255',
-            'slug' => 'required|max:255|unique:post',
+            'slug' => 'required|max:255|unique:posts',
             'position' => 'required'
         ], [
             'title.required' => 'Chưa nhập tiêu đề',
@@ -187,7 +200,7 @@ class PostController extends AdminController
     private function validateUpdate($request, $id) {
         $this->validate($request, [
             'title' => 'required|max:255',
-            'slug' => 'required|max:255|unique:post,slug,' . $id . ',id',
+            'slug' => 'required|max:255|unique:posts,slug,' . $id . ',id',
             'position' => 'required'
         ], [
             'title.required' => 'Chưa nhập tiêu đề',

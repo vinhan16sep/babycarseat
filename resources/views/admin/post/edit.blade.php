@@ -24,6 +24,22 @@
                                 @csrf
                                 @method('put')
 
+                                <div class="form-group{{ $errors->has('category_id') ? ' has-error' : '' }}">
+                                    <label>Danh mục</label>
+                                    <select name="category_id" class="form-control">
+                                        <option value="0">-- Không có danh mục --</option>
+                                        @foreach ($categories as $category)
+                                            <option value="{{ $category->id }}" {{ old('category_id', $object->category_id) == $category->id ? 'selected' : '' }}>
+                                                {{ $category->display_name }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+
+                                    @if ($errors->has('category_id'))
+                                        <span style="color:red;">{{ $errors->first('category_id') }}</span>
+                                    @endif
+                                </div>
+
                                 <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
                                     <label>Tiêu đề</label>
                                     <input type="text" name="title" value="{{ old('title', $object->title) }}" class="form-control" id="inputName" maxlength="255">
@@ -61,18 +77,17 @@
                                     <textarea name="content" class="form-control" id="txtareaContent">{{ old('content', $object->content) }}</textarea>
                                 </div>
 
-                                <input type="hidden" name="is_active" value="0">
-                                <div class="form-group{{ $errors->has('is_active') ? ' has-error' : '' }}">
-                                    <label class="css-control css-control-primary css-checkbox" for="">
-                                        <input type="checkbox" name="is_active" class="css-control-input" value="1"
-                                            @if (old('is_active', $object->is_active) == 1)
-                                                checked
-                                            @endif
-                                        >
+                                <div class="form-group d-flex align-items-center">
+                                     <label style="margin-right: 10px;" class="css-control css-control-primary css-checkbox me-4 mb-0">
+                                        <input type="hidden" name="is_active" value="0">
+                                        <input type="checkbox" name="is_active" class="css-control-input" value="1" @if (old('is_active', $object->is_active) == 1)checked  @endif >
                                         <span class="css-control-indicator"></span> Kích hoạt?
-                                        @if ($errors->has('is_active'))
-                                            <span style="color:red;">{{ $errors->first('is_active') }}</span>
-                                        @endif
+                                    </label>
+
+                                    <label class="css-control css-control-primary css-checkbox me-4 mb-0">
+                                        <input type="hidden" name="menu_active" value="0">
+                                        <input type="checkbox" name="menu_active" class="css-control-input" value="1" @if (old('menu_active', $object->menu_active) == 1)checked  @endif >
+                                        <span class="css-control-indicator"></span> Bài viết hiển thị trên menu?
                                     </label>
                                 </div>
 

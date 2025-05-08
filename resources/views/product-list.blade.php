@@ -266,25 +266,31 @@
                  data-space-lg="30" data-space-md="30" data-space="15" data-pagination="1" data-center="0" data-pagination-md="1"
                  data-pagination-lg="1">
                 <div class="swiper-wrapper">
-                    @foreach($products as $_product)
-                        <div class="swiper-slide">
-                            <div class="card-product wow fadeInUp" data-wow-delay="0s">
-                                <div class="card-product-wrapper">
-                                    <a href="{{ route('san-pham', ['category_slug' => $_product->categoryId->slug, 'slug' => $_product->slug]) }}" class="product-img">
-                                        <img class="lazyload img-product"
-                                             data-src="{{ getImage($_product->image) }}"
-                                             src="{{ getImage($_product->image) }}" alt="image-product">
-                                        <img class="lazyload img-hover" data-src="{{ getImage($_product->image) }}"
-                                             src="{{ getImage($_product->image) }}" alt="image-product">
-                                    </a>
-                                </div>
-                                <div class="card-product-info">
-                                    <p class="product-title">{{ $_product->name }}</p>
-                                    <p class="product-desc">{{ $_product->categoryId->name }}</p>
+                    @if(isset($products) && $products->isNotEmpty())
+                        @foreach($products as $_product)
+                            <div class="swiper-slide">
+                                <div class="card-product wow fadeInUp" data-wow-delay="0s">
+                                    <div class="card-product-wrapper">
+                                        @if ($_product->categories->isNotEmpty())
+                                            <a href="{{ route('san-pham', ['category_slug' => $_product->categories->first()->slug, 'slug' => $_product->slug]) }}" class="product-img">
+                                        @endif
+                                            <img class="lazyload img-product"
+                                                 data-src="{{ getImage($_product->image) }}"
+                                                 src="{{ getImage($_product->image) }}" alt="image-product">
+                                            <img class="lazyload img-hover" data-src="{{ getImage($_product->image) }}"
+                                                 src="{{ getImage($_product->image) }}" alt="image-product">
+                                        </a>
+                                    </div>
+                                    <div class="card-product-info">
+                                        <p class="product-title">{{ $_product->name }}</p>
+                                        <p class="product-desc">{{ $category->name }}</p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    @endforeach
+                        @endforeach
+                    @else
+                        <p>No products available.</p>
+                    @endif
                 </div>
                 <div class="sw-pagination-latest sw-dots type-circle justify-content-center"></div>
             </div>
@@ -294,33 +300,55 @@
     <section class="flat-spacing bg-css products">
         @foreach($products as $_product)
             <div class="product">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-7 content">
-                        <div>
-                            <a href="{{ route("san-pham", ['category_slug' => $_product->categoryId->slug, 'slug' => $_product->slug]) }}">
-                                <h4>{{ $_product->name }}</h4>
-                                <div class="desc">
-                                    {!! $_product->description !!}
-                                </div>
-                                <div class="price">
-                                    @if(!empty($_product->discount_value))
-                                        Giá gốc <span>{{ numberFormat($_product->price) }}</span> VNĐ | {{ numberFormat($_product->discount_value) }} VNĐ
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-7 content">
+                            <div>
+                                @if ($_product->categories->isNotEmpty())
+                                    @if ($category)
+                                        <a href="{{ route('san-pham', ['category_slug' => $category->slug, 'slug' => $_product->slug]) }}">
+                                            <h4>{{ $_product->name }}</h4>
+                                            <div class="desc">
+                                                {!! $_product->description !!}
+                                            </div>
+                                            <div class="price">
+                                                @if(!empty($_product->discount_value))
+                                                    Giá gốc <span>{{ numberFormat($_product->price) }}</span> VNĐ | {{ numberFormat($_product->discount_value) }} VNĐ
+                                                @else
+                                                    Giá {{ numberFormat($_product->price) }} VNĐ
+                                                @endif
+                                            </div>
+                                            <p class="product-desc">{{ $category->name }}</p>
+                                        </a>
                                     @else
-                                        Giá {{ numberFormat($_product->price) }} VNĐ
+                                        <h4>{{ $_product->name }}</h4>
+                                        <div class="desc">
+                                            {!! $_product->description !!}
+                                        </div>
+                                        <div class="price">
+                                            @if(!empty($_product->discount_value))
+                                                Giá gốc <span>{{ numberFormat($_product->price) }}</span> VNĐ | {{ numberFormat($_product->discount_value) }} VNĐ
+                                            @else
+                                                Giá {{ numberFormat($_product->price) }} VNĐ
+                                            @endif
+                                        </div>
+                                        <p class="product-desc">Không có danh mục</p>
                                     @endif
-                                </div>
-                            </a>
+                                @endif
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-md-5 img">
-                        <a href="{{ route("san-pham", ['category_slug' => $_product->categoryId->slug, 'slug' => $_product->slug]) }}">
-                            <img src="{{ asset("images/products/furniture/Hot-Selling1.png") }}" alt="">
-                        </a>
+                        <div class="col-md-5 img">
+                            @if ($_product->categories->isNotEmpty())
+                                @if ($category)
+                                    <a href="{{ route('san-pham', ['category_slug' => $category->slug, 'slug' => $_product->slug]) }}">
+                                @endif
+                                <img src="{{ asset('images/products/furniture/Hot-Selling1.png') }}" alt="">
+                            </a>
+                            @endif
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
         @endforeach
     </section>
     @include('components.last-page', ['is_not_show' => true, 'is_border' => true])
