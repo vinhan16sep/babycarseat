@@ -3,7 +3,7 @@
     <div class="nano">
         <div class="nano-content">
             <ul>
-                <div class="logo"><a href="index.html">
+                <div class="logo"><a href="/">
                         <!-- <img src="images/logo.png" alt="" /> --><span>babycarseat</span></a></div>
                 <li class="label">Main</li>
                 <li><a class="sidebar-sub-toggle"><i class="ti-dashboard"></i> Dashboard </a></li>
