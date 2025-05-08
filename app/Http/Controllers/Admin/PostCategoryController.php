@@ -27,6 +27,7 @@ class PostCategoryController extends AdminController
 
     public function create() {
         $categories = PostCategory::with('children')
+        ->where(["is_active" => 1])
         ->where('level', '<', 3)
         ->orderBy('name')
         ->get();
@@ -47,6 +48,8 @@ class PostCategoryController extends AdminController
             }
             $model->name = $request->input('name');
             $model->slug = $request->input('slug');
+            $model->menu_active = $request->input('menu_active') ?? 1;
+            $model->is_active = $request->input('is_active') ?? 1;
             if ($model->save()) {
                 DB::commit();
                 return redirect()->route('list-post-category')->with('success', Config::get('constants.MESSAGE.CREATE_SUCCEEDED'));
@@ -72,6 +75,7 @@ class PostCategoryController extends AdminController
         $categories = PostCategory::with('children')
         ->where('id', '!=', $id) // Loại trừ bản ghi hiện tại
         ->where('level', '<', 3) // Lấy danh mục cấp 1 và cấp 2
+        ->where(["is_active" => 1])
         ->orderBy('name')
         ->get();
 
@@ -100,6 +104,8 @@ class PostCategoryController extends AdminController
             }
             $object->name = $request->input('name');
             $object->slug = $request->input('slug');
+            $object->menu_active = $request->input('menu_active') ?? 1;
+            $object->is_active = $request->input('is_active') ?? 1;
 
             if ($object->save()) {
                 DB::commit();

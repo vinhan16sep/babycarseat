@@ -20,6 +20,8 @@ class PostCategory extends Model
         'slug',
         'parent_id',
         'level',
+        'menu_active',
+        'is_active',
         'created_by',
         'updated_by'
     ];

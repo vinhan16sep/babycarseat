@@ -283,7 +283,7 @@
                                     </div>
                                     <div class="card-product-info">
                                         <p class="product-title">{{ $_product->name }}</p>
-                                        <p class="product-desc">{{ $category->name }}</p>
+                                        <p class="product-desc">{{ $category->name ?? '' }}</p>
                                     </div>
                                 </div>
                             </div>
