@@ -66,6 +66,26 @@ class AppServiceProvider extends ServiceProvider
                     'children' => [],
                 ];
 
+                
+                // foreach ($categoriesByParent[$lv2->id] ?? [] as $lv3) {
+                //     // ✅ Lọc bài viết từ $allPosts — không query
+                //     $posts = $allPosts
+                //         ->where('post_category_id', $lv3->id)
+                //         ->take(6)
+                //         ->map(function ($post) {
+                //             return [
+                //                 'title' => $post->title,
+                //                 'link' => url('/post/' . $post->slug),
+                //             ];
+                //         })->values()->toArray();
+        
+                //     $menu[$lv1->slug]['children'][$lv2->slug]['children'][$lv3->slug] = [
+                //         'name' => $lv3->name,
+                //         'link' => '',
+                //         'posts' => $posts,
+                //     ];
+                // }
+
                 foreach ($categoriesByParent[$lv2->id] ?? [] as $lv3) {
                     $posts = $allPosts->where('category_id', $lv3->id)
                         ->map(function ($post) {
