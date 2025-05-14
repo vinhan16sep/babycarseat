@@ -44,14 +44,16 @@
     </section>
     <!-- /Slider -->
 
-    <section class="section-text">
-        <div>
-            <div>Bảo hành Vàng 10 năm</div>
-            <div>Đổi mới sau tai nạn</div>
-            <div>30 ngày dùng thử</div>
-            <div>Miễn phí Ship</div>
-        </div>
-    </section>
+    <marquee scrollamount="10" direction="right">
+        <section class="section-text">
+            <div class="marquee-text" style="display: block;">
+                <div>Bảo hành Vàng 10 năm</div>
+                <div>Đổi mới sau tai nạn</div>
+                <div>30 ngày dùng thử</div>
+                <div>Miễn phí Ship</div>
+            </div>
+        </section>
+    </marquee>
 
     <!-- Collection -->
 {{--    <section class="flat-spacing bg-css">--}}

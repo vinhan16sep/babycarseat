@@ -41,6 +41,7 @@
         .product h4{
             color: #d20046;
             text-transform: uppercase;
+            font-weight: bold;
         }
         .product .row{
             padding: 40px 0;
@@ -74,7 +75,7 @@
         .product .price{
             font-weight: bold;
         }
-        .product .price span{
+        .product .price span.sub-price{
             text-decoration: line-through;
         }
         .product .container {
@@ -214,51 +215,51 @@
 @section('content')
 
     <!-- Section product -->
-    <section class="flat-spacing">
-        <div class="container">
-            <div class="wrapper-control-shop">
-                <div class="row">
-                    <div class="col-xl-3">
-                        <div class="desc">
-                            <h4>Ghế ô tô cho bé</h4>
-                            <div class="content">
-                                Dù bạn đang chuẩn bị đón bé yêu từ
-                                viện về hay con bạn đang lớn lên từng
-                                ngày, chúng tôi đều có sản phẩm ghế
-                                ngồi ô tô phù hợp với từng giai đoạn
-                                phát triển của bé.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-9">
-                        <div class="design">
-                            <h4>Thiết kế độc bản Đức</h4>
-                            <div class="content">
-                                <div class="row">
-                                    <div class="col-md-3 col-sm-6">
-                                        <img src="{{ asset('images/CustomerSay1.png') }}" alt="">
-                                        <h5>Ghế cho bé Sơ sinh</h5>
-                                    </div>
-                                    <div class="col-md-3 col-sm-6">
-                                        <img src="{{ asset('images/CustomerSay1.png') }}" alt="">
-                                        <h5>Ghế cho bé Sơ sinh - 12 tuổi</h5>
-                                    </div>
-                                    <div class="col-md-3 col-sm-6">
-                                        <img src="{{ asset('images/CustomerSay1.png') }}" alt="">
-                                        <h5>Ghế cho bé 2 - 12 tuổi</h5>
-                                    </div>
-                                    <div class="col-md-3 col-sm-6">
-                                        <img src="{{ asset('images/CustomerSay1.png') }}" alt="">
-                                        <h5>Ghế cho bé 6 - 12 tuổi</h5>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+{{--    <section class="flat-spacing">--}}
+{{--        <div class="container">--}}
+{{--            <div class="wrapper-control-shop">--}}
+{{--                <div class="row">--}}
+{{--                    <div class="col-xl-3">--}}
+{{--                        <div class="desc">--}}
+{{--                            <h4>Ghế ô tô cho bé</h4>--}}
+{{--                            <div class="content">--}}
+{{--                                Dù bạn đang chuẩn bị đón bé yêu từ--}}
+{{--                                viện về hay con bạn đang lớn lên từng--}}
+{{--                                ngày, chúng tôi đều có sản phẩm ghế--}}
+{{--                                ngồi ô tô phù hợp với từng giai đoạn--}}
+{{--                                phát triển của bé.--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                    <div class="col-xl-9">--}}
+{{--                        <div class="design">--}}
+{{--                            <h4>Thiết kế độc bản Đức</h4>--}}
+{{--                            <div class="content">--}}
+{{--                                <div class="row">--}}
+{{--                                    <div class="col-md-3 col-sm-6">--}}
+{{--                                        <img src="{{ asset('images/CustomerSay1.png') }}" alt="">--}}
+{{--                                        <h5>Ghế cho bé Sơ sinh</h5>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="col-md-3 col-sm-6">--}}
+{{--                                        <img src="{{ asset('images/CustomerSay1.png') }}" alt="">--}}
+{{--                                        <h5>Ghế cho bé Sơ sinh - 12 tuổi</h5>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="col-md-3 col-sm-6">--}}
+{{--                                        <img src="{{ asset('images/CustomerSay1.png') }}" alt="">--}}
+{{--                                        <h5>Ghế cho bé 2 - 12 tuổi</h5>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="col-md-3 col-sm-6">--}}
+{{--                                        <img src="{{ asset('images/CustomerSay1.png') }}" alt="">--}}
+{{--                                        <h5>Ghế cho bé 6 - 12 tuổi</h5>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </section>--}}
 
     <section class="flat-spacing bg-css topick">
         <div class="container">
@@ -313,9 +314,9 @@
                                             </div>
                                             <div class="price">
                                                 @if(!empty($_product->discount_value))
-                                                    Giá gốc <span>{{ numberFormat($_product->price) }}</span> VNĐ | {{ numberFormat($_product->discount_value) }} VNĐ
+                                                    Giá gốc <span>{{ numberFormat($_product->price) }}</span> VNĐ | <span style="font-weight: bold;color: #d20046">{{ numberFormat($_product->discount_value) }} VNĐ</span>
                                                 @else
-                                                    Giá {{ numberFormat($_product->price) }} VNĐ
+                                                    Giá <span style="font-weight: bold;color: #d20046">{{ numberFormat($_product->price) }} VNĐ</span>
                                                 @endif
                                             </div>
                                             <p class="product-desc">{{ $category->name }}</p>

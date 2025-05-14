@@ -38,7 +38,11 @@ class AppServiceProvider extends ServiceProvider
         }
         View::share('contactInformations', $contactInformations);
 
-        $categories = ProductCategory::query()->get()->toArray();
+        $categories = ProductCategory::query()->with([
+            "products" => function($query) {
+                $query->latest()->take(4);
+            }
+        ])->get()->toArray();
         View::share('categoriesMenu', $categories);
 
         // 1. Lấy toàn bộ danh mục (có cấp 1, 2, 3)
@@ -56,14 +60,21 @@ class AppServiceProvider extends ServiceProvider
 
         foreach ($categoriesByParent[null] ?? [] as $lv1) {
             $menu[$lv1->slug] = [
+                'id' => "post-" . $lv1->id,
                 'name' => $lv1->name,
                 'children' => [],
             ];
 
             foreach ($categoriesByParent[$lv1->id] ?? [] as $lv2) {
+                $posts = $allPosts->where('category_id', $lv2->id)
+                    ->map(function ($post) {
+                        return $post;
+                    })->values()->toArray();
+
                 $menu[$lv1->slug]['children'][$lv2->slug] = [
+                    'id' => "post-" . $lv2->id,
                     'name' => $lv2->name,
-                    'children' => [],
+                    'posts' => $posts,
                 ];
 
                 
@@ -99,7 +110,9 @@ class AppServiceProvider extends ServiceProvider
                 }
             }
         }
+
         View::share('mainMenu', $menu);
+
 
     }
 }

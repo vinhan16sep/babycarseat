@@ -58,13 +58,13 @@ class PostCategoryController extends AdminController
             return redirect()->route('create-post-category')->with('error', Config::get('constants.MESSAGE.SOMETHING_ERROR'));
         // } catch (Exception $e) {
         //     DB::rollBack();
-        //     return redirect()->route('create-post-category')->with('error', $e->getMessage()); 
+        //     return redirect()->route('create-post-category')->with('error', $e->getMessage());
         // }
     }
 
     public function edit($id) {
 
-       
+
         $object = PostCategory::find($id);
 
         // If object not found
@@ -118,16 +118,16 @@ class PostCategoryController extends AdminController
             }
             DB::rollBack();
             return redirect()->route('edit-post-category', [
-                'id' => $id, 
+                'id' => $id,
                 'callback' => $request->input('callback')
             ])->with('error', Config::get('constants.MESSAGE.SOMETHING_ERROR'));
 
         } catch (Exception $e) {
             DB::rollBack();
             return redirect()->route('edit-post-category', [
-                'id' => $id, 
+                'id' => $id,
                 'callback' => $request->input('callback')
-            ])->with('error', $e->getMessage()); 
+            ])->with('error', $e->getMessage());
         }
     }
 
@@ -151,7 +151,7 @@ class PostCategoryController extends AdminController
             if ($this->isUsing($request['id'])) {
                 return response()->json(['status' => 'error','msg' => Config::get('constants.MESSAGE.CANNOT_DELETE_IN_USING')], 404);
             }
-        
+
             if ($object->delete()) {
                 return response()->json(['status' => 'success','msg' => Config::get('constants.MESSAGE.DELETE_SUCCEEDED')], 200);
             }
