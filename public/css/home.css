@@ -358,7 +358,7 @@ section.section-text > div{
 }
 .signature-contentblock{
     align-items: center;
-    height: 41vw;
+    min-height: 41vw;
 }
 .tf-slideshow.slider-default.slider-effect-fade .title-display{
     font-size: 2.6vw!important;
