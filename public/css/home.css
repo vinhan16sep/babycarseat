@@ -81,7 +81,7 @@
     background: rgba(134, 121, 121, 0.1);
 }
 .flat-spacing.bg-css .heading{
-    color: rgba(0,0,0,0.8)!important;
+    color: black!important;
     font-weight: bold;
 }
 .collection-position-2.style-7 .content{
@@ -230,6 +230,94 @@ section.section-text > div > div{
     width: 180px;
     text-align: center;
 }
+
+
+
+
+
+
+
+
+
+
+/*update*/
+.wrap-slider > .box-content{
+    display: table;
+    left: 0px;
+    padding: 25px;
+    box-shadow: 5px 5px 5px rgba(255, 255, 255, 0.1);
+    background: linear-gradient(to right, rgba(255, 255, 255, 0.5), rgba(0, 0, 0, 0.1));
+}
+.card-product{
+    background: #fff;
+}
+.card-product .card-product-info{
+    min-height: 138px;
+}
+.card-product-info .product-title{
+    color: rgb(228, 49, 49)!important;
+    font-family: 'KoHo';
+    font-weight: bold;
+    font-size: 28pt;
+    align-content: end;
+    line-height: 28pt;
+}
+.card-product-info .product-desc{
+    font-family: 'Inter';
+    font-size: 18pt;
+}
+.tf-slideshow img{
+    height: 800px;
+}
+section.section-text > div > div{
+    font-size: 25px;
+    gap: 70px;
+}
+section.section-text > div{
+    align-items: center;
+    height: 82px;
+}
+
+.section-one .swiper-slide{
+    margin-right: 45px!important;
+}
+
+.section-one{
+    padding-top: 0px;
+}
+
+.section-one .heading-section h3{
+    height: 170px;
+    margin-bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 53pt;
+}
+.tf-topbar .topbar-left{
+    gap:62px;
+}
+.sw-dots:not(.swiper-pagination-lock){
+    display: none;
+}
+.text-caption-1{
+    font-size: 16pt;
+}
+#header .box-nav-ul .item-link{
+    font-size: 25pt;
+    font-family: 'Inter';
+    font-weight: 500;
+}
+.topbar-left{
+    padding-right: 143px;
+}
+.header-default .box-nav-ul{
+    gap:62px;
+}
+
+
+
+
 @media (max-width: 900px) {
     .signature-contentblock__image {
         width: 40%;
