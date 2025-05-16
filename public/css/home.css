@@ -202,7 +202,7 @@ section.section-text > div > div{
     font-weight: bold;
 }
 .box-hau-mai{
-    margin-bottom: 40px;
+    margin-bottom: 20px;
 }
 .box-hau-mai h3{
     font-weight: bold;
@@ -210,7 +210,6 @@ section.section-text > div > div{
     margin-bottom: 40px;
 }
 .content-hau-mai{
-    padding: 20px;
     background: #fff;
     background: rgba(134, 121, 121, 0.1);
 }
@@ -234,9 +233,10 @@ section.section-text > div > div{
     margin-top: 20px;
     border-radius: 6px;
     color: #fff;
-    font-size: 20px;
+    font-size: 15px;
     width: 180px;
     text-align: center;
+    font-weight: 400;
 }
 
 
@@ -249,178 +249,394 @@ section.section-text > div > div{
 
 
 /*update*/
-.wrap-slider > .box-content{
+
+.wrap-slider > .box-content {
     display: table;
     left: 0px;
     padding: 35px 7.44vw;
     /*box-shadow: 5px 5px 5px rgba(255, 255, 255, 0.1);*/
     background: linear-gradient(to right, rgba(255, 255, 255, 0.5), rgba(0, 0, 0, 0.1));
 }
-.slider-effect-fade .swiper-slide.swiper-slide-active .fade-item{
+
+.slider-effect-fade .swiper-slide.swiper-slide-active .fade-item {
     margin-top: 1vw;
 }
-.tf-slideshow .wrap-slider{
-    height: calc(100vh - 13vw);
-}
-.card-product{
+
+.card-product {
     background: #fff;
 }
-.card-product .card-product-info{
-    min-height: 7.18vw;
+
+.card-product .card-product-info {
     padding-bottom: 16px;
     padding-top: 0;
 }
-.card-product-info .product-title{
-    color: rgb(228, 49, 49)!important;
+
+.card-product-info .product-title {
+    color: rgb(228, 49, 49) !important;
     font-family: 'KoHo';
     font-weight: bold;
-    font-size: 1.94vw;
     align-content: end;
-    line-height: 1.94vw;
 }
-.card-product-info .product-desc{
+
+.card-product-info .product-desc {
     font-family: 'Inter';
-    font-size: 1.24vw;
 }
-.tf-slideshow img{
-    height: calc(100vh - 13vw);
-}
-section.section-text > div > div{
-    font-size: 25px;
-    gap: 3.64vw;
-}
-section.section-text > div{
+
+section.section-text > div {
     align-items: center;
-    height: 4.27vw;
 }
 
-.section-one .swiper-slide{
-    margin-right: 45px!important;
-}
-
-.section-one{
+.section-one {
     padding-top: 0px;
 }
 
-.section-one .heading-section h3{
-    height: 8.85vw;
-    margin-bottom: 0;
+.section-one .heading-section h3 {
+    margin-bottom: 15px;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 3.68vw;
-}
-.tf-topbar .topbar-left{
-    gap:3.22vw;
-}
-.sw-dots:not(.swiper-pagination-lock){
-    display: none;
-}
-.text-caption-1{
-    font-size: 1.11vw;
-}
-#header .box-nav-ul .item-link{
-    font-size: 1.3vw;
-    font-family: 'Inter';
-    font-weight: 500;
-}
-.topbar-left{
-    padding-right: 7.44vw;
-}
-.header-default .box-nav-ul{
-    gap:3.22vw;
 }
 
-.box-first-content-flex div{
-    font-size: 2.08vw;
+.tf-topbar .topbar-left {
+
+}
+
+.sw-dots:not(.swiper-pagination-lock) {
+    display: none;
+}
+
+#header .box-nav-ul .item-link {
     font-family: 'Inter';
     font-weight: 500;
-    line-height: 2.08vw;
 }
-.box-first-content-flex img{
+
+.topbar-left {
+    padding-right: 7.44vw;
+}
+
+.header-default .box-nav-ul {
+
+}
+
+.box-first-content-flex div {
+    font-family: 'Inter';
+    font-weight: 500;
+}
+
+.box-first-content-flex img {
     width: 4.16vw;
 }
-.signature-contentblock__title{
-    font-size: 4.16vw;
+
+.signature-contentblock__title {
     font-family: 'Inter';
     font-weight: 600;
-    color:black;
+    color: black;
 }
-.signature-contentblock__subtitle{
-    font-size: 1.73vw;
+
+.signature-contentblock__subtitle {
     font-family: 'Inter';
     font-weight: 400;
-    color:black;
-    line-height: 2.36vw;
+    color: black;
 }
-.flat-spacing.section-two{
+
+.flat-spacing.section-two {
     padding: 0px;
 }
-.signature-contentblock{
+
+.signature-contentblock {
     align-items: center;
     min-height: 41vw;
 }
-.tf-slideshow.slider-default.slider-effect-fade .title-display{
-    font-size: 2.6vw!important;
-    line-height: 3.5vw;
-    margin-top: 0!important;
+
+.tf-slideshow.slider-default.slider-effect-fade .title-display {
+    margin-top: 0 !important;
 }
-.tf-slideshow.slider-default.slider-effect-fade .title-display span{
-    font-size: 2.08vw!important;
+
+.wrap-slider .content-slider {
+    gap: 0 !important
 }
-.wrap-slider .content-slider{
-    gap: 0!important
-}
-.slider-default .box-content{
+
+.slider-default .box-content {
     bottom: 4vw;
 }
-.home-padding{
-    padding: 0 7.44vw;
+
+.home-padding {
+    padding: 0 15px;
 }
-.content-hau-mai .css-text{
-    font-size: 2.43vw;
-    line-height: 2.91vw;
+
+.content-hau-mai .css-text {
     font-family: 'Inter';
     font-weight: 600;
-    color:black;
+    color: black;
+    font-size: 20px;
 }
-.box-hau-mai .title{
-    height: 7.81vw;
+.content-hau-mai > div > div.d-flex img{
+    height: 50px;
+}
+
+.box-hau-mai .title {
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-bottom: 15px;
+    margin-top: 10px;
 }
-.box-hau-mai h3{
-    font-size: 3.68vw;
+
+.box-hau-mai h3 {
     font-family: 'Inter';
     font-weight: 700;
-    color:black;
-    margin-bottom: 0px;
+    color: black;
+    margin-bottom: 0;
 }
-.content-hau-mai > div >div.d-flex{
+
+.content-hau-mai > div > div.d-flex {
     align-items: center;
 }
-.content-hau-mai > div >div.d-flex img{
-    height: calc(100% - 20px)!important;
+
+.content-hau-mai > div > div.d-flex img {
     margin-right: 10px;
 }
-.content-hau-mai > div > p{
-    font-size: 1.11vw;
+
+.content-hau-mai > div > p {
     font-family: 'Inter';
-    font-weight: 400;
-    color:black;
-    line-height: 1.73vw;
     margin-top: 15px;
 }
-.content-hau-mai a{
-    font-size: 1.11vw;
+
+.content-hau-mai a {
+    font-family: 'Inter';
     margin-top: 5px;
 }
-.home-padding hr{
+
+.home-padding hr {
     margin: 0;
 }
-.section-one .heading-section{
+
+.section-one .heading-section {
     margin-bottom: 0;
+}
+.custom-say {
+    padding: 20px 15px !important;
+}
+.section-one > .container-fluid{
+    padding: 0 15px;
+}
+.content-hau-mai div.mt-auto{
+    margin-top: 0!important;
+}
+@media (min-width: 900px) {
+    .content-hau-mai div.mt-auto{
+        margin-top: auto!important;
+    }
+    .content-hau-mai{
+        padding: 20px;
+    }
+    .wrap-slider > .box-content {
+        display: table;
+        left: 0px;
+        padding: 35px 7.44vw;
+        /*box-shadow: 5px 5px 5px rgba(255, 255, 255, 0.1);*/
+        background: linear-gradient(to right, rgba(255, 255, 255, 0.5), rgba(0, 0, 0, 0.1));
+    }
+
+    .slider-effect-fade .swiper-slide.swiper-slide-active .fade-item {
+        margin-top: 1vw;
+    }
+
+    .tf-slideshow .wrap-slider {
+        height: calc(100vh - 13vw);
+    }
+
+    .card-product {
+        background: #fff;
+    }
+
+    .card-product .card-product-info {
+        min-height: 7.18vw;
+        padding-bottom: 16px;
+        padding-top: 0;
+    }
+
+    .card-product-info .product-title {
+        color: rgb(228, 49, 49) !important;
+        font-family: 'KoHo';
+        font-weight: bold;
+        font-size: 1.94vw;
+        align-content: end;
+        line-height: 1.94vw;
+    }
+
+    .card-product-info .product-desc {
+        font-family: 'Inter';
+        font-size: 1.24vw;
+    }
+
+    .tf-slideshow img {
+        height: calc(100vh - 13vw);
+    }
+
+    section.section-text > div > div {
+        font-size: 25px;
+        gap: 3.64vw;
+    }
+
+    section.section-text > div {
+        align-items: center;
+        height: 4.27vw;
+    }
+
+    .section-one .swiper-slide {
+        margin-right: 45px !important;
+    }
+
+    .section-one {
+        padding-top: 0px;
+    }
+
+    .section-one .heading-section h3 {
+        height: 8.85vw;
+        margin-bottom: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 3.68vw;
+    }
+
+    .tf-topbar .topbar-left {
+        gap: 3.22vw;
+    }
+
+    .sw-dots:not(.swiper-pagination-lock) {
+        display: none;
+    }
+
+    .text-caption-1 {
+        font-size: 1.11vw;
+    }
+
+    #header .box-nav-ul .item-link {
+        font-size: 1.3vw;
+        font-family: 'Inter';
+        font-weight: 500;
+    }
+
+    .topbar-left {
+        padding-right: 7.44vw;
+    }
+
+    .header-default .box-nav-ul {
+        gap: 3.22vw;
+    }
+
+    .box-first-content-flex div {
+        font-size: 2.08vw;
+        font-family: 'Inter';
+        font-weight: 500;
+        line-height: 2.08vw;
+    }
+
+    .box-first-content-flex img {
+        width: 4.16vw;
+    }
+
+    .signature-contentblock__title {
+        font-size: 4.16vw;
+        font-family: 'Inter';
+        font-weight: 600;
+        color: black;
+    }
+
+    .signature-contentblock__subtitle {
+        font-size: 1.73vw;
+        font-family: 'Inter';
+        font-weight: 400;
+        color: black;
+        line-height: 2.36vw;
+    }
+
+    .flat-spacing.section-two {
+        padding: 0px;
+    }
+
+    .signature-contentblock {
+        align-items: center;
+        min-height: 41vw;
+    }
+
+    .tf-slideshow.slider-default.slider-effect-fade .title-display {
+        font-size: 2.6vw !important;
+        line-height: 3.5vw;
+        margin-top: 0 !important;
+    }
+
+    .tf-slideshow.slider-default.slider-effect-fade .title-display span {
+        font-size: 2.08vw !important;
+    }
+
+    .wrap-slider .content-slider {
+        gap: 0 !important
+    }
+
+    .slider-default .box-content {
+        bottom: 4vw;
+    }
+
+    .home-padding {
+        padding: 0 7.44vw;
+    }
+
+    .content-hau-mai .css-text {
+        font-size: 2.43vw;
+        line-height: 2.91vw;
+        font-family: 'Inter';
+        font-weight: 600;
+        color: black;
+    }
+
+    .box-hau-mai .title {
+        height: 7.81vw;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .box-hau-mai h3 {
+        font-size: 3.68vw;
+        font-family: 'Inter';
+        font-weight: 700;
+        color: black;
+        margin-bottom: 0px;
+    }
+
+    .content-hau-mai > div > div.d-flex {
+        align-items: center;
+    }
+
+    .content-hau-mai > div > div.d-flex img {
+        height: calc(100% - 20px) !important;
+        margin-right: 10px;
+    }
+
+    .content-hau-mai > div > p {
+        font-size: 1.11vw;
+        font-family: 'Inter';
+        font-weight: 400;
+        color: black;
+        line-height: 1.73vw;
+        margin-top: 15px;
+    }
+
+    .content-hau-mai a {
+        font-size: 1.11vw;
+        margin-top: 5px;
+    }
+
+    .home-padding hr {
+        margin: 0;
+    }
+
+    .section-one .heading-section {
+        margin-bottom: 0;
+    }
 }
 
 
@@ -437,7 +653,7 @@ section.section-text > div{
     .signature-contentblock__image {
         width: 50%;
     }
-    .signature-contentblock__html {
+    .signature-contentblock__html, .signature-contentblock__html.signature-contentblock--reverse {
         width: 50%;
         padding: 30px;
     }
@@ -453,9 +669,9 @@ section.section-text > div{
     .signature-contentblock__image {
         width: 100%;
     }
-    .signature-contentblock__html {
+    .signature-contentblock__html, .signature-contentblock__html.signature-contentblock--reverse {
         width: 100%;
-        padding: 15px;
+        padding: 15px!important;
         background: rgba(134, 121, 121, 0.1);
     }
     .signature-contentblock__title {
@@ -474,10 +690,10 @@ section.section-text > div{
     }
 
     .flat-spacing-8, .flat-spacing, .flat-spacing-10{
-        padding: 20px 0px!important;
+        padding: 35px 0px!important;
     }
     .custom-say{
-        padding: 20px 10px!important;
+        padding: 20px 15px!important;
     }
     .blog{
         padding: 20px 0px!important;
