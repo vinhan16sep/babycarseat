@@ -89,7 +89,7 @@
                     </li>
                     @foreach($mainMenu as $_name => $_menus)
                         <li class="menu-item {{ checkActiveMenu(\Illuminate\Support\Str::Slug($_name)) }}">
-                            <a href="#" class="item-link">{{ $_name }} <i class="icon icon-arrow-down"></i></a>
+                            <a href="#" class="item-link">{{ $_menus['name'] }} <i class="icon icon-arrow-down"></i></a>
                             @if(!empty($_menus))
                                 <div class="sub-menu mega-menu" style="border-radius: 0;">
                                     <div class="container">
