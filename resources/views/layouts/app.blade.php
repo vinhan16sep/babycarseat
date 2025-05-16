@@ -86,7 +86,7 @@
 
     <!-- Top Bar-->
     <div class="tf-topbar bg-main">
-        <div class="container">
+        <div class="container-fluid">
             <div class="tf-topbar_wrap d-flex align-items-center justify-content-center justify-content-xl-between">
 
                 <ul class="topbar-left">

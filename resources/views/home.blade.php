@@ -44,9 +44,9 @@
     </section>
     <!-- /Slider -->
 
-    <marquee scrollamount="10" direction="right">
+    <marquee scrollamount="4" direction="right">
         <section class="section-text">
-            <div class="marquee-text" style="display: block;">
+            <div class="marquee-text">
                 <div>Bảo hành Vàng 10 năm</div>
                 <div>Đổi mới sau tai nạn</div>
                 <div>30 ngày dùng thử</div>
@@ -120,8 +120,8 @@
     <!-- /Collection -->
 
     <!-- Top picks -->
-    <section class="flat-spacing bg-css topick">
-            <div class="container">
+    <section class="flat-spacing bg-css topick section-one">
+            <div class="container-fluid">
             <div class="heading-section text-center wow fadeInUp">
                 <h3 class="heading">Hot Selling Babyro</h3>
 {{--                <p class="subheading text-secondary">Browse our Top Trending: the hottest picks loved by all. </p>--}}
@@ -160,24 +160,24 @@
     <!-- /Top picks -->
 
     <section class="blog">
-        <div class="container">
-            <div class="row">
-                @foreach($upper as $_item)
-                    <div class="col-md-3">
-                        <div class="blog-item card h-100 d-flex flex-column">
-                            <div class="card-body d-flex flex-column">
-                                <img src="{{ getImage($_item->icon) }}" alt="">
-                                <p class="title">{{ $_item->name }}</p>
-                                <p class="desc">{{ $_item->short_description }}</p>
-                            </div>
-                        </div>
-                    </div>
-                @endforeach
-            </div>
-        </div>
+{{--        <div class="container">--}}
+{{--            <div class="row">--}}
+{{--                @foreach($upper as $_item)--}}
+{{--                    <div class="col-md-3">--}}
+{{--                        <div class="blog-item card h-100 d-flex flex-column">--}}
+{{--                            <div class="card-body d-flex flex-column">--}}
+{{--                                <img src="{{ getImage($_item->icon) }}" alt="">--}}
+{{--                                <p class="title">{{ $_item->name }}</p>--}}
+{{--                                <p class="desc">{{ $_item->short_description }}</p>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                @endforeach--}}
+{{--            </div>--}}
+{{--        </div>--}}
 
-        <section class="flat-spacing" style="padding-top: 30px">
-            <div class="container mb-p-0">
+        <section class="flat-spacing section-two" style="padding-top: 30px">
+            <div class="container-fluid mb-p-0">
                 <div class="flat-sw-navigation box-product-common__row wow fadeInUp" data-wow-delay="0.1s">
                     @foreach($upper as $_item)
                         <div class="product-common__row">
@@ -211,7 +211,7 @@
 
 
     <!-- Iconbox -->
-    <section class="flat-spacing line-top-container">
+    <section class="flat-spacing section-three line-top-container">
         <div class="container">
             <div dir="ltr" class="swiper tf-sw-iconbox" data-preview="4" data-tablet="3" data-mobile-sm="2"
                  data-mobile="1" data-space-lg="30" data-space-md="30" data-space="15" data-pagination="1"
@@ -236,7 +236,7 @@
     <!-- /Iconbox -->
 
     <!-- Banner discover -->
-    <section class="flat-spacing pt-0">
+    <section class="flat-spacing section-four pt-0">
         <div class="container">
             <div class="banner-cls-discover hover-img">
                 <a href="#" class="img-style">
