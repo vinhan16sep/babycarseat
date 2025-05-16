@@ -18054,3 +18054,16 @@ ul.list-text.type-number {
 .tf-toolbar-bottom{
     display: none;
 }
+
+/*update*/
+.slider-padding, .header-fullwidth{
+    padding-left: 143px;
+    padding-right: 143px
+}
+.header-default .wrapper-header{
+    min-height: 90px;
+}
+.tf-topbar {
+    padding: 17px 0px;
+    height: 60px;
+}
