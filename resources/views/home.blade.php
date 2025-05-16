@@ -159,7 +159,7 @@
     </section>
     <!-- /Top picks -->
 
-    <section class="blog">
+{{--    <section class="blog">--}}
 {{--        <div class="container">--}}
 {{--            <div class="row">--}}
 {{--                @foreach($upper as $_item)--}}
@@ -176,12 +176,13 @@
 {{--            </div>--}}
 {{--        </div>--}}
 
-        <section class="flat-spacing section-two" style="padding-top: 30px">
-            <div class="container-fluid mb-p-0">
+        <section class="flat-spacing section-two" style="padding-top: 0px">
+            <div class="mb-p-0">
                 <div class="flat-sw-navigation box-product-common__row wow fadeInUp" data-wow-delay="0.1s">
                     @foreach($upper as $_item)
+                        <div class="container-fluid home-padding">
                         <div class="product-common__row">
-                            <div class="signature-contentblock {{ $loop->index%2 == 0 ? '' : 'signature-contentblock--reverse' }}">
+                            <div class="signature-contentblock {{ $loop->index%2 == 0 ? 'signature-contentblock--reverse' : '' }}">
                                 <div class="signature-contentblock__image">
                                     <img class="product-marketing__img" src="{{ getImage($_item->image) }}" alt="">
                                 </div>
@@ -201,11 +202,15 @@
                                 </div>
                             </div>
                         </div>
+                        </div>
                     @endforeach
                 </div>
             </div>
         </section>
-    </section>
+{{--    </section>--}}
+    <div class="home-padding">
+        <hr>
+    </div>
 
     @include('components.last-page')
 
