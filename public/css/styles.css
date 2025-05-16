@@ -18057,13 +18057,13 @@ ul.list-text.type-number {
 
 /*update*/
 .slider-padding, .header-fullwidth{
-    padding-left: 143px;
-    padding-right: 143px
+    padding-left: 7.44vw;
+    padding-right: 7.44vw
 }
 .header-default .wrapper-header{
-    min-height: 90px;
+    min-height: 4.68vw;
 }
 .tf-topbar {
-    padding: 17px 0px;
-    height: 60px;
+    min-height: 3.12vw;
+    align-content: center;
 }
