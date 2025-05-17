@@ -423,6 +423,18 @@ section.section-text > div {
 .content-hau-mai div.mt-auto{
     margin-top: 0!important;
 }
+.box-custom-say{
+    padding: 40px;
+}
+.box-custom-say .sw-dots{
+    display: none;
+}
+.box-custom-say h3{
+    font-family: 'Inter';
+    font-weight: 700;
+    color: black;
+    margin-bottom: 0;
+}
 @media (min-width: 900px) {
     .content-hau-mai div.mt-auto{
         margin-top: auto!important;
