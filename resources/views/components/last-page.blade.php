@@ -93,7 +93,7 @@
         </div>
     </div>
 </section>
-<section class="flat-spacing pt-0 home-padding" style="background: rgba(134, 121, 121, 0.1);padding: 0!important" style="{{ !empty($is_border) ? 'border-top: 1px solid #e9e9e9;' : '' }}">
+<section class="pt-0 home-padding" style="background: rgba(134, 121, 121, 0.1);" style="{{ !empty($is_border) ? 'border-top: 1px solid #e9e9e9;' : '' }}">
     @if(empty($is_not_show) && $feedback)
         <div class="box-custom-say">
             <div class="heading-section text-center wow fadeInUp">
