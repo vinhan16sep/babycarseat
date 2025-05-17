@@ -216,8 +216,8 @@
 
 
     <!-- Iconbox -->
-    <section class="flat-spacing section-three line-top-container">
-        <div class="container">
+    <section class="flat-spacing section-three line-top-container home-padding">
+        <div class="container-fluid">
             <div dir="ltr" class="swiper tf-sw-iconbox" data-preview="4" data-tablet="3" data-mobile-sm="2"
                  data-mobile="1" data-space-lg="30" data-space-md="30" data-space="15" data-pagination="1"
                  data-pagination-sm="2" data-pagination-md="3" data-pagination-lg="4">
@@ -228,7 +228,7 @@
                                 <div class="icon-box"><img style="width: 50px;height: 50px;object-fit: contain" src="{{ getImage($_item->icon) }}" alt=""></div>
                                 <div class="content text-center">
                                     <h6>{{ $_item->name }}</h6>
-                                    <p class="text-secondary">{{ $_item->short_description }}</p>
+                                    <div class="text-secondary">{{ $_item->short_description }}</div>
                                 </div>
                             </div>
                         </div>
@@ -241,8 +241,8 @@
     <!-- /Iconbox -->
 
     <!-- Banner discover -->
-    <section class="flat-spacing section-four pt-0">
-        <div class="container">
+    <section class="flat-spacing section-four pt-0 home-padding">
+        <div class="container-fluid">
             <div class="banner-cls-discover hover-img">
                 <a href="#" class="img-style">
                     <img class="lazyload" data-src="images/banner footer.png"
