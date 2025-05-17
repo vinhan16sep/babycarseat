@@ -155,11 +155,11 @@ section.section-text > div > div{
     display: flex;
     flex-direction: column;
     /*justify-content: center;*/
-    padding: 100px;
+    padding: 70px;
     padding-right: 0;
 }
 .signature-contentblock--reverse .signature-contentblock__html{
-    padding-right: 100px;
+    padding-right: 70px;
     padding-left: 0;
 }
 .product-marketing__img {
@@ -668,7 +668,7 @@ footer{
     }
 
     .signature-contentblock__title {
-        font-size: 4.16vw;
+        font-size: 3.2vw;
         font-family: 'Inter';
         font-weight: 600;
         color: black;
