@@ -415,7 +415,7 @@ section.section-text > div {
     margin-bottom: 0;
 }
 .custom-say {
-    padding: 20px 15px !important;
+    /*padding: 20px 15px !important;*/
 }
 .section-one > .container-fluid{
     padding: 0 15px;

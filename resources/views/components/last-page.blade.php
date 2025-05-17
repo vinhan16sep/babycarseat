@@ -92,9 +92,10 @@
             </div>
         </div>
     </div>
-
+</section>
+<section class="flat-spacing pt-0 custom-say home-padding" style="background: rgba(134, 121, 121, 0.1)" style="{{ !empty($is_border) ? 'border-top: 1px solid #e9e9e9;' : '' }}">
     @if(empty($is_not_show) && $feedback)
-        <div class="container">
+        <div class="">
             <div class="heading-section text-center wow fadeInUp">
                 <h3 class="heading">Công nghệ trọn vẹn yêu thương!</h3>
                 {{--                <p class="subheading">Our customers adore our products, and we constantly aim to delight them.</p>--}}
