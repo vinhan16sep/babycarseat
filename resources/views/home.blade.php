@@ -27,7 +27,7 @@
                                     </div>
                                     <div class="fade-item fade-item-3 box-btn-slider">
                                         <a href="{{ $_item->link }}" class="tf-btn btn-fill btn-white"><span
-                                                class="text">Chi tiết</span></a>
+                                                class="text">Shop collection</span></a>
                                     </div>
                                 </div>
                             </div>
@@ -223,7 +223,7 @@
                     @foreach($lower as $_item)
                         <div class="swiper-slide">
                             <div class="tf-icon-box">
-                                <div class="icon-box"><img style="width: 50px;height: 50px;object-fit: contain" src="{{ getImage($_item->icon) }}" alt=""></div>
+                                <div class="icon-box"><img style="object-fit: contain" src="{{ getImage($_item->icon) }}" alt=""></div>
                                 <div class="content text-center">
                                     <h6>{{ $_item->name }}</h6>
                                     <div class="text-secondary">{{ $_item->short_description }}</div>

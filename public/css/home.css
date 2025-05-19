@@ -12,9 +12,9 @@
     text-align: center;
 }
 .card-product-info .product-title{
-    color: #3c3c8c;
+    color: #C31E46;
     font-weight: bold;
-    margin-bottom: 5px;
+    margin-top: -3px;
 }
 .card-product-info a.title{
     background-color: #3c3c8c;
@@ -124,7 +124,7 @@ section.section-text > div{
     justify-content: center;
 }
 section.section-text > div > div{
-    padding: 10px 15px;
+    padding: 25px 35px;
     color: #d20046;
     font-weight: bold;
     display: inline-block;
@@ -212,7 +212,9 @@ section.section-text > div > div{
 }
 .content-hau-mai{
     background: #fff;
-    background: rgba(134, 121, 121, 0.1);
+    background: #F1F2F3;
+    border: 0;
+    border-radius: 17px;
 }
 .content-hau-mai h4{
     text-transform: uppercase;
@@ -275,7 +277,7 @@ body *, html *, *{
 }
 
 .card-product-info .product-title {
-    color: rgb(228, 49, 49) !important;
+    color: #C31E46!important;
     font-family: 'KoHo';
     font-weight: bold;
     align-content: end;
@@ -403,7 +405,7 @@ section.section-text > div {
 
 .content-hau-mai > div > p {
     font-family: 'Inter';
-    margin-top: 15px;
+    margin-top: 25px;
 }
 
 .content-hau-mai a {
@@ -442,7 +444,7 @@ section.section-text > div {
 
 footer .footer-body{
     padding: 50px 0;
-    padding-top: 70px;
+    padding-top: 90px;
 }
 footer .footer-wrap{
     border-top: 0;
@@ -511,22 +513,26 @@ footer{
     white-space: pre-line;
 }
 @media (min-width: 900px) {
+    footer p, footer .footer-menu .footer-menu_item{
+        color:black;
+    }
     .flat-spacing.topick{
         padding-bottom: 70px;
     }
     .footer .footer-heading{
-        font-size: 1.5vw;
+        font-size: 1.4vw;
         line-height: 2.5vw;
         color: #d21e50;
         margin-bottom: 15px;
+        font-weight: 600;
     }
     footer .text-caption-1, footer .footer-info li{
-        font-size: 1.1vw;
+        font-size: 1vw;
         line-height: 2vw;
     }
     footer .footer-bottom p{
         font-family: 'Inter';
-        font-size: 1.52vw;
+        font-size: 1.22vw;
         line-height: 2.3vw;
     }
     .box-custom-say{
@@ -549,8 +555,9 @@ footer{
         font-family: 'Inter'!important;
         font-size: 1.1vw!important;
         background: transparent!important;
-        line-height: 1.7vw;
+        line-height: 1.5vw;
         font-weight: 300;
+        color: black;
     }
 
     .section-three h6{
@@ -560,8 +567,9 @@ footer{
     .section-three .text-secondary{
         font-family: 'Inter';
         font-size: 1.04vw;
-        line-height: 1.24vw;
+        line-height: 1vw;
         white-space: break-spaces;
+        color:black!important;
     }
 
     .box-custom-say .text-title{
@@ -570,7 +578,7 @@ footer{
         font-weight: 400;
     }
     .testimonial-item .box-author{
-        margin-top: 20px;
+        margin-top: 60px;
     }
     .section-three > .container-fluid{
         padding: 70px 0;
@@ -608,17 +616,20 @@ footer{
     }
 
     .card-product-info .product-title {
-        color: rgb(228, 49, 49) !important;
+        color: #C31E46!important;
         font-family: 'KoHo';
         font-weight: bold;
         font-size: 1.54vw;
         align-content: end;
         line-height: 1.94vw;
+        text-transform: uppercase;
+        padding: 0 10px;
     }
 
     .card-product-info .product-desc {
         font-family: 'Inter';
-        font-size: 1.24vw;
+        font-size: 1vw;
+        font-weight: 300;
     }
 
     .tf-slideshow img {
@@ -626,13 +637,15 @@ footer{
     }
 
     section.section-text > div > div {
-        font-size: 25px;
+        font-size: 1.5vw;
         gap: 3.64vw;
+        font-weight: 500;
+        font-family: 'Inter';
     }
 
     section.section-text > div {
         align-items: center;
-        height: 4vw;
+        height: 4.5vw;
     }
 
     .section-one .swiper-slide {
@@ -773,7 +786,7 @@ footer{
         font-weight: 400;
         color: black;
         line-height: 1.3vw;
-        margin-top: 15px;
+        margin-top: 25px;
     }
 
     .content-hau-mai a {

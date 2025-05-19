@@ -2883,9 +2883,9 @@ footer .footer-body {
   padding: 80px 0;
 }
 footer .footer-bottom-wrap {
-  padding-top: 14px;
+  padding-top: 20px;
   border-top: 1px solid var(--line);
-  padding-bottom: 17px;
+  padding-bottom: 20px;
   display: flex;
   gap: 15px 30px;
   justify-content: space-between;
@@ -7188,11 +7188,11 @@ input.style-line-bottom::placeholder {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 44px;
-  height: 44px;
-  font-size: 20px;
+  width: 70px;
+  height: 70px;
+  font-size: 30px;
   color: var(--main);
-  border: 1px solid var(--main);
+  border: 2px solid var(--main);
   border-radius: 50%;
 }
 .tf-social-icon.style-white a {
@@ -7255,7 +7255,7 @@ input.style-line-bottom::placeholder {
 }
 .tf-icon-box .content {
   display: grid;
-  gap: 8px;
+  gap: 4px;
 }
 .tf-icon-box.style-2 {
   flex-direction: row;
@@ -16914,8 +16914,8 @@ ul.list-text.type-number {
     height: 500px;
   }
   .team-item .tf-social-icon a {
-    width: 40px;
-    height: 40px;
+    width: 70px;
+    height: 70px;
     font-size: 18px;
   }
   .form-bundle-product {

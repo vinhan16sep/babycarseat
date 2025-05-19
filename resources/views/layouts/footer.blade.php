@@ -5,7 +5,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
-                        <div class="footer-logo" style="margin-bottom: 20px;">
+                        <div class="footer-logo" style="margin-bottom: 50px;">
                             <a href="{{ url("/") }}">
                                 <img src="{{ asset('images/logo/logo-footer.png') }}" alt="">
                             </a>

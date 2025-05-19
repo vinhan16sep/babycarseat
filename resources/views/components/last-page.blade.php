@@ -97,7 +97,7 @@
     @if(empty($is_not_show) && $feedback)
         <div class="box-custom-say">
             <div class="text-center wow fadeInUp d-flex title">
-                <h3 class="heading" style="color:black;">Công nghệ vẹn tròn yêu thương!</h3>
+                <h3 class="heading" style="color:black;">Công nghệ vẹn tròn yêu thương</h3>
                 {{--                <p class="subheading">Our customers adore our products, and we constantly aim to delight them.</p>--}}
             </div>
             <div dir="ltr" class="swiper tf-sw-testimonial" data-preview="3" data-tablet="2" data-mobile="1"
