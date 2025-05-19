@@ -7,7 +7,7 @@
                     <div class="col-lg-12">
                         <div class="footer-logo" style="margin-bottom: 20px;">
                             <a href="{{ url("/") }}">
-                                <img src="{{ asset('images/logo/logo.png') }}" alt="">
+                                <img src="{{ asset('images/logo/logo-footer.png') }}" alt="">
                             </a>
                         </div>
                     </div>

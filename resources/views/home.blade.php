@@ -127,10 +127,10 @@
 {{--                <p class="subheading text-secondary">Browse our Top Trending: the hottest picks loved by all. </p>--}}
             </div>
             @if(!empty($hotProducts))
-                <div dir="ltr" class="swiper tf-sw-latest" data-preview="4" data-tablet="3" data-mobile="1"
-                     data-space-lg="30" data-space-md="30" data-space="15" data-pagination="1" data-pagination-md="1"
-                     data-pagination-lg="1">
-                    <div class="swiper-wrapper">
+                    <div dir="ltr" class="swiper tf-sw-latest" data-preview="5" data-loop="0" data-tablet="3" data-mobile="1"
+                         data-space-lg="0" data-space-md="30" data-space="10" data-pagination="1" data-pagination-md="1"
+                         data-pagination-lg="1">
+                        <div class="swiper-wrapper">
                         @foreach($hotProducts as $_item)
                             <div class="swiper-slide">
                                 <div class="card-product wow fadeInUp" data-wow-delay="0s">
@@ -190,14 +190,12 @@
                                     <div class="signature-contentblock__description">
                                         <div class="box-first-content-flex">
                                             <img src="{{ getImage($_item->icon) }}" alt="">
-                                            <div>
+                                            <div style="text-transform: uppercase">
                                                 {!! $_item->link !!}
                                             </div>
                                         </div>
                                         <div class="signature-contentblock__title">{{ $_item->name }}</div>
-                                        <div class="signature-contentblock__subtitle">
-                                            {{ $_item->description }}
-                                        </div>
+                                        <div class="signature-contentblock__subtitle">{{ $_item->description }}</div>
                                     </div>
                                 </div>
                             </div>
