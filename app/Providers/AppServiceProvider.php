@@ -46,12 +46,12 @@ class AppServiceProvider extends ServiceProvider
             }
             View::share('contactInformations', $contactInformations);
 
-            $categories = ProductCategory::query()->with([
-                "products" => function ($query) {
-                    $query->latest()->take(4);
-                }
-            ])->get()->toArray();
-            View::share('categoriesMenu', $categories);
+            // $categories = ProductCategory::query()->with([
+            //     "products" => function ($query) {
+            //         $query->latest()->take(4);
+            //     }
+            // ])->get()->toArray();
+            // View::share('categoriesMenu', $categories);
 
             // 1. Lấy toàn bộ danh mục (có cấp 1, 2, 3)
             $categories = PostCategory::where('is_active', 1)
