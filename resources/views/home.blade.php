@@ -123,7 +123,7 @@
     <section class="flat-spacing bg-css topick section-one">
             <div class="container-fluid">
             <div class="heading-section text-center wow fadeInUp">
-                <h3 class="heading">Hot Selling Babyro</h3>
+                <h3 class="heading">Hot Selling</h3>
 {{--                <p class="subheading text-secondary">Browse our Top Trending: the hottest picks loved by all. </p>--}}
             </div>
             @if(!empty($hotProducts))
