@@ -15,7 +15,7 @@
                                 <div class="swiper-slide">
                                     <div class="card-product wow fadeInUp" data-wow-delay="0s">
                                         <div class="card-product-wrapper">
-                                            <a href="{{ route('san-pham', ['category_slug' => $_item->categoryId->slug, 'slug' => $_item->slug]) }}" class="product-img">
+                                            <a href="{{ route('product-index', ['slug' => $_item->slug]) }}" class="product-img">
                                                 <img class="lazyload img-product"
                                                      data-src="{{ getImage($_item->image) }}"
                                                      src="{{ getImage($_item->image) }}" alt="image-product">

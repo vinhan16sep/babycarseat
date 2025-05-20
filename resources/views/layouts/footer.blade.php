@@ -1355,6 +1355,7 @@
                                             <div id="dropdown-menu-one-1-{{$_item['id']}}" class="collapse">
                                                 <ul class="sub-nav-menu">
                                                     @foreach($_item['products'] as $_i)
+                                                        @php $_i = (array)$_i @endphp
                                                         <li><a class="mb-menu-link sub-nav-link" href="{{ route('san-pham', ['category_slug' => $_item['slug'], 'slug' => $_i['slug']]) }}">{{ $_i['name'] }}</a></li>
                                                     @endforeach
                                                 </ul>
