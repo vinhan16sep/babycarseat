@@ -325,7 +325,7 @@
                 <div class="tf-breadcrumb-list">
                     <a href="{{ url('/') }}" class="text text-caption-1">Trang chủ</a>
                     <i class="icon icon-arrRight"></i>
-                    <a href="{{ route('product-list', ['category_slug' => $product->categoryId->slug]) }}" class="text text-caption-1">{{ $product->categoryId->name }}</a>
+                    <a href="#" class="text text-caption-1">Sản phẩm</a>
                 </div>
             </div>
         </div>
@@ -345,7 +345,7 @@
             </div>
             <div class="content">
                 <div class="text-title">
-                    <a class="link" href="{{ route('san-pham', ['category_slug' => $product->categoryId->slug, 'slug' => $product->slug]) }}">{{ $product->name }}</a>
+                    <a class="link" href="{{ route('product-index', ['slug' => $product->slug]) }}">{{ $product->name }}</a>
                 </div>
                 <div class="text-caption-1 text-secondary-2">Green</div> <!--color-->
                 <div class="text-title">

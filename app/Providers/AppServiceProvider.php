@@ -6,6 +6,7 @@ use App\Models\Information;
 use App\Models\ProductCategory;
 use App\Models\PostCategory;
 use App\Models\Post;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Schema;
@@ -46,11 +47,26 @@ class AppServiceProvider extends ServiceProvider
             }
             View::share('contactInformations', $contactInformations);
 
-             $categories = ProductCategory::query()->with([
-                 "products" => function ($query) {
-                     $query->latest()->take(4);
-                 }
-             ])->get()->toArray();
+            $categories = ProductCategory::query()->get();
+            $baseQuery = DB::table('product_categories_mapping as pcm')
+                ->join('products as p', 'p.id', '=', 'pcm.product_id')
+                ->select(
+                    'p.*',
+                    'pcm.category_id',
+                    DB::raw('ROW_NUMBER() OVER (PARTITION BY pcm.category_id ORDER BY p.created_at DESC) as row_num')
+                );
+            $products = DB::table(DB::raw("({$baseQuery->toSql()}) as sub"))
+                ->mergeBindings($baseQuery) // đảm bảo các binding từ query gốc được giữ nguyên
+                ->where('row_num', '<=', 4)
+                ->where('is_active', 1)
+                ->orderBy('is_highlight', 'desc')
+                ->get()
+                ->groupBy('category_id');
+
+            $categories->map(function ($category) use ($products) {
+                $category->setRelation('products', $products->get($category->id) ?? collect());
+                return $category->toArray();
+            });
              View::share('categoriesMenu', $categories);
 
             // 1. Lấy toàn bộ danh mục (có cấp 1, 2, 3)
