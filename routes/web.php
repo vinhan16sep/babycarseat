@@ -62,7 +62,7 @@ Route::group(['middleware' => ['site_settings']], function () {
     Route::get('/kien-thuc/{category?}', [App\Http\Controllers\KnowledgeController::class, 'list'])->name('category-detail-knowledge');
     Route::get('/kien-thuc/{category}/{slug}', [App\Http\Controllers\KnowledgeController::class, 'show'])->name('detail-knowledge');
     Route::get('/quoc-gia/{country}', [App\Http\Controllers\ProductController::class, 'list'])->name('country');
-    Route::get('/san-pham/{category_slug}/{slug}', [App\Http\Controllers\ProductController::class, 'show'])->name('san-pham');
+    Route::get('/san-pham/{slug}', [App\Http\Controllers\ProductController::class, 'show'])->name('san-pham');
     Route::get('/tin-tuc/{slug}', [App\Http\Controllers\NewController::class, 'show'])->name('detail-new');
     Route::get('/gio-hang', [App\Http\Controllers\OrderController::class, 'cart'])->name('cart');
     Route::get('/thanh-toan', [App\Http\Controllers\OrderController::class, 'orderCreate'])->name('checkout');
