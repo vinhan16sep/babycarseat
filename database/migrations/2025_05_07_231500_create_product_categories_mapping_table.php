@@ -11,8 +11,8 @@ class CreateProductCategoriesMappingTable extends Migration
         if (!Schema::hasTable('product_categories_mapping')) {
             Schema::create('product_categories_mapping', function (Blueprint $table) {
                 $table->id();
-                $table->unsignedBigInteger('product_id'); // Đảm bảo kiểu dữ liệu khớp
-                $table->unsignedBigInteger('category_id');
+                $table->unsignedInteger('product_id'); // Đảm bảo kiểu dữ liệu khớp
+                $table->unsignedInteger('category_id');
                 $table->timestamps();
 
                 // Thêm khóa ngoại
