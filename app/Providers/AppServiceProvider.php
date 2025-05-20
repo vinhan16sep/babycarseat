@@ -8,6 +8,7 @@ use App\Models\PostCategory;
 use App\Models\Post;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\View;
 
 class AppServiceProvider extends ServiceProvider
@@ -31,68 +32,74 @@ class AppServiceProvider extends ServiceProvider
     {
         Paginator::useBootstrap();
 
-        $objects = Information::where(['type' => 'CONTACT'])->get()->toArray();
-        $contactInformations = [];
-        foreach ($objects as $item) {
-            $contactInformations[$item['label']] = $item['value'];
-        }
-        View::share('contactInformations', $contactInformations);
+        if (
+            Schema::hasTable('informations')
+            && Schema::hasTable('product_categories')
+            && Schema::hasTable('post_category')
+            && Schema::hasTable('posts')
+        ) {
 
-        $categories = ProductCategory::query()->with([
-            "products" => function($query) {
-                $query->latest()->take(4);
+            $objects = Information::where(['type' => 'CONTACT'])->get()->toArray();
+            $contactInformations = [];
+            foreach ($objects as $item) {
+                $contactInformations[$item['label']] = $item['value'];
             }
-        ])->get()->toArray();
-        View::share('categoriesMenu', $categories);
+            View::share('contactInformations', $contactInformations);
 
-        // 1. Lấy toàn bộ danh mục (có cấp 1, 2, 3)
-        $categories = PostCategory::where('is_active', 1)
-            ->where('menu_active', 1)
-            ->get();
+            $categories = ProductCategory::query()->with([
+                "products" => function ($query) {
+                    $query->latest()->take(4);
+                }
+            ])->get()->toArray();
+            View::share('categoriesMenu', $categories);
 
-        $allPosts = Post::where('menu_active', 1)
-            ->where('menu_active', 1)
-            ->get();
+            // 1. Lấy toàn bộ danh mục (có cấp 1, 2, 3)
+            $categories = PostCategory::where('is_active', 1)
+                ->where('menu_active', 1)
+                ->get();
 
-        $menu = [];
+            $allPosts = Post::where('menu_active', 1)
+                ->where('menu_active', 1)
+                ->get();
 
-        $categoriesByParent = $categories->groupBy('parent_id');
+            $menu = [];
 
-        foreach ($categoriesByParent[null] ?? [] as $lv1) {
-            $menu[$lv1->slug] = [
-                'id' => "post-" . $lv1->id,
-                'name' => $lv1->name,
-                'children' => [],
-            ];
+            $categoriesByParent = $categories->groupBy('parent_id');
 
-            foreach ($categoriesByParent[$lv1->id] ?? [] as $lv2) {
-                $posts = $allPosts->where('category_id', $lv2->id)
-                    ->map(function ($post) {
-                        return $post;
-                    })->values()->toArray();
-
-                $menu[$lv1->slug]['children'][$lv2->slug] = [
-                    'id' => "post-" . $lv2->id,
-                    'name' => $lv2->name,
-                    'posts' => $posts,
+            foreach ($categoriesByParent[null] ?? [] as $lv1) {
+                $menu[$lv1->slug] = [
+                    'id' => "post-" . $lv1->id,
+                    'name' => $lv1->name,
+                    'children' => [],
                 ];
 
-//                foreach ($categoriesByParent[$lv2->id] ?? [] as $lv3) {
-//                    $posts = $allPosts->where('category_id', $lv3->id)
-//                        ->map(function ($post) {
-//                            return $post;
-//                        })->values()->toArray();
-//
-//                    $menu[$lv1->slug]['children'][$lv2->slug]['children'][$lv3->slug] = [
-//                        'name' => $lv3->name,
-//                        'posts' => $posts,
-//                    ];
-//                }
+                foreach ($categoriesByParent[$lv1->id] ?? [] as $lv2) {
+                    $posts = $allPosts->where('category_id', $lv2->id)
+                        ->map(function ($post) {
+                            return $post;
+                        })->values()->toArray();
+
+                    $menu[$lv1->slug]['children'][$lv2->slug] = [
+                        'id' => "post-" . $lv2->id,
+                        'name' => $lv2->name,
+                        'posts' => $posts,
+                    ];
+
+                    // foreach ($categoriesByParent[$lv2->id] ?? [] as $lv3) {
+                    //     $posts = $allPosts->where('category_id', $lv3->id)
+                    //         ->map(function ($post) {
+                    //             return $post;
+                    //         })->values()->toArray();
+    
+                    //     $menu[$lv1->slug]['children'][$lv2->slug]['children'][$lv3->slug] = [
+                    //         'name' => $lv3->name,
+                    //         'posts' => $posts,
+                    //     ];
+                    // }
+                }
             }
+
+            View::share('mainMenu', $menu);
         }
-
-        View::share('mainMenu', $menu);
-
-
     }
 }
