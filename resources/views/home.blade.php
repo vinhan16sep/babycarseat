@@ -44,7 +44,7 @@
     </section>
     <!-- /Slider -->
 
-    <marquee scrollamount="4" direction="right">
+    <marquee scrollamount="0" direction="right">
         <section class="section-text">
             <div class="marquee-text">
                 <div>Bảo hành Vàng 10 năm</div>
@@ -127,10 +127,10 @@
 {{--                <p class="subheading text-secondary">Browse our Top Trending: the hottest picks loved by all. </p>--}}
             </div>
             @if(!empty($hotProducts))
-                    <div dir="ltr" class="swiper tf-sw-latest" data-preview="5" data-loop="0" data-tablet="3" data-mobile="1"
-                         data-space-lg="0" data-space-md="30" data-space="10" data-pagination="1" data-pagination-md="1"
-                         data-pagination-lg="1">
-                        <div class="swiper-wrapper">
+                <div dir="ltr" class="swiper tf-sw-latest" data-preview="5" data-tablet="3" data-mobile="1"
+                     data-space-lg="0" data-space-md="30" data-space="10" data-pagination="1" data-pagination-md="1"
+                     data-pagination-lg="1" data-loop="false">
+                    <div class="swiper-wrapper">
                         @foreach($hotProducts as $_item)
                             <div class="swiper-slide">
                                 <div class="card-product wow fadeInUp" data-wow-delay="0s">
@@ -146,7 +146,6 @@
                                     <div class="card-product-info">
                                         <p class="product-title">{{ $_item->name }}</p>
                                         <!-- <p class="product-desc">{{ $_item->categoryId ? $_item->categoryId->name : '' }}</p> -->
-                                        {{--                                <a href="product-detail.html" class="title link">View i-Spin 360</a>--}}
                                     </div>
                                 </div>
                             </div>

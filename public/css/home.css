@@ -36,6 +36,8 @@
     box-shadow: 1px 1px 1px #ccc;
     margin-bottom: 5px;
     background-color: #fff;
+    border-radius:10px !important;
+    overflow: hidden;
 }
 .flat-spacing-8, .flat-spacing, .flat-spacing-10{
     padding: 50px;
@@ -124,7 +126,7 @@ section.section-text > div{
     justify-content: center;
 }
 section.section-text > div > div{
-    padding: 25px 35px;
+    padding: 16px 25px 10px 25px;
     color: #d20046;
     font-weight: bold;
     display: inline-block;
@@ -231,7 +233,7 @@ section.section-text > div > div{
     display: contents;
 }
 .content-hau-mai a {
-    padding: 10px 30px;
+    padding: 6px 22px;
     background: gray;
     margin-top: 20px;
     border-radius: 6px;
@@ -260,7 +262,7 @@ body *, html *, *{
     left: 0px;
     padding: 35px 7.44vw;
     /*box-shadow: 5px 5px 5px rgba(255, 255, 255, 0.1);*/
-    background: linear-gradient(to right, rgba(255, 255, 255, 0.5), rgba(0, 0, 0, 0.1));
+    background: linear-gradient(to right, rgba(255, 255, 255, 0.2), rgba(0, 0, 0, 0));
 }
 
 .slider-effect-fade .swiper-slide.swiper-slide-active .fade-item {
@@ -341,7 +343,7 @@ section.section-text > div {
 
 .signature-contentblock__subtitle {
     font-family: 'Inter';
-    font-weight: 400;
+    font-weight: 300;
     color: black;
 }
 
@@ -563,11 +565,12 @@ footer{
     .section-three h6{
         font-family: 'Inter';
         font-size: 1.1vw;
+        font-weight: bold;
     }
     .section-three .text-secondary{
         font-family: 'Inter';
-        font-size: 1.04vw;
-        line-height: 1vw;
+        font-size: 0.9vw;
+        line-height: 1.2vw;
         white-space: break-spaces;
         color:black!important;
     }
@@ -709,7 +712,7 @@ footer{
     .signature-contentblock__subtitle {
         font-size: 1.30vw;
         font-family: 'Inter';
-        font-weight: 400;
+        font-weight: 300;
         color: black;
         line-height: 1.76vw;
         white-space: pre-line;
@@ -726,7 +729,7 @@ footer{
 
     .tf-slideshow.slider-default.slider-effect-fade .title-display {
         font-size: 4vw !important;
-        line-height: 3.8vw;
+        line-height: 4.2vw;
         margin-top: 0 !important;
         font-weight: 700;
         font-weight: 'Inner';
@@ -781,7 +784,7 @@ footer{
     }
 
     .content-hau-mai > div > p {
-        font-size: 0.8vw;
+        font-size: 0.9vw;
         font-family: 'Inter';
         font-weight: 400;
         color: black;
@@ -790,7 +793,7 @@ footer{
     }
 
     .content-hau-mai a {
-        font-size: 1.11vw;
+        font-size: 0.8vw;
         margin-top: 5px;
     }
 
