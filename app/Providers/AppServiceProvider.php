@@ -46,12 +46,12 @@ class AppServiceProvider extends ServiceProvider
             }
             View::share('contactInformations', $contactInformations);
 
-            // $categories = ProductCategory::query()->with([
-            //     "products" => function ($query) {
-            //         $query->latest()->take(4);
-            //     }
-            // ])->get()->toArray();
-            // View::share('categoriesMenu', $categories);
+             $categories = ProductCategory::query()->with([
+                 "products" => function ($query) {
+                     $query->latest()->take(4);
+                 }
+             ])->get()->toArray();
+             View::share('categoriesMenu', $categories);
 
             // 1. Lấy toàn bộ danh mục (có cấp 1, 2, 3)
             $categories = PostCategory::where('is_active', 1)
@@ -90,7 +90,7 @@ class AppServiceProvider extends ServiceProvider
                     //         ->map(function ($post) {
                     //             return $post;
                     //         })->values()->toArray();
-    
+
                     //     $menu[$lv1->slug]['children'][$lv2->slug]['children'][$lv3->slug] = [
                     //         'name' => $lv3->name,
                     //         'posts' => $posts,
