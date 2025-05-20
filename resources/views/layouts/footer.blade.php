@@ -1,137 +1,130 @@
 <!-- Footer -->
 <footer id="footer" class="footer">
-    <div class="footer-wrap">
+    <div class="footer-wrap home-padding">
         <div class="footer-body">
-            <div class="container">
+            <div class="container-fluid">
                 <div class="row">
-                    <div class="col-lg-4">
+                    <div class="col-lg-12">
+                        <div class="footer-logo" style="margin-bottom: 50px;">
+                            <a href="{{ url("/") }}">
+                                <img src="{{ asset('images/logo/logo-footer.png') }}" alt="">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
                         <div class="footer-infor">
-                            <div class="footer-logo">
-                                <a href="{{ url("/") }}">
-                                    <img src="{{ asset('images/logo/logo.png') }}" alt="">
-                                </a>
-                            </div>
-                            <p><b style="font-weight: 800;color:black;">Engineered with love</b></p>
-                            <div class="footer-address">
-                                <p>{{ $contactInformations['address_hn'] }}</p>
-                                <a href="contact.html" class="tf-btn-default fw-6">GET DIRECTION<i
-                                        class="icon-arrowUpRight"></i></a>
+                            <div class="footer-heading text-button">
+                                Engineered with love
                             </div>
                             <ul class="footer-info">
                                 <li>
-                                    <i class="icon-mail"></i>
+                                    <p>{{ $contactInformations['address_hn'] }}</p>
+                                </li>
+                                <li>
+{{--                                    <i class="icon-mail"></i>--}}
                                     <p>{{ $contactInformations['email'] }}</p>
                                 </li>
                                 <li>
-                                    <i class="icon-phone"></i>
+{{--                                    <i class="icon-phone"></i>--}}
                                     <p>{{ $contactInformations['hotline'] }}</p>
                                 </li>
                             </ul>
+                            <ul class="tf-social-icon" style="margin-top: 15px;">
+                                <li><a href="#" class="social-facebook"><i class="icon icon-fb"></i></a></li>
+                                <li><a href="#" class="social-instagram"><i class="icon icon-instagram"></i></a></li>
+                                <li><a href="#" class="social-tiktok"><i class="icon icon-tiktok"></i></a></li>
+                            </ul>
                         </div>
                     </div>
-                    <div class="col-lg-8">
-                        <div class="row">
-                            <div class="col-lg-4">
-                                <div class="footer-menu" style="margin-bottom: 0">
-                                    <div class="footer-col-block">
-                                        <div class="footer-heading text-button footer-heading-mobile">
-                                            Sản phẩm Babyro
-                                        </div>
-                                        <div class="tf-collapse-content">
-                                            <ul class="footer-menu-list">
-                                                <li class="text-caption-1">
-                                                    <a href="#" class="footer-menu_item">Bảo hành vàng 10 năm</a>
-                                                </li>
-                                                <li class="text-caption-1">
-                                                    <a href="#" class="footer-menu_item">Chương trình đổi ghế sau tai nạn</a>
-                                                </li>
-                                                <li class="text-caption-1">
-                                                    <a href="#" class="footer-menu_item">Tiêu chuẩn Châu Âu ECE R129</a>
-                                                </li>
-                                                <li class="text-caption-1">
-                                                    <a href="term-of-use.html" class="footer-menu_item">Thiết kế chuẩn Đức</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
+
+                    <div class="col-lg-3">
+                        <div class="footer-menu" style="margin-bottom: 0">
+                            <div class="footer-col-block">
+                                <div class="footer-heading text-button footer-heading-mobile">
+                                    Sản phẩm Babyro
                                 </div>
-                            </div>
-                            <div class="col-lg-4">
-                                <div class="footer-menu" style="margin-bottom: 0">
-                                <div class="footer-col-block">
-                                    <div class="footer-heading text-button footer-heading-mobile">
-                                        Babyro Hub
-                                    </div>
-                                    <div class="tf-collapse-content">
-                                        <ul class="footer-menu-list">
-                                            <li class="text-caption-1">
-                                                <a href="#" class="footer-menu_item">Câu chuyện Babyro</a>
-                                            </li>
-                                            <li class="text-caption-1">
-                                                <a href="#" class="footer-menu_item">Góc chuyên gia</a>
-                                            </li>
-                                            <li class="text-caption-1">
-                                                <a href="#" class="footer-menu_item">Bí kíp mẹ thông thái</a>
-                                            </li>
-                                            <li class="text-caption-1">
-                                                <a href="term-of-use.html" class="footer-menu_item">Babyro trên truyền thông</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4">
-                                <div class="footer-menu" style="margin-bottom: 0">
-                                <div class="footer-col-block">
-                                    <div class="footer-heading text-button footer-heading-mobile">
-                                        Hỗ trợ
-                                    </div>
-                                    <div class="tf-collapse-content">
-                                        <ul class="footer-menu-list">
-                                            <li class="text-caption-1">
-                                                <a href="#" class="footer-menu_item">Hướng dẫn sử dụng an toàn</a>
-                                            </li>
-                                            <li class="text-caption-1">
-                                                <a href="#" class="footer-menu_item">Đại lý chính sách hãng gaần bạn</a>
-                                            </li>
-                                            <li class="text-caption-1">
-                                                <a href="#" class="footer-menu_item">Kết nối 24/7</a>
-                                            </li>
-                                            <li class="text-caption-1">
-                                                <a href="term-of-use.html" class="footer-menu_item">FAQs</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
+                                <div class="tf-collapse-content">
+                                    <ul class="footer-menu-list">
+                                        <li class="text-caption-1">
+                                            <a href="#" class="footer-menu_item">Bảo hành vàng 10 năm</a>
+                                        </li>
+                                        <li class="text-caption-1">
+                                            <a href="#" class="footer-menu_item">Chương trình đổi ghế sau tai nạn</a>
+                                        </li>
+                                        <li class="text-caption-1">
+                                            <a href="#" class="footer-menu_item">Tiêu chuẩn Châu Âu ECE R129</a>
+                                        </li>
+                                        <li class="text-caption-1">
+                                            <a href="term-of-use.html" class="footer-menu_item">Thiết kế chuẩn Đức</a>
+                                        </li>
+                                    </ul>
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-lg-12" style="display: flex;justify-content: right;">
-                                <ul class="tf-social-icon" style="margin-top: 15px">
-                                    <li><a href="#" class="social-facebook"><i class="icon icon-fb"></i></a></li>
-                                    <li><a href="#" class="social-twiter"><i class="icon icon-x"></i></a></li>
-                                    <li><a href="#" class="social-instagram"><i class="icon icon-instagram"></i></a></li>
-                                    <li><a href="#" class="social-tiktok"><i class="icon icon-tiktok"></i></a></li>
-                                    <li><a href="#" class="social-amazon"><i class="icon icon-amazon"></i></a></li>
-                                    <li><a href="#" class="social-pinterest"><i class="icon icon-pinterest"></i></a></li>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="footer-menu" style="margin-bottom: 0">
+                        <div class="footer-col-block">
+                            <div class="footer-heading text-button footer-heading-mobile">
+                                Babyro Hub
+                            </div>
+                            <div class="tf-collapse-content">
+                                <ul class="footer-menu-list">
+                                    <li class="text-caption-1">
+                                        <a href="#" class="footer-menu_item">Câu chuyện Babyro</a>
+                                    </li>
+                                    <li class="text-caption-1">
+                                        <a href="#" class="footer-menu_item">Góc chuyên gia</a>
+                                    </li>
+                                    <li class="text-caption-1">
+                                        <a href="#" class="footer-menu_item">Bí kíp mẹ thông thái</a>
+                                    </li>
+                                    <li class="text-caption-1">
+                                        <a href="term-of-use.html" class="footer-menu_item">Babyro trên truyền thông</a>
+                                    </li>
                                 </ul>
                             </div>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="footer-menu" style="margin-bottom: 0">
+                        <div class="footer-col-block">
+                            <div class="footer-heading text-button footer-heading-mobile">
+                                Hỗ trợ
+                            </div>
+                            <div class="tf-collapse-content">
+                                <ul class="footer-menu-list">
+                                    <li class="text-caption-1">
+                                        <a href="#" class="footer-menu_item">Hướng dẫn sử dụng an toàn</a>
+                                    </li>
+                                    <li class="text-caption-1">
+                                        <a href="#" class="footer-menu_item">Đại lý chính sách hãng gaần bạn</a>
+                                    </li>
+                                    <li class="text-caption-1">
+                                        <a href="#" class="footer-menu_item">Kết nối 24/7</a>
+                                    </li>
+                                    <li class="text-caption-1">
+                                        <a href="term-of-use.html" class="footer-menu_item">FAQs</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="footer-bottom">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="footer-bottom-wrap">
-                            <div class="left">
-                                <p class="text-caption-1">©2025 Babyro. All Rights Reserved.</p>
-                            </div>
-                            <!-- <div class="tf-payment">
+    </div>
+    <div class="footer-bottom">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="footer-bottom-wrap">
+                        <div class="text-center"><!--left-->
+                            <p class="text-caption-1">©2025 Babyro. All Rights Reserved.</p>
+                        </div>
+                        <!-- <div class="tf-payment">
                                 <p class="text-caption-1">Payment:</p>
                                 <ul>
                                     <li>
@@ -154,7 +147,6 @@
                                     </li>
                                 </ul>
                             </div> -->
-                        </div>
                     </div>
                 </div>
             </div>
