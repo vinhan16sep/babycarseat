@@ -27,7 +27,7 @@
                                     </div>
                                     <div class="fade-item fade-item-3 box-btn-slider">
                                         <a href="{{ $_item->link }}" class="tf-btn btn-fill btn-white"><span
-                                                class="text">Chi tiết</span></a>
+                                                class="text">Shop collection</span></a>
                                     </div>
                                 </div>
                             </div>
@@ -127,10 +127,10 @@
 {{--                <p class="subheading text-secondary">Browse our Top Trending: the hottest picks loved by all. </p>--}}
             </div>
             @if(!empty($hotProducts))
-                <div dir="ltr" class="swiper tf-sw-latest" data-preview="4" data-tablet="3" data-mobile="1"
-                     data-space-lg="30" data-space-md="30" data-space="15" data-pagination="1" data-pagination-md="1"
-                     data-pagination-lg="1">
-                    <div class="swiper-wrapper">
+                    <div dir="ltr" class="swiper tf-sw-latest" data-preview="5" data-loop="0" data-tablet="3" data-mobile="1"
+                         data-space-lg="0" data-space-md="30" data-space="10" data-pagination="1" data-pagination-md="1"
+                         data-pagination-lg="1">
+                        <div class="swiper-wrapper">
                         @foreach($hotProducts as $_item)
                             <div class="swiper-slide">
                                 <div class="card-product wow fadeInUp" data-wow-delay="0s">
@@ -159,7 +159,7 @@
     </section>
     <!-- /Top picks -->
 
-    <section class="blog">
+{{--    <section class="blog">--}}
 {{--        <div class="container">--}}
 {{--            <div class="row">--}}
 {{--                @foreach($upper as $_item)--}}
@@ -176,12 +176,13 @@
 {{--            </div>--}}
 {{--        </div>--}}
 
-        <section class="flat-spacing section-two" style="padding-top: 30px">
-            <div class="container-fluid mb-p-0">
+        <section class="flat-spacing section-two" style="padding-top: 0px">
+            <div class="mb-p-0">
                 <div class="flat-sw-navigation box-product-common__row wow fadeInUp" data-wow-delay="0.1s">
                     @foreach($upper as $_item)
+                        <div class="container-fluid home-padding">
                         <div class="product-common__row">
-                            <div class="signature-contentblock {{ $loop->index%2 == 0 ? '' : 'signature-contentblock--reverse' }}">
+                            <div class="signature-contentblock {{ $loop->index%2 == 0 ? 'signature-contentblock--reverse' : '' }}">
                                 <div class="signature-contentblock__image">
                                     <img class="product-marketing__img" src="{{ getImage($_item->image) }}" alt="">
                                 </div>
@@ -189,30 +190,32 @@
                                     <div class="signature-contentblock__description">
                                         <div class="box-first-content-flex">
                                             <img src="{{ getImage($_item->icon) }}" alt="">
-                                            <div>
+                                            <div style="text-transform: uppercase">
                                                 {!! $_item->link !!}
                                             </div>
                                         </div>
                                         <div class="signature-contentblock__title">{{ $_item->name }}</div>
-                                        <div class="signature-contentblock__subtitle">
-                                            {{ $_item->description }}
-                                        </div>
+                                        <div class="signature-contentblock__subtitle">{{ $_item->description }}</div>
                                     </div>
                                 </div>
                             </div>
+                        </div>
                         </div>
                     @endforeach
                 </div>
             </div>
         </section>
-    </section>
+{{--    </section>--}}
+    <div class="home-padding">
+        <hr>
+    </div>
 
     @include('components.last-page')
 
 
     <!-- Iconbox -->
-    <section class="flat-spacing section-three line-top-container">
-        <div class="container">
+    <section class="flat-spacing section-three line-top-container home-padding">
+        <div class="container-fluid">
             <div dir="ltr" class="swiper tf-sw-iconbox" data-preview="4" data-tablet="3" data-mobile-sm="2"
                  data-mobile="1" data-space-lg="30" data-space-md="30" data-space="15" data-pagination="1"
                  data-pagination-sm="2" data-pagination-md="3" data-pagination-lg="4">
@@ -220,10 +223,10 @@
                     @foreach($lower as $_item)
                         <div class="swiper-slide">
                             <div class="tf-icon-box">
-                                <div class="icon-box"><img style="width: 50px;height: 50px;object-fit: contain" src="{{ getImage($_item->icon) }}" alt=""></div>
+                                <div class="icon-box"><img style="object-fit: contain" src="{{ getImage($_item->icon) }}" alt=""></div>
                                 <div class="content text-center">
                                     <h6>{{ $_item->name }}</h6>
-                                    <p class="text-secondary">{{ $_item->short_description }}</p>
+                                    <div class="text-secondary">{{ $_item->short_description }}</div>
                                 </div>
                             </div>
                         </div>
@@ -236,8 +239,8 @@
     <!-- /Iconbox -->
 
     <!-- Banner discover -->
-    <section class="flat-spacing section-four pt-0">
-        <div class="container">
+    <section class="flat-spacing section-four pt-0 home-padding">
+        <div class="container-fluid">
             <div class="banner-cls-discover hover-img">
                 <a href="#" class="img-style">
                     <img class="lazyload" data-src="images/banner footer.png"
