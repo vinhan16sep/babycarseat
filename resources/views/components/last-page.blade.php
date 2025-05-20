@@ -93,11 +93,11 @@
         </div>
     </div>
 </section>
-<section class="pt-0 home-padding section-custom-say" style="background: rgba(134, 121, 121, 0.1);" style="{{ !empty($is_border) ? 'border-top: 1px solid #e9e9e9;' : '' }}">
+<section class="pt-0 home-padding section-custom-say" style="background: #F1F2F3;" style="{{ !empty($is_border) ? 'border-top: 1px solid #e9e9e9;' : '' }}">
     @if(empty($is_not_show) && $feedback)
         <div class="box-custom-say">
             <div class="text-center wow fadeInUp d-flex title">
-                <h3 class="heading" style="color:black;">Công nghệ vẹn tròn yêu thương</h3>
+                <h3 class="heading" style="color:black;font-size: 2.5vw;">Công nghệ vẹn tròn yêu thương</h3>
                 {{--                <p class="subheading">Our customers adore our products, and we constantly aim to delight them.</p>--}}
             </div>
             <div dir="ltr" class="swiper tf-sw-testimonial" data-preview="3" data-tablet="2" data-mobile="1"
@@ -123,7 +123,7 @@
                                         <div class="text-secondary">{!! $item['description'] !!}</div>
                                         <div class="box-author">
                                             <div class="text-title author">{{ $item['rate_by'] }}</div>
-                                            <img class="customer-tick" src="{{ asset('images/CustomerSay-tick.png') }}" alt="">
+                                            <!-- <img class="customer-tick" src="{{ asset('images/CustomerSay-tick.png') }}" alt=""> -->
                                         </div>
                                     </div>
                                 </div>

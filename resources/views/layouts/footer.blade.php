@@ -7,7 +7,7 @@
                     <div class="col-lg-12">
                         <div class="footer-logo" style="margin-bottom: 50px;">
                             <a href="{{ url("/") }}">
-                                <img src="{{ asset('images/logo/logo-footer.png') }}" alt="">
+                                <img src="{{ asset('images/logo/logo.png') }}" alt="">
                             </a>
                         </div>
                     </div>
@@ -38,7 +38,7 @@
                     </div>
 
                     <div class="col-lg-3">
-                        <div class="footer-menu" style="margin-bottom: 0">
+                        <div class="footer-menu" style="margin-bottom: 0;float: right;">
                             <div class="footer-col-block">
                                 <div class="footer-heading text-button footer-heading-mobile">
                                     Sản phẩm Babyro
@@ -63,7 +63,7 @@
                         </div>
                     </div>
                     <div class="col-lg-3">
-                        <div class="footer-menu" style="margin-bottom: 0">
+                        <div class="footer-menu" style="margin-bottom: 0;float: right;margin-right:30px;">
                         <div class="footer-col-block">
                             <div class="footer-heading text-button footer-heading-mobile">
                                 Babyro Hub
@@ -88,7 +88,7 @@
                         </div>
                     </div>
                     <div class="col-lg-3">
-                        <div class="footer-menu" style="margin-bottom: 0">
+                        <div class="footer-menu" style="margin-bottom: 0;float: right;">
                         <div class="footer-col-block">
                             <div class="footer-heading text-button footer-heading-mobile">
                                 Hỗ trợ
@@ -122,7 +122,7 @@
                 <div class="col-12">
                     <div class="footer-bottom-wrap">
                         <div class="text-center"><!--left-->
-                            <p class="text-caption-1">©2025 Babyro. All Rights Reserved.</p>
+                            <p class="text-caption-1">©2020 Babyro. All Rights Reserved.</p>
                         </div>
                         <!-- <div class="tf-payment">
                                 <p class="text-caption-1">Payment:</p>
