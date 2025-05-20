@@ -63,7 +63,7 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function show($category, $slug)
+    public function show($slug)
     {
         $product = Product::where(["is_active" => 1, "slug" => $slug])->first();
 

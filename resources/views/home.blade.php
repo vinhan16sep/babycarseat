@@ -135,7 +135,7 @@
                             <div class="swiper-slide">
                                 <div class="card-product wow fadeInUp" data-wow-delay="0s">
                                     <div class="card-product-wrapper">
-                                        <a href="{{ route('san-pham', ['category_slug' => $_item->categoryId->slug, 'slug' => $_item->slug]) }}" class="product-img">
+                                        <a href="{{ route('san-pham', ['slug' => $_item->slug]) }}" class="product-img">
                                             <img class="lazyload img-product"
                                                  data-src="{{ getImage($_item->image) }}"
                                                  src="{{ getImage($_item->image) }}" alt="image-product">
@@ -145,7 +145,7 @@
                                     </div>
                                     <div class="card-product-info">
                                         <p class="product-title">{{ $_item->name }}</p>
-                                        <p class="product-desc">{{ $_item->categoryId ? $_item->categoryId->name : '' }}</p>
+                                        <!-- <p class="product-desc">{{ $_item->categoryId ? $_item->categoryId->name : '' }}</p> -->
                                         {{--                                <a href="product-detail.html" class="title link">View i-Spin 360</a>--}}
                                     </div>
                                 </div>
