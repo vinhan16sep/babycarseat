@@ -48,7 +48,7 @@
             <nav class="box-navigation text-center">
                 <ul class="box-nav-ul d-flex align-items-center">
 {{--                    <li class="menu-item {{ checkActiveMenu("") }}"><a href="{{ url('/') }}" class="item-link">Trang chủ</a></li>--}}
-                    <li class="menu-item {{ checkActiveMenu("san-pham") }}">
+                    <li class="menu-item {{ checkActiveMenu("san-pham") || checkActiveMenu("chi-tiet-san-pham") }}">
                         <a href="{{ route('product-list') }}" class="item-link">Ghế ôtô trẻ em {!! !empty($categoriesMenu) ? '<i class="icon icon-arrow-down"></i>' : '' !!}</a>
                         @if(!empty($categoriesMenu))
                             <div class="sub-menu mega-menu" style="border-radius: 0;">
@@ -73,7 +73,7 @@
                                                                 @foreach($_item['products'] as $_i)
                                                                     <div class="col-md-3 col-sm-6">
                                                                         <img src="{{ asset($_i['image']) }}" alt="">
-                                                                        <h5><a href="{{ route('san-pham', ['category_slug' => $_item['slug'], 'slug' => $_i['slug']]) }}">{{ $_i['name'] }}</a></h5>
+                                                                        <h5><a href="{{ route('product-index', ['slug' => $_i['slug']]) }}">{{ $_i['name'] }}</a></h5>
                                                                     </div>
                                                                 @endforeach
                                                             </div>

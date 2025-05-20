@@ -21,6 +21,6 @@ class ProductCategory extends Model
     ];
 
     public function products() {
-        return $this->hasMany(Product::class, 'category_id');
+        return $this->belongsToMany(Product::class, 'product_categories_mapping', 'category_id', 'product_id');
     }
 }
