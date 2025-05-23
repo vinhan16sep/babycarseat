@@ -251,6 +251,14 @@
         .left-pane {
             width: 100%;
         }
+        .row.row-css{
+            margin-left: -5px;
+            margin-right: -5px;
+        }
+        .row.row-css > div{
+            padding-left: 5px;
+            padding-right: 5px;
+        }
 
         @media (min-width: 768px) {
             .left-pane {
@@ -320,7 +328,7 @@
                         <div class="design">
                             <h4>Thiết kế độc bản Đức</h4>
                             <div class="content">
-                                <div class="row">
+                                <div class="row row-css">
                                     @foreach($categories as $_cate)
                                         <div class="col-md-3 col-sm-6">
                                             <img src="{{ asset('images/CustomerSay1.png') }}" alt="">
