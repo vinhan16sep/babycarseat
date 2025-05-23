@@ -407,9 +407,9 @@
             </div>
         @endforeach
     </section>
-    @include('components.last-page', ['is_not_show' => true, 'is_border' => true])
+{{--    @include('components.last-page', ['is_not_show' => true, 'is_border' => true])--}}
 
-    @include('components.product-hot')
+{{--    @include('components.product-hot')--}}
 
     <div class="overlay-filter" id="overlay-filter"></div>
 @endsection
