@@ -2,32 +2,32 @@
     list(,,$count) = getDataCart(0);
 @endphp
 <style>
-    .design .content img{
+    header .design .content img{
         height: 200px;
         object-fit: cover;
         width: 100%;
     }
-    .design .content h5{
+    header .design .content h5{
         font-size: 16px;
         margin-top: 10px;
         margin-bottom: 20px;
     }
-    .desc h4{
+    header .desc h4{
         font-weight: normal;
     }
-    .desc h4:hover{
+    header .desc h4:hover{
         font-weight: bold;
     }
-    .box-design{
+    header .box-design{
         position: relative;
     }
-    .box-design .design{
+    header .box-design .design{
         position: relative;
         top: 0;
         display: none;
         width: 100%;
     }
-    .box-design .design.active{
+    header .box-design .design.active{
         display: inline-block;
     }
 </style>

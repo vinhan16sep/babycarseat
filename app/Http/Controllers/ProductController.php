@@ -103,13 +103,16 @@ class ProductController extends Controller
                     $q->where('product_categories.id', $category->id);
                 });
             }
+        } else {
+            $categories = ProductCategory::query()->get();
         }
 
         $products = $query->with(["productColors", "categories"])->get();
 
         return view('product-list', [
             "products" => $products,
-            "category" => $category,
+            "category" => $category ?? null,
+            "categories" => $categories ?? null,
             "sorts" => self::SORTS,
         ]);
     }

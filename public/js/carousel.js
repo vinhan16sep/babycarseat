@@ -271,7 +271,6 @@ if ($(".tf-sw-latest").length > 0) {
   var perGroupMd = $(".tf-sw-latest").data("pagination-md");
   var perGroupLg = $(".tf-sw-latest").data("pagination-lg");
   var centeredSlides = $(".tf-sw-latest").data("center") == "0" ? false : true;
-  var centeredSlides = $(".tf-sw-latest").data("center") == "0" ? false : true;
   var loop = $(".tf-sw-latest").data("loop") == "1" ? true : centeredSlides;
   var swiper = new Swiper(".tf-sw-latest", {
     centeredSlides: centeredSlides,
@@ -305,6 +304,52 @@ if ($(".tf-sw-latest").length > 0) {
       },
     },
   });
+}
+
+if ($(".tf-sw-latest-new").length > 0) {
+    let preview = $(".tf-sw-latest-new").data("preview");
+    let tablet = $(".tf-sw-latest-new").data("tablet");
+    let mobile = $(".tf-sw-latest-new").data("mobile");
+    let spacingLg = $(".tf-sw-latest-new").data("space-lg");
+    let spacingMd = $(".tf-sw-latest-new").data("space-md");
+    let spacing = $(".tf-sw-latest-new").data("space");
+    let perGroup = $(".tf-sw-latest-new").data("pagination");
+    let perGroupMd = $(".tf-sw-latest-new").data("pagination-md");
+    let perGroupLg = $(".tf-sw-latest-new").data("pagination-lg");
+    let centeredSlides = $(".tf-sw-latest-new").data("center") == "0" ? false : true;
+    let loop = $(".tf-sw-latest-new").data("loop") == "1" ? true : centeredSlides;
+    let swiper = new Swiper(".tf-sw-latest-new", {
+        centeredSlides: centeredSlides,
+        loop: loop,
+        grabCursor: true,
+        slidesPerView: 2,
+        spaceBetween: spacing,
+        observer: true,
+        observeParents: true,
+        speed: 1000,
+        pagination: {
+            el: ".sw-pagination-latest-new",
+            clickable: true,
+        },
+        slidesPerGroup: perGroup,
+        navigation: {
+            clickable: true,
+            nextEl: ".nav-prev-latest-new",
+            prevEl: ".nav-next-latest-new",
+        },
+        breakpoints: {
+            768: {
+                slidesPerView: tablet,
+                spaceBetween: spacingMd,
+                slidesPerGroup: perGroupMd,
+            },
+            1200: {
+                slidesPerView: preview,
+                spaceBetween: spacingLg,
+                slidesPerGroup: perGroupLg,
+            },
+        },
+    });
 }
 
 if ($(".tf-sw-products").length > 0) {
