@@ -9,27 +9,24 @@
 @section('meta_description', $meta)
 
 @section('css')
+    <link rel="stylesheet" href="{{ asset('css/page.css?v=' . ($ver ?? '')) }}">
     <style>
-        .flat-spacing{
-            padding: 30px 0;
-            background: rgba(134, 121, 121, 0.1);
-        }
-        .flat-spacing.topick{
-            padding: 40px 0;
-            background: #fff;
-        }
         .desc h4, .design h4{
-            font-size: 20px;
+            font-size: 1.2vw;
+            font-weight: normal;
+            margin-bottom: 10px;
         }
         .design .content img{
-            height: 200px;
             object-fit: cover;
             width: 100%;
         }
         .design .content h5{
-            font-size: 16px;
+            font-size: 1vw;
             margin-top: 10px;
             margin-bottom: 20px;
+        }
+        .card-product{
+            margin: 20px 0;
         }
         .card-product-info{
             text-align: center;
@@ -37,14 +34,16 @@
         .card-product-info .product-title{
             font-weight: bold;
             text-transform: uppercase;
+            font-size: 1.30vw;
         }
         .product h4{
             color: #d20046;
             text-transform: uppercase;
-            font-weight: bold;
+            font-weight: 600;
+            font-size: 2vw;
         }
         .product .row{
-            padding: 40px 0;
+            padding: 10px 0;
         }
         .product sub{
             font-weight: bold;
@@ -55,25 +54,43 @@
         .product .content{
             display: flex;
             align-items: center;
-            justify-content: center;
+            justify-content: left;
+        }
+        .product .content > div{
+            width: 700px;
+            max-width: 100%;
         }
         .product .desc{
-            margin-top: 20px;
-            margin-bottom: 20px;
+            margin-top: 25px;
+            /*margin-bottom: 20px;*/
+            line-height: 20px;
+            font-weight: 300;
+        }
+        .product .desc strong{
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+        .product .img{
+            text-align: right;
+        }
+        .product .img img{
+            width: 400px;
+            max-width: 100%;
         }
         .product .desc *{
             background: transparent!important;
+            font-size: 1vw!important;
         }
         .product .desc ul{
             padding-left: 20px;
-            margin-top: 20px;
-            margin-bottom: 15px;
         }
         .product .desc ul li{
             list-style-type: disc;
         }
         .product .price{
-            font-weight: bold;
+            font-weight: 600;
+            font-size: 1vw;
+            margin-top: 10px;
         }
         .product .price span.sub-price{
             text-decoration: line-through;
@@ -94,43 +111,6 @@
             margin: 0;
             padding: 0;
             font-size: 1rem;
-        }
-        .box-hau-mai{
-            margin-bottom: 40px;
-            padding-top: 40px!important;
-        }
-        .box-hau-mai h3{
-            font-weight: bold;
-            text-align: center;
-            margin-bottom: 40px;
-        }
-        .content-hau-mai{
-            padding: 30px;
-            background: #fff;
-        }
-        .content-hau-mai h4{
-            text-transform: uppercase;
-            color: #3c3c8c;
-            font-weight: bold;
-            line-height: 35px;
-            margin-bottom: 20px;
-            min-height: 70px;
-            align-items: end;
-            display: flex
-        }
-        .content-hau-mai h4 span{
-            font-size: 60px;
-            display: contents;
-        }
-        .content-hau-mai a {
-            padding: 15px 30px;
-            background: gray;
-            margin-top: 20px;
-            border-radius: 6px;
-            color: #fff;
-            font-size: 20px;
-            width: 180px;
-            text-align: center;
         }
         .heading{
             color: #d20046;
@@ -160,6 +140,33 @@
             font-weight: bold;
             text-transform: uppercase;
         }
+
+        .home-padding.categories{
+            padding-top: 50px;
+            padding-bottom: 50px;
+        }
+
+        .desc .content{
+            font-weight: 300;
+            padding-right: 30px;
+        }
+
+        @media (max-width: 1460px) {
+            .desc h4, .design h4{
+                font-size: 1.5vw;
+                font-weight: normal;
+                margin-bottom: 10px;
+            }
+            .home-padding.categories{
+                padding-top: 40px;
+                padding-bottom: 20px;
+            }
+            .desc .content{
+                font-size: 1vw;
+            }
+        }
+
+
         @media (max-width: 900px) {
             .signature-contentblock__image {
                 width: 40%;
@@ -173,6 +180,37 @@
             }
             .signature-contentblock__subtitle {
                 font-size: 0.6rem;
+            }
+            .desc .content{
+                font-size: 14px;
+            }
+            .desc h4, .design h4{
+                font-size: 20px;
+            }
+            #wrapper > .home-padding.categories {
+                padding-right: 15px!important;
+                padding-left: 15px!important;
+            }
+            .desc .content{
+                padding-right: 0;
+            }
+            .card-product-info .product-title{
+                font-size: 20px;
+            }
+            .product h4{
+                font-size: 20px;
+            }
+            .product .desc{
+                margin-top: 15px;
+            }
+            .product .desc *, .product .price{
+                font-size: inherit!important;
+            }
+            .product .content > div{
+                padding-bottom: 20px;
+            }
+            .flat-spacing-8, .flat-spacing, .flat-spacing-10{
+                padding: 15px 0!important;
             }
         }
 
@@ -209,60 +247,106 @@
                 display: none;
             }
         }
+
+        .left-pane {
+            width: 100%;
+        }
+        .row.row-css{
+            margin-left: -5px;
+            margin-right: -5px;
+        }
+        .row.row-css > div{
+            padding-left: 5px;
+            padding-right: 5px;
+        }
+
+        @media (min-width: 768px) {
+            .left-pane {
+                width: 330px;
+                flex-shrink: 0;
+            }
+            .design .content img{
+                height: 180px;
+            }
+        }
+
+        @media (min-width: 1460px) {
+            .left-pane {
+                width: 500px;
+                flex-shrink: 0;
+            }
+            .design .content img{
+                height: 280px;
+            }
+            .desc .content{
+                padding-right: 120px;
+                font-size: 0.9vw;
+            }
+            .desc h4, .design h4{
+                margin-bottom: 20px;
+            }
+            .design .content h5{
+                margin-top: 20px;
+            }
+            .card-product-info .product-title{
+                font-size: 1.48vw;
+            }
+            .product .container {
+                max-width: 1200px;
+            }
+            .product .desc{
+                line-height: 30px;
+            }
+            .product .desc strong{
+                letter-spacing: 2px;
+            }
+        }
     </style>
 @endsection
 
 @section('content')
 
     <!-- Section product -->
-{{--    <section class="flat-spacing">--}}
-{{--        <div class="container">--}}
-{{--            <div class="wrapper-control-shop">--}}
-{{--                <div class="row">--}}
-{{--                    <div class="col-xl-3">--}}
-{{--                        <div class="desc">--}}
-{{--                            <h4>Ghế ô tô cho bé</h4>--}}
-{{--                            <div class="content">--}}
-{{--                                Dù bạn đang chuẩn bị đón bé yêu từ--}}
-{{--                                viện về hay con bạn đang lớn lên từng--}}
-{{--                                ngày, chúng tôi đều có sản phẩm ghế--}}
-{{--                                ngồi ô tô phù hợp với từng giai đoạn--}}
-{{--                                phát triển của bé.--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                    <div class="col-xl-9">--}}
-{{--                        <div class="design">--}}
-{{--                            <h4>Thiết kế độc bản Đức</h4>--}}
-{{--                            <div class="content">--}}
-{{--                                <div class="row">--}}
-{{--                                    <div class="col-md-3 col-sm-6">--}}
-{{--                                        <img src="{{ asset('images/CustomerSay1.png') }}" alt="">--}}
-{{--                                        <h5>Ghế cho bé Sơ sinh</h5>--}}
-{{--                                    </div>--}}
-{{--                                    <div class="col-md-3 col-sm-6">--}}
-{{--                                        <img src="{{ asset('images/CustomerSay1.png') }}" alt="">--}}
-{{--                                        <h5>Ghế cho bé Sơ sinh - 12 tuổi</h5>--}}
-{{--                                    </div>--}}
-{{--                                    <div class="col-md-3 col-sm-6">--}}
-{{--                                        <img src="{{ asset('images/CustomerSay1.png') }}" alt="">--}}
-{{--                                        <h5>Ghế cho bé 2 - 12 tuổi</h5>--}}
-{{--                                    </div>--}}
-{{--                                    <div class="col-md-3 col-sm-6">--}}
-{{--                                        <img src="{{ asset('images/CustomerSay1.png') }}" alt="">--}}
-{{--                                        <h5>Ghế cho bé 6 - 12 tuổi</h5>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--        </div>--}}
-{{--    </section>--}}
+    @if(empty($category) && !empty($categories))
+    <section class="flat-spacing home-padding categories" style="background: rgb(241, 242, 243);">
+        <div class="">
+            <div class="wrapper-control-shop">
+                <div class="d-flex flex-column flex-md-row">
+                    <div class="left-pane">
+                        <div class="desc">
+                            <h4>Ghế ô tô cho bé</h4>
+                            <div class="content">
+                                Dù bạn đang chuẩn bị đón bé yêu từ
+                                viện về hay con bạn đang lớn lên từng
+                                ngày, chúng tôi đều có sản phẩm ghế
+                                ngồi ô tô phù hợp với từng giai đoạn
+                                phát triển của bé.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex-grow-1">
+                        <div class="design">
+                            <h4>Thiết kế độc bản Đức</h4>
+                            <div class="content">
+                                <div class="row row-css">
+                                    @foreach($categories as $_cate)
+                                        <div class="col-md-3 col-sm-6">
+                                            <img src="{{ asset('images/CustomerSay1.png') }}" alt="">
+                                            <h5><a href="{{ route("san-pham", ['slug' => $_cate->slug]) }}">Bé từ {{ $_cate->name }}</a></h5>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    @endif
 
-    <section class="flat-spacing bg-css topick">
-        <div class="container">
+    <section class="flat-spacing home-padding">
+        <div class="container-fluid">
             <div dir="ltr" class="swiper tf-sw-latest" data-preview="6" data-tablet="3" data-mobile="1"
                  data-space-lg="30" data-space-md="30" data-space="15" data-pagination="1" data-center="0" data-pagination-md="1"
                  data-pagination-lg="1">
@@ -283,8 +367,8 @@
                                         </a>
                                     </div>
                                     <div class="card-product-info">
-                                        <p class="product-title">{{ $_product->name }}</p>
-                                        <p class="product-desc">{{ $category->name ?? '' }}</p>
+                                        <p class="product-title">{{ str_replace("BABYRO ", "", strtoupper($_product->name)) }}</p>
+                                        <p class="product-desc">{{ $category ? $category->name : ($_product->first_category ? $_product->first_category->name : '') }}</p>
                                     </div>
                                 </div>
                             </div>
@@ -305,56 +389,35 @@
                     <div class="row">
                         <div class="col-md-7 content">
                             <div>
-                                @if ($_product->categories->isNotEmpty())
-                                    @if ($category)
-                                        <a href="{{ route('san-pham', ['category_slug' => $category->slug, 'slug' => $_product->slug]) }}">
-                                            <h4>{{ $_product->name }}</h4>
-                                            <div class="desc">
-                                                {!! $_product->description !!}
-                                            </div>
-                                            <div class="price">
-                                                @if(!empty($_product->discount_value))
-                                                    Giá gốc <span>{{ numberFormat($_product->price) }}</span> VNĐ | <span style="font-weight: bold;color: #d20046">{{ numberFormat($_product->discount_value) }} VNĐ</span>
-                                                @else
-                                                    Giá <span style="font-weight: bold;color: #d20046">{{ numberFormat($_product->price) }} VNĐ</span>
-                                                @endif
-                                            </div>
-                                            <p class="product-desc">{{ $category->name }}</p>
-                                        </a>
-                                    @else
-                                        <h4>{{ $_product->name }}</h4>
-                                        <div class="desc">
-                                            {!! $_product->description !!}
-                                        </div>
-                                        <div class="price">
-                                            @if(!empty($_product->discount_value))
-                                                Giá gốc <span>{{ numberFormat($_product->price) }}</span> VNĐ | {{ numberFormat($_product->discount_value) }} VNĐ
-                                            @else
-                                                Giá {{ numberFormat($_product->price) }} VNĐ
-                                            @endif
-                                        </div>
-                                        <p class="product-desc">Không có danh mục</p>
-                                    @endif
-                                @endif
+                                <a href="{{ route('product-index', ['slug' => $_product->slug]) }}">
+                                    <h4>{{ $_product->name }}</h4>
+                                    <div class="desc">
+                                        {!! $_product->description !!}
+                                    </div>
+                                    <div class="price">
+                                        @if(!empty($_product->discount_value))
+                                            Giá gốc <span style="text-decoration: line-through;color: #d21e50">{{ numberFormat($_product->price) }} VNĐ</span> | <span style="font-weight: bold;">{{ numberFormat($_product->discount_value) }} VNĐ</span>
+                                        @else
+                                            Giá <span style="font-weight: bold;color: #d20046">{{ numberFormat($_product->price) }} VNĐ</span>
+                                        @endif
+                                    </div>
+{{--                                    <p class="product-desc">{{ $_product->first_category ? $_product->first_category->name : '' }}</p>--}}
+                                </a>
                             </div>
                         </div>
                         <div class="col-md-5 img">
-                            @if ($_product->categories->isNotEmpty())
-                                @if ($category)
-                                    <a href="{{ route('san-pham', ['category_slug' => $category->slug, 'slug' => $_product->slug]) }}">
-                                @endif
-                                <img src="{{ asset('images/products/furniture/Hot-Selling1.png') }}" alt="">
+                            <a href="{{ route('product-index', ['slug' => $_product->slug]) }}">
+                                <img src="{{ getImage($_product->image) }}" alt="">
                             </a>
-                            @endif
                         </div>
                     </div>
                 </div>
             </div>
         @endforeach
     </section>
-    @include('components.last-page', ['is_not_show' => true, 'is_border' => true])
+{{--    @include('components.last-page', ['is_not_show' => true, 'is_border' => true])--}}
 
-    @include('components.product-hot')
+{{--    @include('components.product-hot')--}}
 
     <div class="overlay-filter" id="overlay-filter"></div>
 @endsection

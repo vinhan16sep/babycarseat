@@ -96,4 +96,15 @@ class Product extends Model
     public static function getHotProducts() {
         return Product::query()->with(['categoryId'])->where('is_active', 1)->where('is_highlight', 1)->get();
     }
+
+    public function getFirstCategoryAttribute()
+    {
+        // Nếu categories đã được eager load thì lấy từ collection, không query
+        if ($this->relationLoaded('categories')) {
+            return $this->categories->first();
+        }
+
+        // Nếu chưa eager load thì query thêm (tuỳ trường hợp)
+        return $this->categories()->first();
+    }
 }

@@ -144,8 +144,8 @@
                                         </a>
                                     </div>
                                     <div class="card-product-info">
-                                        <p class="product-title">{{ $_item->name }}</p>
-                                        <!-- <p class="product-desc">{{ $_item->categoryId ? $_item->categoryId->name : '' }}</p> -->
+                                        <p class="product-title">{{ str_replace("BABYRO ", "", strtoupper($_item->name)) }}</p>
+                                        <!-- <p class="product-desc">{{ $_item->first_category ? $_item->first_category->name : '' }}</p> -->
                                     </div>
                                 </div>
                             </div>

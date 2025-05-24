@@ -640,7 +640,7 @@
 
   $(function () {
     rangeTwoPrice();
-    filterProducts();
+    // filterProducts();
     filterSort();
     swLayoutShop();
     handleSidebarFilter();
