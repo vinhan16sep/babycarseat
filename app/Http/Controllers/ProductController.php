@@ -94,7 +94,7 @@ class ProductController extends Controller
             $query->orderBy(self::SORTS[$orderBy]["column"], self::SORTS[$orderBy]["sort"]);
         }
 
-
+        $category = [];
         if ($category_slug) {
             $category = ProductCategory::query()->where('slug', $category_slug)->first();
 
