@@ -107,7 +107,7 @@ class ProductController extends Controller
             $categories = ProductCategory::query()->get();
         }
 
-        $products = $query->with(["productColors", "categories"])->get();
+        $products = $query->with(["productColors", "categories"])->orderBy('sort', 'asc')->get();
 
         return view('product-list', [
             "products" => $products,

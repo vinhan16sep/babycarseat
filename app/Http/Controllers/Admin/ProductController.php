@@ -63,7 +63,7 @@ class ProductController extends AdminController
             $q->where('is_active', 0);
         }
 
-        $list = $q->orderBy('id', 'desc')->paginate(10)->withQueryString();
+        $list = $q->orderBy('sort', 'asc')->paginate(10)->withQueryString();
         return view('admin/product/index', [
             'list' => $list,
             'req' => $req,
