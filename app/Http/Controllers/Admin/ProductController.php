@@ -63,7 +63,7 @@ class ProductController extends AdminController
             $q->where('is_active', 0);
         }
 
-        $list = $q->orderBy('id', 'desc')->paginate(10)->withQueryString();
+        $list = $q->orderBy('sort', 'asc')->paginate(10)->withQueryString();
         return view('admin/product/index', [
             'list' => $list,
             'req' => $req,
@@ -96,8 +96,9 @@ class ProductController extends AdminController
             $model->slug = $request->input('slug');
             $model->detail = $request->input('detail');
             $model->specification = $request->input('specification');
+            $model->guide = $request->input('guide');
             $model->description = $request->input('description');
-            $model->content = $request->input('content');
+            // $model->content = $request->input('content');
             $model->price = $request->input('price');
             $model->discount_value = $request->input('discount_value');
             $model->is_active = $request->input('is_active');
@@ -112,7 +113,6 @@ class ProductController extends AdminController
                 $upload = $this->uploadImage($path, $request);
                 $model->image = $upload;
                 $model->save();
-                
     
                 if ($model->save()) {
                     DB::commit();
@@ -120,34 +120,6 @@ class ProductController extends AdminController
                 }
                 DB::rollBack();
                 return redirect()->route('create-product')->with('error', Config::get('constants.MESSAGE.SOMETHING_ERROR'));
-
-                // $path = sprintf(Config::get('constants.FILE_STORAGE_PATH.PRODUCT_IMAGE'), $model->id);
-                // if ($request->input('colors') && !empty($request->input('colors'))) {
-                //     $colors = $request->input('colors');
-                //     foreach ($colors as $key => $color) {
-                //         if ($request->hasfile('images')) {
-                //             $images = $request->file('images');
-                //             if (isset($images[$key]) && !empty($images[$key])) {
-                //                 $upload = $this->uploadColorImage($path, $images[$key]);
-                //                 if ($upload) {
-                //                     $pColorModel = new ProductColor();
-                //                     $pColorModel->product_id = $model->id;
-                //                     $pColorModel->color_id = $color;
-                //                     $pColorModel->image = $upload;
-
-                //                     if ($pColorModel->save()) {
-                //                     } else {
-                //                         DB::rollBack();
-                //                         return redirect()->route('create-product')->with('error', Config::get('constants.MESSAGE.PRODUCT_COLOR_SAVE_ERROR'));
-                //                     }
-                //                 } else {
-                //                     DB::rollBack();
-                //                     return redirect()->route('create-product')->with('error', Config::get('constants.MESSAGE.PRODUCT_COLOR_UPLOAD_ERROR'));
-                //                 }
-                //             }
-                //         }
-                //     }
-                // }
             }
             DB::rollBack();
             return redirect()->route('create-product')->with('error', Config::get('constants.MESSAGE.SOMETHING_ERROR'));
@@ -199,7 +171,8 @@ class ProductController extends AdminController
             $object->detail = $request->input('detail');
             $object->specification = $request->input('specification');
             $object->description = $request->input('description');
-            $object->content = $request->input('content');
+            $object->guide = $request->input('guide');
+            // $object->content = $request->input('content');
             $object->price = $request->input('price');
             $object->discount_value = $request->input('discount_value');
             $object->is_active = $request->input('is_active');
