@@ -13,7 +13,7 @@
     <style>
         .desc h4, .design h4{
             font-size: 1.2vw;
-            font-weight: normal;
+            font-weight: 600;
             margin-bottom: 10px;
         }
         .design .content img{
@@ -32,9 +32,9 @@
             text-align: center;
         }
         .card-product-info .product-title{
-            font-weight: bold;
+            font-weight: 600;
             text-transform: uppercase;
-            font-size: 1.30vw;
+            font-size: 1.20vw;
         }
         .product h4{
             color: #d20046;
@@ -80,6 +80,9 @@
         .product .desc *{
             background: transparent!important;
             font-size: 1vw!important;
+        }
+        .product .desc span{
+            font-weight: 400;
         }
         .product .desc ul{
             padding-left: 20px;
@@ -137,7 +140,7 @@
             text-align: center;
         }
         .card-product-info .product-title{
-            font-weight: bold;
+            font-weight: 600;
             text-transform: uppercase;
         }
 
@@ -147,14 +150,14 @@
         }
 
         .desc .content{
-            font-weight: 300;
+            font-weight: 400;
             padding-right: 30px;
         }
 
         @media (max-width: 1460px) {
             .desc h4, .design h4{
                 font-size: 1.5vw;
-                font-weight: normal;
+                font-weight: 600;
                 margin-bottom: 10px;
             }
             .home-padding.categories{
@@ -289,16 +292,13 @@
                 margin-top: 20px;
             }
             .card-product-info .product-title{
-                font-size: 1.48vw;
+                font-size: 1.2vw;
             }
             .product .container {
                 max-width: 1200px;
             }
             .product .desc{
                 line-height: 30px;
-            }
-            .product .desc strong{
-                letter-spacing: 2px;
             }
         }
     </style>
@@ -348,12 +348,12 @@
     <section class="flat-spacing home-padding">
         <div class="container-fluid">
             <div dir="ltr" class="swiper tf-sw-latest" data-preview="6" data-tablet="3" data-mobile="1"
-                 data-space-lg="30" data-space-md="30" data-space="15" data-pagination="1" data-center="0" data-pagination-md="1"
+                 data-space-lg="15" data-space-md="30" data-space="15" data-pagination="1" data-center="0" data-pagination-md="1"
                  data-pagination-lg="1">
                 <div class="swiper-wrapper">
                     @if(isset($products) && $products->isNotEmpty())
                         @foreach($products as $_product)
-                            <div class="swiper-slide">
+                            <div class="swiper-slide" style="margin: 0 15px;">
                                 <div class="card-product wow fadeInUp" data-wow-delay="0s">
                                     <div class="card-product-wrapper">
                                         @if ($_product->categories->isNotEmpty())
@@ -396,9 +396,9 @@
                                     </div>
                                     <div class="price">
                                         @if(!empty($_product->discount_value))
-                                            Giá gốc <span style="text-decoration: line-through;color: #d21e50">{{ numberFormat($_product->price) }} VNĐ</span> | <span style="font-weight: bold;">{{ numberFormat($_product->discount_value) }} VNĐ</span>
+                                            Giá gốc <span style="text-decoration: line-through;color: #d21e50">{{ numberFormat($_product->price) }} VNĐ</span> | <span style="font-weight: 600;">{{ numberFormat($_product->discount_value) }} VNĐ</span>
                                         @else
-                                            Giá <span style="font-weight: bold;color: #d20046">{{ numberFormat($_product->price) }} VNĐ</span>
+                                            Giá <span style="font-weight: 600;color: #d20046">{{ numberFormat($_product->price) }} VNĐ</span>
                                         @endif
                                     </div>
 {{--                                    <p class="product-desc">{{ $_product->first_category ? $_product->first_category->name : '' }}</p>--}}
