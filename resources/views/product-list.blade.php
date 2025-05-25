@@ -331,7 +331,7 @@
                                 <div class="row row-css">
                                     @foreach($categories as $_cate)
                                         <div class="col-md-3 col-sm-6">
-                                            <img src="{{ asset('images/CustomerSay1.png') }}" alt="">
+                                            <img src="{{ getImage($_cate->image) }}" alt="{{ $_cate->name }}">
                                             <h5><a href="{{ route("san-pham", ['slug' => $_cate->slug]) }}">Bé từ {{ $_cate->name }}</a></h5>
                                         </div>
                                     @endforeach
@@ -361,9 +361,9 @@
                                         @endif
                                             <img class="lazyload img-product"
                                                  data-src="{{ getImage($_product->image) }}"
-                                                 src="{{ getImage($_product->image) }}" alt="image-product">
+                                                 src="{{ getImage($_product->image) }}" alt="{{ $_product->name }}">
                                             <img class="lazyload img-hover" data-src="{{ getImage($_product->image) }}"
-                                                 src="{{ getImage($_product->image) }}" alt="image-product">
+                                                 src="{{ getImage($_product->image) }}" alt="{{ $_product->name }}">
                                         </a>
                                     </div>
                                     <div class="card-product-info">
@@ -407,7 +407,7 @@
                         </div>
                         <div class="col-md-5 img">
                             <a href="{{ route('product-index', ['slug' => $_product->slug]) }}">
-                                <img src="{{ getImage($_product->image) }}" alt="">
+                                <img src="{{ getImage($_product->image) }}" alt="{{ $_product->name }}">
                             </a>
                         </div>
                     </div>
