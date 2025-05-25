@@ -81,7 +81,7 @@
             background: transparent!important;
             font-size: 1vw!important;
         }
-        .product .desc p > span{
+        .product .desc .MsoNormal{
             font-weight: 400;
         }
         .product .desc ul{
