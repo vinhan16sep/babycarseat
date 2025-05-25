@@ -89,10 +89,10 @@ class ProductController extends Controller
         $query = Product::query()->where("is_active", 1);
 
         //Sắp xếp
-        $orderBy = $request->orderBy ?? 'date';
-        if (isset(self::SORTS[$orderBy])) {
-            $query->orderBy(self::SORTS[$orderBy]["column"], self::SORTS[$orderBy]["sort"]);
-        }
+        // $orderBy = $request->orderBy ?? 'date';
+        // if (isset(self::SORTS[$orderBy])) {
+        //     $query->orderBy(self::SORTS[$orderBy]["column"], self::SORTS[$orderBy]["sort"]);
+        // }
 
         $category = [];
         if ($category_slug) {
@@ -107,7 +107,7 @@ class ProductController extends Controller
             $categories = ProductCategory::query()->get();
         }
 
-        $products = $query->with(["productColors", "categories"])->orderBy('sort', 'asc')->get();
+        $products = $query->with(["productColors", "categories"])->orderBy('products.sort', 'asc')->get();
 
         return view('product-list', [
             "products" => $products,
