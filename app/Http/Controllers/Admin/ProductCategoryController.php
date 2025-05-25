@@ -40,6 +40,7 @@ class ProductCategoryController extends AdminController
             $model = new ProductCategory();
             $model->name = $request->input('name');
             $model->slug = $request->input('slug');
+            $model->description = $request->input('description');
             if ($model->save()) {
                 DB::commit();
                 return redirect()->route('list-product-category')->with('success', Config::get('constants.MESSAGE.CREATE_SUCCEEDED'));
@@ -82,6 +83,7 @@ class ProductCategoryController extends AdminController
 
             $object->name = $request->input('name');
             $object->slug = $request->input('slug');
+            $object->description = $request->input('description');
 
             if ($object->save()) {
                 DB::commit();
