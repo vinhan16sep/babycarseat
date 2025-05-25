@@ -752,6 +752,7 @@
                                     <div class="signature-contentblock__description">
                                         <div class="signature-contentblock__title">{{ $_item->title }}</div>
                                         <div class="signature-contentblock__subtitle">{!! $_item->sort_content !!}</div>
+                                        <div class="signature-contentblock__subtitle">{!! $_item->content !!}</div>
                                     </div>
                                 </div>
                             </div>
