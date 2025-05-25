@@ -42,6 +42,15 @@
                                     @endif
                                 </div>
 
+                                <div class="form-group{{ $errors->has('description') ? ' has-error' : '' }}">
+                                    <label>Ghi chú</label>
+                                    <input type="text" name="description" value="{{ old('description', $object->description) }}" class="form-control" maxlength="255">
+                                    @if ($errors->has('description'))
+                                        <span style="color:red;">{{ $errors->first('description') }}</span>
+                                    </span>
+                                    @endif
+                                </div>
+
                                 <a type="button" href="{{ route('list-product-category') }}" class="btn btn-default btn-outline"><i class="ti-back-left icon-black"></i>&nbsp;&nbsp;Quay lại</a>
                                 <button type="submit" class="btn btn-primary"><i class="ti-save icon-white"></i>&nbsp;&nbsp;Lưu</button>
                             </form>
