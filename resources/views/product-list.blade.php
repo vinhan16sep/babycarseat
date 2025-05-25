@@ -81,7 +81,7 @@
             background: transparent!important;
             font-size: 1vw!important;
         }
-        .product .desc span{
+        .product .desc p > span{
             font-weight: 400;
         }
         .product .desc ul{
@@ -396,9 +396,9 @@
                                     </div>
                                     <div class="price">
                                         @if(!empty($_product->discount_value))
-                                            Giá gốc <span style="text-decoration: line-through;color: #d21e50">{{ numberFormat($_product->price) }} VNĐ</span> | <span style="font-weight: 600;">{{ numberFormat($_product->discount_value) }} VNĐ</span>
+                                            Giá gốc <span style="text-decoration: line-through;color: #d21e50">{{ numberFormat($_product->price) }} VNĐ</span> | <span style="font-weight: bold;">{{ numberFormat($_product->discount_value) }} VNĐ</span>
                                         @else
-                                            Giá <span style="font-weight: 600;color: #d20046">{{ numberFormat($_product->price) }} VNĐ</span>
+                                            Giá <span style="font-weight: bold;color: #d20046">{{ numberFormat($_product->price) }} VNĐ</span>
                                         @endif
                                     </div>
 {{--                                    <p class="product-desc">{{ $_product->first_category ? $_product->first_category->name : '' }}</p>--}}
