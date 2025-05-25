@@ -23,7 +23,7 @@
         .design .content h5{
             font-size: 1vw;
             margin-top: 10px;
-            margin-bottom: 20px;
+            margin-bottom: 5px;
         }
         .card-product{
             margin: 20px 0;
@@ -333,6 +333,7 @@
                                         <div class="col-md-3 col-sm-6">
                                             <img src="{{ getImage($_cate->image) }}" alt="{{ $_cate->name }}">
                                             <h5><a href="{{ route("san-pham", ['slug' => $_cate->slug]) }}">Bé từ {{ $_cate->name }}</a></h5>
+                                            <p>{{ $_cate->description }}</p>
                                         </div>
                                     @endforeach
                                 </div>
