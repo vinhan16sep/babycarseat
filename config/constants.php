@@ -4,6 +4,7 @@ return [
     'FILE_STORAGE_PATH' => [
         'BANNER_IMAGE' => 'images/banner/%s/',
         'PRODUCT_IMAGE' => 'images/product/%s/',
+        'PRODUCT_CATEGORY_IMAGE' => 'images/product-category/%s/',
         'PRODUCT_COLOR_IMAGE' => 'images/product/%s/colors/%s/',
         'COMBO_IMAGE' => 'images/combo/%s/',
         'NEWS_IMAGE' => 'images/news/%s/',
