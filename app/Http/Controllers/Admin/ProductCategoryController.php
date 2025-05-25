@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\Product;
 use App\Models\ProductCategory;
+use App\Models\ProductCategoryMapping;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
@@ -42,8 +43,16 @@ class ProductCategoryController extends AdminController
             $model->slug = $request->input('slug');
             $model->description = $request->input('description');
             if ($model->save()) {
-                DB::commit();
-                return redirect()->route('list-product-category')->with('success', Config::get('constants.MESSAGE.CREATE_SUCCEEDED'));
+                $path = sprintf(Config::get('constants.FILE_STORAGE_PATH.PRODUCT_CATEGORY_IMAGE'), $model->id);
+                $upload = $this->uploadImage($path, $request);
+                $model->image = $upload;
+        
+                if ($model->save()) {
+                    DB::commit();
+                    return redirect()->route('list-product-category')->with('success', Config::get('constants.MESSAGE.CREATE_SUCCEEDED'));
+                }
+                DB::rollBack();
+                return redirect()->route('create-product-category')->with('error', Config::get('constants.MESSAGE.SOMETHING_ERROR'));
             }
             DB::rollBack();
             return redirect()->route('create-product-category')->with('error', Config::get('constants.MESSAGE.SOMETHING_ERROR'));
@@ -84,6 +93,13 @@ class ProductCategoryController extends AdminController
             $object->name = $request->input('name');
             $object->slug = $request->input('slug');
             $object->description = $request->input('description');
+                    
+            if($request->hasfile('image')) {
+                $path = sprintf(Config::get('constants.FILE_STORAGE_PATH.PRODUCT_CATEGORY_IMAGE'), $id);
+                $prevImg = $object->image;
+                $upload = $this->updateImage($path, $request, $prevImg);
+                $object->image = $upload;
+            }
 
             if ($object->save()) {
                 DB::commit();
@@ -112,6 +128,8 @@ class ProductCategoryController extends AdminController
     public function delete(Request $request) {
         $request = $request->all();
 
+        DB::beginTransaction();
+
         try {
 
             // If got bad parameter(s)
@@ -129,12 +147,31 @@ class ProductCategoryController extends AdminController
             if ($this->isUsing($request['id'])) {
                 return response()->json(['status' => 'error','msg' => Config::get('constants.MESSAGE.CANNOT_DELETE_IN_USING')], 404);
             }
-        
-            if ($object->delete()) {
-                return response()->json(['status' => 'success','msg' => Config::get('constants.MESSAGE.DELETE_SUCCEEDED')], 200);
+
+            $cateMappings = ProductCategoryMapping::where(['category_id' => $request['id']])->get()->toArray();
+            if (count($cateMappings) == 0) {
+                if ($object->delete()) {
+                    DB::commit();
+                    return response()->json(['status' => 'success','msg' => Config::get('constants.MESSAGE.DELETE_SUCCEEDED')], 200);
+                }
+                DB::rollBack();
+                return response()->json(['status' => 'error','msg' => Config::get('constants.MESSAGE.SOMETHING_ERROR')], 403);
+
+            } else {
+                $delCateMapping = ProductCategoryMapping::where(['category_id' => $request['id']])->delete();
+                if ($delCateMapping == count($cateMappings)) {
+                    if ($object->delete()) {
+                        DB::commit();
+                        return response()->json(['status' => 'success','msg' => Config::get('constants.MESSAGE.DELETE_SUCCEEDED')], 200);
+                    }
+                    DB::rollBack();
+                    return response()->json(['status' => 'error','msg' => Config::get('constants.MESSAGE.SOMETHING_ERROR')], 403);
+                }
+                DB::rollBack();
+                return response()->json(['status' => 'error','msg' => Config::get('constants.MESSAGE.SOMETHING_ERROR')], 403);
             }
+            DB::rollBack();
             return response()->json(['status' => 'error','msg' => Config::get('constants.MESSAGE.SOMETHING_ERROR')], 403);
-            die;
 
         } catch (Exception $e) {
             return response()->json(['status' => 'error','msg' => $e->getMessage()], 403);
@@ -145,10 +182,15 @@ class ProductCategoryController extends AdminController
         $this->validate($request, [
             'name' => 'required|max:255',
             'slug' => 'required|max:255|unique:product_categories',
+            'image' => 'required|image|mimes:jpg,jpeg,png|max:2048',
         ], [
             'name.required' => 'Chưa nhập tên',
             'slug.required' => 'Chưa có slug',
             'slug.unique' => 'Slug đã tồn tại',
+            'image.required' => 'Chưa chọn ảnh',
+            'image.image' => 'Chỉ chấp nhận ảnh có định dạng jpg, jpeg, png',
+            'image.mimes' => 'Chỉ chấp nhận ảnh có định dạng jpg, jpeg, png',
+            'image.max' => 'Dung lượng ảnh không được quá 2MB',
         ]);
     }
 
@@ -156,19 +198,25 @@ class ProductCategoryController extends AdminController
         $this->validate($request, [
             'name' => 'required|max:255',
             'slug' => 'required|max:255|unique:product_categories,slug,' . $id . ',id',
+            'image' => 'image|mimes:jpg,jpeg,png|max:2048',
         ], [
             'name.required' => 'Chưa nhập tên',
             'slug.required' => 'Chưa có slug',
             'slug.unique' => 'Slug đã tồn tại',
+            'image.image' => 'Chỉ chấp nhận ảnh có định dạng jpg, jpeg, png',
+            'image.mimes' => 'Chỉ chấp nhận ảnh có định dạng jpg, jpeg, png',
+            'image.max' => 'Dung lượng ảnh không được quá 2MB',
         ]);
     }
 
     private function isUsing($id) {
-        $count = Product::where(['category_id' => $id])->count();
+        // $count = ProductCategoryMapping::where(['category_id' => $id])->count();
 
-        if ($count == 0) {
-            return false;
-        }
-        return true;
+        // if ($count == 0) {
+        //     return false;
+        // }
+        // return true;
+
+        return false;
     }
 }
