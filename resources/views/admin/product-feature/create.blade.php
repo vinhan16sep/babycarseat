@@ -61,7 +61,7 @@
                                     <select class="form-control w-30" name="feature_id" value="{{ old('feature_id') }}" id="selectFeature">
                                         <option></option>
                                         @foreach ($feature as $item)
-                                        <option value="{{$item->id}}" {{ old('feature_id') == $item->id ? 'selected' : '' }}>{{$item->title}}</option>
+                                        <option value="{{$item->id}}" {{ old('feature_id') == $item->id ? 'selected' : '' }}>{{$item->title}} - {{$item->label}}</option>
                                         @endforeach
                                     </select>
                                     @if ($errors->has('feature_id'))
