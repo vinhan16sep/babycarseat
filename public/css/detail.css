@@ -530,6 +530,10 @@ footer{
     gap:45px;
 }
 
+.tf-product-info-price .price-on-sale{
+    font-size: 14pt;
+    font-weight: 700;
+}
 
 @media (min-width: 900px) {
     footer p, footer .footer-menu .footer-menu_item{

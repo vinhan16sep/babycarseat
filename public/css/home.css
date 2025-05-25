@@ -262,7 +262,7 @@ body *, html *, *{
     left: 0px;
     padding: 35px 7.44vw;
     /*box-shadow: 5px 5px 5px rgba(255, 255, 255, 0.1);*/
-    background: linear-gradient(to right, rgba(255, 255, 255, 0.2), rgba(0, 0, 0, 0));
+    background: linear-gradient(to right, rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0));
 }
 
 .slider-effect-fade .swiper-slide.swiper-slide-active .fade-item {
@@ -597,7 +597,7 @@ footer{
         left: 0px;
         padding: 35px 7.44vw;
         /*box-shadow: 5px 5px 5px rgba(255, 255, 255, 0.1);*/
-        background: linear-gradient(to right, rgba(255, 255, 255, 0.5), rgba(0, 0, 0, 0.1));
+        background: linear-gradient(to right, rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0));
     }
 
     .slider-effect-fade .swiper-slide.swiper-slide-active .fade-item {
@@ -732,7 +732,7 @@ footer{
         line-height: 4.2vw;
         margin-top: 0 !important;
         font-weight: 700;
-        font-weight: 'Inner';
+        font-family: 'Inter';
     }
 
     .tf-slideshow.slider-default.slider-effect-fade .title-display span {

@@ -367,15 +367,15 @@
     <!-- Product_Main -->
     <section class="flat-spacing" style="padding-top: 30px">
         <div class="tf-main-product section-image-zoom">
-            <div class="container">
+            <div class="container-fluid">
                 <div class="row">
                     <!-- Product default -->
-                    <div class="col-md-6">
-                        <div class="tf-product-media-wrap sticky-top" style="overflow: hidden">
+                    <div class="col-md-6" style="width:53%;">
+                        <div class="tf-product-media-wrap sticky-top" style="overflow: hidden;margin-left: 4vw;">
                             @foreach($product->productColors as $i => $_color)
                                 <section class="slider slider{{$i}}" {!! $i !== 0 ? 'style="display:none"' : ''  !!} data-color="{{ $_color->color->name }}">
                                     <div style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff" class="swiper mySwiper{{$i}}">
-                                        <div class="swiper-wrapper">
+                                        <div class="swiper-wrapper" style="min-height: 51vh; background-color: #f2f2f2;">
                                             @foreach($_color->image as $_image)
                                                 <div class="swiper-slide" data-color="{{ $_color->color->name }}">
                                                     <a target="_blank" class="slider__image"
@@ -394,7 +394,7 @@
                                         <div class="swiper-wrapper">
                                             @foreach($_color->image as $_image)
                                                 <div class="swiper-slide" data-color="{{ $_color->color->name }}">
-                                                    <div class="slider__image">
+                                                    <div class="slider__image" style="background-color: #f2f2f2;">
                                                         <img class="lazyload" data-src="{{ getImage($_image) }}"
                                                              src="{{ getImage($_image) }}" alt="">
                                                     </div>
@@ -408,10 +408,10 @@
                     </div>
                     <!-- /Product default -->
                     <!-- tf-product-info-list -->
-                    <div class="col-md-6">
+                    <div class="col-md-6" style="width:47%;">
                         <div class="tf-product-info-wrap position-relative">
                             <div class="tf-zoom-main"></div>
-                            <div class="tf-product-info-list other-image-zoom">
+                            <div class="tf-product-info-list other-image-zoom" style="margin-left: 37px;">
                                 <div class="tf-product-info-heading">
 
                                     <div class="tf-product-info-name">
@@ -449,12 +449,11 @@
 
                                     <div class="tf-product-info-desc">
                                         <div class="tf-product-info-price">
-                                            <h5 class="price-on-sale font-2">
+                                            <h5 class="price-on-sale">
                                                 @if(!empty($product->discount_value))
-                                                    {{ numberFormat($product->discount_value) }} VNĐ
-                                                    <span>Giá gốc <del>{{ numberFormat($product->price) }} VNĐ</del> </span>
+                                                <span>Giá gốc <del style="color: #d20046;">{{ numberFormat($product->price) }} VNĐ</del> </span> | {{ numberFormat($product->discount_value) }} VNĐ
                                                 @else
-                                                    {{ numberFormat($product->price) }} VNĐ
+                                                <span>Giá {{ numberFormat($product->price) }} VNĐ </span>
                                                 @endif
                                             </h5>
 {{--                                            <div class="compare-at-price font-2">$98.99</div>--}}
@@ -564,12 +563,26 @@
                                     <div class="tf-product-info-help">
                                         <ul class="accordion-product-wrap" id="accordion-product">
                                             <li class="accordion-product-item">
-                                                <a href="#accordion-7" class="accordion-title collapsed current" data-bs-toggle="collapse"
+                                                    <a href="#accordion-8" class="accordion-title collapsed current" data-bs-toggle="collapse"
+                                                    aria-expanded="true" aria-controls="accordion-1">
+                                                        <h6>Tính năng</h6>
+                                                        <span class="btn-open-sub"></span>
+                                                    </a>
+                                                    <div id="accordion-8" class="collapse" data-bs-parent="#accordion-product">
+                                                        <div class="accordion-content tab-description fix-font">
+                                                            <p class="text-secondary">
+                                                                {!! $product->specification !!}
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                            </li>
+                                            <li class="accordion-product-item">
+                                                <a href="#accordion-9" class="accordion-title collapsed current" data-bs-toggle="collapse"
                                                    aria-expanded="true" aria-controls="accordion-1">
                                                     <h6>Thông số</h6>
                                                     <span class="btn-open-sub"></span>
                                                 </a>
-                                                <div id="accordion-7" class="collapse" data-bs-parent="#accordion-product">
+                                                <div id="accordion-9" class="collapse" data-bs-parent="#accordion-product">
                                                     <div class="accordion-content tab-description fix-font">
                                                         <p class="text-secondary">
                                                             {!! $product->detail !!}
@@ -578,15 +591,15 @@
                                                 </div>
                                             </li>
                                             <li class="accordion-product-item">
-                                                <a href="#accordion-8" class="accordion-title collapsed current" data-bs-toggle="collapse"
+                                                <a href="#accordion-10" class="accordion-title collapsed current" data-bs-toggle="collapse"
                                                    aria-expanded="true" aria-controls="accordion-1">
-                                                    <h6>Đặc tính</h6>
+                                                    <h6>Hướng dẫn sử dụng</h6>
                                                     <span class="btn-open-sub"></span>
                                                 </a>
-                                                <div id="accordion-8" class="collapse" data-bs-parent="#accordion-product">
+                                                <div id="accordion-10" class="collapse" data-bs-parent="#accordion-product">
                                                     <div class="accordion-content tab-description fix-font">
                                                         <p class="text-secondary">
-                                                            {!! $product->specification !!}
+                                                            <!-- {!! $product->guide !!} -->
                                                         </p>
                                                     </div>
                                                 </div>
@@ -752,7 +765,6 @@
                                     <div class="signature-contentblock__description">
                                         <div class="signature-contentblock__title">{{ $_item->title }}</div>
                                         <div class="signature-contentblock__subtitle">{!! $_item->sort_content !!}</div>
-                                        <div class="signature-contentblock__subtitle">{!! $_item->content !!}</div>
                                     </div>
                                 </div>
                             </div>
@@ -767,7 +779,42 @@
     <br>
     @include('components.last-page', ['is_not_show' => true])
 
-    @include('components.product-hot', ['is_not_show' => true])
+    <section class="flat-spacing home-padding" style="background:#f2f2f2">
+        <div class="container-fluid">
+            <div dir="ltr" class="swiper tf-sw-latest" data-preview="6" data-tablet="3" data-mobile="1"
+                 data-space-lg="15" data-space-md="30" data-space="15" data-pagination="1" data-center="0" data-pagination-md="1"
+                 data-pagination-lg="1">
+                <div class="swiper-wrapper" style="background:unset;">
+                    @if(isset($products) && $products->isNotEmpty())
+                        @foreach($products as $_product)
+                            <div class="swiper-slide" style="margin: 0 15px; background:unset;">
+                                <div class="card-product wow fadeInUp" data-wow-delay="0s" style="background:unset;">
+                                    <div class="card-product-wrapper">
+                                        @if ($_product->categories->isNotEmpty())
+                                            <a href="{{ route('san-pham', ['category_slug' => $_product->categories->first()->slug, 'slug' => $_product->slug]) }}" class="product-img">
+                                        @endif
+                                            <img class="lazyload img-product"
+                                                 data-src="{{ getImage($_product->image) }}"
+                                                 src="{{ getImage($_product->image) }}" alt="{{ $_product->name }}">
+                                            <img class="lazyload img-hover" data-src="{{ getImage($_product->image) }}"
+                                                 src="{{ getImage($_product->image) }}" alt="{{ $_product->name }}">
+                                        </a>
+                                    </div>
+                                    <div class="card-product-info">
+                                        <p class="product-title">{{ str_replace("BABYRO ", "", strtoupper($_product->name)) }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    @else
+                        <p>No products available.</p>
+                    @endif
+                </div>
+                <div class="sw-pagination-latest sw-dots type-circle justify-content-center"></div>
+            </div>
+        </div>
+    </section>
+
 @endsection
 
 @section('script')

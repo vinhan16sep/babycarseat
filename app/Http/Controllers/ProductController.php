@@ -78,6 +78,9 @@ class ProductController extends Controller
             ])
             ->orderByDesc("is_highlight")->get();
 
+        $category = [];
+        $categories = ProductCategory::query()->get();
+
         return view('product-show', [
             "product" => $product,
             "products" => $products,
