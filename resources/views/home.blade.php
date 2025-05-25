@@ -242,8 +242,8 @@
         <div class="container-fluid">
             <div class="banner-cls-discover hover-img">
                 <a href="#" class="img-style">
-                    <img class="lazyload" data-src="images/banner footer.png"
-                         src="images/banner footer.png" alt="cls-tiktok">
+                    <img class="lazyload" data-src="images/banner-footer.png"
+                         src="images/banner-footer.png" alt="babyro">
                 </a>
                 <div class="cls-content">
 {{--                    <div class="box-title-top">--}}
