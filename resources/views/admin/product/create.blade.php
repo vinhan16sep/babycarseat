@@ -85,63 +85,6 @@
                                     @endif
                                 </div>
 
-                                <!-- <div class="form-group{{ $errors->has('colors') ? ' has-error' : '' }}">
-                                    <label>Chọn màu sắc và tải ảnh đại diện <span class="my-required">*</span></label>
-
-                                    <div id="color-container">
-                                        @php
-                                        $oldColors = collect(old('colors', []))->filter();
-                                        $totalColors = max($oldColors->count(), 1);
-                                        @endphp
-
-                                        @foreach ($oldColors as $index => $colorId)
-                                        @php
-                                        $selectedColor = $colors->firstWhere('id', $colorId);
-                                        @endphp
-                                        <div class="color-item">
-                                            <div class="color-preview" id="color-preview-{{ $index }}" style="background-color: {{ $selectedColor->code ?? 'transparent' }};"></div>
-
-                                            <select class="form-control color-select" name="colors[{{ $index }}]" onchange="updateColorPreview(this, {{ $index }})">
-                                                <option value="">Chọn màu</option>
-                                                @foreach ($colors as $color)
-                                                <option value="{{ $color->id }}" data-color="{{ $color->code }}"
-                                                    {{ $color->id == $colorId ? 'selected' : '' }}>
-                                                    {{ $color->name }}
-                                                </option>
-                                                @endforeach
-                                            </select>
-
-                                            <input type="file" class="form-control" name="images[{{ $index }}]" accept="image/*">
-                                            <button type="button" class="btn btn-danger" onclick="removeColor(this)">Xóa</button>
-                                        </div>
-                                        @endforeach
-
-                                        @if ($oldColors->isEmpty())
-                                        <div class="color-item">
-                                            <div class="color-preview" id="color-preview-0"></div>
-
-                                            <select class="form-control color-select" name="colors[0]" onchange="updateColorPreview(this, 0)">
-                                                <option value="">Chọn màu</option>
-                                                @foreach ($colors as $color)
-                                                <option value="{{ $color->id }}" data-color="{{ $color->code }}">
-                                                    {{ $color->name }}
-                                                </option>
-                                                @endforeach
-                                            </select>
-
-                                            <input type="file" class="form-control" name="images[0]" accept="image/*">
-                                            <button type="button" class="btn btn-danger" onclick="removeColor(this)">Xóa</button>
-                                        </div>
-                                        @endif
-                                    </div>
-
-                                    @if ($errors->has('colors'))
-                                    <span style="color:red;">{{ $errors->first('colors') }}</span>
-                                    @endif
-
-                                    <button type="button" class="btn btn-primary mt-2" onclick="addColor()">Thêm màu</button>
-                                </div> -->
-
                                 <div class="form-group{{ $errors->has('category_id') ? ' has-error' : '' }}">
                                     <label>Chọn danh mục <span class="my-required">*</span></label>
                                     <select class="form-control select2" name="category_id[]" multiple>
@@ -156,8 +99,6 @@
                                         <span style="color:red;">{{ $errors->first('category_id') }}</span>
                                     @endif
                                 </div>
-
-
 
                                 <div class="form-group{{ $errors->has('brand_id') ? ' has-error' : '' }}">
                                     <label>Chọn thương hiệu <span class="my-required">*</span></label>
@@ -188,29 +129,34 @@
                                     @endif
                                 </div>
 
-                                <div class="form-group">
-                                    <label for="detail" class="form-label">Thông số</label>
-                                    <textarea name="detail" class="form-control my-textarea" rows="5">{{ old('detail') }}</textarea>
-                                </div>
-                                <div class="form-group">
-                                    <label for="specification" class="form-label">Đặc tính</label>
-                                    <textarea name="specification" class="form-control my-textarea" rows="5">{{ old('specification') }}</textarea>
-                                </div>
-
                                 <!-- Mô tả -->
                                 <div class="form-group">
                                     <label>Mô tả</label>
                                     <textarea name="description" class="form-control my-textarea" rows="5">{{ old('description') }}</textarea>
                                 </div>
 
-                                <!-- Nội dung -->
                                 <div class="form-group">
+                                    <label for="specification" class="form-label">Tính năng</label>
+                                    <textarea name="specification" class="form-control my-textarea" rows="5">{{ old('specification') }}</textarea>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="detail" class="form-label">Thông số</label>
+                                    <textarea name="detail" class="form-control my-textarea" rows="5">{{ old('detail') }}</textarea>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="guide" class="form-label">Hướng dẫn sử dụng</label>
+                                    <textarea name="guide" class="form-control my-textarea" rows="5">{{ old('guide') }}</textarea>
+                                </div>
+
+                                <!-- <div class="form-group">
                                     <label for="content" class="form-label">Nội dung</label>
                                     <textarea name="content" class="form-control my-textarea" id="txtareaContent">{{ old('content') }}</textarea>
                                     @if ($errors->has('content'))
                                     <span style="color:red;">{{ $errors->first('content') }}</span>
                                     @endif
-                                </div>
+                                </div> -->
 
                                 <!-- Sản phẩm nổi bật -->
                                 <input type="hidden" name="is_highlight" value="0">
@@ -318,7 +264,8 @@
         height: 300,
         plugins: [
             'image',
-            'table'
+            'table',
+            'link'
         ],
 
         image_title: true,
