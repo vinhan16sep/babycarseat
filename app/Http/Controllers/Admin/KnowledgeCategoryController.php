@@ -102,7 +102,7 @@ class KnowledgeCategoryController extends AdminController
             if($request->hasfile('image')) {
                 $path = sprintf(Config::get('constants.FILE_STORAGE_PATH.KNOWLEDGE_CATEGORY_IMAGE'), $id);
                 $prevImg = $object->image;
-                $upload = $this->updateImage($path, $request, $prevImg);
+                $upload = $this->updateImage($path, $request);;
                 $object->image = $upload;
             }
 
