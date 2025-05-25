@@ -14,8 +14,10 @@ class ProductCategory extends Model
     public $timestamps = true;
 
     protected $fillable = [
+        'image',
         'name',
         'slug',
+        'description',
         'created_by',
         'updated_by'
     ];

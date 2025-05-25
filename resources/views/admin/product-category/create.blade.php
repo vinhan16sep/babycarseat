@@ -24,6 +24,22 @@
                                 @csrf
                                 @method('post')
 
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <div class="form-group{{ $errors->has('image') ? ' has-error' : '' }}">
+                                            <label>Ảnh <span class="my-required">*</span></label>
+                                            <input type="file" name="image" class="form-control input-default" id="image">
+                                            @if ($errors->has('image'))
+                                            <span style="color:red;">{{ $errors->first('image') }}</span>
+                                            @endif
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 my-preview">
+                                        <img id="preview-image-before-upload" src="{{ asset('images/no-image-available.png') }}"
+                                            alt="preview image" style="max-height: 250px;">
+                                    </div>
+                                </div>
+
                                 <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                                     <label>Tên</label>
                                     <input type="text" name="name" value="{{ old('name') }}" class="form-control" id="inputName" maxlength="255">
@@ -41,6 +57,15 @@
                                     </span>
                                     @endif
                                 </div>
+
+                                <div class="form-group{{ $errors->has('description') ? ' has-error' : '' }}">
+                                    <label>Ghi chú</label>
+                                    <input type="text" name="description" value="{{ old('description') }}" class="form-control" maxlength="255">
+                                    @if ($errors->has('description'))
+                                        <span style="color:red;">{{ $errors->first('description') }}</span>
+                                    </span>
+                                    @endif
+                                </div>
                                 
                                 <a type="button" href="{{ route('list-product-category') }}" class="btn btn-default btn-outline"><i class="ti-back-left icon-black"></i>&nbsp;&nbsp;Quay lại</a>
                                 <button type="submit" class="btn btn-primary"><i class="ti-save icon-white"></i>&nbsp;&nbsp;Lưu</button>
@@ -54,7 +79,15 @@
     </section>
 </div>
 <script type="text/javascript">
-    
+
+    $('#image').change(function() {
+        let reader = new FileReader();
+        reader.onload = (e) => {
+            $('#preview-image-before-upload').attr('src', e.target.result);
+        }
+        reader.readAsDataURL(this.files[0]);
+    });
+
     $('#inputName').change(function (){
         let slug = to_slug($('#inputName').val());
         $('#inputSlug').val(slug);

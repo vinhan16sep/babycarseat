@@ -207,10 +207,15 @@ class KnowledgeCategoryController extends AdminController
         $this->validate($request, [
             'name' => 'required|max:255',
             'slug' => 'required|max:255|unique:knowledge_category',
+            'image' => 'required|image|mimes:jpg,jpeg,png|max:2048',
         ], [
             'name.required' => 'Chưa nhập tên',
             'slug.required' => 'Chưa có slug',
             'slug.unique' => 'Slug đã tồn tại',
+            'image.required' => 'Chưa chọn ảnh',
+            'image.image' => 'Chỉ chấp nhận ảnh có định dạng jpg, jpeg, png',
+            'image.mimes' => 'Chỉ chấp nhận ảnh có định dạng jpg, jpeg, png',
+            'image.max' => 'Dung lượng ảnh không được quá 2MB',
         ]);
     }
 
@@ -218,10 +223,14 @@ class KnowledgeCategoryController extends AdminController
         $this->validate($request, [
             'name' => 'required|max:255',
             'slug' => 'required|max:255|unique:knowledge_category,slug,' . $id . ',id',
+            'image' => 'image|mimes:jpg,jpeg,png|max:2048',
         ], [
             'name.required' => 'Chưa nhập tên',
             'slug.required' => 'Chưa có slug',
             'slug.unique' => 'Slug đã tồn tại',
+            'image.image' => 'Chỉ chấp nhận ảnh có định dạng jpg, jpeg, png',
+            'image.mimes' => 'Chỉ chấp nhận ảnh có định dạng jpg, jpeg, png',
+            'image.max' => 'Dung lượng ảnh không được quá 2MB',
         ]);
     }
 

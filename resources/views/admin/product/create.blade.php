@@ -61,6 +61,10 @@
                                             @endif
                                         </div>
                                     </div>
+                                    <div class="col-md-4 my-preview">
+                                        <img id="preview-image-before-upload" src="{{ asset('images/no-image-available.png') }}"
+                                            alt="preview image" style="max-height: 250px;">
+                                    </div>
                                 </div>
 
                                 <!-- Tên sản phẩm -->
