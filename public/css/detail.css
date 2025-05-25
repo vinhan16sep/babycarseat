@@ -15,6 +15,7 @@
     color: #C31E46;
     font-weight: bold;
     margin-top: -3px;
+    font-size: 1.50vw;
 }
 .card-product-info a.title{
     background-color: #3c3c8c;
@@ -82,7 +83,7 @@
     border-bottom: 0;
 }
 .flat-spacing.bg-css{
-    background: rgba(134, 121, 121, 0.1);
+    background: rgb(241, 242, 243);
 }
 .flat-spacing.bg-css .heading{
     color: black!important;
@@ -262,7 +263,7 @@ body *, html *, *{
     left: 0px;
     padding: 35px 7.44vw;
     /*box-shadow: 5px 5px 5px rgba(255, 255, 255, 0.1);*/
-    background: linear-gradient(to right, rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0));
+    background: linear-gradient(to right, rgba(255, 255, 255, 0.2), rgba(0, 0, 0, 0));
 }
 
 .slider-effect-fade .swiper-slide.swiper-slide-active .fade-item {
@@ -514,6 +515,26 @@ footer{
 .signature-contentblock__subtitle {
     white-space: pre-line;
 }
+
+.tf-product-info-name h3{
+    text-transform: uppercase;
+    color: #d20046;
+    font-weight:600;
+    font-size:2vw;
+}
+.variant-picker-item .variant-picker-values label{
+    width: 50px;
+    height: 50px;
+}
+.variant-picker-item .variant-picker-values{
+    gap:45px;
+}
+
+.tf-product-info-price .price-on-sale{
+    font-size: 14pt;
+    font-weight: 700;
+}
+
 @media (min-width: 900px) {
     footer p, footer .footer-menu .footer-menu_item{
         color:black;
@@ -597,7 +618,7 @@ footer{
         left: 0px;
         padding: 35px 7.44vw;
         /*box-shadow: 5px 5px 5px rgba(255, 255, 255, 0.1);*/
-        background: linear-gradient(to right, rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0));
+        background: linear-gradient(to right, rgba(255, 255, 255, 0.5), rgba(0, 0, 0, 0.1));
     }
 
     .slider-effect-fade .swiper-slide.swiper-slide-active .fade-item {
@@ -613,8 +634,8 @@ footer{
     }
 
     .card-product .card-product-info {
-        min-height: 2.18vw;
-        padding-bottom: 26px;
+        min-height: 7.18vw;
+        padding-bottom: 16px;
         padding-top: 0;
     }
 
@@ -632,7 +653,7 @@ footer{
     .card-product-info .product-desc {
         font-family: 'Inter';
         font-size: 1vw;
-        font-weight: 300;
+        font-weight: 400;
     }
 
     .tf-slideshow img {
@@ -732,7 +753,7 @@ footer{
         line-height: 4.2vw;
         margin-top: 0 !important;
         font-weight: 700;
-        font-family: 'Inter';
+        font-weight: 'Inner';
     }
 
     .tf-slideshow.slider-default.slider-effect-fade .title-display span {
