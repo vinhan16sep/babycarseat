@@ -25,6 +25,9 @@
             margin-top: 10px;
             margin-bottom: 20px;
         }
+        .design .content p{
+            font-size: 0.9vw;
+        }
         .card-product{
             margin: 20px 0;
         }
