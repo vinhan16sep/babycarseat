@@ -47,7 +47,7 @@ class FeatureController extends AdminController
             $model->created_by = 1;
             $model->updated_by = 1;
             if ($model->save()) {
-                $path = sprintf(Config::get('constants.FILE_STORAGE_PATH.NEWS_IMAGE'), $model->id);
+                $path = sprintf(Config::get('constants.FILE_STORAGE_PATH.FEATURE_IMAGE'), $model->id);
                 $upload = $this->uploadImage($path, $request);
                 $model->image = $upload;
         
@@ -104,7 +104,7 @@ class FeatureController extends AdminController
             $object->updated_by = 1;
                 
             if($request->hasfile('image')) {
-                $path = sprintf(Config::get('constants.FILE_STORAGE_PATH.NEWS_IMAGE'), $id);
+                $path = sprintf(Config::get('constants.FILE_STORAGE_PATH.FEATURE_IMAGE'), $id);
                 $prevImg = $object->image;
                 $upload = $this->updateImage($path, $request, $prevImg);
                 $object->image = $upload;
