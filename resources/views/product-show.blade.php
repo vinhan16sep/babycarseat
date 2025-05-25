@@ -8,6 +8,7 @@
 @section('css')
     <link rel="stylesheet" href="{{ asset('css/drift-basic.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/photoswipe.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/detail.css?v=' . ($ver ?? '')) }}">
     <style>
         .flat-spacing{
             padding-top: 40px;
@@ -319,7 +320,7 @@
 
 @section('content')
     <!-- breadcrumb -->
-    <div class="tf-breadcrumb">
+    <!-- <div class="tf-breadcrumb">
         <div class="container">
             <div class="tf-breadcrumb-wrap">
                 <div class="tf-breadcrumb-list">
@@ -329,7 +330,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
     <!-- /breadcrumb -->
 
     <!-- tf-add-cart-success -->
@@ -416,6 +417,18 @@
                                     <div class="tf-product-info-name">
 {{--                                        <div class="text text-btn-uppercase">Clothing</div>--}}
                                         <h3 class="name">{{ $product->name }}</h3>
+                                        <div class="variant-picker-item">
+                                            <div class="variant-picker-values">
+                                                @foreach($product->productColors as $_color)
+                                                    <input type="radio" name="color" value="{{ $_color->color->id }}">
+                                                    <label class="-swiperslide stagger-item hover-tooltip tooltip-bot radius-60 color-btn {{ $loop->index == 0 ? 'active' : '' }}"
+                                                        for="values-beige" data-color="{{ $_color->color->name }}" data-value="{{ $_color->color->name }}" data-id="{{ $_color->color->id }}" style="background-color: {{ $_color->color->code }}!important">
+                                                        <span class="btn-checkbox"></span>
+                                                        <span class="tooltip">{{ $_color->color->name }}</span>
+                                                    </label>
+                                                @endforeach
+                                            </div>
+                                        </div>
 {{--                                        <div class="sub">--}}
 {{--                                            <div class="tf-product-info-rate">--}}
 {{--                                                <div class="list-star">--}}
@@ -439,7 +452,7 @@
                                             <h5 class="price-on-sale font-2">
                                                 @if(!empty($product->discount_value))
                                                     {{ numberFormat($product->discount_value) }} VNĐ
-                                                    <span> <del>{{ numberFormat($product->price) }} VNĐ</del> </span>
+                                                    <span>Giá gốc <del>{{ numberFormat($product->price) }} VNĐ</del> </span>
                                                 @else
                                                     {{ numberFormat($product->price) }} VNĐ
                                                 @endif
@@ -460,22 +473,6 @@
                                     </div>
                                 </div>
                                 <div class="tf-product-info-choose-option">
-                                    <div class="variant-picker-item">
-                                        <div class="variant-picker-label mb_12">
-                                            Colors:<span class="text-title variant-picker-label-value value-currentColor" data-id="{{ $product->productColors && !empty($product->productColors[0]) ? $product->productColors[0]->color->id : '' }}">{{ $product->productColors && !empty($product->productColors[0]) ? $product->productColors[0]->color->name : '' }}
-                                            </span>
-                                        </div>
-                                        <div class="variant-picker-values">
-                                            @foreach($product->productColors as $_color)
-                                                <input type="radio" name="color" value="{{ $_color->color->id }}">
-                                                <label class="-swiperslide stagger-item hover-tooltip tooltip-bot radius-60 color-btn {{ $loop->index == 0 ? 'active' : '' }}"
-                                                       for="values-beige" data-color="{{ $_color->color->name }}" data-value="{{ $_color->color->name }}" data-id="{{ $_color->color->id }}" style="background-color: {{ $_color->color->code }}!important">
-                                                    <span class="btn-checkbox"></span>
-                                                    <span class="tooltip">{{ $_color->color->name }}</span>
-                                                </label>
-                                            @endforeach
-                                        </div>
-                                    </div>
                                     @if($product->notes->count() > 0)
                                         <div class="product-ksp">
                                             @foreach($product->notes as $_note)

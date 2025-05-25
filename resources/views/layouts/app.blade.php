@@ -140,7 +140,7 @@
 <script type="text/javascript" src="{{ asset('js/multiple-modal.js?v=' . ($ver ?? '')) }}"></script>
 <script type="text/javascript" src="{{ asset('js/main.js?v=' . ($ver ?? '')) }}"></script>
 
-<script src="{{ asset('js/sibforms.js?v=' . ($ver ?? '')) }}" defer></script>
+<!-- <script src="{{ asset('js/sibforms.js?v=' . ($ver ?? '')) }}" defer></script> -->
 
 <script>
     window.REQUIRED_CODE_ERROR_MESSAGE = 'Please choose a country code';
