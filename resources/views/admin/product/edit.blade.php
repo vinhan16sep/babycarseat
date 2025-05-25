@@ -120,24 +120,29 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="detail" class="form-label">Thông số</label>
-                                    <textarea name="detail" class="form-control my-textarea" id="txtareaDetail">{{ old('detail', $object->detail) }}</textarea>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="specification" class="form-label">Đặc tính</label>
-                                    <textarea name="specification" class="form-control my-textarea" id="txtareaSpecification">{{ old('specification', $object->specification) }}</textarea>
-                                </div>
-
-                                <div class="form-group">
                                     <label>Mô tả</label>
                                     <textarea name="description" class="form-control my-textarea">{{ old('description', $object->description) }}</textarea>
                                 </div>
 
                                 <div class="form-group">
+                                    <label for="specification" class="form-label">Tính năng</label>
+                                    <textarea name="specification" class="form-control my-textarea" id="txtareaSpecification">{{ old('specification', $object->specification) }}</textarea>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="detail" class="form-label">Thông số</label>
+                                    <textarea name="detail" class="form-control my-textarea" id="txtareaDetail">{{ old('detail', $object->detail) }}</textarea>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="guide" class="form-label">Hướng dẫn sử dụng</label>
+                                    <textarea name="guide" class="form-control my-textarea" id="txtareaGuide">{{ old('guide', $object->guide) }}</textarea>
+                                </div>
+
+                                <!-- <div class="form-group">
                                     <label for="content" class="form-label">Nội dung</label>
                                     <textarea name="content" class="form-control my-textarea" id="txtareaContent">{{ old('content', $object->content) }}</textarea>
-                                </div>
+                                </div> -->
 
                                 <input type="hidden" name="is_highlight" value="0">
                                 <div class="form-group">
@@ -175,7 +180,8 @@
         height: 300,
         plugins: [
             'image',
-            'table'
+            'table',
+            'link'
         ],
 
         image_title: true,
