@@ -25,6 +25,9 @@
             margin-top: 10px;
             margin-bottom: 5px;
         }
+        .design .content p{
+            font-size: 0.9vw;
+        }
         .card-product{
             margin: 20px 0;
         }
@@ -81,7 +84,7 @@
             background: transparent!important;
             font-size: 1vw!important;
         }
-        .product .desc p > span{
+        .product .desc .MsoNormal{
             font-weight: 400;
         }
         .product .desc ul{
