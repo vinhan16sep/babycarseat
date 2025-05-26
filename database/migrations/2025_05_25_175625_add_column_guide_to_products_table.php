@@ -14,7 +14,7 @@ class AddColumnGuideToProductsTable extends Migration
     public function up()
     {
         Schema::table('products', function (Blueprint $table) {
-			$table->string('guide')->nullable(true);
+			$table->text('guide')->nullable(true);
         });
     }
 
