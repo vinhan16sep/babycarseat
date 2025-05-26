@@ -9,6 +9,8 @@ use App\Models\Post;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Facades\Request;
+use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\View;
 
@@ -31,6 +33,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+
+        // Lấy path từ request
+        $currentPath = Request::path();
+        View::share('currentPath', $currentPath);
+        
         Paginator::useBootstrap();
 
         if (
@@ -67,7 +74,7 @@ class AppServiceProvider extends ServiceProvider
                 $category->setRelation('products', $products->get($category->id) ?? collect());
                 return $category->toArray();
             });
-             View::share('categoriesMenu', $categories);
+            View::share('categoriesMenu', $categories);
 
             // 1. Lấy toàn bộ danh mục (có cấp 1, 2, 3)
             $categories = PostCategory::where('is_active', 1)
