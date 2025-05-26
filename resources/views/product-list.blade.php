@@ -350,14 +350,14 @@
     @endif
 
     <section class="flat-spacing home-padding">
-        <div class="container-fluid">
+        <div class="container-fluid" style="padding: 0;">
             <div dir="ltr" class="swiper tf-sw-latest" data-preview="6" data-tablet="3" data-mobile="1"
-                 data-space-lg="15" data-space-md="30" data-space="15" data-pagination="1" data-center="0" data-pagination-md="1"
+                 data-space-lg="1" data-space-md="30" data-space="1" data-pagination="1" data-center="0" data-pagination-md="1"
                  data-pagination-lg="1">
                 <div class="swiper-wrapper">
                     @if(isset($products) && $products->isNotEmpty())
                         @foreach($products as $_product)
-                            <div class="swiper-slide" style="margin: 0 15px;">
+                            <div class="swiper-slide" style="margin: 0 3px;">
                                 <div class="card-product wow fadeInUp" data-wow-delay="0s">
                                     <div class="card-product-wrapper">
                                         @if ($_product->categories->isNotEmpty())
