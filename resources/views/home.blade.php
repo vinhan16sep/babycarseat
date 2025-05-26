@@ -127,13 +127,13 @@
 {{--                <p class="subheading text-secondary">Browse our Top Trending: the hottest picks loved by all. </p>--}}
             </div>
             @if(!empty($hotProducts))
-                <div dir="ltr" class="swiper tf-sw-latest" data-preview="5" data-tablet="3" data-mobile="1"
-                     data-space-lg="0" data-space-md="30" data-space="10" data-pagination="1" data-pagination-md="1"
-                     data-pagination-lg="1" data-loop="false">
+                <div dir="ltr" class="swiper tf-sw-latest" data-preview="5" data-tablet="4" data-mobile="1"
+                     data-space-lg="15" data-space-md="15" data-space="15" data-pagination="1" data-pagination-md="1"
+                     data-pagination-lg="3" >
                     <div class="swiper-wrapper">
                         @foreach($hotProducts as $_item)
                             <div class="swiper-slide">
-                                <div class="card-product wow fadeInUp" data-wow-delay="0s">
+                                <div class="card-product wow fadeInUp" data-wow-delay="0s" style="border-radius: 15px;">
                                     <div class="card-product-wrapper">
                                         <a href="{{ route('san-pham', ['slug' => $_item->slug]) }}" class="product-img">
                                             <img class="lazyload img-product"
