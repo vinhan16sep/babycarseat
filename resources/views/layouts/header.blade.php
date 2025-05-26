@@ -47,8 +47,7 @@
         <div class="col-xl-9 d-none d-xl-block">
             <nav class="box-navigation text-center">
                 <ul class="box-nav-ul d-flex align-items-center">
-{{--                    <li class="menu-item {{ checkActiveMenu("") }}"><a href="{{ url('/') }}" class="item-link">Trang chủ</a></li>--}}
-                    <li class="menu-item {{ checkActiveMenu("san-pham") || checkActiveMenu("chi-tiet-san-pham") }}">
+                    <li class="menu-item {{ strpos($currentPath, 'san-pham') !== false || strpos($currentPath, 'chi-tiet-san-pham') !== false  ? 'active' : '' }}">
                         <a href="{{ route('product-list') }}" class="item-link">Ghế ôtô trẻ em {!! !empty($categoriesMenu) ? '<i class="icon icon-arrow-down"></i>' : '' !!}</a>
                         @if(!empty($categoriesMenu))
                             <div class="sub-menu mega-menu" style="border-radius: 0;">
