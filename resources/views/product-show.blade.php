@@ -472,7 +472,7 @@
                                     </div>
                                 </div>
                                 <div class="tf-product-info-choose-option">
-                                    @if($product->notes->count() > 0)
+                                    <!-- @if($product->notes->count() > 0)
                                         <div class="product-ksp">
                                             @foreach($product->notes as $_note)
                                                 <div class="product-ksp__box">
@@ -481,7 +481,7 @@
                                                 </div>
                                             @endforeach
                                         </div>
-                                    @endif
+                                    @endif -->
 
                                     <!-- <div class="product-options-bottom">
                                         <div class="fieldset">
