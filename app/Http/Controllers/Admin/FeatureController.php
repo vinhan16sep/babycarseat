@@ -40,6 +40,7 @@ class FeatureController extends AdminController
             $model = new Feature();
             $model->label = $request->input('label');
             $model->title = $request->input('title');
+            $model->sub_title = $request->input('sub_title');
             $model->slug = $request->input('slug');
             $model->sort_content = $request->input('sort_content');
             $model->content = $request->input('content');
@@ -97,6 +98,7 @@ class FeatureController extends AdminController
 
             $object->label = $request->input('label');
             $object->title = $request->input('title');
+            $object->sub_title = $request->input('sub_title');
             $object->slug = $request->input('slug');
             $object->sort_content = $request->input('sort_content');
             $object->content = $request->input('content');
@@ -161,7 +163,7 @@ class FeatureController extends AdminController
 
             if ($object->delete()) {
                 
-                $path = sprintf(Config::get('constants.FILE_STORAGE_PATH.NEWS_IMAGE'), $request['id']);
+                $path = sprintf(Config::get('constants.FILE_STORAGE_PATH.FEATURE_IMAGE'), $request['id']);
                 $delImageStt = $this->deleteImage($path);
                 if ($delImageStt) {
                     DB::commit();
@@ -212,7 +214,7 @@ class FeatureController extends AdminController
     private function validateStore($request) {
         $this->validate($request, [
             'title' => 'required|max:255',
-            'slug' => 'required|max:255|unique:news',
+            'slug' => 'required|max:255|unique:feature',
             'image' => 'required|image|mimes:jpg,jpeg,png|max:2048',
         ], [
             'title.required' => 'Chưa nhập tiêu đề',
@@ -228,7 +230,7 @@ class FeatureController extends AdminController
     private function validateUpdate($request, $id) {
         $this->validate($request, [
             'title' => 'required|max:255',
-            'slug' => 'required|max:255|unique:news,slug,' . $id . ',id',
+            'slug' => 'required|max:255|unique:feature,slug,' . $id . ',id',
             'image' => 'image|mimes:jpg,jpeg,png|max:2048',
         ], [
             'title.required' => 'Chưa nhập tiêu đề',

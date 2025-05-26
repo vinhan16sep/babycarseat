@@ -58,6 +58,15 @@
                                     @endif
                                 </div>
 
+                                <div class="form-group{{ $errors->has('sub_title') ? ' has-error' : '' }}">
+                                    <label>Tiêu đề phụ</label>
+                                    <input type="text" name="sub_title" value="{{ old('sub_title') }}" class="form-control" id="inputSubTitle" maxlength="255">
+                                    @if ($errors->has('sub_title'))
+                                        <span style="color:red;">{{ $errors->first('sub_title') }}</span>
+                                    </span>
+                                    @endif
+                                </div>
+
                                 <div class="form-group">
                                     <label>Slug</label>
                                     <input type="text" name="slug" value="{{ old('slug') }}" class="form-control" id="inputSlug" readonly>

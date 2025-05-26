@@ -9,6 +9,7 @@ use App\Models\Grape;
 use App\Models\Product;
 use App\Models\ProductCategory;
 use App\Models\ProductColor;
+use App\Models\Feature;
 use App\Models\Region;
 use App\Models\Type;
 use Illuminate\Http\Request;
@@ -72,19 +73,29 @@ class ProductController extends Controller
         }
 
         $products = Product::query()
-            ->with(["productColors", "categories"])
+            ->with(["productColors", "categories","features"])
             ->where([
                 "is_active" => 1
             ])
             ->orderByDesc("is_highlight")->get();
+            
+        // Lấy toàn bộ features của product qua join
+        $features = Feature::select('feature.*')
+        ->join('product_feature', 'product_feature.feature_id', '=', 'feature.id')
+        ->where('product_feature.product_id', $product->id);
 
-        $category = [];
-        $categories = ProductCategory::query()->get();
+        // Lấy features label = UPPER
+        $featuresUPPER = (clone $features)->where('feature.label', ProductController::TYPE_UPPER)->where('feature.is_active', 1)->get();
+
+        // Lấy features label = LOWER
+        $featuresLOWER = (clone $features)->where('feature.label', ProductController::TYPE_LOWER)->where('feature.is_active', 1)->get();
 
         return view('product-show', [
             "product" => $product,
             "products" => $products,
-            "attributes" => $product->features->groupBy('label')
+            "attributes" => $product->features->groupBy('label'),
+            "featuresUPPER" => $featuresUPPER,
+            "featuresLOWER" => $featuresLOWER,
         ]);
     }
 

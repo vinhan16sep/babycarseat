@@ -51,9 +51,18 @@
 
                                 <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
                                     <label>Tiêu đề</label>
-                                    <input type="text" name="title" value="{{ old('title', $object->title) }}" class="form-control" id="inputName" maxlength="255">
+                                    <input type="text" name="title" value="{{ old('title', $object->title) }}" class="form-control" id="inputTitle" maxlength="255">
                                     @if ($errors->has('title'))
                                         <span style="color:red;">{{ $errors->first('title') }}</span>
+                                    </span>
+                                    @endif
+                                </div>
+
+                                <div class="form-group{{ $errors->has('sub_title') ? ' has-error' : '' }}">
+                                    <label>Tiêu đề phụ</label>
+                                    <input type="text" name="sub_title" value="{{ old('sub_title', $object->sub_title) }}" class="form-control" id="inputSubTitle" maxlength="255">
+                                    @if ($errors->has('sub_title'))
+                                        <span style="color:red;">{{ $errors->first('sub_title') }}</span>
                                     </span>
                                     @endif
                                 </div>

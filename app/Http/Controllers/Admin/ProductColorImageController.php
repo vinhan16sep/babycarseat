@@ -84,7 +84,7 @@ class ProductColorImageController extends AdminController
             $path = sprintf(Config::get('constants.FILE_STORAGE_PATH.PRODUCT_COLOR_IMAGE'), $request->input('product_id'), $request->input('color_id'));
             $exist = ProductColor::where(['product_id' => $request->input('product_id'), 'color_id' => $request->input('color_id')])->first();
             if (!empty($exist)) {
-                if ($this->deleteImage($path)) {
+                // if ($this->deleteImage($path)) {
                     if ($request->hasfile('images')) {
                         
                         $uploads = $this->uploadImages($path, $request, 'images');
@@ -97,8 +97,9 @@ class ProductColorImageController extends AdminController
                         DB::rollBack();
                         return redirect()->route('list-product-color-image', ['id' => $request->input('product_id')])->with('error', Config::get('constants.MESSAGE.SOMETHING_ERROR' . "_1"));
                     }
-                }
+                // }
             } else {
+                
                 $productColor = new ProductColor();
                 $productColor->product_id = $request->input('product_id');
                 $productColor->color_id = $request->input('color_id');
@@ -106,6 +107,7 @@ class ProductColorImageController extends AdminController
                     if ($request->hasfile('images')) {
                         
                         $uploads = $this->uploadImages($path, $request, 'images');
+                        
                         $productColor->image = json_encode($uploads, JSON_UNESCAPED_SLASHES);
                         
                         if ($productColor->save()) {

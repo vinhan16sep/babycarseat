@@ -142,8 +142,14 @@ section.section-text > div > div{
     text-align: center;
 }
 
+.signature-sprint__card-subtitle  *{
+    color: black !important;
+    font-family: 'Inter' !important;
+    background: unset !important;
+}
+
 .box-product-common__row > div:not(:first-child) {
-    margin-top: 10px;
+    margin-top: 0px;
 }
 .signature-contentblock{
     display: flex;
@@ -244,10 +250,22 @@ section.section-text > div > div{
     text-align: center;
     font-weight: 400;
 }
+.accordion-product-wrap .accordion-product-item{
+    padding: 10px 0;
+}
+.accordion-product-wrap .accordion-product-item .accordion-title h6{
+    font-weight: 400;;
+}
 
+.signature-sprint__card-html .signature-sprint__card-title{
+    font-style: unset;
+    font-weight: 700;
+    font-size: 0.9vw;
+}
 
-
-
+.signature-contentblock--reverse .signature-contentblock__html{
+    width: 50%;
+}
 
 
 
@@ -342,21 +360,71 @@ section.section-text > div {
     margin-bottom: 30px;
 }
 
-.signature-contentblock__subtitle {
+.signature-contentblock__description .signature-contentblock__subtitle {
     font-family: 'Inter';
-    font-weight: 300;
+    font-weight: 500;
     color: black;
+    text-transform: uppercase;
+    font-size: 1.5vw;
+}
+.signature-contentblock__description .signature-contentblock__title {
+    font-family: 'Inter';
+    font-weight: 700;
+    color: #d20046;
+    text-transform: uppercase;
+    font-size: 1.9vw;
+}
+
+.signature-contentblock__description .signature-contentblock__content{
+    margin-top: 2vw;
+}
+.signature-contentblock__description .signature-contentblock__content p{
+    font-family: 'Inter';
+    font-weight: 400;
+    color: black;
+    font-size: 1.1vw;
+    line-height: 1.8vw;
+}
+.unreverse .signature-contentblock__html{
+    padding: 50px 0 50px 110px;
+    width: 47%;
+}
+.box-hau-mai{
+    border-top: 2px solid;
+    padding-top: 20px;
+}
+.box-hau-mai .content-hau-mai{
+    background: rgb(241, 242, 243);
+    padding: 60px;
+}
+.box-hau-mai .content-hau-mai a{
+    padding: 8px 25px;
+}
+.box-hau-mai .content-hau-mai .tf-btn span{
+    font-size: 0.8vw;
+}
+.box-hau-mai .content-hau-mai > div > p {
+    font-size: 0.8vw;
 }
 
 .flat-spacing.section-two {
     padding: 0px;
 }
-
+.swiper-slide{
+    background: unset !important;
+}
 .signature-contentblock {
     align-items: center;
     min-height: 41vw;
 }
+/* .slider__image{
+    background: rgba(134, 121, 121, 0.1);
+} */
 
+.tf-product-info-wrap .tf-product-info-list{
+    margin-left: 85px;
+    margin-top: 50px;
+}
 .tf-slideshow.slider-default.slider-effect-fade .title-display {
     margin-top: 0 !important;
 }

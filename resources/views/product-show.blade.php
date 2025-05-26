@@ -365,7 +365,7 @@
 
 
     <!-- Product_Main -->
-    <section class="flat-spacing" style="padding-top: 30px">
+    <section class="flat-spacing" style="padding-top: 2px">
         <div class="tf-main-product section-image-zoom">
             <div class="container-fluid">
                 <div class="row">
@@ -375,7 +375,7 @@
                             @foreach($product->productColors as $i => $_color)
                                 <section class="slider slider{{$i}}" {!! $i !== 0 ? 'style="display:none"' : ''  !!} data-color="{{ $_color->color->name }}">
                                     <div style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff" class="swiper mySwiper{{$i}}">
-                                        <div class="swiper-wrapper" style="min-height: 51vh; background-color: #f2f2f2;">
+                                        <div class="swiper-wrapper" style="background-color: #f2f2f2;">
                                             @foreach($_color->image as $_image)
                                                 <div class="swiper-slide" data-color="{{ $_color->color->name }}">
                                                     <a target="_blank" class="slider__image"
@@ -411,7 +411,7 @@
                     <div class="col-md-6" style="width:47%;">
                         <div class="tf-product-info-wrap position-relative">
                             <div class="tf-zoom-main"></div>
-                            <div class="tf-product-info-list other-image-zoom" style="margin-left: 37px;">
+                            <div class="tf-product-info-list other-image-zoom">
                                 <div class="tf-product-info-heading">
 
                                     <div class="tf-product-info-name">
@@ -448,12 +448,12 @@
                                     </div>
 
                                     <div class="tf-product-info-desc">
-                                        <div class="tf-product-info-price">
+                                        <div class="tf-product-info-price" >
                                             <h5 class="price-on-sale">
                                                 @if(!empty($product->discount_value))
-                                                <span>Giá gốc <del style="color: #d20046;">{{ numberFormat($product->price) }} VNĐ</del> </span> | {{ numberFormat($product->discount_value) }} VNĐ
+                                                    <span>Giá gốc <del style="color: #d20046;">{{ numberFormat($product->price) }} VNĐ</del> </span> | {{ numberFormat($product->discount_value) }} VNĐ
                                                 @else
-                                                <span>Giá {{ numberFormat($product->price) }} VNĐ </span>
+                                                    <span>Giá {{ numberFormat($product->price) }} VNĐ </span>
                                                 @endif
                                             </h5>
 {{--                                            <div class="compare-at-price font-2">$98.99</div>--}}
@@ -599,7 +599,7 @@
                                                 <div id="accordion-10" class="collapse" data-bs-parent="#accordion-product">
                                                     <div class="accordion-content tab-description fix-font">
                                                         <p class="text-secondary">
-                                                            <!-- {!! $product->guide !!} -->
+                                                            {!! $product->guide !!}
                                                         </p>
                                                     </div>
                                                 </div>
@@ -695,7 +695,7 @@
     <!-- /Product_Main -->
 
     <!-- Product_Description_Accordion -->
-    <section class="">
+    <!-- <section class="">
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -705,21 +705,55 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
     <!-- /Product_Description_Accordion -->
 
+    <!-- <section class="flat-spacing home-padding">
+        <div class="container-fluid">
+            <div dir="ltr" class="swiper tf-sw-latest" data-preview="6" data-tablet="3" data-mobile="1"
+                 data-space-lg="15" data-space-md="30" data-space="15" data-pagination="1" data-center="0" data-pagination-md="1"
+                 data-pagination-lg="1">
+                <div class="swiper-wrapper">
+                    @if(isset($featuresUPPER) && $featuresUPPER->isNotEmpty())
+                        @foreach($featuresUPPER as $_featuresUPPER)
+                            <div class="swiper-slide" style="margin: 0 15px;">
+                                <div class="card-product wow fadeInUp" data-wow-delay="0s">
+                                    <div class="card-product-wrapper">
+                                            <img class="lazyload img-product"
+                                                 data-src="{{ getImage($_featuresUPPER->image) }}"
+                                                 src="{{ getImage($_featuresUPPER->image) }}" alt="{{ $_featuresUPPER->name }}">
+                                            <img class="lazyload img-hover" data-src="{{ getImage($_featuresUPPER->image) }}"
+                                                 src="{{ getImage($_featuresUPPER->image) }}" alt="{{ $_featuresUPPER->name }}">
+                                        </a>
+                                    </div>
+                                    <div class="card-product-info">
+                                        <p class="product-title">{{ $_featuresUPPER->title }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    @else
+                        <p>No products available.</p>
+                    @endif
+                </div>
+                <div class="sw-pagination-latest sw-dots type-circle justify-content-center"></div>
+            </div>
+        </div>
+    </section> -->
+
+    
 
     <!-- Collection -->
     <section class="flat-spacing bg-css">
-        <div class="container">
-            <div class="heading-section text-center wow fadeInUp">
+        <div class="container-fluid" style="max-width: 1650px;">
+            <!-- <div class="heading-section text-center wow fadeInUp">
                 <h3 class="heading" style="font-weight: 400">i-Harbour's features</h3>
-            </div>
+            </div> -->
             <div class="flat-sw-navigation wow fadeInUp" data-wow-delay="0.1s">
                 @if(!empty($attributes[\App\Http\Controllers\ProductController::TYPE_UPPER]))
-                    <div dir="ltr" class="swiper tf-sw-collection" data-preview="3" data-tablet="3" data-mobile-sm="2"
+                    <div dir="ltr" class="swiper tf-sw-collection" data-preview="5" data-tablet="3" data-mobile-sm="2"
                          data-mobile="1" data-space-lg="30" data-loop="{{ $attributes[\App\Http\Controllers\ProductController::TYPE_UPPER]->count() < 3 ? 1 : 0 }}" data-space-md="15" data-space="15" data-pagination="1"
-                         data-pagination-md="3" data-pagination-lg="4">
+                         data-pagination-md="5" data-pagination-lg="4">
                         <div class="swiper-wrapper">
                             <!-- item 1 -->
                             @foreach($attributes[\App\Http\Controllers\ProductController::TYPE_UPPER] as $_item)
@@ -731,7 +765,7 @@
                                         </a>
                                         <div class="signature-sprint__card-html">
                                             <div class="signature-sprint__card-title">{{ $_item->title }}</div>
-                                            <div class="signature-sprint__card-subtitle">{!! $_item->sort_content !!}</div>
+                                            <div class="signature-sprint__card-subtitle">{!! $_item->content !!}</div>
                                         </div>
                                     </div>
                                 </div>
@@ -750,21 +784,22 @@
     </section>
     <!-- /Collection -->
 
-    <section class="flat-spacing bg-css" style="padding-top: 30px">
-        <div class="container">
+    <section class="flat-spacing" style="padding-top: 0px">
+        <div class="container-fluid" style="max-width: 1650px;">
             <div class="flat-sw-navigation box-product-common__row wow fadeInUp" data-wow-delay="0.1s">
 
                 @if(!empty($attributes[\App\Http\Controllers\ProductController::TYPE_LOWER]))
                     @foreach($attributes[\App\Http\Controllers\ProductController::TYPE_LOWER] as $_item)
                         <div class="product-common__row ">
-                            <div class="signature-contentblock {{ $loop->index%2 == 0 ? '' : 'signature-contentblock--reverse' }}">
+                            <div class="signature-contentblock {{ $loop->index%2 == 0 ? 'signature-contentblock--reverse' : 'unreverse' }}">
                                 <div class="signature-contentblock__image">
                                     <img class="product-marketing__img" src="{{ getImage($_item->image) }}" alt="">
                                 </div>
                                 <div class="signature-contentblock__html">
                                     <div class="signature-contentblock__description">
+                                        <div class="signature-contentblock__subtitle">{{ $_item->sub_title }}</div>
                                         <div class="signature-contentblock__title">{{ $_item->title }}</div>
-                                        <div class="signature-contentblock__subtitle">{!! $_item->sort_content !!}</div>
+                                        <div class="signature-contentblock__content">{!! $_item->content !!}</div>
                                     </div>
                                 </div>
                             </div>
@@ -802,6 +837,7 @@
                                     </div>
                                     <div class="card-product-info">
                                         <p class="product-title">{{ str_replace("BABYRO ", "", strtoupper($_product->name)) }}</p>
+                                        <p class="product-desc">{{ $_product->first_category ? $_product->first_category->name : '' }}</p>
                                     </div>
                                 </div>
                             </div>
