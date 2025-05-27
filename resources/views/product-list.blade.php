@@ -361,7 +361,7 @@
                                 <div class="card-product wow fadeInUp" data-wow-delay="0s">
                                     <div class="card-product-wrapper">
                                         @if ($_product->categories->isNotEmpty())
-                                            <a href="{{ route('san-pham', ['category_slug' => $_product->categories->first()->slug, 'slug' => $_product->slug]) }}" class="product-img">
+                                            <a href="{{ route('product-index', ['category_slug' => $_product->categories->first()->slug, 'slug' => $_product->slug]) }}" class="product-img">
                                         @endif
                                             <img class="lazyload img-product"
                                                  data-src="{{ getImage($_product->image) }}"
@@ -371,8 +371,10 @@
                                         </a>
                                     </div>
                                     <div class="card-product-info">
-                                        <p class="product-title">{{ str_replace("BABYRO ", "", strtoupper($_product->name)) }}</p>
-                                        <p class="product-desc">{{ $category ? $category->name : ($_product->first_category ? $_product->first_category->name : '') }}</p>
+                                        <a href="{{ route('product-index', ['category_slug' => $_product->categories->first()->slug, 'slug' => $_product->slug]) }}">
+                                            <p class="product-title">{{ str_replace("BABYRO ", "", strtoupper($_product->name)) }}</p>
+                                            <p class="product-desc">{{ $category ? $category->name : ($_product->first_category ? $_product->first_category->name : '') }}</p>
+                                        </a>
                                     </div>
                                 </div>
                             </div>

@@ -43,6 +43,7 @@
     <link rel="stylesheet" href="{{ asset('fonts/fonts.css?v=' . ($ver ?? '')) }}">
     <link rel="stylesheet" href="{{ asset('fonts/font-icons.css?v=' . ($ver ?? '')) }}">
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css?v=' . ($ver ?? '')) }}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/swiper-bundle.min.css?v=' . ($ver ?? '')) }}">
     <link rel="stylesheet" href="{{ asset('css/animate.css?v=' . ($ver ?? '')) }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/styles.css?v=' . ($ver ?? '')) }}"/>

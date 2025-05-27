@@ -44,7 +44,7 @@
     </section>
     <!-- /Slider -->
 
-    <marquee scrollamount="0" direction="right">
+    <marquee scrollamount="5" direction="right">
         <section class="section-text">
             <div class="marquee-text">
                 <div>Bảo hành Vàng 10 năm</div>
@@ -135,7 +135,7 @@
                             <div class="swiper-slide">
                                 <div class="card-product wow fadeInUp" data-wow-delay="0s" style="border-radius: 15px;">
                                     <div class="card-product-wrapper">
-                                        <a href="{{ route('san-pham', ['slug' => $_item->slug]) }}" class="product-img">
+                                        <a href="{{ route('product-index', ['slug' => $_item->slug]) }}" class="product-img">
                                             <img class="lazyload img-product"
                                                  data-src="{{ getImage($_item->image) }}"
                                                  src="{{ getImage($_item->image) }}" alt="image-product">
@@ -144,7 +144,9 @@
                                         </a>
                                     </div>
                                     <div class="card-product-info">
-                                        <p class="product-title">{{ str_replace("BABYRO ", "", strtoupper($_item->name)) }}</p>
+                                        <a href="{{ route('product-index', ['slug' => $_item->slug]) }}">
+                                            <p class="product-title">{{ str_replace("BABYRO ", "", strtoupper($_item->name)) }}</p>
+                                        </a>
                                         <!-- <p class="product-desc">{{ $_item->first_category ? $_item->first_category->name : '' }}</p> -->
                                     </div>
                                 </div>
