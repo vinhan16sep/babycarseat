@@ -1339,7 +1339,7 @@
                     <li class="nav-mb-item">
                         @if(!empty($categoriesMenu))
                             <div href="#dropdown-menu-one" class="mb-menu-link sub-nav-link collapsed"
-                                 data-bs-toggle="collapse" aria-expanded="true"
+                                 aria-expanded="true"
                                  aria-controls="dropdown-menu-one">
                                 <a href="{{ route('product-list') }}">Baby Car Seat</a><span class="btn-open-sub"></span>
                             </div>
@@ -1348,7 +1348,7 @@
                                     @foreach($categoriesMenu as $_item)
                                         <li>
                                             <div href="#dropdown-menu-one-1-{{$_item['id']}}" class="mb-menu-link sub-nav-link collapsed"
-                                                 data-bs-toggle="collapse" aria-expanded="true"
+                                                 aria-expanded="true"
                                                  aria-controls="dropdown-menu-one-1-{{$_item['id']}}">
                                                 <a class="mb-menu-link sub-nav-link" href="{{ route("product-list", ['category_slug' => $_item['slug']]) }}">{{ $_item['name'] }}</a><span class="btn-open-sub"></span>
                                             </div>
@@ -1371,7 +1371,7 @@
                     @foreach($mainMenu as $_name => $_menus)
                         <li class="nav-mb-item">
                             <div href="#dropdown-menu-two-{{ $_menus['id'] }}" class="mb-menu-link sub-nav-link collapsed"
-                                 data-bs-toggle="collapse" aria-expanded="true"
+                                 aria-expanded="true"
                                  aria-controls="dropdown-menu-two-{{ $_menus['id'] }}">
                                 <a href="">{{ $_menus['name'] }}</a><span class="btn-open-sub"></span>
                             </div>
@@ -1380,7 +1380,7 @@
                                     @foreach($_menus['children'] as $_item)
                                         <li>
                                             <div href="#dropdown-menu-two-1-{{ $_item['id'] }}" class="mb-menu-link sub-nav-link collapsed"
-                                                 data-bs-toggle="collapse" aria-expanded="true"
+                                                 aria-expanded="true"
                                                  aria-controls="dropdown-menu-two-1-{{ $_item['id'] }}">
                                                 <a class="mb-menu-link sub-nav-link" href="">{{ $_item['name'] }}</a><span class="btn-open-sub"></span>
                                             </div>

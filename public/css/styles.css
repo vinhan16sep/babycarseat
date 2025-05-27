@@ -18070,3 +18070,10 @@ ul.list-text.type-number {
     min-height: 3.12vw;
     align-content: center;
 }
+
+@media only screen and (max-width: 991px) {
+    .footer .footer-menu{
+        float: inherit!important;
+        margin-right: 0!important;
+    }
+}

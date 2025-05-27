@@ -198,6 +198,35 @@
         $('.menu-item .item-link').on('mouseenter', function () {
             $(this).parents(".menu-item").find('.mega-menu .desc h4:first').trigger('mouseenter');
         });
+
+        $('#wrapper-menu-navigation .nav-mb-item div.mb-menu-link').click(function(e) {
+            // Kiểm tra xem click có phải vào thẻ a bên trong không
+            if($(e.target).is('a')) {
+                let href = $(this).attr('href');
+                if(href !== undefined && href !== '#' && href !== "") {
+                    window.location.href = href;
+                }
+            } else {
+                const targetId = $(this).attr('href');
+                if ($(this).hasClass('collapsed')) {
+                    $(this).attr('class', 'mb-menu-link')
+                } else {
+                    $(this).attr('class', 'mb-menu-link sub-nav-link collapsed')
+                }
+                if (targetId) {
+                    $(targetId).collapse('toggle');
+                }
+            }
+        });
+        $('#wrapper-menu-navigation li a').click(function(e) {
+            e.stopPropagation();
+            let href = $(this).attr('href');
+            if(href !== undefined && href !== '#' && href !== "") {
+                e.preventDefault(); // Ngăn chặn hành vi mặc định của thẻ a
+                e.stopPropagation(); // Ngăn chặn sự kiện click lan truyền lên các thẻ cha
+                window.location.href = href;
+            }
+        });
     });
 </script>
 </body>
