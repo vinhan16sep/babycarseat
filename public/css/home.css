@@ -542,7 +542,7 @@ footer{
         padding-top: 0px;
     }
     .box-custom-say h3{
-        font-size: 2.7vw;
+        font-size: 2.5vw;
         font-family: 'Inter'!important;
     }
     .box-custom-say .title{
@@ -784,16 +784,17 @@ footer{
     }
 
     .content-hau-mai > div > p {
-        font-size: 0.9vw;
         font-family: 'Inter';
         font-weight: 400;
         color: black;
-        line-height: 1.3vw;
         margin-top: 25px;
+        font-size: 18px;
+        line-height: 24px;
+}
     }
 
     .content-hau-mai a {
-        font-size: 0.8vw;
+        font-size: 15px;
         margin-top: 5px;
     }
 

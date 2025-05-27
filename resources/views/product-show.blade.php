@@ -210,16 +210,6 @@
             font-size: 60px;
             display: contents;
         }
-        .content-hau-mai a {
-            padding: 15px 30px;
-            background: gray;
-            margin-top: 20px;
-            border-radius: 6px;
-            color: #fff;
-            font-size: 20px;
-            width: 180px;
-            text-align: center;
-        }
         .heading{
             color: #d20046;
             font-weight: bold;
@@ -370,12 +360,12 @@
             <div class="container-fluid">
                 <div class="row">
                     <!-- Product default -->
-                    <div class="col-md-6" style="width:53%;">
+                    <div class="col-md-6 w-md-53">
                         <div class="tf-product-media-wrap sticky-top" style="overflow: hidden;margin-left: 4vw;">
                             @foreach($product->productColors as $i => $_color)
                                 <section class="slider slider{{$i}}" {!! $i !== 0 ? 'style="display:none"' : ''  !!} data-color="{{ $_color->color->name }}">
                                     <div style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff" class="swiper mySwiper{{$i}}">
-                                        <div class="swiper-wrapper" style="background-color: #f2f2f2;">
+                                        <div class="swiper-wrapper">
                                             @foreach($_color->image as $_image)
                                                 <div class="swiper-slide" data-color="{{ $_color->color->name }}">
                                                     <a target="_blank" class="slider__image"
@@ -394,7 +384,7 @@
                                         <div class="swiper-wrapper">
                                             @foreach($_color->image as $_image)
                                                 <div class="swiper-slide" data-color="{{ $_color->color->name }}">
-                                                    <div class="slider__image" style="background-color: #f2f2f2;">
+                                                    <div class="slider__image" style="">
                                                         <img class="lazyload" data-src="{{ getImage($_image) }}"
                                                              src="{{ getImage($_image) }}" alt="">
                                                     </div>
@@ -408,7 +398,7 @@
                     </div>
                     <!-- /Product default -->
                     <!-- tf-product-info-list -->
-                    <div class="col-md-6" style="width:47%;">
+                    <div class="col-md-6 w-md-47">
                         <div class="tf-product-info-wrap position-relative">
                             <div class="tf-zoom-main"></div>
                             <div class="tf-product-info-list other-image-zoom">
@@ -566,7 +556,10 @@
                                                     <a href="#accordion-8" class="accordion-title collapsed current" data-bs-toggle="collapse"
                                                     aria-expanded="true" aria-controls="accordion-1">
                                                         <h6>Tính năng</h6>
-                                                        <span class="btn-open-sub"></span>
+                                                         <span class="btn-open-sub-detail">
+                                                            <i class="bi bi-chevron-down"></i>
+                                                            <i class="bi bi-dash-lg"></i>
+                                                        </span>
                                                     </a>
                                                     <div id="accordion-8" class="collapse" data-bs-parent="#accordion-product">
                                                         <div class="accordion-content tab-description fix-font">
@@ -580,7 +573,10 @@
                                                 <a href="#accordion-9" class="accordion-title collapsed current" data-bs-toggle="collapse"
                                                    aria-expanded="true" aria-controls="accordion-1">
                                                     <h6>Thông số</h6>
-                                                    <span class="btn-open-sub"></span>
+                                                    <span class="btn-open-sub-detail">
+                                                            <i class="bi bi-chevron-down"></i>
+                                                            <i class="bi bi-dash-lg"></i>
+                                                        </span>
                                                 </a>
                                                 <div id="accordion-9" class="collapse" data-bs-parent="#accordion-product">
                                                     <div class="accordion-content tab-description fix-font">
@@ -594,7 +590,10 @@
                                                 <a href="#accordion-10" class="accordion-title collapsed current" data-bs-toggle="collapse"
                                                    aria-expanded="true" aria-controls="accordion-1">
                                                     <h6>Hướng dẫn sử dụng</h6>
-                                                    <span class="btn-open-sub"></span>
+                                                    <span class="btn-open-sub-detail">
+                                                        <i class="bi bi-chevron-down"></i>
+                                                        <i class="bi bi-dash-lg"></i>
+                                                    </span>
                                                 </a>
                                                 <div id="accordion-10" class="collapse" data-bs-parent="#accordion-product">
                                                     <div class="accordion-content tab-description fix-font">
@@ -744,14 +743,15 @@
     
 
     <!-- Collection -->
-    <section class="flat-spacing bg-css">
+     <!-- <section class="flat-spacing bg-css"> -->
+    <section class="flat-spacing">
         <div class="container-fluid" style="max-width: 1650px;">
             <!-- <div class="heading-section text-center wow fadeInUp">
                 <h3 class="heading" style="font-weight: 400">i-Harbour's features</h3>
             </div> -->
             <div class="flat-sw-navigation wow fadeInUp" data-wow-delay="0.1s">
                 @if(!empty($attributes[\App\Http\Controllers\ProductController::TYPE_UPPER]))
-                    <div dir="ltr" class="swiper tf-sw-collection" data-preview="5" data-tablet="3" data-mobile-sm="2"
+                    <div dir="ltr" class="swiper tf-sw-collection" data-preview="4" data-tablet="3" data-mobile-sm="2"
                          data-mobile="1" data-space-lg="30" data-loop="{{ $attributes[\App\Http\Controllers\ProductController::TYPE_UPPER]->count() < 3 ? 1 : 0 }}" data-space-md="15" data-space="15" data-pagination="1"
                          data-pagination-md="5" data-pagination-lg="4">
                         <div class="swiper-wrapper">
@@ -771,12 +771,11 @@
                                 </div>
                             @endforeach
                         </div>
-                        <div
-                            class="d-flex d-lg-none sw-pagination-collection sw-dots type-circle justify-content-center"></div>
+                        <div style="display: none !important;" class="d-flex d-lg-none sw-pagination-collection sw-dots type-circle justify-content-center"></div>
                     </div>
-                    <div class="nav-prev-collection d-none d-lg-flex nav-sw style-line nav-sw-left"><i
+                    <div style="display: none !important;" class="nav-prev-collection d-none d-lg-flex nav-sw style-line nav-sw-left"><i
                             class="icon icon-arrLeft"></i></div>
-                    <div class="nav-next-collection d-none d-lg-flex nav-sw style-line nav-sw-right"><i
+                    <div style="display: none !important;" class="nav-next-collection d-none d-lg-flex nav-sw style-line nav-sw-right"><i
                             class="icon icon-arrRight"></i></div>
                 @endif
             </div>
@@ -815,6 +814,7 @@
     @include('components.last-page', ['is_not_show' => true])
 
     <section class="flat-spacing home-padding" style="background:#f2f2f2">
+        <!-- <section class="flat-spacing home-padding" style="background:#f2f2f2"> -->
         <div class="container-fluid">
             <div dir="ltr" class="swiper tf-sw-latest" data-preview="6" data-tablet="3" data-mobile="1"
                  data-space-lg="15" data-space-md="30" data-space="15" data-pagination="1" data-center="0" data-pagination-md="1"
@@ -826,7 +826,7 @@
                                 <div class="card-product wow fadeInUp" data-wow-delay="0s" style="background:unset;">
                                     <div class="card-product-wrapper">
                                         @if ($_product->categories->isNotEmpty())
-                                            <a href="{{ route('san-pham', ['category_slug' => $_product->categories->first()->slug, 'slug' => $_product->slug]) }}" class="product-img">
+                                            <a href="{{ route('product-index', ['category_slug' => $_product->categories->first()->slug, 'slug' => $_product->slug]) }}" class="product-img">
                                         @endif
                                             <img class="lazyload img-product"
                                                  data-src="{{ getImage($_product->image) }}"
@@ -836,8 +836,10 @@
                                         </a>
                                     </div>
                                     <div class="card-product-info">
-                                        <p class="product-title">{{ str_replace("BABYRO ", "", strtoupper($_product->name)) }}</p>
-                                        <p class="product-desc">{{ $_product->first_category ? $_product->first_category->name : '' }}</p>
+                                        <a href="{{ route('product-index', ['category_slug' => $_product->categories->first()->slug, 'slug' => $_product->slug]) }}">
+                                            <p class="product-title">{{ str_replace("BABYRO ", "", strtoupper($_product->name)) }}</p>
+                                            <p class="product-desc">{{ $_product->first_category ? $_product->first_category->name : '' }}</p>
+                                        </a>
                                     </div>
                                 </div>
                             </div>

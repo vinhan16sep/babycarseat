@@ -15,7 +15,7 @@
     color: #C31E46;
     font-weight: bold;
     margin-top: -3px;
-    font-size: 1.50vw;
+    font-size: 25px;
 }
 .card-product-info a.title{
     background-color: #3c3c8c;
@@ -169,8 +169,9 @@ section.section-text > div > div{
     padding-right: 0;
 }
 .signature-contentblock--reverse .signature-contentblock__html{
-    padding-right: 70px;
+    /* padding-right: 70px;
     padding-left: 0;
+    width: 50%; */
 }
 .product-marketing__img {
     position: relative;
@@ -257,17 +258,37 @@ section.section-text > div > div{
     font-weight: 400;;
 }
 
-.signature-sprint__card-html .signature-sprint__card-title{
-    font-style: unset;
-    font-weight: 700;
-    font-size: 0.9vw;
+
+.btn-open-sub-detail{
+    margin-right: 3px;
+}
+.btn-open-sub-detail i {
+    font-size: 20px;
+}
+.btn-open-sub-detail i::before {
+    font-weight: 800 !important;
 }
 
-.signature-contentblock--reverse .signature-contentblock__html{
-    width: 50%;
+.btn-open-sub-detail .bi-dash-lg {
+  display: none;  /* Mặc định ẩn icon dấu trừ */
 }
 
+.accordion-title.collapsed .btn-open-sub-detail .bi-chevron-down {
+  display: inline-block; /* Khi đóng (collapsed có mặt) hiển thị mũi tên */
+}
 
+.accordion-title.collapsed .btn-open-sub-detail .bi-dash-lg {
+  display: none; /* Khi đóng, ẩn dấu trừ */
+}
+
+/* Khi mở (collapsed mất), ẩn mũi tên, hiện dấu trừ */
+.accordion-title:not(.collapsed) .btn-open-sub-detail .bi-chevron-down {
+  display: none;
+}
+
+.accordion-title:not(.collapsed) .btn-open-sub-detail .bi-dash-lg {
+  display: inline-block;
+}
 
 
 
@@ -365,14 +386,14 @@ section.section-text > div {
     font-weight: 500;
     color: black;
     text-transform: uppercase;
-    font-size: 1.5vw;
+    font-size: 22px;
 }
 .signature-contentblock__description .signature-contentblock__title {
     font-family: 'Inter';
     font-weight: 700;
     color: #d20046;
     text-transform: uppercase;
-    font-size: 1.9vw;
+    font-size: 25px;
 }
 
 .signature-contentblock__description .signature-contentblock__content{
@@ -382,29 +403,28 @@ section.section-text > div {
     font-family: 'Inter';
     font-weight: 400;
     color: black;
-    font-size: 1.1vw;
-    line-height: 1.8vw;
-}
-.unreverse .signature-contentblock__html{
-    padding: 50px 0 50px 110px;
-    width: 47%;
+    font-size: 16px;
+    line-height: 23px;
 }
 .box-hau-mai{
-    border-top: 2px solid;
+    border-top: 2px solid #c6c6c6;
     padding-top: 20px;
 }
 .box-hau-mai .content-hau-mai{
     background: rgb(241, 242, 243);
-    padding: 60px;
+    padding: 40px 60px;
 }
 .box-hau-mai .content-hau-mai a{
-    padding: 8px 25px;
+    font-size: 15px;
+    margin: 5px 0 0;
+    padding: 6px 22px;
 }
-.box-hau-mai .content-hau-mai .tf-btn span{
-    font-size: 0.8vw;
+.box-hau-mai .content-hau-mai a span{
+    font-size: 15px;
 }
 .box-hau-mai .content-hau-mai > div > p {
-    font-size: 0.8vw;
+    font-family: 'Inter';
+    margin-top: 25px;
 }
 
 .flat-spacing.section-two {
@@ -420,11 +440,10 @@ section.section-text > div {
 /* .slider__image{
     background: rgba(134, 121, 121, 0.1);
 } */
-
-.tf-product-info-wrap .tf-product-info-list{
-    margin-left: 85px;
-    margin-top: 50px;
-}
+.signature-sprint__card-html .signature-sprint__card-title{
+        font-style: unset;
+        font-weight: 700;
+    }
 .tf-slideshow.slider-default.slider-effect-fade .title-display {
     margin-top: 0 !important;
 }
@@ -477,11 +496,6 @@ section.section-text > div {
 .content-hau-mai > div > p {
     font-family: 'Inter';
     margin-top: 25px;
-}
-
-.content-hau-mai a {
-    font-family: 'Inter';
-    margin-top: 5px;
 }
 
 .home-padding hr {
@@ -588,7 +602,6 @@ footer{
     text-transform: uppercase;
     color: #d20046;
     font-weight:600;
-    font-size:2vw;
 }
 .variant-picker-item .variant-picker-values label{
     width: 50px;
@@ -604,6 +617,34 @@ footer{
 }
 
 @media (min-width: 900px) {
+
+
+    .signature-contentblock__description .signature-contentblock__subtitle {
+        font-size: 30px;
+    }
+    .signature-contentblock__description .signature-contentblock__title {
+        font-size: 40px;
+    }
+
+    .signature-contentblock__description .signature-contentblock__content p{
+        font-size: 20px;
+        line-height: 35px;
+    }
+
+    .unreverse .signature-contentblock__html{
+        padding: 50px 0 50px 110px;
+        width: 47%;
+    }
+    .signature-contentblock--reverse .signature-contentblock__html{
+        padding-right: 70px;
+        padding-left: 0;
+        width: 50%;
+    }
+    .signature-sprint__card-html .signature-sprint__card-title{
+        font-style: unset;
+        font-weight: 700;
+        font-size: 20px;
+    }
     footer p, footer .footer-menu .footer-menu_item{
         color:black;
     }
@@ -650,7 +691,19 @@ footer{
         font-weight: 300;
         color: black;
     }
-
+    .w-md-53{
+        width: 53%;
+    }
+    .w-md-47{
+        width: 47%;
+    }
+    .tf-product-info-wrap .tf-product-info-list{
+        margin-left: 30px;
+        margin-top: 50px;
+    }
+    .tf-product-info-name h3{
+        font-size:2vw;
+    }
     .section-three h6{
         font-family: 'Inter';
         font-size: 1.1vw;
@@ -711,9 +764,9 @@ footer{
         color: #C31E46!important;
         font-family: 'KoHo';
         font-weight: bold;
-        font-size: 1.54vw;
+        font-size: 28px;
         align-content: end;
-        line-height: 1.94vw;
+        line-height: 27px;
         text-transform: uppercase;
         padding: 0 10px;
     }
@@ -873,12 +926,12 @@ footer{
     }
 
     .content-hau-mai > div > p {
-        font-size: 0.9vw;
         font-family: 'Inter';
         font-weight: 400;
         color: black;
-        line-height: 1.3vw;
         margin-top: 25px;
+        font-size: 18px;
+        line-height: 24px;
     }
 
     .content-hau-mai a {

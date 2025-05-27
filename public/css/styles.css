@@ -8969,9 +8969,7 @@ input.style-line-bottom::placeholder {
 }
 
 .tf-product-info-list .tf-product-info-heading {
-  padding-bottom: 20px;
-  border-bottom: 1px solid var(--line);
-  margin-bottom: 20px;
+  border-bottom: 1px solid #c3c3c3;
 }
 .tf-product-info-list .tf-product-info-name {
   margin-bottom: 20px;
@@ -9059,8 +9057,8 @@ input.style-line-bottom::placeholder {
   border-color: var(--main);
 }
 .tf-product-info-list .tf-product-info-help {
-  padding-bottom: 19px;
-  border-bottom: 1px solid var(--line);
+  padding-bottom: 3px;
+  border-bottom: 1px solid #c3c3c3;
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -10995,7 +10993,7 @@ ul.list-tags.has-bg a {
   padding: 20px 0;
 }
 .accordion-product-wrap .accordion-product-item:not(:last-child) {
-  border-bottom: 1px solid var(--main);
+  border-bottom: 1px solid #c3c3c3;
 }
 .accordion-product-wrap .accordion-product-item .accordion-title {
   display: flex;
