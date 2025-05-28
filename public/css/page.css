@@ -531,7 +531,7 @@ footer{
     }
     footer .text-caption-1, footer .footer-info li{
         font-size: 1vw;
-        line-height: 2vw;
+        line-height: 1.5vw;
     }
     footer .footer-bottom p{
         font-family: 'Inter';
