@@ -37,6 +37,10 @@ return [
         'FOOTER_1' => 1,
         'FOOTER_2' => 2,
         'FOOTER_3' => 3,
+    ],
+    'QA_TYPE' => [
+        'DOI_GHE' => "chương trình đổi ghế",
+        'BAO_HANH' => "bảo hành cơ bản"
     ]
 
 ];
