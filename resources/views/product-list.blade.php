@@ -71,7 +71,7 @@
         }
         .product .desc strong{
             letter-spacing: 1px;
-            font-weight: 600;
+            font-weight: 600!important;
         }
         .product .img{
             text-align: right;
@@ -83,6 +83,7 @@
         .product .desc *{
             background: transparent!important;
             font-size: 1vw!important;
+            font-weight: 400!important;
         }
         .product .desc .MsoNormal{
             font-weight: 400;

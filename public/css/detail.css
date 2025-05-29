@@ -323,6 +323,7 @@ body *, html *, *{
     font-family: 'KoHo';
     font-weight: bold;
     align-content: end;
+    font-size: 20px;
 }
 
 .card-product-info .product-desc {
@@ -616,6 +617,7 @@ footer{
     font-weight: 700;
 }
 
+
 @media (min-width: 900px) {
 
 
@@ -764,7 +766,7 @@ footer{
         color: #C31E46!important;
         font-family: 'KoHo';
         font-weight: bold;
-        font-size: 28px;
+        font-size: 20px;
         align-content: end;
         line-height: 27px;
         text-transform: uppercase;
@@ -949,6 +951,11 @@ footer{
 }
 
 
+@media (min-width: 1460px) {
+    .card-product-info .product-title{
+        font-size: 28px;
+    }
+}
 
 
 

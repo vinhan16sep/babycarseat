@@ -245,6 +245,9 @@
         .box-description{
             background: transparent!important
         }
+        .collection-position-2 .img-style img{
+            border-radius: 10px;
+        }
         @media (max-width: 900px) {
             .signature-contentblock__image {
                 width: 40%;
@@ -740,7 +743,7 @@
         </div>
     </section> -->
 
-    
+
 
     <!-- Collection -->
      <!-- <section class="flat-spacing bg-css"> -->
@@ -765,7 +768,7 @@
                                         </a>
                                         <div class="signature-sprint__card-html">
                                             <div class="signature-sprint__card-title">{{ $_item->title }}</div>
-                                            <div class="signature-sprint__card-subtitle">{!! $_item->content !!}</div>
+                                            <div class="signature-sprint__card-subtitle">{!! $_item->sub_title !!}</div>
                                         </div>
                                     </div>
                                 </div>
@@ -814,15 +817,14 @@
     @include('components.last-page', ['is_not_show' => true])
 
     <section class="flat-spacing home-padding" style="background:#f2f2f2">
-        <!-- <section class="flat-spacing home-padding" style="background:#f2f2f2"> -->
-        <div class="container-fluid">
+        <div class="container-fluid" style="padding: 0;">
             <div dir="ltr" class="swiper tf-sw-latest" data-preview="6" data-tablet="3" data-mobile="1"
                  data-space-lg="15" data-space-md="30" data-space="15" data-pagination="1" data-center="0" data-pagination-md="1"
                  data-pagination-lg="1">
                 <div class="swiper-wrapper" style="background:unset;">
                     @if(isset($products) && $products->isNotEmpty())
                         @foreach($products as $_product)
-                            <div class="swiper-slide" style="margin: 0 15px; background:unset;">
+                            <div class="swiper-slide" style="background: unset">
                                 <div class="card-product wow fadeInUp" data-wow-delay="0s" style="background:unset;">
                                     <div class="card-product-wrapper">
                                         @if ($_product->categories->isNotEmpty())
