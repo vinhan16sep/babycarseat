@@ -30,6 +30,7 @@ use App\Http\Controllers\Admin\ProductFeatureController;
 use App\Http\Controllers\Admin\ProductNoteController;
 use App\Http\Controllers\Admin\FeedbackController;
 use App\Http\Controllers\Admin\PostCategoryController;
+use App\Http\Controllers\Admin\QAController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -279,5 +280,13 @@ Route::group(['prefix' => 'br-admin', 'middleware' => 'auth'], function () {
             Route::get('delete-row', [FeedbackController::class, 'delete'])->name('delete-feedback');
             Route::get('change-status', [FeedbackController::class, 'changeStatus'])->name('change-feedback-status');
         });
+
+        Route::get('qa', [QAController::class, 'index'])->name('list-qa');
+        Route::get('qa/create', [QAController::class, 'create'])->name('create-qa');
+        Route::post('qa/store', [QAController::class, 'store'])->name('store-qa');
+        Route::get('qa/edit/{id}', [QAController::class, 'edit'])->name('edit-qa');
+        Route::put('qa/update/{id}', [QAController::class, 'update'])->name('update-qa');
+        Route::get('qa/delete-row', [QAController::class, 'delete'])->name('delete-qa');
+        Route::get('qa/change-status', [QAController::class, 'changeStatus'])->name('change-qa-status');
     });
 });

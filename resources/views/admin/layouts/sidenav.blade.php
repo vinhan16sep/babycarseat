@@ -43,6 +43,7 @@
                 </li>
                 
                 <li><a href="{{ route('list-feedback') }}"><i class="ti-comment-alt"></i>Đánh giá khách hàng</a></li>
+                <li><a href="{{ route('list-qa') }}"><i class="ti-help-alt"></i>QA</a></li>
             </ul>
         </div>
     </div>
