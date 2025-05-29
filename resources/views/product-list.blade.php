@@ -69,10 +69,6 @@
             line-height: 20px;
             font-weight: 300;
         }
-        .product .desc strong{
-            letter-spacing: 1px;
-            font-weight: 600!important;
-        }
         .product .img{
             text-align: right;
         }
@@ -84,6 +80,10 @@
             background: transparent!important;
             font-size: 1vw!important;
             font-weight: 400!important;
+        }
+        .product .desc strong, .product .desc strong *{
+            letter-spacing: 1px;
+            font-weight: 600!important;
         }
         .product .desc .MsoNormal{
             font-weight: 400;
