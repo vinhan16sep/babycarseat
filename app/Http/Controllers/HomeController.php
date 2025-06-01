@@ -87,4 +87,10 @@ class HomeController extends Controller
             "products" => $products,
         ]);
     }
+
+    public function babyroHub(){
+        return view('babyro-hub', [
+
+        ]);
+    }
 }
