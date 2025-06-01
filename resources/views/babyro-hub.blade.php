@@ -119,57 +119,27 @@ Sau Tai Nạn Babyro - bảo vệ An Toàn Cho Bé Yêu</h3>
             <div>
                 <div class="tf-product-info-help">
                     <ul class="accordion-product-wrap" id="accordion-product">
-                        <li class="accordion-product-item">
-                            <a href="#accordion-8" class="accordion-title current collapsed" data-bs-toggle="collapse"
-                               aria-expanded="false" aria-controls="accordion-1">
-                                <h6 class="title">Tôi có phải trả bất kỳ chi phí nào khi tham gia chương trình này không?</h6>
-                                <span class="btn-open-sub-detail">
-                                    <i class="bi bi-chevron-down"></i>
-                                    <i class="bi bi-dash-lg"></i>
-                                </span>
-                            </a>
-                            <div id="accordion-8" class="collapse" data-bs-parent="#accordion-product" style="">
-                                <div class="accordion-content tab-description">
-                                    <p class="text-secondary">
-                                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                                    </p>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="accordion-product-item">
-                            <a href="#accordion-9" class="accordion-title current collapsed" data-bs-toggle="collapse"
-                               aria-expanded="false" aria-controls="accordion-1">
-                                <h6 class="title">Tôi có thể chọn bất kỳ mẫu ghế nào để thay thế không?</h6>
-                                <span class="btn-open-sub-detail">
-                                    <i class="bi bi-chevron-down"></i>
-                                    <i class="bi bi-dash-lg"></i>
-                                </span>
-                            </a>
-                            <div id="accordion-9" class="collapse" data-bs-parent="#accordion-product" style="">
-                                <div class="accordion-content tab-description">
-                                    <p class="text-secondary">
-                                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                                    </p>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="accordion-product-item">
-                            <a href="#accordion-10" class="accordion-title current collapsed" data-bs-toggle="collapse"
-                               aria-expanded="true" aria-controls="accordion-1">
-                                <h6 class="title">Nếu tôi mua ghế Babyro từ đại lý, tôi có thể tham gia chương trình này không?</h6>
-                                <span class="btn-open-sub-detail">
-                                    <i class="bi bi-chevron-down"></i>
-                                    <i class="bi bi-dash-lg"></i>
-                                </span>
-                            </a>
-                            <div id="accordion-10" class="collapse" data-bs-parent="#accordion-product" style="">
-                                <div class="accordion-content tab-description">
-                                    <p class="text-secondary">
-                                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                                    </p>
-                                </div>
-                            </div>
-                        </li>
+                        @if(!empty($qas['DOI_GHE']))
+                            @foreach($qas['DOI_GHE'] as $_key =>  $_qa)
+                                <li class="accordion-product-item">
+                                    <a href="#accordion-{{ $_key }}" class="accordion-title current collapsed" data-bs-toggle="collapse"
+                                       aria-expanded="false" aria-controls="accordion-1">
+                                        <h6 class="title">{{ $_qa['question'] }}</h6>
+                                        <span class="btn-open-sub-detail">
+                                            <i class="bi bi-chevron-down"></i>
+                                            <i class="bi bi-dash-lg"></i>
+                                        </span>
+                                    </a>
+                                    <div id="accordion-{{ $_key }}" class="collapse" data-bs-parent="#accordion-product" style="">
+                                        <div class="accordion-content tab-description">
+                                            <p class="text-secondary">
+                                                {{ $_qa['answer'] }}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </li>
+                            @endforeach
+                        @endif
                     </ul>
                 </div>
             </div>
@@ -267,57 +237,27 @@ Sau Tai Nạn Babyro - bảo vệ An Toàn Cho Bé Yêu</h3>
             <div>
                 <div class="tf-product-info-help">
                     <ul class="accordion-product-wrap" id="accordion-product-v2">
-                        <li class="accordion-product-item">
-                            <a href="#accordion-v2-8" class="accordion-title current collapsed" data-bs-toggle="collapse"
-                               aria-expanded="false" aria-controls="accordion-1">
-                                <h6 class="title">Bảo hành có áp dụng cho ghế đã qua sử dụng (mua lại từ người khác) không?</h6>
-                                <span class="btn-open-sub-detail">
-                                    <i class="bi bi-chevron-down"></i>
-                                    <i class="bi bi-dash-lg"></i>
-                                </span>
-                            </a>
-                            <div id="accordion-v2-8" class="collapse" data-bs-parent="#accordion-product-v2" style="">
-                                <div class="accordion-content tab-description">
-                                    <p class="text-secondary">
-                                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                                    </p>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="accordion-product-item">
-                            <a href="#accordion-v2-9" class="accordion-title current collapsed" data-bs-toggle="collapse"
-                               aria-expanded="false" aria-controls="accordion-1">
-                                <h6 class="title">Trường hợp nào được đổi ghế mới?</h6>
-                                <span class="btn-open-sub-detail">
-                                    <i class="bi bi-chevron-down"></i>
-                                    <i class="bi bi-dash-lg"></i>
-                                </span>
-                            </a>
-                            <div id="accordion-v2-9" class="collapse" data-bs-parent="#accordion-product-v2" style="">
-                                <div class="accordion-content tab-description">
-                                    <p class="text-secondary">
-                                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                                    </p>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="accordion-product-item">
-                            <a href="#accordion-v2-10" class="accordion-title current collapsed" data-bs-toggle="collapse"
-                               aria-expanded="true" aria-controls="accordion-1">
-                                <h6 class="title">Trường hợp nào bị từ chối bảo hành?</h6>
-                                <span class="btn-open-sub-detail">
-                                    <i class="bi bi-chevron-down"></i>
-                                    <i class="bi bi-dash-lg"></i>
-                                </span>
-                            </a>
-                            <div id="accordion-v2-10" class="collapse" data-bs-parent="#accordion-product-v2" style="">
-                                <div class="accordion-content tab-description">
-                                    <p class="text-secondary">
-                                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                                    </p>
-                                </div>
-                            </div>
-                        </li>
+                        @if(!empty($qas['BAO_HANH']))
+                            @foreach($qas['BAO_HANH'] as $_key =>  $_qa)
+                                <li class="accordion-product-item">
+                                    <a href="#accordion-v2-{{ $_key }}" class="accordion-title current collapsed" data-bs-toggle="collapse"
+                                       aria-expanded="false" aria-controls="accordion-1">
+                                        <h6 class="title">{{ $_qa['question'] }}</h6>
+                                        <span class="btn-open-sub-detail">
+                                            <i class="bi bi-chevron-down"></i>
+                                            <i class="bi bi-dash-lg"></i>
+                                        </span>
+                                    </a>
+                                    <div id="accordion-v2-{{ $_key }}" class="collapse" data-bs-parent="#accordion-product-v2" style="">
+                                        <div class="accordion-content tab-description">
+                                            <p class="text-secondary">
+                                                {{ $_qa['answer'] }}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </li>
+                            @endforeach
+                        @endif
                     </ul>
                 </div>
             </div>
@@ -423,57 +363,27 @@ Bảo Hành Vàng 12 năm Babyro</h3>
             <div>
                 <div class="tf-product-info-help">
                     <ul class="accordion-product-wrap" id="accordion-product-v3">
-                        <li class="accordion-product-item">
-                            <a href="#accordion-v3-8" class="accordion-title current collapsed" data-bs-toggle="collapse"
-                               aria-expanded="false" aria-controls="accordion-1">
-                                <h6 class="title">Tôi cần cung cấp những gì khi yêu cầu bảo hành?</h6>
-                                <span class="btn-open-sub-detail">
-                                    <i class="bi bi-chevron-down"></i>
-                                    <i class="bi bi-dash-lg"></i>
-                                </span>
-                            </a>
-                            <div id="accordion-v3-8" class="collapse" data-bs-parent="#accordion-product-v3" style="">
-                                <div class="accordion-content tab-description">
-                                    <p class="text-secondary">
-                                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                                    </p>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="accordion-product-item">
-                            <a href="#accordion-v3-9" class="accordion-title current collapsed" data-bs-toggle="collapse"
-                               aria-expanded="false" aria-controls="accordion-1">
-                                <h6 class="title">Thời gian bảo hành là bao lâu?</h6>
-                                <span class="btn-open-sub-detail">
-                                    <i class="bi bi-chevron-down"></i>
-                                    <i class="bi bi-dash-lg"></i>
-                                </span>
-                            </a>
-                            <div id="accordion-v3-9" class="collapse" data-bs-parent="#accordion-product-v3" style="">
-                                <div class="accordion-content tab-description">
-                                    <p class="text-secondary">
-                                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                                    </p>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="accordion-product-item">
-                            <a href="#accordion-v3-10" class="accordion-title current collapsed" data-bs-toggle="collapse"
-                               aria-expanded="true" aria-controls="accordion-1">
-                                <h6 class="title">Tôi có cần mang sản phẩm đến trung tâm bảo hành không?</h6>
-                                <span class="btn-open-sub-detail">
-                                    <i class="bi bi-chevron-down"></i>
-                                    <i class="bi bi-dash-lg"></i>
-                                </span>
-                            </a>
-                            <div id="accordion-v3-10" class="collapse" data-bs-parent="#accordion-product-v3" style="">
-                                <div class="accordion-content tab-description">
-                                    <p class="text-secondary">
-                                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                                    </p>
-                                </div>
-                            </div>
-                        </li>
+                        @if(!empty($qas['BAO_HANH_12_YEAR']))
+                            @foreach($qas['BAO_HANH_12_YEAR'] as $_key =>  $_qa)
+                                <li class="accordion-product-item">
+                                    <a href="#accordion-v3-{{ $_key }}" class="accordion-title current collapsed" data-bs-toggle="collapse"
+                                       aria-expanded="false" aria-controls="accordion-1">
+                                        <h6 class="title">{{ $_qa['question'] }}</h6>
+                                        <span class="btn-open-sub-detail">
+                                            <i class="bi bi-chevron-down"></i>
+                                            <i class="bi bi-dash-lg"></i>
+                                        </span>
+                                    </a>
+                                    <div id="accordion-v3-{{ $_key }}" class="collapse" data-bs-parent="#accordion-product-v3" style="">
+                                        <div class="accordion-content tab-description">
+                                            <p class="text-secondary">
+                                                {{ $_qa['answer'] }}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </li>
+                            @endforeach
+                        @endif
                     </ul>
                 </div>
             </div>

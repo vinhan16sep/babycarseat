@@ -88,7 +88,7 @@
                         @endif
                     </li>
                     <li class="menu-item"><a href="#" class="item-link">Bảo hành 10 năm</a></li>
-                    <li class="menu-item"><a href="#" class="item-link">Babyro Hub</a></li>
+                    <li class="menu-item"><a href="{{ route('babyro-hub') }}" class="item-link">Babyro Hub</a></li>
                     <li class="menu-item"><a href="#" class="item-link">Hỗ trợ</a></li>
                     <li class="menu-item"><a href="#" class="item-link">Buy now</a></li>
 {{--                    @foreach($mainMenu as $_name => $_menus)--}}

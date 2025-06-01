@@ -130,8 +130,9 @@
     line-height: 4vw;
     padding: 0;
 }
-.accordion-product-wrap .accordion-product-item:not(:last-child){
-    border-bottom: 1px solid black;
+/*.accordion-product-wrap .accordion-product-item:not(:last-child){*/
+.accordion-product-wrap .accordion-product-item{
+    border-bottom: 1px solid #ccc!important;
 }
 .accordion-product-wrap span i{
     font-size: 1.8vw;
@@ -447,7 +448,7 @@ section p.note{
         line-height: 2vw;
     }
     .section-three-v1{
-        padding-bottom: 2vw;
+        padding-bottom: 4vw;
     }
     .section-three-v1 .box-content {
         width: 1100px;
