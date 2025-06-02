@@ -124,7 +124,7 @@ class FormWarrantyController extends AdminController
             'email' => 'required|email|max:255',
             'product_code' => 'required|string|max:255',
             'by_date' => 'required|date',
-            'bill_images' => 'required|file|mimes:jpg,jpeg,png,pdf|max:10240', // 10MB
+            'bill_images' => 'nullable|file|mimes:jpg,jpeg,png,pdf|max:10240', // 10MB
         ], [
             'name.required' => 'Chưa nhập họ tên',
             'phone.required' => 'Chưa nhập số điện thoại',
@@ -133,7 +133,6 @@ class FormWarrantyController extends AdminController
             'address.required' => 'Chưa nhập địa chỉ',
             'product_code.required' => 'Chưa nhập mã sản phẩm',
             'by_date.required' => 'Chưa nhập ngày mua',
-            'bill_images.required' => 'Chưa chọn file ảnh hóa đơn',
             'bill_images.file' => 'File hóa đơn không hợp lệ',
             'bill_images.mimes' => 'Chỉ chấp nhận file jpg, jpeg, png, pdf',
             'bill_images.max' => 'Dung lượng file hóa đơn tối đa 10MB',

@@ -5,8 +5,6 @@
 @stop
 
 @section('content')
-@include('components.form-warranty')
-@include('components.form-safe')
 
     <!-- Slider -->
     <section class="tf-slideshow slider-default slider-effect-fade">

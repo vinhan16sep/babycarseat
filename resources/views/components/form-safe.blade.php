@@ -1,7 +1,7 @@
 @php
     $products = empty($products) ? \App\Models\Product::getAllProductNames() : $products;
 @endphp
-<section class="form-safe header-default header-fullwidth">
+<section class="form-safe header-default header-fullwidth" style="margin-top: 50px;margin-bottom: 50px;">
     <div class="container-fluid" style="padding: 0;">
          <div class="row">
             <div class="col-md-7 form-safe-content">
