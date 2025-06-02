@@ -42,8 +42,9 @@ return [
         'FOOTER_3' => 3,
     ],
     'QA_TYPE' => [
-        'DOI_GHE' => "chương trình đổi ghế",
-        'BAO_HANH' => "bảo hành cơ bản"
+        'DOI_GHE' => "Chương trình đổi ghế",
+        'BAO_HANH' => "Bảo hành cơ bản",
+        'BAO_HANH_12_YEAR' => "Bảo hành vàng 12 năm",
     ]
 
 ];

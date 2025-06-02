@@ -1368,35 +1368,35 @@
                             <a href="{{ route('product-list') }}" class="mb-menu-link">Baby Car Seat</a>
                         @endif
                     </li>
-                    @foreach($mainMenu as $_name => $_menus)
-                        <li class="nav-mb-item">
-                            <div href="#dropdown-menu-two-{{ $_menus['id'] }}" class="mb-menu-link sub-nav-link collapsed"
-                                 aria-expanded="true"
-                                 aria-controls="dropdown-menu-two-{{ $_menus['id'] }}">
-                                <a href="">{{ $_menus['name'] }}</a><span class="btn-open-sub"></span>
-                            </div>
-                            <div id="dropdown-menu-two-{{ $_menus['id'] }}" class="collapse">
-                                <ul class="sub-nav-menu">
-                                    @foreach($_menus['children'] as $_item)
-                                        <li>
-                                            <div href="#dropdown-menu-two-1-{{ $_item['id'] }}" class="mb-menu-link sub-nav-link collapsed"
-                                                 aria-expanded="true"
-                                                 aria-controls="dropdown-menu-two-1-{{ $_item['id'] }}">
-                                                <a class="mb-menu-link sub-nav-link" href="">{{ $_item['name'] }}</a><span class="btn-open-sub"></span>
-                                            </div>
-                                            <div id="dropdown-menu-two-1-{{ $_item['id'] }}" class="collapse">
-                                                <ul class="sub-nav-menu">
-                                                    @foreach($_item['posts'] as $_i)
-                                                        <li><a class="mb-menu-link sub-nav-link" href="">{{ $_i['title'] }}</a></li>
-                                                    @endforeach
-                                                </ul>
-                                            </div>
-                                        </li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                        </li>
-                    @endforeach
+{{--                    @foreach($mainMenu as $_name => $_menus)--}}
+{{--                        <li class="nav-mb-item">--}}
+{{--                            <div href="#dropdown-menu-two-{{ $_menus['id'] }}" class="mb-menu-link sub-nav-link collapsed"--}}
+{{--                                 aria-expanded="true"--}}
+{{--                                 aria-controls="dropdown-menu-two-{{ $_menus['id'] }}">--}}
+{{--                                <a href="">{{ $_menus['name'] }}</a><span class="btn-open-sub"></span>--}}
+{{--                            </div>--}}
+{{--                            <div id="dropdown-menu-two-{{ $_menus['id'] }}" class="collapse">--}}
+{{--                                <ul class="sub-nav-menu">--}}
+{{--                                    @foreach($_menus['children'] as $_item)--}}
+{{--                                        <li>--}}
+{{--                                            <div href="#dropdown-menu-two-1-{{ $_item['id'] }}" class="mb-menu-link sub-nav-link collapsed"--}}
+{{--                                                 aria-expanded="true"--}}
+{{--                                                 aria-controls="dropdown-menu-two-1-{{ $_item['id'] }}">--}}
+{{--                                                <a class="mb-menu-link sub-nav-link" href="">{{ $_item['name'] }}</a><span class="btn-open-sub"></span>--}}
+{{--                                            </div>--}}
+{{--                                            <div id="dropdown-menu-two-1-{{ $_item['id'] }}" class="collapse">--}}
+{{--                                                <ul class="sub-nav-menu">--}}
+{{--                                                    @foreach($_item['posts'] as $_i)--}}
+{{--                                                        <li><a class="mb-menu-link sub-nav-link" href="">{{ $_i['title'] }}</a></li>--}}
+{{--                                                    @endforeach--}}
+{{--                                                </ul>--}}
+{{--                                            </div>--}}
+{{--                                        </li>--}}
+{{--                                    @endforeach--}}
+{{--                                </ul>--}}
+{{--                            </div>--}}
+{{--                        </li>--}}
+{{--                    @endforeach--}}
 {{--                    <li class="nav-mb-item">--}}
 {{--                        <a href="{{ route('news') }}" class="mb-menu-link">Blogs</a>--}}
 {{--                    </li>--}}
@@ -1404,10 +1404,16 @@
 {{--                        <a href="{{ route('category-detail-knowledge') }}" class="mb-menu-link">Kiến thức</a>--}}
 {{--                    </li>--}}
                     <li class="nav-mb-item">
-                        <a href="{{ route('about-show') }}" class="mb-menu-link">Về chúng tôi</a>
+                        <a href="" class="mb-menu-link">Bảo hành 10 năm</a>
                     </li>
                     <li class="nav-mb-item">
-                        <a href="{{ route('contact') }}" class="mb-menu-link">Liên hệ</a>
+                        <a href="{{ route('babyro-hub') }}" class="mb-menu-link">Babyro Hub</a>
+                    </li>
+                    <li class="nav-mb-item">
+                        <a href="#" class="mb-menu-link">Hỗ trợ</a>
+                    </li>
+                    <li class="nav-mb-item">
+                        <a href="#" class="mb-menu-link">Buy Now</a>
                     </li>
                 </ul>
             </div>

@@ -8,6 +8,7 @@ use App\Models\Knowledge;
 use App\Models\News;
 use App\Models\Feedback;
 use App\Models\Product;
+use App\Models\QAs;
 use App\Models\Type;
 use Illuminate\Http\Request;
 
@@ -85,6 +86,14 @@ class HomeController extends Controller
 
         return view('product-search', [
             "products" => $products,
+        ]);
+    }
+
+    public function babyroHub(){
+        $qas = QAs::query()->where('is_active', 1)->orderBy('sort')->get()->groupBy('qa_type');
+
+        return view('babyro-hub', [
+            'qas' => $qas
         ]);
     }
 }

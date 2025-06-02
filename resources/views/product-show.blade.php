@@ -245,7 +245,7 @@
         .box-description{
             background: transparent!important
         }
-        .collection-position-2 .img-style img{
+        .collection-position-2 .img-style, .collection-position-2 .img-style img{
             border-radius: 10px;
         }
         @media (max-width: 900px) {

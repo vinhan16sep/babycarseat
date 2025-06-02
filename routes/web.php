@@ -54,6 +54,7 @@ Route::group(['middleware' => ['site_settings']], function () {
     Route::get('/san-pham/{category_slug?}', [App\Http\Controllers\ProductController::class, 'list'])->name('product-list');
    Route::get('/chi-tiet-san-pham/{slug}', [App\Http\Controllers\ProductController::class, 'show'])->name('product-index');
    Route::get('/ve-chung-toi', [App\Http\Controllers\AboutController::class, 'show'])->name('about-show');
+   Route::get('/babyro-hub', [App\Http\Controllers\HomeController::class, 'babyroHub'])->name('babyro-hub');
 
 
     Route::get('lien-he', [App\Http\Controllers\ContactController::class, 'show'])->name('contact');
