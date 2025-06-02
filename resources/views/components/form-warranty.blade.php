@@ -167,7 +167,7 @@ chương trình "Bảo hành Vàng 12 năm Babyro". Các trường có dấu (<s
             .then(response => response.json())
             .then(data => {
                 if (data.success) {
-                    alertBox.innerHTML = '<div class="alert alert-success">' + (data.message || 'Đăng ký thành công!') + '</div>';
+                    alertBox.innerHTML = '<div class="alert alert-success">' + ( 'Đăng ký thành công!') + '</div>';
                     alertBox.style.display = 'block';
                     setTimeout(function() { alertBox.style.display = 'none'; }, 5000);
                     form.reset();

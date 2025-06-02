@@ -197,7 +197,7 @@ chương trình "Ghế Ô Tô An Toàn". Các trường có dấu (<span class="
             .then(response => response.json())
             .then(data => {
                 if (data.success) {
-                    alertBox.innerHTML = '<div class="alert alert-success">' + (data.message || 'Đăng ký thành công!') + '</div>';
+                    alertBox.innerHTML = '<div class="alert alert-success">' + ( 'Đăng ký thành công!') + '</div>';
                     alertBox.style.display = 'block';
                     setTimeout(function() { alertBox.style.display = 'none'; }, 5000);
                     form.reset();
