@@ -31,6 +31,8 @@ use App\Http\Controllers\Admin\ProductNoteController;
 use App\Http\Controllers\Admin\FeedbackController;
 use App\Http\Controllers\Admin\PostCategoryController;
 use App\Http\Controllers\Admin\QAController;
+use App\Http\Controllers\Admin\FormSafeController;
+use App\Http\Controllers\Admin\FormWarrantyController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -70,6 +72,8 @@ Route::group(['middleware' => ['site_settings']], function () {
     Route::get('/thanh-toan', [App\Http\Controllers\OrderController::class, 'orderCreate'])->name('checkout');
     Route::post('/thanh-toan', [App\Http\Controllers\OrderController::class, 'orderStore'])->name('checkout-store');
     Route::get('/chi-tiet-don-hang', [App\Http\Controllers\OrderController::class, 'orderReceived'])->name("order-received");
+    Route::post('formsafe/store', [FormSafeController::class, 'store'])->name('store-formsafe');
+    Route::post('formwarranty/store', [FormWarrantyController::class, 'store'])->name('store-formwarranty');
 });
 
 Route::post('/add-to-cart', [App\Http\Controllers\CartController::class, 'addToCart']);
@@ -289,5 +293,16 @@ Route::group(['prefix' => 'br-admin', 'middleware' => 'auth'], function () {
         Route::put('qa/update/{id}', [QAController::class, 'update'])->name('update-qa');
         Route::get('qa/delete-row', [QAController::class, 'delete'])->name('delete-qa');
         Route::get('qa/change-status', [QAController::class, 'changeStatus'])->name('change-qa-status');
+
+        // FormSafe
+        Route::get('formsafe', [FormSafeController::class, 'index'])->name('list-formsafe');
+        Route::get('formsafe/show/{id}', [FormSafeController::class, 'show'])->name('show-formsafe');
+        Route::get('formsafe/delete-row', [FormSafeController::class, 'delete'])->name('delete-formsafe');
+
+
+                // FormSafe
+        Route::get('formwarranty', [FormWarrantyController::class, 'index'])->name('list-formwarranty');
+        Route::get('formwarranty/show/{id}', [FormWarrantyController::class, 'show'])->name('show-formwarranty');
+        Route::get('formwarranty/delete-row', [FormWarrantyController::class, 'delete'])->name('delete-formwarranty');
     });
 });

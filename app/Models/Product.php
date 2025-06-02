@@ -107,4 +107,10 @@ class Product extends Model
         // Nếu chưa eager load thì query thêm (tuỳ trường hợp)
         return $this->categories()->first();
     }
+
+    // lấy toàn bộ tên sản phẩm
+    public static function getAllProductNames()
+    {
+        return Product::query()->pluck('name')->toArray();
+    }
 }

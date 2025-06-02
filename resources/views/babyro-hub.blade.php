@@ -145,7 +145,7 @@ Sau Tai Nạn Babyro - bảo vệ An Toàn Cho Bé Yêu</h3>
             </div>
         </div>
     </section>
-
+@include('components.form-safe')
     <hr>
     <section class="section-same section-four home-padding">
         <div class="container-fluid">
@@ -405,7 +405,8 @@ Bảo Hành Vàng 12 năm Babyro</h3>
         </div>
     </section>
     <hr>
-
+@include('components.form-warranty')
+    <hr>
 @endsection
 
 
