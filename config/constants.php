@@ -20,6 +20,9 @@ return [
         'PRODUCT_FEATURE' => 'images/product/%s/feature/%s/',
         'FEEDBACK_IMAGE' => 'images/feedback/%s/',
         'FEATURE_IMAGE' => 'images/feature/%s/',
+        'FORMSAFE_IMAGE' => 'images/fomsafe/%s/',
+        'FORMWARRANTY_IMAGE' => 'images/formwarranty/%s/',
+        
     ],
     'MESSAGE' => [
         'CREATE_SUCCEEDED' => 'Tạo dữ liệu thành công!',

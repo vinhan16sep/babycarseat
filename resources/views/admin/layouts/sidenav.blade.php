@@ -1,4 +1,3 @@
-
 <div class="sidebar sidebar-hide-to-small sidebar-shrink sidebar-gestures">
     <div class="nano">
         <div class="nano-content">
@@ -39,6 +38,13 @@
                     <ul>
                         <li><a href="{{ route('list-post-category') }}">Danh mục</a></li>
                         <li><a href="{{ route('list-post') }}">Bài viết</a></li>
+                    </ul>
+                </li>
+                <li><a class="sidebar-sub-toggle"><i class="ti-shield"></i> Form <span
+                            class="sidebar-collapse-icon ti-angle-down"></span></a>
+                    <ul>
+                        <li><a href="{{ route('list-formsafe') }}">Ghế Ô Tô An Toàn</a></li>
+                        <li><a href="{{ route('list-formwarranty') }}">Bảo hành vàng 12 năm</a></li>
                     </ul>
                 </li>
                 

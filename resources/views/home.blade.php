@@ -5,6 +5,9 @@
 @stop
 
 @section('content')
+@include('components.form-warranty')
+@include('components.form-safe')
+
     <!-- Slider -->
     <section class="tf-slideshow slider-default slider-effect-fade">
         <div dir="ltr" class="swiper tf-sw-slideshow" data-effect="fade" data-preview="1" data-tablet="1"
@@ -54,7 +57,6 @@
             </div>
         </section>
     </marquee>
-
     <!-- Collection -->
 {{--    <section class="flat-spacing bg-css">--}}
 {{--        <div class="container">--}}
