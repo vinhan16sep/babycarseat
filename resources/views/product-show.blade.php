@@ -56,6 +56,9 @@
             height: 100%;
             object-fit: cover;
         }
+        .collection-position-2{
+            border-radius: 0;
+        }
         @media (min-width: 1300px) {
             .tf-product-media-wrap.sticky-top{
                 width: calc(100% - 30px);
@@ -246,7 +249,7 @@
             background: transparent!important
         }
         .collection-position-2 .img-style, .collection-position-2 .img-style img{
-            border-radius: 10px;
+            /* border-radius: 10px; */
         }
         @media (max-width: 900px) {
             .signature-contentblock__image {

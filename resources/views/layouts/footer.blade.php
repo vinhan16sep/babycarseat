@@ -3,11 +3,11 @@
     <div class="footer-wrap home-padding">
         <div class="footer-body">
             <div class="container-fluid">
-                <div class="row">
+                <div class="row magin-sm-0">
                     <div class="col-lg-12">
-                        <div class="footer-logo" style="margin-bottom: 50px;">
+                        <div class="footer-logo" style="margin-bottom: 20px;">
                             <a href="{{ url("/") }}">
-                                <img src="{{ asset('images/logo/logo.png') }}" alt="">
+                                <img src="{{ asset('images/logo/footer logo.png') }}" alt="">
                             </a>
                         </div>
                     </div>

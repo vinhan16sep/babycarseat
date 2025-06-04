@@ -121,7 +121,7 @@
 
     <!-- Top picks -->
     <section class="flat-spacing bg-css topick section-one">
-            <div class="container-fluid">
+            <div class="container-fluid px-lg-5 px-2">
             <div class="heading-section text-center wow fadeInUp">
                 <h3 class="heading">Hot Selling</h3>
 {{--                <p class="subheading text-secondary">Browse our Top Trending: the hottest picks loved by all. </p>--}}
@@ -130,8 +130,8 @@
             <div class="flat-sw-navigation wow fadeInUp" data-wow-delay="0.1s">
                 <div dir="ltr" class="swiper tf-sw-latest" data-preview="5" data-tablet="4" data-mobile="1"
                      data-space-lg="15" data-space-md="15" data-space="15" data-pagination="1" data-pagination-md="1"
-                     data-pagination-lg="3" >
-                    <div class="swiper-wrapper">
+                     data-pagination-lg="3" data-center="{{ count($hotProducts) <= 5 ? '1' : '0' }}" data-pagination="1">
+                    <div class="swiper-wrapper text-center">
                         @foreach($hotProducts as $_item)
                             <div class="swiper-slide">
                                 <div class="card-product wow fadeInUp" data-wow-delay="0s" style="border-radius: 15px;">
@@ -148,7 +148,6 @@
                                         <a href="{{ route('product-index', ['slug' => $_item->slug]) }}">
                                             <p class="product-title">{{ str_replace("BABYRO ", "", strtoupper($_item->name)) }}</p>
                                         </a>
-                                        <!-- <p class="product-desc">{{ $_item->first_category ? $_item->first_category->name : '' }}</p> -->
                                     </div>
                                 </div>
                             </div>
@@ -156,8 +155,8 @@
                     </div>
                     <div class="sw-pagination-latest sw-dots type-circle justify-content-center"></div>
                 </div>
-                <div class="nav-prev-collection d-none d-lg-flex nav-sw style-line nav-sw-left"><i class="icon icon-arrLeft"></i></div>
-                <div class="nav-next-collection d-none d-lg-flex nav-sw style-line nav-sw-right"><i class="icon icon-arrRight"></i></div>
+                <div style="border: none;" class="nav-prev-collection d-none d-lg-flex nav-sw style-line nav-sw-left"><i class="icon icon-arrLeft"></i></div>
+                <div style="border: none;" class="nav-next-collection d-none d-lg-flex nav-sw style-line nav-sw-right"><i class="icon icon-arrRight"></i></div>
             @endif
         </div>
     </section>
