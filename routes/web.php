@@ -29,6 +29,7 @@ use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\ProductFeatureController;
 use App\Http\Controllers\Admin\ProductNoteController;
 use App\Http\Controllers\Admin\FeedbackController;
+use App\Http\Controllers\Admin\GuaranteeInfoController;
 use App\Http\Controllers\Admin\PostCategoryController;
 use App\Http\Controllers\Admin\QAController;
 use App\Http\Controllers\Admin\FormSafeController;
@@ -256,6 +257,19 @@ Route::group(['prefix' => 'br-admin', 'middleware' => 'auth'], function () {
             Route::get('delete-row', [InformationController::class, 'delete'])->name('delete-information');
             Route::get('change-status', [InformationController::class, 'changeStatus'])->name('change-information-status');
         });
+
+        // GuaranteeInfo
+        Route::group(['prefix' => 'guarantee-info'], function () {
+            Route::get('/', [GuaranteeInfoController::class, 'index'])->name('list-guarantee-info');
+            Route::get('create', [GuaranteeInfoController::class, 'create'])->name('create-guarantee-info');
+            Route::post('store', [GuaranteeInfoController::class, 'store'])->name('store-guarantee-info');
+            Route::get('edit/{id}', [GuaranteeInfoController::class, 'edit'])->name('edit-guarantee-info');
+            Route::put('update/{id}', [GuaranteeInfoController::class, 'update'])->name('update-guarantee-info');
+            Route::get('delete-row', [GuaranteeInfoController::class, 'delete'])->name('delete-guarantee-info');
+            Route::get('change-status', [GuaranteeInfoController::class, 'changeStatus'])->name('change-guarantee-info-status');
+        });
+
+        
 
         // Order
         Route::group(['prefix' => 'order'], function () {
