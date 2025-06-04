@@ -372,9 +372,10 @@
                                         </a>
                                     </div>
                                     <div class="card-product-info">
-                                        <a href="{{ route('product-index', ['category_slug' => $_product->categories->first()->slug, 'slug' => $_product->slug]) }}">
+                                        <a href="{{ route('product-index', ['category_slug' => $_product->categories->first() ? $_product->categories->first()->slug : '', 'slug' => $_product->slug]) }}">
                                             <p class="product-title">{{ str_replace("BABYRO ", "", strtoupper($_product->name)) }}</p>
-                                            <p class="product-desc">{{ $category ? $category->name : ($_product->first_category ? $_product->first_category->name : '') }}</p>
+                                            <!-- <p class="product-desc">{{ $category ? $category->name : ($_product->first_category ? $_product->first_category->name : '') }}</p> -->
+                                            <p class="product-desc">{{ $_product->note }}</p>
                                         </a>
                                     </div>
                                 </div>
