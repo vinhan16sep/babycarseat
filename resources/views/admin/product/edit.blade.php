@@ -44,6 +44,11 @@
                                 @csrf
                                 @method('PUT')
 
+                                <div class="row">
+                                    @include('components.seo-form', ['seo' => $seo])
+                                </div>
+                                <br>
+
                                 <!-- Ảnh -->
                                 <div class="form-group row">
                                     <div class="col-md-8">
@@ -243,13 +248,25 @@
         reader.readAsDataURL(this.files[0]); 
     });
 
+    let routeTemplate = "{{ route('product-index', ['slug' => ':slug']) }}";
+    let finalUrl = routeTemplate.replace(':slug', $('#inputSlug').val());
+    $('#canonical_url').val(finalUrl);
+
     $('#inputName').change(function() {
         let slug = to_slug($('#inputName').val());
         $('#inputSlug').val(slug);
+
+        let routeTemplate = "{{ route('product-index', ['slug' => ':slug']) }}";
+        let finalUrl = routeTemplate.replace(':slug', slug);
+        $('#canonical_url').val(finalUrl);
     });
     $('#inputName').focusout(function() {
         let slug = to_slug($('#inputName').val());
         $('#inputSlug').val(slug);
+
+        let routeTemplate = "{{ route('product-index', ['slug' => ':slug']) }}";
+        let finalUrl = routeTemplate.replace(':slug', slug);
+        $('#canonical_url').val(finalUrl);
     });
     
     $(document).ready(function() {
