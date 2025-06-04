@@ -50,6 +50,11 @@
                                 @csrf
                                 @method('post')
 
+                                <div class="row">
+                                    <x-seo-form :seo="$seo" />
+                                </div>
+                                <br>
+
                                 <!-- Ảnh sản phẩm -->
                                 <div class="row">
                                     <div class="col-md-8">
@@ -267,10 +272,18 @@
     $('#inputName').change(function() {
         let slug = to_slug($('#inputName').val());
         $('#inputSlug').val(slug);
+
+        let routeTemplate = "{{ route('product-index', ['slug' => ':slug']) }}";
+        let finalUrl = routeTemplate.replace(':slug', slug);
+        $('#canonical_url').val(finalUrl);
     });
     $('#inputName').focusout(function() {
         let slug = to_slug($('#inputName').val());
         $('#inputSlug').val(slug);
+        
+        let routeTemplate = "{{ route('product-index', ['slug' => ':slug']) }}";
+        let finalUrl = routeTemplate.replace(':slug', slug);
+        $('#canonical_url').val(finalUrl);
     });
 
     $(document).ready(function() {
