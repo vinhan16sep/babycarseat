@@ -777,6 +777,7 @@ footer{
         font-family: 'Inter';
         font-size: 0.9vw;
         font-weight: 400;
+        padding-top: 3px;
     }
 
     .tf-slideshow img {
