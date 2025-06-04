@@ -55,7 +55,7 @@ Route::group(['middleware' => ['site_settings']], function () {
     Route::get('/san-pham/{category_slug?}', [App\Http\Controllers\ProductController::class, 'list'])->name('product-list');
    Route::get('/chi-tiet-san-pham/{slug}', [App\Http\Controllers\ProductController::class, 'show'])->name('product-index');
    Route::get('/ve-chung-toi', [App\Http\Controllers\AboutController::class, 'show'])->name('about-show');
-   Route::get('/babyro-hub', [App\Http\Controllers\HomeController::class, 'babyroHub'])->name('babyro-hub');
+   Route::get('/bao-hanh-12-nam', [App\Http\Controllers\HomeController::class, 'baoHanh12Nam'])->name('bao-hanh-12-nam');
 
 
     Route::get('lien-he', [App\Http\Controllers\ContactController::class, 'show'])->name('contact');
@@ -269,7 +269,7 @@ Route::group(['prefix' => 'br-admin', 'middleware' => 'auth'], function () {
             Route::get('change-status', [GuaranteeInfoController::class, 'changeStatus'])->name('change-guarantee-info-status');
         });
 
-        
+
 
         // Order
         Route::group(['prefix' => 'order'], function () {

@@ -148,6 +148,7 @@
                                         <a href="{{ route('product-index', ['slug' => $_item->slug]) }}">
                                             <p class="product-title">{{ str_replace("BABYRO ", "", strtoupper($_item->name)) }}</p>
                                         </a>
+                                        <p class="product-desc">{{ $_item->note }}</p>
                                     </div>
                                 </div>
                             </div>

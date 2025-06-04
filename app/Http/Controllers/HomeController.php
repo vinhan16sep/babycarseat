@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Banner;
+use App\Models\GuaranteeInfo;
 use App\Models\HomeBlock;
 use App\Models\Knowledge;
 use App\Models\News;
@@ -89,11 +90,17 @@ class HomeController extends Controller
         ]);
     }
 
-    public function babyroHub(){
+    public function baoHanh12Nam(){
         $qas = QAs::query()->where('is_active', 1)->orderBy('sort')->get()->groupBy('qa_type');
+        $items = GuaranteeInfo::query()->get();
+        $configs = [];
+        foreach ($items as $_item) {
+            $configs[$_item->position][$_item->sub_position] = $_item;
+        }
 
-        return view('babyro-hub', [
-            'qas' => $qas
+        return view('bao-hanh-12-nam', [
+            'qas' => $qas,
+            'configs' => $configs,
         ]);
     }
 }

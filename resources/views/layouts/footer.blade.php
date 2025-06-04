@@ -1333,9 +1333,7 @@
         <div class="mb-body">
             <div class="mb-content-top">
                 <ul class="nav-ul-mb" id="wrapper-menu-navigation">
-                    <li class="nav-mb-item">
-                        <a href="{{ url('/') }}" class="mb-menu-link">Trang chủ</a>
-                    </li>
+                    <li class="menu-item"><a href="#" class="item-link">Về Babyro</a></li>
                     <li class="nav-mb-item">
                         @if(!empty($categoriesMenu))
                             <div href="#dropdown-menu-one" class="mb-menu-link sub-nav-link collapsed"
@@ -1404,10 +1402,30 @@
 {{--                        <a href="{{ route('category-detail-knowledge') }}" class="mb-menu-link">Kiến thức</a>--}}
 {{--                    </li>--}}
                     <li class="nav-mb-item">
-                        <a href="" class="mb-menu-link">Bảo hành 10 năm</a>
+                        <div href="#dropdown-menu-three" class="mb-menu-link sub-nav-link collapsed"
+                             aria-expanded="true"
+                             aria-controls="dropdown-menu-three">
+                            <a href="{{ route('bao-hanh-12-nam') }}">Bảo hành 12 năm</a><span class="btn-open-sub"></span>
+                        </div>
+                        <div id="dropdown-menu-three" class="collapse">
+                            <ul class="sub-nav-menu">
+                                <li>
+                                    <a class="mb-menu-link" href="#">Bảo hành cơ bản 2 năm</a>
+                                </li>
+                                <li>
+                                    <a class="mb-menu-link" href="#">Bảo hành vàng 12 năm</a>
+                                </li>
+                                <li>
+                                    <a class="mb-menu-link" href="#">Chương trình đổi ghế ô tô miễn phí</a>
+                                </li>
+                                <li>
+                                    <a class="mb-menu-link" href="#">Chương trình Thu cũ Đổi mới</a>
+                                </li>
+                            </ul>
+                        </div>
                     </li>
                     <li class="nav-mb-item">
-                        <a href="{{ route('babyro-hub') }}" class="mb-menu-link">Babyro Hub</a>
+                        <a href="#" class="mb-menu-link">Babyro Hub</a>
                     </li>
                     <li class="nav-mb-item">
                         <a href="#" class="mb-menu-link">Hỗ trợ</a>

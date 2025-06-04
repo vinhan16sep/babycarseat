@@ -320,11 +320,10 @@
                         <div class="desc">
                             <h4>Ghế ô tô cho bé</h4>
                             <div class="content">
-                                Dù bạn đang chuẩn bị đón bé yêu từ
-                                viện về hay con bạn đang lớn lên từng
-                                ngày, chúng tôi đều có sản phẩm ghế
-                                ngồi ô tô phù hợp với từng giai đoạn
-                                phát triển của bé.
+                                Từ những ngày đầu đón bé yêu về nhà đến từng cột mốc
+                                trưởng thành của con, chúng tôi đều có dòng ghế ngồi ô
+                                tô phù hợp, đồng hành cùng bé qua mỗi giai đoạn phát
+                                triển.
                             </div>
                         </div>
                     </div>
@@ -372,9 +371,10 @@
                                         </a>
                                     </div>
                                     <div class="card-product-info">
-                                        <a href="{{ route('product-index', ['category_slug' => $_product->categories->first()->slug, 'slug' => $_product->slug]) }}">
+                                        <a href="{{ route('product-index', ['category_slug' => $_product->categories->first() ? $_product->categories->first()->slug : '', 'slug' => $_product->slug]) }}">
                                             <p class="product-title">{{ str_replace("BABYRO ", "", strtoupper($_product->name)) }}</p>
-                                            <p class="product-desc">{{ $category ? $category->name : ($_product->first_category ? $_product->first_category->name : '') }}</p>
+                                            <!-- <p class="product-desc">{{ $category ? $category->name : ($_product->first_category ? $_product->first_category->name : '') }}</p> -->
+                                            <p class="product-desc">{{ $_product->note }}</p>
                                         </a>
                                     </div>
                                 </div>

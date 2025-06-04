@@ -2103,7 +2103,7 @@ a:focus, a:hover {
   z-index: 999;
   visibility: hidden;
   text-align: left;
-  padding: 8px 20px;
+  padding: 12px 30px;
   top: 100%;
   opacity: 0;
   visibility: hidden;
@@ -2115,6 +2115,12 @@ a:focus, a:hover {
   -ms-transition: all 0.3s ease;
   -o-transition: all 0.3s ease;
   transition: all 0.3s ease;
+}
+.box-nav-ul .sub-menu.menu-list {
+    font-weight: 500;
+    font-size: 1.3vw;
+    width: max-content;
+    max-width: 500px;
 }
 .box-nav-ul .wrapper-sub-shop {
   margin-left: -10px;
@@ -2170,12 +2176,12 @@ a:focus, a:hover {
   background: var(--main);
 }
 .box-nav-ul .menu-list .menu-link-text:hover {
-  color: var(--main);
+  color: var(--primary);
 }
 .box-nav-ul .menu-list .menu-link-text:hover::before {
-  width: 100%;
-  left: 0;
-  right: auto;
+  /*width: 100%;*/
+  /*left: 0;*/
+  /*right: auto;*/
 }
 .box-nav-ul .menu-list .menu-link-text.active {
   color: var(--main);

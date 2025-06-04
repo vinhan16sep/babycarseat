@@ -73,6 +73,15 @@
                                     <label>Slug <span class="my-required">*</span></label>
                                     <input type="text" name="slug" value="{{ old('slug', $object->slug) }}" class="form-control" id="inputSlug" readonly>
                                 </div>
+
+                                <div class="form-group">
+                                    <label>Ghi chú </label>
+                                    <input type="text" name="note" value="{{ old('note', $object->note) }}" class="form-control" maxlength="255">
+                                    @if ($errors->has('note'))
+                                        <span style="color:red;">{{ $errors->first('note') }}</span>
+                                    @endif
+                                </div>
+                                
                                 <div class="form-group">
                                     <label>Chọn danh mục <span class="my-required">*</span></label>
                                     <select class="form-control select2" name="category_id[]" multiple>

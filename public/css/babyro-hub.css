@@ -127,12 +127,13 @@
 .section-three-v1 .accordion-product-item .title {
     font-size: 1.2vw;
     font-weight: 500;
-    line-height: 4vw;
+    line-height: 3vw;
     padding: 0;
 }
 /*.accordion-product-wrap .accordion-product-item:not(:last-child){*/
 .accordion-product-wrap .accordion-product-item{
     border-bottom: 1px solid #ccc!important;
+    padding: 15px 0;
 }
 .accordion-product-wrap span i{
     font-size: 1.8vw;
@@ -462,7 +463,7 @@ section p.note{
     .section-three-v1 .accordion-product-item .title {
         font-size: 1.2vw;
         font-weight: 500;
-        line-height: 4vw;
+        line-height: 3vw;
         padding: 0;
     }
     .accordion-product-wrap .accordion-product-item:not(:last-child){
@@ -668,6 +669,43 @@ section p.note{
     .ttbh-address p{
         font-weight: 200;
     }
+
+    .form-warranty{
+        margin-top: 30px!important;
+        margin-bottom: 40px!important;
+        .form-warranty-content h1{
+            font-size: 2.15vw;
+            line-height: 3.2vw;
+        }
+
+        .form-warranty-content .desc{
+            font-size: 1.1vw;
+            font-weight: 200;
+            line-height: 2vw;
+            margin-bottom: 10px;
+        }
+        .form-warranty-content label{
+            margin-top: 10px;
+        }
+    }
+    .form-safe{
+        margin-top: 10px!important;
+        margin-bottom: 40px!important;
+        .form-safe-content h1{
+            font-size: 2.15vw;
+            line-height: 3.2vw;
+        }
+
+        .form-safe-content .desc{
+            font-size: 1.1vw;
+            font-weight: 200;
+            line-height: 2vw;
+            margin-bottom: 10px;
+        }
+        .form-safe-content label{
+            margin-top: 10px;
+        }
+    }
 }
 
 @media (max-width: 600px) {
@@ -679,7 +717,7 @@ section p.note{
     .section-same .title {
         white-space: normal;
         font-size: 20px;
-        font-weight: 900;
+        font-weight: 700;
         padding-top: 20px;
         padding-bottom: 15px;
         line-height: 25px;
@@ -1019,5 +1057,41 @@ section p.note{
     }
     .ttbh-address p{
         font-weight: 200;
+    }
+    .form-warranty{
+        margin-top: 30px!important;
+        margin-bottom: 40px!important;
+        .form-warranty-content h1{
+            font-size: 20px;
+            line-height: 25px;
+        }
+
+        .form-warranty-content .desc{
+            font-size: 14px;
+            font-weight: 200;
+            line-height: 25px;
+            margin-bottom: 10px;
+        }
+        .form-warranty-content label{
+            margin-top: 10px;
+        }
+    }
+    .form-safe{
+        margin-top: 10px!important;
+        margin-bottom: 40px!important;
+        .form-safe-content h1{
+            font-size: 20px;
+            line-height: 25px;
+        }
+
+        .form-safe-content .desc{
+            font-size: 14px;
+            font-weight: 200;
+            line-height: 25px;
+            margin-bottom: 10px;
+        }
+        .form-safe-content label{
+            margin-top: 10px;
+        }
     }
 }

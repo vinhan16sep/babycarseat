@@ -21,22 +21,17 @@ Sau Tai Nạn Babyro - bảo vệ An Toàn Cho Bé Yêu</h3>
             </div>
             <div class="content">
                 <div>
-                    <h4 class="sub-title">Tại sao ghế ô tô trẻ em cần phải thay thế sau tai nạn?</h4>
-                    <p>Khi xảy ra tai nạn giao thông, dù nhẹ hay nặng, ghế ô tô trẻ em có thể bị ảnh hưởng mà mắt thường
-                        không thể thấy được. Điều này khiến ghế không còn đảm bảo</p>
-                    <p>khả năng bảo vệ tối đa cho trẻ em trong những vụ va chạm tiếp theo. Hiểu được sự quan trọng của
-                        việc an toàn giao thông cho trẻ em, Babyro triển khai chương</p>
-                    <p>trình đổi ghế ô tô miễn phí sau tai nạn để đảm bảo các bé luôn được bảo vệ với ghế ô tô an toàn
-                        đạt chuẩn.</p>
+                    @if(isset($configs[1][1]))
+                        <h4 class="sub-title">{{ $configs[1][1]['title'] }}</h4>
+                        <p>{{ $configs[1][1]['content'] }}</p>
+                    @endif
                 </div>
 
                 <div>
-                    <h4 class="sub-title">Lý do cần tham gia chương trình Đổi Ghế Ô Tô Miễn Phí Sau Tai Nạn</h4>
-                    <p>Mỗi chiếc ghế ô tô trẻ em Babyro đều được thiết kế để giảm thiểu tối đa các chấn thương trong
-                        trường hợp xảy ra va chạm. Tuy nhiên, sau một vụ tai nạn, dù không</p>
-                    <p>có dấu hiệu hư hỏng bên ngoài, ghế có thể bị tổn hại cấu trúc bên trong mà bạn không thể nhìn
-                        thấy. Chính vì vậy, chương trình này là một cơ hội để các bậc phụ</p>
-                    <p>huynh đổi ghế ô tô an toàn của mình và đảm bảo rằng con em họ luôn được bảo vệ.</p>
+                    @if(isset($configs[1][2]))
+                        <h4 class="sub-title">{{ $configs[1][2]['title'] }}</h4>
+                        <p>{{ $configs[1][2]['content'] }}</p>
+                    @endif
                 </div>
             </div>
         </div>
@@ -54,14 +49,17 @@ Sau Tai Nạn Babyro - bảo vệ An Toàn Cho Bé Yêu</h3>
                         <div class="box">
                             <div class="head">
                                 <span>01</span>
-                                <h4 class="sub-title">Chuẩn bị<br>tài liệu liên quan</h4>
+                                <h4 class="sub-title">{!! $configs[2][1]['title'] ?? '' !!}</h4>
                             </div>
                             <div class="content">
                                 <ul>
-                                    <li>Bằng chứng mua hàng chính hãng tại <br>Babyro (hóa đơn hoặc mã bảo hành).</li>
-                                    <li>Biên bản của cảnh sát về vụ tai nạn.</li>
-                                    <li>Giấy tờ bảo hiểm xe.</li>
-                                    <li>Hình ảnh hoặc video ghi lại hiện trường tai nạn và tình trạng của ghế</li>
+                                    @php
+                                        $text_with_br = nl2br($configs[2][1]['content'] ?? '');
+                                        $lines = explode("<br />", $text_with_br);
+                                    @endphp
+                                    @foreach($lines as $_item)
+                                        <li>{!! $_item !!}</li>
+                                    @endforeach
                                 </ul>
                             </div>
                         </div>
@@ -70,10 +68,10 @@ Sau Tai Nạn Babyro - bảo vệ An Toàn Cho Bé Yêu</h3>
                         <div class="box">
                             <div class="head">
                                 <span>02</span>
-                                <h4 class="sub-title">Hoàn thiện<br>mẫu đơn</h4>
+                                <h4 class="sub-title">{!! $configs[2][2]['title'] ?? '' !!}</h4>
                             </div>
                             <div class="content">
-                                Bạn cần điền đầy đủ thông tin vào mẫu đơn mà Babyro cung cấp.
+                                {!! $configs[2][2]['content'] ?? '' !!}
                             </div>
                         </div>
                     </div>
@@ -81,11 +79,10 @@ Sau Tai Nạn Babyro - bảo vệ An Toàn Cho Bé Yêu</h3>
                         <div class="box">
                             <div class="head">
                                 <span>03</span>
-                                <h4 class="sub-title"> Chờ phản hồi<br>từ Babyro</h4>
+                                <h4 class="sub-title"> {!! $configs[2][3]['title'] ?? '' !!}</h4>
                             </div>
                             <div class="content">
-                                <p>Sau khi nộp đầy đủ tài liệu, bạn chỉ cần chờ phản hồi từ Babyro. </p>
-                                <p>Chúng tôi sẽ nhanh chóng xem xét và thông báo kết quả cho bạn. </p>
+                                <p style="white-space: pre-line">{!! $configs[2][3]['content'] ?? '' !!}</p>
                             </div>
                         </div>
                     </div>
@@ -97,13 +94,15 @@ Sau Tai Nạn Babyro - bảo vệ An Toàn Cho Bé Yêu</h3>
                     </div>
 
                     <div class="col-md-12 last-box">
-                        <h4 class="last-title">Những lưu ý khi tham gia chương trình</h4>
+                        <h4 class="last-title">{!! $configs[2][4]['title'] ?? '' !!}</h4>
                         <ul>
-                            <li>Chương trình chỉ áp dụng cho các sản phẩm ghế ô tô trẻ em chính hãng Babyro.</li>
-                            <li>Yêu cầu đổi ghế cần thực hiện trong vòng 30 ngày sau khi xảy ra tai nạn.</li>
-                            <li>Quyết định cuối cùng về việc đổi ghế miễn phí sẽ thuộc về Babyro sau khi xem xét các
-                                bằng chứng và tình trạng ghế.
-                            </li>
+                            @php
+                                $text_with_br = nl2br($configs[2][4]['content'] ?? '');
+                                $lines = explode("<br />", $text_with_br);
+                            @endphp
+                            @foreach($lines as $_item)
+                                <li>{!! $_item !!}</li>
+                            @endforeach
                         </ul>
                     </div>
                 </div>
@@ -155,9 +154,7 @@ Sau Tai Nạn Babyro - bảo vệ An Toàn Cho Bé Yêu</h3>
             <div class="content">
                 <div class="row">
                     <div class="col-md-12">
-                        <p><span style="padding-right: 10px;">⟶</span> Tất cả các sản phẩm của Babyro đều được bảo hành hai năm</p>
-                        <p><span style="padding-right: 10px;">⟶</span> Chúng tôi sẽ sửa chữa miễn phí toàn bộ linh phụ kiện bao gồm (cơ cấu khoá, chốt, ISOFIX). Không bao gồm vỏ bọc.</p>
-                        <p><span style="padding-right: 10px;">⟶</span> Trong 30 ngày kể từ ngày mua, nếu có bất kỳ lỗi gì của nhà sản xuất sẽ được đổi một sản phẩm mới miễn phí (bao gồm cả chi phí vận chuyển)</p>
+                        <p style="white-space: pre-line">{!! $configs[3][1]['content'] ?? '' !!}</p>
                     </div>
                 </div>
                 <div class="row">
@@ -181,10 +178,10 @@ Sau Tai Nạn Babyro - bảo vệ An Toàn Cho Bé Yêu</h3>
                         <div class="box">
                             <div class="head">
                                 <span>01</span>
-                                <h4 class="sub-title">Hoàn thành mẫu đơn</h4>
+                                <h4 class="sub-title">{!! $configs[4][1]['title'] ?? '' !!}</h4>
                             </div>
                             <div class="content">
-                                Bạn sẽ cần: bằng chứng mua hàng, thông tin về sản phẩm và thiệt hại, cũng như thông tin liên lạc
+                                {!! $configs[4][1]['content'] ?? '' !!}
                             </div>
                         </div>
                     </div>
@@ -192,10 +189,10 @@ Sau Tai Nạn Babyro - bảo vệ An Toàn Cho Bé Yêu</h3>
                         <div class="box">
                             <div class="head">
                                 <span>02</span>
-                                <h4 class="sub-title">Nhận sản phẩm</h4>
+                                <h4 class="sub-title">{!! $configs[4][2]['title'] ?? '' !!}</h4>
                             </div>
                             <div class="content">
-                                Sau khi đơn đăng ký của bạn được đánh giá tích cực, chúng tôi sẽ cử nhân viên chuyển phát nhanh đến lấy sản phẩm đã đóng gói với chi phí do chúng tôi chi trả.
+                                {!! $configs[4][2]['content'] ?? '' !!}
                             </div>
                         </div>
                     </div>
@@ -203,10 +200,10 @@ Sau Tai Nạn Babyro - bảo vệ An Toàn Cho Bé Yêu</h3>
                         <div class="box">
                             <div class="head">
                                 <span>03</span>
-                                <h4 class="sub-title">Sửa chữa</h4>
+                                <h4 class="sub-title">{!! $configs[4][3]['title'] ?? '' !!}</h4>
                             </div>
                             <div class="content">
-                                Sau khi chúng tôi nhận sản phẩm, nhân viên dịch vụ được ủy quyền của chúng tôi sẽ giám sát việc sửa chữa.
+                                {!! $configs[4][3]['content'] ?? '' !!}
                             </div>
                         </div>
                     </div>
@@ -214,10 +211,10 @@ Sau Tai Nạn Babyro - bảo vệ An Toàn Cho Bé Yêu</h3>
                         <div class="box">
                             <div class="head">
                                 <span>04</span>
-                                <h4 class="sub-title">Giao hàng sản phẩm</h4>
+                                <h4 class="sub-title">{!! $configs[4][4]['title'] ?? '' !!}</h4>
                             </div>
                             <div class="content">
-                                Chúng tôi sẽ giao sản phẩm đã sửa chữa hoặc thay thế đến địa chỉ đã chỉ định
+                                {!! $configs[4][4]['content'] ?? '' !!}
                             </div>
                         </div>
                     </div>
@@ -272,23 +269,16 @@ BẢO HÀNH VÀNG 12 NĂM từ Babyro: An tâm trên mọi hành trình</h3>
             </div>
             <div class="content">
                 <div>
-                    <p>Tất cả ghế ô tô trẻ em Babyro đều được bảo hành chính hãng trong 02 năm. Đặc biệt, bạn có thể dễ dàng gia hạn miễn phí lên đến 12 năm chỉ bằng cách hoàn thành
-                        <strong>đơn đăng ký Gia hạn bảo hành 12 năm miễn phí</strong> trong vòng 30 ngày kể từ ngày mua.</p>
+                    <p>{!! $configs[5][1]['content'] ?? '' !!}</p>
                 </div>
 
                 <div>
-                    <p>
-                        Chính sách Bảo hành Vàng kéo dài 12 năm như một lời cam kết của Babyro về chất lượng và sự an toàn - những giá trị chúng tôi luôn đặt lên hàng đầu. Đây không chỉ
-                        đơn thuần là chương trình bảo hành, mà còn là sự đồng hành đầy trách nhiệm của chúng tôi dành cho mỗi chuyến đi của bé. Chúng tôi tin rằng mỗi chiếc ghế ô tô
-                        Babyro sẽ là người bạn đồng hành đáng tin cậy, bảo vệ bé trên mọi hành trình
-                    </p>
+                    <p>{!! $configs[5][2]['content'] ?? '' !!}</p>
                 </div>
 
                 <div>
-                    <h4 class="sub-title">Chúng tôi sẽ thực hiện Sữa chữa - Thay thế Miễn phí:</h4>
-                    <p><span style="padding-right: 10px;">⟶</span> Toàn bộ mọi linh phụ kiện bao gồm (cơ cấu khoá, chốt, ISOFIX). Không bao gồm vỏ bọc.</p>
-                    <p><span style="padding-right: 10px;">⟶</span> Việc thay thế, sẽ được thực hiện bởi đội ngũ kỹ thuật viên chuyên nghiệp của Babyro hoặc các trung tâm bảo hành ủy quyền.</p>
-                    <p><span style="padding-right: 10px;">⟶</span> Trong 30 ngày kể từ ngày mua, nếu có bất kỳ lỗi gì của nhà sản xuất sẽ được đổi một sản phẩm mới miễn phí (bao gồm cả chi phí vận chuyển)</p>
+                    <h4 class="sub-title">{!! $configs[5][3]['title'] ?? '' !!}</h4>
+                    <p style="white-space: pre-line">{!! $configs[5][3]['content'] ?? '' !!}</p>
                 </div>
             </div>
         </div>
@@ -306,10 +296,10 @@ BẢO HÀNH VÀNG 12 NĂM từ Babyro: An tâm trên mọi hành trình</h3>
                         <div class="box">
                             <div class="head">
                                 <span>01</span>
-                                <h4 class="sub-title">Lưu lại hóa đơn<br>mua hàng</h4>
+                                <h4 class="sub-title">{!! $configs[6][1]['title'] ?? '' !!}</h4>
                             </div>
                             <div class="content">
-                                Bạn điền đúng theo mẫu ở bước tiếp theo.
+                                {!! $configs[6][1]['content'] ?? '' !!}
                             </div>
                         </div>
                     </div>
@@ -317,10 +307,10 @@ BẢO HÀNH VÀNG 12 NĂM từ Babyro: An tâm trên mọi hành trình</h3>
                         <div class="box">
                             <div class="head">
                                 <span>02</span>
-                                <h4 class="sub-title">Hoàn thiện<br>mẫu đơn</h4>
+                                <h4 class="sub-title">{!! $configs[6][2]['title'] ?? '' !!}</h4>
                             </div>
                             <div class="content">
-                                Điền thông tin vào Mẫu "Đăng ký bảo hành vàng 12 năm cùng Babyro”
+                                {!! $configs[6][2]['content'] ?? '' !!}
                             </div>
                         </div>
                     </div>
@@ -328,10 +318,10 @@ BẢO HÀNH VÀNG 12 NĂM từ Babyro: An tâm trên mọi hành trình</h3>
                         <div class="box">
                             <div class="head">
                                 <span>03</span>
-                                <h4 class="sub-title"> Chờ phản hồi<br>từ Babyro</h4>
+                                <h4 class="sub-title">{!! $configs[6][3]['title'] ?? '' !!}</h4>
                             </div>
                             <div class="content">
-                                Chúng tôi sẽ gửi xác nhận đăng ký chương trình tới địa chỉ email mà bạn đã cung cấp.
+                                {!! $configs[6][3]['content'] ?? '' !!}
                             </div>
                         </div>
                     </div>
@@ -340,15 +330,15 @@ BẢO HÀNH VÀNG 12 NĂM từ Babyro: An tâm trên mọi hành trình</h3>
                     </div>
 
                     <div class="col-md-12 last-box">
-                        <h4 class="last-title">Các trường hợp không được bảo hành</h4>
+                        <h4 class="last-title">{!! $configs[6][4]['title'] ?? '' !!}</h4>
                         <ul>
-                            <li>Hư hỏng do sử dụng không đúng cách theo hướng dẫn của nhà sản xuất.</li>
-                            <li>Hư hỏng do lắp ráp, cài đặt hoặc tháo rời sản phẩm và/hoặc phụ kiện không đúng cách.</li>
-                            <li>Hư hỏng do bảo dưỡng, chăm sóc và bảo quản kém.</li>
-                            <li>Hư hỏng do tự ý sửa chữa, thay đổi cấu trúc sản phẩm hoặc sử dụng phụ kiện không chính hãng.</li>
-                            <li>Hư hỏng do sử dụng sai cách, lạm dụng, cố ý dùng sai cách, hỏa hoạn, ngấm nước, các sự cố bất khả kháng hoặc các tác nhân tương tự.</li>
-                            <li>Hư hỏng do tác động của môi trường bên ngoài.</li>
-                            <li>Sản phẩm có số sê-ri đã bị xóa hoặc bị xóa mờ.</li>
+                            @php
+                                $text_with_br = nl2br($configs[6][4]['content'] ?? '');
+                                $lines = explode("<br />", $text_with_br);
+                            @endphp
+                            @foreach($lines as $_item)
+                                <li>{!! $_item !!}</li>
+                            @endforeach
                         </ul>
                     </div>
                 </div>
@@ -390,16 +380,16 @@ Bảo Hành Vàng 12 năm Babyro</h3>
             <h3 class="title text-center">Các trung tâm bảo hành của chúng tôi</h3>
             <div>
                 <div class="ttbh-address text-center">
-                    <strong>Trung tâm bảo hành Hà Nội</strong>
-                    <p>505 Minh Khai, Tòa nhà Hòa Bình, Hà Nội - 0967 8888 68</p>
+                    <strong>{!! $configs[7][1]['title'] ?? '' !!}</strong>
+                    <p>{!! $configs[7][1]['content'] ?? '' !!}</p>
                 </div>
                 <div class="ttbh-address text-center">
-                    <strong>Trung tâm bảo hành Đà Nẵng</strong>
-                    <p>177 Hồ Hoàn Thương, Sơn Trà, Đà Nẵng - 0967 8888 68</p>
+                    <strong>{!! $configs[7][2]['title'] ?? '' !!}</strong>
+                    <p>{!! $configs[7][2]['content'] ?? '' !!}</p>
                 </div>
                 <div class="ttbh-address text-center">
-                    <strong>Trung tâm bảo hành Hồ Chính Minh</strong>
-                    <p>số 83, đường F11, khu Công nghiệp Tân Bình, TP. Hồ Chí Minh - 0967 8888 68</p>
+                    <strong>{!! $configs[7][3]['title'] ?? '' !!}</strong>
+                    <p>{!! $configs[7][3]['content'] ?? '' !!}</p>
                 </div>
             </div>
         </div>

@@ -94,6 +94,7 @@ class ProductController extends AdminController
             $model->brand_id = $request->input('brand_id');
             $model->name = $request->input('name');
             $model->slug = $request->input('slug');
+            $model->note = $request->input('note');
             $model->detail = $request->input('detail');
             $model->specification = $request->input('specification');
             $model->guide = $request->input('guide');
@@ -168,6 +169,7 @@ class ProductController extends AdminController
             $object->brand_id = $request->input('brand_id');
             $object->name = $request->input('name');
             $object->slug = $request->input('slug');
+            $object->note = $request->input('note');
             $object->detail = $request->input('detail');
             $object->specification = $request->input('specification');
             $object->description = $request->input('description');
