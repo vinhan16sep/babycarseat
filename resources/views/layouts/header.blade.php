@@ -12,11 +12,11 @@
         margin-top: 10px;
         margin-bottom: 20px;
     }
-    header .desc h4{
-        font-weight: normal;
+    header .desc h4, header .box-design .design h4{
+        font-weight: 500;
     }
-    header .desc h4:hover{
-        font-weight: bold;
+    header .desc h4:hover a{
+        color: #e43131!important;
     }
     header .box-design{
         position: relative;
@@ -47,6 +47,7 @@
         <div class="col-xl-9 d-none d-xl-block">
             <nav class="box-navigation text-center">
                 <ul class="box-nav-ul d-flex align-items-center">
+                    <li class="menu-item"><a href="#" class="item-link">Về Babyro</a></li>
                     <li class="menu-item {{ strpos($currentPath, 'san-pham') !== false || strpos($currentPath, 'chi-tiet-san-pham') !== false  ? 'active' : '' }}">
                         <a href="{{ route('product-list') }}" class="item-link">Ghế ôtô trẻ em {!! !empty($categoriesMenu) ? '<i class="icon icon-arrow-down"></i>' : '' !!}</a>
                         @if(!empty($categoriesMenu))
@@ -87,8 +88,18 @@
                             </div>
                         @endif
                     </li>
-                    <li class="menu-item"><a href="#" class="item-link">Bảo hành 10 năm</a></li>
-                    <li class="menu-item"><a href="{{ route('babyro-hub') }}" class="item-link">Babyro Hub</a></li>
+                    <li class="menu-item position-relative">
+                        <a href="{{ route('bao-hanh-12-nam') }}" class="item-link">Bảo hành 12 năm<i class="icon icon-arrow-down"></i></a>
+                        <div class="sub-menu submenu-default menu-list">
+                            <ul class="menu-list">
+                                <li><a href="#" class="menu-link-text">Bảo hành cơ bản 2 năm</a></li>
+                                <li><a href="#" class="menu-link-text">Bảo hành vàng 12 năm</a></li>
+                                <li><a href="#" class="menu-link-text">Chương trình đổi ghế ô tô miễn phí</a></li>
+                                <li><a href="#" class="menu-link-text">Chương trình Thu cũ Đổi mới</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="menu-item"><a href="#" class="item-link">Babyro Hub</a></li>
                     <li class="menu-item"><a href="#" class="item-link">Hỗ trợ</a></li>
                     <li class="menu-item"><a href="#" class="item-link">Buy now</a></li>
 {{--                    @foreach($mainMenu as $_name => $_menus)--}}
