@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             InformationSeeder::class,
             UsersTableSeeder::class,
+            GuaranteeInfoSeeder::class,
         ]);
     }
 }
