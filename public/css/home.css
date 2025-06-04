@@ -913,14 +913,18 @@ footer{
         background: #e2e2e2;
     }
     .signature-contentblock__title {
-        font-size: 20px;
+        font-size: 30px;
+        margin-bottom: 10px;
+    }
+    .box-first-content-flex{
+        margin-bottom: 15px;
     }
     .signature-contentblock__subtitle {
         font-size: 14px;
     }
     .signature-contentblock{
         display: grid;
-        border: 1px solid rgba(134, 121, 121, 0.1);
+        /* border: 1px solid rgba(134, 121, 121, 0.1); */
         /* box-shadow: 0px 0px 10px #cacaca; */
     }
     .box-product-common__row > div:not(:first-child) {
@@ -928,7 +932,7 @@ footer{
     }
 
     .flat-spacing-8, .flat-spacing, .flat-spacing-10{
-        padding: 35px 0px!important;
+        padding: 0px!important;
     }
     .custom-say{
         padding: 20px 15px!important;
@@ -961,6 +965,30 @@ footer{
     }
     .magin-sm-0{
         margin: 0!important;
+    }
+    .signature-contentblock-item-1 .signature-contentblock__html{
+        background: #fff;
+    }
+    .signature-contentblock-item-2 .signature-contentblock__html{
+        background: #1c1c1c;
+    }
+    .signature-contentblock-item-3 .signature-contentblock__html{
+        background: #fff;
+    }
+    .signature-contentblock__html .signature-contentblock__subtitle{
+        white-space: normal;
+    }
+    .flat-spacing.section-two .flat-sw-navigation > div:nth-child(4) .signature-contentblock__image img{
+        margin-top: 0;
+        margin-bottom: 0;
+        padding: 10px 15px 25px 15px;
+        width: 100%;
+    }
+        .flat-spacing.section-two .flat-sw-navigation > div:nth-child(2) .signature-contentblock__image img{
+        margin-top: 0;
+        margin-bottom: 0;
+        padding: 10px 15px 0 15px;
+        width: 100%;
     }
 }
 
