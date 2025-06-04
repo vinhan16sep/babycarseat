@@ -55,25 +55,25 @@ class AppServiceProvider extends ServiceProvider
             View::share('contactInformations', $contactInformations);
 
             $categories = ProductCategory::query()->get();
-            $baseQuery = DB::table('product_categories_mapping as pcm')
+            
+            $rawProducts = DB::table('product_categories_mapping as pcm')
                 ->join('products as p', 'p.id', '=', 'pcm.product_id')
-                ->select(
-                    'p.*',
-                    'pcm.category_id',
-                    DB::raw('ROW_NUMBER() OVER (PARTITION BY pcm.category_id ORDER BY p.created_at DESC) as row_num')
-                );
-            $products = DB::table(DB::raw("({$baseQuery->toSql()}) as sub"))
-                ->mergeBindings($baseQuery) // đảm bảo các binding từ query gốc được giữ nguyên
-                ->where('row_num', '<=', 4)
-                ->where('is_active', 1)
-                ->orderBy('is_highlight', 'desc')
-                ->get()
-                ->groupBy('category_id');
+                ->where('p.is_active', 1)
+                ->select('p.*', 'pcm.category_id')
+                ->orderBy('pcm.category_id')
+                ->orderByDesc('p.created_at')
+                ->get();
 
-            $categories->map(function ($category) use ($products) {
-                $category->setRelation('products', $products->get($category->id) ?? collect());
+            // Nhóm theo category_id và lấy 4 sản phẩm đầu tiên
+            $groupedProducts = $rawProducts->groupBy('category_id')->map(function ($group) {
+                return $group->take(4)->sortByDesc('is_highlight');
+            });
+
+            $categories->map(function ($category) use ($groupedProducts) {
+                $category->setRelation('products', $groupedProducts->get($category->id) ?? collect());
                 return $category->toArray();
             });
+
             View::share('categoriesMenu', $categories);
 
             // 1. Lấy toàn bộ danh mục (có cấp 1, 2, 3)

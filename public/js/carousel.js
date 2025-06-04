@@ -117,53 +117,57 @@ if ($(".tf-sw-effect").length > 0) {
 }
 
 if ($(".tf-sw-collection").length > 0) {
-  var tfSwCls = $(".tf-sw-collection");
-  var preview = tfSwCls.data("preview");
-  var tablet = tfSwCls.data("tablet");
-  var mobile = tfSwCls.data("mobile");
-  var mobileSm = tfSwCls.data("mobile-sm") !== undefined ? tfSwCls.data("mobile-sm") : mobile;
-  var spacingLg = tfSwCls.data("space-lg");
-  var spacingMd = tfSwCls.data("space-md");
-  var spacing = tfSwCls.data("space");
-  var loop = tfSwCls.data("loop");
-  var perGroup = tfSwCls.data("pagination") || 1;
-  var perGroupMd = tfSwCls.data("pagination-md") || 1;
-  var perGroupLg = tfSwCls.data("pagination-lg") || 1;
-    var loop = tfSwCls.data("loop") == "1" ? true : false;
-  var swiper = new Swiper(".tf-sw-collection", {
-    slidesPerView: mobile,
-    spaceBetween: spacing,
+  $('.tf-sw-collection').each(function(idx, el) {
+    var $el = $(el);
+    var preview = $el.data('preview');
+    var tablet = $el.data('tablet');
+    var mobile = $el.data('mobile');
+    var mobileSm = $el.data('mobile-sm') !== undefined ? $el.data('mobile-sm') : mobile;
+    var spacingLg = $el.data('space-lg');
+    var spacingMd = $el.data('space-md');
+    var spacing = $el.data('space');
+    var loop = $el.data('loop') == '1' ? true : false;
+    var perGroup = $el.data('pagination') || 1;
+    var perGroupMd = $el.data('pagination-md') || 1;
+    var perGroupLg = $el.data('pagination-lg') || 1;
+    var $parent = $el.closest('.flat-sw-navigation');
+    var navNext = $parent.find('.nav-next-collection')[0];
+    var navPrev = $parent.find('.nav-prev-collection')[0];
+    new Swiper(el, {
+      slidesPerView: mobile,
+      spaceBetween: spacing,
       loop: loop,
-    speed: 1000,
-    pagination: {
-      el: ".sw-pagination-collection",
-      clickable: true,
-    },
-    observer: true,
-    observeParents: true,
-    slidesPerGroup: perGroup,
-    navigation: {
-      clickable: true,
-      nextEl: ".nav-next-collection",
-      prevEl: ".nav-prev-collection",
-    },
-    breakpoints: {
-      575: {
-        slidesPerView: mobileSm,
-        spaceBetween: spacing,
-        slidesPerGroup: perGroup,
+      speed: 1000,
+      pagination: {
+        el: $parent.find('.sw-pagination-collection')[0],
+        clickable: true,
       },
-      768: {
-        slidesPerView: tablet,
-        spaceBetween: spacingMd,
-        slidesPerGroup: perGroupMd,
+      observer: true,
+      observeParents: true,
+      slidesPerGroup: perGroup,
+      navigation: {
+        clickable: true,
+        nextEl: navNext,
+        prevEl: navPrev,
       },
-      1200: {
-        slidesPerView: preview,
-        spaceBetween: spacingLg,
-        slidesPerGroup: perGroupLg,
+      breakpoints: {
+        575: {
+          slidesPerView: mobileSm,
+          spaceBetween: spacing,
+          slidesPerGroup: perGroup,
+        },
+        768: {
+          slidesPerView: tablet,
+          spaceBetween: spacingMd,
+          slidesPerGroup: perGroupMd,
+        },
+        1200: {
+          slidesPerView: preview,
+          spaceBetween: spacingLg,
+          slidesPerGroup: perGroupLg,
+        },
       },
-    },
+    });
   });
 }
 
@@ -260,96 +264,59 @@ if ($(".tf-sw-recent").length > 0) {
   });
 }
 
-if ($(".tf-sw-latest").length > 0) {
-  var preview = $(".tf-sw-latest").data("preview");
-  var tablet = $(".tf-sw-latest").data("tablet");
-  var mobile = $(".tf-sw-latest").data("mobile");
-  var spacingLg = $(".tf-sw-latest").data("space-lg");
-  var spacingMd = $(".tf-sw-latest").data("space-md");
-  var spacing = $(".tf-sw-latest").data("space");
-  var perGroup = $(".tf-sw-latest").data("pagination");
-  var perGroupMd = $(".tf-sw-latest").data("pagination-md");
-  var perGroupLg = $(".tf-sw-latest").data("pagination-lg");
-  var centeredSlides = $(".tf-sw-latest").data("center") == "0" ? false : true;
-  var loop = $(".tf-sw-latest").data("loop") == "1" ? true : centeredSlides;
-  var swiper = new Swiper(".tf-sw-latest", {
-    centeredSlides: centeredSlides,
-    loop: loop,
+// --- Swiper for .tf-sw-latest: support multiple clones on one page ---
+if ($('.tf-sw-latest').length > 0) {
+  $('.tf-sw-latest').each(function(idx, el) {
+    var $el = $(el);
+    var preview = $el.data('preview');
+    var tablet = $el.data('tablet');
+    var mobile = $el.data('mobile');
+    var spacingLg = $el.data('space-lg');
+    var spacingMd = $el.data('space-md');
+    var spacing = $el.data('space');
+    var perGroup = $el.data('pagination');
+    var perGroupMd = $el.data('pagination-md');
+    var perGroupLg = $el.data('pagination-lg');
+    var centeredSlides = $el.data('center') == "0" ? false : true;
+    var loop = $el.data('loop') == "1" ? true : centeredSlides;
+    var $parent = $el.closest('.flat-sw-navigation');
+    // Find nav/prev/next only within this block
+    var navNext = $parent.find('.nav-next-latest, .nav-next-collection')[0];
+    var navPrev = $parent.find('.nav-prev-latest, .nav-prev-collection')[0];
+    var paginationEl = $parent.find('.sw-pagination-latest')[0];
+    new Swiper(el, {
+      centeredSlides: centeredSlides,
+      loop: loop,
       grabCursor: true,
-    slidesPerView: 2,
-    spaceBetween: spacing,
-    observer: true,
-    observeParents: true,
-    speed: 1000,
-    pagination: {
-      el: ".sw-pagination-latest",
-      clickable: true,
-    },
-    slidesPerGroup: perGroup,
-    navigation: {
-      clickable: true,
-      nextEl: ".nav-prev-latest",
-      prevEl: ".nav-next-latest",
-    },
-    breakpoints: {
-      768: {
-        slidesPerView: tablet,
-        spaceBetween: spacingMd,
-        slidesPerGroup: perGroupMd,
+      slidesPerView: 2,
+      spaceBetween: spacing,
+      observer: true,
+      observeParents: true,
+      speed: 1000,
+      pagination: {
+        el: paginationEl,
+        clickable: true,
       },
-      1200: {
-        slidesPerView: preview,
-        spaceBetween: spacingLg,
-        slidesPerGroup: perGroupLg,
+      slidesPerGroup: perGroup,
+      navigation: {
+        clickable: true,
+        nextEl: navNext,
+        prevEl: navPrev,
       },
-    },
-  });
-}
-
-if ($(".tf-sw-latest-new").length > 0) {
-    let preview = $(".tf-sw-latest-new").data("preview");
-    let tablet = $(".tf-sw-latest-new").data("tablet");
-    let mobile = $(".tf-sw-latest-new").data("mobile");
-    let spacingLg = $(".tf-sw-latest-new").data("space-lg");
-    let spacingMd = $(".tf-sw-latest-new").data("space-md");
-    let spacing = $(".tf-sw-latest-new").data("space");
-    let perGroup = $(".tf-sw-latest-new").data("pagination");
-    let perGroupMd = $(".tf-sw-latest-new").data("pagination-md");
-    let perGroupLg = $(".tf-sw-latest-new").data("pagination-lg");
-    let centeredSlides = $(".tf-sw-latest-new").data("center") == "0" ? false : true;
-    let loop = $(".tf-sw-latest-new").data("loop") == "1" ? true : centeredSlides;
-    let swiper = new Swiper(".tf-sw-latest-new", {
-        centeredSlides: centeredSlides,
-        loop: loop,
-        grabCursor: true,
-        slidesPerView: 2,
-        spaceBetween: spacing,
-        observer: true,
-        observeParents: true,
-        speed: 1000,
-        pagination: {
-            el: ".sw-pagination-latest-new",
-            clickable: true,
+      breakpoints: {
+        768: {
+          slidesPerView: tablet,
+          spaceBetween: spacingMd,
+          slidesPerGroup: perGroupMd,
         },
-        slidesPerGroup: perGroup,
-        navigation: {
-            clickable: true,
-            nextEl: ".nav-prev-latest-new",
-            prevEl: ".nav-next-latest-new",
+        1200: {
+          slidesPerView: preview,
+          spaceBetween: spacingLg,
+          slidesPerGroup: perGroupLg,
         },
-        breakpoints: {
-            768: {
-                slidesPerView: tablet,
-                spaceBetween: spacingMd,
-                slidesPerGroup: perGroupMd,
-            },
-            1200: {
-                slidesPerView: preview,
-                spaceBetween: spacingLg,
-                slidesPerGroup: perGroupLg,
-            },
-        },
+      },
     });
+  });
 }
 
 if ($(".tf-sw-products").length > 0) {
