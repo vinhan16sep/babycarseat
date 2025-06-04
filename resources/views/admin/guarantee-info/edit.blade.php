@@ -52,7 +52,7 @@
 
                                 <div class="form-group">
                                     <label>Nội dung</label>
-                                    <textarea name="value" class="form-control my-textarea" rows="5">{{ old('content', $object->content) }}</textarea>
+                                    <textarea name="content" class="form-control my-textarea" rows="5">{{ old('content', $object->content) }}</textarea>
                                 </div>
 
                                 <a type="button" href="{{ route('list-guarantee-info') }}" class="btn btn-default btn-outline"><i class="ti-back-left icon-black"></i>&nbsp;&nbsp;Quay lại</a>
