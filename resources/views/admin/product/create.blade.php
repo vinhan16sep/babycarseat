@@ -85,6 +85,15 @@
                                     @endif
                                 </div>
 
+                                <!-- Ghi chú -->
+                                <div class="form-group{{ $errors->has('note') ? ' has-error' : '' }}">
+                                    <label>Ghi chú </label>
+                                    <input type="text" name="note" value="{{ old('note') }}" class="form-control" maxlength="255">
+                                    @if ($errors->has('note'))
+                                    <span style="color:red;">{{ $errors->first('note') }}</span>
+                                    @endif
+                                </div>
+
                                 <div class="form-group{{ $errors->has('category_id') ? ' has-error' : '' }}">
                                     <label>Chọn danh mục <span class="my-required">*</span></label>
                                     <select class="form-control select2" name="category_id[]" multiple>
@@ -196,68 +205,6 @@
 <script src="{{ asset('admin/tinymce/tinymce.min.js') }}"></script>
 <script type="text/javascript">
     let url = window.location.origin;
-
-    // let colorIndex = document.querySelectorAll('.color-item').length;
-
-    // function addColor() {
-    //     const container = document.getElementById('color-container');
-
-    //     const newColorHtml = `
-    //     <div class="color-item">
-    //         <div class="color-preview" id="color-preview-${colorIndex}"></div>
-
-    //         <select class="form-control color-select" name="colors[${colorIndex}]" onchange="updateColorPreview(this, ${colorIndex})">
-    //             <option value="">Chọn màu</option>
-    //             @foreach ($colors as $color)
-    //                 <option value="{{ $color->id }}" data-color="{{ $color->code }}">
-    //                     {{ $color->name }}
-    //                 </option>
-    //             @endforeach
-    //         </select>
-
-    //         <input type="file" class="form-control" name="images[${colorIndex}]" accept="image/*">
-    //         <button type="button" class="btn btn-danger" onclick="removeColor(this)">Xóa</button>
-    //     </div>
-    // `;
-
-    //     container.insertAdjacentHTML('beforeend', newColorHtml);
-    //     colorIndex++;
-    //     removeSelectedColors();
-    // }
-
-    // function updateColorPreview(select, index) {
-    //     const selectedOption = select.options[select.selectedIndex];
-    //     const colorCode = selectedOption.getAttribute('data-color');
-    //     const preview = document.getElementById(`color-preview-${index}`);
-    //     preview.style.backgroundColor = colorCode || 'transparent';
-
-    //     removeSelectedColors();
-    // }
-
-    // function removeColor(button) {
-    //     button.closest('.color-item').remove();
-    //     removeSelectedColors();
-    // }
-
-    // function removeSelectedColors() {
-    //     const selectedColors = new Set();
-
-    //     document.querySelectorAll('.color-select').forEach(select => {
-    //         if (select.value) {
-    //             selectedColors.add(select.value);
-    //         }
-    //     });
-
-    //     document.querySelectorAll('.color-select').forEach(select => {
-    //         Array.from(select.options).forEach(option => {
-    //             option.style.display = selectedColors.has(option.value) && option.value !== select.value ? 'none' : '';
-    //         });
-    //     });
-    // }
-
-    // window.onload = () => {
-    //     removeSelectedColors();
-    // };
 
     tinymce.init({
         selector: 'textarea.my-textarea',
