@@ -11,6 +11,7 @@
                 <li class="label">Thiết lập</li>
                 <li><a href="{{ route('list-banner') }}"><i class="ti-image"></i>Banner</a></li>
                 <li><a href="{{ route('list-information') }}"><i class="ti-info"></i>Thông tin</a></li>
+                <li><a href="{{ route('list-guarantee-info') }}"><i class="ti-info"></i>Thông tin Bảo hành</a></li>
                 <li><a href="{{ route('list-home-block') }}"><i class="ti-view-grid"></i>Home blocks</a></li>
                 <li class="label">Sản phẩm</li>
                 <li><a class="sidebar-sub-toggle"><i class="ti-target"></i> Sản phẩm <span
