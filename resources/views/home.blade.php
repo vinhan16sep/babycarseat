@@ -184,7 +184,7 @@
             <div class="mb-p-0">
                 <div class="flat-sw-navigation box-product-common__row wow fadeInUp" data-wow-delay="0.1s">
                     @foreach($upper as $_item)
-                        <div class="container-fluid home-padding">
+                        <div class="container-fluid home-padding signature-contentblock-item-{{ $loop->index }}">
                         <div class="product-common__row">
                             <div class="signature-contentblock {{ $loop->index%2 == 0 ? 'signature-contentblock--reverse' : '' }}">
                                 <div class="signature-contentblock__image">
@@ -210,7 +210,7 @@
             </div>
         </section>
 {{--    </section>--}}
-    <div class="home-padding">
+    <div class="home-padding" style="margin-top: 25px;">
         <hr>
     </div>
 
