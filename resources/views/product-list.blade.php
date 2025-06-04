@@ -320,11 +320,10 @@
                         <div class="desc">
                             <h4>Ghế ô tô cho bé</h4>
                             <div class="content">
-                                Dù bạn đang chuẩn bị đón bé yêu từ
-                                viện về hay con bạn đang lớn lên từng
-                                ngày, chúng tôi đều có sản phẩm ghế
-                                ngồi ô tô phù hợp với từng giai đoạn
-                                phát triển của bé.
+                                Từ những ngày đầu đón bé yêu về nhà đến từng cột mốc
+                                trưởng thành của con, chúng tôi đều có dòng ghế ngồi ô
+                                tô phù hợp, đồng hành cùng bé qua mỗi giai đoạn phát
+                                triển.
                             </div>
                         </div>
                     </div>
