@@ -6,6 +6,7 @@ return [
     "meta_keywords" => "Babyro",
     "meta_description" => "Babyro",
     "meta_image" => "icon/cropped-favico-1-32x32.png",
+    "meta_robots" => "index, follow",
     "canonical" => "Babyro",
 
     // nav
