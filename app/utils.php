@@ -43,3 +43,22 @@ if(!function_exists('checkActiveMenu')){
         return \Request::is("$path/*") || \Request::is("$path") ? 'active' : '';
     }
 }
+
+if (!function_exists('cleanHtmlContent')) {
+    /**
+     * @param string|null $input
+     * @return string
+     */
+    function cleanHtmlContent(?string $input): string
+    {
+        if (is_null($input)) {
+            return '';
+        }
+
+        $clean = strip_tags($input);
+        $clean = html_entity_decode($clean, ENT_QUOTES | ENT_HTML5, 'UTF-8');
+        $clean = str_replace("\xc2\xa0", ' ', $clean);
+        $clean = preg_replace('/\s+/', ' ', $clean);
+        return trim($clean);
+    }
+}
