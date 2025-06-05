@@ -535,6 +535,20 @@ footer{
         letter-spacing: 0.2px;
         line-height: 25px;
     }
+    .card-product-info .product-title{
+        font-size: 20px;
+    }
+    .card-product-info .product-desc{
+        font-size: 16px;
+    }
+    .design .content h5{
+        font-size: 14px;
+        line-height: 15px;
+        margin-bottom:0;
+    }
+    .design .content p{
+        font-size: 14px;
+    }
 }
 @media (min-width: 900px) {
     footer p, footer .footer-menu .footer-menu_item{
