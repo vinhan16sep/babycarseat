@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="{{ asset('css/page.css?v=' . ($ver ?? '')) }}">
     <style>
         .desc h4, .design h4{
-            font-size: 1.2vw;
+            font-size: 23px;
             font-weight: 600;
             margin-bottom: 10px;
         }
@@ -21,7 +21,7 @@
             width: 100%;
         }
         .design .content h5{
-            font-size: 1vw;
+            font-size: 19px;
             margin-top: 10px;
             margin-bottom: 5px;
         }
@@ -29,7 +29,7 @@
             font-size: 0.9vw;
         }
         .card-product{
-            margin: 20px 0;
+            margin: 0;
         }
         .card-product-info{
             text-align: center;
@@ -37,13 +37,13 @@
         .card-product-info .product-title{
             font-weight: 600;
             text-transform: uppercase;
-            font-size: 1.20vw;
+            font-size: 23px;
         }
         .product h4{
             color: #d20046;
             text-transform: uppercase;
             font-weight: 600;
-            font-size: 2vw;
+            font-size: 38px;
         }
         .product .row{
             padding: 10px 0;
@@ -78,11 +78,11 @@
         }
         .product .desc *{
             background: transparent!important;
-            font-size: 1vw!important;
+            font-size: 19px;
             font-weight: 400!important;
         }
         .product .desc strong, .product .desc strong *{
-            letter-spacing: 1px;
+            letter-spacing: 0.2px;
             font-weight: 600!important;
         }
         .product .desc .MsoNormal{
@@ -144,7 +144,7 @@
             text-align: center;
         }
         .card-product-info .product-title{
-            font-weight: 600;
+            font-weight: 800;
             text-transform: uppercase;
         }
 
@@ -156,6 +156,7 @@
         .desc .content{
             font-weight: 400;
             padding-right: 30px;
+            font-size: 17px;
         }
 
         @media (max-width: 1460px) {
@@ -167,9 +168,6 @@
             .home-padding.categories{
                 padding-top: 40px;
                 padding-bottom: 20px;
-            }
-            .desc .content{
-                font-size: 1vw;
             }
         }
 
@@ -202,7 +200,7 @@
                 padding-right: 0;
             }
             .card-product-info .product-title{
-                font-size: 20px;
+                font-size: 23px;
             }
             .product h4{
                 font-size: 20px;
@@ -240,6 +238,16 @@
             }
             .box-product-common__row > div:not(:first-child) {
                 margin-top: 30px;
+            }
+            .desc .content{
+                line-height: 20px;
+                text-align: justify;
+            }
+            .desc h4{
+                margin-bottom: 0px;
+            }
+            .product h4{
+                font-size: 28px;
             }
         }
         @media (max-width: 768px) {
@@ -285,18 +293,11 @@
             .design .content img{
                 height: 280px;
             }
-            .desc .content{
-                padding-right: 120px;
-                font-size: 0.9vw;
-            }
             .desc h4, .design h4{
                 margin-bottom: 20px;
             }
             .design .content h5{
                 margin-top: 20px;
-            }
-            .card-product-info .product-title{
-                font-size: 1.2vw;
             }
             .product .container {
                 max-width: 1200px;

@@ -962,6 +962,7 @@ footer{
     }
     .section-text > div{
         display: flex!important;
+        gap: 30px;
     }
     .magin-sm-0{
         margin: 0!important;
@@ -978,17 +979,33 @@ footer{
     .signature-contentblock__html .signature-contentblock__subtitle{
         white-space: normal;
     }
+    .box-first-content-flex div{
+        line-height: 20px;
+    }
     .flat-spacing.section-two .flat-sw-navigation > div:nth-child(4) .signature-contentblock__image img{
         margin-top: 0;
         margin-bottom: 0;
         padding: 10px 15px 25px 15px;
         width: 100%;
     }
-        .flat-spacing.section-two .flat-sw-navigation > div:nth-child(2) .signature-contentblock__image img{
+    .flat-spacing.section-two .flat-sw-navigation > div:nth-child(2) .signature-contentblock__image img{
         margin-top: 0;
         margin-bottom: 0;
         padding: 10px 15px 0 15px;
         width: 100%;
+    }
+    .section-one .heading-section h3{
+        padding-top: 18px;
+    }
+    .tf-icon-box .icon-box{
+        margin-top: 20px;
+    }
+    .tf-icon-box .icon-box img{
+        width: 80%;
+    }
+    .tf-icon-box .content h6{
+        font-size: 23px;
+        line-height: 30px;
     }
 }
 
@@ -1007,6 +1024,6 @@ footer{
 @media (max-width: 440px) {
     .section-text > div > div{
         font-size: 13px;
-        padding: 10px 5px!important;
+        padding: 13px 5px 7px !important;
     }
 }
