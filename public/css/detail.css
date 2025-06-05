@@ -408,7 +408,7 @@ section.section-text > div {
     line-height: 23px;
 }
 .box-hau-mai{
-    border-top: 2px solid #c6c6c6;
+    /* border-top: 2px solid #c6c6c6; */
     padding-top: 20px;
 }
 .box-hau-mai .content-hau-mai{
@@ -616,7 +616,22 @@ footer{
     font-size: 14pt;
     font-weight: 700;
 }
+.box-description p > span{
+    font-family: 'Inter';
+    font-size: 16px !important;
+    line-height: 26px;
+    color: black;
+}
+.accordion-product-item h6{
+    font-size: 16px;
+    font-weight: 600 !important;
+}
 
+@media (min-width: 900px) and (max-width: 1460px) {
+       .home-padding{
+        padding: 0 60px !important;
+    } 
+}
 
 @media (min-width: 900px) {
 
@@ -949,6 +964,9 @@ footer{
     .section-one .heading-section {
         margin-bottom: 0;
     }
+    .box-hau-mai .content-hau-mai{
+        padding: 20px 15px !important;
+    }
 }
 
 
@@ -979,6 +997,9 @@ footer{
     }
     .signature-contentblock__subtitle {
         font-size: 0.6rem;
+    }
+    .box-hau-mai .content-hau-mai{
+        padding: 20px 15px !important;
     }
 }
 
