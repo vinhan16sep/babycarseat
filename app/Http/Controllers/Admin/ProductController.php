@@ -41,7 +41,7 @@ class ProductController extends AdminController
 
         if (isset($req['category']) && $req['category']) {
             $q->whereHas('categories', function ($query) use ($req) {
-                $query->where('product_categories.id', $req['category']); 
+                $query->where('product_categories.id', $req['category']);
             });
         }
 
@@ -76,10 +76,21 @@ class ProductController extends AdminController
     {
         $colors = Color::whereNotIn('id', ProductColor::pluck('color_id'))->get();
 
+        $seo = (object)[
+            'meta_title' => '',
+            'meta_description' => '',
+            'meta_keywords' => '',
+            'meta_robots' => '',
+            'canonical_url' => '',
+            'og_title' => '',
+            'og_description' => '',
+        ];
+
         return view('admin/product/create', [
             'productCategories' => $this->productCategories,
             'brands' => $this->brands,
-            'colors' => $colors
+            'colors' => $colors,
+            'seo' => $seo,
         ]);
     }
 
@@ -106,6 +117,15 @@ class ProductController extends AdminController
             $model->is_highlight = $request->input('is_highlight');
             $model->created_by = 1;
             $model->updated_by = 1;
+            // SEO fields
+            $model->meta_title = $request->input('meta_title');
+            $model->meta_description = $request->input('meta_description');
+            $model->meta_keywords = $request->input('meta_keywords');
+            $model->meta_robots = $request->input('meta_robots');
+            $model->canonical_url = $request->input('canonical_url');
+            $model->og_title = $request->input('og_title');
+            $model->og_description = $request->input('og_description'); 
+
             if ($model->save()) {
                 $categories = $request->input('category_id');
                 $model->categories()->sync($categories);
@@ -114,7 +134,7 @@ class ProductController extends AdminController
                 $upload = $this->uploadImage($path, $request);
                 $model->image = $upload;
                 $model->save();
-    
+
                 if ($model->save()) {
                     DB::commit();
                     return redirect()->route('list-product')->with('success', Config::get('constants.MESSAGE.CREATE_SUCCEEDED'));
@@ -142,13 +162,24 @@ class ProductController extends AdminController
             return redirect()->route('list-product')->with('error', Config::get('constants.MESSAGE.DATA_NOT_FOUND'));
         }
 
+        $seo = [
+            'meta_title' => $object->meta_title ?? '',
+            'meta_description' => $object->meta_description ?? '',
+            'meta_keywords' => $object->meta_keywords ?? '',
+            'meta_robots' => $object->meta_robots ?? '',
+            'canonical_url' => $object->canonical_url ?? '',
+            'og_title' => $object->og_title ?? '',
+            'og_description' => $object->og_description ?? '',
+        ];
+
         return view('admin/product/edit', [
             'object' => $object,
             'productCategories' => $this->productCategories,
             'brands' => $this->brands,
             'colors' => $colors,
             'selectedColors' => $selectedColors,
-            'callback' => url(URL::previous())
+            'callback' => url(URL::previous()),
+            'seo' => $seo,
         ]);
     }
 
@@ -180,6 +211,14 @@ class ProductController extends AdminController
             $object->is_active = $request->input('is_active');
             $object->is_highlight = $request->input('is_highlight');
             $object->updated_by = 1;
+            // SEO fields
+            $object->meta_title = $request->input('meta_title');
+            $object->meta_description = $request->input('meta_description');
+            $object->meta_keywords = $request->input('meta_keywords');
+            $object->meta_robots = $request->input('meta_robots');
+            $object->canonical_url = $request->input('canonical_url');
+            $object->og_title = $request->input('og_title');
+            $object->og_description = $request->input('og_description'); 
 
             if ($request->hasfile('image')) {
                 $path = sprintf(Config::get('constants.FILE_STORAGE_PATH.PRODUCT_IMAGE'), $id);
@@ -293,6 +332,13 @@ class ProductController extends AdminController
             'name' => 'required|max:255',
             'slug' => 'required|max:255|unique:products',
             'price' => 'required|numeric',
+            'meta_title' => 'max:70',
+            'meta_description' => 'max:160',
+            'meta_keywords' => 'max:255',
+            'meta_robots' => 'max:255', 
+            'canonical_url' => 'max:255',
+            'og_title' => 'max:60',
+            'og_description' => 'max:110',
         ], [
             'category_id.required' => 'Chưa chọn danh mục',
             'category_id.array' => 'Danh mục không hợp lệ',
