@@ -35,6 +35,7 @@
                 <div class="mb-3">
                     <label for="meta_robots" class="form-label">Meta Robots</label>
                     <select name="meta_robots" id="meta_robots" class="form-select">
+                        <option value=""></option>
                         <option value="index, follow" {{ old('meta_robots', $seo['meta_robots'] ?? '') == 'index, follow' ? 'selected' : '' }}>index, follow</option>
                         <option value="noindex, nofollow" {{ old('meta_robots', $seo['meta_robots'] ?? '') == 'noindex, nofollow' ? 'selected' : '' }}>noindex, nofollow</option>
                         <option value="index, nofollow" {{ old('meta_robots', $seo['meta_robots'] ?? '') == 'index, nofollow' ? 'selected' : '' }}>index, nofollow</option>
