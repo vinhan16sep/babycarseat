@@ -1001,6 +1001,9 @@ footer{
     .box-hau-mai .content-hau-mai{
         padding: 20px 15px !important;
     }
+    footer .footer-body{
+        padding-top: 50px;
+    }
 }
 
 @media (max-width: 600px) {
@@ -1089,8 +1092,11 @@ footer{
         margin-top: 30px;
     }
 
-    .flat-spacing-8, .flat-spacing, .flat-spacing-10{
+    .flat-spacing-8, .flat-spacing-10{
         padding: 35px 0px!important;
+    }
+    .flat-spacing{
+        padding: 0 !important;
     }
     .custom-say{
         padding: 20px 15px!important;
