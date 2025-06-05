@@ -3,6 +3,7 @@
 @section('meta_title', $product->meta_title ?? $product->name)
 @section('meta_keywords', $product->meta_keywords ?? $product->name)
 @section('meta_description', ($product->meta_description ?? Str::limit(cleanHtmlContent($product->description), 150)))
+@section('meta_robots', $product->meta_robots ?? $product->name)
 @section('meta_image', getImage($product->image))
 
 @section('css')

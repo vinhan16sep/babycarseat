@@ -18,6 +18,7 @@
     <!-- for Google -->
     <meta name="keywords" content="@yield('meta_keywords', $site_settings['meta_keywords'] ?? '')"/>
     <meta name="description" content="@yield('meta_description', $site_settings['meta_description'] ?? '')"/>
+    <meta name="robots" content="@yield('meta_robots', $site_settings['meta_robots'] ?? '')">
     <link rel="canonical" href="@yield('canonical', url()->current())"/>
 
     <!-- for Facebook -->
