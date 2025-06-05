@@ -538,9 +538,7 @@
         </div>
     </section>
 
-    <br>
-    <br>
-    @include('components.last-page', ['is_not_show' => true])
+    @include('components.last-page', ['is_not_show' => true, 'is_border' => false])
 
     <section class="flat-spacing home-padding" style="background:#f2f2f2">
         <div class="container-fluid" style="padding: 0;">

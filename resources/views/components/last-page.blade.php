@@ -48,7 +48,7 @@
     /*}*/
 </style>
 <!-- Testimonial -->
-<section class="flat-spacing pt-0 custom-say home-padding" style="{{ !empty($is_border) ? 'border-top: 1px solid #e9e9e9;' : '' }}">
+<section class="flat-spacing pt-0 custom-say home-padding" style="{{ !empty($is_border) ? 'border-top: 2px solid #c6c6c6;' : 'border-top:unset !important;' }}">
     <div class="box-hau-mai">
         <div class="title">
             <h3>Chính sách hậu mãi</h3>
