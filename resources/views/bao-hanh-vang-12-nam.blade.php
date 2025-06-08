@@ -153,6 +153,7 @@ Bảo Hành Vàng 12 năm Babyro</h3>
     </section>
     <br>
     @include('components.form-warranty')
+    <hr>
 @endsection
 
 
