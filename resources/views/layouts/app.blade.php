@@ -16,8 +16,9 @@
     <meta name="MobileOptimized" content="320">
 
     <!-- for Google -->
-    <meta name="keywords" content="@yield('meta_keyword', $site_settings['meta_keyword'] ?? '')"/>
+    <meta name="keywords" content="@yield('meta_keywords', $site_settings['meta_keywords'] ?? '')"/>
     <meta name="description" content="@yield('meta_description', $site_settings['meta_description'] ?? '')"/>
+    <meta name="robots" content="@yield('meta_robots', $site_settings['meta_robots'] ?? '')">
     <link rel="canonical" href="@yield('canonical', url()->current())"/>
 
     <!-- for Facebook -->
@@ -29,10 +30,10 @@
     <meta property="og:site_name" content="{{ \Request::getHost() }}"/>
 
     <!-- for Twitter -->
-    <meta name="twitter:card" content="summary"/>
+    <!-- <meta name="twitter:card" content="summary"/>
     <meta name="twitter:title" content="@yield('meta_title', $site_settings['meta_title'] ?? '')"/>
     <meta name="twitter:description" content="@yield('meta_description', $site_settings['meta_description'] ?? '')"/>
-    <meta name="twitter:image" content="@yield('meta_image', asset($site_settings['meta_image'] ?? ''))"/>
+    <meta name="twitter:image" content="@yield('meta_image', asset($site_settings['meta_image'] ?? ''))"/> -->
     <link rel="icon" href="{{ asset("icon/cropped-favico-1-32x32.png") }}" sizes="32x32"/>
     <link rel="icon" href="{{ asset("icon/cropped-favico-1-192x192.png") }}" sizes="192x192"/>
     <link rel="apple-touch-icon" href="{{ asset("icon/cropped-favico-1-180x180.png") }}"/>
