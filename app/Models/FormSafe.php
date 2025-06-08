@@ -21,7 +21,8 @@ class FormSafe extends Model
         'by_date',
         'report_images',
         'env_images',
-        'created_at'
+        'created_at',
+        'code'
     );
-         
+
 }

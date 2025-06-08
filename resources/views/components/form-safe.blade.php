@@ -43,10 +43,17 @@ chương trình "Ghế Ô Tô An Toàn". Các trường có dấu (<span class="
                                 <div class="col">
                                     <label for="exampleInputEmail1" class="form-label">Thông tin sản phẩm</label>
                                     <select class=" form-label form-select mt-2" name="product_code" id="product_code" required placeholder="Mã số hóa đơn hoặc mã bảo hành *">
-                                        <option value="">Mã số hóa đơn hoặc mã bảo hành *</option>
+                                        <option value="">Mã sản phẩm *</option>
                                         @foreach($products as $product)
                                             <option value="{{ $product }}">{{ $product }}</option>
                                         @endforeach
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="row g-2">
+                                <div class="col">
+                                    <input type="text" name="code" class="form-control" id="code" placeholder="Mã bảo hành/ mã hóa đơn *" required>
                                 </div>
                             </div>
                         </div>
@@ -81,9 +88,10 @@ chương trình "Ghế Ô Tô An Toàn". Các trường có dấu (<span class="
                         </div>
                          <div class="mb-3">
                             <div class="row g-2">
-                                <div class="col">
+                                <div class="col white-space-normal-mb">
                                     <input type="checkbox" id="agree" name="agree" value="1" style="display: inline;margin: 0 7px 0 7px;height: 15px;transform: scale(1.7);accent-color: #d21e50;">
-                                    <label class="desc" style="display: inline;">Tôi xác nhận rằng các thông tin cung cấp trên là chính xác và đầy đủ. Tôi đồng ý tham gia<br> chương trình “Ghế Ô Tô An Toàn” theo các điều khoản của Babyro.</p>
+                                    <label class="desc" style="display: inline;white-space: pre-line">Tôi xác nhận rằng các thông tin cung cấp trên là chính xác và đầy đủ. Tôi đồng ý tham gia
+chương trình “Ghế Ô Tô An Toàn” theo các điều khoản của Babyro.</label>
                                 </div>
                             </div>
                         </div>
@@ -133,7 +141,7 @@ chương trình "Ghế Ô Tô An Toàn". Các trường có dấu (<span class="
         var envImagesName = document.getElementById('env_images-name');
         var byDate = document.getElementById('by_date');
         function checkForm() {
-            var requiredFields = ['name', 'phone', 'email', 'address', 'product_code', 'by_date'];
+            var requiredFields = ['name', 'phone', 'email', 'address', 'product_code', 'by_date', 'code'];
             var valid = agree.checked;
             requiredFields.forEach(function(id) {
                 var el = document.getElementById(id);

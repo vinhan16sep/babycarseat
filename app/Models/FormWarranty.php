@@ -19,7 +19,8 @@ class FormWarranty extends Model
         'product_code',
         'by_date',
         'bill_images',
-        'created_at'
+        'created_at',
+        'code',
     );
-         
+
 }

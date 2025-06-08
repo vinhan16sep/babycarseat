@@ -103,4 +103,21 @@ class HomeController extends Controller
             'configs' => $configs,
         ]);
     }
+
+    public function baoHanh($view){
+        if(!view()->exists($view)){
+            abort(404);
+        }
+        $qas = QAs::query()->where('is_active', 1)->orderBy('sort')->get()->groupBy('qa_type');
+        $items = GuaranteeInfo::query()->get();
+        $configs = [];
+        foreach ($items as $_item) {
+            $configs[$_item->position][$_item->sub_position] = $_item;
+        }
+
+        return view($view, [
+            'qas' => $qas,
+            'configs' => $configs,
+        ]);
+    }
 }

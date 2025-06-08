@@ -89,12 +89,12 @@
                         @endif
                     </li>
                     <li class="menu-item position-relative">
-                        <a href="{{ route('bao-hanh-12-nam') }}" class="item-link">Bảo hành 12 năm<i class="icon icon-arrow-down"></i></a>
+                        <a href="#" class="item-link">Bảo hành 12 năm<i class="icon icon-arrow-down"></i></a>
                         <div class="sub-menu submenu-default menu-list">
                             <ul class="menu-list">
-                                <li><a href="#" class="menu-link-text">Bảo hành cơ bản 2 năm</a></li>
-                                <li><a href="#" class="menu-link-text">Bảo hành vàng 12 năm</a></li>
-                                <li><a href="#" class="menu-link-text">Chương trình đổi ghế ô tô miễn phí</a></li>
+                                <li><a href="{{ route('bao-hanh', ['view' => 'bao-hanh-2-nam']) }}" class="menu-link-text">Bảo hành cơ bản 2 năm</a></li>
+                                <li><a href="{{ route('bao-hanh', ['view' => 'bao-hanh-vang-12-nam']) }}" class="menu-link-text">Bảo hành vàng 12 năm</a></li>
+                                <li><a href="{{ route('bao-hanh', ['view' => 'doi-ghe-o-to-mien-phi']) }}" class="menu-link-text">Chương trình đổi ghế ô tô miễn phí</a></li>
                                 <li><a href="#" class="menu-link-text">Chương trình Thu cũ Đổi mới</a></li>
                             </ul>
                         </div>

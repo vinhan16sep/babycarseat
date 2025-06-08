@@ -55,7 +55,8 @@ Route::group(['middleware' => ['site_settings']], function () {
     Route::get('/san-pham/{category_slug?}', [App\Http\Controllers\ProductController::class, 'list'])->name('product-list');
    Route::get('/chi-tiet-san-pham/{slug}', [App\Http\Controllers\ProductController::class, 'show'])->name('product-index');
    Route::get('/ve-chung-toi', [App\Http\Controllers\AboutController::class, 'show'])->name('about-show');
-   Route::get('/bao-hanh-12-nam', [App\Http\Controllers\HomeController::class, 'baoHanh12Nam'])->name('bao-hanh-12-nam');
+//   Route::get('/bao-hanh-12-nam', [App\Http\Controllers\HomeController::class, 'baoHanh12Nam'])->name('bao-hanh-12-nam');
+   Route::get('/{view}', [App\Http\Controllers\HomeController::class, 'baoHanh'])->name('bao-hanh');
 
 
     Route::get('lien-he', [App\Http\Controllers\ContactController::class, 'show'])->name('contact');

@@ -1405,18 +1405,18 @@
                         <div href="#dropdown-menu-three" class="mb-menu-link sub-nav-link collapsed"
                              aria-expanded="true"
                              aria-controls="dropdown-menu-three">
-                            <a href="{{ route('bao-hanh-12-nam') }}">Bảo hành 12 năm</a><span class="btn-open-sub"></span>
+                            <a href="#">Bảo hành 12 năm</a><span class="btn-open-sub"></span>
                         </div>
                         <div id="dropdown-menu-three" class="collapse">
                             <ul class="sub-nav-menu">
                                 <li>
-                                    <a class="mb-menu-link" href="#">Bảo hành cơ bản 2 năm</a>
+                                    <a class="mb-menu-link" href="{{ route('bao-hanh', ['view' => 'bao-hanh-2-nam']) }}">Bảo hành cơ bản 2 năm</a>
                                 </li>
                                 <li>
-                                    <a class="mb-menu-link" href="#">Bảo hành vàng 12 năm</a>
+                                    <a class="mb-menu-link" href="{{ route('bao-hanh', ['view' => 'bao-hanh-vang-12-nam']) }}">Bảo hành vàng 12 năm</a>
                                 </li>
                                 <li>
-                                    <a class="mb-menu-link" href="#">Chương trình đổi ghế ô tô miễn phí</a>
+                                    <a class="mb-menu-link" href="{{ route('bao-hanh', ['view' => 'doi-ghe-o-to-mien-phi']) }}">Chương trình đổi ghế ô tô miễn phí</a>
                                 </li>
                                 <li>
                                     <a class="mb-menu-link" href="#">Chương trình Thu cũ Đổi mới</a>

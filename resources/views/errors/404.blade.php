@@ -7,6 +7,7 @@
             display: none !important;
         }
     </style>
+    <link rel="stylesheet" href="{{ asset('css/page.css?v=' . ($ver ?? '')) }}">
 @endsection
 
 @section('content')

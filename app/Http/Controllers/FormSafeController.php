@@ -30,6 +30,7 @@ class FormSafeController extends Controller
             'by_date'      => 'nullable|date',
             'report_images'=> 'nullable|string',
             'env_images'   => 'nullable|string',
+            'code'         => 'nullable|string|max:255',
         ]);
         FormSafe::create($data);
         return redirect()->route('formsafe.index')->with('success', 'Tạo mới thành công!');
@@ -60,6 +61,7 @@ class FormSafeController extends Controller
             'by_date'      => 'nullable|date',
             'report_images'=> 'nullable|string',
             'env_images'   => 'nullable|string',
+            'code'         => 'nullable|string|max:255',
         ]);
         $form->update($data);
         return redirect()->route('formsafe.index')->with('success', 'Cập nhật thành công!');

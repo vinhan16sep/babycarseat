@@ -34,10 +34,17 @@ chương trình "Bảo hành Vàng 12 năm Babyro". Các trường có dấu (<s
                             <div class="row g-2">
                                 <div class="col">
                                     <select class="form-label form-select mt-2" name="product_code" id="warranty_product_code" required placeholder="Mã số hóa đơn hoặc mã bảo hành *">
-                                        <option value="">Mã số hóa đơn hoặc mã bảo hành *</option>
+                                        <option value="">Mã sản phẩm *</option>
                                         @foreach($products as $product)
                                             <option value="{{ $product }}">{{ $product }}</option>
                                         @endforeach
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="row g-2">
+                                <div class="col">
+                                    <input type="text" name="code" class="form-control" id="warranty_code" placeholder="Mã bảo hành/ mã hóa đơn *" required>
                                 </div>
                             </div>
                         </div>
@@ -63,9 +70,10 @@ chương trình "Bảo hành Vàng 12 năm Babyro". Các trường có dấu (<s
                         </div>
                          <div class="mb-3">
                             <div class="row g-2">
-                                <div class="col">
+                                <div class="col white-space-normal-mb">
                                     <input type="checkbox" id="warranty_agree" name="agree" value="1" style="display: inline;margin: 0 7px 0 7px;height: 15px;transform: scale(1.7);accent-color: #d21e50;">
-                                    <label class="desc" style="display: inline;">Tôi xác nhận rằng các thông tin cung cấp trên là chính xác và đầy đủ. Tôi đồng ý tham gia<br> chương trình “Ghế Ô Tô An Toàn” theo các điều khoản của Babyro.</label>
+                                    <label class="desc" style="display: inline;white-space: pre-line">Tôi xác nhận rằng các thông tin cung cấp trên là chính xác và đầy đủ. Tôi đồng ý tham gia
+chương trình “Ghế Ô Tô An Toàn” theo các điều khoản của Babyro.</label>
                                 </div>
                             </div>
                         </div>
@@ -112,7 +120,7 @@ chương trình "Bảo hành Vàng 12 năm Babyro". Các trường có dấu (<s
         var fileUpload = document.getElementById('warranty_file-upload');
         var fileUploadName = document.getElementById('warranty_file-upload-name');
         var byDate = document.getElementById('warranty_by_date');
-        var requiredFields = ['warranty_name', 'warranty_phone', 'warranty_email', 'warranty_product_code', 'warranty_by_date'];
+        var requiredFields = ['warranty_name', 'warranty_phone', 'warranty_email', 'warranty_product_code', 'warranty_by_date', 'warranty_code'];
         function checkFormWarranty() {
             var valid = agree.checked;
             requiredFields.forEach(function(id) {
