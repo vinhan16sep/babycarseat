@@ -418,13 +418,21 @@ section p.note{
 .section-seven ul{
     padding-left: 20px;
 }
-
+.form-safe {
+    .content-hau-mai > div > div.d-flex img{
+        height: 60px!important;
+    }
+}
 @media (max-width: 1460px) {
     .section-one {
         padding-top: 1vw;
         padding-bottom: 2vw;
     }
-
+    .form-safe {
+        .content-hau-mai > div > div.d-flex img{
+            height: 50px!important;
+        }
+    }
     .section-same .title {
         white-space: break-spaces;
         font-size: 2.15vw;
