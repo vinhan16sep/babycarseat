@@ -10,7 +10,6 @@ use App\Models\News;
 use App\Models\Feedback;
 use App\Models\Product;
 use App\Models\QAs;
-use App\Models\Type;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -45,11 +44,7 @@ class HomeController extends Controller
             'hotProducts' => Product::getHotProducts(),
             'feedback' => $feedback
         ]);
-
-
-
         $banners = Banner::query()->where(["is_active" => 1])->get();
-        $types = Type::where("is_active", 1)->get();
         $products = Product::query()->where(["is_active" => 1, "is_highlight" => 1])->with(["grape:id,name", "type:id,name", "country:id,name", "region:id,name"])->orderByDesc("created_at")->get();
         $news = News::query()->where(["is_active" => 1])->orderByDesc("created_at")->limit(10)->get();
         $knowledges = Knowledge::query()->where(["is_active" => 1])->orderByDesc("created_at")->with(["category:id,slug"])->limit(6)->get();

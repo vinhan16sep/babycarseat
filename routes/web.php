@@ -1,21 +1,12 @@
 <?php
 
-use App\Http\Controllers\Admin\AccessoryCategoryController;
-use App\Http\Controllers\Admin\AccessoryController;
 use App\Http\Controllers\Admin\BannerController;
 use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\ColorController;
-use App\Http\Controllers\Admin\ComboController;
 use App\Http\Controllers\Admin\DashboardController;
-use App\Http\Controllers\Admin\CountryController;
-use App\Http\Controllers\Admin\GiftController;
-use App\Http\Controllers\Admin\GrapeController;
 use App\Http\Controllers\Admin\HomeBlockController;
 use App\Http\Controllers\Admin\InformationController;
 use App\Http\Controllers\Admin\ProductController;
-use App\Http\Controllers\Admin\PromotionController;
-use App\Http\Controllers\Admin\RegionController;
-use App\Http\Controllers\Admin\TypeController;
 use App\Http\Controllers\Admin\NewsController;
 use App\Http\Controllers\Admin\PostTaskController;
 use App\Http\Controllers\Admin\KnowledgeCategoryController;
