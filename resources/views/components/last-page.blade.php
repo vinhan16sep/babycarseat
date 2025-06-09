@@ -46,6 +46,9 @@
     /*    transition: width 0.4s cubic-bezier(0.25, 0.8, 0.25, 1) 0s;*/
     /*    background: #d21e50;*/
     /*}*/
+    .content-hau-mai > div > div.d-flex img{
+        max-height: 65px;
+    }
 </style>
 <!-- Testimonial -->
 <section class="flat-spacing pt-0 custom-say home-padding" style="{{ !empty($is_border) ? 'border-top: 2px solid #c6c6c6;' : 'border-top:unset !important;' }}">

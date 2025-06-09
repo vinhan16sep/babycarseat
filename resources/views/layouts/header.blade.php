@@ -3,8 +3,8 @@
 @endphp
 <style>
     header .design .content img{
-        height: 200px;
-        object-fit: cover;
+        height: 300px;
+        object-fit: contain;
         width: 100%;
     }
     header .design .content h5{

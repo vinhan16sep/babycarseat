@@ -18305,6 +18305,10 @@ ul.list-text.type-number {
             padding-bottom: 2px;
         }
     }
+    .signature-sprint__card-subtitle{
+        white-space: normal;
+        display: ruby;
+    }
 }
 
 @media only screen and (max-width: 1366px) {
