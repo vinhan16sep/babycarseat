@@ -533,6 +533,9 @@ footer{
         margin-bottom: 15px;
         font-weight: 600;
     }
+    .footer .footer-infor .footer-heading:first-child{
+        color:black;
+    }
     footer .text-caption-1, footer .footer-info li{
         font-size: 1vw;
         line-height: 1.5vw;
@@ -786,6 +789,7 @@ footer{
     .content-hau-mai > div > div.d-flex img {
         height: calc(100% - 10px) !important;
         margin-right: 20px;
+        max-height: 65px;
     }
 
     .content-hau-mai > div > p {
@@ -796,7 +800,7 @@ footer{
         font-size: 18px;
         line-height: 24px;
     }
-    
+
 
     .content-hau-mai a {
         font-size: 15px;

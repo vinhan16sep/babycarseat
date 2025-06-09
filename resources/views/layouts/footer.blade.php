@@ -5,7 +5,7 @@
             <div class="container-fluid">
                 <div class="row magin-sm-0">
                     <div class="col-lg-12">
-                        <div class="footer-logo" style="margin-bottom: 20px;">
+                        <div class="footer-logo" style="margin-bottom: 12px;">
                             <a href="{{ url("/") }}">
                                 <img src="{{ asset('images/logo/footer logo.png') }}" alt="">
                             </a>
@@ -37,7 +37,7 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-3">
+                    <div class="col-lg-3 position-desk">
                         <div class="footer-menu" style="margin-bottom: 0;float: right;">
                             <div class="footer-col-block">
                                 <div class="footer-heading text-button footer-heading-mobile">
@@ -62,7 +62,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-3">
+                    <div class="col-lg-3 position-desk">
                         <div class="footer-menu" style="margin-bottom: 0;float: right;margin-right:30px;">
                         <div class="footer-col-block">
                             <div class="footer-heading text-button footer-heading-mobile">
@@ -87,7 +87,7 @@
                         </div>
                         </div>
                     </div>
-                    <div class="col-lg-3">
+                    <div class="col-lg-3 position-desk">
                         <div class="footer-menu" style="margin-bottom: 0;float: right;">
                         <div class="footer-col-block">
                             <div class="footer-heading text-button footer-heading-mobile">

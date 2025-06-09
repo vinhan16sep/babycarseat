@@ -82,7 +82,7 @@
                                 bảo hành
                             </div>
                         </div>
-                        <p>Bảo hành 10 năm để đáp ứng nhu cầu và mong đợi của khách hàng, chúng tôi cung cấp tùy chọn bảo hành mở rộng, kéo dài 10 năm và cho phép bạn sửa chữa hoặc thay thế miễn phí bộ phận bị hỏng của ghế ô tô.</p>
+                        <p>Bảo hành 12 năm để đáp ứng nhu cầu và mong đợi của khách hàng, chúng tôi cung cấp tùy chọn bảo hành mở rộng, kéo dài 10 năm và cho phép bạn sửa chữa hoặc thay thế miễn phí bộ phận bị hỏng của ghế ô tô.</p>
                         <br>
                         <div class="mt-auto">
                             <a href="" class="tf-btn btn-fill btn-white"><span class="text">Xem thêm</span></a>

@@ -18291,3 +18291,41 @@ ul.list-text.type-number {
         margin-right: 0!important;
     }
 }
+
+.position-desk {
+    position: relative;
+    top: -52px;
+    padding-bottom: 0px;
+}
+
+
+@media only screen and (max-width: 1460px) {
+    .position-desk {
+        .footer-heading{
+            padding-bottom: 2px;
+        }
+    }
+}
+
+@media only screen and (max-width: 1366px) {
+    .position-desk {
+        .footer-heading{
+            padding-bottom: 7px;
+        }
+    }
+}
+
+@media only screen and (max-width: 991px) {
+    .position-desk {
+        position: relative;
+        top: 0;
+        padding-bottom: 0;
+    }
+}
+.tf-btn.btn-white::after{
+    background-color: #3c3c8c;
+}
+
+header .design .content h5{
+    text-align: center;
+}
