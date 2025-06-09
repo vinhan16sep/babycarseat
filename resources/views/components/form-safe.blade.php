@@ -110,7 +110,7 @@ chương trình “Ghế Ô Tô An Toàn” theo các điều khoản của Baby
                 <div class="card content-hau-mai d-flex flex-column">
                     <div class="card-body d-flex flex-column">
                         <div class="d-flex">
-                            <img src="{{ asset("/icon/icons home-06.png")  }}" alt="">
+                            <img style="filter:unset" src="{{ asset("/icon/icons home-05.png")  }}" alt="">
                             <div class="css-text">
                                 Chương trình<br>
                                 Ghế an toàn Babyro care
