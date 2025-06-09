@@ -3,9 +3,10 @@
 @endphp
 <style>
     header .design .content img{
-        height: 300px;
+        height: 200px;
         object-fit: contain;
         width: 100%;
+        /*box-shadow: #cacaca 1px 1px 5px 0px;*/
     }
     header .design .content h5{
         font-size: 16px;
