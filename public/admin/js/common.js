@@ -14,8 +14,10 @@ function to_slug(str) {
     str = str.replace(/(\s+)/g, '-');
 
     str = str.replace(/^-+/g, '');
-
+    
     str = str.replace(/-+$/g, '');
+
+    str = str.replace(/-+/g, '-');
 
     return str;
 }
