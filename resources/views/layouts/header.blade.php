@@ -48,9 +48,9 @@
         <div class="col-xl-9 d-none d-xl-block">
             <nav class="box-navigation text-center">
                 <ul class="box-nav-ul d-flex align-items-center">
-                    <li class="menu-item"><a href="#" class="item-link">Về Babyro</a></li>
+                    <li class="menu-item"><a href="{{ route('about-show') }}" class="item-link">Giới thiệu</a></li>
                     <li class="menu-item {{ strpos($currentPath, 'san-pham') !== false || strpos($currentPath, 'chi-tiet-san-pham') !== false  ? 'active' : '' }}">
-                        <a href="{{ route('product-list') }}" class="item-link">Ghế ôtô trẻ em {!! !empty($categoriesMenu) ? '<i class="icon icon-arrow-down"></i>' : '' !!}</a>
+                        <a href="{{ route('product-list') }}" class="item-link">Sản phẩm {!! !empty($categoriesMenu) ? '<i class="icon icon-arrow-down"></i>' : '' !!}</a>
                         @if(!empty($categoriesMenu))
                             <div class="sub-menu mega-menu" style="border-radius: 0;">
                                 <div class="container">
@@ -90,7 +90,7 @@
                         @endif
                     </li>
                     <li class="menu-item position-relative">
-                        <a href="#" class="item-link">Bảo hành 12 năm<i class="icon icon-arrow-down"></i></a>
+                        <a href="#" class="item-link">Bảo hành<i class="icon icon-arrow-down"></i></a>
                         <div class="sub-menu submenu-default menu-list">
                             <ul class="menu-list">
                                 <li><a href="{{ route('bao-hanh', ['view' => 'bao-hanh-2-nam']) }}" class="menu-link-text">Bảo hành cơ bản 2 năm</a></li>
@@ -100,9 +100,9 @@
                             </ul>
                         </div>
                     </li>
-                    <li class="menu-item"><a href="#" class="item-link">Babyro Hub</a></li>
+                    <li class="menu-item"><a href="{{ route('news') }}" class="item-link">Tin tức</a></li>
                     <li class="menu-item"><a href="#" class="item-link">Hỗ trợ</a></li>
-                    <li class="menu-item"><a href="#" class="item-link">Buy now</a></li>
+                    <!-- <li class="menu-item"><a href="#" class="item-link">Buy now</a></li> -->
 {{--                    @foreach($mainMenu as $_name => $_menus)--}}
 {{--                        <li class="menu-item {{ checkActiveMenu(\Illuminate\Support\Str::Slug($_name)) }}">--}}
 {{--                            <a href="#" class="item-link">{{ $_menus['name'] }} <i class="icon icon-arrow-down"></i></a>--}}
@@ -146,7 +146,7 @@
 {{--                    @endforeach--}}
 {{--                    <li class="menu-item {{ checkActiveMenu("tin-tuc") }}"><a href="{{ route('news') }}" class="item-link">Blogs</a></li>--}}
 {{--                    <li class="menu-item {{ checkActiveMenu("kien-thuc") }}"><a href="{{ route('category-detail-knowledge') }}" class="item-link">Kiến thức</a></li>--}}
-{{--                    <li class="menu-item {{ checkActiveMenu("ve-chung-toi") }}"><a href="{{ route('about-show') }}" class="item-link">Về chúng tôi</a></li>--}}
+{{--                    <li class="menu-item {{ checkActiveMenu("giơi-thieu") }}"><a href="{{ route('about-show') }}" class="item-link">Về chúng tôi</a></li>--}}
 {{--                    <li class="menu-item {{ checkActiveMenu("lien-he") }}"><a href="{{ route('contact') }}" class="item-link">Liên hệ</a></li>--}}
                 </ul>
             </nav>
