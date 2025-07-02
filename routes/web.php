@@ -160,6 +160,7 @@ Route::group(['prefix' => 'br-admin', 'middleware' => 'auth'], function () {
         Route::get('product-feature/delete-row', [ProductFeatureController::class, 'delete'])->name('delete-product-feature');
         Route::get('product-feature/change-status', [ProductFeatureController::class, 'changeStatus'])->name('change-product-feature-status');
         Route::get('product-feature/get-feature-by-product', [ProductFeatureController::class, 'getFeatureByProduct'])->name('get-feature-by-product');
+        Route::get('product-feature/get-feature-by-id', [ProductFeatureController::class, 'getFeatureById'])->name('get-feature-by-id');
 
         // Product note
         Route::get('product-note', [ProductNoteController::class, 'index'])->name('list-product-note');

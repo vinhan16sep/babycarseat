@@ -153,6 +153,23 @@ class ProductFeatureController extends AdminController
         return response()->json(['status' => 'success', 'data' => $feature], 200);
     }
 
+    public function getFeatureById(Request $request)
+    {
+        $request = $request->all();
+
+        if (!isset($request['id']) || empty($request['id'])) {
+            return response()->json(['status' => 'error', 'msg' => Config::get('constants.MESSAGE.DATA_NOT_FOUND')], 200);
+        }
+
+        $feature = Feature::where('id', $request['id'])->first();
+
+        if ($feature) {
+            return response()->json(['status' => 'success', 'data' => $feature], 200);
+        }
+        return response()->json(['status' => 'error', 'msg' => Config::get('constants.MESSAGE.DATA_NOT_FOUND')], 200);
+    }
+
+
     private function validateStore($request)
     {
         $this->validate($request, [
