@@ -74,7 +74,7 @@
                                 @endif
                                 <div class="form-group">
                                     <label>Tiêu đề phụ</label>
-                                    <input type="text" name="sub_title" value="{{ old('sub_title') }}" class="form-control" id="inputSubTitle" readonly>
+                                    <input type="text" name="sub_title" value="{{ old('sub_title') }}" class="form-control w-30" id="inputSubTitle" readonly>
                                     @if ($errors->has('sub_title'))
                                     <span style="color:red;">{{ $errors->first('sub_title') }}</span>
                                     @endif
@@ -109,7 +109,7 @@
     $('#selectFeature').change(function (){
         let selectedValue = $(this).val();
         $.ajax({
-            url: url + '/br-admin/banner/get-feature-by-id',
+            url: url + '/br-admin/product-feature/get-feature-by-id',
             method: 'GET',
             data: {
                 id: selectedValue
