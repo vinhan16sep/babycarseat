@@ -72,6 +72,13 @@
                                 <label>Tính năng: {{ $featureTitle }}</label>
                                 <input type="hidden" name="feature_id" value="{{ $featureId }}">
                                 @endif
+                                <div class="form-group">
+                                    <label>Tiêu đề phụ</label>
+                                    <input type="text" name="sub_title" value="{{ old('sub_title') }}" class="form-control" id="inputSubTitle" readonly>
+                                    @if ($errors->has('sub_title'))
+                                    <span style="color:red;">{{ $errors->first('sub_title') }}</span>
+                                    @endif
+                                </div>
                                 
                                 <div class="row">
                                     <!-- <div class="col-md-8">
@@ -98,5 +105,26 @@
 </div>
 <script type="text/javascript">
     let url = window.location.origin;
+
+    $('#selectFeature').change(function (){
+        let selectedValue = $(this).val();
+        $.ajax({
+            url: url + '/br-admin/banner/get-feature-by-id',
+            method: 'GET',
+            data: {
+                id: selectedValue
+            },
+            success: function (res) {
+                if (res.status == 'success') {
+                    $('#inputSubTitle').val(res.data.sub_title);
+                } else {
+                    $('#inputSubTitle').val('');
+                }
+            },
+            error: function (error) { 
+                alert(error.responseJSON.msg);
+            }
+        });
+    });
 </script>
 @endsection
