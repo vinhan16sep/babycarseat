@@ -74,7 +74,7 @@
                                 @endif
                                 <div class="form-group">
                                     <label>Tiêu đề phụ</label>
-                                    <input type="text" name="sub_title" value="{{ old('sub_title') }}" class="form-control w-30" id="inputSubTitle" readonly>
+                                    <input type="text" name="sub_title" value="{{ old('sub_title') }}" class="form-control w-60" id="inputSubTitle" readonly>
                                     @if ($errors->has('sub_title'))
                                     <span style="color:red;">{{ $errors->first('sub_title') }}</span>
                                     @endif
