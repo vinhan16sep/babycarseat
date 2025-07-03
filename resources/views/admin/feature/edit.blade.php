@@ -39,6 +39,24 @@
                                             alt="preview image" style="max-height: 250px;">
                                     </div>
                                 </div>
+                                
+                                <div class="form-group">
+                                    <label>Chọn sản phẩm <span class="my-required">*</span></label>
+                                    <select class="form-control select2" name="product_id[]" multiple>
+                                        @if ($products->isEmpty())
+                                            <option value="" disabled>Không có danh mục nào</option>
+                                        @else
+                                            @foreach ($products as $item)
+                                            <option value="{{ $item->id }}" {{ in_array($item->id, $pfArr) ? 'selected' : '' }}>
+                                                {{ $item->name }}
+                                            </option>
+                                            @endforeach
+                                        @endif
+                                    </select>
+                                    @if ($errors->has('product_id'))
+                                        <span style="color:red;">{{ $errors->first('product_id') }}</span>
+                                    @endif
+                                </div>
 
                                 <div class="form-group{{ $errors->has('label') ? ' has-error' : '' }}">
                                     <label>Nhãn </label>
@@ -188,6 +206,13 @@
     $('#inputName').focusout(function (){
         let slug = to_slug($('#inputName').val());
         $('#inputSlug').val(slug);
+    });
+    
+    $(document).ready(function() {
+        $('.select2').select2({
+            placeholder: 'Chọn danh mục',
+            allowClear: true
+        });
     });
 </script>
 @endsection

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Feature;
+use App\Models\Product;
+use App\Models\ProductFeature;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
@@ -26,7 +28,10 @@ class FeatureController extends AdminController
     }
 
     public function create() {
-        return view('admin/feature/create');
+        $products = Product::get();
+        return view('admin/feature/create', [
+            'products' => $products,
+        ]);
     }
 
     public function store(Request $request) {
@@ -36,7 +41,6 @@ class FeatureController extends AdminController
         DB::beginTransaction();
 
         try {
-
             $model = new Feature();
             $model->label = $request->input('label');
             $model->title = $request->input('title');
@@ -53,8 +57,23 @@ class FeatureController extends AdminController
                 $model->image = $upload;
         
                 if ($model->save()) {
-                    DB::commit();
-                    return redirect()->route('list-feature')->with('success', Config::get('constants.MESSAGE.CREATE_SUCCEEDED'));
+                    $data = [];
+                    foreach ($request->input('product_id') as $productId) {
+                        $data[] = [
+                            'product_id' => $productId,
+                            'feature_id' => $model->id,
+                            'created_at' => now(),
+                            'updated_at' => now(),
+                        ];
+                    }
+                    // Insert product-feature relationships
+                    $insProdFeat = DB::table('product_feature')->insert($data);
+                    if ($insProdFeat) {
+                        DB::commit();
+                        return redirect()->route('list-feature')->with('success', Config::get('constants.MESSAGE.CREATE_SUCCEEDED'));
+                    }
+                    DB::rollBack();
+                    return redirect()->route('create-feature')->with('error', Config::get('constants.MESSAGE.SOMETHING_ERROR'));
                 }
                 DB::rollBack();
                 return redirect()->route('create-feature')->with('error', Config::get('constants.MESSAGE.SOMETHING_ERROR'));
@@ -70,6 +89,12 @@ class FeatureController extends AdminController
     public function edit($id) {
 
         $object = Feature::find($id);
+        $products = Product::get();
+        $productFeatures = ProductFeature::where(['feature_id' => $id])->get()->toArray();
+        $pfArr = [];
+        foreach ($productFeatures as $item) {
+            $pfArr[] = $item['product_id'];
+        }
 
         // If object not found
         if ($object == null || $object->count() == 0) {
@@ -78,6 +103,8 @@ class FeatureController extends AdminController
 
         return view('admin/feature/edit', [
             'object' => $object,
+            'products' => $products,
+            'pfArr' => $pfArr,
             'callback' => url(URL::previous())
         ]);
     }
@@ -113,7 +140,24 @@ class FeatureController extends AdminController
             }
 
             if ($object->save()) {
-                DB::commit();
+                $delete = ProductFeature::where(['feature_id' => $id])->delete();
+                $data = [];
+                foreach ($request->input('product_id') as $productId) {
+                    $data[] = [
+                        'product_id' => $productId,
+                        'feature_id' => $id,
+                        'created_at' => now(),
+                        'updated_at' => now(),
+                    ];
+                }
+                // Insert product-feature relationships
+                $insProdFeat = DB::table('product_feature')->insert($data);
+                if ($insProdFeat) {
+                    DB::commit();
+                } else {
+                    DB::rollBack();
+                }
+
                 $parsedUrl = parse_url($request->input('callback'));
                 $params = [];
                 if (isset($parsedUrl['query'])) {
@@ -214,10 +258,14 @@ class FeatureController extends AdminController
     private function validateStore($request) {
         $this->validate($request, [
             'title' => 'required|max:255',
+            'product_id' => 'required',
+            'label' => 'required',
             'slug' => 'required|max:255|unique:feature',
             'image' => 'required|image|mimes:jpg,jpeg,png|max:2048',
         ], [
             'title.required' => 'Chưa nhập tiêu đề',
+            'product_id.required' => 'Chưa chọn sản phẩm',
+            'label.required' => 'Chưa chọn vị trí',
             'slug.required' => 'Chưa có slug',
             'slug.unique' => 'Slug đã tồn tại',
             'image.required' => 'Chưa chọn ảnh',
@@ -230,10 +278,14 @@ class FeatureController extends AdminController
     private function validateUpdate($request, $id) {
         $this->validate($request, [
             'title' => 'required|max:255',
+            'product_id' => 'required',
+            'label' => 'required',
             'slug' => 'required|max:255|unique:feature,slug,' . $id . ',id',
             'image' => 'image|mimes:jpg,jpeg,png|max:2048',
         ], [
             'title.required' => 'Chưa nhập tiêu đề',
+            'product_id.required' => 'Chưa chọn sản phẩm',
+            'label.required' => 'Chưa chọn vị trí',
             'slug.required' => 'Chưa có slug',
             'slug.unique' => 'Slug đã tồn tại',
             'image.image' => 'Chỉ chấp nhận ảnh có định dạng jpg, jpeg, png',
