@@ -52,7 +52,7 @@
                                     <tr>
                                         <td scope="row">{{ $key + 1}}</td>
                                         <td>{{ $item->product->name }}</td>
-                                        <td>{{ $item->feature->label }}</td>
+                                        <td><span class="badge badge-{{ $item->feature->label == 'UPPER' ? 'primary' : 'warning' }}">{{ $item->feature->label }}</span></td>
                                         <td>{{ $item->feature->title }}</td>
                                         <td>{{ $item->feature->sub_title }}</td>
                                         <td class="color-primary">
