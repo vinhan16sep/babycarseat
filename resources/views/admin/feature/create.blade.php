@@ -40,6 +40,21 @@
                                     </div>
                                 </div>
 
+                                <div class="form-group{{ $errors->has('product_id') ? ' has-error' : '' }}">
+                                    <label>Chọn sản phẩm <span class="my-required">*</span></label>
+                                    <select class="form-control select2" name="product_id[]" multiple>
+                                        @foreach ($products as $item)
+                                            <option value="{{ $item->id }}"
+                                                {{ collect(old('product_id'))->contains($item->id) ? 'selected' : '' }}>
+                                                {{ $item->name }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                    @if ($errors->has('product_id'))
+                                        <span style="color:red;">{{ $errors->first('product_id') }}</span>
+                                    @endif
+                                </div>
+
                                 <div class="form-group{{ $errors->has('label') ? ' has-error' : '' }}">
                                     <label>Nhãn </label>
                                     <input type="text" name="label" value="{{ old('label') }}" class="form-control" id="inputLabel" maxlength="255">
@@ -188,6 +203,13 @@
     $('#inputTitle').focusout(function (){
         let slug = to_slug($('#inputTitle').val());
         $('#inputSlug').val(slug);
+    });
+
+    $(document).ready(function() {
+        $('.select2').select2({
+            placeholder: 'Chọn danh mục',
+            allowClear: true
+        });
     });
 </script>
 @endsection

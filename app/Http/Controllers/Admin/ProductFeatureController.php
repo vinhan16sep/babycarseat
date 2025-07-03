@@ -81,12 +81,8 @@ class ProductFeatureController extends AdminController
                 $productFeature->product_id = $request->input('product_id');
                 $productFeature->feature_id = $request->input('feature_id');
                 if ($productFeature->save()) {
-                    if ($productFeature->save()) {
-                        DB::commit();
-                        return redirect()->route('list-product-feature', ['id' => $request->input('product_id')])->with('success', Config::get('constants.MESSAGE.CREATE_SUCCEEDED'));
-                    }
-                    DB::rollBack();
-                    return redirect()->route('list-product-feature', ['id' => $request->input('product_id')])->with('error', Config::get('constants.MESSAGE.SOMETHING_ERROR' . "_2"));
+                    DB::commit();
+                    return redirect()->route('list-product-feature', ['id' => $request->input('product_id')])->with('success', Config::get('constants.MESSAGE.CREATE_SUCCEEDED'));
                 }
                 DB::rollBack();
                 return redirect()->route('list-product-feature', ['id' => $request->input('product_id')])->with('error', Config::get('constants.MESSAGE.SOMETHING_ERROR' . "_3"));
