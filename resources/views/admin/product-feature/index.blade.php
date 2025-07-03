@@ -41,6 +41,7 @@
                                     <tr>
                                         <th class="w-5 center">STT</th>
                                         <th class="w-15 center">Tên sản phẩm</th>
+                                        <th class="w-15 center">Vị trí</th>
                                         <th class="w-20 center">Tính năng</th>
                                         <th class="w-20 center">Tiêu đề phụ</th>
                                         <th class="w-15 center">Hành động</th>
@@ -51,6 +52,7 @@
                                     <tr>
                                         <td scope="row">{{ $key + 1}}</td>
                                         <td>{{ $item->product->name }}</td>
+                                        <td>{{ $item->feature->label }}</td>
                                         <td>{{ $item->feature->title }}</td>
                                         <td>{{ $item->feature->sub_title }}</td>
                                         <td class="color-primary">
