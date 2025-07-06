@@ -335,7 +335,10 @@
                                 <div class="row row-css">
                                     @foreach($categories as $_cate)
                                         <div class="col-md-3 col-sm-6">
-                                            <img src="{{ getImage($_cate->image) }}" alt="{{ $_cate->name }}">
+                                            <!-- <img src="{{ getImage($_cate->image) }}" alt="{{ $_cate->name }}"> -->
+                                            <a href="{{ route("san-pham", ['slug' => $_cate->slug]) }}">
+                                                <img src="{{ getImage($_cate->image) }}" alt="{{ $_cate->name }}">
+                                            </a>
                                             <h5><a href="{{ route("san-pham", ['slug' => $_cate->slug]) }}">Bé từ {{ $_cate->name }}</a></h5>
                                             <p>{{ $_cate->description }}</p>
                                         </div>
