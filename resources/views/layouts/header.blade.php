@@ -74,7 +74,10 @@
                                                                 @foreach($_item['products'] as $_i)
                                                                     @php $_i = (array)$_i @endphp
                                                                     <div class="col-md-3 col-sm-6">
-                                                                        <img src="{{ asset($_i['image']) }}" alt="">
+                                                                        <!-- <img src="{{ asset($_i['image']) }}" alt=""> -->
+                                                                        <a href="{{ route('product-index', ['slug' => $_i['slug']]) }}">
+                                                                            <img src="{{ asset($_i['image']) }}" alt="{{ $_i['name'] }}">
+                                                                        </a>
                                                                         <h5><a href="{{ route('product-index', ['slug' => $_i['slug']]) }}">{{ $_i['name'] }}</a></h5>
                                                                     </div>
                                                                 @endforeach
