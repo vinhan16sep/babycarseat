@@ -99,7 +99,7 @@
                                         <a href="#" class="footer-menu_item">Hướng dẫn sử dụng an toàn</a>
                                     </li>
                                     <li class="text-caption-1">
-                                        <a href="#" class="footer-menu_item">Đại lý chính sách hãng gaần bạn</a>
+                                        <a href="#" class="footer-menu_item">Đại lý chính sách hãng gần bạn</a>
                                     </li>
                                     <li class="text-caption-1">
                                         <a href="#" class="footer-menu_item">Kết nối 24/7</a>
@@ -1333,13 +1333,15 @@
         <div class="mb-body">
             <div class="mb-content-top">
                 <ul class="nav-ul-mb" id="wrapper-menu-navigation">
-                    <li class="menu-item"><a href="#" class="item-link">Về Babyro</a></li>
+                    <li class="nav-mb-item">
+                        <a href="{{ route('about-show') }}" class="mb-menu-link">Giới thiệu</a>
+                    </li>
                     <li class="nav-mb-item">
                         @if(!empty($categoriesMenu))
                             <div href="#dropdown-menu-one" class="mb-menu-link sub-nav-link collapsed"
                                  aria-expanded="true"
                                  aria-controls="dropdown-menu-one">
-                                <a href="{{ route('product-list') }}">Baby Car Seat</a><span class="btn-open-sub"></span>
+                                <a href="{{ route('product-list') }}">Sản phẩm</a><span class="btn-open-sub"></span>
                             </div>
                             <div id="dropdown-menu-one" class="collapse">
                                 <ul class="sub-nav-menu">
@@ -1363,7 +1365,7 @@
                                 </ul>
                             </div>
                         @else
-                            <a href="{{ route('product-list') }}" class="mb-menu-link">Baby Car Seat</a>
+                            <a href="{{ route('product-list') }}" class="mb-menu-link">Sản phẩm</a>
                         @endif
                     </li>
 {{--                    @foreach($mainMenu as $_name => $_menus)--}}
@@ -1405,7 +1407,7 @@
                         <div href="#dropdown-menu-three" class="mb-menu-link sub-nav-link collapsed"
                              aria-expanded="true"
                              aria-controls="dropdown-menu-three">
-                            <a href="#">Bảo hành 12 năm</a><span class="btn-open-sub"></span>
+                            <a href="#">Bảo hành</a><span class="btn-open-sub"></span>
                         </div>
                         <div id="dropdown-menu-three" class="collapse">
                             <ul class="sub-nav-menu">
@@ -1425,14 +1427,14 @@
                         </div>
                     </li>
                     <li class="nav-mb-item">
-                        <a href="#" class="mb-menu-link">Babyro Hub</a>
+                        <a href="{{ route('news') }}" class="mb-menu-link">Tin tức</a>
                     </li>
                     <li class="nav-mb-item">
                         <a href="#" class="mb-menu-link">Hỗ trợ</a>
                     </li>
-                    <li class="nav-mb-item">
+                    <!-- <li class="nav-mb-item">
                         <a href="#" class="mb-menu-link">Buy Now</a>
-                    </li>
+                    </li> -->
                 </ul>
             </div>
             <div class="mb-other-content">

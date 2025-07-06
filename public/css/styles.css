@@ -18255,9 +18255,14 @@ ul.list-text.type-number {
     display: none!important;
 }
 /* class css font content */
-.fix-font, .fix-font *{
+/** * AnNV 2025-07-06 Fix font family for content */
+/* .fix-font, .fix-font *{
     font-family: "Wix Madefor Text", sans-serif!important;
+} */
+.fix-font, .fix-font *{
+    font-family: "Inter" !important;
 }
+
 .error{
     color: red;
 }
