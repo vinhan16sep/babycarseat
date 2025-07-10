@@ -25,6 +25,7 @@ use App\Http\Controllers\Admin\PostCategoryController;
 use App\Http\Controllers\Admin\QAController;
 use App\Http\Controllers\Admin\FormSafeController;
 use App\Http\Controllers\Admin\FormWarrantyController;
+use App\Http\Controllers\Admin\FormContactsController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -304,10 +305,14 @@ Route::group(['prefix' => 'br-admin', 'middleware' => 'auth'], function () {
         Route::get('formsafe/show/{id}', [FormSafeController::class, 'show'])->name('show-formsafe');
         Route::get('formsafe/delete-row', [FormSafeController::class, 'delete'])->name('delete-formsafe');
 
-
-                // FormSafe
+        // FormSafe
         Route::get('formwarranty', [FormWarrantyController::class, 'index'])->name('list-formwarranty');
         Route::get('formwarranty/show/{id}', [FormWarrantyController::class, 'show'])->name('show-formwarranty');
         Route::get('formwarranty/delete-row', [FormWarrantyController::class, 'delete'])->name('delete-formwarranty');
+
+        // FormSafe
+        Route::get('contacts', [FormContactsController::class, 'index'])->name('list-contacts');
+        Route::get('contacts/show/{id}', [FormContactsController::class, 'show'])->name('show-contacts');
+        Route::get('contacts/delete-row', [FormContactsController::class, 'delete'])->name('delete-contacts');
     });
 });

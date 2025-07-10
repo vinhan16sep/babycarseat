@@ -1375,7 +1375,6 @@
 
     $(document).ready(function() {
         if($("#contactform").length > 0){
-            console.log(123123);
             let form = $("#contactform");
             let rules = {
                 name: {

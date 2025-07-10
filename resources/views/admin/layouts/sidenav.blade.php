@@ -46,6 +46,7 @@
                     <ul>
                         <li><a href="{{ route('list-formsafe') }}">Ghế Ô Tô An Toàn</a></li>
                         <li><a href="{{ route('list-formwarranty') }}">Bảo hành vàng 12 năm</a></li>
+                        <li><a href="{{ route('list-contacts') }}">Contacts</a></li>
                     </ul>
                 </li>
                 
