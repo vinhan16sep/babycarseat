@@ -519,6 +519,34 @@ footer{
 .signature-contentblock__subtitle {
     white-space: pre-line;
 }
+.section-two.section-new .home-padding {
+    padding-top: 2vw;
+    padding-bottom: 2vw;
+}
+.align-content-center{
+    align-items: center;
+}
+.section-two.section-new .home-padding .title {
+    color: #364d9f;
+    white-space: break-spaces;
+    font-family: 'SF Pro Rounded';
+    font-weight: bold;
+    font-size: 2.4vw;
+    line-height: 3vw;
+    margin-bottom: 20px;
+}
+.section-two.section-new .home-padding .desc {
+    font-size: 1.3vw;
+    font-weight: 300;
+    line-height: 1.76vw;
+    white-space: break-spaces;
+}
+@media (min-width: 1466px) {
+    .section-two.section-new .home-padding .title {
+        font-size: 2.4vw;
+        margin-bottom: 20px;
+    }
+}
 @media (min-width: 900px) {
     footer p, footer .footer-menu .footer-menu_item{
         color:black;
@@ -842,6 +870,27 @@ footer{
     }
 }
 
+@media (max-width: 768px) {
+    .section-two.section-new .home-padding{
+        padding: 15px;
+    }
+    .section-two.section-new .home-padding .title, .section-two.section-new .home-padding .desc{
+        white-space: normal;
+    }
+    .section-two.section-new .home-padding .title{
+        font-size: 24px;
+        line-height: 30px;
+        margin-bottom: 10px;
+    }
+    .section-two.section-new .home-padding .desc{
+        font-size: 14px;
+        line-height: 21px;
+    }
+    .align-content-center{
+        order: 2;
+        margin-top: 15px;
+    }
+}
 @media (max-width: 600px) {
     .home-padding {
         padding: 0;
