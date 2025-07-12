@@ -885,6 +885,7 @@ footer{
     .section-two.section-new .home-padding .desc{
         font-size: 14px;
         line-height: 21px;
+        text-align: justify;
     }
     .align-content-center{
         order: 2;
