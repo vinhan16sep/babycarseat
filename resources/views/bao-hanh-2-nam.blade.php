@@ -28,8 +28,8 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="d-flex box-button">
-                            <a href="" class="tf-btn btn-fill btn-white"><span class="text">Điều khoản<br>ba hành</span></a>
-                            <a href="" class="tf-btn btn-fill btn-white"><span class="text">Gia hạn<br>bảo hành 12 năm</span></a>
+                            <a href="" class="tf-btn btn-fill btn-white"><span class="text">Điều khoản<br>bảo hành</span></a>
+                            <a href="{{ route('bao-hanh', ['view' => 'bao-hanh-vang-12-nam']) }}" class="tf-btn btn-fill btn-white"><span class="text">Gia hạn<br>bảo hành 12 năm</span></a>
                         </div>
                     </div>
                 </div>
