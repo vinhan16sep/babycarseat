@@ -250,8 +250,8 @@ có thể đặt trọn niềm tin.</div>
                         <div class="swiper-slide">
                             <div class="tf-icon-box">
                                 <div class="icon-box"><img style="object-fit: contain" src="{{ getImage($_item->icon) }}" alt=""></div>
-                                <div class="content text-center" style="color: #374ea1 !important;">
-                                    <h6>{{ $_item->name }}</h6>
+                                <div class="content text-center">
+                                    <h6 style="color: #374ea1 !important;">{{ $_item->name }}</h6>
                                     <div class="text-secondary">{{ $_item->short_description }}</div>
                                 </div>
                             </div>
