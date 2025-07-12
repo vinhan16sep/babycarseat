@@ -507,7 +507,7 @@ footer{
 }
 
 .flat-spacing.section-two .flat-sw-navigation > div:nth-child(3) {
-    background: #1C1C1C;
+    background: #E9F9FF;
 }
 .flat-spacing.section-two .flat-sw-navigation > div:nth-child(3) * {
     color: #E9F9FF;
@@ -912,7 +912,7 @@ footer{
         background: #E2E2E2;
     }
     .flat-spacing.section-two .flat-sw-navigation > div:nth-child(3) .product-common__row {
-        background: #1C1C1C;
+        background: #E9F9FF;
     }
     .flat-spacing.section-two .flat-sw-navigation > div:nth-child(3) .signature-contentblock__image img{
         margin-top: 0;
