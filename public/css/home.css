@@ -142,7 +142,7 @@ section.section-text > div > div{
 }
 
 .box-product-common__row > div:not(:first-child) {
-    margin-top: 10px;
+    /* margin-top: 10px; */
 }
 .signature-contentblock{
     display: flex;
