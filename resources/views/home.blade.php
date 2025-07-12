@@ -119,6 +119,30 @@
 {{--    </section>--}}
     <!-- /Collection -->
 
+
+    <section class="flat-spacing bg-css topick section-two section-new" style="background: aliceblue">
+        <div class="container-fluid home-padding signature-contentblock-item-0">
+            <div class="row">
+                <div class="col-md-6 align-content-center">
+                    <div class="box-content">
+                        <h2 class="title">Babyro - Người hùng thầm lặng
+bảo vệ hành trình đầu đời của con</h2>
+                        <div class="desc">Babyro là kết tinh của sự thấu hiểu sâu sắc về nhu cầu an toàn
+của trẻ, được hình thành từ tiêu chuẩn kỹ thuật khắt khe của
+Đức và tinh thần đồng hành cùng hàng triệu gia đình Việt.
+Babyro chính là người hùng thầm lặng, hiện thân của tình yêu
+thương thông minh, sự bảo vệ chủ động và lời hứa đồng hành
+trên mọi chặng đường đầu đời của bé, nơi các gia đình hiện đại
+có thể đặt trọn niềm tin.</div>
+                    </div>
+                </div>
+                <div class="col-md-6 text-center">
+                    <img src="images/Babyro-nguoi-hung-tham-lang.png" alt="">
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Top picks -->
     <section class="flat-spacing bg-css topick section-one">
             <div class="container-fluid px-lg-5 px-2">
