@@ -4,6 +4,9 @@
 @section('meta_keyword', $new->title)
 @section('meta_description', $new->title)
 @section('meta_image', $new->title)
+@section('css')
+    <link rel="stylesheet" href="{{ asset('css/page.css?v=' . ($ver ?? '')) }}">
+@stop
 
 @section('content')
     <!-- blog-detail -->
