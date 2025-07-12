@@ -234,7 +234,6 @@ có thể đặt trọn niềm tin.</div>
         </section>
 {{--    </section>--}}
     <div class="home-padding" style="margin-top: 25px;">
-        <hr>
     </div>
 
     @include('components.last-page')
