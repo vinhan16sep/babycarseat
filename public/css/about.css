@@ -1,0 +1,202 @@
+@media (min-width: 1366px) {
+    .about-us-main > .container-fluid .row .col-md-5{
+        width: 45%;
+    }
+    .about-us-main > .container-fluid .row .col-md-7{
+        width: 55%;
+    }
+}
+.box-text > .text-head {
+    color: #fff;
+    text-align: center;
+    font-size: 3.7vw;
+    line-height: 4.2vw;
+    font-family: 'SF Pro Rounded';
+}
+
+.box-text > .text-head:first-child {
+    font-weight: bold;
+}
+
+.box-text > .text-head:last-child {
+    font-size: 1.8vw;
+}
+.about-us-main{
+    padding: 0 9.44vw;
+}
+.about-us-main > .container-fluid .row.even > div.img {
+    order: 2;
+}
+
+.about-us-main > .container-fluid .row.old .box-content {
+    margin: 0 0 0 auto;
+}
+.about-us-main > .container-fluid .row .col-md-5{
+    text-align: -webkit-center;
+}
+
+.about-us-main h3.title {
+    font-size: 2vw;
+    line-height: 2.2vw;
+    padding-bottom: 20px;
+    font-family: 'SF Pro Rounded';
+    color: #364d9f;
+    white-space: break-spaces;
+    font-weight: bold;
+}
+
+.about-us-main .desc {
+    font-size: 1.3vw;
+    line-height: 1.6vw;
+    font-weight: 300;
+    white-space: break-spaces;
+}
+
+
+.box-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    max-width: 96%;
+}
+
+.about-us-features img {
+    max-height: 470px;
+    max-width: 100%;
+    object-fit: contain;
+}
+
+.about-us-main > .container-fluid .row {
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+h4.title{
+    font-size: 1.6vw;
+    max-width: 900px;
+    text-align: center;
+    margin: 30px auto 80px;
+    font-family: 'SF Pro Rounded';
+    color: #364d9f;
+}
+.about-us-main{
+    border-bottom: 1px solid #ccc;
+    margin-top: 20px;
+}
+.about-us-main .about-us-features{
+    position: relative;
+    top: 20px;
+}
+.about-us-main .about-us-features img{
+    object-fit: contain;
+}
+.page-title {
+    padding: 0;
+}
+.page-title > div{
+    padding: 200px 0 200px;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+@media (min-width: 1460px) {
+    .about-us-main .desc{
+        font-size: 1.2vw;
+    }
+}
+@media (max-width: 990px) {
+    .about-us-main h3.title{
+        font-size: 18px;
+        line-height: 22px;
+        padding-bottom: 10px;
+    }
+    .about-us-main > .container-fluid .row{
+        margin-top: 0;
+        margin-bottom: 0;
+        padding-top: 15px;
+        padding-bottom: 15px;
+    }
+    .about-us-main .desc {
+        font-size: 13px;
+        line-height: 16px;
+        font-weight: 300;
+        white-space: normal;
+    }
+    h4.title{
+        font-size: 18px;
+        line-height: 22px;
+        max-width: 550px;
+        margin: 20px auto 40px;
+    }
+}
+@media (max-width: 768px) {
+    .about-us-main{
+        padding-top: 0!important;
+        margin-top: 0;
+        padding: 0;
+    }
+    .box-content{
+        display: block;
+        width: 100%;
+        max-width: 100%;
+    }
+    .about-content{
+        margin-top: 20px;
+    }
+    .about-content .title, .about-content .desc{
+        white-space: normal!important;
+    }
+    .about-us-main > .container-fluid .row .col-md-5{
+        width: 100%;
+    }
+    .about-us-main > .container-fluid .row .col-md-7{
+        width: 100%;
+    }
+    .about-us-main .about-us-features img{
+        object-fit: contain;
+    }
+    .about-us-main > .container-fluid .row.even > div.img{
+        order: 0;
+    }
+    .about-us-main > .container-fluid .row.old .box-content{
+        margin: 0;
+    }
+    .box-content{
+        width: 100%;
+        margin-bottom: 20px!important;
+    }
+    .about-us-main h3.title{
+        font-size: 18px;
+        line-height: 22px;
+        padding-bottom: 10px;
+    }
+    .about-us-main > .container-fluid .row{
+        margin-top: 0;
+        margin-bottom: 0;
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+    .about-us-main > .container-fluid .row.even{
+        background: aliceblue;
+    }
+    .about-us-main .desc {
+        font-size: 13px;
+        line-height: 16px;
+        font-weight: 300;
+    }
+    h4.title{
+        font-size: 18px;
+        line-height: 22px;
+        max-width: 550px;
+        margin: 10px auto 0;
+    }
+    .box-text > .text-head{
+        font-size: 30px;
+        line-height: 33px;
+    }
+    .box-text > .text-head:last-child{
+        font-size: 15px;
+        line-height: 30px;
+    }
+    .page-title > div{
+        padding: 80px 0 80px;
+    }
+}
