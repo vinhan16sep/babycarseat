@@ -27,7 +27,7 @@
 
 .section-one .content > div p {
     font-size: 1.1vw;
-    font-weight: 200;
+    font-weight: 300;
     line-height: 2vw;
 }
 
@@ -54,7 +54,7 @@
 
 .section-two .head + .content {
     font-size: 1.1vw;
-    font-weight: 200;
+    font-weight: 300;
     line-height: 2vw;
 }
 
@@ -94,12 +94,12 @@
 .box-button a {
     padding: 0.9vw 2.6vw;
     font-size: 1vw;
-    font-weight: 200;
+    font-weight: 300;
 }
 
 .last-box {
     font-size: 1.1vw;
-    font-weight: 200;
+    font-weight: 300;
     line-height: 2vw;
 }
 
@@ -141,7 +141,7 @@
 
 .accordion-product-wrap .accordion-content{
     font-size: 1.1vw;
-    font-weight: 200;
+    font-weight: 300;
     line-height: 2vw;
 }
 .accordion-product-wrap .accordion-product-item .accordion-content{
@@ -173,7 +173,7 @@
 }
 .section-four .content p{
     font-size: 1.1vw;
-    font-weight: 200;
+    font-weight: 300;
     line-height: 2vw;
 }
 .section-four .dk{
@@ -206,7 +206,7 @@
 
 .section-five .head + .content {
     font-size: 1.1vw;
-    font-weight: 200;
+    font-weight: 300;
     line-height: 1.5vw;
 }
 
@@ -258,7 +258,7 @@
 
 .section-six .content > div p {
     font-size: 1.1vw;
-    font-weight: 200;
+    font-weight: 300;
     line-height: 2vw;
 }
 
@@ -296,7 +296,7 @@ section p.note{
 
 .section-seven .head + .content {
     font-size: 1.1vw;
-    font-weight: 200;
+    font-weight: 300;
     line-height: 2vw;
 }
 
@@ -334,7 +334,7 @@ section p.note{
     font-weight: 600;
 }
 .ttbh-address p{
-    font-weight: 200;
+    font-weight: 300;
 }
 
 
@@ -348,7 +348,7 @@ section p.note{
 
     .form-warranty-content .desc{
         font-size: 1.1vw;
-        font-weight: 200;
+        font-weight: 300;
         line-height: 2vw;
     }
     .form-warranty-content label{
@@ -453,7 +453,7 @@ section p.note{
 
     .section-one .content > div p {
         font-size: 1vw;
-        font-weight: 200;
+        font-weight: 300;
         line-height: 2vw;
     }
 
@@ -484,7 +484,7 @@ section p.note{
 
     .section-two .head + .content {
         font-size: 1vw;
-        font-weight: 200;
+        font-weight: 300;
         line-height: 2vw;
     }
 
@@ -524,12 +524,12 @@ section p.note{
     .box-button a {
         padding: 0.9vw 2.6vw;
         font-size: 1vw;
-        font-weight: 200;
+        font-weight: 300;
     }
 
     .last-box {
         font-size: 1vw;
-        font-weight: 200;
+        font-weight: 300;
         line-height: 2vw;
     }
 
@@ -569,7 +569,7 @@ section p.note{
 
     .accordion-product-wrap .accordion-content{
         font-size: 1vw;
-        font-weight: 200;
+        font-weight: 300;
         line-height: 2vw;
     }
     .accordion-product-wrap .accordion-product-item .accordion-content{
@@ -601,7 +601,7 @@ section p.note{
     }
     .section-four .content p{
         font-size: 1vw;
-        font-weight: 200;
+        font-weight: 300;
         line-height: 2vw;
     }
     .section-four .dk{
@@ -635,7 +635,7 @@ section p.note{
 
     .section-five .head + .content {
         font-size: 1vw;
-        font-weight: 200;
+        font-weight: 300;
         line-height: 2vw;
     }
 
@@ -686,7 +686,7 @@ section p.note{
 
     .section-six .content > div p {
         font-size: 1vw;
-        font-weight: 200;
+        font-weight: 300;
         line-height: 2vw;
     }
 
@@ -723,7 +723,7 @@ section p.note{
 
     .section-seven .head + .content {
         font-size: 1vw;
-        font-weight: 200;
+        font-weight: 300;
         line-height: 2vw;
     }
 
@@ -761,7 +761,7 @@ section p.note{
         font-weight: 600;
     }
     .ttbh-address p{
-        font-weight: 200;
+        font-weight: 300;
     }
 
     .form-warranty{
@@ -774,7 +774,7 @@ section p.note{
 
         .form-warranty-content .desc{
             font-size: 1vw;
-            font-weight: 200;
+            font-weight: 300;
             line-height: 2vw;
             margin-bottom: 10px;
         }
@@ -783,7 +783,7 @@ section p.note{
         }
         .content-hau-mai p{
             font-size: 1vw;
-            font-weight: 200;
+            font-weight: 300;
         }
     }
     .form-safe{
@@ -796,7 +796,7 @@ section p.note{
 
         .form-safe-content .desc{
             font-size: 1vw;
-            font-weight: 200;
+            font-weight: 300;
             line-height: 2vw;
             margin-bottom: 10px;
         }
@@ -805,7 +805,7 @@ section p.note{
         }
         .content-hau-mai p{
             font-size: 1vw;
-            font-weight: 200;
+            font-weight: 300;
         }
     }
 
@@ -907,7 +907,7 @@ section p.note{
 
     .section-one .content > div p {
         font-size: 14px;
-        font-weight: 200;
+        font-weight: 300;
         line-height: 25px;
     }
 
@@ -935,7 +935,7 @@ section p.note{
 
     .section-two .head + .content {
         font-size: 14px;
-        font-weight: 200;
+        font-weight: 300;
         line-height: 25px;
     }
 
@@ -980,12 +980,12 @@ section p.note{
     .box-button a {
         padding: 8px 15px;
         font-size: 14px;
-        font-weight: 200;
+        font-weight: 300;
     }
 
     .last-box {
         font-size: 14px;
-        font-weight: 200;
+        font-weight: 300;
         line-height: 25px;
     }
 
@@ -1032,7 +1032,7 @@ section p.note{
     .accordion-product-wrap .accordion-content{
 
         font-size: 14px;
-        font-weight: 200;
+        font-weight: 300;
         line-height: 25px;
     }
     .accordion-product-wrap .accordion-product-item .accordion-content{
@@ -1065,7 +1065,7 @@ section p.note{
     .section-four .content p{
 
         font-size: 14px;
-        font-weight: 200;
+        font-weight: 300;
         line-height: 25px;
     }
     .section-four .dk{
@@ -1100,7 +1100,7 @@ section p.note{
 
     .section-five .head + .content {
         font-size: 14px;
-        font-weight: 200;
+        font-weight: 300;
         line-height: 25px;
     }
 
@@ -1152,7 +1152,7 @@ section p.note{
 
     .section-six .content > div p {
         font-size: 14px;
-        font-weight: 200;
+        font-weight: 300;
         line-height: 25px;
     }
 
@@ -1190,7 +1190,7 @@ section p.note{
 
     .section-seven .head + .content {
         font-size: 14px;
-        font-weight: 200;
+        font-weight: 300;
         line-height: 25px;
     }
 
@@ -1228,7 +1228,7 @@ section p.note{
         font-weight: 600;
     }
     .ttbh-address p{
-        font-weight: 200;
+        font-weight: 300;
     }
     .form-warranty{
         margin-top: -25px!important;
@@ -1240,7 +1240,7 @@ section p.note{
 
         .form-warranty-content .desc{
             font-size: 14px;
-            font-weight: 200;
+            font-weight: 300;
             line-height: 25px;
             margin-bottom: 10px;
             white-space: normal!important;
@@ -1260,7 +1260,7 @@ section p.note{
         }
         .content-hau-mai p{
             font-size: 14px;
-            font-weight: 200;
+            font-weight: 300;
             line-height: 25px;
             margin-bottom: 10px;
         }
@@ -1279,7 +1279,7 @@ section p.note{
 
         .form-safe-content .desc{
             font-size: 14px;
-            font-weight: 200;
+            font-weight: 300;
             line-height: 25px;
             margin-bottom: 10px;
             white-space: normal!important;
@@ -1299,7 +1299,7 @@ section p.note{
         }
         .content-hau-mai p{
             font-size: 14px;
-            font-weight: 200;
+            font-weight: 300;
             line-height: 25px;
             margin-bottom: 10px;
             white-space: normal!important;
