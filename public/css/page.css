@@ -1,5 +1,5 @@
 .tf-btn.btn-fill.btn-white{
-    background-color: #d21e50;
+    background-color: #81c4e1;
     color: #fff;
 }
 .small-text{
@@ -12,7 +12,7 @@
     text-align: center;
 }
 .card-product-info .product-title{
-    color: #C31E46;
+    color: #374ea1;
     font-weight: bold;
     margin-top: -3px;
     font-size: 1.50vw;
@@ -103,7 +103,7 @@
 /*    background-color: #fff;*/
 /*}*/
 .heading-section .heading, .list-star-default .icon{
-    color: #d20046;
+    color: #374ea1;
     font-weight: bold;
 }
 .custom-say{
@@ -128,7 +128,7 @@ section.section-text > div{
 }
 section.section-text > div > div{
     padding: 16px 25px 10px 25px;
-    color: #d20046;
+    color: #374ea1;
     font-weight: bold;
     display: inline-block;
     float: left;
@@ -215,7 +215,7 @@ section.section-text > div > div{
 }
 .content-hau-mai{
     background: #fff;
-    background: #F1F2F3;
+    background: #F1F2F3 !important;
     border: 0;
     border-radius: 17px;
 }
@@ -280,8 +280,8 @@ body *, html *, *{
 }
 
 .card-product-info .product-title {
-    color: #C31E46!important;
-    font-family: 'KoHo';
+    color: #374ea1!important;
+    font-family: 'SF Pro Rounded';
     font-weight: bold;
     align-content: end;
 }
@@ -336,7 +336,7 @@ section.section-text > div {
 }
 
 .signature-contentblock__title {
-    font-family: 'Inter';
+    font-family: 'SF Pro Rounded';
     font-weight: 600;
     color: black;
     margin-bottom: 30px;
@@ -374,9 +374,9 @@ section.section-text > div {
 }
 
 .content-hau-mai .css-text {
-    font-family: 'Inter';
-    font-weight: 600;
-    color: black;
+    font-family: 'SF Pro Rounded';
+    font-weight: 700;
+    color: #374ea1;
     font-size: 20px;
 }
 .content-hau-mai > div > div.d-flex img{
@@ -392,9 +392,9 @@ section.section-text > div {
 }
 
 .box-hau-mai h3 {
-    font-family: 'Inter';
+    font-family: 'SF Pro Rounded';
     font-weight: 700;
-    color: black;
+    color: #374ea1;
     margin-bottom: 0;
 }
 
@@ -439,9 +439,9 @@ section.section-text > div {
     display: none!important;
 }
 .box-custom-say h3{
-    font-family: 'Inter';
+    font-family: 'SF Pro Rounded';
     font-weight: 700;
-    color: black;
+    color: #374ea1;
     margin-bottom: 0;
 }
 
@@ -454,7 +454,7 @@ footer .footer-wrap{
 }
 
 footer .footer-bottom{
-    background: #181818;
+    background: #374ea1;
 }
 footer .footer-bottom p{
     color: #fff;
@@ -560,7 +560,7 @@ footer{
     .footer .footer-heading{
         font-size: 1.4vw;
         line-height: 2.5vw;
-        color: #d21e50;
+        color: #374ea1;
         margin-bottom: 15px;
         font-weight: 600;
     }
@@ -582,7 +582,7 @@ footer{
     }
     .box-custom-say h3{
         font-size: 2.7vw;
-        font-family: 'Inter'!important;
+        font-family: 'SF Pro Rounded'!important;
     }
     .box-custom-say .title{
         justify-content: center;
@@ -658,8 +658,8 @@ footer{
     }
 
     .card-product-info .product-title {
-        color: #C31E46!important;
-        font-family: 'KoHo';
+        color: #374ea1!important;
+        font-family: 'SF Pro Rounded';
         font-weight: bold;
         font-size: 1.54vw;
         align-content: end;
@@ -743,7 +743,7 @@ footer{
 
     .signature-contentblock__title {
         font-size: 3.2vw;
-        font-family: 'Inter';
+        font-family: 'SF Pro Rounded';
         font-weight: 600;
         color: black;
     }
@@ -771,7 +771,7 @@ footer{
         line-height: 4.2vw;
         margin-top: 0 !important;
         font-weight: 700;
-        font-weight: 'Inner';
+        font-weight: 'SF Pro Rounded';
     }
 
     .tf-slideshow.slider-default.slider-effect-fade .title-display span {
@@ -793,9 +793,9 @@ footer{
     .content-hau-mai .css-text {
         font-size: 1.8vw;
         line-height: 2vw;
-        font-family: 'Inter';
-        font-weight: 600;
-        color: black;
+        font-family: 'SF Pro Rounded';
+        font-weight: 700;
+        color: #374ea1;
     }
 
     .box-hau-mai .title {
@@ -807,9 +807,9 @@ footer{
 
     .box-hau-mai h3 {
         font-size: 2.7vw;
-        font-family: 'Inter';
+        font-family: 'SF Pro Rounded';
         font-weight: 700;
-        color: black;
+        color: #374ea1;
         margin-bottom: 0px;
     }
 

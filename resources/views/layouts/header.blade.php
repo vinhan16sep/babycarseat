@@ -17,7 +17,7 @@
         font-weight: 500;
     }
     header .desc h4:hover a{
-        color: #e43131!important;
+        color: #374ea1 !important;
     }
     header .box-design{
         position: relative;
@@ -104,7 +104,7 @@
                         </div>
                     </li>
                     <li class="menu-item"><a href="{{ route('news') }}" class="item-link">Tin tức</a></li>
-                    <li class="menu-item"><a href="#" class="item-link">Hỗ trợ</a></li>
+                    <li class="menu-item"><a href="{{ route('contact') }}" class="item-link">Hỗ trợ</a></li>
                     <!-- <li class="menu-item"><a href="#" class="item-link">Buy now</a></li> -->
 {{--                    @foreach($mainMenu as $_name => $_menus)--}}
 {{--                        <li class="menu-item {{ checkActiveMenu(\Illuminate\Support\Str::Slug($_name)) }}">--}}

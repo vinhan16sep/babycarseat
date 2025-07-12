@@ -6,7 +6,7 @@
         border-radius: 50px;
     }
     .content-hau-mai div.mt-auto:hover a{
-        /*color:#d21e50;*/
+        /*color:#374ea1;*/
     }
     .content-hau-mai div.mt-auto{
         /*padding: 15px 30px;*/
@@ -19,7 +19,7 @@
         /*font-size: 20px;*/
         /*width: 180px;*/
         /*text-align: center;*/
-        /*color:#d21e50;*/
+        /*color:#374ea1;*/
     }
     /*.content-hau-mai div.mt-auto:hover{*/
     /*    background: transparent;*/
@@ -44,7 +44,7 @@
     /*    -webkit-transition: width 0.4s cubic-bezier(0.25, 0.8, 0.25, 1) 0s;*/
     /*    -o-transition: width 0.4s cubic-bezier(0.25, 0.8, 0.25, 1) 0s;*/
     /*    transition: width 0.4s cubic-bezier(0.25, 0.8, 0.25, 1) 0s;*/
-    /*    background: #d21e50;*/
+    /*    background: #374ea1;*/
     /*}*/
     .content-hau-mai > div > div.d-flex img{
         max-height: 65px;
@@ -61,10 +61,10 @@
                 <div class="card  h-100 content-hau-mai d-flex flex-column">
                     <div class="card-body d-flex flex-column">
                         <div class="d-flex">
-                            <img src="{{ asset("/icon/icons home-06.png")  }}" alt="">
+                            <img src="{{ asset("/icon/icons-home-06.png")  }}" alt="">
                             <div class="css-text">
                                 Chương trình<br>
-                                Ghế an toàn Babyro care
+                                ĐỔI GHẾ MIỄN PHÍ
                             </div>
                         </div>
                         <p>Tại BABYRO, chúng tôi hiểu rằng an toàn của những hành khách nhỏ là ưu tiên hàng đầu. Vì vậy, khi mua sản phẩm của chúng tôi, bạn có thể tham gia Chương Trình Ghế An Toàn BABYRO và được thay thế miễn phí ghế ô tô đã gặp tai nạn bằng một ghế mới.</p>
@@ -79,7 +79,7 @@
                 <div class="card  h-100 content-hau-mai d-flex flex-column">
                     <div class="card-body d-flex flex-column">
                         <div class="d-flex">
-                            <img src="{{ asset("/icon/icons home-07.png")  }}" alt="">
+                            <img src="{{ asset("/icon/12-nam-icon-01.png")  }}" alt="">
                             <div class="css-text">
                                 Năm<br>
                                 bảo hành
@@ -96,12 +96,11 @@
         </div>
     </div>
 </section>
-<section class="pt-0 home-padding section-custom-say" style="background: #F1F2F3;" style="{{ !empty($is_border) ? 'border-top: 1px solid #e9e9e9;' : '' }}">
+<section class="pt-0 home-padding section-custom-say" style="background: #E9F9FF;" style="{{ !empty($is_border) ? 'border-top: 1px solid #e9e9e9;' : '' }}">
     @if(empty($is_not_show) && $feedback)
         <div class="box-custom-say">
             <div class="text-center wow fadeInUp d-flex title">
-                <h3 class="heading" style="">Công nghệ vẹn tròn yêu thương</h3>
-                {{--                <p class="subheading">Our customers adore our products, and we constantly aim to delight them.</p>--}}
+                <h3 class="heading" style="">Ý kiến chuyên gia</h3>
             </div>
             <div dir="ltr" class="swiper tf-sw-testimonial" data-preview="3" data-tablet="2" data-mobile="1"
                  data-space-lg="30" data-space-md="30" data-space="15" data-pagination="1" data-pagination-md="1"

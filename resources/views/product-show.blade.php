@@ -170,7 +170,7 @@
                                         <div class="tf-product-info-price" >
                                             <h5 class="price-on-sale">
                                                 @if(!empty($product->discount_value))
-                                                    <span>Giá gốc <del style="color: #d20046;">{{ numberFormat($product->price) }} VNĐ</del> </span> | {{ numberFormat($product->discount_value) }} VNĐ
+                                                    <span>Giá gốc <del style="color: #374ea1;">{{ numberFormat($product->price) }} VNĐ</del> </span> | {{ numberFormat($product->discount_value) }} VNĐ
                                                 @else
                                                     <span>Giá {{ numberFormat($product->price) }} VNĐ </span>
                                                 @endif

@@ -82,14 +82,14 @@ chương trình "Ghế Ô Tô An Toàn". Các trường có dấu (<span class="
                                     </label>
                                     <span id="env_images-name" class="ms-2 align-middle" style="font-style:italic; position:relative; top:-13px;"></span>
                                     <input type="file" id="env_images" name="env_images" accept="image/*" />
-                                    <p class="desc">Video hiện trường vui lòng gửi mail tới <a style="color:#d21e50" href="mailto:info@babyro.com.vn ">info@babyro.com.vn</a></p>
+                                    <p class="desc">Video hiện trường vui lòng gửi mail tới <a style="color:#374ea1" href="mailto:info@babyro.com.vn ">info@babyro.com.vn</a></p>
                                 </div>
                             </div>
                         </div>
                          <div class="mb-3">
                             <div class="row g-2">
                                 <div class="col white-space-normal-mb">
-                                    <input type="checkbox" id="agree" name="agree" value="1" style="display: inline;margin: 0 7px 0 7px;height: 15px;transform: scale(1.7);accent-color: #d21e50;">
+                                    <input type="checkbox" id="agree" name="agree" value="1" style="display: inline;margin: 0 7px 0 7px;height: 15px;transform: scale(1.7);accent-color: #374ea1;">
                                     <label class="desc" style="display: inline;white-space: pre-line">Tôi xác nhận rằng các thông tin cung cấp trên là chính xác và đầy đủ. Tôi đồng ý tham gia
 chương trình “Ghế Ô Tô An Toàn” theo các điều khoản của Babyro.</label>
                                 </div>
@@ -113,7 +113,7 @@ chương trình “Ghế Ô Tô An Toàn” theo các điều khoản của Baby
                             <img style="filter:unset" src="{{ asset("/icon/icons home-05.png")  }}" alt="">
                             <div class="css-text">
                                 Chương trình<br>
-                                Ghế an toàn Babyro care
+                                ĐỔI GHẾ MIỄN PHÍ
                             </div>
                         </div>
                         <p>Có câu hỏi hoặc cần trợ giúp khi điền mẫu đơn?<br>

@@ -203,7 +203,7 @@
     display: contents;
 }
 .heading{
-    color: #d20046;
+    color: #374ea1;
     font-weight: bold;
 }
 .customer-tick {
@@ -215,7 +215,7 @@
     text-align: left!important;
 }
 .custom-say .heading-section h3, .heading-section .heading, .list-star-default .icon {
-    color: #d20046;
+    color: #374ea1;
     font-weight: bold;
 }
 .testimonial-item .content-top{

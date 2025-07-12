@@ -2695,7 +2695,7 @@ ul {
   color: #ffffff;
   font-weight: 400;
   font-size: 12px;
-  text-transform: capitalize;
+  /* text-transform: capitalize; */
   border-radius: 3px;
 }
 thead tr th {
@@ -3161,7 +3161,7 @@ tbody tr td:last-child {
   background: #ffffff;
   border: 1px solid #e7e7e7;
   color: #373757;
-  text-transform: capitalize;
+  /* text-transform: capitalize; */
 }
 .fc-text-arrow {
   font-family: inherit;
