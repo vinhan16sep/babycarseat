@@ -99,7 +99,7 @@
                                 <li><a href="{{ route('bao-hanh', ['view' => 'bao-hanh-2-nam']) }}" class="menu-link-text">Bảo hành cơ bản 2 năm</a></li>
                                 <li><a href="{{ route('bao-hanh', ['view' => 'bao-hanh-vang-12-nam']) }}" class="menu-link-text">Bảo hành vàng 12 năm</a></li>
                                 <li><a href="{{ route('bao-hanh', ['view' => 'doi-ghe-o-to-mien-phi']) }}" class="menu-link-text">Chương trình đổi ghế ô tô miễn phí</a></li>
-                                <li><a href="#" class="menu-link-text">Chương trình Thu cũ Đổi mới</a></li>
+                                <!-- <li><a href="#" class="menu-link-text">Chương trình Thu cũ Đổi mới</a></li> -->
                             </ul>
                         </div>
                     </li>
