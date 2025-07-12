@@ -65,20 +65,20 @@
                                     @endif
                                 </div>
 
+                                <div class="form-group">
+                                    <label>Nhãn</label>
+                                    <input type="text" name="link" value="{{ old('link') }}" class="form-control" maxlength="255">
+                                    @if ($errors->has('link'))
+                                        <span style="color:red;">{{ $errors->first('link') }}</span>
+                                    @endif
+                                </div>
+
                                 <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                                     <label>Tiêu đề</label>
                                     <input type="text" name="name" value="{{ old('name') }}" class="form-control" id="inputName" maxlength="255">
                                     @if ($errors->has('name'))
                                         <span style="color:red;">{{ $errors->first('name') }}</span>
                                     </span>
-                                    @endif
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="link" class="form-label">Link</label>
-                                    <textarea name="link" class="form-control" id="link">{{ old('link') }}</textarea>
-                                    @if ($errors->has('link'))
-                                        <span style="color:red;">{{ $errors->first('link') }}</span>
                                     @endif
                                 </div>
 

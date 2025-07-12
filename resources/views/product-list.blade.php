@@ -40,7 +40,7 @@
             font-size: 23px;
         }
         .product h4{
-            color: #d20046;
+            color: #374ea1;
             text-transform: uppercase;
             font-weight: 600;
             font-size: 38px;
@@ -120,7 +120,7 @@
             font-size: 1rem;
         }
         .heading{
-            color: #d20046;
+            color: #374ea1;
             font-weight: bold;
         }
         .customer-tick {
@@ -132,7 +132,7 @@
             text-align: left!important;
         }
         .custom-say .heading-section h3, .heading-section .heading, .list-star-default .icon {
-            color: #d20046;
+            color: #374ea1;
             font-weight: bold;
         }
         .testimonial-item .content-top{
@@ -407,9 +407,9 @@
                                     </div>
                                     <div class="price">
                                         @if(!empty($_product->discount_value))
-                                            Giá gốc <span style="text-decoration: line-through;color: #d21e50">{{ numberFormat($_product->price) }} VNĐ</span> | <span style="font-weight: bold;">{{ numberFormat($_product->discount_value) }} VNĐ</span>
+                                            Giá gốc <span style="text-decoration: line-through;color: #374ea1">{{ numberFormat($_product->price) }} VNĐ</span> | <span style="font-weight: bold;">{{ numberFormat($_product->discount_value) }} VNĐ</span>
                                         @else
-                                            Giá <span style="font-weight: bold;color: #d20046">{{ numberFormat($_product->price) }} VNĐ</span>
+                                            Giá <span style="font-weight: bold;color: #374ea1">{{ numberFormat($_product->price) }} VNĐ</span>
                                         @endif
                                     </div>
 {{--                                    <p class="product-desc">{{ $_product->first_category ? $_product->first_category->name : '' }}</p>--}}

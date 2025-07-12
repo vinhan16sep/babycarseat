@@ -7,7 +7,7 @@
                     <div class="col-lg-12">
                         <div class="footer-logo" style="margin-bottom: 12px;">
                             <a href="{{ url("/") }}">
-                                <img src="{{ asset('images/logo/footer logo.png') }}" alt="">
+                                <img src="{{ asset('images/logo/footer-logo.png') }}" alt="">
                             </a>
                         </div>
                     </div>
@@ -41,21 +41,21 @@
                         <div class="footer-menu" style="margin-bottom: 0;float: right;">
                             <div class="footer-col-block">
                                 <div class="footer-heading text-button footer-heading-mobile">
-                                    Sản phẩm Babyro
+                                    Babyro
                                 </div>
                                 <div class="tf-collapse-content">
                                     <ul class="footer-menu-list">
                                         <li class="text-caption-1">
-                                            <a href="#" class="footer-menu_item">Bảo hành vàng 10 năm</a>
+                                            <a href="#" class="footer-menu_item">Câu chuyện Babyro</a>
                                         </li>
                                         <li class="text-caption-1">
-                                            <a href="#" class="footer-menu_item">Chương trình đổi ghế sau tai nạn</a>
+                                            <a href="#" class="footer-menu_item">Tiêu chuẩn ECE R129 | R44</a>
                                         </li>
                                         <li class="text-caption-1">
-                                            <a href="#" class="footer-menu_item">Tiêu chuẩn Châu Âu ECE R129</a>
+                                            <a href="#" class="footer-menu_item">Kiểm định nghiêm ngặt tại EU</a>
                                         </li>
                                         <li class="text-caption-1">
-                                            <a href="term-of-use.html" class="footer-menu_item">Thiết kế chuẩn Đức</a>
+                                            <a href="term-of-use.html" class="footer-menu_item">An toàn chuẩn Đức</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -66,21 +66,21 @@
                         <div class="footer-menu" style="margin-bottom: 0;float: right;margin-right:30px;">
                         <div class="footer-col-block">
                             <div class="footer-heading text-button footer-heading-mobile">
-                                Babyro Hub
+                                Chính sách
                             </div>
                             <div class="tf-collapse-content">
                                 <ul class="footer-menu-list">
                                     <li class="text-caption-1">
-                                        <a href="#" class="footer-menu_item">Câu chuyện Babyro</a>
+                                        <a href="#" class="footer-menu_item">Bảo hành Vàng 12 năm</a>
                                     </li>
                                     <li class="text-caption-1">
-                                        <a href="#" class="footer-menu_item">Góc chuyên gia</a>
+                                        <a href="#" class="footer-menu_item">Chương trình đổi ghế miễn phí</a>
                                     </li>
                                     <li class="text-caption-1">
-                                        <a href="#" class="footer-menu_item">Bí kíp mẹ thông thái</a>
+                                        <a href="#" class="footer-menu_item">Đổi trả 7 ngày</a>
                                     </li>
                                     <li class="text-caption-1">
-                                        <a href="term-of-use.html" class="footer-menu_item">Babyro trên truyền thông</a>
+                                        <a href="term-of-use.html" class="footer-menu_item">Chính sách bảo mật</a>
                                     </li>
                                 </ul>
                             </div>
@@ -99,7 +99,7 @@
                                         <a href="#" class="footer-menu_item">Hướng dẫn sử dụng an toàn</a>
                                     </li>
                                     <li class="text-caption-1">
-                                        <a href="#" class="footer-menu_item">Đại lý chính sách hãng gần bạn</a>
+                                        <a href="#" class="footer-menu_item">Đại lý chính hãng gần bạn</a>
                                     </li>
                                     <li class="text-caption-1">
                                         <a href="#" class="footer-menu_item">Kết nối 24/7</a>
@@ -1430,7 +1430,7 @@
                         <a href="{{ route('news') }}" class="mb-menu-link">Tin tức</a>
                     </li>
                     <li class="nav-mb-item">
-                        <a href="#" class="mb-menu-link">Hỗ trợ</a>
+                        <a href="{{ route('contact') }}" class="mb-menu-link">Hỗ trợ</a>
                     </li>
                     <!-- <li class="nav-mb-item">
                         <a href="#" class="mb-menu-link">Buy Now</a>

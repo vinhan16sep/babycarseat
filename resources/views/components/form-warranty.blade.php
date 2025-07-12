@@ -71,7 +71,7 @@ chương trình "Bảo hành Vàng 12 năm Babyro". Các trường có dấu (<s
                          <div class="mb-3">
                             <div class="row g-2">
                                 <div class="col white-space-normal-mb">
-                                    <input type="checkbox" id="warranty_agree" name="agree" value="1" style="display: inline;margin: 0 7px 0 7px;height: 15px;transform: scale(1.7);accent-color: #d21e50;">
+                                    <input type="checkbox" id="warranty_agree" name="agree" value="1" style="display: inline;margin: 0 7px 0 7px;height: 15px;transform: scale(1.7);accent-color: #374ea1;">
                                     <label class="desc" style="display: inline;white-space: pre-line">Tôi xác nhận rằng các thông tin cung cấp trên là chính xác và đầy đủ. Tôi đồng ý tham gia
 chương trình “Ghế Ô Tô An Toàn” theo các điều khoản của Babyro.</label>
                                 </div>
@@ -92,7 +92,7 @@ chương trình “Ghế Ô Tô An Toàn” theo các điều khoản của Baby
                 <div class="card content-hau-mai d-flex flex-column">
                     <div class="card-body d-flex flex-column">
                         <div class="d-flex">
-                            <img src="{{ asset("/icon/icons home-06.png")  }}" alt="">
+                            <img src="{{ asset("/icon/icons-home-06.png")  }}" alt="">
                             <div class="css-text">
                                 Chương trình<br>
                                 Bảo hành vàng 12 năm Babyro

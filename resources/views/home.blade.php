@@ -48,7 +48,7 @@
     <marquee scrollamount="5" direction="right">
         <section class="section-text">
             <div class="marquee-text">
-                <div>Bảo hành Vàng 10 năm</div>
+                <div>Bảo hành Vàng 12 năm</div>
                 <div>Đổi mới sau tai nạn</div>
                 <div>30 ngày dùng thử</div>
                 <div>Miễn phí Ship</div>
@@ -144,11 +144,10 @@ có thể đặt trọn niềm tin.</div>
     </section>
 
     <!-- Top picks -->
-    <section class="flat-spacing bg-css topick section-one">
+    <section class="flat-spacing bg-css topick section-one" style="background: #EEEEEE !important;">
             <div class="container-fluid px-lg-5 px-2">
             <div class="heading-section text-center wow fadeInUp">
-                <h3 class="heading">Hot Selling</h3>
-{{--                <p class="subheading text-secondary">Browse our Top Trending: the hottest picks loved by all. </p>--}}
+                <h3 class="heading" style="font-family: SF Pro Rounded !important;">Sản phẩm yêu thích</h3>
             </div>
             @if(!empty($hotProducts))
             <div class="flat-sw-navigation wow fadeInUp" data-wow-delay="0.1s">
@@ -218,11 +217,11 @@ có thể đặt trọn niềm tin.</div>
                                     <div class="signature-contentblock__description">
                                         <div class="box-first-content-flex">
                                             <img src="{{ getImage($_item->icon) }}" alt="">
-                                            <div style="text-transform: uppercase">
+                                            <div style="text-transform: uppercase; color:#374ea1 !important;">
                                                 {!! $_item->link !!}
                                             </div>
                                         </div>
-                                        <div class="signature-contentblock__title">{{ $_item->name }}</div>
+                                        <div class="signature-contentblock__title" style="color:#374ea1 !important;">{{ $_item->name }}</div>
                                         <div class="signature-contentblock__subtitle">{{ $_item->description }}</div>
                                     </div>
                                 </div>

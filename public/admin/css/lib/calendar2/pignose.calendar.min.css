@@ -67,7 +67,7 @@
     margin-bottom: .4em;
     font-size: 130%;
     font-weight: 600;
-    text-transform: capitalize;
+    /* text-transform: capitalize; */
 }
 
 .pignose-calendar .pignose-calendar-top .pignose-calendar-top-nav {
@@ -130,7 +130,7 @@
     line-height: 2.8em;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
-    text-transform: capitalize;
+    /* text-transform: capitalize; */
 }
 
 .pignose-calendar .pignose-calendar-header .pignose-calendar-week.pignose-calendar-week-sat, .pignose-calendar .pignose-calendar-header .pignose-calendar-week.pignose-calendar-week-sun {

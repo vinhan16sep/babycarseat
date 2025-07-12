@@ -4,7 +4,7 @@
 <section class="flat-spacing bg-css topick section-one">
     <div class="container-fluid">
         <div class="heading-section text-center wow fadeInUp">
-            <h3 class="heading">Hot Selling</h3>
+            <h3 class="heading" style="font-family: SF Pro Rounded !important;">Sản phẩm yêu thích</h3>
         </div>
         @if(!empty($hotProducts))
             <div class="flat-sw-navigation wow fadeInUp" data-wow-delay="0.1s">

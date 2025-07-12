@@ -1,5 +1,5 @@
 .tf-btn.btn-fill.btn-white{
-    background-color: #d21e50;
+    background-color: #81c4e1;
     color: #fff;
 }
 .small-text{
@@ -12,7 +12,7 @@
     text-align: center;
 }
 .card-product-info .product-title{
-    color: #C31E46;
+    color: #374ea1;
     font-weight: bold;
     margin-top: -3px;
 }
@@ -85,7 +85,7 @@
     background: rgba(134, 121, 121, 0.1);
 }
 .flat-spacing.bg-css .heading{
-    color: black!important;
+    color: #374ea1 !important;
     font-weight: bold;
 }
 .collection-position-2.style-7 .content{
@@ -102,7 +102,7 @@
 /*    background-color: #fff;*/
 /*}*/
 .heading-section .heading, .list-star-default .icon{
-    color: #d20046;
+    color: #374ea1;
     font-weight: bold;
 }
 .custom-say{
@@ -127,7 +127,7 @@ section.section-text > div{
 }
 section.section-text > div > div{
     padding: 16px 25px 10px 25px;
-    color: #d20046;
+    color: #374ea1;
     font-weight: bold;
     display: inline-block;
     float: left;
@@ -214,7 +214,7 @@ section.section-text > div > div{
 }
 .content-hau-mai{
     background: #fff;
-    background: #F1F2F3;
+    background: #E9F9FF !important;
     border: 0;
     border-radius: 17px;
 }
@@ -279,8 +279,8 @@ body *, html *, *{
 }
 
 .card-product-info .product-title {
-    color: #C31E46!important;
-    font-family: 'KoHo';
+    color: #374ea1!important;
+    font-family: 'SF Pro Rounded';
     font-weight: bold;
     align-content: end;
 }
@@ -335,7 +335,7 @@ section.section-text > div {
 }
 
 .signature-contentblock__title {
-    font-family: 'Inter';
+    font-family: 'SF Pro Rounded';
     font-weight: 600;
     color: black;
     margin-bottom: 30px;
@@ -361,7 +361,7 @@ section.section-text > div {
     line-height: 48px;
     margin-top: 0 !important;
     font-weight: 700;
-    font-family: 'Inter';
+    font-family: 'SF Pro Rounded';
     margin-bottom: 10px;
 }
 
@@ -378,9 +378,9 @@ section.section-text > div {
 }
 
 .content-hau-mai .css-text {
-    font-family: 'Inter';
-    font-weight: 600;
-    color: black;
+    font-family: 'SF Pro Rounded';
+    font-weight: 700;
+    color: #374ea1;
     font-size: 20px;
 }
 .content-hau-mai > div > div.d-flex img{
@@ -396,9 +396,9 @@ section.section-text > div {
 }
 
 .box-hau-mai h3 {
-    font-family: 'Inter';
+    font-family: 'SF Pro Rounded';
     font-weight: 700;
-    color: black;
+    color: #374ea1;
     margin-bottom: 0;
 }
 
@@ -443,9 +443,9 @@ section.section-text > div {
     display: none!important;
 }
 .box-custom-say h3{
-    font-family: 'Inter';
+    font-family: 'SF Pro Rounded';
     font-weight: 700;
-    color: black;
+    color: #374ea1;
     margin-bottom: 0;
 }
 
@@ -458,7 +458,7 @@ footer .footer-wrap{
 }
 
 footer .footer-bottom{
-    background: #181818;
+    background: #374ea1;
 }
 footer .footer-bottom p{
     color: #fff;
@@ -479,7 +479,10 @@ footer{
     padding-bottom: 0!important;
 }
 .flat-spacing.section-two .flat-sw-navigation > div:nth-child(1) {
-    background: #E2E2E2;
+    background: #E9F9FF;
+}
+.flat-spacing.section-two .flat-sw-navigation > div:nth-child(2) {
+    background: #FFF8F9;
 }
 .flat-spacing.section-two .flat-sw-navigation > div:nth-child(1) * {
     color: #000000;
@@ -507,7 +510,10 @@ footer{
     background: #1C1C1C;
 }
 .flat-spacing.section-two .flat-sw-navigation > div:nth-child(3) * {
-    color: #E2E2E2;
+    color: #E9F9FF;
+}
+.flat-spacing.section-two .flat-sw-navigation > div:nth-child(4) {
+    background: #FFF8F9;
 }
 .flat-spacing.section-two .flat-sw-navigation > div:nth-child(3) .signature-contentblock__image img{
     margin-top: 80px;
@@ -557,7 +563,7 @@ footer{
     .footer .footer-heading{
         font-size: 1.4vw;
         line-height: 2.5vw;
-        color: #d21e50;
+        color: #374ea1;
         margin-bottom: 15px;
         font-weight: 600;
     }
@@ -579,7 +585,7 @@ footer{
     }
     .box-custom-say h3{
         font-size: 2.5vw;
-        font-family: 'Inter'!important;
+        font-family: 'SF Pro Rounded'!important;
     }
     .box-custom-say .title{
         justify-content: center;
@@ -655,8 +661,8 @@ footer{
     }
 
     .card-product-info .product-title {
-        color: #C31E46!important;
-        font-family: 'KoHo';
+        color: #374ea1!important;
+        font-family: 'SF Pro Rounded';
         font-weight: bold;
         font-size: 1.54vw;
         align-content: end;
@@ -740,7 +746,7 @@ footer{
 
     .signature-contentblock__title {
         font-size: 3.2vw;
-        font-family: 'Inter';
+        font-family: 'SF Pro Rounded';
         font-weight: 600;
         color: black;
     }
@@ -768,7 +774,7 @@ footer{
         line-height: 80px;
         margin-top: 0 !important;
         font-weight: 700;
-        font-family: 'Inter';
+        font-family: 'SF Pro Rounded';
     }
 
     .tf-slideshow.slider-default.slider-effect-fade .title-display span {
@@ -790,9 +796,9 @@ footer{
     .content-hau-mai .css-text {
         font-size: 1.8vw;
         line-height: 2vw;
-        font-family: 'Inter';
-        font-weight: 600;
-        color: black;
+        font-family: 'SF Pro Rounded';
+        font-weight: 700;
+        color: #374ea1;
     }
 
     .box-hau-mai .title {
@@ -804,9 +810,9 @@ footer{
 
     .box-hau-mai h3 {
         font-size: 2.7vw;
-        font-family: 'Inter';
+        font-family: 'SF Pro Rounded';
         font-weight: 700;
-        color: black;
+        color: #374ea1;
         margin-bottom: 0px;
     }
 
