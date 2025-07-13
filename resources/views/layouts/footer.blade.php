@@ -6,8 +6,8 @@
                 <div class="row magin-sm-0">
                     <div class="col-lg-12">
                         <div class="footer-logo" style="margin-bottom: 12px;">
-                            <a href="{{ url("/") }}">
-                                <img src="{{ asset('images/logo/footer-logo.png') }}" alt="">
+                            <a href="{{ url('/') }}">
+                                <img src="{{ asset('images/logo/footer-logo.png?v=' . ($ver ?? '')) }}" alt="Babyro Logo">
                             </a>
                         </div>
                     </div>
