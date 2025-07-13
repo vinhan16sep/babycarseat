@@ -1420,9 +1420,9 @@
                                 <li>
                                     <a class="mb-menu-link" href="{{ route('bao-hanh', ['view' => 'doi-ghe-o-to-mien-phi']) }}">Chương trình đổi ghế ô tô miễn phí</a>
                                 </li>
-                                <li>
+                                <!-- <li>
                                     <a class="mb-menu-link" href="#">Chương trình Thu cũ Đổi mới</a>
-                                </li>
+                                </li> -->
                             </ul>
                         </div>
                     </li>
