@@ -100,7 +100,7 @@ chương trình “Ghế Ô Tô An Toàn” theo các điều khoản của Baby
                             <div class="row g-2">
                                 <div class="col">
                                     <label for="btnSubmit" class="form-label form-label" style="display: block;">Tôi đồng ý và cam kết</label>
-                                    <button for="btnSubmit" type="submit" class="btn-send btn btn-danger" id="btn-confirm" disabled>Xác nhận</button>
+                                    <button for="btnSubmit" style="border-color: unset;" type="submit" class="btn-send btn btn-danger" id="btn-confirm" disabled>Xác nhận</button>
                                 </div>
                             </div>
                         </div>
