@@ -970,7 +970,6 @@ footer{
     .signature-contentblock__html, .signature-contentblock__html.signature-contentblock--reverse {
         width: 100%;
         padding: 15px!important;
-        background: #E9F9FF;
     }
     .signature-contentblock__title {
         font-size: 30px;
@@ -988,11 +987,11 @@ footer{
         /* box-shadow: 0px 0px 10px #cacaca; */
     }
     .box-product-common__row > div:not(:first-child) {
-        margin-top: 30px;
+        /* margin-top: 30px; */
     }
 
     .flat-spacing-8, .flat-spacing, .flat-spacing-10{
-        padding: 0px!important;
+        padding: 0px 0px 20px 0px!important;
     }
     .custom-say{
         padding: 20px 15px!important;
@@ -1028,13 +1027,13 @@ footer{
         margin: 0!important;
     }
     .signature-contentblock-item-1 .signature-contentblock__html{
-        background: #E9F9FF;
+        
     }
     .signature-contentblock-item-2 .signature-contentblock__html{
         background: #E9F9FF;
     }
     .signature-contentblock-item-3 .signature-contentblock__html{
-        background: #fff;
+        
     }
     .signature-contentblock__html .signature-contentblock__subtitle{
         white-space: normal;

@@ -395,10 +395,10 @@ section p.note{
 }
 .form-warranty {
     .content-hau-mai > div > div.d-flex img{
-        filter: brightness(0) saturate(100%) invert(16%) sepia(17%) saturate(3200%) hue-rotate(210deg) brightness(95%) contrast(90%);
+        /* filter: brightness(0) saturate(100%) invert(16%) sepia(17%) saturate(3200%) hue-rotate(210deg) brightness(95%) contrast(90%); */
     }
     .content-hau-mai .css-text{
-        color: #3c3c8c
+        color: #374ea1
     }
     .content-hau-mai h4{
         font-weight: 500;
@@ -406,10 +406,10 @@ section p.note{
 }
 .form-safe {
     .content-hau-mai .css-text{
-        color: #3c3c8c;
+        color: #374ea1;
     }
     .content-hau-mai > div > div.d-flex img{
-        filter: brightness(0) saturate(100%) invert(16%) sepia(17%) saturate(3200%) hue-rotate(210deg) brightness(95%) contrast(90%);
+        /* filter: brightness(0) saturate(100%) invert(16%) sepia(17%) saturate(3200%) hue-rotate(210deg) brightness(95%) contrast(90%); */
     }
     .content-hau-mai h4{
         font-weight: 500;
@@ -850,10 +850,10 @@ section p.note{
             padding: 20px;
         }
         .content-hau-mai > div > div.d-flex img{
-            filter: brightness(0) saturate(100%) invert(16%) sepia(17%) saturate(3200%) hue-rotate(210deg) brightness(95%) contrast(90%);
+            /* filter: brightness(0) saturate(100%) invert(16%) sepia(17%) saturate(3200%) hue-rotate(210deg) brightness(95%) contrast(90%); */
         }
         .content-hau-mai .css-text{
-            color: #3c3c8c;
+            color: #374ea1;
             font-size: 1.3vw;
         }
         .content-hau-mai h4{
@@ -865,11 +865,11 @@ section p.note{
             padding: 20px;
         }
         .content-hau-mai .css-text{
-            color: #3c3c8c;
+            color: #374ea1;
             font-size: 1.3vw;
         }
         .content-hau-mai > div > div.d-flex img{
-            filter: brightness(0) saturate(100%) invert(16%) sepia(17%) saturate(3200%) hue-rotate(210deg) brightness(95%) contrast(90%);
+            /* filter: brightness(0) saturate(100%) invert(16%) sepia(17%) saturate(3200%) hue-rotate(210deg) brightness(95%) contrast(90%); */
         }
         .content-hau-mai h4{
             font-weight: 500;
@@ -1252,7 +1252,7 @@ section p.note{
             margin-top: 10px;
         }
         .content-hau-mai .css-text{
-            color: #3c3c8c;
+            color: #374ea1;
             font-size: 17px;
         }
         .content-hau-mai h4{
@@ -1291,7 +1291,7 @@ section p.note{
             margin-top: 10px;
         }
         .content-hau-mai .css-text{
-            color: #3c3c8c;
+            color: #374ea1;
             font-size: 17px;
         }
         .content-hau-mai h4{
