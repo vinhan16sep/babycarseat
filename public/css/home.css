@@ -909,7 +909,7 @@ footer{
         background: transparent;
     }
     .flat-spacing.section-two .flat-sw-navigation > div:nth-child(1) .product-common__row {
-        background: #E2E2E2;
+        background: #E9F9FF;
     }
     .flat-spacing.section-two .flat-sw-navigation > div:nth-child(3) .product-common__row {
         background: #E9F9FF;
@@ -970,7 +970,7 @@ footer{
     .signature-contentblock__html, .signature-contentblock__html.signature-contentblock--reverse {
         width: 100%;
         padding: 15px!important;
-        background: #e2e2e2;
+        background: #E9F9FF;
     }
     .signature-contentblock__title {
         font-size: 30px;
@@ -1028,10 +1028,10 @@ footer{
         margin: 0!important;
     }
     .signature-contentblock-item-1 .signature-contentblock__html{
-        background: #fff;
+        background: #E9F9FF;
     }
     .signature-contentblock-item-2 .signature-contentblock__html{
-        background: #1c1c1c;
+        background: #E9F9FF;
     }
     .signature-contentblock-item-3 .signature-contentblock__html{
         background: #fff;
