@@ -233,7 +233,7 @@ có thể đặt trọn niềm tin.</div>
             </div>
         </section>
 {{--    </section>--}}
-    <div class="home-padding" style="margin-top: 25px;">
+    <!-- <div class="home-padding" style="margin-top: 25px;"> -->
     </div>
 
     @include('components.last-page')
