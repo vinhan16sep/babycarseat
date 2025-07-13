@@ -370,7 +370,7 @@ section p.note{
     color: rgb(24, 24, 24);
 }
 .section-two .head *, .section-five .head *, .section-seven .head * {
-    color: #3c3c8c;
+    color: #374ea1;
 }
 .section-same .container-fluid.update-box{
     width: 1350px;
@@ -822,7 +822,7 @@ section p.note{
         color: rgb(24, 24, 24);
     }
     .section-two .head *, .section-five .head *, .section-seven .head * {
-        color: #3c3c8c;
+        color: #374ea1;
     }
     .section-same .container-fluid.update-box{
         width: 1350px;
