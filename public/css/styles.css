@@ -8237,16 +8237,6 @@ input.style-line-bottom::placeholder {
   inset: 0;
   opacity: 0;
 }
-.card-product .card-product-wrapper:hover .product-img .img-product {
-  opacity: 0;
-}
-.card-product .card-product-wrapper:hover .product-img .img-hover {
-  display: block;
-  z-index: 1;
-  opacity: 1;
-  -webkit-transform: scale(1.05);
-  transform: scale(1.05);
-}
 .card-product .card-product-wrapper:hover .marquee-wrapper-product {
   opacity: 0;
 }
@@ -14720,6 +14710,16 @@ ul.list-text.type-number {
 }
 }
 @media (min-width: 900px) {
+    .card-product .card-product-wrapper:hover .product-img .img-product {
+        opacity: 0;
+    }
+    .card-product .card-product-wrapper:hover .product-img .img-hover {
+        display: block;
+        z-index: 1;
+        opacity: 1;
+        -webkit-transform: scale(1.05);
+        transform: scale(1.05);
+    }
     .form-safe{
       .require{
         color: red;
