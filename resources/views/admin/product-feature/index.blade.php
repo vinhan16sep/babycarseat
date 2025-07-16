@@ -44,6 +44,7 @@
                                         <th class="w-15 center">Vị trí</th>
                                         <th class="w-20 center">Tính năng</th>
                                         <th class="w-20 center">Tiêu đề phụ</th>
+                                        <th class="w-5 center">Sắp xếp</th>
                                         <th class="w-15 center">Hành động</th>
                                     </tr>
                                 </thead>
@@ -55,6 +56,9 @@
                                         <td><span class="badge badge-{{ $item->feature->label == 'UPPER' ? 'primary' : 'warning' }}">{{ $item->feature->label }}</span></td>
                                         <td>{{ $item->feature->title }}</td>
                                         <td>{{ $item->feature->sub_title }}</td>
+                                        <td>
+                                            <input type="text" data-id="{{ $item->id}}" data-current-sort="{{ $item->sort}}" name="input-sort" value="{{ $item->sort }}" class="form-control inputSort" maxlength="2" />
+                                        </td>
                                         <td class="color-primary">
                                             <button type="button" class="btn btn-danger btn-flat m-l-5 my-list-btn" onclick="deleteRow('{{ $item->id }}', '/product-feature/delete-row')"><i class="ti-trash"></i></button>
                                         </td>
@@ -71,6 +75,40 @@
     </section>
 </div>
 <script type="text/javascript">
+    
     let url = window.location.origin;
+    let endPoint = '/br-admin/product-feature/sort';
+
+    $('.inputSort').change(function(){
+        let id = $(this).attr("data-id");
+        let inputSort = $(this).val();
+        if (inputSort != $(this).attr("data-current-sort")) {
+            ajaxSort(id, inputSort);
+        }
+    });
+    
+    $('.inputSort').focusout(function (){
+        let id = $(this).attr("data-id");
+        let inputSort = $(this).val();
+        if (inputSort != $(this).attr("data-current-sort")) {
+            ajaxSort(id, inputSort);
+        }
+    });
+
+    function ajaxSort(id, inputSort) {
+        let sort = inputSort == "" ? 0 : inputSort;
+        $.ajax({
+            url: url + endPoint,
+            method: 'GET',
+            data: {
+                id: id,
+                sort: sort
+            },
+            success: function (res) {
+                location.reload(); 
+            },
+            error: function (error) {}
+        });
+    }
 </script>
 @endsection

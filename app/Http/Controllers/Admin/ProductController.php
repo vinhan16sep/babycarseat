@@ -323,6 +323,28 @@ class ProductController extends AdminController
         return response()->json(['status' => 'error', 'msg' => Config::get('constants.MESSAGE.SOMETHING_ERROR')], 403);
     }
 
+    public function sort(Request $request) {
+        
+        $request = $request->all();
+
+        if (!isset($request['sort']) || !isset($request['id'])) {
+            return response()->json(['status' => 'error','msg' => Config::get('constants.MESSAGE.SOMETHING_ERROR')], 200);
+        }
+
+        $object = Product::find($request['id']);
+        // If object not found
+        if ($object == null || $object->count() == 0) {
+            return response()->json(['status' => 'error','msg' => Config::get('constants.MESSAGE.DATA_NOT_FOUND')], 200);
+        }
+
+        $object->sort = $request['sort'];
+
+        if ($object->save()) {
+            return response()->json(['status' => 'success','msg' => Config::get('constants.MESSAGE.UPDATE_SUCCEEDED')], 200);
+        }
+        return response()->json(['status' => 'error','msg' => Config::get('constants.MESSAGE.SOMETHING_ERROR')], 200);
+    }
+
     private function validateStore($request)
     {
         $this->validate($request, [

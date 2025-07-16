@@ -59,12 +59,7 @@
                             </div>
                             <div>
                                 <div class="text-title mb_8">Giờ làm việc:</div>
-                                <p class="mb_4 open-time">
-                                    <span class="text-secondary">Thứ 2 - thứ 6:</span> 7:30am - 8:00pm
-                                </p>
-                                <p class="open-time">
-                                    <span class="text-secondary">Thứ 7 và Chủ Nhật:</span> 9:00am - 5:00pm
-                                </p>
+                                <div class="text-secondary">{!! nl2br(e($contactInformations['working_hours'])) !!}</div>
                             </div>
                         </div>
                     </div>

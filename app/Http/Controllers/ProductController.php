@@ -85,10 +85,10 @@ class ProductController extends Controller
         ->where('product_feature.product_id', $product->id);
 
         // Lấy features label = UPPER
-        $featuresUPPER = (clone $features)->where('feature.label', ProductController::TYPE_UPPER)->where('feature.is_active', 1)->get();
+        $featuresUPPER = (clone $features)->where('feature.label', ProductController::TYPE_UPPER)->where('feature.is_active', 1)->orderBy('sort', 'asc')->get();
 
         // Lấy features label = LOWER
-        $featuresLOWER = (clone $features)->where('feature.label', ProductController::TYPE_LOWER)->where('feature.is_active', 1)->get();
+        $featuresLOWER = (clone $features)->where('feature.label', ProductController::TYPE_LOWER)->where('feature.is_active', 1)->orderBy('sort', 'asc')->get();
 
         return view('product-show', [
             "product" => $product,

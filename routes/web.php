@@ -140,6 +140,7 @@ Route::group(['prefix' => 'br-admin', 'middleware' => 'auth'], function () {
         Route::put('product/update/{id}', [ProductController::class, 'update'])->name('update-product');
         Route::get('product/delete-row', [ProductController::class, 'delete'])->name('delete-product');
         Route::get('product/change-status', [ProductController::class, 'changeStatus'])->name('change-product-status');
+        Route::get('product/sort', [ProductController::class, 'sort'])->name('sort-product');
 
 
         // Product color image
@@ -162,6 +163,7 @@ Route::group(['prefix' => 'br-admin', 'middleware' => 'auth'], function () {
         Route::get('product-feature/change-status', [ProductFeatureController::class, 'changeStatus'])->name('change-product-feature-status');
         Route::get('product-feature/get-feature-by-product', [ProductFeatureController::class, 'getFeatureByProduct'])->name('get-feature-by-product');
         Route::get('product-feature/get-feature-by-id', [ProductFeatureController::class, 'getFeatureById'])->name('get-feature-by-id');
+        Route::get('product-feature/sort', [ProductFeatureController::class, 'sort'])->name('sort-product-feature');
 
         // Product note
         Route::get('product-note', [ProductNoteController::class, 'index'])->name('list-product-note');
