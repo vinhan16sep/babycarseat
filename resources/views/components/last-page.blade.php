@@ -70,7 +70,7 @@
                         <p>Tại BABYRO, chúng tôi hiểu rằng an toàn của những hành khách nhỏ là ưu tiên hàng đầu. Vì vậy, khi mua sản phẩm của chúng tôi, bạn có thể tham gia Chương Trình Ghế An Toàn BABYRO và được thay thế miễn phí ghế ô tô đã gặp tai nạn bằng một ghế mới.</p>
                         <br>
                         <div class="mt-auto">
-                            <a href="" class="tf-btn btn-fill btn-white"><span class="text">Xem thêm</span></a>
+                            <a href="/bao-hanh/doi-ghe-o-to-mien-phi" class="tf-btn btn-fill btn-white"><span class="text">Xem thêm</span></a>
                         </div>
                     </div>
                 </div>
@@ -88,7 +88,7 @@
                         <p>Bảo hành 12 năm để đáp ứng nhu cầu và mong đợi của khách hàng, chúng tôi cung cấp tùy chọn bảo hành mở rộng, kéo dài 10 năm và cho phép bạn sửa chữa hoặc thay thế miễn phí bộ phận bị hỏng của ghế ô tô.</p>
                         <br>
                         <div class="mt-auto">
-                            <a href="" class="tf-btn btn-fill btn-white"><span class="text">Xem thêm</span></a>
+                            <a href="/bao-hanh/bao-hanh-vang-12-nam" class="tf-btn btn-fill btn-white"><span class="text">Xem thêm</span></a>
                         </div>
                     </div>
                 </div>
