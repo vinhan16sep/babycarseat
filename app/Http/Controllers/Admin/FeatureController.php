@@ -62,6 +62,7 @@ class FeatureController extends AdminController
                         $data[] = [
                             'product_id' => $productId,
                             'feature_id' => $model->id,
+                            'label' => $request->input('label'),
                             'created_at' => now(),
                             'updated_at' => now(),
                         ];
@@ -146,6 +147,7 @@ class FeatureController extends AdminController
                     $data[] = [
                         'product_id' => $productId,
                         'feature_id' => $id,
+                        'label' => $request->input('label'),
                         'created_at' => now(),
                         'updated_at' => now(),
                     ];

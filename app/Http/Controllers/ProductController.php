@@ -73,27 +73,45 @@ class ProductController extends Controller
         }
 
         $products = Product::query()
-            ->with(["productColors", "categories","features"])
+            ->with(["productColors", "categories", "features"])
             ->where([
-                "is_active" => 1
+            "is_active" => 1
             ])
             ->orderByDesc("is_highlight")->get();
-            
-        // Lấy toàn bộ features của product qua join
+
+        // Lấy toàn bộ features của product qua join, sắp xếp theo product_feature.sort
         $features = Feature::select('feature.*')
-        ->join('product_feature', 'product_feature.feature_id', '=', 'feature.id')
-        ->where('product_feature.product_id', $product->id);
+            ->join('product_feature', 'product_feature.feature_id', '=', 'feature.id')
+            ->where('product_feature.product_id', $product->id)
+            ->orderBy('product_feature.sort', 'asc');
 
-        // Lấy features label = UPPER
-        $featuresUPPER = (clone $features)->where('feature.label', ProductController::TYPE_UPPER)->where('feature.is_active', 1)->orderBy('sort', 'asc')->get();
+        // Lấy features label = UPPER, sắp xếp theo product_feature.sort
+        $featuresUPPER = (clone $features)
+            ->where('feature.label', ProductController::TYPE_UPPER)
+            ->where('feature.is_active', 1)
+            ->orderBy('product_feature.sort', 'asc')
+            ->get();
 
-        // Lấy features label = LOWER
-        $featuresLOWER = (clone $features)->where('feature.label', ProductController::TYPE_LOWER)->where('feature.is_active', 1)->orderBy('sort', 'asc')->get();
+        // Lấy features label = LOWER, sắp xếp theo product_feature.sort
+        $featuresLOWER = (clone $features)
+            ->where('feature.label', ProductController::TYPE_LOWER)
+            ->where('feature.is_active', 1)
+            ->orderBy('product_feature.sort', 'asc')
+            ->get();
+
+        // Lấy lại features của product, join để lấy đúng thứ tự sort
+        $attributes = Feature::select('feature.*', 'product_feature.sort')
+            ->join('product_feature', 'product_feature.feature_id', '=', 'feature.id')
+            ->where('product_feature.product_id', $product->id)
+            ->where('feature.is_active', 1)
+            ->orderBy('product_feature.sort', 'asc')
+            ->get()
+            ->groupBy('label');
 
         return view('product-show', [
             "product" => $product,
             "products" => $products,
-            "attributes" => $product->features->groupBy('label'),
+            "attributes" => $attributes,
             "featuresUPPER" => $featuresUPPER,
             "featuresLOWER" => $featuresLOWER,
         ]);

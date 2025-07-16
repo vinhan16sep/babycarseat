@@ -14,7 +14,7 @@ class ProductFeatureController extends AdminController
 {
 
     public function index(Request $request) {
-        $list = ProductFeature::with(['product', 'feature'])->where('product_id', $request['id'])->orderBy('sort', 'asc')->get();
+        $list = ProductFeature::with(['product', 'feature'])->where('product_id', $request['id'])->orderBy('label', 'desc')->orderBy('sort', 'asc')->get();
         return view(
             'admin/product-feature/index', 
             [
@@ -75,11 +75,18 @@ class ProductFeatureController extends AdminController
 
         try {
 
+            $feature = Feature::find($request->input('feature_id'));
+            if (!$feature) {
+                return redirect()->route('list-product-feature', ['id' => $request->input('product_id')])->with('error', Config::get('constants.MESSAGE.DATA_NOT_FOUND'));
+            }
+            $label = $feature->label;
             $exist = ProductFeature::where(['product_id' => $request->input('product_id'), 'feature_id' => $request->input('feature_id')])->first();
             if (empty($exist)) {
                 $productFeature = new ProductFeature();
                 $productFeature->product_id = $request->input('product_id');
                 $productFeature->feature_id = $request->input('feature_id');
+                $productFeature->label = $label;
+
                 if ($productFeature->save()) {
                     DB::commit();
                     return redirect()->route('list-product-feature', ['id' => $request->input('product_id')])->with('success', Config::get('constants.MESSAGE.CREATE_SUCCEEDED'));
