@@ -268,7 +268,7 @@ có thể đặt trọn niềm tin.</div>
     <section class="flat-spacing section-four pt-0 home-padding">
         <div class="container-fluid">
             <div class="banner-cls-discover hover-img">
-                <a href="#" class="img-style">
+                <a class="img-style">
                     <img class="lazyload" data-src="images/banner-footer.png"
                          src="images/banner-footer.png" alt="babyro">
                 </a>

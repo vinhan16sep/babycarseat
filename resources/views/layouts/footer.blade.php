@@ -55,7 +55,7 @@
                                             <a href="#" class="footer-menu_item">Kiểm định nghiêm ngặt tại EU</a>
                                         </li>
                                         <li class="text-caption-1">
-                                            <a href="term-of-use.html" class="footer-menu_item">An toàn chuẩn Đức</a>
+                                            <a href="#" class="footer-menu_item">An toàn chuẩn Đức</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -80,7 +80,7 @@
                                         <a href="#" class="footer-menu_item">Đổi trả 7 ngày</a>
                                     </li>
                                     <li class="text-caption-1">
-                                        <a href="term-of-use.html" class="footer-menu_item">Chính sách bảo mật</a>
+                                        <a href="#" class="footer-menu_item">Chính sách bảo mật</a>
                                     </li>
                                 </ul>
                             </div>
@@ -105,7 +105,7 @@
                                         <a href="#" class="footer-menu_item">Kết nối 24/7</a>
                                     </li>
                                     <li class="text-caption-1">
-                                        <a href="term-of-use.html" class="footer-menu_item">FAQs</a>
+                                        <a href="#" class="footer-menu_item">FAQs</a>
                                     </li>
                                 </ul>
                             </div>
