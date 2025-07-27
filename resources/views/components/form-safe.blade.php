@@ -82,7 +82,7 @@ chương trình "Ghế Ô Tô An Toàn". Các trường có dấu (<span class="
                                     </label>
                                     <span id="env_images-name" class="ms-2 align-middle" style="font-style:italic; position:relative; top:-13px;"></span>
                                     <input type="file" id="env_images" name="env_images" accept="image/*" />
-                                    <p class="desc">Video hiện trường vui lòng gửi mail tới <a style="color:#374ea1" href="mailto:info@babyro.com.vn ">info@babyro.com.vn</a></p>
+                                    <p class="desc">Video hiện trường vui lòng gửi mail tới <a style="color:#374ea1" href="mailto:{{ $contactExchange['evidence_email'] }}">{{ $contactExchange['evidence_email'] }}</a></p>
                                 </div>
                             </div>
                         </div>
