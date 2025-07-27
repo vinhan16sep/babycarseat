@@ -37,7 +37,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($list as $key => $item)
+                                    @foreach ($menus as $key => $item)
                                         <tr>
                                             <th scope="row">{{ $key + 1}}</th>
                                             <td>{{ $footerMenuPosition[$item->position] }}</td>
@@ -71,7 +71,7 @@
                         </div>
                     </div>
                 </div>
-                {{ $list->links() }}
+                {{ $menus->links() }}
             </div>
         </div>
         <!-- /# row -->
