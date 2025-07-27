@@ -101,10 +101,10 @@ chương trình “Ghế Ô Tô An Toàn” theo các điều khoản của Baby
                         <p>Có câu hỏi hoặc cần trợ giúp khi điền mẫu đơn?<br>
                             Liên hệ với chúng tôi:</p>
                         <br>
-                        <h4>support@babyro.uk</h4>
+                        <h4>{{ $contactWarranty['email'] }}</h4>
                         <h4>Số điện thoại liên hệ:</h4>
-                        <p class="text">0967 8888 68</p>
-                        <p class="mt-3">Thứ Hai - Thứ Sáu: 8:00 – 15:00</p>
+                        <p class="text">{{ $contactWarranty['phone'] }}</p>
+                        <p class="mt-3">{{ $contactWarranty['working_hours'] }}</p>
                     </div>
                 </div>
             </div>

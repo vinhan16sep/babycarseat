@@ -49,13 +49,29 @@ class AppServiceProvider extends ServiceProvider
             && Schema::hasTable('posts')
             && Schema::hasTable('menu')
         ) {
-
+            // CONMMON CONTACTS
             $objects = Information::where(['type' => 'CONTACT'])->get()->toArray();
             $contactInformations = [];
             foreach ($objects as $item) {
                 $contactInformations[$item['label']] = $item['value'];
             }
             View::share('contactInformations', $contactInformations);
+
+            // BẢO HÀNH CONTACTS
+            $objects = Information::where(['type' => 'WARRANTY'])->get()->toArray();
+            $contactWarranty = [];
+            foreach ($objects as $item) {
+                $contactWarranty[$item['label']] = $item['value'];
+            }
+            View::share('contactWarranty', $contactWarranty);
+
+            // ĐỔI MIỄN PHÍ CONTACTS
+            $objects = Information::where(['type' => 'EXCHANGE'])->get()->toArray();
+            $contactExchange = [];
+            foreach ($objects as $item) {
+                $contactExchange[$item['label']] = $item['value'];
+            }
+            View::share('contactExchange', $contactExchange);
 
             $categories = ProductCategory::query()->get();
             
