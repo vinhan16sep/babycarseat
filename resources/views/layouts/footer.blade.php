@@ -41,22 +41,17 @@
                         <div class="footer-menu" style="margin-bottom: 0;float: right;">
                             <div class="footer-col-block">
                                 <div class="footer-heading text-button footer-heading-mobile">
-                                    Babyro
+                                    {{ $footerMenuPosition[1] ?? 'Babyro' }}
                                 </div>
                                 <div class="tf-collapse-content">
                                     <ul class="footer-menu-list">
-                                        <li class="text-caption-1">
-                                            <a href="#" class="footer-menu_item">Câu chuyện Babyro</a>
-                                        </li>
-                                        <li class="text-caption-1">
-                                            <a href="#" class="footer-menu_item">Tiêu chuẩn ECE R129 | R44</a>
-                                        </li>
-                                        <li class="text-caption-1">
-                                            <a href="#" class="footer-menu_item">Kiểm định nghiêm ngặt tại EU</a>
-                                        </li>
-                                        <li class="text-caption-1">
-                                            <a href="#" class="footer-menu_item">An toàn chuẩn Đức</a>
-                                        </li>
+                                        @foreach($footerMenu as $value)
+                                            @if ($value['position'] == 1)
+                                                <li class="text-caption-1">
+                                                    <a href="{{ $value['link'] }}" class="footer-menu_item">{{ $value['title'] }}</a>
+                                                </li>
+                                            @endif
+                                        @endforeach
                                     </ul>
                                 </div>
                             </div>
@@ -66,22 +61,17 @@
                         <div class="footer-menu" style="margin-bottom: 0;float: right;margin-right:30px;">
                         <div class="footer-col-block">
                             <div class="footer-heading text-button footer-heading-mobile">
-                                Chính sách
+                                {{ $footerMenuPosition[2] ?? 'Chính sách' }}
                             </div>
                             <div class="tf-collapse-content">
                                 <ul class="footer-menu-list">
-                                    <li class="text-caption-1">
-                                        <a href="#" class="footer-menu_item">Bảo hành Vàng 12 năm</a>
-                                    </li>
-                                    <li class="text-caption-1">
-                                        <a href="#" class="footer-menu_item">Chương trình đổi ghế miễn phí</a>
-                                    </li>
-                                    <li class="text-caption-1">
-                                        <a href="#" class="footer-menu_item">Đổi trả 7 ngày</a>
-                                    </li>
-                                    <li class="text-caption-1">
-                                        <a href="#" class="footer-menu_item">Chính sách bảo mật</a>
-                                    </li>
+                                    @foreach($footerMenu as $value)
+                                        @if ($value['position'] == 2)
+                                            <li class="text-caption-1">
+                                                <a href="{{ $value['link'] }}" class="footer-menu_item">{{ $value['title'] }}</a>
+                                            </li>
+                                        @endif
+                                    @endforeach
                                 </ul>
                             </div>
                         </div>
@@ -91,22 +81,17 @@
                         <div class="footer-menu" style="margin-bottom: 0;float: right;">
                         <div class="footer-col-block">
                             <div class="footer-heading text-button footer-heading-mobile">
-                                Hỗ trợ
+                                {{ $footerMenuPosition[3] ?? 'Hỗ trợ' }}
                             </div>
                             <div class="tf-collapse-content">
                                 <ul class="footer-menu-list">
-                                    <li class="text-caption-1">
-                                        <a href="#" class="footer-menu_item">Hướng dẫn sử dụng an toàn</a>
-                                    </li>
-                                    <li class="text-caption-1">
-                                        <a href="#" class="footer-menu_item">Đại lý chính hãng gần bạn</a>
-                                    </li>
-                                    <li class="text-caption-1">
-                                        <a href="#" class="footer-menu_item">Kết nối 24/7</a>
-                                    </li>
-                                    <li class="text-caption-1">
-                                        <a href="#" class="footer-menu_item">FAQs</a>
-                                    </li>
+                                    @foreach($footerMenu as $value)
+                                        @if ($value['position'] == 3)
+                                            <li class="text-caption-1">
+                                                <a href="{{ $value['link'] }}" class="footer-menu_item">{{ $value['title'] }}</a>
+                                            </li>
+                                        @endif
+                                    @endforeach
                                 </ul>
                             </div>
                         </div>

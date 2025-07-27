@@ -26,6 +26,7 @@ use App\Http\Controllers\Admin\QAController;
 use App\Http\Controllers\Admin\FormSafeController;
 use App\Http\Controllers\Admin\FormWarrantyController;
 use App\Http\Controllers\Admin\FormContactsController;
+use App\Http\Controllers\Admin\MenuController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -80,6 +81,18 @@ Route::group(['prefix' => 'br-admin', 'middleware' => 'auth'], function () {
         Route::post('/upload/post-tinymce-image', [PostTaskController::class, 'uploadTinyMCEImage'])->name('upload-post-image');
 
         Route::get('/', [DashboardController::class, 'index'])->name('manage');
+
+        // Menu
+        Route::group(['prefix' => 'menu'], function () {
+            Route::get('/', [MenuController::class, 'index'])->name('list-menu');
+            Route::get('create', [MenuController::class, 'create'])->name('create-menu');
+            Route::post('store', [MenuController::class, 'store'])->name('store-menu');
+            Route::get('edit/{id}', [MenuController::class, 'edit'])->name('edit-menu');
+            Route::put('update/{id}', [MenuController::class, 'update'])->name('update-menu');
+            Route::get('delete-row', [MenuController::class, 'delete'])->name('delete-menu');
+            Route::get('change-status', [MenuController::class, 'changeStatus'])->name('change-menu-status');
+            Route::get('sort', [MenuController::class, 'sort'])->name('sort-menu');
+        });
 
         // Banner
         Route::group(['prefix' => 'banner'], function () {
