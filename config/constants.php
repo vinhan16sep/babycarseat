@@ -45,6 +45,14 @@ return [
         'DOI_GHE' => "Chương trình đổi ghế",
         'BAO_HANH' => "Bảo hành cơ bản",
         'BAO_HANH_12_YEAR' => "Bảo hành vàng 12 năm",
-    ]
-
+    ],
+    'MENU_LOCATION' => [
+        'HEADER' => 1,
+        'FOOTER' => 2,
+    ],
+    'FOOTER_MENU_POSITION' => [
+        '1' => 'Babyro',
+        '2' => 'Chính sách',
+        '3' => 'Hỗ trợ',
+    ],
 ];

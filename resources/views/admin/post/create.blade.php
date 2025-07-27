@@ -34,8 +34,8 @@
                                             </option>
                                         @endforeach
                                     </select>
-                                    @if ($errors->has('parent_id'))
-                                        <span style="color:red;">{{ $errors->first('parent_id') }}</span>
+                                    @if ($errors->has('category_id'))
+                                        <span style="color:red;">{{ $errors->first('category_id') }}</span>
                                     @endif
                                 </div>
 

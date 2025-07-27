@@ -3,12 +3,14 @@
 namespace App\Providers;
 
 use App\Models\Information;
+use App\Models\Menu;
 use App\Models\ProductCategory;
 use App\Models\PostCategory;
 use App\Models\Post;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Schema;
@@ -45,6 +47,7 @@ class AppServiceProvider extends ServiceProvider
             && Schema::hasTable('product_categories')
             && Schema::hasTable('post_category')
             && Schema::hasTable('posts')
+            && Schema::hasTable('menu')
         ) {
 
             $objects = Information::where(['type' => 'CONTACT'])->get()->toArray();
@@ -123,6 +126,16 @@ class AppServiceProvider extends ServiceProvider
             }
 
             View::share('mainMenu', $menu);
+
+            // Lấy menu footer
+            $footerMenuPosition = Config::get('constants.FOOTER_MENU_POSITION');
+            $footerMenu = [];
+            $footerMenu = Menu::orderBy('position', 'asc')->orderBy('sort', 'asc')
+                ->where('location', Config::get('constants.MENU_LOCATION.FOOTER'))
+                ->get(); 
+
+            View::share('footerMenuPosition', $footerMenuPosition);
+            View::share('footerMenu', $footerMenu);
         }
     }
 }

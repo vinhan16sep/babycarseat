@@ -95,12 +95,12 @@
                                     <tr>
                                         <th class="w-5 center">STT</th>
                                         <th class="w-15 center">Ảnh</th>
-                                        <th class="w-20 center">Tên</th>
+                                        <th class="w-15 center">Tên</th>
                                         <th class="w-10 center">Đơn giá (VNĐ)</th>
                                         <th class="w-10 center">Danh mục</th>
                                         <th class="w-10 center">Thương hiệu</th>
                                         <th class="w-5 center">Nổi bật?</th>
-                                        <th class="w-8 center">Kích hoạt?</th>
+                                        <th class="w-10 center">Kích hoạt?</th>
                                         <th class="w-5 center">Sắp xếp</th>
                                         <th class="w-15 center">Hành động</th>
                                     </tr>

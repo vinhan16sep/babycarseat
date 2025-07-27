@@ -2,16 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Brand;
-use App\Models\Color;
-use App\Models\Country;
-use App\Models\Grape;
 use App\Models\Product;
 use App\Models\ProductCategory;
-use App\Models\ProductColor;
 use App\Models\Feature;
-use App\Models\Region;
-use App\Models\Type;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
