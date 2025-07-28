@@ -11,7 +11,7 @@
 
 @section('content')
     <section class="tf-slideshow slider-default slider-effect-fade">
-        <img src="{{ asset('images/banner-bao-hanh-vang-12-nam.jpg?v=' . ($ver ?? '')) }}" alt="" style="width: 100%">
+        <img src="{{ asset('images/banner-bao-hanh-2-nam.jpg?v=' . ($ver ?? '')) }}" alt="" style="width: 100%">
     </section>
     <section class="section-same section-four home-padding">
         <div class="container-fluid update-box">
