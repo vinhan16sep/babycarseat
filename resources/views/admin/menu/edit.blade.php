@@ -27,7 +27,7 @@
                                 <div class="form-group{{ $errors->has('position') ? ' has-error' : '' }}">
                                     <label>Vị trí</label>
                                     <select name="position" class="form-control">
-                                        <option value="0">-- Chọn vị trí --</option>
+                                        <option value="">-- Chọn vị trí --</option>
                                         @foreach ($footerMenuPosition as $key => $positionName)
                                             <option value="{{ $key }}" {{ old('position', $object->position) == $key ? 'selected' : '' }}>
                                                 {{ $positionName }}
