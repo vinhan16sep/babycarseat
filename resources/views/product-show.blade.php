@@ -277,7 +277,7 @@
 {{--                                                <span class="tooltip text-caption-2">Wishlist</span>--}}
 {{--                                            </a>--}}
                                         </div>
-                                        <a class="btn-style-3 text-btn-uppercase add-to-card" data-id="{{ $product->id }}">Buy it now</a>
+                                        <!-- <a class="btn-style-3 text-btn-uppercase add-to-card" data-id="{{ $product->id }}">Buy it now</a> -->
                                     </div>
                                     <div class="tf-product-info-help">
                                         <ul class="accordion-product-wrap" id="accordion-product">
