@@ -17,7 +17,7 @@
         <div class="container-fluid update-box">
             <div>
                 <br>
-                <h3 class="title text-center">Bảo hành cơ bản 2 năm</h3>
+                <h3 class="title text-center">Babyro đồng hành, bảo vệ<br/>trọn vẹn từng hành trình nhỏ của bé</h3>
             </div>
             <div class="content">
                 <div class="row">
