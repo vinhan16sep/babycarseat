@@ -1,2 +1,13 @@
 User-agent: *
-Disallow:
+Disallow: /admin/
+Disallow: /cart/
+Disallow: /checkout/
+Disallow: /wishlist/
+Disallow: /compare/
+Disallow: /search/
+Disallow: /storage/
+Disallow: /login
+Disallow: /register
+Disallow: /password
+Allow: /
+Sitemap: https://babyro.eu/sitemap.xml

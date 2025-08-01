@@ -50,7 +50,7 @@
             <div class="marquee-text">
                 <div>Bảo hành Vàng 12 năm</div>
                 <div>Đổi mới sau tai nạn</div>
-                <div>30 ngày dùng thử</div>
+                <div>7 ngày dùng thử</div>
                 <div>Miễn phí Ship</div>
             </div>
         </section>

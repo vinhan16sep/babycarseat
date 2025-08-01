@@ -16,8 +16,7 @@
     <section class="section-same section-one home-padding">
         <div class="container-fluid update-box">
             <div>
-                <h3 class="title text-center">Đổi ghế ô tô trẻ em Miễn Phí Sau Tai Nạn
-bảo vệ bé yêu cùng Babyro</h3>
+                <h3 class="title text-center">Hành động thiết thực từ người hùng thầm lặng<br/>Vì an toàn của con không thể đặt lên bàn cân</h3>
             </div>
             <div class="content">
                 <div>

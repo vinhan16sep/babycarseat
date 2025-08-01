@@ -16,8 +16,7 @@
     <section class="section-same section-six home-padding">
         <div class="container-fluid update-box">
             <div>
-                <h3 class="title text-center">BẢO HÀNH VÀNG 12 NĂM
-An tâm trên mọi hành trình cùng Babyro</h3>
+                <h3 class="title text-center">BABYRO BẢO VỆ DÀI LÂU<br/>NHƯ TÌNH YÊU BỐ MẸ DÀNH CHO CON</h3>
             </div>
             <div class="content">
                 <div>
