@@ -4,6 +4,10 @@
 @section('meta_keyword', "Thanh toán đơn hàng")
 @section('meta_description', "Thanh toán đơn hàng")
 
+@section('css')
+    <link rel="stylesheet" href="{{ asset('css/page.css?v=' . ($ver ?? '')) }}" />
+@stop
+
 @section('content')
     <div class="bz_inner_page_navigation float_left">
         <div class="container custom_container">
@@ -26,12 +30,12 @@
         </div>
         </div>
     </div>
-    
+
   <div class="bz_product_grid_content_main_wrapper float_left">
     <div class="container custom_container">
       <div class="row">
         <div class="col-lg-8 col-md-12 col-12">
-            
+
             @if($errors->any())
                 <div class="alert alert-danger">
                     @foreach ($errors->all() as $error)
@@ -103,7 +107,7 @@
                                             @foreach (\App\Models\Order::TYPE_PAYMENT as $key => $title)
                                                 <p>
                                                     <input type="radio" id="radio{{ $key }}" name="payment_method" value="{{ $key }}"  {{ $loop->first ? "checked" : ''}}>
-                                                    <label class="direct_bank" for="radio{{ $key }}">{{ $title }} 
+                                                    <label class="direct_bank" for="radio{{ $key }}">{{ $title }}
                                                         <span class="small-text">{{ \App\Models\Order::TYPE_PAYMENT_DESCRIPTION[$key] ?? $title }}</span>
                                                     </label>
                                                 </p>
@@ -129,8 +133,8 @@
                 @include("components.order-cart-right", [
                     "cart" => $cart,
                     "count" => $count,
-                    "total" => $total, 
-                    "sub_total" => $sub_total, 
+                    "total" => $total,
+                    "sub_total" => $sub_total,
                     "discount_value" => $discount_value,
                     "type" => "checkout"
                 ])

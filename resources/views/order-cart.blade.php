@@ -4,6 +4,10 @@
 @section('meta_keyword', "Giỏ hàng")
 @section('meta_description', "Giỏ hàng")
 
+@section('css')
+    <link rel="stylesheet" href="{{ asset('css/page.css?v=' . ($ver ?? '')) }}" />
+@stop
+
 @section('content')
     <div class="bz_inner_page_navigation float_left">
         <div class="container custom_container">
@@ -26,8 +30,8 @@
                     @include("components.order-cart-right", [
                         "cart" => $cart,
                         "count" => $count,
-                        "total" => $total, 
-                        "sub_total" => $sub_total, 
+                        "total" => $total,
+                        "sub_total" => $sub_total,
                         "discount_value" => $discount_value
                     ])
                 </div>
@@ -35,5 +39,5 @@
         </div>
         </div>
     </div>
-    
+
 @endsection

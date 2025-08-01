@@ -131,7 +131,7 @@
                         <div class="tf-product-info-wrap position-relative">
                             <div class="tf-zoom-main"></div>
                             <div class="tf-product-info-list other-image-zoom">
-                                <div class="tf-product-info-heading">
+                                <div class="tf-product-info-heading" style="border-bottom: 0">
 
                                     <div class="tf-product-info-name">
 {{--                                        <div class="text text-btn-uppercase">Clothing</div>--}}
@@ -254,10 +254,10 @@
                                             <span class="btn-quantity btn-increase">+</span>
                                         </div>
                                     </div>
-                                    <div class="d-none">
+                                    <div >
                                         <div class="tf-product-info-by-btn mb_10">
                                             <a data-bs-toggle="modal"
-                                               class="btn-style-2 flex-grow-1 text-btn-uppercase fw-6 btn-add-to-cart add-to-card" data-id="{{ $product->id }}"><span>Add to cart -&nbsp;</span><span
+                                               class="d-none btn-style-2 flex-grow-1 text-btn-uppercase fw-6 btn-add-to-cart add-to-card" data-id="{{ $product->id }}"><span>Add to cart -&nbsp;</span><span
                                                     class="tf-qty-price total-price">
                                                     @if(!empty($product->discount_value))
                                                         {{ numberFormat($product->discount_value) }} VNĐ
@@ -277,7 +277,7 @@
 {{--                                                <span class="tooltip text-caption-2">Wishlist</span>--}}
 {{--                                            </a>--}}
                                         </div>
-                                        <a href="#" class="btn-style-3 text-btn-uppercase">Buy it now</a>
+                                        <a class="btn-style-3 text-btn-uppercase add-to-card" data-id="{{ $product->id }}">Buy it now</a>
                                     </div>
                                     <div class="tf-product-info-help">
                                         <ul class="accordion-product-wrap" id="accordion-product">

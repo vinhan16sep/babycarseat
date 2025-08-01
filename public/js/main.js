@@ -1273,15 +1273,14 @@
 
 
     $(document).on("click", ".add-to-card", function () {
-        let id = $(this).attr('data-id'), product_color_id = null, qty = 1;
-        console.log($(this).parents('.tf-product-info-list'));
+        let id = $(this).attr('data-id'), qty = 1;
         if ($(this).parents('.tf-product-info-list').length > 0) {
             qty = $(this).parents('.tf-product-info-list').find('.quantity-product').val();
-            product_color_id = $(this).parents('.tf-product-info-list').find('.variant-picker-label-value').attr('data-id');
         }
-        ajax_cart_add(id, qty, product_color_id);
-        $('#quickAdd').modal('hide');
-        $("#shoppingCart").modal("show");
+        ajax_cart_add(id, qty);
+        window.location.href = BASE_URL + "/thanh-toan"
+        // $('#quickAdd').modal('hide');
+        // $("#shoppingCart").modal("show");
     });
 
 
@@ -1293,13 +1292,12 @@
         ajax_cart_update({ rowid: rowid });
     });
 
-    function ajax_cart_add(productId, qty, product_color_id){
+    function ajax_cart_add(productId, qty){
         qty = Number(qty);
         if (qty > 0) {
             $.post(BASE_URL + '/add-to-cart', {
                 id: productId,
                 qty: qty,
-                product_color_id: product_color_id,
                 _token: $('[name="csrf-token"]').attr("content")
             }, function(data){
                 if (data != false) {

@@ -28,7 +28,6 @@ class CartController extends Controller
     {
         try {
             $product = Product::findOrFail($request->id);
-            $color = Color::query()->findOrFail($request->product_color_id);
             $qty = (int)$request->qty;
             $price = ($product->is_discount > 0) ? $product->discount_value : $product->price;
             $dataAddToCart = [
@@ -36,12 +35,10 @@ class CartController extends Controller
                 'name' => $product->name,
                 'qty' => $qty,
                 'price' => $price,
-                'color_id' => $color->id ?? null,
                 'weight' => 1,
                 'options' => [
                     'slug' => $product->slug,
                     'image' => $product->image,
-                    'color' => $color->name ?? null,
                 ]
             ];
             Cart::instance(config('cart.instance'))->add($dataAddToCart);

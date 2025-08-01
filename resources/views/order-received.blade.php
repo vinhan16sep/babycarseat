@@ -4,6 +4,10 @@
 @section('meta_keyword', "Chi tiết đơn hàng")
 @section('meta_description', "Chi tiết đơn hàng")
 
+@section('css')
+    <link rel="stylesheet" href="{{ asset('css/page.css?v=' . ($ver ?? '')) }}" />
+@stop
+
 @section('content')
     <div class="bz_inner_page_navigation float_left">
         <div class="container custom_container">
@@ -31,8 +35,8 @@
                                     $product = !empty($item->product) ? $item->product : $item->combo;
                                     $products = !empty($product->products) ? $product->products : [];
                                 @endphp
-                                <p class="text-black"> 
-                                    <span class="pr-5px">{{ $product->name }} × {{ $item->quantity }}</span> 
+                                <p class="text-black">
+                                    <span class="pr-5px">{{ $product->name }} × {{ $item->quantity }}</span>
                                     <span class="bold">{{ numberFormat($item->price*$item->quantity) }}₫</span>
                                 </p>
                                 @foreach ($products as $subItem)
@@ -42,27 +46,27 @@
                                             $price = $subItem->discount_value;
                                         }
                                     @endphp
-                                    <p class="text-black"> 
-                                        <span class="pr-5px">{{ $subItem->name }} × {{ $item->quantity*$subItem->pivot->quantity }}</span> 
+                                    <p class="text-black">
+                                        <span class="pr-5px">{{ $subItem->name }} × {{ $item->quantity*$subItem->pivot->quantity }}</span>
                                         <span class="bold opacity-04">{{ numberFormat($price*$item->quantity*$subItem->pivot->quantity) }}₫</span>
                                     </p>
                                 @endforeach
                             @endforeach
 
-                            <p class="sub_total">  
-                                <span>Tạm tính</span> 
+                            <p class="sub_total">
+                                <span>Tạm tính</span>
                                 <span>{{ numberFormat($order->total_price) }}₫</span>
                             </p>
                             @if (!empty($order->discounted_price))
-                                <p class="discounted">  
-                                    <span>Giảm giá</span> 
+                                <p class="discounted">
+                                    <span>Giảm giá</span>
                                     <span>{{ numberFormat($order->discounted_price) }}₫</span>
                                 </p>
                             @endif
                         </div>
                         <div class="order_rate">
-                            <h3 class="bt-0 pb-0"> 
-                                <span class="pr-5px fs-16">Tổng tiền thanh toán</span> 
+                            <h3 class="bt-0 pb-0">
+                                <span class="pr-5px fs-16">Tổng tiền thanh toán</span>
                                 <span>{{ numberFormat($order->total_price-$order->discounted_price) }}₫</span>
                             </h3>
                         </div>
@@ -80,7 +84,7 @@
                                 <li>Địa chỉ: <span class="bold">{{ $order->order_customer->address }}</span></li>
                                 <li>Phương thức thanh toán: <span class="bold">{{ \App\Models\Order::TYPE_PAYMENT[$order->payment_method] ?? "Không xác định" }}</span></li>
                                 @if (!empty($order->note))
-                                    <li> 
+                                    <li>
                                         Lưu ý: <span class="bold">{{ $order->note }}</span>
                                     </li>
                                 @endif
@@ -109,5 +113,5 @@
         </div>
         </div>
     </div>
-    
+
 @endsection
