@@ -49,7 +49,7 @@
             <nav class="box-navigation text-center">
                 <ul class="box-nav-ul d-flex align-items-center">
                     <li class="menu-item"><a href="{{ route('about-show') }}" class="item-link">Giới thiệu</a></li>
-                    <li class="menu-item {{ strpos($currentPath, 'san-pham') !== false || strpos($currentPath, 'chi-tiet-san-pham') !== false  ? 'active' : '' }}">
+                    <!-- <li class="menu-item {{ strpos($currentPath, 'san-pham') !== false || strpos($currentPath, 'chi-tiet-san-pham') !== false || strpos($currentPath, 'loai-san-pham') !== false  ? 'active' : '' }}">
                         <a href="{{ route('product-list') }}" class="item-link">Sản phẩm {!! !empty($categoriesMenu) ? '<i class="icon icon-arrow-down"></i>' : '' !!}</a>
                         @if(!empty($categoriesMenu))
                             <div class="sub-menu mega-menu" style="border-radius: 0;">
@@ -74,7 +74,6 @@
                                                                 @foreach($_item['products'] as $_i)
                                                                     @php $_i = (array)$_i @endphp
                                                                     <div class="col-md-3 col-sm-6">
-                                                                        <!-- <img src="{{ asset($_i['image']) }}" alt=""> -->
                                                                         <a href="{{ route('product-index', ['slug' => $_i['slug']]) }}">
                                                                             <img src="{{ asset($_i['image']) }}" alt="{{ $_i['name'] }}">
                                                                         </a>
@@ -91,6 +90,22 @@
                                 </div>
                             </div>
                         @endif
+                    </li> -->
+                    <li class="menu-item position-relative {{ strpos($currentPath, 'san-pham') !== false || strpos($currentPath, 'chi-tiet-san-pham') !== false || strpos($currentPath, 'loai-san-pham') !== false  ? 'active' : '' }}">
+                        <a href="#" class="item-link">Sản phẩm<i class="icon icon-arrow-down"></i></a>
+                        <div class="sub-menu submenu-default menu-list">
+                            <ul class="menu-list">
+                                @if(!empty($productTypes))
+                                    <ul class="menu-list">
+                                        @foreach($productTypes as $type)
+                                            <li>
+                                                <a href="{{ route('loai-san-pham', ['slug' => $type->slug]) }}" class="menu-link-text">{{ $type->name }}</a>
+                                            </li>
+                                        @endforeach
+                                    </ul>
+                                @endif
+                            </ul>
+                        </div>
                     </li>
                     <li class="menu-item position-relative">
                         <a href="#" class="item-link">Bảo hành<i class="icon icon-arrow-down"></i></a>

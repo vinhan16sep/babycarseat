@@ -3,7 +3,7 @@
         <div class="nano-content">
             <ul>
                 <div class="logo"><a href="/">
-                        <!-- <img src="images/logo.png" alt="" /> --><span>babycarseat</span></a></div>
+                        <!-- <img src="images/logo.png" alt="" /> --><span>Babyro Admin Page</span></a></div>
                 <li class="label">Main</li>
                 <li><a class="sidebar-sub-toggle"><i class="ti-dashboard"></i> Dashboard </a></li>
 
@@ -22,6 +22,7 @@
                 <li><a class="sidebar-sub-toggle"><i class="ti-target"></i> Sản phẩm <span
                             class="sidebar-collapse-icon ti-angle-down"></span></a>
                     <ul>
+                        <li><a href="{{ route('list-type') }}">Phân loại</a></li>
                         <li><a href="{{ route('list-product-category') }}">Danh mục</a></li>
                         <li><a href="{{ route('list-brand') }}">Thương hiệu</a></li>
                         <li><a href="{{ route('list-color') }}">Màu sắc</a></li>

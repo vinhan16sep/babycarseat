@@ -7,6 +7,7 @@ use App\Models\Menu;
 use App\Models\ProductCategory;
 use App\Models\PostCategory;
 use App\Models\Post;
+use App\Models\Type;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Pagination\Paginator;
@@ -75,6 +76,7 @@ class AppServiceProvider extends ServiceProvider
 
             $categories = ProductCategory::query()->get();
             
+            // Lấy toàn bộ sản phẩm đã kích hoạt và nhóm theo category_id
             $rawProducts = DB::table('product_categories_mapping as pcm')
                 ->join('products as p', 'p.id', '=', 'pcm.product_id')
                 ->where('p.is_active', 1)
@@ -92,8 +94,11 @@ class AppServiceProvider extends ServiceProvider
                 $category->setRelation('products', $groupedProducts->get($category->id) ?? collect());
                 return $category->toArray();
             });
-
             View::share('categoriesMenu', $categories);
+
+            // Get loai sản phẩm
+            $productTypes = Type::where('is_active', 1)->get();
+            View::share('productTypes', $productTypes);
 
             // 1. Lấy toàn bộ danh mục (có cấp 1, 2, 3)
             $categories = PostCategory::where('is_active', 1)
