@@ -49,6 +49,7 @@ class AppServiceProvider extends ServiceProvider
             && Schema::hasTable('post_category')
             && Schema::hasTable('posts')
             && Schema::hasTable('menu')
+            && Schema::hasTable('types')
         ) {
             // CONMMON CONTACTS
             $objects = Information::where(['type' => 'CONTACT'])->get()->toArray();
