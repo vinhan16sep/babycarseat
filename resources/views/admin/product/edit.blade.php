@@ -66,6 +66,19 @@
                                     </div>
                                 </div>
 
+                                <div class="form-group{{ $errors->has('type_id') ? ' has-error' : '' }}">
+                                    <label>Chọn loại sản phẩm <span class="my-required">*</span></label>
+                                    <select class="form-control w-30" name="type_id" value="{{ old('type_id', $object->type_id) }}" id="selectType">
+                                        <option></option>
+                                        @foreach ($activedTypes as $item)
+                                            <option value="{{$item->id}}" {{ old('type_id', $object->type_id) == $item->id ? 'selected' : '' }}>{{$item->name}}</option>
+                                        @endforeach
+                                    </select>
+                                    @if ($errors->has('type_id'))
+                                        <span style="color:red;">{{ $errors->first('type_id') }}</span>
+                                    @endif
+                                </div>
+
                                 <div class="form-group">
                                     <label>Tên sản phẩm <span class="my-required">*</span></label>
                                     <input type="text" name="name" value="{{ old('name', $object->name) }}" class="form-control" maxlength="255" id="inputName">

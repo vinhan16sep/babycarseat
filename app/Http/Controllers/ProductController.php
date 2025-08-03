@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use App\Models\ProductCategory;
 use App\Models\Feature;
+use App\Models\Type;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -138,6 +139,27 @@ class ProductController extends Controller
             "products" => $products,
             "category" => $category ?? null,
             "categories" => $categories ?? null,
+            "sorts" => self::SORTS,
+        ]);
+    }
+
+    function productByType(Request $request, $slug) {
+        $type = Type::where('slug', $slug)->first();
+
+        if (!$type) {
+            return redirect(route("home"));
+        }
+
+        $products = Product::query()
+            ->where('is_active', 1)
+            ->where('type_id', $type->id)
+            ->with(['productColors', 'categories'])
+            ->orderBy('products.sort', 'asc')
+            ->get();
+
+        return view('product-list', [
+            "products" => $products,
+            "category" => null,
             "sorts" => self::SORTS,
         ]);
     }

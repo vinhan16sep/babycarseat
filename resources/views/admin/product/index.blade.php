@@ -43,6 +43,15 @@
                                         </select>
                                     </div>
                                     <div class="form-group col-md-3">
+                                        <label>Loại sản phẩm</label>
+                                        <select class="form-control" name="type">
+                                            <option value="">Tất cả</option>
+                                            @foreach ($activedTypes as $item)
+                                                <option value="{{$item->id}}" {{ isset($req['type']) && $req['type'] == $item->id ? 'selected' : '' }}>{{$item->name}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-md-3">
                                         <label>Thương hiệu</label>
                                         <select class="form-control" name="brand">
                                             <option value="">Tất cả</option>

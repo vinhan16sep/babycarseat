@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Color;
 use App\Models\Product;
 use App\Models\ProductColor;
+use App\Models\Type;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
@@ -45,6 +46,10 @@ class ProductController extends AdminController
             });
         }
 
+        if (isset($req['type']) && $req['type']) {
+            $q->where('type_id', $req['type']);
+        }
+        
         if (isset($req['brand']) && $req['brand']) {
             $q->where('brand_id', $req['brand']);
         }
@@ -68,6 +73,7 @@ class ProductController extends AdminController
             'list' => $list,
             'req' => $req,
             'productCategories' => $this->productCategories,
+            'activedTypes' => $this->getActivedTypes(),
             'brands' => $this->brands
         ]);
     }
@@ -88,6 +94,7 @@ class ProductController extends AdminController
 
         return view('admin/product/create', [
             'productCategories' => $this->productCategories,
+            'activedTypes' => $this->getActivedTypes(),
             'brands' => $this->brands,
             'colors' => $colors,
             'seo' => $seo,
@@ -103,6 +110,7 @@ class ProductController extends AdminController
         try {
             $model = new Product();
             $model->brand_id = $request->input('brand_id');
+            $model->type_id = $request->input('type_id');
             $model->name = $request->input('name');
             $model->slug = $request->input('slug');
             $model->note = $request->input('note');
@@ -175,6 +183,7 @@ class ProductController extends AdminController
         return view('admin/product/edit', [
             'object' => $object,
             'productCategories' => $this->productCategories,
+            'activedTypes' => $this->getActivedTypes(),
             'brands' => $this->brands,
             'colors' => $colors,
             'selectedColors' => $selectedColors,
@@ -198,6 +207,7 @@ class ProductController extends AdminController
 
         try {
             $object->brand_id = $request->input('brand_id');
+            $object->type_id = $request->input('type_id');
             $object->name = $request->input('name');
             $object->slug = $request->input('slug');
             $object->note = $request->input('note');
@@ -350,6 +360,7 @@ class ProductController extends AdminController
         $this->validate($request, [
             'category_id' => 'required|array',
             'category_id.*' => 'exists:product_categories,id', // Sửa lại tên bảng
+            'type_id' => 'required',
             'brand_id' => 'required',
             'name' => 'required|max:255',
             'slug' => 'required|max:255|unique:products',
@@ -365,6 +376,7 @@ class ProductController extends AdminController
             'category_id.required' => 'Chưa chọn danh mục',
             'category_id.array' => 'Danh mục không hợp lệ',
             'category_id.*.exists' => 'Danh mục không tồn tại',
+            'type_id.required' => 'Chưa chọn loại sản phẩm',
             'brand_id.required' => 'Chưa chọn thương hiệu',
             'name.required' => 'Chưa nhập tên',
             'slug.required' => 'Chưa có slug',
@@ -379,6 +391,7 @@ class ProductController extends AdminController
         $this->validate($request, [
             'category_id' => 'required|array',
             'category_id.*' => 'exists:product_categories,id',
+            'type_id' => 'required',
             'brand_id' => 'required',
             'name' => 'required|max:255',
             'slug' => 'required|max:255|unique:products,slug,' . $id . ',id',
@@ -387,6 +400,7 @@ class ProductController extends AdminController
         ], [
             'category_id.required' => 'Chưa chọn danh mục',
             'category_id.array' => 'Danh mục không hợp lệ',
+            'type_id.required' => 'Chưa chọn loại sản phẩm',
             'brand_id.required' => 'Chưa chọn thương hiệu',
             'name.required' => 'Chưa nhập tên',
             'slug.required' => 'Chưa có slug',
@@ -402,5 +416,9 @@ class ProductController extends AdminController
     private function checkInUse($id)
     {
         return false;
+    }
+
+    protected function getActivedTypes() {
+        return Type::where(['is_active' => '1'])->get();
     }
 }

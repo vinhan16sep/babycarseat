@@ -27,6 +27,7 @@ use App\Http\Controllers\Admin\FormSafeController;
 use App\Http\Controllers\Admin\FormWarrantyController;
 use App\Http\Controllers\Admin\FormContactsController;
 use App\Http\Controllers\Admin\MenuController;
+use App\Http\Controllers\Admin\TypeController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -46,6 +47,7 @@ Auth::routes();
 Route::group(['middleware' => ['site_settings']], function () {
     Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::get('/san-pham/{category_slug?}', [App\Http\Controllers\ProductController::class, 'list'])->name('product-list');
+    Route::get('/loai-san-pham/{slug}', [App\Http\Controllers\ProductController::class, 'productByType'])->name('loai-san-pham');
    Route::get('/chi-tiet-san-pham/{slug}', [App\Http\Controllers\ProductController::class, 'show'])->name('product-index');
    Route::get('/giơi-thieu', [App\Http\Controllers\AboutController::class, 'show'])->name('about-show');
 //   Route::get('/bao-hanh-12-nam', [App\Http\Controllers\HomeController::class, 'baoHanh12Nam'])->name('bao-hanh-12-nam');
@@ -133,6 +135,17 @@ Route::group(['prefix' => 'br-admin', 'middleware' => 'auth'], function () {
             Route::get('edit/{id}', [ColorController::class, 'edit'])->name('edit-color');
             Route::put('update/{id}', [ColorController::class, 'update'])->name('update-color');
             Route::get('delete-row', [ColorController::class, 'delete'])->name('delete-color');
+        });
+
+        // Type
+        Route::group(['prefix' => 'type'], function () {
+            Route::get('/', [TypeController::class, 'index'])->name('list-type');
+            Route::get('create', [TypeController::class, 'create'])->name('create-type');
+            Route::post('store', [TypeController::class, 'store'])->name('store-type');
+            Route::get('edit/{id}', [TypeController::class, 'edit'])->name('edit-type');
+            Route::put('update/{id}', [TypeController::class, 'update'])->name('update-type');
+            Route::get('delete-row', [TypeController::class, 'delete'])->name('delete-type');
+            Route::get('change-status', [TypeController::class, 'changeStatus'])->name('change-type-status');
         });
 
         // Note
