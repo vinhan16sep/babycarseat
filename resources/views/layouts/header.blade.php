@@ -50,7 +50,7 @@
                 <ul class="box-nav-ul d-flex align-items-center">
                     <li class="menu-item"><a href="{{ route('about-show') }}" class="item-link">Giới thiệu</a></li>
                     <li class="menu-item {{ strpos($currentPath, 'san-pham') !== false || strpos($currentPath, 'chi-tiet-san-pham') !== false || strpos($currentPath, 'loai-san-pham') !== false  ? 'active' : '' }}">
-                        <a href="{{ route('product-list') }}" class="item-link">Sản phẩm {!! !empty($categoriesMenu) ? '<i class="icon icon-arrow-down"></i>' : '' !!}</a>
+                        <a href="{{ route('loai-san-pham', ['slug' => 'ghe-o-to-tre-em']) }}" class="item-link">Sản phẩm {!! !empty($categoriesMenu) ? '<i class="icon icon-arrow-down"></i>' : '' !!}</a>
                         @if(!empty($categoriesMenu))
                             <div class="sub-menu mega-menu" style="border-radius: 0;">
                                 <div class="container">
@@ -59,26 +59,30 @@
                                             <div class="col-xl-3">
                                                 <div class="desc">
                                                     @foreach($categoriesMenu as $_item)
+                                                        @if($_item['type_id'] == 1) <!-- Chỉ hiển thị loại ghế ô tô trẻ em -->
                                                         <h4 style="font-size: 20px;" data-category="{{ $_item["id"] }}">
-                                                            <a href="{{ route("product-list", ['category_slug' => $_item['slug']]) }}">{{ $_item['name'] }}</a>
+                                                            <a href="{{ route("product-list", ['category_slug' => $_item['slug']]) }}">{{ $_item['disp_name'] }}</a>
                                                         </h4>
+                                                        @endif
                                                     @endforeach
                                                 </div>
                                             </div>
                                             <div class="col-xl-9 box-design">
                                                 @foreach($categoriesMenu as $_item)
                                                     <div class="design {{ $loop->index !== 0 ? '' : 'active' }} design-{{$_item['id']}}">
-                                                        <h4 style="font-size: 20px;">{{ $_item['name'] }}</h4>
+                                                        <h4 style="font-size: 20px;">{{ $_item['disp_name'] }}</h4>
                                                         <div class="content">
                                                             <div class="row">
                                                                 @foreach($_item['products'] as $_i)
                                                                     @php $_i = (array)$_i @endphp
+                                                                    @if($_i['type_id'] == 1) <!-- Chỉ hiển thị sản phẩm thuộc loại ghế ô tô trẻ em -->
                                                                     <div class="col-md-3 col-sm-6">
                                                                         <a href="{{ route('product-index', ['slug' => $_i['slug']]) }}">
                                                                             <img src="{{ asset($_i['image']) }}" alt="{{ $_i['name'] }}">
                                                                         </a>
                                                                         <h5><a href="{{ route('product-index', ['slug' => $_i['slug']]) }}">{{ $_i['name'] }}</a></h5>
                                                                     </div>
+                                                                    @endif
                                                                 @endforeach
                                                             </div>
                                                         </div>

@@ -30,6 +30,8 @@
                                         <th class="w-5">STT</th>
                                         <th class="w-20">Ảnh</th>
                                         <th class="w-20">Tên</th>
+                                        <th class="w-20">Loại sản phẩm</th>
+                                        <th class="w-20">Tên hiển thị</th>
                                         <th class="w-20">Ghi chú</th>
                                         <th class="w-20">Hành động</th>
                                     </tr>
@@ -40,6 +42,8 @@
                                             <th scope="row">{{ $key + 1}}</th>
                                             <td><img style="max-height: 200px;" src="{{ $item->image ? asset($item->image) : asset('images/no-image-available-list.jpg') }}" /></td>
                                             <td>{{ $item->name}}</td>
+                                            <td>{{ $item->type->name ?? 'Chưa có loại SP' }}</td>
+                                            <td>{{ $item->disp_name}}</td>
                                             <td>{{ $item->description}}</td>
                                             <td class="color-primary">
                                                 <a type="button" href="{{ route('edit-product-category', ['id' => $item->id]) }}" class="btn btn-primary btn-flat my-list-btn"><i class="ti-pencil icon-white"></i></a>
