@@ -81,10 +81,8 @@ class AppServiceProvider extends ServiceProvider
             // Chỉ áp dụng cho sản phẩm thuộc loại ghế ô tô trẻ em
             $rawProducts = DB::table('product_categories_mapping as pcm')
                 ->join('products as p', 'p.id', '=', 'pcm.product_id')
-                ->leftJoin('product_categories as pc', 'pc.id', '=', 'pcm.category_id')
                 ->where('p.is_active', 1)
-                ->where('pc.type_id', 1)
-                ->select('p.*', 'pcm.category_id', 'pc.name as category_name', 'pc.type_id as pc_type_id')
+                ->select('p.*', 'pcm.category_id')
                 ->orderBy('pcm.category_id')
                 ->orderByDesc('p.created_at')
                 ->get();
@@ -98,8 +96,6 @@ class AppServiceProvider extends ServiceProvider
                 $category->setRelation('products', $groupedProducts->get($category->id) ?? collect());
                 return $category->toArray();
             });
-            // echo '<pre>';
-            // print_r($categories);
             View::share('categoriesMenu', $categories);
 
             // Get loai sản phẩm
