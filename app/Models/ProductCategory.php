@@ -17,6 +17,8 @@ class ProductCategory extends Model
         'image',
         'name',
         'slug',
+        'type_id',
+        'disp_name',
         'description',
         'created_by',
         'updated_by'
@@ -24,5 +26,9 @@ class ProductCategory extends Model
 
     public function products() {
         return $this->belongsToMany(Product::class, 'product_categories_mapping', 'category_id', 'product_id');
+    }
+
+    public function type() {
+        return $this->belongsTo(Type::class, 'type_id', 'id');
     }
 }

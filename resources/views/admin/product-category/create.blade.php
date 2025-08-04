@@ -39,6 +39,19 @@
                                             alt="preview image" style="max-height: 250px;">
                                     </div>
                                 </div>
+                                
+                                <div class="form-group{{ $errors->has('type_id') ? ' has-error' : '' }}">
+                                    <label>Chọn loại sản phẩm <span class="my-required">*</span></label>
+                                    <select class="form-control w-30" name="type_id" value="{{ old('type_id') }}" id="selectType">
+                                        <option></option>
+                                        @foreach ($activedTypes as $item)
+                                            <option value="{{$item->id}}" {{ old('type_id') == $item->id ? 'selected' : '' }}>{{$item->name}}</option>
+                                        @endforeach
+                                    </select>
+                                    @if ($errors->has('type_id'))
+                                        <span style="color:red;">{{ $errors->first('type_id') }}</span>
+                                    @endif
+                                </div>
 
                                 <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                                     <label>Tên</label>
@@ -54,6 +67,15 @@
                                     <input type="text" name="slug" value="{{ old('slug') }}" class="form-control" id="inputSlug" readonly>
                                     @if ($errors->has('slug'))
                                         <span style="color:red;">{{ $errors->first('slug') }}</span>
+                                    </span>
+                                    @endif
+                                </div>
+
+                                <div class="form-group{{ $errors->has('disp_name') ? ' has-error' : '' }}">
+                                    <label>Tên hiển thị</label>
+                                    <input type="text" name="disp_name" value="{{ old('disp_name') }}" class="form-control" maxlength="255">
+                                    @if ($errors->has('disp_name'))
+                                        <span style="color:red;">{{ $errors->first('disp_name') }}</span>
                                     </span>
                                     @endif
                                 </div>

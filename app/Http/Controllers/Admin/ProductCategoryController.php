@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Product;
 use App\Models\ProductCategory;
 use App\Models\ProductCategoryMapping;
+use App\Models\Type;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
@@ -22,12 +23,14 @@ class ProductCategoryController extends AdminController
     }
 
     public function index() {
-        $list = ProductCategory::orderBy('updated_at', 'desc')->paginate(10);
+        $list = ProductCategory::with(['type'])->orderBy('updated_at', 'desc')->paginate(10);
         return view('admin/product-category/index', compact('list'));
     }
 
     public function create() {
-        return view('admin/product-category/create');
+        return view('admin/product-category/create', [
+            'activedTypes' => $this->getActivedTypes()
+        ]);
     }
 
     public function store(Request $request) {
@@ -41,6 +44,8 @@ class ProductCategoryController extends AdminController
             $model = new ProductCategory();
             $model->name = $request->input('name');
             $model->slug = $request->input('slug');
+            $model->type_id = $request->input('type_id');
+            $model->disp_name = $request->input('disp_name');
             $model->description = $request->input('description');
             if ($model->save()) {
                 $path = sprintf(Config::get('constants.FILE_STORAGE_PATH.PRODUCT_CATEGORY_IMAGE'), $model->id);
@@ -73,6 +78,7 @@ class ProductCategoryController extends AdminController
 
         return view('admin/product-category/edit', [
             'object' => $object,
+            'activedTypes' => $this->getActivedTypes()
         ]);
     }
 
@@ -92,6 +98,8 @@ class ProductCategoryController extends AdminController
 
             $object->name = $request->input('name');
             $object->slug = $request->input('slug');
+            $object->type_id = $request->input('type_id');
+            $object->disp_name = $request->input('disp_name');
             $object->description = $request->input('description');
                     
             if($request->hasfile('image')) {
@@ -182,11 +190,15 @@ class ProductCategoryController extends AdminController
         $this->validate($request, [
             'name' => 'required|max:255',
             'slug' => 'required|max:255|unique:product_categories',
+            'type_id' => 'required',
+            'disp_name' => 'required|max:255',
             'image' => 'required|image|mimes:jpg,jpeg,png|max:2048',
         ], [
             'name.required' => 'Chưa nhập tên',
             'slug.required' => 'Chưa có slug',
             'slug.unique' => 'Slug đã tồn tại',
+            'type_id.required' => 'Chưa chọn loại sản phẩm',
+            'disp_name.required' => 'Chưa nhập tên hiển thị',
             'image.required' => 'Chưa chọn ảnh',
             'image.image' => 'Chỉ chấp nhận ảnh có định dạng jpg, jpeg, png',
             'image.mimes' => 'Chỉ chấp nhận ảnh có định dạng jpg, jpeg, png',
@@ -198,11 +210,15 @@ class ProductCategoryController extends AdminController
         $this->validate($request, [
             'name' => 'required|max:255',
             'slug' => 'required|max:255|unique:product_categories,slug,' . $id . ',id',
+            'type_id' => 'required',
+            'disp_name' => 'required|max:255',
             'image' => 'image|mimes:jpg,jpeg,png|max:2048',
         ], [
             'name.required' => 'Chưa nhập tên',
             'slug.required' => 'Chưa có slug',
             'slug.unique' => 'Slug đã tồn tại',
+            'type_id.required' => 'Chưa chọn loại sản phẩm',
+            'disp_name.required' => 'Chưa nhập tên hiển thị',
             'image.image' => 'Chỉ chấp nhận ảnh có định dạng jpg, jpeg, png',
             'image.mimes' => 'Chỉ chấp nhận ảnh có định dạng jpg, jpeg, png',
             'image.max' => 'Dung lượng ảnh không được quá 2MB',
@@ -218,5 +234,9 @@ class ProductCategoryController extends AdminController
         // return true;
 
         return false;
+    }
+
+    protected function getActivedTypes() {
+        return Type::where(['is_active' => '1'])->get();
     }
 }
