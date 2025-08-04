@@ -49,7 +49,7 @@
             <nav class="box-navigation text-center">
                 <ul class="box-nav-ul d-flex align-items-center">
                     <li class="menu-item"><a href="{{ route('about-show') }}" class="item-link">Giới thiệu</a></li>
-                    <!-- <li class="menu-item {{ strpos($currentPath, 'san-pham') !== false || strpos($currentPath, 'chi-tiet-san-pham') !== false || strpos($currentPath, 'loai-san-pham') !== false  ? 'active' : '' }}">
+                    <li class="menu-item {{ strpos($currentPath, 'san-pham') !== false || strpos($currentPath, 'chi-tiet-san-pham') !== false || strpos($currentPath, 'loai-san-pham') !== false  ? 'active' : '' }}">
                         <a href="{{ route('product-list') }}" class="item-link">Sản phẩm {!! !empty($categoriesMenu) ? '<i class="icon icon-arrow-down"></i>' : '' !!}</a>
                         @if(!empty($categoriesMenu))
                             <div class="sub-menu mega-menu" style="border-radius: 0;">
@@ -90,10 +90,10 @@
                                 </div>
                             </div>
                         @endif
-                    </li> -->
+                    </li>
                     <li class="menu-item position-relative {{ strpos($currentPath, 'san-pham') !== false || strpos($currentPath, 'chi-tiet-san-pham') !== false || strpos($currentPath, 'loai-san-pham') !== false  ? 'active' : '' }}">
-                        <a href="#" class="item-link">Sản phẩm<i class="icon icon-arrow-down"></i></a>
-                        <div class="sub-menu submenu-default menu-list">
+                        <a href="{{ route('loai-san-pham', ['slug' => 'xe-day']) }}" class="item-link">Xe đẩy</i></a>
+                        <!-- <div class="sub-menu submenu-default menu-list">
                             <ul class="menu-list">
                                 @if(!empty($productTypes))
                                     <ul class="menu-list">
@@ -105,7 +105,7 @@
                                     </ul>
                                 @endif
                             </ul>
-                        </div>
+                        </div> -->
                     </li>
                     <li class="menu-item position-relative">
                         <a href="#" class="item-link">Bảo hành<i class="icon icon-arrow-down"></i></a>
