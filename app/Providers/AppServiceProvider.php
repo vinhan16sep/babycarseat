@@ -85,7 +85,8 @@ class AppServiceProvider extends ServiceProvider
 				->where('p.type_id', 1) // 1 là loại ghế ô tô trẻ em
                 ->select('p.*', 'pcm.category_id')
                 ->orderBy('pcm.category_id')
-                ->orderByDesc('p.created_at')
+                ->orderBy('p.sort')
+                // ->orderByDesc('p.created_at')
                 ->get();
 
             // Nhóm theo category_id và lấy 4 sản phẩm đầu tiên
