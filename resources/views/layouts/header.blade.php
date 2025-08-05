@@ -76,7 +76,7 @@
                                                                 @foreach($_item['products'] as $_i)
                                                                     @php $_i = (array)$_i @endphp
                                                                     @if($_i['type_id'] == 1) <!-- Chỉ hiển thị sản phẩm thuộc loại ghế ô tô trẻ em -->
-                                                                    <div class="col-md-3 col-sm-6">
+                                                                    <div class="col-md-3 col-sm-6" style="text-align: center;">
                                                                         <a href="{{ route('product-index', ['slug' => $_i['slug']]) }}">
                                                                             <img src="{{ asset($_i['image']) }}" alt="{{ $_i['name'] }}">
                                                                         </a>
