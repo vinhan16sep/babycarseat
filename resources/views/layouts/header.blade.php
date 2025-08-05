@@ -50,7 +50,7 @@
                 <ul class="box-nav-ul d-flex align-items-center">
                     <li class="menu-item"><a href="{{ route('about-show') }}" class="item-link">Giới thiệu</a></li>
                     <li class="menu-item {{ strpos($currentPath, 'san-pham') !== false || strpos($currentPath, 'chi-tiet-san-pham') !== false || strpos($currentPath, 'loai-san-pham') !== false  ? 'active' : '' }}">
-                        <a href="{{ route('loai-san-pham', ['slug' => 'ghe-o-to-tre-em']) }}" class="item-link">Sản phẩm {!! !empty($categoriesMenu) ? '<i class="icon icon-arrow-down"></i>' : '' !!}</a>
+                        <a href="{{ route('loai-san-pham', ['slug' => 'ghe-o-to-tre-em']) }}" class="item-link">Ghế ô tô cho bé {!! !empty($categoriesMenu) ? '<i class="icon icon-arrow-down"></i>' : '' !!}</a>
                         @if(!empty($categoriesMenu))
                             <div class="sub-menu mega-menu" style="border-radius: 0;">
                                 <div class="container">

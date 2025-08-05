@@ -1326,7 +1326,7 @@
                             <div href="#dropdown-menu-one" class="mb-menu-link sub-nav-link collapsed"
                                  aria-expanded="true"
                                  aria-controls="dropdown-menu-one">
-                                <a href="{{ route('product-list') }}">Sản phẩm</a><span class="btn-open-sub"></span>
+                                <a href="{{ route('loai-san-pham', ['slug' => 'ghe-o-to-tre-em']) }}">Ghế ô tô cho bé</a><span class="btn-open-sub"></span>
                             </div>
                             <div id="dropdown-menu-one" class="collapse">
                                 <ul class="sub-nav-menu">
@@ -1335,7 +1335,7 @@
                                             <div href="#dropdown-menu-one-1-{{$_item['id']}}" class="mb-menu-link sub-nav-link collapsed"
                                                  aria-expanded="true"
                                                  aria-controls="dropdown-menu-one-1-{{$_item['id']}}">
-                                                <a class="mb-menu-link sub-nav-link" href="{{ route("product-list", ['category_slug' => $_item['slug']]) }}">{{ $_item['name'] }}</a><span class="btn-open-sub"></span>
+                                                <a class="mb-menu-link sub-nav-link" href="{{ route("product-list", ['category_slug' => $_item['slug']]) }}">{{ $_item['disp_name'] }}</a><span class="btn-open-sub"></span>
                                             </div>
                                             <div id="dropdown-menu-one-1-{{$_item['id']}}" class="collapse">
                                                 <ul class="sub-nav-menu">
@@ -1352,6 +1352,9 @@
                         @else
                             <a href="{{ route('product-list') }}" class="mb-menu-link">Sản phẩm</a>
                         @endif
+                    </li>
+                    <li class="nav-mb-item">
+                        <a href="{{ route('loai-san-pham', ['slug' => 'xe-day']) }}" class="mb-menu-link">Xe đẩy</i></a>
                     </li>
 {{--                    @foreach($mainMenu as $_name => $_menus)--}}
 {{--                        <li class="nav-mb-item">--}}
