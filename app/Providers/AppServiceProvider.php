@@ -82,10 +82,11 @@ class AppServiceProvider extends ServiceProvider
             $rawProducts = DB::table('product_categories_mapping as pcm')
                 ->join('products as p', 'p.id', '=', 'pcm.product_id')
                 ->where('p.is_active', 1)
-				->where('p.type_id', 1)
+				->where('p.type_id', 1) // 1 là loại ghế ô tô trẻ em
                 ->select('p.*', 'pcm.category_id')
                 ->orderBy('pcm.category_id')
-                ->orderByDesc('p.created_at')
+                ->orderBy('p.sort')
+                // ->orderByDesc('p.created_at')
                 ->get();
 
             // Nhóm theo category_id và lấy 4 sản phẩm đầu tiên
