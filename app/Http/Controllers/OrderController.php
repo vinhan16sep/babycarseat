@@ -76,7 +76,7 @@ class OrderController extends Controller
                 $result->order_items()->createMany($OrderItemCreate);
 
                 Cart::instance(config('cart.instance'))->destroy();
-//                $this->sendMailOrder($result->id);
+               $this->sendMailOrder($result->id);
             }
             DB::commit();
         } catch (Throwable $e) {
