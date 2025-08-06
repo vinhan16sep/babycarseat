@@ -40,7 +40,7 @@ class SendOrderEmail implements ShouldQueue
         $domain = $parse_url["host"] ?? "";
         $subject = "Đơn hàng tại $domain đã được đặt!";
         $subjectAdmin = "Bạn có đơn hàng mới tại website $domain!";
-        $order = Order::with(["order_items.product", "order_items.combo.products", "order_customer"])->find($this->order_id);
+        $order = Order::with(["order_items.product", "order_customer"])->find($this->order_id);
 
         $email = new OrderEmail($order, $subject, false);
         Mail::to($order->order_customer->email)->send($email);
