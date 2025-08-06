@@ -50,7 +50,7 @@
                 <ul class="box-nav-ul d-flex align-items-center">
                     <li class="menu-item"><a href="{{ route('about-show') }}" class="item-link">Giới thiệu</a></li>
                     <li class="menu-item {{ strpos($currentPath, 'san-pham') !== false || strpos($currentPath, 'chi-tiet-san-pham') !== false || strpos($currentPath, 'loai-san-pham') !== false  ? 'active' : '' }}">
-                        <a href="{{ route('loai-san-pham', ['slug' => 'ghe-o-to-tre-em']) }}" class="item-link">Sản phẩm {!! !empty($categoriesMenu) ? '<i class="icon icon-arrow-down"></i>' : '' !!}</a>
+                        <a href="{{ route('loai-san-pham', ['slug' => 'ghe-o-to-tre-em']) }}" class="item-link">Ghế ô tô cho bé {!! !empty($categoriesMenu) ? '<i class="icon icon-arrow-down"></i>' : '' !!}</a>
                         @if(!empty($categoriesMenu))
                             <div class="sub-menu mega-menu" style="border-radius: 0;">
                                 <div class="container">
@@ -76,7 +76,7 @@
                                                                 @foreach($_item['products'] as $_i)
                                                                     @php $_i = (array)$_i @endphp
                                                                     @if($_i['type_id'] == 1) <!-- Chỉ hiển thị sản phẩm thuộc loại ghế ô tô trẻ em -->
-                                                                    <div class="col-md-3 col-sm-6">
+                                                                    <div class="col-md-3 col-sm-6" style="text-align: center;">
                                                                         <a href="{{ route('product-index', ['slug' => $_i['slug']]) }}">
                                                                             <img src="{{ asset($_i['image']) }}" alt="{{ $_i['name'] }}">
                                                                         </a>
