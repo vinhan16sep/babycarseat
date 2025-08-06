@@ -28,6 +28,10 @@ class CartController extends Controller
     {
         try {
             $product = Product::findOrFail($request->id);
+            $colors = [];
+            foreach ($product->productColors as $_item) {
+                $colors[$_item->color->id] = $_item->color->name;
+            }
             $qty = (int)$request->qty;
             $price = ($product->is_discount > 0) ? $product->discount_value : $product->price;
             $dataAddToCart = [
@@ -39,6 +43,8 @@ class CartController extends Controller
                 'options' => [
                     'slug' => $product->slug,
                     'image' => $product->image,
+                    'product_color_id' => $request->product_color_id,
+                    'colors' => $colors,
                 ]
             ];
             Cart::instance(config('cart.instance'))->add($dataAddToCart);
@@ -70,7 +76,14 @@ class CartController extends Controller
             }
             if (!empty($data['rowid'])) {
                 foreach ($data['rowid'] as $key => $value) {
-                    Cart::instance(config('cart.instance'))->update($key, ['qty' => (int)$value['quantity']]);
+                    if (!empty($value['options']['product_color_id'])) {
+                        $item = Cart::instance(config('cart.instance'))->get($key);
+                        $options = $item->options;
+                        $options['product_color_id'] = $value['options']['product_color_id'];
+                        Cart::instance(config('cart.instance'))->update($key, ['options' => $options]);
+                    } else {
+                        Cart::instance(config('cart.instance'))->update($key, ['qty' => (int)$value['quantity']]);
+                    }
                 }
             }
 

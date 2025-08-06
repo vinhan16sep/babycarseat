@@ -1273,17 +1273,51 @@
 
 
     $(document).on("click", ".add-to-card", function () {
-        let id = $(this).attr('data-id'), qty = 1;
+        let id = $(this).attr('data-id'), product_color_id = null, qty = 1;
         if ($(this).parents('.tf-product-info-list').length > 0) {
             qty = $(this).parents('.tf-product-info-list').find('.quantity-product').val();
+            product_color_id = $('#color-picker [name="color"]').val();
         }
-        ajax_cart_add(id, qty);
-        window.location.href = BASE_URL + "/thanh-toan"
+        ajax_cart_add(id, qty, product_color_id);
+        window.location.href = BASE_URL + "/gio-hang"
         // $('#quickAdd').modal('hide');
         // $("#shoppingCart").modal("show");
     });
 
+    $(document).on("click", ".box-body-cart .remove-cart", function () {
+        let id = $(this).attr("data-id");
+        let rowid = {};
+        rowid[id] = { quantity: 0 };
+        ajax_cart_update({ rowid: rowid});
+    });
 
+
+    $(document).on("click", ".box-body-cart .btn-increase", function () {
+        let input = $(this).parent().find('input');
+        let id = input.attr("data-id");
+        let currentQuantity = parseInt(input.val());
+        let rowid = {};
+        rowid[id] = { quantity: currentQuantity + 1 };
+        input.val(currentQuantity + 1);
+        ajax_cart_update({ rowid: rowid });
+    });
+    $(document).on("click", ".box-body-cart .btn-decrease", function () {
+        let input = $(this).parent().find('input');
+        let id = input.attr("data-id");
+        let currentQuantity = parseInt(input.val());
+        if (currentQuantity > 1) {
+            let rowid = {};
+            rowid[id] = { quantity: currentQuantity - 1 };
+            input.val(currentQuantity - 1);
+            ajax_cart_update({ rowid: rowid });
+        }
+    });
+    $(document).on("change", ".box-body-cart .update-color-item", function () {
+        let id = $(this).attr("data-id");
+        let rowid = {};
+        rowid[id] = { options: {product_color_id: $(this).val()} };
+        ajax_cart_update({ rowid: rowid });
+    });
 
     $(document).on("click", "#shoppingCart .tf-btn-remove.remove", function () {
         let rowid = {};
@@ -1292,12 +1326,13 @@
         ajax_cart_update({ rowid: rowid });
     });
 
-    function ajax_cart_add(productId, qty){
+    function ajax_cart_add(productId, qty, product_color_id){
         qty = Number(qty);
         if (qty > 0) {
             $.post(BASE_URL + '/add-to-cart', {
                 id: productId,
                 qty: qty,
+                product_color_id: product_color_id,
                 _token: $('[name="csrf-token"]').attr("content")
             }, function(data){
                 if (data != false) {
@@ -1314,31 +1349,27 @@
         if (useToken) {
             data._token = $('[name="csrf-token"]').attr("content");
         }
-        // if($("#order-cart-left").length > 0 || $("#order-cart-right").length > 0) {
-        //     data.cart_detail = true;
-        // }
+        if($("#order-cart-left").length > 0 || $("#order-cart-right").length > 0) {
+            data.cart_detail = true;
+        }
         $.post(BASE_URL + '/update-to-cart', data, function(data){
             if (data != false) {
-                $(".tf-mini-cart-items").html(data.cart_header_html);
-                $("li.nav-cart a span.count-box").html(`${data.count}`);
 
-                // if ($("#order-cart-left").length > 0 || $("#order-cart-right").length > 0) {
-                //     if ($("#order-cart-left").length > 0) {
-                //         $("#order-cart-left").html(data.order_left_html);
-                //     }
-                //     if ($("#order-cart-right").length > 0) {
-                //         $("#order-cart-right").html(data.order_right_html);
-                //     }
-                //     if($('input[type="number"]').length > 0) {
-                //         $('input[type="number"]').niceNumber();
-                //     }
-                // }
-                // if($("#payment-left").length > 0 && data.count == 0){
-                //     $("#payment-left").html(`
-                //     <p class="zoom-area">Không có sản phẩm nào để thanh toán</p>
-                //     <a class="back-to-home" href="${HOME_URL}">Quay lại trang chủ</a>
-                // `);
-                // }
+                // $(".tf-mini-cart-items").html(data.cart_header_html);
+                // $("li.nav-cart a span.count-box").html(`${data.count}`);
+
+                if ($("#order-cart-left").length > 0 || $("#order-cart-right").length > 0) {
+                    if ($("#order-cart-left").length > 0) {
+                        $("#order-cart-left").html(data.order_left_html);
+                    }
+                    if ($("#order-cart-right").length > 0) {
+                        $("#order-cart-right").html(data.order_right_html);
+                    }
+                    if($('input[type="number"]').length > 0) {
+                        $('input[type="number"]').niceNumber();
+                    }
+                }
+                $("li.nav-cart a span.count-box").html(`${data.count}`);
                 if (data.count == 0) {
                     $('#shoppingCart .tf-mini-cart-sroll').removeClass('is_not_show')
                 } else {
@@ -1372,6 +1403,58 @@
     });
 
     $(document).ready(function() {
+
+        if($("#order-form").length > 0){
+            let form = $("#order-form");
+            let rules = {
+                name: {
+                    required: true
+                },
+                address: {
+                    required: true
+                },
+                phone: {
+                    required: true
+                },
+                email: {
+                    required: true
+                }
+            };
+            form.validate({
+                ignore: false,
+                rules: rules,
+                messages:{
+                    name: {
+                        required: 'Vui lòng nhập họ và tên',
+                    },
+                    address: {
+                        required: 'Vui lòng nhập địa chỉ',
+                    },
+                    phone: {
+                        required: 'Vui lòng nhập số điện thoại',
+                    },
+                    email: {
+                        required: 'Vui lòng nhập địa chỉ email',
+                        email: 'Vui lòng nhập một địa chỉ email hợp lệ.'
+                    }
+
+                },
+                showErrors: function(errorMap,errorList) {
+                    this.defaultShowErrors();
+                }
+            });
+            $(document).on("click", ".submit_payment", function(e) {
+                let form = $("#order-form");
+                if(form.valid()) {
+                    $("#order-form").submit();
+                } else {
+                    $('#collapseTwo').collapse('show');
+                    showMessage("alert alert-danger", "Vui lòng nhập đầy đủ thông tin!");
+                }
+                e.preventDefault();
+            });
+        }
+
         if($("#contactform").length > 0){
             let form = $("#contactform");
             let rules = {

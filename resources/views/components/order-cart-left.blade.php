@@ -1,80 +1,59 @@
 @if ($count > 0)
-    <form id="form-update-cart" method="post">
-        <div class="bz_cart_main_wrapper float_left">
-            <div class="cart_tbl">
-                <div class="table table-responsive">
-                    <table class="table table-borderless">
-                    <thead>
-                        <tr>
-                            <th class="text-right w-150">Sản phẩm</th>
-                            <th></th>
-                            <th class="mw-130 text-center">Số lượng</th>
-                            <th class="mw-130 text-right">Đơn giá</th>
-                            <th class="mw-130 text-right">Tổng cộng</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($cart as $key => $item)
-                            <tr>
-                                <td class="mw-130 text-right">
-                                    <a class="close_btn" data-id="{{ $key }}"><i class="fa fa-times"></i></a>
-                                    @if ($item->options->has("image"))
-                                        <img class="img-fluid cart" src="{{ getImage($item->options->image) }}" alt="{{ $item->name }}">
-                                    @endif
-                                </td>
-                                <td>{{ $item->name }}</td>
-                                <td>
-                                    <div class="number_pluse cart">
-                                    <input class="qty-product" type="number" min="1" data-old-value="{{ $item->qty }}" value="{{ $item->qty }}" name="rowid[{{$key}}][quantity]">
-                                    </div>
-                                </td>
-                                <td class="text-right">{{ numberFormat($item->price) }}₫</td>
-                                <td class="text-right">{{ numberFormat($item->price*$item->qty) }}₫</td>
-                            </tr>
-                            @if ($item->options->has("products"))
-                                @php
-                                    $products = $item->options->products;
-                                @endphp
-                                @foreach ($products as $key => $productCart)
-                                    <tr>
-                                        <td class="mw-130 text-right">
-                                            @if (!empty($productCart["options"]["image"]))
-                                                <img class="img-fluid cart" src="{{ getImage($productCart["options"]["image"]) }}" alt="{{ $productCart["name"] }}">
-                                            @endif
-                                        </td>
-                                        <td>{{ $productCart["name"] }}</td>
-                                        <td>
-                                            <div class="number_pluse cart text-center">
-                                                {{ $productCart["qty"]*$item->qty }}
-                                            </div>
-                                        </td>
-                                        <td class="text-right">{{ numberFormat($productCart["price"]) }}₫</td>
-                                        <td class="text-right">{{ numberFormat($productCart["price"]*$productCart["qty"]*$item->qty) }}₫</td>
-                                    </tr>
-                                @endforeach
+    <form class="box-body-cart">
+        <table class="tf-table-page-cart">
+            <thead>
+            <tr>
+                <th>Sản phẩm</th>
+                <th>Giá</th>
+                <th>Số lượng</th>
+                <th>Tông tiền</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach ($cart as $key => $item)
+                <tr class="tf-cart-item file-delete">
+                    <td class="tf-cart-item_product">
+                        <a class="img-box">
+                            @if (!empty($item->options["image"]))
+                                <img  class="img-fluid cart" src="{{ getImage($item->options["image"]) }}" alt="{{ $item->name }}">
                             @endif
-                        @endforeach
-                    </tbody>
-                    </table>
-                </div>
-                <div class="cart_coupan">
-                    <div class="d-inline-flex mw-290">
-                        <div>
-                            <div class="d-inline-flex">
-                                <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                <input type="text" name="code" placeholder="Nhập mã giảm giá" value="{{ session('discount_code') ? session('discount_code') : ""}}">
-                                <button type="button" id="apply-discount-code">Áp dụng</button>
-                            </div>
+                        </a>
+                        <div class="cart-info">
+                            <a class="cart-title link">{{ $item->name }}</a>
+                            @if(!empty($item->options['colors']))
+                                <div class="variant-box">
+                                    <div class="tf-select">
+                                        <select data-id="{{ $key }}" class="update-color-item">
+                                            @foreach($item->options['colors'] as $color_id => $color_name)
+                                                <option value="{{ $color_id }}" {{ isset($item->options['product_color_id']) && $item->options['product_color_id'] == $color_id ? 'selected="selected"' : '' }}>{{ $color_name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                            @endif
                         </div>
-                    </div>
-                    <div class="update_btn">
-                        <a id="submit_cart" class="submit_btn btn disabled">Cập nhật </a>
-                    </div>
-                </div>
-            </div>
-        </div>
+                    </td>
+                    <td data-cart-title="Price" class="tf-cart-item_price text-center">
+                        <div class="cart-price text-button price-on-sale">{{ numberFormat($item->price) }}₫</div>
+                    </td>
+                    <td data-cart-title="Quantity" class="tf-cart-item_quantity">
+                        <div class="wg-quantity mx-md-auto">
+                            <span class="btn-quantity btn-decrease">-</span>
+                            <input type="text" class="quantity-product qty-product" min="1" data-old-value="{{ $item->qty }}" value="{{ $item->qty }}" data-id="{{ $key }}">
+                            <span class="btn-quantity btn-increase">+</span>
+                        </div>
+                    </td>
+                    <td data-cart-title="Total" class="tf-cart-item_total text-center">
+                        <div class="cart-total text-button total-price">{{ numberFormat($item->price*$item->qty) }}₫</div>
+                    </td>
+                    <td data-cart-title="Remove" class="remove-cart" data-id="{{ $key }}"><span class="remove icon icon-close"></span></td>
+                </tr>
+            @endforeach
+            </tbody>
+        </table>
     </form>
 @else
     <p class="zoom-area">Không có sản phẩm nào trong giỏ hàng</p>
-    <a class="back-to-home" href="{{ route("home") }}">Quay lại trang chủ</a>
+{{--    <a class="back-to-home" href="{{ route("home") }}">Quay lại trang chủ</a>--}}
 @endif
