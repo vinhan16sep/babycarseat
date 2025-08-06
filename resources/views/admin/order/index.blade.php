@@ -81,10 +81,11 @@
                                         <th class="w-5">STT</th>
                                         <th class="w-15">Khách hàng</th>
                                         <th class="w-10">Thời gian đặt hàng</th>
+                                        <th class="w-15">Phương thức thanh toán</th>
                                         <th class="w-15">Giá (VNĐ)</th>
                                         <th class="w-10">Mã đơn hàng</th>
                                         <th class="w-10">Trạng thái</th>
-                                        <th class="w-20">Hành động</th>
+                                        <th class="w-10">Hành động</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -93,6 +94,7 @@
                                             <th scope="row">{{ $key + 1 }}</th>
                                             <td><a href="javascript:void(0);" onclick="showCustomer('{{ json_encode($item->order_customer) }}')">{{ $item->order_customer->name }}</a></td>
                                             <td>{{ $item->created_at }}</td>
+                                            <td>{{ $paymentMethods[$item->payment_method] }}</td>
                                             <td>
                                                 {{ number_format($item->total_price - $item->discounted_price) }}
                                                 @if ($item->discount_percent != '0')
