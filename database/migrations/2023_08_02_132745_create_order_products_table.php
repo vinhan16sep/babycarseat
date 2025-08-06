@@ -21,6 +21,7 @@ class CreateOrderProductsTable extends Migration
 			$table->integer('order_id')->unsigned();
 			$table->integer('product_id')->unsigned()->nullable();
 			$table->integer('combo_id')->unsigned()->nullable();
+			$table->integer('color_id')->unsigned()->nullable();
 			$table->bigInteger('price');
 			$table->integer('quantity');
 			$table->timestamps();

@@ -15,8 +15,10 @@ class Order extends Model
      */
     const DISCOUNT_PERCENT = 5;
     const TYPE_PAYMENT = [
-        0 => "Chuyển khoản ngân hàng",
-        1 => "Trả tiền mặt khi nhận hàng",
+        1 => "Credit Card",
+        2 => "Cash on delivery",
+        3 => "Apple Pay",
+        4 => "Paypal",
     ];
     const TYPE_PAYMENT_DESCRIPTION = [
         0 => "Thực hiện thanh toán vào ngay tài khoản ngân hàng của chúng tôi. Vui lòng sử dụng Mã đơn hàng của bạn trong phần Nội dung thanh toán. Đơn hàng sẽ đươc giao sau khi tiền đã chuyển.",
@@ -32,7 +34,7 @@ class Order extends Model
 
     public $timestamps = true;
     protected $fillable = array(
-        'total_price', 
+        'total_price',
         'discount_percent',
         'discounted_price',
         'payment_method',
@@ -58,7 +60,7 @@ class Order extends Model
             $code = strtoupper(Str::random($length));
             $coupon = Order::query()->where("code", $code)->first();
         }while ($coupon);
-        
+
         return $code;
     }
 

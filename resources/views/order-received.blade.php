@@ -66,7 +66,7 @@
                         </div>
                         <div class="order_rate">
                             <h3 class="bt-0 pb-0">
-                                <span class="pr-5px fs-16">Tổng tiền thanh toán</span>
+                                <span class="pr-5px fs-16">Tổng tiền</span>
                                 <span>{{ numberFormat($order->total_price-$order->discounted_price) }}₫</span>
                             </h3>
                         </div>

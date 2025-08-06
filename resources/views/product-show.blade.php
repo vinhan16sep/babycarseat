@@ -137,7 +137,7 @@
 {{--                                        <div class="text text-btn-uppercase">Clothing</div>--}}
                                         <h3 class="name">{{ $product->name }}</h3>
                                         <div class="variant-picker-item">
-                                            <div class="variant-picker-values">
+                                            <div class="variant-picker-values" id="color-picker">
                                                 @foreach($product->productColors as $_color)
                                                     <input type="radio" name="color" value="{{ $_color->color->id }}">
                                                     <label class="-swiperslide stagger-item hover-tooltip tooltip-bot radius-60 color-btn {{ $loop->index == 0 ? 'active' : '' }}"
@@ -277,7 +277,7 @@
 {{--                                                <span class="tooltip text-caption-2">Wishlist</span>--}}
 {{--                                            </a>--}}
                                         </div>
-                                        <!-- <a class="btn-style-3 text-btn-uppercase add-to-card" data-id="{{ $product->id }}">Buy it now</a> -->
+                                        <a class="btn-style-3 text-btn-uppercase add-to-card" data-id="{{ $product->id }}">Mua ngay</a>
                                     </div>
                                     <div class="tf-product-info-help">
                                         <ul class="accordion-product-wrap" id="accordion-product">

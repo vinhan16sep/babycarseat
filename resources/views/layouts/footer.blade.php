@@ -1417,9 +1417,9 @@
                     <li class="nav-mb-item">
                         <a href="{{ route('contact') }}" class="mb-menu-link">Hỗ trợ</a>
                     </li>
-                    <!-- <li class="nav-mb-item">
+                    <li class="nav-mb-item">
                         <a href="#" class="mb-menu-link">Buy Now</a>
-                    </li> -->
+                    </li>
                 </ul>
             </div>
             <div class="mb-other-content">

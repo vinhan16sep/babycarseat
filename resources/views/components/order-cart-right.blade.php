@@ -1,50 +1,53 @@
 @if ($count > 0)
-    <div class="your_order">
+    <div class="fl-sidebar-cart">
+        <div class="box-order bg-surface">
+            <h5 class="title">Thông tin thanh toán</h5>
+{{--            <div class="subtotal text-button d-flex justify-content-between align-items-center">--}}
+{{--                <span>Subtotal</span>--}}
+{{--                <span class="total">-$80.00</span>--}}
+{{--            </div>--}}
 
-        <h3>Đơn đặt hàng của bạn</h3>
-        <div class="order_details">
-            @foreach ($cart as $item)
-                <p class="text-black"> 
-                    <span class="pr-5px">{{ $item->name }} × {{ $item->qty }}</span> 
-                    <span class="bold">{{ numberFormat($item->price*$item->qty) }}₫</span>
-                </p>
-                @if ($item->options->has("products"))
-                    @php
-                        $products = $item->options->products;
-                    @endphp
-                    @foreach ($products as $key => $productCart)
-                        <p class="text-black"> 
-                            <span class="pr-5px">{{ $productCart["name"] }} × {{ $productCart["qty"]*$item->qty }}</span> 
-                            <span class="bold opacity-04">{{ numberFormat($productCart["price"]*$productCart["qty"]*$item->qty) }}₫</span>
-                        </p>
-                    @endforeach
-                @endif
-            @endforeach
-            <p class="sub_total">  
-                <span>Tạm tính</span> 
-                <span>{{ numberFormat($sub_total) }}₫</span>
-            </p>
-            @if ($discount_value)
-                <p class="discounted">  
-                    <span>Giảm giá</span> 
-                    <span>{{ numberFormat($discount_value) }}₫</span>
-                </p>
-            @endif
+            {{--                            <div class="ship">--}}
+            {{--                                <span class="text-button">Shipping</span>--}}
+            {{--                                <div class="flex-grow-1">--}}
+            {{--                                    <fieldset class="ship-item">--}}
+            {{--                                        <input type="radio" name="ship-check" class="tf-check-rounded" id="free" checked>--}}
+            {{--                                        <label for="free">--}}
+            {{--                                            <span>Free Shipping</span>--}}
+            {{--                                            <span class="price">$0.00</span>--}}
+            {{--                                        </label>--}}
+            {{--                                    </fieldset>--}}
+            {{--                                    <fieldset class="ship-item">--}}
+            {{--                                        <input type="radio" name="ship-check" class="tf-check-rounded" id="local">--}}
+            {{--                                        <label for="local">--}}
+            {{--                                            <span>Local:</span>--}}
+            {{--                                            <span class="price">$35.00</span>--}}
+            {{--                                        </label>--}}
+            {{--                                    </fieldset>--}}
+            {{--                                    <fieldset class="ship-item">--}}
+            {{--                                        <input type="radio" name="ship-check" class="tf-check-rounded" id="rate">--}}
+            {{--                                        <label for="rate">--}}
+            {{--                                            <span>Flat Rate:</span>--}}
+            {{--                                            <span class="price">$35.00</span>--}}
+            {{--                                        </label>--}}
+            {{--                                    </fieldset>--}}
+            {{--                                </div>--}}
+            {{--                            </div>--}}
+
+            <h5 class="total-order d-flex justify-content-between align-items-center">
+                <span>Tổng tiền</span>
+                <span class="total">{{ numberFormat($total) }}₫</span>
+            </h5>
+            <div class="box-progress-checkout">
+                {{--                                <fieldset class="check-agree">--}}
+                {{--                                    <input type="checkbox" id="check-agree" class="tf-check-rounded">--}}
+                {{--                                    <label for="check-agree">--}}
+                {{--                                        I agree with the <a href="term-of-use.html">terms and conditions</a>--}}
+                {{--                                    </label>--}}
+                {{--                                </fieldset>--}}
+                <a href="{{ route('checkout') }}" class="tf-btn btn-reset">Thanh toán</a>
+{{--                <p class="text-button text-center">Or continue shopping</p>--}}
+            </div>
         </div>
-        <div class="order_rate float_left">
-            <h3> 
-                <span class="pr-5px fs-16">Tổng tiền thanh toán</span> 
-                <span>{{ numberFormat($total) }}₫</span>
-            </h3>
-        </div>
-        @if (isset($type) && $type == "checkout")
-            <a class="placeholder_btn submit_payment">
-                Đặt hàng
-            </a>
-        @else
-            <a class="placeholder_btn" href="{{ route("checkout") }}">
-                Tiến hành thanh toán
-            </a>
-        @endif
     </div>
 @endif

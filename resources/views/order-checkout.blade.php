@@ -9,140 +9,151 @@
 @stop
 
 @section('content')
-    <div class="bz_inner_page_navigation float_left">
-        <div class="container custom_container">
-        <div class="inner_menu float_left">
-            <ul>
-            <li>
-                <a href="#">
-                <span>
-                    <i class="fas fa-home"></i>
-                </span>
-                </a>
-            </li>
-            <li class="active">
-                <a>
-                <span>
-                    <i class="fas fa-angle-right"></i>
-                </span> Thanh toán </a>
-            </li>
+
+
+    <!-- page-title -->
+    <div class="page-title" style="background-image: url(images/section/page-title.jpg);">
+        <div class="container">
+            <h3 class="heading text-center">Thanh toán</h3>
+            <ul class="breadcrumbs d-flex align-items-center justify-content-center">
+                <li><a class="link" href="{{ url('/') }}">Trang chủ</a></li>
+                <li><i class="icon-arrRight"></i></li>
+                <li>Thanh toán</li>
             </ul>
         </div>
-        </div>
     </div>
-
-  <div class="bz_product_grid_content_main_wrapper float_left">
-    <div class="container custom_container">
-      <div class="row">
-        <div class="col-lg-8 col-md-12 col-12">
-
-            @if($errors->any())
-                <div class="alert alert-danger">
-                    @foreach ($errors->all() as $error)
-                        <div>{{ $error }}</div>
-                    @endforeach
-                </div>
-            @endif
-            <div id="payment-left">
-                @if ($count > 0)
-                    <form id="order-form" method="POST" action="{{ route("checkout-store") }}">
-                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                        <div class="bz_checkout_main_wrapper float_left">
-                            <div class="accordion" id="accordionExample">
-                                <div class="card checkout_accord">
-                                    <div class="card-header" id="headingTwo">
-                                        <h2 class="mb-0">
-                                        <button type="button" class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo">Thông tin thanh toán <span>
-                                            <i class="fa fa-plus"></i>
-                                            </span>
-                                        </button>
-                                        </h2>
+    <!-- /page-title -->
+    <!-- Section checkout -->
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-6">
+                    <form method="post" action="{{ route('checkout-store') }}" id="order-form">
+                        <div class="flat-spacing tf-page-checkout">
+                            <div class="wrap info-box">
+                                <h5 class="title">Thông tin thanh toán</h5>
+                                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                <div class="grid-2">
+                                    <div>
+                                        <input type="text" name="name" placeholder="Nhập họ và tên*">
                                     </div>
-                                    <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionExample">
-                                        <div class="card-body">
-                                            <div class="billing_info float_left">
-                                                <div class="form-group row">
-                                                    <div class="col-md-6 col-12">
-                                                    <label>Họ và tên*</label>
-                                                    <input type="text" class="form-control" name="name" placeholder="Nhập họ và tên" value="{{ old("name") }}">
+                                    <div>
+                                        <input type="text" name="phone" placeholder="Nhập số điện thoại*">
+                                    </div>
+                                </div>
+                                <div class="grid-2">
+                                    <div>
+                                        <input type="text" name="address" placeholder="Nhập địa chỉ*">
+                                    </div>
+                                    <div>
+                                        <input type="text" name="email" placeholder="Nhập email*">
+                                    </div>
+                                </div>
+                                <textarea placeholder="Thông tin bổ sung" name="node"></textarea>
+                            </div>
+                            <div class="wrap form-payment">
+                                <h5 class="title">Choose payment Option:</h5>
+                                <div class="payment-box" id="payment-box">
+                                    <div class="payment-item payment-choose-card active">
+                                        <label for="credit-card-method" class="payment-header" data-bs-toggle="collapse" data-bs-target="#credit-card-payment" aria-controls="credit-card-payment">
+                                            <input type="radio" name="payment_method" value="1" class="tf-check-rounded" id="credit-card-method" checked>
+                                            <span class="text-title">Credit Card</span>
+                                        </label>
+                                        <div id="credit-card-payment" class="collapse show" data-bs-parent="#payment-box">
+                                            <div class="payment-body">
+                                                <p class="text-secondary">Make your payment directly into our bank account. Your order will not be shipped until the funds have cleared in our account.</p>
+                                                <div class="input-payment-box">
+                                                    <input type="text" placeholder="Name On Card*">
+                                                    <div class="ip-card">
+                                                        <input type="text" placeholder="Card Numbers*">
+                                                        <div class="list-card">
+                                                            <img src="images/payment/img-7.png" width="48" height="16" alt="card">
+                                                            <img src="images/payment/img-8.png" width="21" height="16" alt="card">
+                                                            <img src="images/payment/img-9.png" width="22" height="16" alt="card">
+                                                            <img src="images/payment/img-10.png" width="24" height="16" alt="card">
+                                                        </div>
                                                     </div>
-                                                    <div class="col-md-6 col-12">
-                                                    <label>Địa chỉ*</label>
-                                                    <input type="text" class="form-control" name="address" placeholder="Nhập địa chỉ" value="{{ old("address") }}">
+                                                    <div class="grid-2">
+                                                        <input type="date" >
+                                                        <input type="text" placeholder="CVV*">
                                                     </div>
                                                 </div>
-                                                <div class="form-group row">
-                                                    <div class="col-md-6 col-12">
-                                                    <label>Số điện thoại*</label>
-                                                    <input type="text" class="form-control" name="phone" placeholder="Nhập số điện thoại" value="{{ old("phone") }}">
-                                                    </div>
-                                                    <div class="col-md-6 col-12">
-                                                    <label>Địa chỉ email*</label>
-                                                    <input type="email" class="form-control" name="email" placeholder="Nhập địa chỉ email" value="{{ old("email") }}">
-                                                    </div>
+                                                <div class="check-save">
+                                                    <input type="checkbox" class="tf-check" id="check-card" checked>
+                                                    <label for="check-card">Save Card Details</label>
                                                 </div>
-                                                <div class="form-group row">
-                                                    <div class="col-12">
-                                                    <label class="d-block">Thông tin bổ sung</label>
-                                                    <textarea name="note" id="note" cols="30" rows="4" class="w-full"></textarea>
-                                                    </div>
-                                                </div>
-                                                <a class="submit_btn next" href="javascript:void(0)">Tiếp tục</a>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="card checkout_accord">
-                                    <div class="card-header" id="headingFour">
-                                        <h2 class="mb-0">
-                                        <button type="button" class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseFour"> Phương thức thanh toán <span>
-                                            <i class="fa fa-plus"></i>
-                                            </span>
-                                        </button>
-                                        </h2>
+                                    <div class="payment-item">
+                                        <label for="delivery-method" class="payment-header collapsed" data-bs-toggle="collapse" data-bs-target="#delivery-payment" aria-controls="delivery-payment">
+                                            <input type="radio" name="payment_method" value="2" class="tf-check-rounded" id="delivery-method">
+                                            <span class="text-title">Cash on delivery</span>
+                                        </label>
+                                        <div id="delivery-payment" class="collapse" data-bs-parent="#payment-box"></div>
                                     </div>
-                                    <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
-                                        <div class="card-body">
-                                        <div class="payment_method float_left">
-                                            @foreach (\App\Models\Order::TYPE_PAYMENT as $key => $title)
-                                                <p>
-                                                    <input type="radio" id="radio{{ $key }}" name="payment_method" value="{{ $key }}"  {{ $loop->first ? "checked" : ''}}>
-                                                    <label class="direct_bank" for="radio{{ $key }}">{{ $title }}
-                                                        <span class="small-text">{{ \App\Models\Order::TYPE_PAYMENT_DESCRIPTION[$key] ?? $title }}</span>
-                                                    </label>
-                                                </p>
-                                            @endforeach
-                                            <div class="payment_card">
-                                            <a class="submit_btn submit_payment">Đặt hàng</a>
-                                            </div>
-                                        </div>
-                                        </div>
+                                    <div class="payment-item">
+                                        <label for="apple-method" class="payment-header collapsed" data-bs-toggle="collapse" data-bs-target="#apple-payment" aria-controls="apple-payment">
+                                            <input type="radio" name="payment_method" value="3" class="tf-check-rounded" id="apple-method">
+                                            <span class="text-title apple-pay-title"><img src="images/payment/applePay.png" alt="apple"> Apple Pay</span>
+                                        </label>
+                                        <div id="apple-payment" class="collapse" data-bs-parent="#payment-box"></div>
+                                    </div>
+                                    <div class="payment-item paypal-item">
+                                        <label for="paypal-method" class="payment-header collapsed" data-bs-toggle="collapse" data-bs-target="#paypal-method-payment" aria-controls="paypal-method-payment">
+                                            <input type="radio" name="payment_method" value="4" class="tf-check-rounded" id="paypal-method">
+                                            <span class="paypal-title"><img src="images/payment/paypal.png" alt="apple"></span>
+                                        </label>
+                                        <div id="paypal-method-payment" class="collapse" data-bs-parent="#payment-box"></div>
                                     </div>
                                 </div>
+                                <a class="tf-btn btn-reset submit_payment">Thanh toán</a>
                             </div>
                         </div>
                     </form>
-                @else
-                    <p class="zoom-area">Không có sản phẩm nào để thanh toán</p>
-                    <a class="back-to-home" href="{{ route("home") }}">Quay lại trang chủ</a>
-                @endif
+                </div>
+                <div class="col-xl-1">
+                    <div class="line-separation"></div>
+                </div>
+                <div class="col-xl-5">
+                    <div class="flat-spacing flat-sidebar-checkout">
+                        <div class="sidebar-checkout-content">
+                            <h5 class="title">Giỏ hàng</h5>
+                            <div class="list-product">
+                                @if ($count > 0)
+                                    @foreach ($cart as $key => $item)
+                                        <div class="item-product">
+                                            <a class="img-product">
+                                                @if (!empty($item->options["image"]))
+                                                    <img  class="img-fluid cart" src="{{ getImage($item->options["image"]) }}" alt="{{ $item->name }}">
+                                                @endif
+                                            </a>
+                                            <div class="content-box">
+                                                <div class="info">
+                                                    <a class="name-product link text-title">{{ $item->name }}</a>
+                                                    <div class="variant text-caption-1 text-secondary"><span class="color">{{ $item->options['colors'][$item->options['product_color_id']] ?? null }}</span></div>
+                                                </div>
+                                                <div class="total-price text-button"><span class="count">{{ $item->qty }}</span>X<span class="price">{{ numberFormat($item->price) }}₫</span></div>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                @endif
+                            </div>
+                            <div class="sec-total-price">
+                                <div class="bottom">
+                                    <h5 class="d-flex justify-content-between">
+                                        <span>Tổng tiền</span>
+                                        <span class="total-price-checkout">{{ numberFormat($total) }}₫</span>
+                                    </h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="col-lg-4 col-md-12 col-12">
-            <div id="order-cart-right">
-                @include("components.order-cart-right", [
-                    "cart" => $cart,
-                    "count" => $count,
-                    "total" => $total,
-                    "sub_total" => $sub_total,
-                    "discount_value" => $discount_value,
-                    "type" => "checkout"
-                ])
-            </div>
-        </div>
-      </div>
-    </div>
-  </div>
+    </section>
+    <!-- /Section checkout -->
 @endsection
 
 @section('script')
