@@ -22,7 +22,7 @@ class OrderController extends AdminController
     public function index(Request $request) {
         $req = $request->all();
 
-        $q = Order::with(['order_customer', 'order_items.product', 'order_items.combo'])
+        $q = Order::with(['order_customer', 'order_items.product'])
             ->whereHas('order_customer', function( $query ) use ( $req ){
                 if (!empty($req['customer_name'])) {
                     return $query->where('name', 'LIKE', '%' . $req['customer_name'] . '%');
@@ -58,7 +58,7 @@ class OrderController extends AdminController
         }
 
 
-        $object = Order::with(['order_customer', 'order_items.product', 'order_items.combo'])->where(['id' => $id])->first();
+        $object = Order::with(['order_customer', 'order_items.product'])->where(['id' => $id])->first();
 
         // If object not found
         if ($object == null || $object->count() == 0) {
