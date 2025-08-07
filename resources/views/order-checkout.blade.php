@@ -52,9 +52,9 @@
                                 <textarea placeholder="Thông tin bổ sung" name="node"></textarea>
                             </div>
                             <div class="wrap form-payment">
-                                <h5 class="title">Choose payment Option:</h5>
+                                <h5 class="title">Lựa chọn phương thức thanh toán:</h5>
                                 <div class="payment-box" id="payment-box">
-                                    <div class="payment-item payment-choose-card active">
+                                    <!-- <div class="payment-item payment-choose-card active">
                                         <label for="credit-card-method" class="payment-header" data-bs-toggle="collapse" data-bs-target="#credit-card-payment" aria-controls="credit-card-payment">
                                             <input type="radio" name="payment_method" value="1" class="tf-check-rounded" id="credit-card-method" checked>
                                             <span class="text-title">Credit Card</span>
@@ -84,27 +84,21 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="payment-item">
-                                        <label for="delivery-method" class="payment-header collapsed" data-bs-toggle="collapse" data-bs-target="#delivery-payment" aria-controls="delivery-payment">
-                                            <input type="radio" name="payment_method" value="2" class="tf-check-rounded" id="delivery-method">
-                                            <span class="text-title">Cash on delivery</span>
-                                        </label>
-                                        <div id="delivery-payment" class="collapse" data-bs-parent="#payment-box"></div>
-                                    </div>
+                                    </div> -->
                                     <div class="payment-item">
                                         <label for="apple-method" class="payment-header collapsed" data-bs-toggle="collapse" data-bs-target="#apple-payment" aria-controls="apple-payment">
-                                            <input type="radio" name="payment_method" value="3" class="tf-check-rounded" id="apple-method">
-                                            <span class="text-title apple-pay-title"><img src="images/payment/applePay.png" alt="apple"> Apple Pay</span>
+                                            <input type="radio" name="payment_method" value="1" class="tf-check-rounded" id="apple-method">
+                                            <!-- <span class="text-title apple-pay-title"><img src="images/payment/applePay.png" alt="apple"> Apple Pay</span> -->
+                                            <span class="text-title">Momo</span>
                                         </label>
                                         <div id="apple-payment" class="collapse" data-bs-parent="#payment-box"></div>
                                     </div>
-                                    <div class="payment-item paypal-item">
-                                        <label for="paypal-method" class="payment-header collapsed" data-bs-toggle="collapse" data-bs-target="#paypal-method-payment" aria-controls="paypal-method-payment">
-                                            <input type="radio" name="payment_method" value="4" class="tf-check-rounded" id="paypal-method">
-                                            <span class="paypal-title"><img src="images/payment/paypal.png" alt="apple"></span>
+                                    <div class="payment-item">
+                                        <label for="delivery-method" class="payment-header collapsed" data-bs-toggle="collapse" data-bs-target="#delivery-payment" aria-controls="delivery-payment">
+                                            <input type="radio" name="payment_method" value="2" class="tf-check-rounded" id="delivery-method" checked>
+                                            <span class="text-title">Thanh toán khi nhận hàng</span>
                                         </label>
-                                        <div id="paypal-method-payment" class="collapse" data-bs-parent="#payment-box"></div>
+                                        <div id="delivery-payment" class="collapse" data-bs-parent="#payment-box"></div>
                                     </div>
                                 </div>
                                 <a class="tf-btn btn-reset submit_payment">Thanh toán</a>
