@@ -1279,7 +1279,6 @@
             product_color_id = $('#color-picker [name="color"]').val();
         }
         ajax_cart_add(id, qty, product_color_id);
-        window.location.href = BASE_URL + "/gio-hang"
         // $('#quickAdd').modal('hide');
         // $("#shoppingCart").modal("show");
     });
@@ -1340,6 +1339,7 @@
                     $("li.nav-cart a span.count-box").html(`${data.count}`);
                     $('#shoppingCart .tf-mini-cart-sroll').attr('class', 'tf-mini-cart-sroll is_not_show')
                     showMessage("alert alert-success", "Thêm vào giỏ hàng thành công!");
+                    window.location.href = BASE_URL + "/gio-hang"
                 }
             });
         }
