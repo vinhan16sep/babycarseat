@@ -1425,17 +1425,17 @@
                 rules: rules,
                 messages:{
                     name: {
-                        required: 'Vui lòng nhập họ và tên',
+                        required: 'Chưa nhập họ và tên',
                     },
                     address: {
-                        required: 'Vui lòng nhập địa chỉ',
+                        required: 'Chưa nhập địa chỉ',
                     },
                     phone: {
-                        required: 'Vui lòng nhập số điện thoại',
+                        required: 'Chưa nhập số điện thoại',
                     },
                     email: {
-                        required: 'Vui lòng nhập địa chỉ email',
-                        email: 'Vui lòng nhập một địa chỉ email hợp lệ.'
+                        required: 'Chưa nhập địa chỉ email',
+                        email: 'Email không hợp lệ'
                     }
 
                 },

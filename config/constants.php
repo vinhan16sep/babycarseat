@@ -56,7 +56,7 @@ return [
         '3' => 'Hỗ trợ',
     ],
     'PAYEMNT_METHOD' => [
-        '1' => 'Momo',
-        '2' => 'Thanh toán khi nhận hàng',
+        '1' => 'Thanh toán khi nhận hàng',
+        '2' => 'Momo',
     ],
 ];
