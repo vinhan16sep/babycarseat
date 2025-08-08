@@ -15636,7 +15636,11 @@ ul.list-text.type-number {
     font-size: 40px;
   }
 }
+
 @media (min-width: 1200px) {
+    .nav-cart.show-mobile{
+        display: none!important;
+    }
   .section-image-zoom.type-space-2 .thumbs-slider {
     max-width: 600px;
     gap: 12px;
@@ -18251,8 +18255,11 @@ ul.list-text.type-number {
 
 
 /* an card */
-.nav-cart, .btn-main-product.quick-add, .tf-product-info-quantity{
+.btn-main-product.quick-add, .tf-product-info-quantity{
     display: none!important;
+}
+.nav-cart * {
+    color: #fff!important;
 }
 /* class css font content */
 /** * AnNV 2025-07-06 Fix font family for content */
@@ -18337,4 +18344,7 @@ ul.list-text.type-number {
 
 header .design .content h5{
     text-align: center;
+}
+.tf-cart-item .tf-cart-item_product .tf-select::after{
+    right: 5px;
 }

@@ -57,19 +57,19 @@
                                                 <div class="table-responsive">
                                                     <table class="table">
                                                         <tr class="tabletitle">
-                                                            <td class="Hours">
+                                                            <td class="Hours" style="width: 20%;">
                                                                 <h2>Ảnh</h2>
                                                             </td>
-                                                            <td class="table-item">
+                                                            <td class="table-item" style="width: 40%;">
                                                                 <h2>Sản phẩm</h2>
                                                             </td>
-                                                            <td class="Hours">
-                                                                <h2>Loại</h2>
+                                                            <td class="Hours" style="width: 20%;">
+                                                                <h2>Phương thức thanh toán</h2>
                                                             </td>
-                                                            <td class="Rate">
+                                                            <td class="Rate" style="width: 10%;">
                                                                 <h2>Số lượng</h2>
                                                             </td>
-                                                            <td class="subtotal">
+                                                            <td class="subtotal" style="width: 10%;">
                                                                 <h2>Giá (VNĐ)</h2>
                                                             </td>
                                                         </tr>
@@ -77,8 +77,8 @@
                                                         @if ($object->order_items->count())
                                                             @foreach ($object->order_items as $row)
                                                             @php 
-                                                                $item = $row->product != null ? $row->product : $row->combo;
-                                                                $itemDetalUrl = $row->product != null ? route('edit-product', ['id' => $item->id]) : route('edit-combo', ['id' => $item->id]);
+                                                                $item = $row->product;
+                                                                $itemDetalUrl = route('edit-product', ['id' => $item->id]);
                                                             @endphp
 
                                                             <tr class="service">
@@ -89,7 +89,7 @@
                                                                     <p class="itemtext"><a target="_blank" href="{{ $itemDetalUrl }}">{{ $item->name }}</a></p>
                                                                 </td>
                                                                 <td class="tableitem">
-                                                                    <p class="itemtext">{{ $row->product != null ? 'Rượu vang' : 'Combo' }}</p>
+                                                                    <p class="itemtext">{{ $paymentMethods[$object->payment_method] }}</p>
                                                                 </td>
                                                                 <td class="tableitem">
                                                                     <p class="itemtext">{{ $row->quantity }}</p>

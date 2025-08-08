@@ -11,20 +11,16 @@ class OrderItem extends Model
 
     public $timestamps = true;
     protected $fillable = array(
-        'order_id', 
+        'order_id',
         'product_id',
-        'combo_id',
+        'color_id',
         'quantity',
         'price',
+        'color_id'
     );
 
     public function product()
     {
         return $this->belongsTo(Product::class, 'product_id', 'id');
-    }
-
-    public function combo()
-    {
-        return $this->belongsTo(Combo::class, 'combo_id', 'id');
     }
 }

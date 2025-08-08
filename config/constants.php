@@ -55,4 +55,8 @@ return [
         '2' => 'Chính sách',
         '3' => 'Hỗ trợ',
     ],
+    'PAYEMNT_METHOD' => [
+        '1' => 'Thanh toán khi nhận hàng',
+        '2' => 'Momo',
+    ],
 ];

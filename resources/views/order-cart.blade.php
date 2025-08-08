@@ -9,24 +9,25 @@
 @stop
 
 @section('content')
-    <div class="bz_inner_page_navigation float_left">
-        <div class="container custom_container">
-            <div class="inner_menu float_left">
-                <ul>
-                    <li><a href="{{ route("home") }}"> <span><i class="fas fa-home"></i></span> </a></li>
-                    <li class="active"><a> <span><i class="fas fa-angle-right"></i></span> Giỏ hàng </a></li>
-                </ul>
-            </div>
+    <div class="page-title" style="background-image: url(images/section/page-title.jpg);">
+        <div class="container">
+            <h3 class="heading text-center">Giỏ hàng</h3>
+            <ul class="breadcrumbs d-flex align-items-center justify-content-center">
+                <li><a class="link" href="{{ url('/') }}">Trang chủ</a></li>
+                <li><i class="icon-arrRight"></i></li>
+                <li>Giỏ hàng</li>
+            </ul>
         </div>
     </div>
-    <div class="bz_product_grid_content_main_wrapper float_left">
-        <div class="container custom_container">
-        <div class="row">
-            <div class="col-lg-8 col-md-12 col-12" id="order-cart-left">
-                @include("components.order-cart-left", ["count" => $count, "cart" => $cart])
-            </div>
-            <div class="col-lg-4 col-md-12 col-12">
-                <div class="float_left" id="order-cart-right">
+    <!-- /page-title -->
+    <!-- Section cart -->
+    <section class="flat-spacing">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-8" id="order-cart-left">
+                    @include("components.order-cart-left", ["count" => $count, "cart" => $cart])
+                </div>
+                <div class="col-xl-4" id="order-cart-right">
                     @include("components.order-cart-right", [
                         "cart" => $cart,
                         "count" => $count,
@@ -37,7 +38,5 @@
                 </div>
             </div>
         </div>
-        </div>
-    </div>
-
+    </section>
 @endsection

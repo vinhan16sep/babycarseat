@@ -23,7 +23,7 @@ class OrderController extends Controller
     {
         parent::__construct();
     }
-    
+
     public function cart(){
         list($cart, $sub_total, $count, $total, $discount_value) = getDataCart(Order::DISCOUNT_PERCENT);
         return view('order-cart', compact([
@@ -43,13 +43,13 @@ class OrderController extends Controller
     public function orderStore(OrderRequest $request){
         DB::beginTransaction();
         try{
-            list($cart, $sub_total, $count, $total, $discount_value) = getDataCart(Order::DISCOUNT_PERCENT);
+            list($cart, $sub_total, $count) = getDataCart(Order::DISCOUNT_PERCENT);
             if ($count) {
                 $result = Order::create([
                     "code" => Order::generateRandomCodes(),
                     "total_price" => $sub_total,
-                    "discounted_price" => $discount_value,
-                    "discount_percent" => $discount_value ? Order::DISCOUNT_PERCENT : 0,
+                    "discounted_price" => 0,
+                    "discount_percent" => 0,
                     "payment_method" => $request->payment_method,
                     "status" => 1,
                     "note" => $request->note
@@ -68,18 +68,15 @@ class OrderController extends Controller
                         'order_id' => $result->id,
                         'quantity' => $value->qty,
                         'price' => $value->price,
+                        'product_id' => $value->id,
+                        'color_id' => $value->options['product_color_id'] ?? null,
                     ];
-                    if (count($value->options->products) > 0) {
-                        $dataOrderItem["combo_id"] = $value->id;
-                    } else {
-                        $dataOrderItem["product_id"] = $value->id;
-                    }
                     $OrderItemCreate[] = $dataOrderItem;
                 }
                 $result->order_items()->createMany($OrderItemCreate);
 
                 Cart::instance(config('cart.instance'))->destroy();
-                $this->sendMailOrder($result->id);
+               $this->sendMailOrder($result->id);
             }
             DB::commit();
         } catch (Throwable $e) {
@@ -87,7 +84,9 @@ class OrderController extends Controller
             Log::info($e->getMessage());
             return redirect()->route('home')->withError(__('Lỗi hệ thống, vui lòng liên hệ quản trị viên để được hỗ trợ!'));
         }
-        return redirect()->route('order-received', ["code" => $result->code])->withSuccess(__('Đặt hàng thành công!'));
+
+        return redirect()->route('home')->withSuccess(__('Đặt hàng thành công!'));
+//        return redirect()->route('order-received', ["code" => $result->code])->withSuccess(__('Đặt hàng thành công!'));
     }
 
     public function orderReceived(Request $request)

@@ -49,7 +49,7 @@
                                                             Xin chào {{ $order->order_customer->name }},
                                                         </p>
                                                     @endif
-                                                    <h2 style="color:#4d0322;display:block;font-family:&quot;Helvetica Neue&quot;,Helvetica,Roboto,Arial,sans-serif;font-size:18px;font-weight:bold;line-height:130%;margin:0 0 18px;text-align:left"> 
+                                                    <h2 style="color:#4d0322;display:block;font-family:&quot;Helvetica Neue&quot;,Helvetica,Roboto,Arial,sans-serif;font-size:18px;font-weight:bold;line-height:130%;margin:0 0 18px;text-align:left">
                                                         [Mã đơn hàng #{{ $order->code }}] ({{ date("d/m/Y", strtotime($order->created_at)) }})
                                                     </h2>
                                                     <div style="margin-bottom:40px">
@@ -73,14 +73,13 @@
                                                             @endphp
                                                             @foreach ($orderItems as $item)
                                                                 @php
-                                                                    $product = !empty($item->product) ? $item->product : $item->combo;
-                                                                    $products = !empty($product->products) ? $product->products : [];
+                                                                    $product = $item->product;
                                                                 @endphp
                                                                 <tr>
-                                                                    <td style="color:#6b3337;border:1px solid #e4e4e4;padding:12px;text-align:left;vertical-align:middle;font-family:'Helvetica Neue',Helvetica,Roboto,Arial,sans-serif;word-wrap:break-word" align="left"> 
+                                                                    <td style="color:#6b3337;border:1px solid #e4e4e4;padding:12px;text-align:left;vertical-align:middle;font-family:'Helvetica Neue',Helvetica,Roboto,Arial,sans-serif;word-wrap:break-word" align="left">
                                                                         {{ !empty($product) ? $product->name : "Không xác định" }}
                                                                     </td>
-                                                                    <td style="color:#6b3337;border:1px solid #e4e4e4;padding:12px;text-align:left;vertical-align:middle;font-family:'Helvetica Neue',Helvetica,Roboto,Arial,sans-serif" align="left"> 
+                                                                    <td style="color:#6b3337;border:1px solid #e4e4e4;padding:12px;text-align:left;vertical-align:middle;font-family:'Helvetica Neue',Helvetica,Roboto,Arial,sans-serif" align="left">
                                                                         {{ $item->quantity }}
                                                                     </td>
                                                                     <td style="color:#6b3337;border:1px solid #e4e4e4;padding:12px;text-align:left;vertical-align:middle;font-family:'Helvetica Neue',Helvetica,Roboto,Arial,sans-serif" align="left">
@@ -89,19 +88,6 @@
                                                                         </span>
                                                                     </td>
                                                                 </tr>
-                                                                @foreach ($products as $subItem)
-                                                                    <tr>
-                                                                        <td style="color:#6b3337;border:1px solid #e4e4e4;padding:12px;text-align:left;vertical-align:middle;font-family:'Helvetica Neue',Helvetica,Roboto,Arial,sans-serif;word-wrap:break-word" align="left"> 
-                                                                            {{ $subItem->name }}
-                                                                        </td>
-                                                                        <td style="color:#6b3337;border:1px solid #e4e4e4;padding:12px;text-align:left;vertical-align:middle;font-family:'Helvetica Neue',Helvetica,Roboto,Arial,sans-serif" align="left"> 
-                                                                            {{ $item->quantity*$subItem->pivot->quantity }}
-                                                                        </td>
-                                                                        <td style="color:#6b3337;border:1px solid #e4e4e4;padding:12px;text-align:left;vertical-align:middle;font-family:'Helvetica Neue',Helvetica,Roboto,Arial,sans-serif" align="left">
-                                                                            <span><span></span></span>
-                                                                        </td>
-                                                                    </tr>
-                                                                @endforeach
                                                             @endforeach
                                                         </tbody>
                                                         <tfoot>
@@ -155,7 +141,7 @@
                                                             <h2 style="color:#4d0322;display:block;font-family:&quot;Helvetica Neue&quot;,Helvetica,Roboto,Arial,sans-serif;font-size:18px;font-weight:bold;line-height:130%;margin:0 0 18px;text-align:left">
                                                                 Địa chỉ thanh toán
                                                             </h2>
-                                                            <address style="padding:12px;color:#6b3337;border:1px solid #e4e4e4"> 
+                                                            <address style="padding:12px;color:#6b3337;border:1px solid #e4e4e4">
                                                                 {{ $order->order_customer->name }} <br>
                                                                 {{ $order->order_customer->address }} <br>
                                                                 <a href="tel:{{ $order->order_customer->phone }}" style="color:#4d0322;font-weight:normal;text-decoration:underline" target="_blank">
