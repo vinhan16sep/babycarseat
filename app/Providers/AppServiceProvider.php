@@ -75,10 +75,10 @@ class AppServiceProvider extends ServiceProvider
             }
             View::share('contactExchange', $contactExchange);
 
-            $categories = ProductCategory::query()->get();
             
             // Lấy toàn bộ sản phẩm đã kích hoạt và nhóm theo category_id
             // Chỉ áp dụng cho sản phẩm thuộc loại ghế ô tô trẻ em
+            $categories = ProductCategory::query()->get();
             $rawProducts = DB::table('product_categories_mapping as pcm')
                 ->join('products as p', 'p.id', '=', 'pcm.product_id')
                 ->where('p.is_active', 1)
@@ -99,6 +99,30 @@ class AppServiceProvider extends ServiceProvider
                 return $category->toArray();
             });
             View::share('categoriesMenu', $categories);
+
+            // Lấy toàn bộ sản phẩm đã kích hoạt và nhóm theo category_id
+            // Chỉ áp dụng cho sản phẩm thuộc loại xe đẩy
+            $strollerCategories = ProductCategory::query()->get();
+            $rawStrollerProducts = DB::table('product_categories_mapping as pcm')
+                ->join('products as p', 'p.id', '=', 'pcm.product_id')
+                ->where('p.is_active', 1)
+				->where('p.type_id', 2) // 2 là loại xe đẩy
+                ->select('p.*', 'pcm.category_id')
+                ->orderBy('pcm.category_id')
+                ->orderBy('p.sort')
+                // ->orderByDesc('p.created_at')
+                ->get();
+
+            // Nhóm theo category_id và lấy 4 sản phẩm đầu tiên
+            $groupedStrollerProducts = $rawStrollerProducts->groupBy('category_id')->map(function ($group) {
+                return $group->take(4)->sortByDesc('is_highlight');
+            });
+
+            $strollerCategories->map(function ($strollerCategory) use ($groupedStrollerProducts) {
+                $strollerCategory->setRelation('products', $groupedStrollerProducts->get($strollerCategory->id) ?? collect());
+                return $strollerCategory->toArray();
+            });
+            View::share('strollerCategoriesMenu', $strollerCategories);
 
             // Get loai sản phẩm
             $productTypes = Type::where('is_active', 1)->get();

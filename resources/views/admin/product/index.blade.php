@@ -105,11 +105,11 @@
                                         <th class="w-5 center">STT</th>
                                         <th class="w-15 center">Ảnh</th>
                                         <th class="w-15 center">Tên</th>
+                                        <th class="w-10 center">Loại</th>
                                         <th class="w-10 center">Đơn giá (VNĐ)</th>
                                         <th class="w-10 center">Danh mục</th>
-                                        <th class="w-10 center">Thương hiệu</th>
                                         <th class="w-5 center">Nổi bật?</th>
-                                        <th class="w-10 center">Kích hoạt?</th>
+                                        <th class="w-5 center">Kích hoạt?</th>
                                         <th class="w-5 center">Sắp xếp</th>
                                         <th class="w-15 center">Hành động</th>
                                     </tr>
@@ -124,6 +124,7 @@
                                                     <a href="{{ route('edit-product', ['id' => $item->id]) }}" style="color:#5873fe;">{{ $item->name }}</a>
                                                 </strong>
                                             </td>
+                                            <td>{{ $item->type->name }}</td>
                                             <td>{{ $item->price != 0 ? number_format($item->price) : 'Liên hệ' }}</td>
                                             <td>
                                                 @if ($item->categories->isNotEmpty())
@@ -134,7 +135,6 @@
                                                     N/A
                                                 @endif
                                             </td>
-                                            <td>{{ $item->brand->name }}</td>
                                             <td>
                                                 @if ($item->is_highlight == 1)
                                                     <span class="ti-check" style="color:green;font-weight: 900;"></span>
