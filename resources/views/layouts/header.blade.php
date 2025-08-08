@@ -49,7 +49,7 @@
             <nav class="box-navigation text-center">
                 <ul class="box-nav-ul d-flex align-items-center">
                     <li class="menu-item"><a href="{{ route('about-show') }}" class="item-link">Giới thiệu</a></li>
-                    <li class="menu-item {{ strpos($currentPath, 'san-pham') !== false || strpos($currentPath, 'chi-tiet-san-pham') !== false || strpos($currentPath, 'loai-san-pham') !== false  ? 'active' : '' }}">
+                    <li class="menu-item {{ strpos($currentPath, 'ghe-o-to-tre-em') !== false  ? 'active' : '' }}">
                         <a href="{{ route('loai-san-pham', ['slug' => 'ghe-o-to-tre-em']) }}" class="item-link">Ghế ô tô cho bé {!! !empty($categoriesMenu) ? '<i class="icon icon-arrow-down"></i>' : '' !!}</a>
                         @if(!empty($categoriesMenu))
                             <div class="sub-menu mega-menu" style="border-radius: 0;">
@@ -95,9 +95,55 @@
                             </div>
                         @endif
                     </li>
-                    <li class="menu-item position-relative {{ strpos($currentPath, 'san-pham') !== false || strpos($currentPath, 'chi-tiet-san-pham') !== false || strpos($currentPath, 'loai-san-pham') !== false  ? 'active' : '' }}">
+                    <li class="menu-item {{ strpos($currentPath, 'xe-day') !== false  ? 'active' : '' }}">
+                        <a href="{{ route('loai-san-pham', ['slug' => 'xe-day']) }}" class="item-link">Xe đẩy {!! !empty($strollerCategoriesMenu) ? '<i class="icon icon-arrow-down"></i>' : '' !!}</a>
+                        @if(!empty($strollerCategoriesMenu))
+                            <div class="sub-menu mega-menu" style="border-radius: 0;">
+                                <div class="container">
+                                    <div class="wrapper-control-shop">
+                                        <div class="row">
+                                            <div class="col-xl-3">
+                                                <div class="desc">
+                                                    @foreach($strollerCategoriesMenu as $_item)
+                                                        @if($_item['type_id'] == 2) <!-- Chỉ hiển thị loại xe đẩy -->
+                                                        <h4 style="font-size: 20px;" data-category="{{ $_item["id"] }}">
+                                                            <a href="{{ route("product-list", ['category_slug' => $_item['slug']]) }}">{{ $_item['disp_name'] }}</a>
+                                                        </h4>
+                                                        @endif
+                                                    @endforeach
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-9 box-design">
+                                                @foreach($strollerCategoriesMenu as $_item)
+                                                    <div class="design {{ $loop->index !== 0 ? '' : 'active' }} design-{{$_item['id']}}">
+                                                        <h4 style="font-size: 20px;">{{ $_item['disp_name'] }}</h4>
+                                                        <div class="content">
+                                                            <div class="row">
+                                                                @foreach($_item['products'] as $_i)
+                                                                    @php $_i = (array)$_i @endphp
+                                                                    @if($_i['type_id'] == 2) <!-- Chỉ hiển thị sản phẩm thuộc loại xe đẩy -->
+                                                                    <div class="col-md-3 col-sm-6" style="text-align: center;">
+                                                                        <a href="{{ route('product-index', ['slug' => $_i['slug']]) }}">
+                                                                            <img src="{{ asset($_i['image']) }}" alt="{{ $_i['name'] }}">
+                                                                        </a>
+                                                                        <h5><a href="{{ route('product-index', ['slug' => $_i['slug']]) }}">{{ $_i['name'] }}</a></h5>
+                                                                    </div>
+                                                                    @endif
+                                                                @endforeach
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                @endforeach
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        @endif
+                    </li>
+                    <!-- <li class="menu-item position-relative {{ strpos($currentPath, 'san-pham') !== false || strpos($currentPath, 'chi-tiet-san-pham') !== false || strpos($currentPath, 'loai-san-pham') !== false  ? 'active' : '' }}">
                         <a href="{{ route('loai-san-pham', ['slug' => 'xe-day']) }}" class="item-link">Xe đẩy<i class="icon icon-arrow-down"></i></a>
-                        <!-- <div class="sub-menu submenu-default menu-list">
+                        <div class="sub-menu submenu-default menu-list">
                             <ul class="menu-list">
                                 @if(!empty($productTypes))
                                     <ul class="menu-list">
@@ -109,8 +155,8 @@
                                     </ul>
                                 @endif
                             </ul>
-                        </div> -->
-                    </li>
+                        </div>
+                    </li> -->
                     <li class="menu-item position-relative">
                         <a href="#" class="item-link">Bảo hành<i class="icon icon-arrow-down"></i></a>
                         <div class="sub-menu submenu-default menu-list">
