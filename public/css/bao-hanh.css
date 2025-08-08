@@ -423,6 +423,9 @@ section p.note{
         height: 60px!important;
     }
 }
+.tf-slideshow{
+    max-height: 642px;
+}
 @media (max-width: 1460px) {
     .section-one {
         padding-top: 1vw;
@@ -877,6 +880,13 @@ section p.note{
     }
     .section-seven ul{
         padding-left: 20px;
+    }
+}
+
+@media (min-width: 900px) {
+    .tf-slideshow img {
+        margin-top: -50px;
+        height: auto !important;
     }
 }
 

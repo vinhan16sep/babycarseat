@@ -96,7 +96,7 @@
                         @endif
                     </li>
                     <li class="menu-item position-relative {{ strpos($currentPath, 'san-pham') !== false || strpos($currentPath, 'chi-tiet-san-pham') !== false || strpos($currentPath, 'loai-san-pham') !== false  ? 'active' : '' }}">
-                        <a href="{{ route('loai-san-pham', ['slug' => 'xe-day']) }}" class="item-link">Xe đẩy</i></a>
+                        <a href="{{ route('loai-san-pham', ['slug' => 'xe-day']) }}" class="item-link">Xe đẩy<i class="icon icon-arrow-down"></i></a>
                         <!-- <div class="sub-menu submenu-default menu-list">
                             <ul class="menu-list">
                                 @if(!empty($productTypes))
