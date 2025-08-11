@@ -113,4 +113,8 @@ class AdminController extends Controller
         }
         return [$name, $fullPath];
     }
+
+    protected function deleteFile($path) {
+        return Storage::delete($path);
+    }
 }

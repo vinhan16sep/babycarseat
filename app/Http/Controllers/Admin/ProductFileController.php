@@ -182,8 +182,8 @@ class ProductFileController extends AdminController
 
             if ($object->delete()) {
                 
-                $path = sprintf(Config::get('constants.FILE_STORAGE_PATH.PRODUCT_FILE'), $request['id']);
-                $delImageStt = $this->deleteImage($path);
+                $path = sprintf(Config::get('constants.FILE_STORAGE_PATH.PRODUCT_FILE'), $object->product_id);
+                $delImageStt = $this->deleteFile($path . $object->file_name);
                 if ($delImageStt) {
                     DB::commit();
                     return response()->json(['status' => 'success','msg' => Config::get('constants.MESSAGE.DELETE_SUCCEEDED')], 200);
