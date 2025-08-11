@@ -326,9 +326,23 @@
                                                 </a>
                                                 <div id="accordion-10" class="collapse" data-bs-parent="#accordion-product">
                                                     <div class="accordion-content tab-description fix-font">
-                                                        <p class="text-secondary">
-                                                            {!! $product->guide !!}
-                                                        </p>
+                                                        <!-- {!! $product->guide !!} -->
+                                                        @if($productFiles->where('type', 1)->isNotEmpty())
+                                                            <p class="text-secondary">File hướng dẫn sử dụng:</p>
+                                                            @foreach($productFiles->where('type', 1) as $item)
+                                                                <a href="{{ route('product_files.view', $item->id) }}" target="_blank" style="text-decoration: underline;">
+                                                                    {{ $item->file_name }}
+                                                                </a></br>
+                                                            @endforeach
+                                                        @endif
+                                                        @if($productFiles->where('type', 2)->isNotEmpty())
+                                                            <p class="text-secondary">File chứng nhận sản phẩm:</p>
+                                                            @foreach($productFiles->where('type', 2) as $item)
+                                                                <a href="{{ route('product_files.view', $item->id) }}" target="_blank" style="text-decoration: underline;">
+                                                                    {{ $item->file_name }}
+                                                                </a></br>
+                                                            @endforeach
+                                                        @endif
                                                     </div>
                                                 </div>
                                             </li>

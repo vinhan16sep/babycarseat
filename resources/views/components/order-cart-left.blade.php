@@ -6,7 +6,7 @@
                 <th>Sản phẩm</th>
                 <th>Giá</th>
                 <th>Số lượng</th>
-                <th>Tông tiền</th>
+                <th>Tổng tiền</th>
                 <th></th>
             </tr>
             </thead>

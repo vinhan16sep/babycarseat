@@ -6,6 +6,7 @@ return [
         'PRODUCT_IMAGE' => 'images/product/%s/',
         'PRODUCT_CATEGORY_IMAGE' => 'images/product-category/%s/',
         'PRODUCT_COLOR_IMAGE' => 'images/product/%s/colors/%s/',
+        'PRODUCT_FILE' => 'files/product/%s/',
         'COMBO_IMAGE' => 'images/combo/%s/',
         'NEWS_IMAGE' => 'images/news/%s/',
         'NOTE_IMAGE' => 'images/notes/%s/',
@@ -35,6 +36,7 @@ return [
         'CHANGE_STATUS_SUCCEEDED' => 'Đổi trạng thái thành công!',
         'PRODUCT_COLOR_UPLOAD_ERROR' => 'Upload ảnh không thành công!',
         'PRODUCT_COLOR_SAVE_ERROR' => 'Lưu ảnh sản phẩm vào CSDL không thành công!',
+        'PRODUCT_FILE_REQUIRED' => 'File không được để trống',
     ],
     'POST_POSITION' => [
         'FOOTER_1' => 1,
@@ -55,8 +57,12 @@ return [
         '2' => 'Chính sách',
         '3' => 'Hỗ trợ',
     ],
-    'PAYEMNT_METHOD' => [
+    'PAYMENT_METHOD' => [
         '1' => 'Thanh toán khi nhận hàng',
         '2' => 'Momo',
+    ],
+    'PRODUCT_FILE_TYPE' => [
+        '1' =>  'Hướng dẫn sử dụng',
+        '2' => 'Chứng nhận sản phẩm',
     ],
 ];

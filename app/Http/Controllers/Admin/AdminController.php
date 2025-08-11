@@ -98,4 +98,19 @@ class AdminController extends Controller
     protected function deleteImage($path) {
         return Storage::deleteDirectory($path);
     }
+    
+    protected function uploadFile($path, $request, $input) {
+        if (!Storage::exists($path)) {
+            Storage::makeDirectory($path);
+        }
+        $name = '';
+        $fullPath = '';
+        if($request->hasfile($input)) {
+            $file = $request->file($input);
+            $name = $file->getClientOriginalName();
+            $file->storeAs($path, $name);
+            $fullPath = 'storage/' . $path . $name;
+        }
+        return [$name, $fullPath];
+    }
 }

@@ -85,14 +85,14 @@
                                             </div>
                                         </div>
                                     </div> -->
-                                    <div class="payment-item">
+                                    <!-- <div class="payment-item">
                                         <label for="apple-method" class="payment-header collapsed" data-bs-toggle="collapse" data-bs-target="#apple-payment" aria-controls="apple-payment">
-                                            <input type="radio" name="payment_method" value="1" class="tf-check-rounded" id="apple-method">
+                                            <input type="radio" name="payment_method" value="1" class="tf-check-rounded" id="apple-method"> -->
                                             <!-- <span class="text-title apple-pay-title"><img src="images/payment/applePay.png" alt="apple"> Apple Pay</span> -->
-                                            <span class="text-title">Momo</span>
+                                            <!-- <span class="text-title">Momo</span>
                                         </label>
                                         <div id="apple-payment" class="collapse" data-bs-parent="#payment-box"></div>
-                                    </div>
+                                    </div> -->
                                     <div class="payment-item">
                                         <label for="delivery-method" class="payment-header collapsed" data-bs-toggle="collapse" data-bs-target="#delivery-payment" aria-controls="delivery-payment">
                                             <input type="radio" name="payment_method" value="2" class="tf-check-rounded" id="delivery-method" checked>
@@ -101,7 +101,7 @@
                                         <div id="delivery-payment" class="collapse" data-bs-parent="#payment-box"></div>
                                     </div>
                                 </div>
-                                <a class="tf-btn btn-reset submit_payment">Thanh toán</a>
+                                <a class="tf-btn btn-reset submit_payment">Đồng ý</a>
                             </div>
                         </div>
                     </form>
