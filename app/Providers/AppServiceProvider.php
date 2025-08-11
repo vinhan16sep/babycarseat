@@ -187,7 +187,7 @@ class AppServiceProvider extends ServiceProvider
             View::share('footerMenu', $footerMenu);
 
             // Lấy phương thức thanh toán
-            $paymentMethods = Config::get('constants.PAYEMNT_METHOD');
+            $paymentMethods = Config::get('constants.PAYMENT_METHOD');
             View::share('paymentMethods', $paymentMethods);}
     }
 }

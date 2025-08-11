@@ -27,6 +27,7 @@ use App\Http\Controllers\Admin\FormSafeController;
 use App\Http\Controllers\Admin\FormWarrantyController;
 use App\Http\Controllers\Admin\FormContactsController;
 use App\Http\Controllers\Admin\MenuController;
+use App\Http\Controllers\Admin\ProductFileController;
 use App\Http\Controllers\Admin\TypeController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -243,6 +244,16 @@ Route::group(['prefix' => 'br-admin', 'middleware' => 'auth'], function () {
             Route::put('update/{id}', [FeatureController::class, 'update'])->name('update-feature');
             Route::get('delete-row', [FeatureController::class, 'delete'])->name('delete-feature');
             Route::get('change-status', [FeatureController::class, 'changeStatus'])->name('change-feature-status');
+        });
+
+        // Product file
+        Route::group(['prefix' => 'product-file'], function () {
+            Route::get('/', [ProductFileController::class, 'index'])->name('list-product-file');
+            Route::get('create', [ProductFileController::class, 'create'])->name('create-product-file');
+            Route::post('store', [ProductFileController::class, 'store'])->name('store-product-file');
+            Route::get('delete-row', [ProductFileController::class, 'delete'])->name('delete-product-file');
+            Route::get('change-status', [ProductFileController::class, 'changeStatus'])->name('change-product-file-status');
+            Route::get('/view-file/{id}', [ProductFileController::class, 'view'])->name('product_files.view');
         });
 
         // Knowledge category

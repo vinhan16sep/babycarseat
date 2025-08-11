@@ -102,12 +102,19 @@ class ProductController extends Controller
             ->get()
             ->groupBy('label');
 
+        // Lấy files của product
+        $productFiles = $product->files()
+            ->where('is_active', 1)
+            ->orderBy('sort', 'asc')
+            ->get();
+
         return view('product-show', [
             "product" => $product,
             "products" => $products,
             "attributes" => $attributes,
             "featuresUPPER" => $featuresUPPER,
             "featuresLOWER" => $featuresLOWER,
+            "productFiles" => $productFiles,
         ]);
     }
 
