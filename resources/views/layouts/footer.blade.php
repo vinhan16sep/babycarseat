@@ -198,7 +198,7 @@
 <!-- /toolbar-bottom -->
 
 <!-- search -->
-<div class="modal fade modal-search" id="search">
+<!-- <div class="modal fade modal-search" id="search">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="d-flex justify-content-between align-items-center">
@@ -939,18 +939,17 @@
                     </div>
                 </div>
             </div>
-            <!-- Load Item -->
             <div class="wd-load view-more-button text-center">
                 <button class="tf-loading btn-loadmore tf-btn btn-reset"><span class="text text-btn text-btn-uppercase">Load more</span>
                 </button>
             </div>
         </div>
     </div>
-</div>
+</div> -->
 <!-- /search -->
 
 <!-- modalDemo -->
-<div class="modal fade modalDemo" id="modalDemo">
+<!-- <div class="modal fade modalDemo" id="modalDemo">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="mega-menu">
@@ -1308,7 +1307,7 @@
 
         </div>
     </div>
-</div>
+</div> -->
 <!-- /modalDemo -->
 
 <!-- mobile menu -->
@@ -1448,7 +1447,7 @@
 <!-- /mobile menu -->
 
 <!-- Categories -->
-<div class="offcanvas offcanvas-start canvas-filter canvas-categories" id="shopCategories">
+<!-- <div class="offcanvas offcanvas-start canvas-filter canvas-categories" id="shopCategories">
     <div class="canvas-wrapper">
         <div class="canvas-header">
             <span class="icon-left icon-filter"></span>
@@ -1577,11 +1576,11 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 <!-- /Categories -->
 
 <!-- quickView -->
-<div class="modal fullRight fade modal-quick-view" id="quickView">
+<!-- <div class="modal fullRight fade modal-quick-view" id="quickView">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="tf-quick-view-image">
@@ -1742,7 +1741,7 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 <!-- /quickView -->
 
 @php
@@ -1909,7 +1908,7 @@
 {{--<!-- /wishlist -->--}}
 
 <!-- size-guide -->
-<div class="modal fade modal-size-guide" id="size-guide">
+<!-- <div class="modal fade modal-size-guide" id="size-guide">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content widget-tabs style-2">
             <div class="header">
@@ -2043,11 +2042,11 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 <!-- /size-guide -->
 
 <!-- compare -->
-<div class="offcanvas offcanvas-bottom offcanvas-compare" id="compare">
+<!-- <div class="offcanvas offcanvas-bottom offcanvas-compare" id="compare">
     <div class="offcanvas-content">
         <div class="header">
             <span class="icon-close icon-close-popup" data-bs-dismiss="offcanvas" aria-label="Close"></span>
@@ -2204,7 +2203,7 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 <!-- /compare -->
 
 <!-- quickAdd: Viet js bind data to html -->
