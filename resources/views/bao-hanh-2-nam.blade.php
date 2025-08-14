@@ -7,6 +7,16 @@
 @section('css')
     <link rel="stylesheet" href="{{ asset('css/page.css?v=' . ($ver ?? '')) }}">
     <link rel="stylesheet" href="{{ asset('css/bao-hanh.css?v=' . ($ver ?? '')) }}">
+    <style>
+        .section-five .head > .sub-title {
+            font-size: 1.6vw;
+            line-height: 1.61vw;
+            font-weight: 700;
+            margin-top: 0.5vw;
+            display: inline;
+            margin-left: 5px;
+        }
+    </style>
 @stop
 
 @section('content')
@@ -16,7 +26,6 @@
     <section class="section-same section-four home-padding">
         <div class="container-fluid update-box">
             <div>
-                <br>
                 <h3 class="title text-center">Babyro đồng hành, bảo vệ<br/>trọn vẹn từng hành trình nhỏ của bé</h3>
             </div>
             <div class="content">
