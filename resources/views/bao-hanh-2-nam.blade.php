@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="{{ asset('css/bao-hanh.css?v=' . ($ver ?? '')) }}">
     <style>
         .section-five .head > .sub-title {
-            font-size: 1.6vw;
+            font-size: 1.4vw;
             line-height: 1.61vw;
             font-weight: 700;
             margin-top: 0.5vw;
