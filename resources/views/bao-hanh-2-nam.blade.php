@@ -16,6 +16,11 @@
             display: inline;
             margin-left: 5px;
         }
+        @media (max-width: 600px) {
+            .section-five .head > .sub-title {
+                font-size: 17px;
+            }
+        }
     </style>
 @stop
 
