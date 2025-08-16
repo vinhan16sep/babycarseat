@@ -254,7 +254,6 @@ Route::group(['prefix' => 'br-admin', 'middleware' => 'auth'], function () {
             Route::post('store', [ProductFileController::class, 'store'])->name('store-product-file');
             Route::get('delete-row', [ProductFileController::class, 'delete'])->name('delete-product-file');
             Route::get('change-status', [ProductFileController::class, 'changeStatus'])->name('change-product-file-status');
-            Route::get('/view-file/{id}', [ProductFileController::class, 'view'])->name('product_files.view');
         });
 
         // Knowledge category
