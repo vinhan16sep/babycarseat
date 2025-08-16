@@ -70,6 +70,7 @@ Route::group(['middleware' => ['site_settings']], function () {
     Route::get('/chi-tiet-don-hang', [App\Http\Controllers\OrderController::class, 'orderReceived'])->name("order-received");
     Route::post('formsafe/store', [FormSafeController::class, 'store'])->name('store-formsafe');
     Route::post('formwarranty/store', [FormWarrantyController::class, 'store'])->name('store-formwarranty');
+    Route::get('/view-file/{id}/{filename}', [ProductFileController::class, 'view'])->name('product_files.view');
 });
 
 Route::post('/add-to-cart', [App\Http\Controllers\CartController::class, 'addToCart']);

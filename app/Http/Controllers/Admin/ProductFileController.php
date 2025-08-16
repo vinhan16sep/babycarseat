@@ -26,7 +26,7 @@ class ProductFileController extends AdminController
         return view('admin/product-file/index', compact('list'));
     }
 
-    public function view($id)
+    public function view($id, $filename = null)
     {
         $file = ProductFile::findOrFail($id);
         $path = storage_path('app/' . str_replace('storage/', 'public/', $file->file_path));
