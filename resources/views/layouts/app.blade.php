@@ -41,6 +41,10 @@
     <link rel="icon" href="{{ asset("icon/cropped-favico-1-192x192.png") }}" sizes="192x192"/>
     <link rel="apple-touch-icon" href="{{ asset("icon/cropped-favico-1-180x180.png") }}"/>
 
+	<!-- Preload fonts để hiển thị nhanh hơn -->
+    <link rel="preload" href="{{ asset('fonts/fonts.css?v=' . ($ver ?? '')) }}" as="style">
+    <link rel="preload" href="{{ asset('fonts/font-icons.css?v=' . ($ver ?? '')) }}" as="style">
+	
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
