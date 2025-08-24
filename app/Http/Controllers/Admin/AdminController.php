@@ -86,6 +86,15 @@ class AdminController extends Controller
         return $upload;
     }
 
+    protected function updateImageProduct($path, $request, $input = 'image') {
+        $upload = '';
+        if($request->hasfile($input)) {
+            Storage::delete(Storage::files($path));
+            $upload = $this->uploadImage($path, $request, $input);
+        }
+        return $upload;
+    }
+
     protected function updateImages($path, $request, $inputUpload = 'image') {
         $uploads = [];
         if($request->hasfile($inputUpload)) {
