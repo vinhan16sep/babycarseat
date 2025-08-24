@@ -233,7 +233,7 @@ class ProductController extends AdminController
             if ($request->hasfile('image')) {
                 $path = sprintf(Config::get('constants.FILE_STORAGE_PATH.PRODUCT_IMAGE'), $id);
                 $prevImg = $object->image;
-                $upload = $this->updateImage($path, $request);
+                $upload = $this->updateImageProduct($path, $request);
                 $object->image = $upload;
             }
 
