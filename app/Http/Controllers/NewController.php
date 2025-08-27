@@ -48,7 +48,7 @@ class NewController extends Controller
      */
     public function list(Request $request)
     {
-        $news = News::query()->where("is_active", 1)->paginate(12)->withQueryString();
+        $news = News::query()->where("is_active", 1)->orderBy('updated_at', 'desc')->paginate(12)->withQueryString();
         return view('new-list', [
             "news" => $news,
         ]);
