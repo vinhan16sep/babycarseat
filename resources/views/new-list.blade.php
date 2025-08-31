@@ -12,7 +12,7 @@
 @section('content')
 
     <!-- page-title -->
-    <div class="page-title" style="background-image: url('{{ asset('images/section/page-title.jpg') }}');">
+    <div class="page-title style-1" style="background-image: url('{{ asset('images/section/page-title.jpg') }}');">
         <div class="container-full">
             <div class="row">
                 <div class="col-12">
