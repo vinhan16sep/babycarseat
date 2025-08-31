@@ -1014,3 +1014,24 @@ footer{
 h1, h2, h3, h4 {
     font-family: 'SF Pro Rounded'!important;
 }
+
+.page-title.style-1 {
+    padding: 0;
+}
+.page-title.style-1 > div{
+    padding: 60px 0 80px;
+    background: rgba(0, 0, 0, 0.25);
+}
+.page-title.style-1 .heading, .page-title.style-1 a.link, .page-title.style-1 li, .page-title.style-1 i{
+    color: #fff;
+    text-shadow: 3px 3px 3px rgba(0, 0, 0, 0.9);
+}
+@media (min-width: 992px) {
+    .page-title.style-1 {
+        padding: 0;
+    }
+    .page-title.style-1 > div{
+        padding: 60px 0 300px;
+        background: rgba(0, 0, 0, 0.25);
+    }
+}

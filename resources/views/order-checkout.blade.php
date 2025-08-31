@@ -12,7 +12,7 @@
 
 
     <!-- page-title -->
-    <div class="page-title" style="background-image: url(images/section/page-title.jpg);">
+    <div class="page-title style-1" style="background-image: url(images/section/page-title.jpg);">
         <div class="container">
             <h3 class="heading text-center">Thanh toán</h3>
             <ul class="breadcrumbs d-flex align-items-center justify-content-center">
