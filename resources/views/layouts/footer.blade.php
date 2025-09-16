@@ -30,9 +30,9 @@
                                 </li>
                             </ul>
                             <ul class="tf-social-icon" style="margin-top: 15px;">
-                                <li><a href="https://www.facebook.com/babyroVN" class="social-facebook"><i class="icon icon-fb"></i></a></li>
+                                <li><a href="https://www.facebook.com/babyroVN" class="social-facebook" target="_blank"><i class="icon icon-fb"></i></a></li>
                                 <li><a href="#" class="social-instagram"><i class="icon icon-instagram"></i></a></li>
-                                <li><a href="https://www.tiktok.com/@babyrovn?_t=ZS-8zfAaj0Hkcz&_r=1" class="social-tiktok"><i class="icon icon-tiktok"></i></a></li>
+                                <li><a href="https://www.tiktok.com/@babyrovn?_t=ZS-8zfAaj0Hkcz&_r=1" class="social-tiktok" target="_blank"><i class="icon icon-tiktok"></i></a></li>
                             </ul>
                         </div>
                     </div>
