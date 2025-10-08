@@ -20,12 +20,12 @@
                                 <li>
                                     <p>{{ $contactInformations['address_hn'] }}</p>
                                 </li>
-                                <li>
+                                <!-- <li>
                                     <p>{{ $contactInformations['address_hcm'] }}</p>
                                 </li>
                                 <li>
                                     <p>{{ $contactInformations['address_nt'] }}</p>
-                                </li>
+                                </li> -->
                                 <li>
 {{--                                    <i class="icon-mail"></i>--}}
                                     <p>{{ $contactInformations['email'] }}</p>
