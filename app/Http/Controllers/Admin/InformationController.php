@@ -19,7 +19,7 @@ class InformationController extends AdminController
     }
 
     public function index() {
-        $list = Information::orderBy('id', 'asc')->get();
+        $list = Information::orderBy('type', 'asc')->orderBy('label', 'asc')->orderBy('id', 'asc')->get();
         return view('admin/information/index', compact('list'));
     }
 

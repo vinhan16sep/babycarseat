@@ -57,6 +57,11 @@
                                 <div class="text-title mb_8">Địa chỉ:</div>
                                 <p class="text-secondary">{{ $contactInformations['address_hn'] }}</p>
                             </div>
+                            <div class="mb_20">
+                                <div class="text-title mb_8">Chi nhánh:</div>
+                                <p class="text-secondary">{{ $contactInformations['address_hcm'] }}</p>
+                                <p class="text-secondary">{{ $contactInformations['address_nt'] }}</p>
+                            </div>
                             <div>
                                 <div class="text-title mb_8">Giờ làm việc:</div>
                                 <div class="text-secondary">{!! nl2br(e($contactInformations['working_hours'])) !!}</div>
