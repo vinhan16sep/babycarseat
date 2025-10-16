@@ -168,13 +168,13 @@
 
                                     <div class="tf-product-info-desc">
                                         <div class="tf-product-info-price" >
-                                            <h5 class="price-on-sale">
+                                            <!-- <h5 class="price-on-sale">
                                                 @if(!empty($product->discount_value))
                                                     <span>Giá gốc <del style="color: #374ea1;">{{ numberFormat($product->price) }} VNĐ</del> </span> | {{ numberFormat($product->discount_value) }} VNĐ
                                                 @else
                                                     <span>Giá {{ numberFormat($product->price) }} VNĐ </span>
                                                 @endif
-                                            </h5>
+                                            </h5> -->
 {{--                                            <div class="compare-at-price font-2">$98.99</div>--}}
 {{--                                            <div class="badges-on-sale text-btn-uppercase">--}}
 {{--                                                -25%--}}
