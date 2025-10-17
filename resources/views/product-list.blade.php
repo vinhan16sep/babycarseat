@@ -405,13 +405,13 @@
                                     <div class="desc">
                                         {!! $_product->description !!}
                                     </div>
-                                    <div class="price">
+                                    <!-- <div class="price">
                                         @if(!empty($_product->discount_value))
                                             Giá gốc <span style="text-decoration: line-through;color: #374ea1">{{ numberFormat($_product->price) }} VNĐ</span> | <span style="font-weight: bold;">{{ numberFormat($_product->discount_value) }} VNĐ</span>
                                         @else
                                             Giá <span style="font-weight: bold;color: #374ea1">{{ numberFormat($_product->price) }} VNĐ</span>
                                         @endif
-                                    </div>
+                                    </div> -->
 {{--                                    <p class="product-desc">{{ $_product->first_category ? $_product->first_category->name : '' }}</p>--}}
                                 </a>
                             </div>
