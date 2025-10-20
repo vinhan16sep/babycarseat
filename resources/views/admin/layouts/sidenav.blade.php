@@ -18,6 +18,14 @@
                         <li><a href="{{ route('list-home-block') }}"><i class="ti-view-grid"></i>Home blocks</a></li>
                     </ul>
                 </li>
+                <li><a class="sidebar-sub-toggle"><i class="ti-target"></i> Đại lý <span
+                            class="sidebar-collapse-icon ti-angle-down"></span></a>
+                    <ul>
+                        <li><a href="{{ route('list-city') }}"></i>Tỉnh/Thành phố</a></li>
+                        <li><a href="{{ route('list-agency-file') }}">File</a></li>
+                        <li><a href="{{ route('list-agency') }}"></i>Đại lý</a></li>
+                    </ul>
+                </li>
                 <li class="label">Sản phẩm</li>
                 <li><a class="sidebar-sub-toggle"><i class="ti-target"></i> Sản phẩm <span
                             class="sidebar-collapse-icon ti-angle-down"></span></a>

@@ -1,7 +1,10 @@
 <?php
 
+use App\Http\Controllers\Admin\AgencyController;
+use App\Http\Controllers\Admin\AgencyFileController;
 use App\Http\Controllers\Admin\BannerController;
 use App\Http\Controllers\Admin\BrandController;
+use App\Http\Controllers\Admin\CityController;
 use App\Http\Controllers\Admin\ColorController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\HomeBlockController;
@@ -71,6 +74,7 @@ Route::group(['middleware' => ['site_settings']], function () {
     Route::post('formsafe/store', [FormSafeController::class, 'store'])->name('store-formsafe');
     Route::post('formwarranty/store', [FormWarrantyController::class, 'store'])->name('store-formwarranty');
     Route::get('/view-file/{id}/{filename}', [ProductFileController::class, 'view'])->name('product_files.view');
+    Route::get('/view-file/{id}', [AgencyFileController::class, 'view'])->name('agency_files.view');
 });
 
 Route::post('/add-to-cart', [App\Http\Controllers\CartController::class, 'addToCart']);
@@ -203,6 +207,36 @@ Route::group(['prefix' => 'br-admin', 'middleware' => 'auth'], function () {
         Route::get('product-note/change-status', [ProductNoteController::class, 'changeStatus'])->name('change-product-note-status');
         Route::get('product-note/get-note-by-product', [ProductNoteController::class, 'getNoteByProduct'])->name('get-note-by-product');
 
+        // City
+        Route::group(['prefix' => 'city'], function () {
+            Route::get('/', [CityController::class, 'index'])->name('list-city');
+            Route::get('create', [CityController::class, 'create'])->name('create-city');
+            Route::post('store', [CityController::class, 'store'])->name('store-city');
+            Route::get('edit/{id}', [CityController::class, 'edit'])->name('edit-city');
+            Route::put('update/{id}', [CityController::class, 'update'])->name('update-city');
+            Route::get('delete-row', [CityController::class, 'delete'])->name('delete-city');
+        });
+
+        // Agency
+        Route::group(['prefix' => 'agency'], function () {
+            Route::get('/', [AgencyController::class, 'index'])->name('list-agency');
+            Route::get('create', [AgencyController::class, 'create'])->name('create-agency');
+            Route::post('store', [AgencyController::class, 'store'])->name('store-agency');
+            Route::get('edit/{id}', [AgencyController::class, 'edit'])->name('edit-agency');
+            Route::put('update/{id}', [AgencyController::class, 'update'])->name('update-agency');
+            Route::get('delete-row', [AgencyController::class, 'delete'])->name('delete-agency');
+            Route::get('change-status', [AgencyController::class, 'changeStatus'])->name('change-agency-status');
+        });
+
+        // Agency file
+        Route::group(['prefix' => 'agency-file'], function () {
+            Route::get('/', [AgencyFileController::class, 'index'])->name('list-agency-file');
+            Route::get('create', [AgencyFileController::class, 'create'])->name('create-agency-file');
+            Route::post('store', [AgencyFileController::class, 'store'])->name('store-agency-file');
+            Route::get('delete-row', [AgencyFileController::class, 'delete'])->name('delete-agency-file');
+            Route::get('change-status', [AgencyFileController::class, 'changeStatus'])->name('change-agency-file-status');
+            Route::get('/view-file/{id}', [AgencyFileController::class, 'view'])->name('product_files.view');
+        });
 
         // News
         Route::group(['prefix' => 'news'], function () {
