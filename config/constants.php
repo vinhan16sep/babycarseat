@@ -23,7 +23,7 @@ return [
         'FEATURE_IMAGE' => 'images/feature/%s/',
         'FORMSAFE_IMAGE' => 'images/fomsafe/%s/',
         'FORMWARRANTY_IMAGE' => 'images/formwarranty/%s/',
-        
+        'AGENCY_FILE' => 'files/agency/%s/',
     ],
     'MESSAGE' => [
         'CREATE_SUCCEEDED' => 'Tạo dữ liệu thành công!',
@@ -37,6 +37,7 @@ return [
         'PRODUCT_COLOR_UPLOAD_ERROR' => 'Upload ảnh không thành công!',
         'PRODUCT_COLOR_SAVE_ERROR' => 'Lưu ảnh sản phẩm vào CSDL không thành công!',
         'PRODUCT_FILE_REQUIRED' => 'File không được để trống',
+        'AGENCY_FILE_REQUIRED' => 'File không được để trống',
     ],
     'POST_POSITION' => [
         'FOOTER_1' => 1,
