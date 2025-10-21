@@ -1520,12 +1520,13 @@
     $('#section-agency .download-file').click(function(e) {
         let url = $(this).data('href');
         if (url && url.length > 0) {
-            const link = document.createElement('a');
-            link.href = url;
-            link.download = '';
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
+            window.open(url, '_blank');
+            // const link = document.createElement('a');
+            // link.href = url;
+            // link.download = '';
+            // document.body.appendChild(link);
+            // link.click();
+            // document.body.removeChild(link);
         }
     });
 
