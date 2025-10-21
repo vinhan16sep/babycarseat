@@ -20,12 +20,12 @@
                                 <li>
                                     <p>{{ $contactInformations['address_hn'] }}</p>
                                 </li>
-                                <!-- <li>
+                                <li>
                                     <p>{{ $contactInformations['address_hcm'] }}</p>
                                 </li>
                                 <li>
                                     <p>{{ $contactInformations['address_nt'] }}</p>
-                                </li> -->
+                                </li>
                                 <li>
 {{--                                    <i class="icon-mail"></i>--}}
                                     <p>{{ $contactInformations['email'] }}</p>
@@ -39,6 +39,7 @@
                                 <li><a href="https://www.facebook.com/babyroVN" class="social-facebook" target="_blank"><i class="icon icon-fb"></i></a></li>
                                 <li><a href="#" class="social-instagram"><i class="icon icon-instagram"></i></a></li>
                                 <li><a href="https://www.tiktok.com/@babyrovn?_t=ZS-8zfAaj0Hkcz&_r=1" class="social-tiktok" target="_blank"><i class="icon icon-tiktok"></i></a></li>
+                                <li><a href="https://www.youtube.com/@BabyroVN.Official" class="social-youtube" target="_blank"><i class="icon icon-youtube"></i></a></li>
                             </ul>
                         </div>
                     </div>
