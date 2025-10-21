@@ -1517,6 +1517,35 @@
 
     });
 
+    $('#section-agency .download-file').click(function(e) {
+        let url = $(this).data('href');
+        if (url && url.length > 0) {
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = '';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+    });
+
+    $("#section-agency #select-city").change(function() {
+        let val = $(this).val();
+        $(".check-city").each(function(index, element) {
+            if (val !== "" && !$(element).hasClass(`check-city-${val}`)) {
+                $(element).hide();
+            } else {
+                $(element).show();
+            }
+        });
+        let id = $("#agency-tab > div").first().attr('id')
+        if (val !== "") {
+            id = $(`#agency-tab .check-city-${val}`).first().attr('id')
+        }
+        document.querySelector(`[href="#${id}"]`).click();
+    })
+
+
     function updateEventQuickAdd(productItem) {
         var basePrice =
             parseFloat(

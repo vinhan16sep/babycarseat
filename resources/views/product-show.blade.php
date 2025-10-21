@@ -330,7 +330,7 @@
                                                         @if($productFiles->where('type', 1)->isNotEmpty())
                                                             <p class="text-secondary">File hướng dẫn sử dụng:</p>
                                                             @foreach($productFiles->where('type', 1) as $item)
-                                                                <a href="{{ route('product_files.view', ['id' => $item->id, 'filename' => $item->file_name]) }}" target="_blank" style="text-decoration: underline;">
+                                                                <a href="{{ route('publish.product_files.view', ['id' => $item->id, 'filename' => $item->file_name]) }}" target="_blank" style="text-decoration: underline;">
                                                                     {{ $item->file_name }}
                                                                 </a>
                                                                 </br>
@@ -339,7 +339,7 @@
                                                         @if($productFiles->where('type', 2)->isNotEmpty())
                                                             <p class="text-secondary">File chứng nhận sản phẩm:</p>
                                                             @foreach($productFiles->where('type', 2) as $item)
-                                                                <a href="{{ route('product_files.view', ['id' => $item->id, 'filename' => $item->file_name]) }}" target="_blank" style="text-decoration: underline;">
+                                                                <a href="{{ route('publish.product_files.view', ['id' => $item->id, 'filename' => $item->file_name]) }}" target="_blank" style="text-decoration: underline;">
                                                                     {{ $item->file_name }}
                                                                 </a>
                                                                 </br>

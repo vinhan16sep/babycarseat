@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Jobs\SendContactEmail;
+use App\Models\City;
 use Exception;
 use App\Models\Contacts;
 use Illuminate\Http\Request;
@@ -21,11 +22,21 @@ class ContactController extends Controller
     {
         parent::__construct();
     }
-    
-    public function show(){
 
+    public function show(){
+        $cities = City::query()->with([
+            "agencies" => function($query) {
+                $query->where('is_active', 1);
+                $query->with([
+                    "agencyFile" => function($query) {
+                         $query->where('is_active', 1);
+                    }
+                ]);
+            }
+        ])->whereHas('agencies')->get();
         return view('contact', [
             "contactInformations" => $this->contactInformations,
+            "cities" => $cities,
         ]);
     }
 
@@ -41,7 +52,7 @@ class ContactController extends Controller
             $model->phone = $request->input('phone');
             $model->content = $request->input('message');
             if ($model->save()) {
-                
+
                 if ($model->save()) {
                     DB::commit();
                     return response()->json([
@@ -69,12 +80,12 @@ class ContactController extends Controller
         //     ], 500);
         // }
     }
-    
+
 
     private function sendMailContact($data){
-        $name = $data["name"] ?? ""; 
-        $email = $data["email"] ?? ""; 
-        $phone = $data["phone"] ?? ""; 
+        $name = $data["name"] ?? "";
+        $email = $data["email"] ?? "";
+        $phone = $data["phone"] ?? "";
         $message = $data["message"] ?? "";
         return SendContactEmail::dispatch($name, $phone, $email, $message);
     }

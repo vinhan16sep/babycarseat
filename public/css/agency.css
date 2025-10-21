@@ -1,0 +1,117 @@
+.tf-store-list {
+    min-width: 305px;
+    margin-bottom: 3px;
+    overflow-y: auto;
+    height: -webkit-fill-available;
+    padding-bottom: 50px;
+    max-width: 100%;
+}
+
+.tf-store-list.style-column {
+    padding-right: 5px;
+    margin-right: -8px;
+}
+
+.tf-store-list > ul > li {
+    /*min-height: 191px;*/
+}
+
+.tf-store-list > ul > li:not(:last-child) {
+    margin-bottom: 10px;
+}
+
+.flat-animate-tab {
+    height: 450px;
+    display: flex;
+}
+
+.tf-select {
+    margin-bottom: 10px;
+}
+
+.tf-select > select {
+    border-radius: 6px;
+    background: #fff;
+}
+
+.contact-us-map.new .wrap-map {
+    height: 450px;
+}
+
+.tf-store-list .tf-store-item {
+    background: #fff;
+}
+
+.scroll-box::-webkit-scrollbar-track {
+    background: #f1f1f1; /* Màu nền của track */
+}
+
+.scroll-box::-webkit-scrollbar-thumb {
+    background-color: #fff; /* Màu thanh cuộn chính */
+    border: 1px solid #ccc; /* Viền để phân biệt với nền */
+}
+
+.scroll-box::-webkit-scrollbar-thumb:hover {
+    background-color: #e0e0e0; /* Khi hover */
+}
+
+.scroll-box {
+    scrollbar-width: thin;
+    scrollbar-color: #fff #f1f1f1; /* thumb | track */
+}
+
+.box-select-agency {
+    padding: 10px 10px 0;
+    overflow: hidden;
+    margin-bottom: 10px;
+    min-width: 320px;
+    max-width: 100%;
+}
+
+.bg-box-agency {
+    background: rgba(0, 0, 0, 0.01);
+    border-radius: 12px;
+}
+
+.download-file{
+    text-decoration: underline;
+    font-weight: bold;
+}
+.tf-store-info > p:not(:last-child) {
+    margin-bottom: 6px;
+}
+.tf-store-info > p i {
+    margin-right: 5px;
+}
+
+#agency-tab{
+    border-left: 1px solid rgba(0, 0, 0, 0.07);
+}
+@media (max-width: 876px) {
+    .flat-animate-tab {
+        display: block;
+        height: auto;
+    }
+
+    .flat-animate-tab .tf-select, .flat-animate-tab .tf-store-list.style-column {
+        /*padding-right: 0;*/
+        /*margin-right: 0;*/
+    }
+
+    .flat-animate-tab .tf-store-list.style-column {
+        max-height: 400px;
+        overflow-y: auto;
+    }
+
+    .tf-store-list {
+        padding-bottom: 0;
+        /*margin-bottom: 20px;*/
+    }
+
+    .tf-store-list > ul > li {
+        min-height: auto;
+    }
+    .tf-store-list, .box-select-agency{
+        min-width: auto;
+    }
+}
