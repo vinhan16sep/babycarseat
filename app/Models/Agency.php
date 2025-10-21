@@ -16,6 +16,7 @@ class Agency extends Model
         'city_id',
         'name',
         'address',
+        'map',
         'phone',
         'sort',
         'is_active',

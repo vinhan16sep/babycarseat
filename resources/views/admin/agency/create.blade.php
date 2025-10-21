@@ -64,6 +64,14 @@
                                     @endif
                                 </div>
 
+                                <div class="form-group">
+                                    <label for="map" class="form-label">Map</label>
+                                    <textarea rows="5" name="map" class="form-control my-textarea">{{ old('map') }}</textarea>
+                                    @if ($errors->has('map'))
+                                        <span style="color:red;">{{ $errors->first('map') }}</span>
+                                    @endif
+                                </div>
+
                                 <input type="hidden" name="is_active" value="0">
                                 <div class="form-group{{ $errors->has('is_active') ? ' has-error' : '' }}">
                                     <label class="css-control css-control-primary css-checkbox" for="">

@@ -48,6 +48,7 @@ class AgencyController extends AdminController
             $model->name = $request->input('name');
             $model->city_id = $request->input('city_id');
             $model->address = $request->input('address');
+            $model->map = $request->input('map');
             $model->phone = $request->input('phone');
             $model->is_active = $request->input('is_active');
             $model->created_by = 1;
@@ -95,6 +96,7 @@ class AgencyController extends AdminController
             $object->name = $request->input('name');
             $object->city_id = $request->input('city_id');
             $object->address = $request->input('address');
+            $object->map = $request->input('map');
             $object->phone = $request->input('phone');
             $object->is_active = $request->input('is_active');
             $object->updated_by = 1;
