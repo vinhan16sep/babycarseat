@@ -7,6 +7,8 @@
 @section('meta_image', "Liên hệ")
 @section('css')
     <link rel="stylesheet" href="{{ asset('css/page.css?v=' . ($ver ?? '')) }}">
+    <link rel="stylesheet" href="{{ asset('css/agency.css?v=' . ($ver ?? '')) }}">
+    <link rel="stylesheet" href="{{ asset('admin/css/lib/themify-icons.css') }}">
 @stop
 
 @section('content')
@@ -107,6 +109,79 @@
         </div>
     </section>
     <!-- /Get In Touch -->
+
+    @if($cities->count() > 0)
+        <!-- Store locations -->
+        <section class="flat-spacing pt-0" id="section-agency">
+            <div class="container">
+                <div class="heading-section text-center">
+                    <h3 class="heading">Đại lý</h3>
+                    <!-- <p class="subheading">Use the form below to get in touch with the sales team</p> -->
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="flat-animate-tab bg-box-agency">
+                            <div class="box-select-agency">
+                                <div class="tf-select">
+                                    <select id="select-city" class="text-title" name="address[country]" data-default="">
+                                        <option value="">Chọn tỉnh thành</option>
+                                        @foreach($cities as $city)
+                                            <option value="{{ $city->id }}">{{ $city->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="tf-store-list style-column">
+                                    <ul role="tablist">
+                                        @php $is_active = true; @endphp
+                                        @foreach($cities as $city)
+                                            @php $agencies = $city->agencies ?? [] @endphp
+                                            @foreach($city->agencies as $agencie)
+                                                <li class="check-city check-city-{{ $city->id }} nav-tab-item" role="presentation">
+                                                    <a href="#tab-id-{{ $agencie->id }}" class="tf-store-item {{ $is_active ? 'active' : '' }}" data-bs-toggle="tab">
+                                                        <h6 class="tf-store-title">
+                                                            {{ $agencie->name }}
+                                                        </h6>
+                                                        <div class="tf-store-info">
+                                                            <p><i class="ti-mobile"></i> {{ $agencie->phone }}</p>
+                                                            <p><i class="ti-home"></i> {{ $agencie->address }}</p>
+                                                            @if($agencie->agencyFile)
+                                                                <p><i class="ti-file"></i> <span title="Download File" class="download-file" data-href="{{ route('publish.agency_files.view', $agencie->agencyFile->id) }}">{{ $agencie->agencyFile->file_name }}</span></p>
+                                                            @endif
+                                                        </div>
+                                                    </a>
+                                                </li>
+                                                @php $is_active = false; @endphp
+                                            @endforeach
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="tab-content" id="agency-tab" style="width: 100%;">
+                                @php $is_active = true; @endphp
+                                @foreach($cities as $city)
+                                    @php $agencies = $city->agencies ?? [] @endphp
+                                    @foreach($city->agencies as $agencie)
+                                        <div class="check-city check-city-{{ $city->id }} tab-pane {{ $is_active ? 'active show' : '' }}" id="tab-id-{{ $agencie->id }}" role="tabpanel">
+                                            <div class="wg-card-store align-items-center tf-grid-layout gap-0">
+                                                <div class="contact-us-map new">
+                                                    <div class="wrap-map">
+                                                        <iframe src="{{ $agencie->map ?? $contactInformations['google_map_hn'] }}" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        @php $is_active = false; @endphp
+                                    @endforeach
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- /Store locations -->
+    @endif
+
 @endsection
 
 

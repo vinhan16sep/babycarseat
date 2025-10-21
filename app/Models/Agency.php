@@ -27,4 +27,9 @@ class Agency extends Model
     public function city() {
         return $this->belongsTo(City::class, 'city_id', 'id');
     }
+
+    public function agencyFile()
+    {
+        return $this->hasOne(AgencyFile::class);
+    }
 }
