@@ -38,7 +38,7 @@
                                         <tr>
                                             <th scope="row">{{ $key + 1}}</th>
                                             <td>
-                                                <a href="{{ route('agency_files.view', $item->id) }}" target="_blank">
+                                                <a href="{{ route('publish.agency_files.view', $item->id) }}" target="_blank">
                                                     {{ $item->file_name }}
                                                 </a>
                                             </td>
