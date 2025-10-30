@@ -142,6 +142,7 @@
 
     @include("components.message")
 </div>
+{{--@include('components.chat-config')--}}
 
 <!-- Javascript -->
 <script type="text/javascript" src="{{ asset('js/bootstrap.min.js?v=' . ($ver ?? '')) }}"></script>
