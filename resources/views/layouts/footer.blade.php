@@ -11,7 +11,7 @@
                             </a>
                         </div>
                     </div>
-                    <div class="col-lg-3">
+                    <div class="col-lg-4">
                         <div class="footer-infor">
                             <div class="footer-heading text-button">
                                 Engineered with love
@@ -106,7 +106,7 @@
                         </div>
                         </div>
                     </div>
-                    <div class="col-lg-3 position-desk">
+                    <div class="col-lg-2 position-desk">
                         <div class="footer-menu" style="margin-bottom: 0;float: right;">
                         <div class="footer-col-block">
                             <div class="footer-heading text-button footer-heading-mobile">
