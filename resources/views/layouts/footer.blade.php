@@ -17,7 +17,7 @@
                                 Engineered with love
                             </div>
                             <ul class="footer-info">
-                                <li>
+                                <!-- <li>
                                     <p>{{ $contactInformations['address_hn'] }}</p>
                                 </li>
                                 <li>
@@ -27,12 +27,34 @@
                                     <p>{{ $contactInformations['address_nt'] }}</p>
                                 </li>
                                 <li>
-{{--                                    <i class="icon-mail"></i>--}}
                                     <p>{{ $contactInformations['email'] }}</p>
                                 </li>
                                 <li>
-{{--                                    <i class="icon-phone"></i>--}}
                                     <p>{{ $contactInformations['hotline'] }}</p>
+                                </li> -->
+                                <li>
+                                    <p>Công Ty TNHH Sản Xuất Và Phân Phối Tech Air</p>
+                                </li>
+                                <li>
+                                    <p>Tầng 4, Tòa nhà Hòa Bình Greencity, 505 Minh Khai, Vĩnh Tuy, Hà Nội</p>
+                                </li>
+                                <li>
+                                    <p>SĐT: 0967888868</p>
+                                </li>
+                                <li>
+                                    <p>Email: Service@babyro.eu</p>
+                                </li>
+                                <li>
+                                    <p>Giấy ĐKKD số 0111119850 Cấp ngày 10 tháng 7 năm 2025</p>
+                                </li>
+                                <li>
+                                    <p>Nơi cấp: Sở Tài Chính Thành Phố Hà Nội</p>
+                                </li>
+                                <li>
+                                    <p>Thông tin liên hệ xử lý khiếu nại: 0933805179</p>
+                                </li>
+                                <li>
+                                    <p>Email: Service@babyro.eu</p>
                                 </li>
                             </ul>
                             <ul class="tf-social-icon" style="margin-top: 15px;">
