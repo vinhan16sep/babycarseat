@@ -148,46 +148,21 @@
                                                 @endforeach
                                             </div>
                                         </div>
-{{--                                        <div class="sub">--}}
-{{--                                            <div class="tf-product-info-rate">--}}
-{{--                                                <div class="list-star">--}}
-{{--                                                    <i class="icon icon-star"></i>--}}
-{{--                                                    <i class="icon icon-star"></i>--}}
-{{--                                                    <i class="icon icon-star"></i>--}}
-{{--                                                    <i class="icon icon-star"></i>--}}
-{{--                                                    <i class="icon icon-star"></i>--}}
-{{--                                                </div>--}}
-{{--                                                <div class="text text-caption-1">(134 reviews)</div>--}}
-{{--                                            </div>--}}
-{{--                                            <div class="tf-product-info-sold">--}}
-{{--                                                <i class="icon icon-lightning"></i>--}}
-{{--                                                <div class="text text-caption-1">18 sold in last 32 hours</div>--}}
-{{--                                            </div>--}}
-{{--                                        </div>--}}
                                     </div>
 
                                     <div class="tf-product-info-desc">
                                         <div class="tf-product-info-price" >
-                                            <!-- <h5 class="price-on-sale">
+                                            <h5 class="price-on-sale">
                                                 @if(!empty($product->discount_value))
                                                     <span>Giá gốc <del style="color: #374ea1;">{{ numberFormat($product->price) }} VNĐ</del> </span> | {{ numberFormat($product->discount_value) }} VNĐ
                                                 @else
                                                     <span>Giá {{ numberFormat($product->price) }} VNĐ </span>
                                                 @endif
-                                            </h5> -->
-{{--                                            <div class="compare-at-price font-2">$98.99</div>--}}
-{{--                                            <div class="badges-on-sale text-btn-uppercase">--}}
-{{--                                                -25%--}}
-{{--                                            </div>--}}
+                                            </h5>
                                         </div>
                                         <div class="box-description">
                                             {!! $product->description !!}
                                         </div>
-{{--                                        <div class="tf-product-info-liveview">--}}
-{{--                                            <i class="icon icon-eye"></i>--}}
-{{--                                            <p class="text-caption-1"><span class="liveview-count">28</span> people are--}}
-{{--                                                viewing this right now</p>--}}
-{{--                                        </div>--}}
                                     </div>
                                 </div>
                                 <div class="tf-product-info-choose-option">
@@ -211,41 +186,6 @@
                                         </div>
                                     </div> -->
 
-{{--                                    <div class="variant-picker-item">--}}
-{{--                                        <div class="d-flex justify-content-between mb_12">--}}
-{{--                                            <div class="variant-picker-label">--}}
-{{--                                                Size:<span class="text-title variant-picker-label-value">L</span>--}}
-{{--                                            </div>--}}
-{{--                                        </div>--}}
-{{--                                        <div class="variant-picker-values gap12">--}}
-{{--                                            <input type="radio" name="size1" id="values-s">--}}
-{{--                                            <label class="style-text size-btn" for="values-s" data-value="S"--}}
-{{--                                                   data-price="79.99">--}}
-{{--                                                <span class="text-title">S</span>--}}
-{{--                                            </label>--}}
-{{--                                            <input type="radio" name="size1" id="values-m">--}}
-{{--                                            <label class="style-text size-btn" for="values-m" data-value="M"--}}
-{{--                                                   data-price="79.99">--}}
-{{--                                                <span class="text-title">M</span>--}}
-{{--                                            </label>--}}
-{{--                                            <input type="radio" name="size1" id="values-l" checked>--}}
-{{--                                            <label class="style-text size-btn" for="values-l" data-value="L"--}}
-{{--                                                   data-price="89.99">--}}
-{{--                                                <span class="text-title">L</span>--}}
-{{--                                            </label>--}}
-{{--                                            <input type="radio" name="size1" id="values-xl">--}}
-{{--                                            <label class="style-text size-btn" for="values-xl" data-value="XL"--}}
-{{--                                                   data-price="89.99">--}}
-{{--                                                <span class="text-title">XL</span>--}}
-{{--                                            </label>--}}
-{{--                                            <input type="radio" name="size1" id="values-xxl">--}}
-{{--                                            <label class="style-text size-btn type-disable" for="values-xxl"--}}
-{{--                                                   data-value="XXL" data-price="89.99">--}}
-{{--                                                <span class="text-title">XXL</span>--}}
-{{--                                            </label>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-
                                     <div class="tf-product-info-quantity">
                                         <div class="title mb_12">Quantity:</div>
                                         <div class="wg-quantity">
@@ -266,16 +206,6 @@
                                                         {{ numberFormat($product->price) }} VNĐ
                                                     @endif
                                                 </span></a>
-{{--                                            <a href="#compare" data-bs-toggle="offcanvas" aria-controls="compare"--}}
-{{--                                               class="box-icon hover-tooltip compare btn-icon-action">--}}
-{{--                                                <span class="icon icon-gitDiff"></span>--}}
-{{--                                                <span class="tooltip text-caption-2">Compare</span>--}}
-{{--                                            </a>--}}
-{{--                                            <a href="javascript:void(0);"--}}
-{{--                                               class="box-icon hover-tooltip text-caption-2 wishlist btn-icon-action">--}}
-{{--                                                <span class="icon icon-heart"></span>--}}
-{{--                                                <span class="tooltip text-caption-2">Wishlist</span>--}}
-{{--                                            </a>--}}
                                         </div>
                                         <a class="btn-style-3 text-btn-uppercase add-to-card" data-id="{{ $product->id }}">Mua ngay</a>
                                     </div>
@@ -374,67 +304,6 @@
             </div>
         </div>
 
-{{--        <div class="tf-sticky-btn-atc">--}}
-{{--            <div class="container">--}}
-{{--                <div class="row">--}}
-{{--                    <div class="col-12">--}}
-{{--                        <form class="form-sticky-atc">--}}
-{{--                            <div class="tf-sticky-atc-product">--}}
-{{--                                <div class="image">--}}
-{{--                                    <img class="lazyload" data-src="{{ asset('images/products/womens/women-3.jpg') }}" alt=""--}}
-{{--                                         src="{{ asset('images/products/womens/women-3.jpg') }}">--}}
-{{--                                </div>--}}
-{{--                                <div class="content">--}}
-{{--                                    <div class="text-title">--}}
-{{--                                        Biker-style leggings--}}
-{{--                                    </div>--}}
-{{--                                    <div class="text-caption-1 text-secondary-2">Green, XS, Cotton</div>--}}
-{{--                                    <div class="text-title">$68.00</div>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                            <div class="tf-sticky-atc-infos">--}}
-{{--                                <div class="tf-sticky-atc-size d-flex gap-12 align-items-center">--}}
-{{--                                    <div class="tf-sticky-atc-infos-title text-title">Size:</div>--}}
-{{--                                    <div class="tf-dropdown-sort style-2" data-bs-toggle="dropdown">--}}
-{{--                                        <div class="btn-select">--}}
-{{--                                            <span class="text-sort-value font-2">M</span>--}}
-{{--                                            <span class="icon icon-arrow-down"></span>--}}
-{{--                                        </div>--}}
-{{--                                        <div class="dropdown-menu">--}}
-{{--                                            <div class="select-item">--}}
-{{--                                                <span class="text-value-item">S</span>--}}
-{{--                                            </div>--}}
-{{--                                            <div class="select-item active">--}}
-{{--                                                <span class="text-value-item">M</span>--}}
-{{--                                            </div>--}}
-{{--                                            <div class="select-item">--}}
-{{--                                                <span class="text-value-item">L</span>--}}
-{{--                                            </div>--}}
-{{--                                            <div class="select-item">--}}
-{{--                                                <span class="text-value-item">XL</span>--}}
-{{--                                            </div>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                                <div class="tf-sticky-atc-quantity d-flex gap-12 align-items-center">--}}
-{{--                                    <div class="tf-sticky-atc-infos-title text-title">Quantity:</div>--}}
-{{--                                    <div class="wg-quantity style-1">--}}
-{{--                                        <span class="btn-quantity minus-btn">-</span>--}}
-{{--                                        <input type="text" name="number" value="1">--}}
-{{--                                        <span class="btn-quantity plus-btn">+</span>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                                <div class="tf-sticky-atc-btns">--}}
-{{--                                    <a href="#shoppingCart" data-bs-toggle="modal"--}}
-{{--                                       class="tf-btn w-100 btn-reset radius-4 btn-add-to-cart"><span--}}
-{{--                                            class="text text-btn-uppercase">Add To Cart</span></a>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        </form>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--        </div>--}}
     </section>
     <!-- /Product_Main -->
 
