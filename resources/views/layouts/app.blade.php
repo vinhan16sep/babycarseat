@@ -62,6 +62,12 @@
         var BASE_URL = '{{ Url('/') }}';
         var HOME_URL = '{{ route("home") }}';
     </script>
+    <style>
+        .zalo-chat-widget {
+            bottom: 100px !important;  
+            right: 37px !important;
+        }
+    </style>
 </head>
 <body>
 {{--Show message--}}
@@ -142,7 +148,15 @@
 
     @include("components.message")
 </div>
-{{--@include('components.chat-config')--}}
+<div 
+    class="zalo-chat-widget" 
+    data-oaid="4526750154711339988" 
+    data-welcome-message="Rất vui khi được hỗ trợ bạn!" 
+    data-autopopup="0" 
+    data-width="" 
+    data-height=""
+>
+</div>
 
 <!-- Javascript -->
 <script type="text/javascript" src="{{ asset('js/bootstrap.min.js?v=' . ($ver ?? '')) }}"></script>
@@ -155,6 +169,7 @@
 <script type="text/javascript" src="{{ asset('js/wow.min.js?v=' . ($ver ?? '')) }}"></script>
 <script type="text/javascript" src="{{ asset('js/multiple-modal.js?v=' . ($ver ?? '')) }}"></script>
 <script type="text/javascript" src="{{ asset('js/main.js?v=' . ($ver ?? '')) }}"></script>
+<script src="https://sp.zalo.me/plugins/sdk.js"></script>
 
 <!-- <script src="{{ asset('js/sibforms.js?v=' . ($ver ?? '')) }}" defer></script> -->
 
