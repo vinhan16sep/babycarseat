@@ -7,6 +7,16 @@
 @section('css')
     <link rel="stylesheet" href="{{ asset('css/page.css?v=' . ($ver ?? '')) }}">
     <link rel="stylesheet" href="{{ asset('css/bao-hanh.css?v=' . ($ver ?? '')) }}">
+    <style>
+        .indented-list {
+            padding-left: 20px; /* Indent trên desktop */
+        }
+        @media (max-width: 768px) {
+            .indented-list {
+                padding-left: 10px; /* Indent ít hơn trên mobile */
+            }
+        }
+    </style>
 @stop
 
 @section('content')
@@ -25,6 +35,19 @@
 
                 <div>
                     <p>{!! $configs[5][2]['content'] ?? '' !!}</p>
+                </div>
+
+                <div class="last-box">
+                    <h4 class="sub-title">{!! $configs[5][4]['title'] ?? '' !!}</h4>
+                    <ul class="indented-list">
+                        @php
+                            $text_with_br = nl2br($configs[5][4]['content'] ?? '');
+                            $lines = explode("<br />", $text_with_br);
+                        @endphp
+                        @foreach($lines as $_item)
+                            <li style="list-style-type:disc;">{!! $_item !!}</li>
+                        @endforeach
+                    </ul>
                 </div>
 
                 <div>
