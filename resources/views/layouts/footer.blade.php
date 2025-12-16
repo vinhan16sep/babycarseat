@@ -108,24 +108,25 @@
                     </div>
                     <div class="col-lg-2 position-desk">
                         <div class="footer-menu" style="margin-bottom: 0;float: right;">
-                        <div class="footer-col-block">
-                            <div class="footer-heading text-button footer-heading-mobile">
-                                {{ $footerMenuPosition[3] ?? 'Hỗ trợ' }}
+                            <div class="footer-col-block">
+                                <div class="footer-heading text-button footer-heading-mobile">
+                                    {{ $footerMenuPosition[3] ?? 'Hỗ trợ' }}
+                                </div>
+                                <div class="tf-collapse-content">
+                                    <ul class="footer-menu-list">
+                                        @foreach($footerMenu as $value)
+                                            @if ($value['position'] == 3)
+                                                <li class="text-caption-1">
+                                                    <a href="{{ $value['link'] }}" class="footer-menu_item">{{ $value['title'] }}</a>
+                                                </li>
+                                            @endif
+                                        @endforeach
+                                    </ul>
+                                </div>
                             </div>
-                            <div class="tf-collapse-content">
-                                <ul class="footer-menu-list">
-                                    @foreach($footerMenu as $value)
-                                        @if ($value['position'] == 3)
-                                            <li class="text-caption-1">
-                                                <a href="{{ $value['link'] }}" class="footer-menu_item">{{ $value['title'] }}</a>
-                                            </li>
-                                        @endif
-                                    @endforeach
-                                </ul>
-                            </div>
-                        </div>
                         </div>
                     </div>
+                    <p style="padding-top: 10px;" class="">Đầu mối liên hệ phối hợp với cơ quan nhà nước có thẩm quyền trong việc giải quyết các vấn đề liên quan đến bảo vệ quyền lợi người tiêu dùng:<br> Đặng Cao Cường – <a class="text-caption-1 text-blue" style="font-size: 100% !important" href="tel:0933805179">0933805179</a></p>
                 </div>
             </div>
         </div>

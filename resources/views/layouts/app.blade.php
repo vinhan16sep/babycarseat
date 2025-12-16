@@ -67,6 +67,22 @@
             bottom: 100px !important;  
             right: 37px !important;
         }
+        @media (max-width: 768px) {
+            .zalo-chat-widget {
+                bottom: 140px !important;
+                right: 20px !important;
+                width: 45px !important;
+                height: 45px !important;
+            }
+        }
+        @media (max-width: 440px) {
+            .zalo-chat-widget {
+                bottom: 80px !important;
+                right: 15px !important;
+                width: 50px !important;
+                height: 50px !important;
+            }
+        }
     </style>
 </head>
 <body>

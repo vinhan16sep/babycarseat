@@ -58,10 +58,10 @@
         </div>
     </section>
     <section class="section-same section-seven home-padding">
-        <div class="container-fluid update-box">
+        <!-- <div class="container-fluid update-box">
             <div>
                 <h3 class="title text-center" style="white-space: pre-line">Hướng dẫn đăng ký
-Bảo hành vàng 12 năm Babyro</h3>
+                    Bảo hành vàng 12 năm Babyro</h3>
             </div>
             <div class="content">
                 <div class="row">
@@ -103,8 +103,8 @@ Bảo hành vàng 12 năm Babyro</h3>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="container-fluid">
+        </div> -->
+        <div class="container-fluid update-box">
             <div class="content">
                 <div class="row">
                     <div class="col-md-12 last-box">
@@ -174,7 +174,7 @@ Bảo Hành Vàng 12 năm Babyro</h3>
         </div>
     </section>
     <br>
-    @include('components.form-warranty')
+    <!-- @include('components.form-warranty') -->
     <hr>
 @endsection
 

@@ -1475,7 +1475,7 @@ a:focus, a:hover {
   z-index: 100;
   background-color: var(--main);
   border: 0;
-  bottom: 92px;
+  bottom: 30px;
   right: 20px;
   padding: 0;
   display: flex;
