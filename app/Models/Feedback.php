@@ -17,6 +17,7 @@ class Feedback extends Model
         'description',
         'rate',
         'rate_by',
+        'link',
         'is_active',
         'created_by',
         'updated_by'
