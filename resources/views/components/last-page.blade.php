@@ -107,6 +107,7 @@
                  data-pagination-lg="1">
                  <div class="swiper-wrapper">
                     @foreach ($feedback as $index => $item)
+                        <a href="{{ $item->link }}">
                         <div class="swiper-slide">
                             <div class="testimonial-item style-row hover-img wow fadeInUp" data-wow-delay="{{ $index * 0.1 }}s">
                                 <div class="img-style">
@@ -131,6 +132,7 @@
                                 </div>
                             </div>
                         </div>
+                        </a>
                     @endforeach
                 </div>
 

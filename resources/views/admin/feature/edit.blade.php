@@ -149,7 +149,8 @@
         height: 500,
         plugins: [
             'image',
-            'table'
+            'table',
+            'link'
         ],
 
         image_title : true,
@@ -180,13 +181,13 @@
             formData.append('file', blobInfo.blob(), blobInfo.filename());
             xhr.send(formData);
         },
-        toolbar: 'undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | ' +
+        toolbar: 'undo redo | fontselect | fontsizeselect | styleselect | bold italic underline | alignleft aligncenter alignright alignjustify | ' +
         'bullist numlist outdent indent | link image | print preview media fullpage | ' +
         'forecolor backcolor emoticons | help | codesample',
         menu: {
-            favs: {title: 'My Favorites', items: 'code visualaid | searchreplace | spellchecker | emoticons'}
+            favs: {title: 'My Favorites', items: 'code visualaid | searchreplace | spellchecker | emoticons | fontselect | fontsizeselect'}
         },
-        menubar: 'favs file edit view insert format tools table help'
+        menubar: 'favs file edit view insert format tools table help | fontselect | fontsizeselect'
     });
     
     $('#preview-image-before-upload').attr('src', "{{ $object->image ? asset($object->image) : asset('images/no-image-available.png') }}"); 

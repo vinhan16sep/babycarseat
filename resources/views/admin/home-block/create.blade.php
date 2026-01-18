@@ -122,49 +122,50 @@
     let url = window.location.origin;
 
     tinymce.init({
-    selector: 'textarea#link',
-    height: 500,
-    plugins: [
-        'image',
-        'table'
-    ],
+        selector: 'textarea#link',
+        height: 500,
+        plugins: [
+            'image',
+            'table',
+            'link'
+        ],
 
-    image_title : true,
-    automatic_uploads: true,
-    // images_upload_url : '/br-admin/upload/post-tinymce-image',
-    file_picker_types: 'image',
-    images_upload_handler: function (blobInfo, success, failure) {
-        var xhr, formData;
-        xhr = new XMLHttpRequest();
-        xhr.withCredentials = false;
-        xhr.open('POST', '/br-admin/upload/post-tinymce-image');
-        var token = '{{ csrf_token() }}';
-        xhr.setRequestHeader("X-CSRF-Token", token);
-        xhr.onload = function() {
-            var json;
-            if (xhr.status != 200) {
-                failure('HTTP Error: ' + xhr.status);
-                return;
-            }
-            json = JSON.parse(xhr.responseText);
+        image_title : true,
+        automatic_uploads: true,
+        // images_upload_url : '/br-admin/upload/post-tinymce-image',
+        file_picker_types: 'image',
+        images_upload_handler: function (blobInfo, success, failure) {
+            var xhr, formData;
+            xhr = new XMLHttpRequest();
+            xhr.withCredentials = false;
+            xhr.open('POST', '/br-admin/upload/post-tinymce-image');
+            var token = '{{ csrf_token() }}';
+            xhr.setRequestHeader("X-CSRF-Token", token);
+            xhr.onload = function() {
+                var json;
+                if (xhr.status != 200) {
+                    failure('HTTP Error: ' + xhr.status);
+                    return;
+                }
+                json = JSON.parse(xhr.responseText);
 
-            if (!json || typeof json.location != 'string') {
-                failure('Invalid JSON: ' + xhr.responseText);
-                return;
-            }
-            success(json.location);
-        };
-        formData = new FormData();
-        formData.append('file', blobInfo.blob(), blobInfo.filename());
-        xhr.send(formData);
-    },
-    toolbar: 'undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | ' +
-    'bullist numlist outdent indent | link image | print preview media fullpage | ' +
-    'forecolor backcolor emoticons | help | codesample',
-    menu: {
-        favs: {title: 'My Favorites', items: 'code visualaid | searchreplace | spellchecker | emoticons'}
-    },
-    menubar: 'favs file edit view insert format tools table help'
+                if (!json || typeof json.location != 'string') {
+                    failure('Invalid JSON: ' + xhr.responseText);
+                    return;
+                }
+                success(json.location);
+            };
+            formData = new FormData();
+            formData.append('file', blobInfo.blob(), blobInfo.filename());
+            xhr.send(formData);
+        },
+        toolbar: 'undo redo | fontselect | fontsizeselect | styleselect | bold italic underline | alignleft aligncenter alignright alignjustify | ' +
+        'bullist numlist outdent indent | link image | print preview media fullpage | ' +
+        'forecolor backcolor emoticons | help | codesample',
+        menu: {
+            favs: {title: 'My Favorites', items: 'code visualaid | searchreplace | spellchecker | emoticons | fontselect | fontsizeselect'}
+        },
+        menubar: 'favs file edit view insert format tools table help | fontselect | fontsizeselect'
     });
 
     $('#image').change(function(){

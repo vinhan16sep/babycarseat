@@ -40,6 +40,7 @@ class FeedbackController extends AdminController
             $model->description = $request->input('description');
             $model->rate = $request->input('rate');
             $model->rate_by = $request->input('rate_by');
+            $model->link = $request->input('link');
             $model->is_active = $request->input('is_active');
             $model->created_by = 1;
             $model->updated_by = 1;
@@ -95,6 +96,7 @@ class FeedbackController extends AdminController
             $object->description = $request->input('description');
             $object->rate = $request->input('rate');
             $object->rate_by = $request->input('rate_by');
+            $object->link = $request->input('link');
             $object->is_active = $request->input('is_active');
             $object->updated_by = 1;
                 

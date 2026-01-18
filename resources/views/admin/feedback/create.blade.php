@@ -66,6 +66,15 @@
                                     @endif
                                 </div>
 
+                                <div class="form-group{{ $errors->has('link') ? ' has-error' : '' }}">
+                                    <label>Link</label>
+                                    <input type="text" name="link" value="{{ old('link') }}" class="form-control" maxlength="255">
+                                    @if ($errors->has('link'))
+                                        <span style="color:red;">{{ $errors->first('link') }}</span>
+                                    </span>
+                                    @endif
+                                </div>
+
                                 <input type="hidden" name="is_active" value="0">
                                 <div class="form-group{{ $errors->has('is_active') ? ' has-error' : '' }}">
                                     <label class="css-control css-control-primary css-checkbox" for="">
@@ -101,7 +110,8 @@
         height: 300,
         plugins: [
             'image',
-            'table'
+            'table',
+            'link'
         ],
 
         image_title : true,
@@ -133,13 +143,13 @@
             formData.append('file', blobInfo.blob(), blobInfo.filename());
             xhr.send(formData);
         },
-        toolbar: 'undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | ' +
+        toolbar: 'undo redo | fontselect | fontsizeselect | styleselect | bold italic underline | alignleft aligncenter alignright alignjustify | ' +
         'bullist numlist outdent indent | link image | print preview media fullpage | ' +
         'forecolor backcolor emoticons | help | codesample',
         menu: {
-            favs: {title: 'My Favorites', items: 'code visualaid | searchreplace | spellchecker | emoticons'}
+            favs: {title: 'My Favorites', items: 'code visualaid | searchreplace | spellchecker | emoticons | fontselect | fontsizeselect'}
         },
-        menubar: 'favs file edit view insert format tools table help'
+        menubar: 'favs file edit view insert format tools table help | fontselect | fontsizeselect'
     });
 
     $('#image').change(function(){
