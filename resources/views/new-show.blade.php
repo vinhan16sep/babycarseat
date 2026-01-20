@@ -6,6 +6,56 @@
 @section('meta_image', $new->title)
 @section('css')
     <link rel="stylesheet" href="{{ asset('css/page.css?v=' . ($ver ?? '')) }}">
+    <style>
+        .tinymce-content {
+            h1 {
+                margin-bottom: 10px;
+            }
+            h2 {
+                font-size: 22px;
+                font-weight: 700;
+                margin-bottom: 10px;
+				line-height: 35px;
+            }
+            h3 {
+                font-size: 20px;
+                font-weight: 700;
+                margin-bottom: 10px;
+            }
+            h4 {
+                font-size: 18px;
+                font-weight: 700;
+                margin-bottom: 10px;
+            }
+            h5 {
+                font-size: 16px;
+                font-weight: 700;
+                margin-bottom: 0px;
+            }
+            h6 {
+                font-size: 14px;
+                font-weight: 700;
+                margin-bottom: 10px;
+            }
+            p {
+                font-size: 16px;
+                font-weight: 400;
+                margin-bottom: 10px;
+            }
+            ul {
+                margin-bottom: 10px;
+            }
+            li {
+                font-size: 16px;
+                font-weight: 400;
+                margin-bottom: 10px;
+            }
+            a {
+                color: #000;
+                text-decoration: none;
+            }
+        }
+    </style>
 @stop
 
 @section('content')
@@ -41,8 +91,10 @@
                             <div class="image">
                                 <img class="lazyload" data-src="{{ getImage($new->image) }}" src="{{ getImage($new->image) }}" alt="">
                             </div>
-                            <div class="fix-font content">
-                                {!! $new->content !!}
+                            <div class="fix-font tinymce-content">
+                                <div class="content">
+                                    {!! $new->content !!}
+                                </div>
                             </div>
                         </div>
                     </div>
