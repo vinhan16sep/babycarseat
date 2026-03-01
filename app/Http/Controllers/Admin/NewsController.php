@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\URL;
+use Illuminate\Support\Str;
 
 class NewsController extends AdminController
 {
@@ -26,7 +27,20 @@ class NewsController extends AdminController
     }
 
     public function create() {
-        return view('admin/news/create');
+
+        $seo = (object)[
+            'meta_title' => '',
+            'meta_description' => '',
+            'meta_keywords' => '',
+            'meta_robots' => '',
+            'canonical_url' => '',
+            'og_title' => '',
+            'og_description' => '',
+        ];
+
+        return view('admin/news/create', [
+            'seo' => $seo
+        ]);
     }
 
     public function store(Request $request) {
@@ -39,12 +53,26 @@ class NewsController extends AdminController
 
             $model = new News();
             $model->title = $request->input('title');
-            $model->slug = $request->input('slug');
+            // if slug field is empty or user deleted it, auto-generate from title
+            $slug = $request->input('slug');
+            if (empty($slug)) {
+                $slug = Str::slug($request->input('title'));
+            }
+            $model->slug = $slug;
             $model->description = $request->input('description');
             $model->content = $request->input('content');
             $model->is_active = $request->input('is_active');
             $model->created_by = 1;
             $model->updated_by = 1;
+            // SEO fields
+            $model->meta_title = $request->input('meta_title');
+            $model->meta_description = $request->input('meta_description');
+            $model->meta_keywords = $request->input('meta_keywords');
+            $model->meta_robots = $request->input('meta_robots');
+            $model->canonical_url = $request->input('canonical_url');
+            $model->og_title = $request->input('og_title');
+            $model->og_description = $request->input('og_description'); 
+
             if ($model->save()) {
                 $path = sprintf(Config::get('constants.FILE_STORAGE_PATH.NEWS_IMAGE'), $model->id);
                 $upload = $this->uploadImage($path, $request);
@@ -74,9 +102,20 @@ class NewsController extends AdminController
             return redirect()->route('list-news')->with('error', Config::get('constants.MESSAGE.DATA_NOT_FOUND'));
         }
 
+        $seo = [
+            'meta_title' => $object->meta_title ?? '',
+            'meta_description' => $object->meta_description ?? '',
+            'meta_keywords' => $object->meta_keywords ?? '',
+            'meta_robots' => $object->meta_robots ?? '',
+            'canonical_url' => $object->canonical_url ?? '',
+            'og_title' => $object->og_title ?? '',
+            'og_description' => $object->og_description ?? '',
+        ];
+
         return view('admin/news/edit', [
             'object' => $object,
-            'callback' => url(URL::previous())
+            'callback' => url(URL::previous()),
+            'seo' => $seo
         ]);
     }
 
@@ -95,12 +134,25 @@ class NewsController extends AdminController
         try {
 
             $object->title = $request->input('title');
-            $object->slug = $request->input('slug');
+            // maintain slug or auto-generate when left blank
+            $slug = $request->input('slug');
+            if (empty($slug)) {
+                $slug = Str::slug($request->input('title'));
+            }
+            $object->slug = $slug;
             $object->description = $request->input('description');
             $object->content = $request->input('content');
             $object->is_active = $request->input('is_active');
             $object->updated_by = 1;
-                
+            // SEO fields
+            $object->meta_title = $request->input('meta_title');
+            $object->meta_description = $request->input('meta_description');
+            $object->meta_keywords = $request->input('meta_keywords');
+            $object->meta_robots = $request->input('meta_robots');
+            $object->canonical_url = $request->input('canonical_url');
+            $object->og_title = $request->input('og_title');
+            $object->og_description = $request->input('og_description');
+
             if($request->hasfile('image')) {
                 $path = sprintf(Config::get('constants.FILE_STORAGE_PATH.NEWS_IMAGE'), $id);
                 $prevImg = $object->image;

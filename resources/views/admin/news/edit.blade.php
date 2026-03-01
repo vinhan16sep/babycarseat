@@ -25,6 +25,11 @@
                                 @method('put')
 
                                 <div class="row">
+                                    @include('components.seo-form', ['seo' => $seo])
+                                </div>
+                                <br>
+
+                                <div class="row">
                                     <div class="col-md-8">
                                         <div class="form-group{{ $errors->has('image') ? ' has-error' : '' }}">
                                             <label>Ảnh đại diện <span class="my-required">*</span></label>
@@ -51,7 +56,7 @@
 
                                 <div class="form-group">
                                     <label>Slug</label>
-                                    <input type="text" name="slug" value="{{ old('slug', $object->slug) }}" class="form-control" id="inputSlug" readonly="">
+                                    <input type="text" name="slug" value="{{ old('slug', $object->slug) }}" class="form-control" id="inputSlug">
                                     @if ($errors->has('slug'))
                                         <span style="color:red;">{{ $errors->first('slug') }}</span>
                                     </span>
