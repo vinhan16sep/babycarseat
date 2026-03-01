@@ -1,10 +1,16 @@
 @extends('layouts.app')
 
-@section('meta_title', $product->meta_title ?? $product->name)
-@section('meta_keywords', $product->meta_keywords ?? $product->name)
+@section('meta_title', $product->meta_title ?? $product->title)
+
+@section('meta_keywords', $product->meta_keywords ?? '')
+@section('meta_description', $product->meta_description ?? '')
 @section('meta_description', ($product->meta_description ?? Str::limit(cleanHtmlContent($product->description), 150)))
-@section('meta_robots', $product->meta_robots ?? '')
-@section('meta_image', getImage($product->image))
+@section('meta_robots', $product->meta_robots ?? 'index, follow')
+@section('canonical_url', $product->canonical_url ?? route('detail-new', ['slug' => $product->slug]))
+@section('og_title', $product->og_title ?? $product->title)
+@section('og_description', $product->og_description ?? $product->meta_description ?? '')
+
+@section('meta_image', $product->image)
 
 @section('css')
     <link rel="stylesheet" href="{{ asset('css/drift-basic.min.css') }}" />

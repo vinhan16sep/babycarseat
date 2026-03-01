@@ -1,9 +1,17 @@
 ﻿@extends('layouts.app')
 
-@section('meta_title', $new->title)
-@section('meta_keyword', $new->title)
-@section('meta_description', $new->title)
-@section('meta_image', $new->title)
+@section('meta_title', $new->meta_title ?? $new->title)
+
+@section('meta_keywords', $new->meta_keywords ?? '')
+@section('meta_description', $new->meta_description ?? '')
+@section('meta_description', ($new->meta_description ?? Str::limit(cleanHtmlContent($new->description), 150)))
+@section('meta_robots', $new->meta_robots ?? 'index, follow')
+@section('canonical_url', $new->canonical_url ?? route('detail-new', ['slug' => $new->slug]))
+@section('og_title', $new->og_title ?? $new->title)
+@section('og_description', $new->og_description ?? $new->meta_description ?? '')
+
+@section('meta_image', $new->image)
+
 @section('css')
     <link rel="stylesheet" href="{{ asset('css/page.css?v=' . ($ver ?? '')) }}">
     <style>

@@ -25,11 +25,11 @@
     <link rel="canonical" href="@yield('canonical', url()->current())"/>
 
     <!-- for Facebook -->
-    <meta property="og:title" content="@yield('meta_title', $site_settings['meta_title'] ?? '')"/>
+    <meta property="og:title" content="@yield('og_title', $site_settings['meta_title'] ?? '')"/>
     <meta property="og:type" content="article"/>
     <meta property="og:image" content="@yield('meta_image', asset($site_settings['meta_image'] ?? ''))"/>
     <meta property="og:url" content="@yield('canonical', url()->current())"/>
-    <meta property="og:description" content="@yield('meta_description', $site_settings['meta_description'] ?? '')"/>
+    <meta property="og:description" content="@yield('og_description', $site_settings['meta_description'] ?? '')"/>
     <meta property="og:site_name" content="{{ \Request::getHost() }}"/>
 
     <!-- for Twitter -->

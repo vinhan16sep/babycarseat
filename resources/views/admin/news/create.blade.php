@@ -23,6 +23,11 @@
                             <form role="form" method="POST" action="{{ route('store-news') }}" enctype="multipart/form-data">
                                 @csrf
                                 @method('post')
+
+                                <div class="row">
+                                    <x-seo-form :seo="$seo" />
+                                </div>
+                                <br>
                                 
                                 <div class="row">
                                     <div class="col-md-8">
@@ -51,7 +56,7 @@
 
                                 <div class="form-group">
                                     <label>Slug</label>
-                                    <input type="text" name="slug" value="{{ old('slug') }}" class="form-control" id="inputSlug" readonly>
+                                    <input type="text" name="slug" value="{{ old('slug') }}" class="form-control" id="inputSlug">
                                     @if ($errors->has('slug'))
                                         <span style="color:red;">{{ $errors->first('slug') }}</span>
                                     </span>
