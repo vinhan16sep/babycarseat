@@ -28,6 +28,7 @@ class Product extends Model
         'discount_value',
         'is_new',
         'is_highlight',
+        'sort',
         'timestamps'
     );
     protected $appends = ['images'];
@@ -106,7 +107,7 @@ class Product extends Model
     }
 
     public static function getHotProducts() {
-        return Product::query()->with(['categoryId'])->where('is_active', 1)->where('is_highlight', 1)->get();
+        return Product::query()->with(['categoryId'])->where('is_active', 1)->where('is_highlight', 1)->orderBy('sort', 'desc')->get();
     }
 
     public function getFirstCategoryAttribute()
