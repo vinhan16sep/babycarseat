@@ -107,7 +107,7 @@ class Product extends Model
     }
 
     public static function getHotProducts() {
-        return Product::query()->with(['categoryId'])->where('is_active', 1)->where('is_highlight', 1)->orderBy('sort', 'desc')->get();
+        return Product::query()->with(['categoryId'])->where('is_active', 1)->where('is_highlight', 1)->orderBy('sort', 'asc')->get();
     }
 
     public function getFirstCategoryAttribute()
