@@ -22,13 +22,13 @@
     <meta name="keywords" content="@yield('meta_keywords', $site_settings['meta_keywords'] ?? '')"/>
     <meta name="description" content="@yield('meta_description', $site_settings['meta_description'] ?? '')"/>
     <meta name="robots" content="@yield('meta_robots', $site_settings['meta_robots'] ?? '')">
-    <link rel="canonical" href="@yield('canonical', url()->current())"/>
+    <link rel="canonical" href="@yield('canonical', request()->fullUrl())"/>
 
     <!-- for Facebook -->
     <meta property="og:title" content="@yield('og_title', $site_settings['meta_title'] ?? '')"/>
     <meta property="og:type" content="article"/>
     <meta property="og:image" content="@yield('meta_image', asset($site_settings['meta_image'] ?? ''))"/>
-    <meta property="og:url" content="@yield('canonical', url()->current())"/>
+    <meta property="og:url" content="@yield('canonical', request()->fullUrl())"/>
     <meta property="og:description" content="@yield('og_description', $site_settings['meta_description'] ?? '')"/>
     <meta property="og:site_name" content="{{ \Request::getHost() }}"/>
 

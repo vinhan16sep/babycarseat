@@ -7,6 +7,7 @@
 @section('meta_description', ($product->meta_description ?? Str::limit(cleanHtmlContent($product->description), 150)))
 @section('meta_robots', $product->meta_robots ?? 'index, follow')
 @section('canonical_url', $product->canonical_url ?? route('detail-new', ['slug' => $product->slug]))
+@section('canonical', $product->canonical_url ?? route('detail-new', ['slug' => $product->slug]))
 @section('og_title', $product->og_title ?? $product->title)
 @section('og_description', $product->og_description ?? $product->meta_description ?? '')
 
