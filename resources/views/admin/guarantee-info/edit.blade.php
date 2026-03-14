@@ -55,6 +55,13 @@
                                     <textarea name="content" class="form-control my-textarea" rows="5">{{ old('content', $object->content) }}</textarea>
                                 </div>
 
+                                <div class="form-group">
+                                    <label>
+                                        <input type="checkbox" name="is_show" value="1" {{ old('is_show', $object->is_show) ? 'checked' : '' }}>
+                                        Hiển thị
+                                    </label>
+                                </div>
+
                                 <a type="button" href="{{ route('list-guarantee-info') }}" class="btn btn-default btn-outline"><i class="ti-back-left icon-black"></i>&nbsp;&nbsp;Quay lại</a>
                                 <button type="submit" class="btn btn-primary"><i class="ti-save icon-white"></i>&nbsp;&nbsp;Lưu</button>
                             </form>

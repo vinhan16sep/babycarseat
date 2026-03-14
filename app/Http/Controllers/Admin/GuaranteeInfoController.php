@@ -49,6 +49,7 @@ class GuaranteeInfoController extends AdminController
 
         $object->title = $request->input('title');
         $object->content = $request->input('content');
+        $object->is_show = $request->has('is_show') ? 1 : 0;
 
         if ($object->save()) {
             return redirect()->route('edit-guarantee-info', ['id' => $id])->with('success', Config::get('constants.MESSAGE.UPDATE_SUCCEEDED'));
