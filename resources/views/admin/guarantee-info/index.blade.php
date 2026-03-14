@@ -28,7 +28,8 @@
                                     <tr>
                                         <th class="w-10" style="text-align: center;">Vị trí</th>
                                         <th class="w-10" style="text-align: center;">Vị trí phụ</th>
-                                        <th class="w-55" style="text-align: center;">Tiêu đề</th>
+                                        <th class="w-50" style="text-align: center;">Tiêu đề</th>
+                                        <th class="w-10" style="text-align: center;">Hiển thị</th>
                                         <th class="w-10" style="text-align: center;">Action</th>
                                     </tr>
                                 </thead>
@@ -38,6 +39,13 @@
                                             <td style="text-align: center;">{{ $item->position}}</td>
                                             <td style="text-align: center;">{{ $item->sub_position}}</td>
                                             <td>{{ $item->title}}</td>
+                                            <td style="text-align: center;">
+                                                @if($item->is_show == 1)
+                                                    <span class="ti-check" style="color:green;font-weight: 900;"></span>
+                                                @else
+                                                    <span class="ti-close" style="color:red;font-weight: 900;"></span>
+                                                @endif
+                                            </td>
                                             <td class="color-primary" style="text-align: center;">
                                                 <a type="button" href="{{ route('edit-guarantee-info', ['id' => $item->id]) }}" class="btn btn-primary btn-flat my-list-btn"><i class="ti-pencil icon-white"></i></a>
                                             </td>

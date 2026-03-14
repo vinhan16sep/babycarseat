@@ -10,10 +10,62 @@
     <style>
         .indented-list {
             padding-left: 20px; /* Indent trên desktop */
+            margin: 12px 0;
+        }
+        .indented-list li {
+            margin-bottom: 8px;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            line-height: 1.6;
+        }
+        .new-content .last-box {
+            margin-bottom: 24px;
+        }
+        .new-content .sub-title {
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            margin-top: 12px;
+        }
+        .new-content p {
+            line-height: 1.7;
+            font-size: 0.95rem;
+            margin-bottom: 10px;
         }
         @media (max-width: 768px) {
             .indented-list {
-                padding-left: 10px; /* Indent ít hơn trên mobile */
+                padding-left: 15px;
+            }
+            .indented-list li {
+                margin-bottom: 6px;
+                font-size: 0.9rem;
+            }
+            .new-content .sub-title {
+                font-size: 1rem;
+                margin-bottom: 10px;
+                margin-top: 10px;
+            }
+            .new-content p {
+                font-size: 0.9rem;
+                margin-bottom: 8px;
+            }
+            .new-content .last-box {
+                margin-bottom: 16px;
+            }
+        }
+        @media (max-width: 480px) {
+            .indented-list {
+                padding-left: 12px;
+            }
+            .indented-list li {
+                font-size: 0.85rem;
+                margin-bottom: 5px;
+            }
+            .new-content .sub-title {
+                font-size: 0.95rem;
+            }
+            .new-content p {
+                font-size: 0.85rem;
+                line-height: 1.6;
             }
         }
     </style>
@@ -23,7 +75,99 @@
     <section class="tf-slideshow slider-default slider-effect-fade">
         <img src="{{ asset('images/banner-bao-hanh-vang-12-nam.jpg?v=' . ($ver ?? '')) }}" alt="" style="width: 100%">
     </section>
+    <!-- START Update new content 20260315-->
     <section class="section-same section-six home-padding">
+        <div class="container-fluid update-box">
+            <div>
+                <h3 class="title text-center">BABYRO BẢO VỆ DÀI LÂU<br/>NHƯ TÌNH YÊU BỐ MẸ DÀNH CHO CON</h3>
+            </div>
+            <div class="content new-content">
+                <div>
+                    <p>Chính sách Bảo hành lên đến 12 năm của Babyro được xây dựng theo đúng quy định của pháp luật, là cam kết dài hạn của chúng tôi về chất lượng – an toàn – trách nhiệm trong suốt quá trình sử dụng sản phẩm của khách hàng. Đây là chương trình bảo hành dựa trên quyền tự nguyện của Babyro và không làm giảm quyền lợi bảo hành tối thiểu mà người tiêu dùng được pháp luật bảo vệ.</p>
+                </div>
+
+                <div class="last-box">
+                    <h4 class="sub-title">Điều 1: Phạm vi và thời hạn bảo hành</h4>
+                    <p>Phạm vi bảo hành lên đến 12 năm sẽ áp dụng dựa theo các dòng sản phẩm, cụ thể như sau:</p>
+                    <ul class="indented-list">
+                        <li style="list-style-type:disc;">Bảo hành 12 năm đối với các dòng sản phẩm: Babyro I-Spinsafe Pro, Babyro I-Spinsafe, Babyro Spinsafe</li>
+                        <li style="list-style-type:disc;">Bảo hành 9 năm đối với các dòng sản phẩm: Babyro I-Wing, Babyro Wing, Babyro I-Trek</li>
+                        <li style="list-style-type:disc;">Bảo hành 6 năm đối với các dòng sản phẩm: Babyro Booster, Babyro Booster Plus</li>
+                        <li style="list-style-type:disc;">Trong vòng 30 ngày đầu tiên kể từ ngày mua, nếu sản phẩm phát sinh lỗi từ nhà nhà sản xuất, khách hàng được đổi sản phẩm mới 100% miễn phí (Bao gồm cả chi phí vận chuyển)</li>
+                        <li style="list-style-type:disc;">Với những sản phẩm quá 30 ngày đầu tiên kể từ ngày mua, chi phí gửi sản phẩm bảo hành sẽ do khách hàng chịu trách nhiệm</li>
+                    </ul>
+                </div>
+
+                <div class="last-box">
+                    <h4 class="sub-title">Điều 2: Nội dung bảo hành</h4>
+                    <p>Babyro sẽ Sửa chữa hoặc Thay thế Miễn phí đối với:</p>
+                    <ul class="indented-list">
+                        <li style="list-style-type:disc;">Các linh kiện chính liên quan đến an toàn như: cơ cấu khóa, chốt, ISOFIX, khung ghế, bộ phận hấp thụ lực</li>
+                        <li style="list-style-type:disc;">Phụ kiện gắn liền với chức năng an toàn của ghế Không bao gồm vỏ bọc, đệm, vải bọc và các chi tiết mang tính thẩm mỹ</li>
+                        <li style="list-style-type:disc;">Trong 30 ngày đầu kể từ ngày mua, nếu phát sinh lỗi do nhà sản xuất, Babyro sẽ: Đổi sang một sản phẩm mới 100%, Miễn phí hoàn toàn chi phí vận chuyển 2 chiều</li>
+                    </ul>
+                </div>
+
+                <div class="last-box">
+                    <h4 class="sub-title">Điều 3: Điều kiện được bảo hành</h4>
+                    <p>Để yêu cầu bảo hành, sản phẩm khách hàng mua cần phải đáp ứng các điều kiện sau:</p>
+                    <ul class="indented-list">
+                        <li style="list-style-type:disc;">Nguồn gốc: Phải là sản phẩm chính hãng, được mua từ Babyro Việt Nam hoặc các đại lý, hệ thống cửa hàng phân phối chính thức</li>
+                        <li style="list-style-type:disc;">Sở hữu: Bảo hành áp dụng cho người mua đầu tiên theo thông tin mua hàng. Các sản phẩm mua lại (Ghế cũ, thanh lý) có thể không được tiếp nhận bảo hành chính hang</li>
+                        <li style="list-style-type:disc;">Chứng từ: Cần có thông tin mua hàng (Hóa đơn mua hàng, phiếu bảo hành hoặc thông tin kích hoạt bảo hành điện tử)</li>
+                        <li style="list-style-type:disc;">Tình trạng sản phẩm: Sản phẩm chưa qua sửa chữa của bên thứ 3</li>
+                    </ul>
+                </div>
+
+                <div class="last-box">
+                    <h4 class="sub-title">Điều 4: Các trường hợp không được bảo hành</h4>
+                    <p>Babyro từ chối bảo hành đối với:</p>
+                    <ul class="indented-list">
+                        <li style="list-style-type:disc;">Hư hỏng do sử dụng sai cách, không tuân thủ hướng dẫn sử dụng</li>
+                        <li style="list-style-type:disc;">Hư hỏng do lắp đặt – tháo lắp sai quy cách, lực tác động không phù hợp</li>
+                        <li style="list-style-type:disc;">Hư hỏng phát sinh do bảo dưỡng kém, bảo quản sai môi trường</li>
+                        <li style="list-style-type:disc;">Sửa chữa bởi cá nhân/đơn vị không được ủy quyền. Sử dụng phụ kiện không chính hãng</li>
+                        <li style="list-style-type:disc;">Hư hỏng do tai nạn, thiên tai, hỏa hoạn, ngập nước, hoặc các sự kiện bất khả kháng</li>
+                        <li style="list-style-type:disc;">Tác động ngoại lực mạnh, rơi vỡ, biến dạng không thuộc lỗi kỹ thuật</li>
+                        <li style="list-style-type:disc;">Sản phẩm có seri bị tẩy xoá, hư hỏng, không xác minh được nguồn gốc</li>
+                        <li style="list-style-type:disc;">Lưu ý: Các trường hợp không được bảo hành vẫn có thể được Babyro hỗ trợ sửa chữa có phí, tùy mức độ hư hỏng</li>
+                    </ul>
+                </div>
+
+                <div class="last-box">
+                    <h4 class="sub-title">Điều 5: Hướng dẫn kích hoạt bảo hành điện tử</h4>
+                    <p style="white-space: pre-line">Bước 01: Tìm vị trí tem bảo hành được dán trực tiếp trên phần khung nhựa của ghế
+
+Bước 02: Quét mã QR trên tem bảo hành
+• Sử dụng điện thoại thông minh có kết nối internet, mở ứng dụng "Máy ảnh" (Camera)
+• Hướng camera vào mã QR trên tem bảo hành, nhấn vào đường link trang web hiện ra để truy cập
+
+Bước 03: Nhập thông tin mua hàng
+• Họ tên người mua: 
+• Số điện thoại người mua:
+• Địa chỉ (Để hỗ trợ gửi link kiện hoặc thu hồi bảo hành)
+
+Sau đó bấm xác nhận để gửi thông tin bảo hành lên hệ thống bảo hành điện tử
+
+Lưu ý: Khách hàng cần đăng ký trong vòng 30 ngày kể từ ngày mua để kích hoạt bảo hành điện tử.</p>
+                </div>
+
+                <div class="last-box">
+                    <h4 class="sub-title">Điều 7: Thông tin các trung tâm bảo hành</h4>
+                    <ul class="indented-list">
+                        <li style="list-style-type:disc;"><strong>Hà Nội:</strong> Tòa nhà Hoà Bình Green City, 505 Minh Khai, Vĩnh Tuy – 0933 805 179</li>
+                        <li style="list-style-type:disc;"><strong>Đà Nẵng:</strong> 177 Hồ Hán Thương, Sơn Trà – 0933 805 179</li>
+                        <li style="list-style-type:disc;"><strong>TP. Hồ Chí Minh:</strong> 39 đường 11b KDC Dương Hồng, Bình Hưng, Bình Chánh – 0964209015</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- END Update new content 20260315-->
+
+    <!-- START old content 20260315 -> Comment out -->
+     
+    <!-- <section class="section-same section-six home-padding">
         <div class="container-fluid update-box">
             <div>
                 <h3 class="title text-center">BABYRO BẢO VỆ DÀI LÂU<br/>NHƯ TÌNH YÊU BỐ MẸ DÀNH CHO CON</h3>
@@ -58,52 +202,6 @@
         </div>
     </section>
     <section class="section-same section-seven home-padding">
-        <!-- <div class="container-fluid update-box">
-            <div>
-                <h3 class="title text-center" style="white-space: pre-line">Hướng dẫn đăng ký
-                    Bảo hành vàng 12 năm Babyro</h3>
-            </div>
-            <div class="content">
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="box">
-                            <div class="head">
-                                <span>01</span>
-                                <h4 class="sub-title">{!! $configs[6][1]['title'] ?? '' !!}</h4>
-                            </div>
-                            <div class="content">
-                                {!! $configs[6][1]['content'] ?? '' !!}
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 _box-center">
-                        <div class="box">
-                            <div class="head">
-                                <span>02</span>
-                                <h4 class="sub-title">{!! $configs[6][2]['title'] ?? '' !!}</h4>
-                            </div>
-                            <div class="content">
-                                {!! $configs[6][2]['content'] ?? '' !!}
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 _box-right">
-                        <div class="box">
-                            <div class="head">
-                                <span>03</span>
-                                <h4 class="sub-title">{!! $configs[6][3]['title'] ?? '' !!}</h4>
-                            </div>
-                            <div class="content">
-                                {!! $configs[6][3]['content'] ?? '' !!}
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-12">
-                        <p class="note">Lưu ý! Để được hưởng chương trình bảo hành vàng 12 năm, bạn cần đăng ký theo mẫu đơn trong vòng 30 ngày kể từ ngày mua</p>
-                    </div>
-                </div>
-            </div>
-        </div> -->
         <div class="container-fluid update-box">
             <div class="content">
                 <div class="row">
@@ -123,7 +221,9 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
+
+    <!-- END old content 20260315 -> Comment out -->
 
     <section class="section-same section-three-v1 home-padding first">
         <div class="box-content">
